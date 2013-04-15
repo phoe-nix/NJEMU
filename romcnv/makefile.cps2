@@ -1,0 +1,191 @@
+#------------------------------------------------------------------------------
+#
+#                  romcnv_cps2.exe for Windows Makefile
+#
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# Configration
+#------------------------------------------------------------------------------
+
+TARGET = romcnv_cps2
+
+
+#------------------------------------------------------------------------------
+# Defines
+#------------------------------------------------------------------------------
+
+VERSION_MAJOR = 2
+VERSION_MINOR = 2
+VERSION_BUILD = 2
+
+EXENAME_STR = $(TARGET)
+VERSION_STR = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_BUILD)
+
+ifdef UNIX
+FINAL_TARGET = $(TARGET)
+else
+WIN32 = 1
+FINAL_TARGET = $(TARGET).exe
+endif
+EXTRA_TARGETS = maketree $(FINAL_TARGET)
+
+OBJ = obj_cps2
+
+
+#------------------------------------------------------------------------------
+# Utilities
+#------------------------------------------------------------------------------
+
+AR = ar
+CC = gcc
+LD = gcc
+
+ifdef WIN32
+MD = mkdir.exe
+RM = rm.exe
+else
+MD = mkdir
+RM = rm
+endif
+
+
+#------------------------------------------------------------------------------
+# File include path
+#------------------------------------------------------------------------------
+
+INCDIR = \
+	src \
+	src/cps2 \
+	src/zlib
+
+
+#------------------------------------------------------------------------------
+# Object Directory
+#------------------------------------------------------------------------------
+
+OBJDIRS = \
+	$(OBJ) \
+	$(OBJ)/cps2 \
+	$(OBJ)/zlib
+
+
+#------------------------------------------------------------------------------
+# Object Files
+#------------------------------------------------------------------------------
+
+OBJS = \
+	$(OBJ)/cps2/romcnv.o \
+	$(OBJ)/common.o \
+	$(OBJ)/unzip.o \
+	$(OBJ)/zip.o \
+	$(OBJ)/zfile.o \
+	$(OBJ)/zlib.a
+
+
+#------------------------------------------------------------------------------
+# Compiler Flags
+#------------------------------------------------------------------------------
+
+CFLAGS = -O2
+
+
+#------------------------------------------------------------------------------
+# Compiler Defines
+#------------------------------------------------------------------------------
+
+ifdef WIN32
+CDEFS = \
+	-DCRLF=3 \
+	-DWINVER=0x0400 \
+	-D_WIN32_WINNT=0x0500 \
+	-DWIN32 \
+	-D_WINDOWS \
+	-DINLINE='static __inline' \
+	-Dinline=__inline \
+	-D__inline__=__inline \
+	-DEXENAME_STR='"$(EXENAME_STR)"' \
+	-DVERSION_STR='"$(VERSION_STR)"' \
+	-DVERSION_MAJOR=$(VERSION_MAJOR) \
+	-DVERSION_MINOR=$(VERSION_MINOR) \
+	$(addprefix -I,$(INCDIR))
+else
+CDEFS = \
+	-DCRLF=3 \
+	-DINLINE='static __inline' \
+	-Dinline=__inline \
+	-D__inline__=__inline \
+	-DEXENAME_STR='"$(EXENAME_STR)"' \
+	-DVERSION_STR='"$(VERSION_STR)"' \
+	-DVERSION_MAJOR=$(VERSION_MAJOR) \
+	-DVERSION_MINOR=$(VERSION_MINOR) \
+	$(addprefix -I,$(INCDIR))
+endif
+
+ifdef UNIX
+CDEFS += -DUNIX=1
+endif
+
+
+#---------------------------------------------------------------------
+# Linker Flags
+#---------------------------------------------------------------------
+
+LDFLAGS = -s
+
+ifdef WIN32
+LDFLAGS += -mconsole -mno-cygwin
+endif
+
+
+#------------------------------------------------------------------------------
+# Library
+#------------------------------------------------------------------------------
+
+LIBS =
+
+ifdef WIN32
+LIBS = -luser32 -lcomdlg32 -lshell32
+endif
+
+
+#------------------------------------------------------------------------------
+# Rules to make libraries
+#------------------------------------------------------------------------------
+
+all: $(EXTRA_TARGETS)
+
+$(FINAL_TARGET): $(OBJS)
+	@echo Linking $@...
+	$(LD) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
+
+
+$(OBJ)/zlib.a:  \
+	$(OBJ)/zlib/adler32.o \
+	$(OBJ)/zlib/compress.o \
+	$(OBJ)/zlib/crc32.o \
+	$(OBJ)/zlib/deflate.o \
+	$(OBJ)/zlib/inflate.o \
+	$(OBJ)/zlib/inftrees.o \
+	$(OBJ)/zlib/inffast.o \
+	$(OBJ)/zlib/trees.o \
+	$(OBJ)/zlib/zutil.o
+
+
+#------------------------------------------------------------------------------
+# Rules to manage files
+#------------------------------------------------------------------------------
+
+$(OBJ)/%.o: src/%.c
+	@echo Compiling $<...
+	@$(CC) $(CDEFS) $(CFLAGS) -c $< -o$@
+
+$(OBJ)/%.a:
+	@echo Archiving $@...
+	@$(AR) -r $@ $^
+
+clean:
+	@$(RM) -rf $(OBJS)
+
+maketree:
+	@$(MD) -p $(subst //,\,$(sort $(OBJDIRS)))
