@@ -152,6 +152,7 @@ static void update_inputport0(void)
 			if (input_flag[P1_UP])      value &= ~0x0008;
 			if (input_flag[P1_BUTTON1]) value &= ~0x0010;
 			if (input_flag[P1_BUTTON2]) value &= ~0x0020;
+			if (input_flag[P1_12])		 value &= ~0x0030;
 		}
 		else if (option_controller == INPUT_PLAYER2)
 		{
@@ -161,6 +162,7 @@ static void update_inputport0(void)
 			if (input_flag[P1_UP])      value &= ~0x0800;
 			if (input_flag[P1_BUTTON1]) value &= ~0x1000;
 			if (input_flag[P1_BUTTON2]) value &= ~0x2000;
+			if (input_flag[P1_12])		 value &= ~0x3000;
 		}
 		break;
 
@@ -179,6 +181,9 @@ static void update_inputport0(void)
 			if (input_flag[P1_BUTTON1]) value &= ~0x0010;
 			if (input_flag[P1_BUTTON2]) value &= ~0x0020;
 			if (input_flag[P1_BUTTON3]) value &= ~0x0040;
+			if (input_flag[P1_12])		 value &= ~0x0030;
+			if (input_flag[P1_13])		 value &= ~0x0050;
+			if (input_flag[P1_23])		 value &= ~0x0060;
 		}
 		else if (option_controller == INPUT_PLAYER2)
 		{
@@ -189,6 +194,9 @@ static void update_inputport0(void)
 			if (input_flag[P1_BUTTON1]) value &= ~0x1000;
 			if (input_flag[P1_BUTTON2]) value &= ~0x2000;
 			if (input_flag[P1_BUTTON3]) value &= ~0x4000;
+			if (input_flag[P1_12])		 value &= ~0x3000;
+			if (input_flag[P1_13])		 value &= ~0x5000;
+			if (input_flag[P1_23])		 value &= ~0x6000;
 		}
 		break;
 
@@ -204,6 +212,16 @@ static void update_inputport0(void)
 			if (input_flag[P1_BUTTON2]) value &= ~0x0020;
 			if (input_flag[P1_BUTTON3]) value &= ~0x0040;
 			if (input_flag[P1_BUTTON4]) value &= ~0x0080;
+			if (input_flag[P1_12])		 value &= ~0x0030;
+			if (input_flag[P1_13])		 value &= ~0x0050;
+			if (input_flag[P1_23])		 value &= ~0x0060;
+			if (input_flag[P1_24])		 value &= ~0x00a0;
+			if (input_flag[P1_34])		 value &= ~0x00c0;
+			if (input_flag[P1_123])	 value &= ~0x0070;
+			if (input_flag[P1_124])	 value &= ~0x00b0;
+			if (input_flag[P1_134])	 value &= ~0x00d0;
+			if (input_flag[P1_234])	 value &= ~0x00e0;
+			if (input_flag[P1_1234])	 value &= ~0x00f0;
 		}
 		else if (option_controller == INPUT_PLAYER2)
 		{
@@ -215,6 +233,11 @@ static void update_inputport0(void)
 			if (input_flag[P1_BUTTON2]) value &= ~0x2000;
 			if (input_flag[P1_BUTTON3]) value &= ~0x4000;
 			if (input_flag[P1_BUTTON4]) value &= ~0x8000;
+			if (input_flag[P1_123])	 value &= ~0x7000;
+			if (input_flag[P1_124])	 value &= ~0xb000;
+			if (input_flag[P1_134])	 value &= ~0xd000;
+			if (input_flag[P1_234])	 value &= ~0xe000;
+			if (input_flag[P1_1234])	 value &= ~0xf000;
 		}
 		break;
 
@@ -225,6 +248,16 @@ static void update_inputport0(void)
 			if (input_flag[P1_BUTTON3]) value &= ~0x0002;
 			if (input_flag[P1_BUTTON2]) value &= ~0x0004;
 			if (input_flag[P1_BUTTON1]) value &= ~0x0008;
+			if (input_flag[P1_12])		 value &= ~0x000c;
+			if (input_flag[P1_13])		 value &= ~0x000a;
+			if (input_flag[P1_23])		 value &= ~0x0006;
+			if (input_flag[P1_24])		 value &= ~0x0005;
+			if (input_flag[P1_34])		 value &= ~0x0003;
+			if (input_flag[P1_123])	 value &= ~0x000e;
+			if (input_flag[P1_124])	 value &= ~0x000d;
+			if (input_flag[P1_134])	 value &= ~0x000b;
+			if (input_flag[P1_234])	 value &= ~0x0007;
+			if (input_flag[P1_1234])	 value &= ~0x000f;
 		}
 		else if (option_controller == INPUT_PLAYER2)
 		{
@@ -232,6 +265,16 @@ static void update_inputport0(void)
 			if (input_flag[P1_BUTTON3]) value &= ~0x0200;
 			if (input_flag[P1_BUTTON2]) value &= ~0x0400;
 			if (input_flag[P1_BUTTON1]) value &= ~0x0800;
+			if (input_flag[P1_12])		 value &= ~0x0c00;
+			if (input_flag[P1_13])		 value &= ~0x0a00;
+			if (input_flag[P1_23])		 value &= ~0x0600;
+			if (input_flag[P1_24])		 value &= ~0x0500;
+			if (input_flag[P1_34])		 value &= ~0x0300;
+			if (input_flag[P1_123])	 value &= ~0x0e00;
+			if (input_flag[P1_124])	 value &= ~0x0d00;
+			if (input_flag[P1_134])	 value &= ~0x0b00;
+			if (input_flag[P1_234])	 value &= ~0x0700;
+			if (input_flag[P1_1234])	 value &= ~0x0f00;
 		}
 		break;
 	}
@@ -290,6 +333,7 @@ static void update_inputport1(void)
 			if (input_flag[P1_UP])      value &= ~0x0008;
 			if (input_flag[P1_BUTTON1]) value &= ~0x0010;
 			if (input_flag[P1_BUTTON2]) value &= ~0x0020;
+			if (input_flag[P1_12])		 value &= ~0x0030;
 		}
 		else if (option_controller == INPUT_PLAYER4)
 		{
@@ -299,6 +343,7 @@ static void update_inputport1(void)
 			if (input_flag[P1_UP])      value &= ~0x0800;
 			if (input_flag[P1_BUTTON1]) value &= ~0x1000;
 			if (input_flag[P1_BUTTON2]) value &= ~0x2000;
+			if (input_flag[P1_12])		 value &= ~0x3000;
 		}
 		break;
 
@@ -312,6 +357,9 @@ static void update_inputport1(void)
 			if (input_flag[P1_BUTTON1]) value &= ~0x0010;
 			if (input_flag[P1_BUTTON2]) value &= ~0x0020;
 			if (input_flag[P1_BUTTON3]) value &= ~0x0040;
+			if (input_flag[P1_12])		 value &= ~0x0030;
+			if (input_flag[P1_13])		 value &= ~0x0050;
+			if (input_flag[P1_23])		 value &= ~0x0060;
 		}
 		break;
 
@@ -326,6 +374,16 @@ static void update_inputport1(void)
 			if (input_flag[P1_BUTTON2]) value &= ~0x0020;
 			if (input_flag[P1_BUTTON3]) value &= ~0x0040;
 			if (input_flag[P1_BUTTON4]) value &= ~0x0080;
+			if (input_flag[P1_12])		 value &= ~0x0030;
+			if (input_flag[P1_13])		 value &= ~0x0050;
+			if (input_flag[P1_23])		 value &= ~0x0060;
+			if (input_flag[P1_24])		 value &= ~0x00a0;
+			if (input_flag[P1_34])		 value &= ~0x00c0;
+			if (input_flag[P1_123])	 value &= ~0x0070;
+			if (input_flag[P1_124])	 value &= ~0x00b0;
+			if (input_flag[P1_134])	 value &= ~0x00d0;
+			if (input_flag[P1_234])	 value &= ~0x00e0;
+			if (input_flag[P1_1234])	 value &= ~0x00f0;
 		}
 		else if (option_controller == INPUT_PLAYER4)
 		{
@@ -337,6 +395,16 @@ static void update_inputport1(void)
 			if (input_flag[P1_BUTTON2]) value &= ~0x2000;
 			if (input_flag[P1_BUTTON3]) value &= ~0x4000;
 			if (input_flag[P1_BUTTON4]) value &= ~0x8000;
+			if (input_flag[P1_12])		 value &= ~0x3000;
+			if (input_flag[P1_13])		 value &= ~0x5000;
+			if (input_flag[P1_23])		 value &= ~0x6000;
+			if (input_flag[P1_24])		 value &= ~0xa000;
+			if (input_flag[P1_34])		 value &= ~0xc000;
+			if (input_flag[P1_123])	 value &= ~0x7000;
+			if (input_flag[P1_124])	 value &= ~0xb000;
+			if (input_flag[P1_134])	 value &= ~0xd000;
+			if (input_flag[P1_234])	 value &= ~0xe000;
+			if (input_flag[P1_1234])	 value &= ~0xf000;
 		}
 		break;
 	}

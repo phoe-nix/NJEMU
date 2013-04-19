@@ -39,10 +39,22 @@ enum
 	P1_AF_4,		// 19
 	P1_AF_5,		// 20
 	P1_AF_6,		// 21
-
-	SNAPSHOT,		// 22
-	SWPLAYER,		// 23
-	COMMANDLIST,	// 24
+	
+	P1_12,			// 22
+	P1_13,			// 23
+	P1_14,			// 24
+	P1_23,			// 25
+	P1_24,			// 26
+	P1_34,			// 27
+	P1_123,			// 28
+	P1_124,			// 29
+	P1_134,			// 30
+	P1_234,			// 31
+	P1_1234,		// 32
+	
+	SNAPSHOT,		// 33
+	SWPLAYER,		// 34
+	COMMANDLIST,	// 35
 	
 	MAX_INPUTS
 };

@@ -271,6 +271,18 @@ static const char *text[4][UI_TEXT_MAX] =
 		"Hotkey A+C+D",
 		"Hotkey B+C+D",
 		"Hotkey A+B+C+D",
+#else
+		"Hotkey 1+2",
+		"Hotkey 1+3",
+		"Hotkey 1+4",
+		"Hotkey 2+3",
+		"Hotkey 2+4",
+		"Hotkey 3+4",
+		"Hotkey 1+2+3",
+		"Hotkey 1+2+4",
+		"Hotkey 1+3+4",
+		"Hotkey 2+3+4",
+		"Hotkey 1+2+3+4",
 #endif
 #if (EMU_SYSTEM != NCDZ)
 		"Analog Sensitivity",
@@ -811,6 +823,18 @@ static const char *text[4][UI_TEXT_MAX] =
 		"ACD 同時押し",
 		"BCD 同時押し",
 		"ABCD 同時押し",
+#else
+		"1+2同時押し",
+		"1+3同時押し",
+		"1+4同時押し",
+		"2+3同時押し",
+		"2+4同時押し",
+		"3+4同時押し",
+		"1+2+3同時押し",
+		"1+2+4同時押し",
+		"1+3+4同時押し",
+		"2+3+4同時押し",
+		"1+2+3+4同時押し",
 #endif
 #if (EMU_SYSTEM != NCDZ)
 		"アナログ感度",
@@ -1351,6 +1375,18 @@ static const char *text[4][UI_TEXT_MAX] =
 		"热键A+C+D",
 		"热键B+C+D",
 		"热键A+B+C+D",
+#else
+		"热键1+2",
+		"热键1+3",
+		"热键1+4",
+		"热键2+3",
+		"热键2+4",
+		"热键3+4",
+		"热键1+2+3",
+		"热键1+2+4",
+		"热键1+3+4",
+		"热键2+3+4",
+		"热键1+2+3+4",
 #endif
 #if (EMU_SYSTEM != NCDZ)
 		"摇杆灵敏度",
@@ -1891,6 +1927,18 @@ static const char *text[4][UI_TEXT_MAX] =
 		"熱鍵A+C+D",
 		"熱鍵B+C+D",
 		"熱鍵A+B+C+D",
+#else
+		"熱鍵1+2",
+		"熱鍵1+3",
+		"熱鍵1+4",
+		"熱鍵2+3",
+		"熱鍵2+4",
+		"熱鍵3+4",
+		"熱鍵1+2+3",
+		"熱鍵1+2+4",
+		"熱鍵1+3+4",
+		"熱鍵2+3+4",
+		"熱鍵1+2+3+4",
 #endif
 #if (EMU_SYSTEM != NCDZ)
 		"搖桿靈敏度",
