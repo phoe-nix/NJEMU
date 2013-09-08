@@ -1,3 +1,8 @@
+20130908MVS修复亚版家用机BIOS花屏，添加X键从BIOS选择菜单返回游戏列表
+MVS修复按键设置丢失问题
+MVS更改分辨率
+菜单优化
+
 20130831
 MVS修复jockeygp,赌马大亨无法运行的问题
 MVS添加几个子ROM，屏蔽neocup98,ssideki3,kog
