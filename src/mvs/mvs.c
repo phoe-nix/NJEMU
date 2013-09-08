@@ -25,11 +25,19 @@ int neogeo_save_sound_flag;
 #ifdef ADHOC
 static const char *bios[] =
 {
-	"EURO2", "EURO1",
-	"USA2", "USA1",
+	"EURO2",
+	"EURO1",
+	"USA2",
+	"USA1",
+	"ASIA3N",
 	"ASIA3",
-	"JPN3", "JPN2", "JPN1",
-	"AES"
+	"JPNJ3",
+	"JPN3",
+	"JPN2",
+	"JPN1",
+	"NEOGIT",
+	"ASIAES",
+	"JPNAES"
 };
 #endif
 
@@ -190,49 +198,49 @@ static void neogeo_exit(void)
 	show_exit_screen();
 }
 
+/*--------------------------------------------------------
+	cheats
+--------------------------------------------------------*/
+
+extern int cheat_num;
+extern gamecheat_t* gamecheat[];
+
+static void apply_cheat()
+{
+	gamecheat_t *a_cheat = NULL;
+	cheat_option_t *a_cheat_option = NULL;
+	cheat_value_t *a_cheat_value = NULL;
+	int c,j;
+
+   for( c = 0; c < cheat_num; c++)
+   { //arreglo de cheats
+	a_cheat = gamecheat[c];
+    if( a_cheat == NULL)
+		break; //seguro
+
+    if( a_cheat->curr_option == 0)//se asume que el option 0 es el disable
+		continue;
+
+    //Se busca cual es el option habilitado
+    a_cheat_option = a_cheat->cheat_option[ a_cheat->curr_option];
+    if( a_cheat_option == NULL)
+		break; //seguro
+
+		//Se ejecutan todos los value del cheat option
+		for(  j = 0; j< a_cheat_option->num_cheat_values; j++)
+		{
+		a_cheat_value = a_cheat_option->cheat_value[j];
+			if( a_cheat_value == NULL)
+				break;//seguro
+				m68000_write_memory_8(a_cheat_value->address,  a_cheat_value->value);
+
+		}
+    }
+}
 
 /*--------------------------------------------------------
 	MVS•®•ﬂ•Â•Ï©`•∑•Á•Ûåg––
 --------------------------------------------------------*/
-
-extern int gnum_cheats;
-extern cheat_st* gcheat_game[];
-
-static void apply_cheats(){
-	
-	cheat_st *a_cheat = NULL;
-	cheat_option_st *a_cheat_option = NULL;
-	cheat_value_st *a_cheat_value = NULL;
-	int c,j;
-  
-  
-   for( c = 0; c < gnum_cheats; c++){ //arreglo de cheats
-   		a_cheat = gcheat_game[c];
-      if( a_cheat == NULL) break; //seguro
-      
-      if( a_cheat->curr_option == 0){ //se asume que el option 0 es el disable
-      	continue;
-      }
-      
-      //Se busca cual es el option habilitado
-      a_cheat_option = a_cheat->cheat_option[ a_cheat->curr_option];
-      if( a_cheat_option == NULL) break; //seguro
-      
-      
-      	
-      //Se ejecutan todos los value del cheat option
-      for(  j = 0; j< a_cheat_option->num_cheat_values; j++){
-      	a_cheat_value = a_cheat_option->cheat_value[j];
-						
-				if( a_cheat_value == NULL)break;//seguro
-						
-				m68000_write_memory_8(a_cheat_value->address,  a_cheat_value->value);
-						
-			}		
-      	
-    }
-	
-}
 
 static void neogeo_run(void)
 {
@@ -255,7 +263,7 @@ static void neogeo_run(void)
 				autoframeskip_reset();
 			}
 
-			apply_cheats();//davex
+			apply_cheat();//davex
 			
 			timer_update_cpu();
 			update_screen();

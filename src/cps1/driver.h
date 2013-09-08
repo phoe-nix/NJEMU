@@ -2,7 +2,7 @@
 
 	driver.c
 
-	CPS1 ƒhƒ‰ƒCƒo
+	CPS1 driver/¥É¥é¥¤¥Ð/Çý¶¯
 
 ******************************************************************************/
 
@@ -23,85 +23,85 @@
 
 enum
 {
-	MACHINE_cps1 = 0,
-	MACHINE_forgottn,
-	MACHINE_sf2,
-	MACHINE_qsound,
-	MACHINE_pang3,
+	MACHINE_cps1 = 0,	// 0
+	MACHINE_forgottn,	// 1
+	MACHINE_sf2,		// 2
+	MACHINE_qsound,		// 3
+	MACHINE_pang3,		// 4
 #if !RELEASE
-	MACHINE_kodb,
+	MACHINE_kodb,		// 5
+	MACHINE_mercs,		// 6
 #endif
-	MACHINE_MAX
+	MACHINE_MAX			// MAX
 };
 
 enum
 {
 	INPTYPE_cps1 = 0,
-	INPTYPE_forgottn,
-	INPTYPE_ghouls,
-	INPTYPE_ghoulsu,
-	INPTYPE_daimakai,
-	INPTYPE_strider,
-	INPTYPE_stridrua,
-	INPTYPE_dynwar,
-	INPTYPE_willow,
-	INPTYPE_unsquad,
-	INPTYPE_ffight,
-	INPTYPE_1941,
-	INPTYPE_mercs,
-	INPTYPE_mtwins,
-	INPTYPE_msword,
-	INPTYPE_cawing,
-	INPTYPE_nemo,
-	INPTYPE_sf2,
-	INPTYPE_sf2j,
-	INPTYPE_3wonders,
-	INPTYPE_kod,
-	INPTYPE_kodj,
-	INPTYPE_captcomm,
-	INPTYPE_knights,
-	INPTYPE_varth,
-	INPTYPE_cworld2j,
-	INPTYPE_qad,
-	INPTYPE_qadj,
-	INPTYPE_qtono2,
-	INPTYPE_megaman,
-	INPTYPE_rockmanj,
-	INPTYPE_wof,
-	INPTYPE_dino,
-	INPTYPE_punisher,
-	INPTYPE_slammast,
-	INPTYPE_pnickj,
-	INPTYPE_pang3,
-	INPTYPE_sfzch,
+	INPTYPE_forgottn,	// 1
+	INPTYPE_ghouls,		// 2
+	INPTYPE_ghoulsu,	// 3
+	INPTYPE_daimakai,	// 4
+	INPTYPE_strider,	// 5
+	INPTYPE_stridrua,	// 6
+	INPTYPE_dynwar,		// 7
+	INPTYPE_willow,		// 8
+	INPTYPE_unsquad,	// 9
+	INPTYPE_ffight,		// 10
+	INPTYPE_1941,		// 11
+	INPTYPE_mercs,		// 12
+	INPTYPE_mtwins,		// 13
+	INPTYPE_msword,		// 14
+	INPTYPE_cawing,		// 15
+	INPTYPE_nemo,		// 16
+	INPTYPE_sf2,		// 17
+	INPTYPE_sf2j,		// 18
+	INPTYPE_3wonders,	// 19
+	INPTYPE_kod,		// 20
+	INPTYPE_kodj,		// 21
+	INPTYPE_captcomm,	// 22
+	INPTYPE_knights,	// 23
+	INPTYPE_varth,		// 24
+	INPTYPE_cworld2j,	// 25
+	INPTYPE_qad,		// 26
+	INPTYPE_qadj,		// 27
+	INPTYPE_qtono2,		// 28
+	INPTYPE_megaman,	// 29
+	INPTYPE_rockmanj,	// 30
+	INPTYPE_wof,		// 31
+	INPTYPE_dino,		// 32
+	INPTYPE_punisher,	// 33
+	INPTYPE_slammast,	// 34
+	INPTYPE_pnickj,		// 35
+	INPTYPE_pang3,		// 36
+	INPTYPE_sfzch,		// 37
 #if !RELEASE
-	INPTYPE_knightsh,
-	INPTYPE_wofh,
-	INPTYPE_wof3js,
-	INPTYPE_wofsj,
-	INPTYPE_wofsjb,
-	INPTYPE_dinoh,
+	INPTYPE_knightsh,	// 38
+	INPTYPE_wofh,		// 39
+	INPTYPE_wof3js,		// 40
+	INPTYPE_wofsj,		// 41
+	INPTYPE_dinoh,		// 42
 #endif
-	INPTYPE_MAX
+	INPTYPE_MAX			// MAX
 };
 
 enum
 {
 	INIT_cps1 = 0,
-	INIT_wof,
-	INIT_dino,
-	INIT_punisher,
-	INIT_slammast,
-	INIT_pang3,
+	INIT_wof,			// 1
+	INIT_dino,			// 2
+	INIT_punisher,		// 3
+	INIT_slammast,		// 4
+	INIT_pang3,			// 5
 #if !RELEASE
-	INIT_kodb,
-	INIT_sf2m13,
-	INIT_wofh,
-	INIT_wof3js,
-	INIT_wof3sj,
-	INIT_wofsjb,
-	INIT_dinob,
-	INIT_dinoh,
+	INIT_kodb,			// 6
+	INIT_sf2m13,		// 7
+	INIT_wofh,			// 8
+	INIT_wof3js,		// 9
+	INIT_wof3sj,		// 10
+	INIT_wofsjb,		// 11
+	INIT_dinob,			// 12
+	INIT_dinoh,			// 13
 #endif
 	INIT_MAX
 };

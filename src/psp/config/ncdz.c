@@ -33,7 +33,7 @@ static cfg_type gamecfg_ncdz[] =
 	{ CFG_BOOL,	"CDROMSpeedLimit",		&neogeo_cdspeed_limit,	0,	1	},
 
 	{ CFG_NONE,	"[Video Settings]", },
-	{ CFG_INT,	"StretchScreen",		&option_stretch,		1,	5	},
+	{ CFG_INT,	"StretchScreen",		&option_stretch,		4,	5	},
 	{ CFG_BOOL,	"VideoSync",			&option_vsync,			0,	1	},
 	{ CFG_BOOL,	"AutoFrameSkip",		&option_autoframeskip,	0,	1	},
 	{ CFG_INT,	"FrameSkipLevel",		&option_frameskip,		0,	11	},

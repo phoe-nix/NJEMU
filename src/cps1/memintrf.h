@@ -2,7 +2,7 @@
 
 	memintrf.c
 
-	CPS1ƒƒ‚ƒŠƒCƒ“ƒ^ƒtƒF[ƒXŠÖ”
+	CPS1¥á¥â¥ê¥¤¥ó¥¿¥Õ¥§©`¥¹évÊý
 
 ******************************************************************************/
 
@@ -14,14 +14,20 @@ extern UINT8 *memory_region_cpu2;
 extern UINT8 *memory_region_gfx1;
 extern UINT8 *memory_region_sound1;
 extern UINT8 *memory_region_user1;
+#if !RELEASE
 extern UINT8 *memory_region_user2;
+#endif
+extern UINT8 *memory_region_user3;
 
 extern UINT32 memory_length_cpu1;
 extern UINT32 memory_length_cpu2;
 extern UINT32 memory_length_gfx1;
 extern UINT32 memory_length_sound1;
 extern UINT32 memory_length_user1;
+#if !RELEASE
 extern UINT32 memory_length_user2;
+#endif
+extern UINT32 memory_length_user3;
 
 extern UINT8 cps1_ram[0x10000];
 extern UINT16 cps1_gfxram[0x30000 >> 1];

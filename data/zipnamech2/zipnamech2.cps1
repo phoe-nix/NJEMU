@@ -20,6 +20,7 @@ ffightua,街頭快打 (美版 900613)
 ffightub,街頭快打 (美版 900613)
 ffightj,街頭快打 (日版)
 ffightj1,街頭快打 (日版 900305)
+ffightb,街頭快打 Betlog Hack,GAME_BOOTLEG
 1941,1941-反擊戰 (世界版)
 1941j,1941-反擊戰 (日版)
 mercs,戰場之狼II (世界版 900302)
@@ -105,6 +106,7 @@ megaman,洛克人 - 力量之戰 (亞洲版 951006)
 rockmanj,洛克人 - 力量之戰 (日版 950922)
 wof,三國誌 II (世界版 921002)
 wofa,三國誌 II - 吞食天地 (亞洲版 921005)
+wofchs,三國誌 II - 吞食天地 (中文版 921005),GAME_BOOTLEG
 wofu,三國誌 II (美版 921031)
 wofj,三國誌 II - 吞食天地 (日版 921031)
 wofb,三國誌 II (bootleg),GAME_NOT_WORKING|GAME_BOOTLEG
@@ -144,10 +146,11 @@ wofzhy,三國誌 Ⅱ赤壁之戰 -召喚曾＆御劍術版
 dino,恐龍世紀 (世界版 930201)
 dinou,恐龍世紀 (美版 930201)
 dinoj,恐龍世紀 (日版 930201)
-dinob,恐龍世紀  (bootleg),GAME_BOOTLEG
-dinoh,恐龍世紀  (bootleg / set 1),GAME_BOOTLEG
-dinoha,恐龍世紀  (bootleg / set 2),GAME_BOOTLEG
-dinohb,恐龍世紀  (bootleg / set 3),GAME_BOOTLEG
+dinob,恐龍世紀 (bootleg),GAME_BOOTLEG
+dinoh,恐龍世紀 (bootleg / set 1),GAME_BOOTLEG
+dinoha,恐龍世紀 (bootleg / set 2),GAME_BOOTLEG
+dinohb,恐龍世紀 (bootleg / set 3),GAME_BOOTLEG
+dinohz,恐龍世紀 (Z),GAME_BOOTLEG
 punisher,懲罰者 (世界版 930422)
 punishru,懲罰者 (美版 930422)
 punishrj,懲罰者 (日版 930422)

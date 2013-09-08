@@ -12,7 +12,7 @@
 	gamecfg ˜‹ÔìÌå
 -----------------------------------------------------------------------------*/
 
-gamecfg2_t gamecfg_mvs[] =
+static gamecfg2_t gamecfg_mvs[] =
 {
 	{ MACHINE_REGION, &neogeo_region,        CFG_RESTART,  3,  { DEFAULT,REGION_JAPAN,REGION_USA,REGION_EUROPE } },
 	{ MACHINE_MODE,   &neogeo_machine_mode,  CFG_RESTART,  2,  { DEFAULT,MODE_AES,MODE_MVS } },
@@ -49,7 +49,7 @@ gamecfg2_t gamecfg_mvs[] =
 	if (machine_init_type == INIT_ms5pcb
 	||	machine_init_type == INIT_svcpcb
 	||	machine_init_type == INIT_kf2k3pcb
-	||	neogeo_bios >= ASIA_AES)
+	||	neogeo_bios >= NEOGEO_GIT)
 	{
 		gamecfg[0].enable = 0;
 		gamecfg[1].enable = 0;
@@ -70,7 +70,7 @@ gamecfg2_t gamecfg_mvs[] =
 
 static keycfg2_t keycfg_mvs[] =
 {
-	{ BUTTON_LAYOUT,    KEYCFG_LAYOUT, NEOGEO_MVS  },
+	{ BUTTON_LAYOUT,    KEYCFG_LAYOUT, NEOGEO_PAD  },
 	MENU_BLANK,
 	{ INPUT_UP,         KEYCFG_BUTTON, P1_UP       },
 	{ INPUT_DOWN,       KEYCFG_BUTTON, P1_DOWN     },
@@ -114,7 +114,7 @@ static keycfg2_t keycfg_mvs[] =
 
 static keycfg2_t keycfg_analog[] =
 {
-	{ BUTTON_LAYOUT,    KEYCFG_LAYOUT, NEOGEO_MVS  },
+	{ BUTTON_LAYOUT,    KEYCFG_LAYOUT, NEOGEO_PAD  },
 	MENU_BLANK,
 	{ INPUT_UP,         KEYCFG_BUTTON, P1_UP       },
 	{ INPUT_DOWN,       KEYCFG_BUTTON, P1_DOWN     },
@@ -142,7 +142,7 @@ static keycfg2_t keycfg_analog[] =
 
 static keycfg2_t keycfg_vliner[] =
 {
-	{ BUTTON_LAYOUT,    KEYCFG_LAYOUT, NEOGEO_MVS  },
+	{ BUTTON_LAYOUT,    KEYCFG_LAYOUT, NEOGEO_PAD  },
 	MENU_BLANK,
 	{ INPUT_UP,         KEYCFG_BUTTON, P1_UP       },
 	{ INPUT_DOWN,       KEYCFG_BUTTON, P1_DOWN     },
@@ -168,7 +168,7 @@ static keycfg2_t keycfg_vliner[] =
 
 static keycfg2_t keycfg_jockeygp[] =
 {
-	{ BUTTON_LAYOUT,    KEYCFG_LAYOUT, NEOGEO_MVS  },
+	{ BUTTON_LAYOUT,    KEYCFG_LAYOUT, NEOGEO_PAD  },
 	MENU_BLANK,
 	{ INPUT_UP,         KEYCFG_BUTTON, P1_UP       },
 	{ INPUT_DOWN,       KEYCFG_BUTTON, P1_DOWN     },
@@ -178,6 +178,7 @@ static keycfg2_t keycfg_jockeygp[] =
 	{ CANCEL,           KEYCFG_BUTTON, P1_BUTTONB  },
 	{ BET_CANCEL_ALL,   KEYCFG_BUTTON, P1_BUTTONC  },
 	{ PAYOUT,           KEYCFG_BUTTON, P1_BUTTOND  },
+//	{ INPUT_START,      KEYCFG_BUTTON, P1_START    },
 	{ INPUT_COIN,       KEYCFG_BUTTON, P1_COIN     },
 	MENU_BLANK,
 	{ INPUT_SERVSWITCH, KEYCFG_BUTTON, TEST_SWITCH },
@@ -237,7 +238,8 @@ static keycfg2_t keycfg_jockeygp[] =
 
 	if (neogeo_dipswitch != old_value)
 	{
-		menu_restart();
+		menu_resetdip();
+//		menu_restart();
 		return 1;
 	}
 	if (neogeo_hard_dipsw != old_harddip)

@@ -2,40 +2,62 @@
 
 	dipsw.c
 
-	MVS DIP僗僀僢僠愝掕
+	MVS DIPスイッチ設定
 
 ******************************************************************************/
 
 #include "mvs.h"
 
 #define MENU_BLANK		{ "\n", 0, 0x00, 0, 0, { NULL } }
+#if DIPSW_CHINESE_SIMPLIFIED
+#define MENU_RETURN		{ "返回主菜单", 1, 0x00, 0, 0, { NULL } }
+#elif DIPSW_CHINESE_TRADITIONAL
+#define MENU_RETURN		{ "返回主菜單", 1, 0x00, 0, 0, { NULL } }
+#else
 #define MENU_RETURN		{ "Return to main menu", 1, 0x00, 0, 0, { NULL } }
+#endif
 #define MENU_END		{ "\0", 0, 0x00, 0, 0, { NULL } }
 
 
 /******************************************************************************
-	僌儘乕僶儖曄悢
+	グローバル変数
 ******************************************************************************/
 
 int neogeo_hard_dipsw;
 
 
 /******************************************************************************
-	儘乕僇儖峔憿懱
+	ローカル構造体
 ******************************************************************************/
 
 /*--------------------------------------
-  昗弨
+  標準
 --------------------------------------*/
 
 static dipswitch_t dipswitch_default[] =
 {
-	{ "Test Switch",              1, 0x01, 0, 1, { "Off","On" } },
-	{ "Coin Chutes",              1, 0x02, 0, 1, { "2?", "1?" } },
-	{ "Autofire (in some games)", 1, 0x04, 0, 1, { "Off","On" } },
-	{ "COMM Settings",            1, 0x38, 0, 4, { "Off","1","2","3","4" } },
-	{ "Free Play",                1, 0x40, 0, 1, { "Off","On" } },
-	{ "Freeze",                   1, 0x80, 0, 1, { "Off","On" } },
+#if DIPSW_CHINESE_SIMPLIFIED
+	{ "测试开关",					1, 0x01, 0, 1, { "关","开" } },
+	{ "投币槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "自动连发(部分游戏)",			1, 0x04, 0, 1, { "关","开" } },
+	{ "联机设置",					1, 0x38, 0, 4, { "关","1","2","3","4" } },
+	{ "免费游玩",					1, 0x40, 0, 1, { "关","开" } },
+	{ "锁定",						1, 0x80, 0, 1, { "关","开" } },
+#elif DIPSW_CHINESE_TRADITIONAL
+	{ "測試開關",					1, 0x01, 0, 1, { "關","開" } },
+	{ "投幣槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "自動連發(部分遊戲)",			1, 0x04, 0, 1, { "關","開" } },
+	{ "聯機設置",					1, 0x38, 0, 4, { "關","1","2","3","4" } },
+	{ "免費遊玩",					1, 0x40, 0, 1, { "關","開" } },
+	{ "鎖定",						1, 0x80, 0, 1, { "關","開" } },
+#else
+	{ "Test Switch",				1, 0x01, 0, 1, { "Off","On" } },
+	{ "Coin Chutes",				1, 0x02, 0, 1, { "1", "2" } },
+	{ "Autofire (in some games)",	1, 0x04, 0, 1, { "Off","On" } },
+	{ "COMM Settings",				1, 0x38, 0, 4, { "Off","1","2","3","4" } },
+	{ "Free Play",					1, 0x40, 0, 1, { "Off","On" } },
+	{ "Freeze",						1, 0x80, 0, 1, { "Off","On" } },
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -47,30 +69,64 @@ static dipswitch_t dipswitch_default[] =
 
 static dipswitch_t dipswitch_pcb[] =
 {
-	{ "Test Switch",              1, 0x01, 0, 1, { "Off","On" } },
-	{ "Coin Chutes",              1, 0x02, 0, 1, { "2?", "1?" } },
-	{ "Autofire (in some games)", 1, 0x04, 0, 1, { "Off","On" } },
-	{ "COMM Settings",            1, 0x38, 0, 4, { "Off","1","2","3","4" } },
-	{ "Free Play",                1, 0x40, 0, 1, { "Off","On" } },
-	{ "Freeze",                   1, 0x80, 0, 1, { "Off","On" } },
-	{ "Hard Dip 3 (Region)",      1, 0x01, 0, 1, { "Asia","Japan" } },
+#if DIPSW_CHINESE_SIMPLIFIED
+	{ "测试开关",					1, 0x01, 0, 1, { "关","开" } },
+	{ "投币槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "自动连发(部分游戏)",			1, 0x04, 0, 1, { "关","开" } },
+	{ "联机设置",					1, 0x38, 0, 4, { "关","1","2","3","4" } },
+	{ "免费游玩",					1, 0x40, 0, 1, { "关","开" } },
+	{ "锁定",						1, 0x80, 0, 1, { "关","开" } },
+	{ "硬件Dip 3(区域)",			1, 0x01, 0, 1, { "亚版","日版" } },
+#elif DIPSW_CHINESE_TRADITIONAL
+	{ "測試開關",					1, 0x01, 0, 1, { "關","開" } },
+	{ "投幣槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "自動連發(部分遊戲)",			1, 0x04, 0, 1, { "關","開" } },
+	{ "聯機設置",					1, 0x38, 0, 4, { "關","1","2","3","4" } },
+	{ "免費遊玩",					1, 0x40, 0, 1, { "關","開" } },
+	{ "鎖定",						1, 0x80, 0, 1, { "關","開" } },
+	{ "硬件Dip 3(區域)",			1, 0x01, 0, 1, { "亞版","日版" } },
+#else
+	{ "Test Switch",				1, 0x01, 0, 1, { "Off","On" } },
+	{ "Coin Chutes",				1, 0x02, 0, 1, { "1", "2" } },
+	{ "Autofire (in some games)",	1, 0x04, 0, 1, { "Off","On" } },
+	{ "COMM Settings",				1, 0x38, 0, 4, { "Off","1","2","3","4" } },
+	{ "Free Play",					1, 0x40, 0, 1, { "Off","On" } },
+	{ "Freeze",						1, 0x80, 0, 1, { "Off","On" } },
+	{ "Hard Dip 3 (Region)",		1, 0x01, 0, 1, { "Asia","Japan" } },
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
 };
 
 /*--------------------------------------
-  杻悵
+  麻雀
 --------------------------------------*/
 
 static dipswitch_t dipswitch_mjneogeo[] =
 {
-	{ "Test Switch",              1, 0x01, 0, 1, { "Off","On" } },
-	{ "Coin Chutes",              1, 0x02, 0, 1, { "2?", "1?" } },
-	{ "Mahjong Control Panel",    0, 0x04, 0, 1, { "Off","On" } },
-	{ "COMM Settings",            1, 0x38, 0, 4, { "Off","1","2","3","4" } },
-	{ "Free Play",                1, 0x40, 0, 1, { "Off","On" } },
-	{ "Freeze",                   1, 0x80, 0, 1, { "Off","On" } },
+#if DIPSW_CHINESE_SIMPLIFIED
+	{ "测试开关",					1, 0x01, 0, 1, { "关","开" } },
+	{ "投币槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "麻将操作版",					1, 0x04, 0, 1, { "关","开" } },
+	{ "联机设置",					1, 0x38, 0, 4, { "关","1","2","3","4" } },
+	{ "免费游玩",					1, 0x40, 0, 1, { "关","开" } },
+	{ "锁定",						1, 0x80, 0, 1, { "关","开" } },
+#elif DIPSW_CHINESE_TRADITIONAL
+	{ "測試開關",					1, 0x01, 0, 1, { "關","開" } },
+	{ "投幣槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "麻將操作版",					1, 0x04, 0, 1, { "關","開" } },
+	{ "聯機設置",					1, 0x38, 0, 4, { "關","1","2","3","4" } },
+	{ "免費遊玩",					1, 0x40, 0, 1, { "關","開" } },
+	{ "鎖定",						1, 0x80, 0, 1, { "關","開" } },
+#else
+	{ "Test Switch",				1, 0x01, 0, 1, { "Off","On" } },
+	{ "Coin Chutes",				1, 0x02, 0, 1, { "1", "2" } },
+	{ "Mahjong Control Panel",		0, 0x04, 0, 1, { "Off","On" } },
+	{ "COMM Settings",				1, 0x38, 0, 4, { "Off","1","2","3","4" } },
+	{ "Free Play",					1, 0x40, 0, 1, { "Off","On" } },
+	{ "Freeze",						1, 0x80, 0, 1, { "Off","On" } },
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -84,13 +140,31 @@ static dipswitch_t dipswitch_mjneogeo[] =
 #if !RELEASE
 static dipswitch_t dipswitch_kog[] =
 {
-	{ "Test Switch",              1, 0x01, 0, 1, { "Off","On" } },
-	{ "Coin Chutes",              1, 0x02, 0, 1, { "2?", "1?" } },
-	{ "Autofire (in some games)", 1, 0x04, 0, 1, { "Off","On" } },
-	{ "COMM Settings",            1, 0x38, 0, 4, { "Off","1","2","3","4" } },
-	{ "Free Play",                1, 0x40, 0, 1, { "Off","On" } },
-	{ "Freeze",                   1, 0x80, 0, 1, { "Off","On" } },
-	{ "Jumper (Title)",           1, 0x01, 0, 1, { "Non-English","English" } },
+#if DIPSW_CHINESE_SIMPLIFIED
+	{ "测试开关",					1, 0x01, 0, 1, { "关","开" } },
+	{ "投币槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "自动连发(部分游戏)",			1, 0x04, 0, 1, { "关","开" } },
+	{ "联机设置",					1, 0x38, 0, 4, { "关","1","2","3","4" } },
+	{ "免费游玩",					1, 0x40, 0, 1, { "关","开" } },
+	{ "锁定",						1, 0x80, 0, 1, { "关","开" } },
+	{ "标题语言",					1, 0x01, 0, 1, { "非英文","英文" } },
+#elif DIPSW_CHINESE_TRADITIONAL
+	{ "測試開關",					1, 0x01, 0, 1, { "關","開" } },
+	{ "投幣槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "自動連發(部分遊戲)",			1, 0x04, 0, 1, { "關","開" } },
+	{ "聯機設置",					1, 0x38, 0, 4, { "關","1","2","3","4" } },
+	{ "免費遊玩",					1, 0x40, 0, 1, { "關","開" } },
+	{ "鎖定",						1, 0x80, 0, 1, { "關","開" } },
+	{ "標題語言",					1, 0x01, 0, 1, { "非英文","英文" } },
+#else
+	{ "Test Switch",				1, 0x01, 0, 1, { "Off","On" } },
+	{ "Coin Chutes",				1, 0x02, 0, 1, { "1", "2" } },
+	{ "Autofire (in some games)",	1, 0x04, 0, 1, { "Off","On" } },
+	{ "COMM Settings",				1, 0x38, 0, 4, { "Off","1","2","3","4" } },
+	{ "Free Play",					1, 0x40, 0, 1, { "Off","On" } },
+	{ "Freeze",						1, 0x80, 0, 1, { "Off","On" } },
+	{ "Title Language",				1, 0x01, 0, 1, { "Non-English","English" } },
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,

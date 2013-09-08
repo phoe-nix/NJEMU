@@ -290,10 +290,10 @@ static int load_bios(void)
 			if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
 			{
 				msg_printf(TEXT(LOADING), lorom_name);
-				sceIoRead(fd, memory_region_gfx3, 0x10000);
+				sceIoRead(fd, memory_region_gfx3, 0x20000);
 				sceIoClose(fd);
 
-				if (crc32(0, memory_region_gfx3, 0x10000) == 0xe09e253c)
+				if (crc32(0, memory_region_gfx3, 0x20000) == 0x5a86cff2)
 				{
 					return build_zoom_tables();
 				}
@@ -347,7 +347,7 @@ int memory_init(void)
 	memory_length_cpu2   = 0x10000;
 	memory_length_gfx1   = 0x20000;
 	memory_length_gfx2   = 0x400000;
-	memory_length_gfx3   = 0x10000;
+	memory_length_gfx3   = 0x20000;		//fix lorom length
 	memory_length_sound1 = 0x100000;
 	memory_length_user1  = 0x80000;
 	memory_length_user2  = 0x10000;

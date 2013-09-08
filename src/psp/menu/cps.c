@@ -66,8 +66,33 @@ static gamecfg2_t gamecfg_vertical[] =
 	MENU_RETURN,
 	MENU_END
 };
-
 #if (EMU_SYSTEM == CPS1)
+static gamecfg2_t gamecfg_mercs[] =
+{
+#if ENABLE_RASTER_OPTION
+	{ RASTER_EFFECTS, &cps_raster_enable,    CFG_CONTINUE, 1,  { OFF, ON } },
+	MENU_BLANK,
+#endif
+	{ STRETCH_SCREEN, &option_stretch,       CFG_CONTINUE, 4,  { OFF, STRETCH1, STRETCH2, STRETCH3, STRETCH4 } },
+	{ ROTATE_SCREEN,  &cps_rotate_screen,    CFG_CONTINUE, 1,  { NO, YES } },
+	{ VIDEO_SYNC,     &option_vsync,         CFG_CONTINUE, 1,  { OFF, ON } },
+	{ AUTO_FRAMESKIP, &option_autoframeskip, CFG_CONTINUE, 1,  { DISABLE, ENABLE } },
+	{ FRAMESKIP,      &option_frameskip,     CFG_CONTINUE, 11, { OFF,SKIP1,SKIP2,SKIP3,SKIP4,SKIP5,SKIP6,SKIP7,SKIP8,SKIP9,SKIP10,SKIP11 } },
+	{ SHOW_FPS,       &option_showfps,       CFG_CONTINUE, 1,  { OFF, ON } },
+	{ FRAME_LIMIT,    &option_speedlimit,    CFG_CONTINUE, 1,  { OFF, ON } },
+	MENU_BLANK,
+	{ ENABLE_SOUND,   &option_sound_enable,  CFG_RESTART,  1,  { NO, YES } },
+	{ SAMPLE_RATE,    &option_samplerate,    CFG_CONTINUE, 2,  { RATE11KHz,RATE22KHz,RATE44KHz } },
+	{ SOUND_VOLUME,   &option_sound_volume,  CFG_CONTINUE, 10, { VOL0,VOL10,VOL20,VOL30,VOL40,VOL50,VOL60,VOL70,VOL80,VOL90,VOL100 } },
+	MENU_BLANK,
+	{ CONTROLLER,     &option_controller,    CFG_CONTINUE, 2,  { CONTROLLER1,CONTROLLER2,CONTROLLER3 } },
+	MENU_BLANK,
+	{ PSP_CLOCK,      &psp_cpuclock,         CFG_CONTINUE, 3,  { CLK222MHz,CLK266MHz,CLK300MHz,CLK333MHz } },
+	MENU_BLANK,
+	MENU_RETURN,
+	MENU_END
+};
+
 static gamecfg2_t gamecfg_qsound[] =
 {
 	{ RASTER_EFFECTS, &cps_raster_enable,    CFG_CONTINUE, 1,  { OFF, ON } },
@@ -96,15 +121,23 @@ static gamecfg2_t gamecfg_qsound[] =
 /*-----------------------------------------------------------------------------
 	gamecfg menu ³õÆÚ»¯
 -----------------------------------------------------------------------------*/
-
+#if (EMU_SYSTEM == CPS2)
 	if (machine_screen_type)
 	{
 		gamecfg2 = gamecfg_vertical;
+
 	}
+#endif
 #if (EMU_SYSTEM == CPS1)
+	if (machine_screen_type && machine_driver_type != MACHINE_mercs)
+	{
+		gamecfg2 = gamecfg_vertical;
+
+	}
 	else if (machine_driver_type == MACHINE_qsound)
 	{
 		gamecfg2 = gamecfg_qsound;
+		gamecfg2[12].value_max = input_max_players - 1;	//fix max controller
 	}
 #endif
 	else
@@ -115,7 +148,12 @@ static gamecfg2_t gamecfg_qsound[] =
 
 	if (option_controller >= input_max_players)
 		option_controller = INPUT_PLAYER1;
-
+#if (EMU_SYSTEM == CPS1)
+	if (machine_driver_type == MACHINE_mercs)   //mercs controller3 fix
+	{
+		gamecfg2 = gamecfg_mercs;
+	}
+#endif
 #elif defined(INCLUDE_KEYCFG_STRUCT)
 
 /*-----------------------------------------------------------------------------
@@ -421,7 +459,7 @@ static keycfg2_t keycfg_pzloop2[] =
 	case INPTYPE_dynwar:
 	case INPTYPE_ffight:
 	case INPTYPE_mtwins:
-	case INPTYPE_3wonders:
+//	case INPTYPE_3wonders:
 	case INPTYPE_pnickj:
 	case INPTYPE_pang3:
 	case INPTYPE_megaman:
@@ -429,6 +467,10 @@ static keycfg2_t keycfg_pzloop2[] =
 	case INPTYPE_slammast:
 #if !RELEASE
 	case INPTYPE_knightsh:
+	case INPTYPE_wofh:
+	case INPTYPE_wof3js:
+	case INPTYPE_wofsj:
+	case INPTYPE_dinoh:
 #endif
 		keycfg2 = keycfg_3buttons;
 		break;
@@ -525,7 +567,8 @@ static keycfg2_t keycfg_pzloop2[] =
 	||	cps1_dipswitch[DIP_B] != old_value2
 	||	cps1_dipswitch[DIP_C] != old_value3)
 	{
-		menu_restart();
+		menu_resetdip();
+//		menu_restart();
 		return 1;
 	}
 #endif

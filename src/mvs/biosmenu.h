@@ -15,21 +15,26 @@ enum
 	EUROPE_V1,
 	USA_V2,
 	USA_V1,
+	ASIA_V3_NEW,/* Latest Asia bios */
 	ASIA_V3,
+	JAPAN_J3,/* Latest Japan bios */
 	JAPAN_V3,
 	JAPAN_V2,
 	JAPAN_V1,
-	ASIA_AES,
 
-	UNI_V10,
-	UNI_V11,
-	UNI_V12,
-	UNI_V13,
-	UNI_V20,
-	UNI_V21,
-	UNI_V22,
-	UNI_V23,
+	NEOGEO_GIT,//Custom Japanese Hotel
+	ASIA_AES,
+	JAPAN_AES,
+
 	UNI_V30,
+	UNI_V23,
+	UNI_V22,
+	UNI_V21,
+	UNI_V20,
+	UNI_V13,
+	UNI_V12,
+	UNI_V11,
+	UNI_V10,
 	DEBUG_BIOS,
 
 	BIOS_MAX

@@ -237,7 +237,7 @@ static void update_inputport1(void)
 	case INPTYPE_dynwar:
 	case INPTYPE_ffight:	// button 3 (cheat)
 	case INPTYPE_mtwins:
-	case INPTYPE_3wonders:
+//	case INPTYPE_3wonders:
 	case INPTYPE_pnickj:
 	case INPTYPE_pang3:
 	case INPTYPE_megaman:
@@ -327,7 +327,7 @@ static void update_inputport1(void)
 			if (input_flag[P1_UP])      value &= ~0x0008;
 			if (input_flag[P1_BUTTON1]) value &= ~0x0010;
 		}
-		else if (option_controller == INPUT_PLAYER1)
+		else if (option_controller == INPUT_PLAYER2)
 		{
 			if (input_flag[P1_RIGHT])   value &= ~0x0100;
 			if (input_flag[P1_LEFT])    value &= ~0x0200;
@@ -730,7 +730,7 @@ int input_init(void)
 	case INPTYPE_dynwar:
 	case INPTYPE_ffight:	// button 3 (cheat)
 	case INPTYPE_mtwins:
-	case INPTYPE_3wonders:
+//	case INPTYPE_3wonders:
 	case INPTYPE_pnickj:
 	case INPTYPE_pang3:
 	case INPTYPE_megaman:

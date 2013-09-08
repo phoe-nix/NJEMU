@@ -377,7 +377,7 @@ static char *get_zipname(const char *name, int *flag)
 	*strrchr(fname, '.') = '\0';
 
 	length = strlen(fname);
-	if (length > 128) return NULL;//ZIP NAME length
+	if (length > 16) return NULL;//ZIP NAME length
 
 	for (i = 0; i < length; i++)
 		fname[i] = tolower(fname[i]);
@@ -943,14 +943,16 @@ void file_browser(void)
 
 	i = uifont_get_string_width(APPNAME_STR " " VERSION_STR) / 2;
 #ifdef PSP_SLIM
-	draw_dialog(240-(i+32), 136-48, 240+(i+32), 136+48);
+	draw_dialog(240-(i+62), 136-48, 240+(i+62), 136+48);
 	uifont_print_shadow_center(136-30, 255,255,120, APPNAME_STR " " VERSION_STR);
-	uifont_print_shadow_center(136- 7, 255,255,255, "for PSP Slim");
-	uifont_print_shadow_center(136+16, 200,200,200, "NJ (http://nj-emu.tfact.net)");
+	uifont_print_shadow_center(136-07, 255,255,255, "for PSP Slim");
+	uifont_print_shadow_center(136+06, 200,200,200, "NJ (http://nj-emu.tfact.net)");
+	uifont_print_shadow_center(136+20, 200,200,200, "2011-2013 (https://github.com/phoe-nix/NJEMU)");
 #else
-	draw_dialog(240-(i+32), 136-40, 240+(i+32), 136+40);
-	uifont_print_shadow_center(136-20, 255,255,120, APPNAME_STR " " VERSION_STR);
-	uifont_print_shadow_center(136+10, 200,200,200, "NJ (http://nj-emu.tfact.net)");
+	draw_dialog(240-(i+62), 136-48, 240+(i+62), 136+48);
+	uifont_print_shadow_center(136-30, 255,255,120, APPNAME_STR " " VERSION_STR);
+	uifont_print_shadow_center(136+ 6, 200,200,200, "NJ (http://nj-emu.tfact.net)");
+	uifont_print_shadow_center(136+20, 200,200,200, "2011-2013 (https://github.com/phoe-nix/NJEMU)");
 #endif
 	video_flip_screen(1);
 
@@ -982,7 +984,8 @@ void file_browser(void)
 	check_neocd_bios();
 #endif
 
-	pad_wait_press(3000);
+//	pad_wait_press(3000);
+	pad_wait_press(PAD_WAIT_INFINITY);
 
 #if (EMU_SYSTEM == NCDZ)
 	if (bios_error)
@@ -1360,7 +1363,9 @@ void file_browser(void)
 			}
 			pad_wait_clear();
 		}
-		else if (pad_pressed(PSP_CTRL_TRIANGLE))
+/*PRESS TRIANGLE OR HOME TO EXIT IN FILEBROWSER */
+//		else if (pad_pressed(PSP_CTRL_TRIANGLE))
+		else if (pad_pressed(PSP_CTRL_TRIANGLE) || (readHomeButton()))
 		{
 			if (messagebox(MB_EXITEMULATION))
 			{

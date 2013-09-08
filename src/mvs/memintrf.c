@@ -2,7 +2,7 @@
 
 	memintrf.c
 
-	MVS儊儌儕僀儞僞僼僃乕僗娭悢
+	MVSメモリインタフェース関数
 
 ******************************************************************************/
 
@@ -53,7 +53,7 @@ enum
 
 
 /******************************************************************************
-	僌儘乕僶儖曄悢
+	グローバル変数
 ******************************************************************************/
 
 UINT8 *memory_region_cpu1;
@@ -102,7 +102,7 @@ INT32 psp2k_mem_left = PSP2K_MEM_SIZE;
 
 
 /******************************************************************************
-	儘乕僇儖峔憿懱/曄悢
+	ローカル構造体/変数
 ******************************************************************************/
 
 static struct rom_t cpu1rom[MAX_CPU1ROM];
@@ -140,7 +140,7 @@ static UINT8 *neogeo_sram;
 
 
 /******************************************************************************
-	僾儘僩僞僀僾
+	プロトタイプ
 ******************************************************************************/
 
 static UINT16 (*neogeo_protection_r)(UINT32 offset, UINT16 mem_mask);
@@ -436,7 +436,7 @@ static int build_zoom_tables(void)
 
 
 /******************************************************************************
-	PSP-2000梡儊儌儕娗棟
+	PSP-2000用メモリ管理
 ******************************************************************************/
 
 #ifdef PSP_SLIM
@@ -444,7 +444,7 @@ static int build_zoom_tables(void)
 #define MEMORY_IS_PSP2K(mem)	((UINT32)mem >= PSP2K_MEM_TOP)
 
 /*--------------------------------------------------------
-	奼挘偝傟偨椞堟偐傜儊儌儕傪妋曐
+	拡張された領域からメモリを確保
 --------------------------------------------------------*/
 
 static void *psp2k_mem_alloc(INT32 size)
@@ -462,7 +462,7 @@ static void *psp2k_mem_alloc(INT32 size)
 
 
 /*--------------------------------------------------------
-	奼挘偝傟偨椞堟傊儊儌儕傪堏摦
+	拡張された領域へメモリを移動
 --------------------------------------------------------*/
 
 static void *psp2k_mem_move(void *mem, INT32 size)
@@ -483,13 +483,13 @@ static void *psp2k_mem_move(void *mem, INT32 size)
 
 
 /*--------------------------------------------------------
-	儊儌儕斖埻傪妋擣偟偰free()
+	メモリ範囲を確認してfree()
 --------------------------------------------------------*/
 
 static void psp2k_mem_free(void *mem)
 {
 	if (!mem || MEMORY_IS_PSP2K(mem))
-		return;	// 奼挘儊儌儕偼夝曻偟側偄(僼儕乕僘偡傞)
+		return;	// 拡張メモリは解放しない(フリーズする)
 
 	free(mem);
 }
@@ -498,7 +498,7 @@ static void psp2k_mem_free(void *mem)
 
 
 /******************************************************************************
-	ROM撉傒崬傒
+	ROM読み込み
 ******************************************************************************/
 
 /*--------------------------------------------------------
@@ -1106,7 +1106,7 @@ static int load_rom_user1(int reload)
 }
 
 /*--------------------------------------------------------
-	USER2 (kof10th/kf10thep愱梡)
+	USER2 (kof10th/kf10thep専用)
 --------------------------------------------------------*/
 
 #if !RELEASE
@@ -1153,7 +1153,7 @@ static int load_rom_user2(void)
 #endif
 
 /*--------------------------------------------------------
-	ROM忣曬傪僨乕僞儀乕僗偱夝愅
+	ROM情報をデータベースで解析
 --------------------------------------------------------*/
 
 static int load_rom_info(const char *game_name)
@@ -1196,7 +1196,7 @@ static int load_rom_info(const char *game_name)
 		if ((buf = (char *)malloc(size)) == NULL)
 		{
 			sceIoClose(fd);
-			return 3;	// 庤敳偒
+			return 3;	// 手抜き
 		}
 
 		sceIoRead(fd, buf, size);
@@ -1222,7 +1222,7 @@ static int load_rom_info(const char *game_name)
 			{
 				if (linebuf[0] == '\r' || linebuf[0] == '\n')
 				{
-					// 夵峴
+					// 改行
 					continue;
 				}
 				else if (str_cmp(linebuf, "FILENAME(") == 0)
@@ -1493,11 +1493,11 @@ static int load_rom_info(const char *game_name)
 
 
 /******************************************************************************
-	儊儌儕僀儞僞僼僃乕僗娭悢
+	メモリインタフェース関数
 ******************************************************************************/
 
 /*------------------------------------------------------
-	儊儌儕僀儞僞僼僃乕僗弶婜壔
+	メモリインタフェース初期化
 -----------------------------------------------------*/
 
 int memory_init(void)
@@ -1523,7 +1523,7 @@ int memory_init(void)
 	memory_length_gfx1   = 0x20000;
 	memory_length_gfx2   = 0;
 	memory_length_gfx3   = 0;
-	memory_length_gfx4   = 0x10000;
+	memory_length_gfx4   = 0x20000;		//fix lorom length
 	memory_length_sound1 = 0;
 	memory_length_sound2 = 0;
 	memory_length_user1  = 0x20000;
@@ -1565,7 +1565,7 @@ int memory_init(void)
 #ifdef ADHOC
 	if (adhoc_enable)
 	{
-		/* AdHoc捠怣帪偼堦晹僆僾僔儑儞偱屌掕偺愝掕傪巊梡 */
+		/* AdHoc通信時は一部オプションで固定の設定を使用 */
 		neogeo_raster_enable = 0;
 		psp_cpuclock         = PSPCLOCK_333;
 		option_vsync         = 0;
@@ -1696,11 +1696,11 @@ int memory_init(void)
 #ifdef PSP_SLIM
 	if (psp2k_mem_left != PSP2K_MEM_SIZE)
 	{
-		// sound1偱奼挘儊儌儕偵妋曐偟偨応崌
+		// sound1で拡張メモリに確保した場合
 
-		// 僉儍僢僔儏椞堟傪嬌椡懡偔庢傞偨傔偵偙傟傑偱妋曐偟偨儊儌儕偱堏摦壜擻側傕偺傪
-		// 奼挘儊儌儕偵堏摦偡傞丅
-		// 嬌椡楢懕偟偨戝偒側椞堟傪嬻偗偨偄偺偱丄妋曐偟偨偺偲媡偺弴偱堏摦丅
+		// キャッシュ領域を極力多く取るためにこれまで確保したメモリで移動可能なものを
+		// 拡張メモリに移動する。
+		// 極力連続した大きな領域を空けたいので、確保したのと逆の順で移動。
 
 		memory_region_user3 = psp2k_mem_move(memory_region_user3, memory_length_user3);
 		memory_region_gfx4  = psp2k_mem_move(memory_region_gfx4,  memory_length_gfx4);
@@ -1729,7 +1729,7 @@ int memory_init(void)
 		neogeo_save_sound_flag = 0;
 	}
 
-	// FIX僶儞僋僞僀僾愝掕
+	// FIXバンクタイプ設定
 	switch (machine_init_type)
 	{
 	case INIT_garou:
@@ -1933,7 +1933,7 @@ int memory_init(void)
 
 
 /*------------------------------------------------------
-	儊儌儕僀儞僞僼僃乕僗廔椆
+	メモリインタフェース終了
 ------------------------------------------------------*/
 
 void memory_shutdown(void)
@@ -1991,11 +1991,11 @@ void memory_shutdown(void)
 
 
 /******************************************************************************
-	M68000 儊儌儕儕乕僪/儔僀僩娭悢
+	M68000 メモリリード/ライト関数
 ******************************************************************************/
 
 /*------------------------------------------------------
-	M68000儊儌儕儕乕僪 (byte)
+	M68000メモリリード (byte)
 ------------------------------------------------------*/
 
 UINT8 m68000_read_memory_8(UINT32 offset)
@@ -2032,7 +2032,7 @@ UINT8 m68000_read_memory_8(UINT32 offset)
 
 
 /*------------------------------------------------------
-	M68000儕乕僪儊儌儕 (word)
+	M68000リードメモリ (word)
 ------------------------------------------------------*/
 
 UINT16 m68000_read_memory_16(UINT32 offset)
@@ -2066,7 +2066,7 @@ UINT16 m68000_read_memory_16(UINT32 offset)
 
 
 /*------------------------------------------------------
-	M68000儔僀僩儊儌儕 (byte)
+	M68000ライトメモリ (byte)
 ------------------------------------------------------*/
 
 void m68000_write_memory_8(UINT32 offset, UINT8 data)
@@ -2100,7 +2100,7 @@ void m68000_write_memory_8(UINT32 offset, UINT8 data)
 
 
 /*------------------------------------------------------
-	M68000儔僀僩儊儌儕 (word)
+	M68000ライトメモリ (word)
 ------------------------------------------------------*/
 
 void m68000_write_memory_16(UINT32 offset, UINT16 data)
@@ -2131,11 +2131,11 @@ void m68000_write_memory_16(UINT32 offset, UINT16 data)
 
 
 /******************************************************************************
-	Z80 儊儌儕儕乕僪/儔僀僩娭悢
+	Z80 メモリリード/ライト関数
 ******************************************************************************/
 
 /*------------------------------------------------------
-	Z80儕乕僪儊儌儕 (byte)
+	Z80リードメモリ (byte)
 ------------------------------------------------------*/
 
 UINT8 z80_read_memory_8(UINT32 offset)
@@ -2145,7 +2145,7 @@ UINT8 z80_read_memory_8(UINT32 offset)
 
 
 /*------------------------------------------------------
-	Z80儔僀僩儊儌儕 (byte)
+	Z80ライトメモリ (byte)
 ------------------------------------------------------*/
 
 void z80_write_memory_8(UINT32 offset, UINT8 data)
@@ -2158,7 +2158,7 @@ void z80_write_memory_8(UINT32 offset, UINT8 data)
 
 
 /******************************************************************************
-	僙乕僽/儘乕僪 僗僥乕僩
+	セーブ/ロード ステート
 ******************************************************************************/
 
 #ifdef SAVE_STATE

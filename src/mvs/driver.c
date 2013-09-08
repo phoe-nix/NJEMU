@@ -314,7 +314,7 @@ void neogeo_reset_driver_type(void)
 
 	raster_enable = neogeo_raster_enable;
 
-	if (neogeo_bios >= UNI_V20 && neogeo_bios <= UNI_V30)
+	if (neogeo_bios >= UNI_V30 && neogeo_bios <= UNI_V20)
 		raster_enable = 1;
 
 	if (raster_enable)
@@ -485,9 +485,11 @@ INLINE void set_main_cpu_vector_table_source(UINT8 data)
 	}
 	else
 	{
-		if (neogeo_bios >= UNI_V10 && neogeo_bios < DEBUG_BIOS)
+		if (neogeo_bios >= UNI_V30 && neogeo_bios < DEBUG_BIOS)
 			max_sprite_number = 32;
-		else if (neogeo_bios == ASIA_AES || neogeo_bios == DEBUG_BIOS)
+		else if (neogeo_bios == ASIA_AES
+		|| neogeo_bios == JAPAN_AES
+		|| neogeo_bios == DEBUG_BIOS)
 			max_sprite_number = MAX_SPRITES_PER_SCREEN;
 		else
 			max_sprite_number = 0;
@@ -1545,7 +1547,7 @@ READ16_HANDLER( brza_sram_r )
 	if (offset < 0x210000/2)
 	{
 		offset -= 0x200000/2;
-		return CartRAM[offset];
+		return CartRAM[offset & 0xfff];		//fix crash
 	}
 	return 0xffff;
 }
@@ -1555,7 +1557,7 @@ WRITE16_HANDLER( brza_sram_w )
 	if (offset < 0x210000/2)
 	{
 		offset -= 0x200000/2;
-		COMBINE_DATA(&CartRAM[offset]);
+		COMBINE_DATA(&CartRAM[offset & 0xfff]);		//fix crash
 	}
 }
 

@@ -92,19 +92,20 @@ void check_input_mode(void)
 
 	switch (neogeo_bios)
 	{
-	case UNI_V10:
-	case UNI_V11:
-	case UNI_V12:
-	case UNI_V13:
-	case UNI_V20:
-	case UNI_V21:
-	case UNI_V22:
-	case UNI_V23:
 	case UNI_V30:
+	case UNI_V23:
+	case UNI_V22:
+	case UNI_V21:
+	case UNI_V20:
+	case UNI_V13:
+	case UNI_V12:
+	case UNI_V11:
+	case UNI_V10:
 		neogeo_input_mode = (neogeo_sram16[0x02 >> 1] & 0x8000) != 0;
 		break;
 
 	case ASIA_AES:
+	case JAPAN_AES:
 	case DEBUG_BIOS:
 		neogeo_input_mode = INPUT_AES;
 		break;
@@ -176,6 +177,17 @@ static void update_inputport0(void)
 
 	switch (neogeo_ngh)
 	{
+	case NGH_irrmaze:
+		{
+		if (!option_controller)
+			if (input_flag[P1_UP])      value &= ~0x01;
+			if (input_flag[P1_DOWN])    value &= ~0x02;
+			if (input_flag[P1_LEFT])    value &= ~0x04;
+			if (input_flag[P1_RIGHT])   value &= ~0x08;
+			if (input_flag[P1_BUTTONA]) value &= ~0x10;
+			if (input_flag[P1_BUTTONB]) value &= ~0x20;
+		}
+
 	case NGH_popbounc:
 		if (!option_controller)
 		{

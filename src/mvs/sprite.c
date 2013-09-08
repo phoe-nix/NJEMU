@@ -39,9 +39,9 @@ static RECT mvs_src_clip = { 24, 16, 24 + 304, 16 + 224 };
 static RECT mvs_clip[6] =
 {
 	{ 88, 24, 88 + 304, 24 + 224 },	// option_stretch = 0  (304x224  4:3)
+	{ 66, 24, 66 + 348, 24 + 224 },	// option_stretch = 0  (348x224 14:9)
+	{ 41, 24, 41 + 398, 24 + 224 },	// option_stretch = 0  (398x224 16:9)
 	{ 60,  1, 60 + 360,  1 + 270 },	// option_stretch = 1  (360x270  4:3)
-	{ 59,  0, 59 + 362,      272 },	// option_stretch = 2  (362x272  4:3)
-	{ 56,  0, 56 + 368,      272 },	// option_stretch = 3  (368x272  1.35:1)
 	{ 30,  1, 30 + 420,  1 + 270 },	// option_stretch = 4  (420x270 14:9)
 	{  0,  1,  0 + 480,  1 + 270 }	    // option_stretch = 5  (480x270 16:9)
 };

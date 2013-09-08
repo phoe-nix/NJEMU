@@ -2,7 +2,7 @@
 
 	ui_draw.c
 
-	PSP 儐乕僓僀儞僞僼僃乕僗昤夋娭悢
+	PSP ユーザインタフェース描画関数
 
 ******************************************************************************/
 
@@ -10,7 +10,7 @@
 
 
 /******************************************************************************
-	掕悢/儅僋儘
+	定数/マクロ
 ******************************************************************************/
 
 #define MAKECOL16(r, g, b)	(((b >> 4) << 8) | ((g >> 4) << 4) | (r >> 4))
@@ -58,7 +58,7 @@ enum
 
 
 /******************************************************************************
-	僌儘乕僶儖峔憿懱
+	グローバル構造体
 ******************************************************************************/
 
 UI_PALETTE ui_palette[UI_PAL_MAX] =
@@ -77,7 +77,7 @@ UI_PALETTE ui_palette[UI_PAL_MAX] =
 
 
 /******************************************************************************
-	儘乕僇儖峔憿懱
+	ローカル構造体
 ******************************************************************************/
 
 static int light_level = 0;
@@ -129,7 +129,7 @@ static const int gauss_fact[12][12] = {
 };
 
 /******************************************************************************
-	儐乕僓僀儞僞僼僃乕僗弶婜壔
+	ユーザインタフェース初期化
 ******************************************************************************/
 
 static UINT16 *texture16_addr(int x, int y)
@@ -318,13 +318,13 @@ void ui_init(void)
 
 
 /******************************************************************************
-	僼僅儞僩僐乕僪庢摼
+	フォントコード取得
 ******************************************************************************/
 
 #ifdef COMMAND_LIST
 
 /*------------------------------------------------------
-	僼僅儞僩僐乕僪庢摼 (僐儅儞僪儕僗僩梡)
+	フォントコード取得 (コマンドリスト用)
 ------------------------------------------------------*/
 
 static UINT16 command_font_get_code(const UINT8 *s)
@@ -463,7 +463,7 @@ static UINT16 command_font_get_code(const UINT8 *s)
 
 
 /*------------------------------------------------------
-	僼僅儞僩僐乕僪庢摼 (Latin-1僨僐乕僪)
+	フォントコード取得 (Latin-1デコード)
 ------------------------------------------------------*/
 
 static UINT16 latin1_get_code(const UINT8 *s, int *type)
@@ -490,7 +490,7 @@ static UINT16 latin1_get_code(const UINT8 *s, int *type)
 }
 
 /*------------------------------------------------------
-	僼僅儞僩僐乕僪庢摼 (SHIFT-JIS僨僐乕僪)
+	フォントコード取得 (SHIFT-JISデコード)
 ------------------------------------------------------*/
 
 static UINT16 sjis_get_code(const UINT8 *s, int *type)
@@ -535,7 +535,7 @@ static UINT16 sjis_get_code(const UINT8 *s, int *type)
 
 
 /*------------------------------------------------------
-	僼僅儞僩僐乕僪庢摼 (儐乕僓僀儞僞僼僃乕僗)
+	フォントコード取得 (ユーザインタフェース)
 ------------------------------------------------------*/
 
 INLINE UINT16 uifont_get_code(const UINT8 *s, int *type)
@@ -582,11 +582,11 @@ INLINE UINT16 uifont_get_code(const UINT8 *s, int *type)
 
 
 /******************************************************************************
-	僼僅儞僩暥帤暆庢摼
+	フォント文字幅取得
 ******************************************************************************/
 
 /*------------------------------------------------------
-	僼僅儞僩昤夋暆庢摼 (儐乕僓僀儞僞僼僃乕僗)
+	フォント描画幅取得 (ユーザインタフェース)
 ------------------------------------------------------*/
 
 int uifont_get_string_width(const char *s)
@@ -637,11 +637,11 @@ int uifont_get_string_width(const char *s)
 
 
 /******************************************************************************
-	撪晹僼僅儞僩昤夋娭悢
+	内部フォント描画関数
 ******************************************************************************/
 
 /*------------------------------------------------------
-	僼僅儞僩僥僋僗僠儍嶌惉
+	フォントテクスチャ作成
 ------------------------------------------------------*/
 
 static void make_font_texture(struct font_t *font, int r, int g, int b)
@@ -675,7 +675,7 @@ static void make_font_texture(struct font_t *font, int r, int g, int b)
 
 
 /*------------------------------------------------------
-	僼僅儞僩偺塭僥僋僗僠儍嶌惉
+	フォントの影テクスチャ作成
 ------------------------------------------------------*/
 
 static void make_shadow_texture(struct font_t *font)
@@ -751,7 +751,7 @@ static void make_shadow_texture(struct font_t *font)
 
 
 /*------------------------------------------------------
-	僼僅儞僩偺岝僥僋僗僠儍嶌惉
+	フォントの光テクスチャ作成
 ------------------------------------------------------*/
 
 static void make_light_texture(struct font_t *font)
@@ -786,7 +786,7 @@ static void make_light_texture(struct font_t *font)
 
 
 /*------------------------------------------------------
-	撪晹僼僅儞僩昤夋娭悢
+	内部フォント描画関数
 ------------------------------------------------------*/
 
 static int internal_font_putc(struct font_t *font, int sx, int sy, int r, int g, int b)
@@ -836,7 +836,7 @@ static int internal_font_putc(struct font_t *font, int sx, int sy, int r, int g,
 
 
 /*------------------------------------------------------
-	撪晹僼僅儞僩塭昤夋娭悢
+	内部フォント影描画関数
 ------------------------------------------------------*/
 
 static int internal_shadow_putc(struct font_t *font, int sx, int sy)
@@ -886,7 +886,7 @@ static int internal_shadow_putc(struct font_t *font, int sx, int sy)
 
 
 /*------------------------------------------------------
-	撪晹僼僅儞僩儔僀僩昤夋娭悢
+	内部フォントライト描画関数
 ------------------------------------------------------*/
 
 static int internal_light_putc(struct font_t *font, int sx, int sy)
@@ -936,11 +936,11 @@ static int internal_light_putc(struct font_t *font, int sx, int sy)
 
 
 /******************************************************************************
-	儐乕僓僀儞僞僼僃乕僗梡僼僅儞僩昤夋
+	ユーザインタフェース用フォント描画
 ******************************************************************************/
 
 /*------------------------------------------------------
-	儐乕僓僀儞僞僼僃乕僗梡暥帤傪昤夋
+	ユーザインタフェース用文字を描画
 ------------------------------------------------------*/
 
 INLINE void uifont_draw(int sx, int sy, int r, int g, int b, const char *s)
@@ -1005,7 +1005,7 @@ INLINE void uifont_draw(int sx, int sy, int r, int g, int b, const char *s)
 
 
 /*------------------------------------------------------
-	暥帤偺塭傪昤夋 (儐乕僓僀儞僞僼僃乕僗梡)
+	文字の影を描画 (ユーザインタフェース用)
 ------------------------------------------------------*/
 
 INLINE void uifont_draw_shadow(int sx, int sy, const char *s)
@@ -1066,7 +1066,7 @@ INLINE void uifont_draw_shadow(int sx, int sy, const char *s)
 
 
 /*------------------------------------------------------
-	暥帤楍傪昤夋
+	文字列を描画
 ------------------------------------------------------*/
 
 void uifont_print(int sx, int sy, int r, int g, int b, const char *s)
@@ -1076,7 +1076,7 @@ void uifont_print(int sx, int sy, int r, int g, int b, const char *s)
 
 
 /*------------------------------------------------------
-	暥帤楍傪昤夋 / 僙儞僞儕儞僌張棟
+	文字列を描画 / センタリング処理
 ------------------------------------------------------*/
 
 void uifont_print_center(int sy, int r, int g, int b, const char *s)
@@ -1089,7 +1089,7 @@ void uifont_print_center(int sy, int r, int g, int b, const char *s)
 
 
 /*------------------------------------------------------
-	暥帤楍傪昤夋 / 塭晅偒
+	文字列を描画 / 影付き
 ------------------------------------------------------*/
 
 void uifont_print_shadow(int sx, int sy, int r, int g, int b, const char *s)
@@ -1100,7 +1100,7 @@ void uifont_print_shadow(int sx, int sy, int r, int g, int b, const char *s)
 
 
 /*------------------------------------------------------
-	暥帤楍傪昤夋 / 塭晅偒 / 僙儞僞儕儞僌張棟
+	文字列を描画 / 影付き / センタリング処理
 ------------------------------------------------------*/
 
 void uifont_print_shadow_center(int sy, int r, int g, int b, const char *s)
@@ -1113,13 +1113,13 @@ void uifont_print_shadow_center(int sy, int r, int g, int b, const char *s)
 
 
 /******************************************************************************
-	僥僉僗僩梡屌掕僺僢僠僼僅儞僩昤夋
+	テキスト用固定ピッチフォント描画
 ******************************************************************************/
 
 #ifdef COMMAND_LIST
 
 /*------------------------------------------------------
-	墷暥暥帤楍昤夋
+	欧文文字列描画
 ------------------------------------------------------*/
 
 INLINE void latin1_draw(int sx, int sy, int r, int g, int b, const char *s)
@@ -1205,7 +1205,7 @@ INLINE void latin1_draw(int sx, int sy, int r, int g, int b, const char *s)
 
 
 /*------------------------------------------------------
-	擔杮岅僼僅儞僩昤夋
+	日本語フォント描画
 ------------------------------------------------------*/
 
 INLINE void sjis_draw(int sx, int sy, int r, int g, int b, const char *s)
@@ -1300,7 +1300,7 @@ INLINE void sjis_draw(int sx, int sy, int r, int g, int b, const char *s)
 
 
 /*------------------------------------------------------
-	僼僅儞僩昤夋
+	フォント描画
 ------------------------------------------------------*/
 
 void textfont_print(int sx, int sy, int r, int g, int b, const char *s, int flag)
@@ -1315,11 +1315,11 @@ void textfont_print(int sx, int sy, int r, int g, int b, const char *s, int flag
 
 
 /******************************************************************************
-	傾僀僐儞昤夋
+	アイコン描画
 ******************************************************************************/
 
 /*------------------------------------------------------
-	傾僀僐儞(彫)傪昤夋
+	アイコン(小)を描画
 ------------------------------------------------------*/
 
 void small_icon(int sx, int sy, int r, int g, int b, int no)
@@ -1336,7 +1336,7 @@ void small_icon(int sx, int sy, int r, int g, int b, int no)
 
 
 /*------------------------------------------------------
-	傾僀僐儞(彫)傪昤夋  (塭僄僼僃僋僩偁傝)
+	アイコン(小)を描画  (影エフェクトあり)
 ------------------------------------------------------*/
 
 void small_icon_shadow(int sx, int sy, int r, int g, int b, int no)
@@ -1356,7 +1356,7 @@ void small_icon_shadow(int sx, int sy, int r, int g, int b, int no)
 
 
 /*------------------------------------------------------
-	傾僀僐儞(彫)傪昤夋  (塭丄岝僄僼僃僋僩偁傝)
+	アイコン(小)を描画  (影、光エフェクトあり)
 ------------------------------------------------------*/
 
 void small_icon_light(int sx, int sy, int r, int g, int b, int no)
@@ -1378,7 +1378,7 @@ void small_icon_light(int sx, int sy, int r, int g, int b, int no)
 
 
 /*------------------------------------------------------
-	傾僀僐儞(戝)傪昤夋
+	アイコン(大)を描画
 ------------------------------------------------------*/
 
 void large_icon(int sx, int sy, int r, int g, int b, int no)
@@ -1395,7 +1395,7 @@ void large_icon(int sx, int sy, int r, int g, int b, int no)
 
 
 /*------------------------------------------------------
-	傾僀僐儞(戝)傪昤夋 (塭僄僼僃僋僩偁傝)
+	アイコン(大)を描画 (影エフェクトあり)
 ------------------------------------------------------*/
 
 void large_icon_shadow(int sx, int sy, int r, int g, int b, int no)
@@ -1415,7 +1415,7 @@ void large_icon_shadow(int sx, int sy, int r, int g, int b, int no)
 
 
 /*------------------------------------------------------
-	傾僀僐儞(戝)傪昤夋  (塭丄岝僄僼僃僋僩偁傝)
+	アイコン(大)を描画  (影、光エフェクトあり)
 ------------------------------------------------------*/
 
 void large_icon_light(int sx, int sy, int r, int g, int b, int no)
@@ -1437,7 +1437,7 @@ void large_icon_light(int sx, int sy, int r, int g, int b, int no)
 
 
 /*------------------------------------------------------
-	傾僀僐儞偺岝
+	アイコンの光
 ------------------------------------------------------*/
 
 int ui_light_update(void)
@@ -1464,11 +1464,11 @@ int ui_light_update(void)
 
 
 /******************************************************************************
-	儃儕儏乕儉昤夋
+	ボリューム描画
 ******************************************************************************/
 
 /*------------------------------------------------------
-	儃儕儏乕儉傪昤夋 (CFW 3.52埲崀偺儐乕僓乕儌乕僪偺傒)
+	ボリュームを描画 (CFW 3.52以降のユーザーモードのみ)
 ------------------------------------------------------*/
 
 void draw_volume(int volume)
@@ -1588,11 +1588,11 @@ void draw_volume(int volume)
 
 
 /******************************************************************************
-	僎乕儉夋柺梡僼僅儞僩昤夋
+	ゲーム画面用フォント描画
 ******************************************************************************/
 
 /*------------------------------------------------------
-	暥帤楍昤夋
+	文字列描画
 ------------------------------------------------------*/
 
 void small_font_print(int sx, int sy, const char *s, int bg)
@@ -1649,7 +1649,7 @@ void small_font_print(int sx, int sy, const char *s, int bg)
 
 
 /*------------------------------------------------------
-	彂幃晅暥帤楍昤夋
+	書式付文字列描画
 ------------------------------------------------------*/
 
 void small_font_printf(int x, int y, const char *text, ...)
@@ -1666,7 +1666,7 @@ void small_font_printf(int x, int y, const char *text, ...)
 
 
 /*------------------------------------------------------
-	暥帤楍昤夋
+	文字列描画
 ------------------------------------------------------*/
 
 static void debug_font_print(void *frame, int sx, int sy, const char *s, int bg)
@@ -1721,7 +1721,7 @@ static void debug_font_print(void *frame, int sx, int sy, const char *s, int bg)
 
 
 /*------------------------------------------------------
-	彂幃晅暥帤楍昤夋
+	書式付文字列描画
 ------------------------------------------------------*/
 
 void debug_font_printf(void *frame, int x, int y, const char *text, ...)
@@ -1738,11 +1738,11 @@ void debug_font_printf(void *frame, int x, int y, const char *text, ...)
 
 
 /******************************************************************************
-	恾宍昤夋
+	図形描画
 ******************************************************************************/
 
 /*------------------------------------------------------
-	悈暯慄昤夋
+	水平線描画
 ------------------------------------------------------*/
 
 void hline(int sx, int ex, int y, int r, int g, int b)
@@ -1777,7 +1777,7 @@ void hline(int sx, int ex, int y, int r, int g, int b)
 
 
 /*------------------------------------------------------
-	悈暯慄昤夋 (傾儖僼傽僽儗儞僪)
+	水平線描画 (アルファブレンド)
 ------------------------------------------------------*/
 
 void hline_alpha(int sx, int ex, int y, int r, int g, int b, int alpha)
@@ -1814,7 +1814,7 @@ void hline_alpha(int sx, int ex, int y, int r, int g, int b, int alpha)
 
 
 /*------------------------------------------------------
-	悈暯慄昤夋 (傾儖僼傽僽儗儞僪/僌儔僨乕僔儑儞)
+	水平線描画 (アルファブレンド/グラデーション)
 ------------------------------------------------------*/
 
 void hline_gradation(int sx, int ex, int y, int r1, int g1, int b1, int r2, int g2, int b2, int alpha)
@@ -1864,7 +1864,7 @@ void hline_gradation(int sx, int ex, int y, int r1, int g1, int b1, int r2, int 
 
 
 /*------------------------------------------------------
-	悅捈慄昤夋
+	垂直線描画
 ------------------------------------------------------*/
 
 void vline(int x, int sy, int ey, int r, int g, int b)
@@ -1899,7 +1899,7 @@ void vline(int x, int sy, int ey, int r, int g, int b)
 
 
 /*------------------------------------------------------
-	悅捈慄昤夋 (傾儖僼傽僽儗儞僪)
+	垂直線描画 (アルファブレンド)
 ------------------------------------------------------*/
 
 void vline_alpha(int x, int sy, int ey, int r, int g, int b, int alpha)
@@ -1936,7 +1936,7 @@ void vline_alpha(int x, int sy, int ey, int r, int g, int b, int alpha)
 
 
 /*------------------------------------------------------
-	悅捈慄昤夋 (傾儖僼傽僽儗儞僪/僌儔僨乕僔儑儞)
+	垂直線描画 (アルファブレンド/グラデーション)
 ------------------------------------------------------*/
 
 void vline_gradation(int x, int sy, int ey, int r1, int g1, int b1, int r2, int g2, int b2, int alpha)
@@ -1986,7 +1986,7 @@ void vline_gradation(int x, int sy, int ey, int r1, int g1, int b1, int r2, int 
 
 
 /*------------------------------------------------------
-	嬮宍昤夋
+	矩形描画
 ------------------------------------------------------*/
 
 void box(int sx, int sy, int ex, int ey, int r, int g, int b)
@@ -2003,27 +2003,27 @@ void box(int sx, int sy, int ex, int ey, int r, int g, int b)
 
 	if (vertices)
 	{
-		// 嵍忋
+		// 左上
 		vertices[0].x = sx;
 		vertices[0].y = sy;
 		vertices[0].color = color;
 
-		// 塃忋
+		// 右上
 		vertices[1].x = ex;
 		vertices[1].y = sy;
 		vertices[1].color = color;
 
-		// 塃壓
+		// 右下
 		vertices[2].x = ex;
 		vertices[2].y = ey + 1;
 		vertices[2].color = color;
 
-		// 嵍壓
+		// 左下
 		vertices[3].x = sx;
 		vertices[3].y = ey;
 		vertices[3].color = color;
 
-		// 嵍忋
+		// 左上
 		vertices[4].x = sx;
 		vertices[4].y = sy;
 		vertices[4].color = color;
@@ -2038,7 +2038,7 @@ void box(int sx, int sy, int ex, int ey, int r, int g, int b)
 
 
 /*------------------------------------------------------
-	嬮宍揾傝偮傇偟
+	矩形塗りつぶし
 ------------------------------------------------------*/
 
 void boxfill(int sx, int sy, int ex, int ey, int r, int g, int b)
@@ -2055,22 +2055,22 @@ void boxfill(int sx, int sy, int ex, int ey, int r, int g, int b)
 
 	if (vertices)
 	{
-		// 嵍忋
+		// 左上
 		vertices[0].x = sx;
 		vertices[0].y = sy;
 		vertices[0].color = color;
 
-		// 塃忋
+		// 右上
 		vertices[1].x = ex + 1;
 		vertices[1].y = sy;
 		vertices[1].color = color;
 
-		// 嵍壓
+		// 左下
 		vertices[2].x = sx;
 		vertices[2].y = ey + 1;
 		vertices[2].color = color;
 
-		// 塃壓
+		// 右下
 		vertices[3].x = ex + 1;
 		vertices[3].y = ey + 1;
 		vertices[3].color = color;
@@ -2085,7 +2085,7 @@ void boxfill(int sx, int sy, int ex, int ey, int r, int g, int b)
 
 
 /*------------------------------------------------------
-	嬮宍揾傝偮傇偟 (傾儖僼傽僽儗儞僪)
+	矩形塗りつぶし (アルファブレンド)
 ------------------------------------------------------*/
 
 void boxfill_alpha(int sx, int sy, int ex, int ey, int r, int g, int b, int alpha)
@@ -2103,22 +2103,22 @@ void boxfill_alpha(int sx, int sy, int ex, int ey, int r, int g, int b, int alph
 
 	if (vertices)
 	{
-		// 嵍忋
+		// 左上
 		vertices[0].x = sx;
 		vertices[0].y = sy;
 		vertices[0].color = color;
 
-		// 塃忋
+		// 右上
 		vertices[1].x = ex + 1;
 		vertices[1].y = sy;
 		vertices[1].color = color;
 
-		// 嵍壓
+		// 左下
 		vertices[2].x = sx;
 		vertices[2].y = ey + 1;
 		vertices[2].color = color;
 
-		// 塃壓
+		// 右下
 		vertices[3].x = ex + 1;
 		vertices[3].y = ey + 1;
 		vertices[3].color = color;
@@ -2134,7 +2134,7 @@ void boxfill_alpha(int sx, int sy, int ex, int ey, int r, int g, int b, int alph
 
 
 /*---------------------------------------------------------
-	嬮宍揾傝偮傇偟 (傾儖僼傽僽儗儞僪/僌儔僨乕僔儑儞)
+	矩形塗りつぶし (アルファブレンド/グラデーション)
 ---------------------------------------------------------*/
 
 void boxfill_gradation(int sx, int sy, int ex, int ey, int r1, int g1, int b1, int r2, int g2, int b2, int alpha, int dir)
@@ -2159,43 +2159,43 @@ void boxfill_gradation(int sx, int sy, int ex, int ey, int r1, int g1, int b1, i
 
 	if (vertices)
 	{
-		// 嵍忋
+		// 左上
 		vertices[0].x = sx;
 		vertices[0].y = sy;
 
-		// 塃忋
+		// 右上
 		vertices[1].x = ex + 1;
 		vertices[1].y = sy;
 
-		// 嵍壓
+		// 左下
 		vertices[2].x = sx;
 		vertices[2].y = ey + 1;
 
-		// 塃壓
+		// 右下
 		vertices[3].x = ex + 1;
 		vertices[3].y = ey + 1;
 
 		if (dir)
 		{
-			// 廲曽岦偵僌儔僨乕僔儑儞
+			// 縦方向にグラデーション
 
-			// 忋
+			// 上
 			vertices[0].color = color1;
 			vertices[1].color = color1;
 
-			// 壓
+			// 下
 			vertices[2].color = color2;
 			vertices[3].color = color2;
 		}
 		else
 		{
-			// 墶曽岦偵僌儔僨乕僔儑儞
+			// 横方向にグラデーション
 
-			// 嵍
+			// 左
 			vertices[0].color = color1;
 			vertices[2].color = color1;
 
-			// 塃
+			// 右
 			vertices[1].color = color2;
 			vertices[3].color = color2;
 		}
@@ -2217,11 +2217,11 @@ void boxfill_gradation(int sx, int sy, int ex, int ey, int r1, int g1, int b1, i
 
 
 /******************************************************************************
-	儐乕僓僀儞僞僼僃乕僗偺僷乕僣傪昤夋
+	ユーザインタフェースのパーツを描画
 ******************************************************************************/
 
 /*------------------------------------------------------
-	塭傪僥僋僗僠儍偲偟偰昤夋
+	影をテクスチャとして描画
 ------------------------------------------------------*/
 
 static void draw_boxshadow(int sx, int sy, int w, int h, int code)
@@ -2265,7 +2265,7 @@ static void draw_boxshadow(int sx, int sy, int w, int h, int code)
 
 
 /*------------------------------------------------------
-	嬮宍偺塭傪昤夋
+	矩形の影を描画
 ------------------------------------------------------*/
 
 void draw_box_shadow(int sx, int sy, int ex, int ey)
@@ -2362,7 +2362,7 @@ void draw_box_shadow(int sx, int sy, int ex, int ey)
 
 
 /*------------------------------------------------------
-	忋晹僶乕偺塭傪昤夋
+	上部バーの影を描画
 ------------------------------------------------------*/
 
 void draw_bar_shadow(void)
@@ -2382,11 +2382,11 @@ void draw_bar_shadow(void)
 #if PSP_VIDEO_32BPP
 
 /*******************************************************
-	儐乕僓僀儞僞僼僃乕僗怓愝掕
+	ユーザインタフェース色設定
 *******************************************************/
 
 /*------------------------------------------------------
-	UI_PALETTE庢摼
+	UI_PALETTE取得
 ------------------------------------------------------*/
 
 void get_ui_color(UI_PALETTE *pal, int *r, int *g, int *b)
@@ -2398,7 +2398,7 @@ void get_ui_color(UI_PALETTE *pal, int *r, int *g, int *b)
 
 
 /*------------------------------------------------------
-	UI_PALETTE愝掕
+	UI_PALETTE設定
 ------------------------------------------------------*/
 
 void set_ui_color(UI_PALETTE *pal, int r, int g, int b)
@@ -2412,13 +2412,13 @@ void set_ui_color(UI_PALETTE *pal, int r, int g, int b)
 
 
 /******************************************************************************
-	儘僑昤夋
+	ロゴ描画
 ******************************************************************************/
 
 #include "psp/font/logo.c"
 
 /*------------------------------------------------------
-	儘僑昤夋
+	ロゴ描画
 ------------------------------------------------------*/
 
 void logo(int sx, int sy, int r, int g, int b)

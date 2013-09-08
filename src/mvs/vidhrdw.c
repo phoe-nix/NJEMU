@@ -2,7 +2,7 @@
 
 	vidhrdw.c
 
-	MVS 價僨僆僄儈儏儗乕僔儑儞
+	MVS ビデオエミュレーション
 
 ******************************************************************************/
 
@@ -10,7 +10,7 @@
 
 
 /******************************************************************************
-	僌儘乕僶儖曄悢
+	グローバル変数
 ******************************************************************************/
 
 UINT16 ALIGN_DATA neogeo_videoram[0x20000 / 2];
@@ -36,7 +36,7 @@ UINT16 max_sprite_number;
 
 
 /******************************************************************************
-	儘乕僇儖曄悢
+	ローカル変数
 ******************************************************************************/
 
 static UINT32 high_tile_mask;
@@ -58,11 +58,11 @@ static void (*draw_fixed_layer)(void);
 
 
 /******************************************************************************
-	儘乕僇儖娭悢
+	ローカル関数
 ******************************************************************************/
 
 /*------------------------------------------------------
-	FIX僗僾儔僀僩昤夋
+	FIXスプライト描画
 ------------------------------------------------------*/
 
 static void draw_fixed_layer_type0(void)
@@ -154,7 +154,7 @@ static void draw_fixed_layer_type2(void)
 
 
 /*------------------------------------------------------
-	SPR僗僾儔僀僩昤夋
+	SPRスプライト描画
 ------------------------------------------------------*/
 
 typedef struct
@@ -454,11 +454,11 @@ static void draw_sprites_software(int min_y, int max_y)
 
 
 /******************************************************************************
-	MVS 價僨僆昤夋張棟
+	MVS ビデオ描画処理
 ******************************************************************************/
 
 /*------------------------------------------------------
-	價僨僆僄儈儏儗乕僔儑儞弶婜壔
+	ビデオエミュレーション初期化
 ------------------------------------------------------*/
 
 void neogeo_video_init(void)
@@ -520,7 +520,7 @@ void neogeo_video_init(void)
 
 
 /*------------------------------------------------------
-	價僨僆僄儈儏儗乕僔儑儞廔椆
+	ビデオエミュレーション終了
 ------------------------------------------------------*/
 
 void neogeo_video_exit(void)
@@ -529,7 +529,7 @@ void neogeo_video_exit(void)
 
 
 /*------------------------------------------------------
-	價僨僆僄儈儏儗乕僔儑儞儕僙僢僩
+	ビデオエミュレーションリセット
 ------------------------------------------------------*/
 
 void neogeo_video_reset(void)
@@ -542,9 +542,11 @@ void neogeo_video_reset(void)
 
 	next_update_first_line = FIRST_VISIBLE_LINE;
 
-	if (neogeo_bios >= UNI_V10 && neogeo_bios < DEBUG_BIOS)
+	if (neogeo_bios >= UNI_V30 && neogeo_bios < DEBUG_BIOS)
 		max_sprite_number = 32;
-	else if (neogeo_bios == ASIA_AES || neogeo_bios == DEBUG_BIOS)
+	else if (neogeo_bios == ASIA_AES
+	|| neogeo_bios == JAPAN_AES
+	|| neogeo_bios == DEBUG_BIOS)
 		max_sprite_number = MAX_SPRITES_PER_SCREEN;
 	else
 		max_sprite_number = 0;
@@ -558,7 +560,9 @@ void neogeo_video_reset(void)
 	default: draw_fixed_layer_func[1] = draw_fixed_layer_type0; break;
 	}
 
-	if (neogeo_bios == ASIA_AES || neogeo_bios == DEBUG_BIOS)
+	if (neogeo_bios == ASIA_AES
+	|| neogeo_bios == JAPAN_AES
+	|| neogeo_bios == DEBUG_BIOS)
 		neogeo_set_fixed_layer_source(1);
 	else
 		neogeo_set_fixed_layer_source(0);
@@ -570,7 +574,7 @@ void neogeo_video_reset(void)
 
 
 /******************************************************************************
-	FIX儗僀儎乕僶儞僋張棟
+	FIXレイヤーバンク処理
 ******************************************************************************/
 
 /*------------------------------------------------------
@@ -590,11 +594,11 @@ void neogeo_set_fixed_layer_source(UINT8 data)
 
 
 /******************************************************************************
-	夋柺峏怴張棟
+	画面更新処理
 ******************************************************************************/
 
 /*------------------------------------------------------
-	僗僋儕乕儞峏怴
+	スクリーン更新
 ------------------------------------------------------*/
 
 void neogeo_screenrefresh(void)
@@ -618,7 +622,7 @@ void neogeo_screenrefresh(void)
 
 
 /*------------------------------------------------------
-	僗僋儕乕儞晹暘峏怴
+	スクリーン部分更新
 ------------------------------------------------------*/
 
 void neogeo_partial_screenrefresh(int current_line)
@@ -644,7 +648,7 @@ void neogeo_partial_screenrefresh(int current_line)
 
 
 /******************************************************************************
-	僙乕僽/儘乕僪 僗僥乕僩
+	セーブ/ロード ステート
 ******************************************************************************/
 
 #ifdef SAVE_STATE

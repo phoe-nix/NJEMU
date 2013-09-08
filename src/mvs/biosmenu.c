@@ -19,22 +19,26 @@ const char *bios_name[BIOS_MAX] =
 	"Europe MVS (Ver. 1)",
 	"US MVS (Ver. 2?)",
 	"US MVS (Ver. 1)",
+	"Asia MVS New (Ver. 3)",/* Latest Asia bios */
 	"Asia MVS (Ver. 3)",
+	"Japan MVS (J3)",/* Latest Japan bios; correct chip label unknown */
 	"Japan MVS (Ver. 3)",
 	"Japan MVS (Ver. 2)",
 	"Japan MVS (Ver. 1)",
 
+	"Neo-Geo Git(Ver. 1.1)",/* 'rare MVS found in japanese hotels' shows v1.3 in test mode */
 	"Asia AES",
+	"Japan AES",
 
-	"Unibios MVS (Hack, Ver. 1.0)",
-	"Unibios MVS (Hack, Ver. 1.1)",
-	"Unibios MVS (Hack, Ver. 1.2)",
-	"Unibios MVS (Hack, Ver. 1.3)",
-	"Unibios MVS (Hack, Ver. 2.0)",
-	"Unibios MVS (Hack, Ver. 2.1)",
-	"Unibios MVS (Hack, Ver. 2.2)",
-	"Unibios MVS (Hack, Ver. 2.3)",
 	"Unibios MVS (Hack, Ver. 3.0)",
+	"Unibios MVS (Hack, Ver. 2.3)",
+	"Unibios MVS (Hack, Ver. 2.2)",
+	"Unibios MVS (Hack, Ver. 2.1)",
+	"Unibios MVS (Hack, Ver. 2.0)",
+	"Unibios MVS (Hack, Ver. 1.3)",
+	"Unibios MVS (Hack, Ver. 1.2)",
+	"Unibios MVS (Hack, Ver. 1.1)",
+	"Unibios MVS (Hack, Ver. 1.0)",
 	"Debug MVS (Hack?)"
 };
 
@@ -44,22 +48,26 @@ const UINT32 bios_crc[BIOS_MAX] =
 	0xc7f2fa45,	// Europe Ver.1
 	0xe72943de,	// USA Ver.2
 	0x2723a5b5,	// USA Ver.1
+	0x03cc9f6a,	// Asia MVS NEW(Ver. 3)
 	0x91b64be3,	// Asia Ver.3
+	0xdff6d41f,	// Japan MVS (J3)
 	0xf0e8f27d,	// Japan Ver.3
 	0xacede59c,	// Japan Ver.2
 	0x9fb0abe4,	// Japan ver.1
 
+	0x162f0ebe,	// NEO-GEO GIT Custom Japanese Hotel
 	0xd27a71f1,	// Asia AES
+	0x16d0c132,	// Japan AES
 
-	0x0ce453a0,	// Unibios V1.0
-	0x5dda0d84,	// Unibios V1.1
-	0x4fa698e9,	// Unibios V1.2
-	0xb24b44a0,	// Unibios V1.3
-	0x0c12c2ad,	// Unibios V2.0
-	0x8dabf76b,	// Unibios V2.1
-	0x2d50996a,	// Unibios V2.2
-	0x27664eb5, // Unibios V2.3
 	0xa97c89a9,	// Unibios V3.0
+	0x27664eb5,	// Unibios V2.3
+	0x2d50996a,	// Unibios V2.2
+	0x8dabf76b,	// Unibios V2.1
+	0x0c12c2ad,	// Unibios V2.0
+	0xb24b44a0,	// Unibios V1.3
+	0x4fa698e9,	// Unibios V1.2
+	0x5dda0d84,	// Unibios V1.1
+	0x0ce453a0,	// Unibios V1.0
 	0x698ebb7d	// Debug BIOS
 };
 
@@ -69,28 +77,33 @@ const UINT32 bios_patch_address[BIOS_MAX] =
 	0x011c62,	// Europe Ver.1
 	0x011c38,	// USA Ver.2
 	0x011c38,	// USA Ver.1
+	0x010d86,	// Asia MVS NEW(Ver. 3)
 	0x010c62,	// Asia Ver.3
+	0x010d86,	// Japan MVS (J3)
 	0x011d8a,	// Japan Ver.3
 	0x011c62,	// Japan Ver.2
 	0x011c62,	// Japan Ver.1
 
+	0x000000,	// NEO-GEO GIT Custom Japanese Hotel
 	0x000000,	// Asia AES
+	0x000000,	// Japan AES
 
-	0x000000,	// Unibios V1.0
-	0x000000,	// Unibios V1.1
-	0x000000,	// Unibios V1.2
-	0x000000,	// Unibios V1.3
-	0x000000,	// Unibios V2.0
-	0x000000,	// Unibios V2.1
-	0x000000,	// Unibios V2.2
-	0x000000,	// Unibios V2.3
 	0x000000,	// Unibios V3.0
+	0x000000,	// Unibios V2.3
+	0x000000,	// Unibios V2.2
+	0x000000,	// Unibios V2.1
+	0x000000,	// Unibios V2.0
+	0x000000,	// Unibios V1.3
+	0x000000,	// Unibios V1.2
+	0x000000,	// Unibios V1.1
+	0x000000,	// Unibios V1.0
 	0x000000	// Debug BIOS
 };
 
 
-const UINT32 sfix_crc  = 0x354029fc;
-const UINT32 lorom_crc = 0xe09e253c;
+const UINT32 sfix_crc  = 0xc2ea0cfd;
+//const UINT32 sfix_crc  = 0xc2ea0cfd;
+const UINT32 lorom_crc = 0x5a86cff2;
 
 const char *bios_zip   = "neogeo";
 const char *sfix_name  = "sfix.sfx";
@@ -151,7 +164,7 @@ static int bios_check(int flag)
 	if (flag == 2)
 	{
 		neogeo_bios = -1;
-		check_max = ASIA_AES;
+		check_max = JAPAN_AES;		//MAX BIOS
 	}
 #endif
 
@@ -250,7 +263,8 @@ void bios_select(int flag)
 			uifont_print(36, 5, UI_COLOR(UI_PAL_TITLE), TEXT(BIOS_SELECT_MENU));
 			uifont_print(477 - width, 271 - 16, UI_COLOR(UI_PAL_SELECT), TEXT(SELECT_BIOS_AND_PRESS_CIRCLE_BUTTON));
 
-			if (sel != 0)
+//			if (sel != 0)
+			if (top != 0)
 				uifont_print(118, 24, UI_COLOR(UI_PAL_SELECT), FONT_UPTRIANGLE);
 
 			for (i = 0; i < rows; i++)
@@ -271,16 +285,20 @@ void bios_select(int flag)
 				}
 			}
 
-			if (sel + rows < BIOS_MAX)
+			if (flag != 2 && top + rows < BIOS_MAX)				//if (sel + rows < BIOS_MAX)
+				uifont_print(118, 260, UI_COLOR(UI_PAL_SELECT), FONT_DOWNTRIANGLE);
+			if (flag == 2 && sel > 12)
 				uifont_print(118, 260, UI_COLOR(UI_PAL_SELECT), FONT_DOWNTRIANGLE);
 
 			update  = draw_battery_status(1);
+			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
 			video_flip_screen(1);
 		}
 		else
 		{
 			update  = draw_battery_status(0);
+			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
 			video_wait_vsync();
 		}
@@ -326,7 +344,10 @@ void bios_select(int flag)
 			neogeo_bios = sel;
 			break;
 		}
-
+		else if (pad_pressed(PSP_CTRL_CROSS))
+		{
+			break;
+		}
 		if (top > BIOS_MAX - rows) top = BIOS_MAX - rows;
 		if (top < 0) top = 0;
 		if (sel >= BIOS_MAX) sel = 0;

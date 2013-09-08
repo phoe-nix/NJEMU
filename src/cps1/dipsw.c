@@ -2,14 +2,20 @@
 
 	dipsw.c
 
-	CPS1 DIP僗僀僢僠愝掕
+	CPS1 DIPスイッチ設定
 
 ******************************************************************************/
 
 #include "cps1.h"
 
 #define MENU_BLANK					{ "\n", 0, 0x00, 0, 0, { NULL } }
-#define MENU_RETURN					{ "Return to main menu", 1, 0x00, 0, 0, { NULL } }
+#if DIPSW_CHINESE_SIMPLIFIED
+#define MENU_RETURN		{ "返回主菜单", 1, 0x00, 0, 0, { NULL } }
+#elif DIPSW_CHINESE_TRADITIONAL
+#define MENU_RETURN		{ "返回主菜單", 1, 0x00, 0, 0, { NULL } }
+#else
+#define MENU_RETURN		{ "Return to main menu", 1, 0x00, 0, 0, { NULL } }
+#endif
 #define MENU_END					{ "\0", 0, 0x00, 0, 0, { NULL } }
 
 #define ACTIVE_HIGH					0
@@ -37,12 +43,22 @@
 
 
 /*--------------------------------------
-  嫟捠 (bit)
+  共通 (bit)
 --------------------------------------*/
 
+#if DIPSW_CHINESE_SIMPLIFIED
+#define dip_on_off		{ "关","开"  }
+#define dip_yes_no		{ "否","是" }
+#define dip_game_mode	{ "游戏","测试" }
+#elif DIPSW_CHINESE_TRADITIONAL
+#define dip_on_off		{ "關","開"  }
+#define dip_yes_no		{ "否","是" }
+#define dip_game_mode	{ "遊戲","測試" }
+#else
 #define dip_on_off		{ "Off","On"  }
 #define dip_yes_no		{ "No","Yes" }
 #define dip_game_mode	{ "Game","Test" }
+#endif
 
 static int dip_load_bit(int sw, int shift, int invert)
 {
@@ -65,9 +81,34 @@ static void dip_save_bit(int sw, int value, int shift, int invert)
 
 
 /*--------------------------------------
-  嫟捠 (僐僀儞 type1)
+  共通 (コイン type1)
 --------------------------------------*/
 
+#if DIPSW_CHINESE_SIMPLIFIED
+#define dip_coin1			\
+{							\
+	"4币玩1次",				\
+	"3币玩1次",				\
+	"2币玩1次",				\
+	"1币玩1次",				\
+	"1币玩2次",				\
+	"1币玩3次",				\
+	"1币玩4次",				\
+	"1币玩6次"				\
+}
+#elif DIPSW_CHINESE_TRADITIONAL
+#define dip_coin1			\
+{							\
+	"4幣玩1次",				\
+	"3幣玩1次",				\
+	"2幣玩1次",				\
+	"1幣玩1次",				\
+	"1幣玩2次",				\
+	"1幣玩3次",				\
+	"1幣玩4次",				\
+	"1幣玩6次"				\
+}
+#else
 #define dip_coin1			\
 {							\
 	"4 Coins/1 Credit",		\
@@ -79,6 +120,7 @@ static void dip_save_bit(int sw, int value, int shift, int invert)
 	"1 Coins/4 Credits",	\
 	"1 Coins/6 Credits"		\
 }
+#endif
 
 static int dip_load_coin1a(void)
 {
@@ -147,9 +189,32 @@ static void dip_save_coin1b(int value)
 }
 
 /*--------------------------------------
-  嫟捠 (僐僀儞 type2)
+  共通 (コイン type2)
 --------------------------------------*/
 
+#if DIPSW_CHINESE_SIMPLIFIED
+#define dip_coin2							\
+{	"4币玩1次",								\
+	"3币玩1次",								\
+	"2币玩1次",								\
+	"2币玩1次(1币续关)",					\
+	"1币玩1次",								\
+	"1币玩2次",								\
+	"1币玩3次",								\
+	"1币玩4次"								\
+}
+#elif DIPSW_CHINESE_TRADITIONAL
+#define dip_coin2							\
+{	"4幣玩1次",								\
+	"3幣玩1次",								\
+	"2幣玩1次",								\
+	"2幣玩1次(1幣續關)",					\
+	"1幣玩1次",								\
+	"1幣玩2次",								\
+	"1幣玩3次",								\
+	"1幣玩4次"								\
+}
+#else
 #define dip_coin2							\
 {											\
 	"4 Coins/1 Credit",						\
@@ -161,6 +226,7 @@ static void dip_save_coin1b(int value)
 	"1 Coins/3 Credits",					\
 	"1 Coins/4 Credits"						\
 }
+#endif
 
 static int dip_load_coin2a(void)
 {
@@ -229,16 +295,30 @@ static void dip_save_coin2b(int value)
 }
 
 /*--------------------------------------
-  嫟捠 (鉃懱)
+  共通 (筐体)
 --------------------------------------*/
-
+#if DIPSW_CHINESE_SIMPLIFIED
+#define dip_cabinet	\
+{					\
+	"1人",			\
+	"2人",			\
+	"轮流颠倒屏幕"	\
+}
+#elif DIPSW_CHINESE_TRADITIONAL
+#define dip_cabinet	\
+{					\
+	"1人",			\
+	"2人",			\
+	"輪流顛倒屏幕"	\
+}
+#else
 #define dip_cabinet				\
 {								\
 	"Upright 1 Player",			\
 	"Upright 2 Players",		\
 	"Cocktail"					\
 }
-
+#endif
 static int dip_load_cabinet(void)
 {
 	switch (cps1_dipswitch[DIP_A] & 0xc0)
@@ -263,9 +343,34 @@ static void dip_save_cabinet(int value)
 }
 
 /*--------------------------------------
-  嫟捠 (擄堈搙)
+  共通 (難易度)
 --------------------------------------*/
 
+#if DIPSW_CHINESE_SIMPLIFIED
+#define dip_difficulty		\
+{							\
+	"1 (最低难度)",			\
+	"2",					\
+	"3",					\
+	"4 (普通)",				\
+	"5",					\
+	"6",					\
+	"7",					\
+	"8 (最高难度)"			\
+}
+#elif DIPSW_CHINESE_TRADITIONAL
+#define dip_difficulty		\
+{							\
+	"1 (最低難度)",			\
+	"2",					\
+	"3",					\
+	"4 (普通)",				\
+	"5",					\
+	"6",					\
+	"7",					\
+	"8 (最高難度)"			\
+}
+#else
 #define dip_difficulty		\
 {							\
 	"1 (Easiest)",			\
@@ -277,6 +382,7 @@ static void dip_save_cabinet(int value)
 	"7",					\
 	"8 (Hardest)"			\
 }
+#endif
 
 static int dip_load_difficulty1(void)
 {
@@ -350,6 +456,33 @@ static void dip_save_difficulty2(int value)
 
 static dipswitch_t dipswitch_forgottn[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",		1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",		1, 0x38, 0, 7, dip_coin1      },
+	{ "演示声音",	1, 0x40, 0, 1, dip_on_off     },
+	{ "翻转屏幕",	1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "调试模式",	1, 0x40, 0, 1, dip_on_off     },
+	{ "锁定",		1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP C
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",		1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",		1, 0x38, 0, 7, dip_coin1      },
+	{ "演示聲音",	1, 0x40, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",	1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "調試模式",	1, 0x40, 0, 1, dip_on_off     },
+	{ "鎖定",		1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP C
+#else
 	// DIP A
 	{ "Coin A",      1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",      1, 0x38, 0, 7, dip_coin1      },
@@ -362,7 +495,7 @@ static dipswitch_t dipswitch_forgottn[] =
 	{ "Freeze",      1, 0x80, 0, 1, dip_on_off     },
 
 	// DIP C
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -379,7 +512,7 @@ static void dip_load_forgottn(void)
 
 	(dip++)->value = dip_load_difficulty1();
 	(dip++)->value = dip_load_bit(DIP_B, 6, 1);
-	(dip++)->value = dip_load_bit(DIP_B, 7, 0);
+	(dip++)->value = dip_load_bit(DIP_B, 7, 1);
 }
 
 static void dip_save_forgottn(void)
@@ -393,7 +526,7 @@ static void dip_save_forgottn(void)
 
 	dip_save_difficulty1((dip++)->value);
 	dip_save_bit(DIP_B, (dip++)->value, 6, 1);
-	dip_save_bit(DIP_B, (dip++)->value, 7, 0);
+	dip_save_bit(DIP_B, (dip++)->value, 7, 1);
 }
 
 /*--------------------------------------
@@ -402,6 +535,39 @@ static void dip_save_forgottn(void)
 
 static dipswitch_t dipswitch_ghouls[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",			1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",			1, 0x38, 0, 7, dip_coin1      },
+	{ "显示",			1, 0xc0, 0, 2, dip_cabinet    },
+
+	// DIP B
+	{ "难度",			1, 0x07, 0, 7, dip_difficulty },
+	{ "奖励生命",		1, 0x30, 0, 3, {"1万,3万,每3万","2万,5万,每7万","3万,6万,每7万","4万,7万,每8万"} },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"3","4","5","6"} },
+	{ "翻转屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",		1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",			1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",			1, 0x38, 0, 7, dip_coin1      },
+	{ "顯示",			1, 0xc0, 0, 2, dip_cabinet    },
+
+	// DIP B
+	{ "難度",			1, 0x07, 0, 7, dip_difficulty },
+	{ "獎勵生命",		1, 0x30, 0, 3, {"1萬,3萬,每3萬","2萬,5萬,每7萬","3萬,6萬,每7萬","4萬,7萬,每8萬"} },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"3","4","5","6"} },
+	{ "翻轉屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",		1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",         1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",         1, 0x38, 0, 7, dip_coin1      },
@@ -417,7 +583,7 @@ static dipswitch_t dipswitch_ghouls[] =
 	{ "Demo Sounds",    1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue", 1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",      1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -425,6 +591,41 @@ static dipswitch_t dipswitch_ghouls[] =
 
 static dipswitch_t dipswitch_ghoulsu[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",			1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",			1, 0x38, 0, 7, dip_coin1      },
+	{ "显示",			1, 0xc0, 0, 2, dip_cabinet    },
+
+	// DIP B
+	{ "难度",			1, 0x07, 0, 7, dip_difficulty },
+	{ "奖励生命",		1, 0x30, 0, 3, {"1万,3万,每3万","2万,5万,每7万","3万,6万,每7万","4万,7万,每8万"} },
+	{ "锁定",			1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"2","3","4","5"} },
+	{ "翻转屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",		1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",			1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",			1, 0x38, 0, 7, dip_coin1      },
+	{ "顯示",			1, 0xc0, 0, 2, dip_cabinet    },
+
+	// DIP B
+	{ "難度",			1, 0x07, 0, 7, dip_difficulty },
+	{ "獎勵生命",		1, 0x30, 0, 3, {"1萬,3萬,每3萬","2萬,5萬,每7萬","3萬,6萬,每7萬","4萬,7萬,每8萬"} },
+	{ "鎖定",			1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"2","3","4","5"} },
+	{ "翻轉屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",		1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",         1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",         1, 0x38, 0, 7, dip_coin1      },
@@ -441,7 +642,7 @@ static dipswitch_t dipswitch_ghoulsu[] =
 	{ "Demo Sounds",    1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue", 1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",      1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -449,6 +650,41 @@ static dipswitch_t dipswitch_ghoulsu[] =
 
 static dipswitch_t dipswitch_daimakai[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",			1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",			1, 0x38, 0, 7, dip_coin1      },
+	{ "显示",			1, 0xc0, 0, 2, dip_cabinet    },
+
+	// DIP B
+	{ "难度",			1, 0x07, 0, 7, dip_difficulty },
+	{ "奖励生命",		1, 0x30, 0, 3, {"1万,3万,每3万","2万,5万,每7万","3万,6万,每7万","4万,7万,每8万"} },
+	{ "锁定",			1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"3","4","5","6"} },
+	{ "翻转屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",		1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",			1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",			1, 0x38, 0, 7, dip_coin1      },
+	{ "顯示",			1, 0xc0, 0, 2, dip_cabinet    },
+
+	// DIP B
+	{ "難度",			1, 0x07, 0, 7, dip_difficulty },
+	{ "獎勵生命",		1, 0x30, 0, 3, {"1萬,3萬,每3萬","2萬,5萬,每7萬","3萬,6萬,每7萬","4萬,7萬,每8萬"} },
+	{ "鎖定",			1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"3","4","5","6"} },
+	{ "翻轉屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",		1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",         1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",         1, 0x38, 0, 7, dip_coin1      },
@@ -465,7 +701,7 @@ static dipswitch_t dipswitch_daimakai[] =
 	{ "Demo Sounds",    1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue", 1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",      1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -585,6 +821,45 @@ static void dip_save_ghouls(int type)
 
 static dipswitch_t dipswitch_strider[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",			1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",			1, 0x38, 0, 7, dip_coin1      },
+	{ "显示",			1, 0xc0, 0, 2, dip_cabinet    },
+
+	// DIP B
+	{ "难度",							1, 0x07, 0, 7, dip_difficulty },
+	{ "奖励生命",						1, 0x30, 0, 3, {"2万,4万,每6万","3万,5万,每7万","2万和6万","3万和6万"} },
+	{ "Internal Diff. on Life Loss",	1, 0xc0, 0, 2, {"-3","-1","默认"} },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"2","3","4","5"} },
+	{ "锁定",			1, 0x04, 0, 1, dip_on_off     },
+	{ "免费游玩",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",		1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",			1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",			1, 0x38, 0, 7, dip_coin1      },
+	{ "顯示",			1, 0xc0, 0, 2, dip_cabinet    },
+
+	// DIP B
+	{ "難度",							1, 0x07, 0, 7, dip_difficulty },
+	{ "獎勵生命",						1, 0x30, 0, 3, {"2萬,4萬,每6萬","3萬,5萬,每7萬","2萬和6萬","3萬和6萬"} },
+	{ "Internal Diff. on Life Loss",	1, 0xc0, 0, 2, {"-3","-1","默認"} },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"2","3","4","5"} },
+	{ "鎖定",			1, 0x04, 0, 1, dip_on_off     },
+	{ "免費遊玩",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",		1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",         1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",         1, 0x38, 0, 7, dip_coin1      },
@@ -603,7 +878,7 @@ static dipswitch_t dipswitch_strider[] =
 	{ "Demo Sounds",    1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue", 1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",      1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -611,6 +886,47 @@ static dipswitch_t dipswitch_strider[] =
 
 static dipswitch_t dipswitch_stridrua[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",			1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",			1, 0x38, 0, 7, dip_coin1      },
+	{ "显示",			1, 0xc0, 0, 2, dip_cabinet    },
+
+	// DIP B
+	{ "难度",							1, 0x07, 0, 7, dip_difficulty },
+	{ "2币开始,1币续关",				1, 0x08, 0, 1, dip_on_off     },
+	{ "奖励生命",						1, 0x30, 0, 3, {"2万,4万,每6万","3万,5万,每7万","2万和6万","3万和6万"} },
+	{ "Internal Diff. on Life Loss",	1, 0xc0, 0, 2, {"-3","-1","默认"} },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"2","3","4","5"} },
+	{ "锁定",			1, 0x04, 0, 1, dip_on_off     },
+	{ "免费游玩",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",		1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",			1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",			1, 0x38, 0, 7, dip_coin1      },
+	{ "顯示",			1, 0xc0, 0, 2, dip_cabinet    },
+
+	// DIP B
+	{ "難度",							1, 0x07, 0, 7, dip_difficulty },
+	{ "2幣開始,1幣續關",				1, 0x08, 0, 1, dip_on_off     },
+	{ "獎勵生命",						1, 0x30, 0, 3, {"2萬,4萬,每6萬","3萬,5萬,每7萬","2萬和6萬","3萬和6萬"} },
+	{ "Internal Diff. on Life Loss",	1, 0xc0, 0, 2, {"-3","-1","默認"} },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"2","3","4","5"} },
+	{ "鎖定",			1, 0x04, 0, 1, dip_on_off     },
+	{ "免費遊玩",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",		1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",         1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",         1, 0x38, 0, 7, dip_coin1      },
@@ -630,7 +946,7 @@ static dipswitch_t dipswitch_stridrua[] =
 	{ "Demo Sounds",    1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue", 1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",      1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -736,6 +1052,39 @@ static void dip_save_strider(int type)
 
 static dipswitch_t dipswitch_dynwar[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",			1, 0x07, 0, 7, dip_coin2      },
+	{ "投币B",			1, 0x38, 0, 7, dip_coin2      },
+	{ "免费游玩",		1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",			1, 0x07, 0, 7, dip_difficulty },
+
+	// DIP C
+	{ "锁定",			1, 0x01, 0, 1, dip_on_off     },
+	{ "加速模式",		1, 0x02, 0, 1, dip_on_off     },
+	{ "翻转屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",		1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",			1, 0x07, 0, 7, dip_coin2      },
+	{ "投幣B",			1, 0x38, 0, 7, dip_coin2      },
+	{ "免費遊玩",		1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",			1, 0x07, 0, 7, dip_difficulty },
+
+	// DIP C
+	{ "鎖定",			1, 0x01, 0, 1, dip_on_off     },
+	{ "加速模式",		1, 0x02, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",		1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",         1, 0x07, 0, 7, dip_coin2      },
 	{ "Coin B",         1, 0x38, 0, 7, dip_coin2      },
@@ -751,7 +1100,7 @@ static dipswitch_t dipswitch_dynwar[] =
 	{ "Demo Sounds",    1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue", 1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",      1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -799,17 +1148,53 @@ static void dip_save_dynwar(void)
 	save_game_mode;
 }
 
-
 /*--------------------------------------
   willow
 --------------------------------------*/
 
 static dipswitch_t dipswitch_willow[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",			1, 0x07, 0, 7, dip_coin2      },
+	{ "投币B",			1, 0x38, 0, 7, dip_coin2      },
+	{ "显示",			1, 0xc0, 0, 2, dip_cabinet    },
+
+	// DIP B
+	{ "难度",					1, 0x07, 0, 7, dip_difficulty },
+	{ "Nando Speed",			1, 0x18, 0, 3, {"慢","普通","快","极快"}},
+	{ "Stage Magic Continue",	1, 0x80, 0, 1, dip_on_off      },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "血量",			1, 0x0c, 0, 3, {"2","3","4","5"} },
+	{ "翻转屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",		1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",			1, 0x07, 0, 7, dip_coin2      },
+	{ "投幣B",			1, 0x38, 0, 7, dip_coin2      },
+	{ "顯示",			1, 0xc0, 0, 2, dip_cabinet    },
+
+	// DIP B
+	{ "難度",					1, 0x07, 0, 7, dip_difficulty },
+	{ "Nando Speed",			1, 0x18, 0, 3, {"慢","普通","快","极快"}},
+	{ "Stage Magic Continue",	1, 0x80, 0, 1, dip_on_off      },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "血量",			1, 0x0c, 0, 3, {"2","3","4","5"} },
+	{ "翻轉屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",		1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",         1, 0x07, 0, 7, dip_coin2      },
 	{ "Coin B",         1, 0x38, 0, 7, dip_coin2      },
-	{ "Cabinet",        1, 0xc0, 0, 3, dip_cabinet    },
+	{ "Cabinet",        1, 0xc0, 0, 2, dip_cabinet    },
 
 	// DIP B
 	{ "Difficulty",           1, 0x07, 0, 7, dip_difficulty },
@@ -823,7 +1208,7 @@ static dipswitch_t dipswitch_willow[] =
 	{ "Demo Sounds",    1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue", 1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",      1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -917,6 +1302,39 @@ static void dip_save_willow(void)
 
 static dipswitch_t dipswitch_unsquad[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",			1, 0x07, 0, 7, dip_coin2      },
+	{ "投币B",			1, 0x38, 0, 7, dip_coin2      },
+
+	// DIP B
+	{ "难度",			1, 0x07, 0, 7, dip_difficulty },
+	{ "伤害",			1, 0x18, 0, 3, {"小","普通","大","最大"}},
+
+	// DIP C
+	{ "免费游玩",		1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",			1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",		1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",			1, 0x07, 0, 7, dip_coin2      },
+	{ "投幣B",			1, 0x38, 0, 7, dip_coin2      },
+
+	// DIP B
+	{ "難度",			1, 0x07, 0, 7, dip_difficulty },
+	{ "傷害",			1, 0x18, 0, 3, {"小","普通","大","最大"}},
+
+	// DIP C
+	{ "免費遊玩",		1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",			1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",		1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",         1, 0x07, 0, 7, dip_coin2      },
 	{ "Coin B",         1, 0x38, 0, 7, dip_coin2      },
@@ -932,7 +1350,7 @@ static dipswitch_t dipswitch_unsquad[] =
 	{ "Demo Sounds",    1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue", 1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",      1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -998,6 +1416,45 @@ static void dip_save_unsquad(void)
 
 static dipswitch_t dipswitch_ffight[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度级别1",		1, 0x07, 0, 7, {"最简单","稍简单","简单","普通","中等","困难","稍难","最难"} },
+	{ "难度级别2",		1, 0x18, 0, 3, {"简单","普通","困难","最难"} },
+	{ "奖励生命",		1, 0x60, 0, 3, {"10万","20万","10万,每20万","无"} },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "免费游玩",		1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",			1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",		1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度級別1",		1, 0x07, 0, 7, {"最簡單","稍簡單","簡單","普通","中等","困難","稍難","最難"} },
+	{ "難度級別2",		1, 0x18, 0, 3, {"簡單","普通","困難","最難"} },
+	{ "獎勵生命",		1, 0x60, 0, 3, {"10萬","20萬","10萬,每20萬","無"} },
+
+	// DIP C
+	{ "生命",			1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "免費遊玩",		1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",			1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",		1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",                          1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",                          1, 0x38, 0, 7, dip_coin1      },
@@ -1016,7 +1473,7 @@ static dipswitch_t dipswitch_ffight[] =
 	{ "Demo Sounds",    1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue", 1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",      1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -1112,6 +1569,47 @@ static void dip_save_ffight(void)
 
 static dipswitch_t dipswitch_1941[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",				1, 0x07, 0, 7, dip_difficulty },
+	{ "升级时间",			1, 0x18, 0, 3, {"更慢","缓慢","快速","更快"} },
+	{ "子弹速度",			1, 0x60, 0, 3, {"非常慢","慢","快","非常快"} },
+	{ "开场血量",			1, 0x80, 0, 1, {"3格","4格"} },
+
+	// DIP C
+	{ "限制游戏速度",		1, 0x01, 0, 1, dip_on_off     },
+	{ "免费游玩",			1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",			1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",				1, 0x07, 0, 7, dip_difficulty },
+	{ "升級時間",			1, 0x18, 0, 3, {"更慢","緩慢","快速","更快"} },
+	{ "子彈速度",			1, 0x60, 0, 3, {"非常慢","慢","快","非常快"} },
+	{ "開場血量",			1, 0x80, 0, 1, {"3格","4格"} },
+
+	// DIP C
+	{ "限制遊戲速度",		1, 0x01, 0, 1, dip_on_off     },
+	{ "免費遊玩",			1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",			1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",                          1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",                          1, 0x38, 0, 7, dip_coin1      },
@@ -1131,7 +1629,7 @@ static dipswitch_t dipswitch_1941[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -1217,6 +1715,39 @@ static void dip_save_1941(void)
 
 static dipswitch_t dipswitch_mercs[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",				1, 0x07, 0, 7, dip_difficulty },
+	{ "投币槽",				1, 0x08, 0, 1, {"1","3"} },
+	{ "游戏模式",			1, 0x10, 0, 1, {"2人","3人"} },
+
+	// DIP C
+	{ "锁定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "调试模式",			1, 0x80, 0, 1, dip_on_off     },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",				1, 0x07, 0, 7, dip_difficulty },
+	{ "投幣槽",				1, 0x08, 0, 1, {"1","3"} },
+	{ "遊戲模式",			1, 0x10, 0, 1, {"2人","3人"} },
+
+	// DIP C
+	{ "鎖定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "調試模式",			1, 0x80, 0, 1, dip_on_off     },
+#else
 	// DIP A
 	{ "Coinage",                         1, 0x07, 0, 7, dip_coin1      },
 	{ "2 Coins to Start, 1 to Continue", 1, 0x40, 0, 1, dip_on_off     },
@@ -1232,7 +1763,7 @@ static dipswitch_t dipswitch_mercs[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Service Mode",        1, 0x80, 0, 1, dip_on_off     },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -1248,8 +1779,8 @@ static void dip_load_mercs(void)
 
 	// DIP B
 	(dip++)->value = dip_load_difficulty1();
-	(dip++)->value = dip_load_bit(DIP_B, 3, 1);
-	(dip++)->value = dip_load_bit(DIP_B, 4, 1);
+	(dip++)->value = dip_load_bit(DIP_B, 3, 0);
+	(dip++)->value = dip_load_bit(DIP_B, 4, 0);
 
 	// DIP C
 	load_freeze;
@@ -1269,8 +1800,8 @@ static void dip_save_mercs(void)
 
 	// DIP B
 	dip_save_difficulty1((dip++)->value);
-	dip_save_bit(DIP_B, (dip++)->value, 3, 1);
-	dip_save_bit(DIP_B, (dip++)->value, 4, 1);
+	dip_save_bit(DIP_B, (dip++)->value, 3, 0);
+	dip_save_bit(DIP_B, (dip++)->value, 4, 0);
 
 	// DIP C
 	save_freeze;
@@ -1286,6 +1817,39 @@ static void dip_save_mercs(void)
 
 static dipswitch_t dipswitch_mtwins[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",		1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",		1, 0x38, 0, 7, dip_coin1      },
+
+	// DIP B
+	{ "难度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "生命",		1, 0x38, 0, 3, {"1","2","3","4"} },
+
+	// DIP C
+	{ "免费游玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",	1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",		1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",		1, 0x38, 0, 7, dip_coin1      },
+
+	// DIP B
+	{ "難度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "生命",		1, 0x38, 0, 3, {"1","2","3","4"} },
+
+	// DIP C
+	{ "免費遊玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",	1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",              1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",              1, 0x38, 0, 7, dip_coin1      },
@@ -1301,7 +1865,7 @@ static dipswitch_t dipswitch_mtwins[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -1367,6 +1931,45 @@ static void dip_save_mtwins(void)
 
 static dipswitch_t dipswitch_msword[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "伤害",				1, 0x07, 0, 7, dip_difficulty },
+	{ "敌人血量和攻击力",	1, 0x38, 0, 7, dip_difficulty },
+	{ "关卡选择",			1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP C
+	{ "血包",				1, 0x03, 0, 3, {"1","2","3(续关时-1)","4(续关时-1)"} },
+	{ "免费游玩",			1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",			1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "傷害",				1, 0x07, 0, 7, dip_difficulty },
+	{ "敵人血量和攻擊力",	1, 0x38, 0, 7, dip_difficulty },
+	{ "關卡選擇",			1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP C
+	{ "血包",				1, 0x03, 0, 3, {"1","2","3(續關時-1)","4(續關時-1)"} },
+	{ "免費遊玩",			1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",			1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",                          1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",                          1, 0x38, 0, 7, dip_coin1      },
@@ -1385,7 +1988,7 @@ static dipswitch_t dipswitch_msword[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -1477,6 +2080,41 @@ static void dip_save_msword(void)
 
 static dipswitch_t dipswitch_cawing[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度(敌方火力)",		1, 0x07, 0, 7, dip_difficulty },
+	{ "难度(玩家火力)",		1, 0x18, 0, 3, {"简单","普通","困难","最难"} },
+
+	// DIP C
+	{ "免费游玩",			1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",			1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度(敵方火力)",		1, 0x07, 0, 7, dip_difficulty },
+	{ "難度(玩家火力)",		1, 0x18, 0, 3, {"簡單","普通","困難","最難"} },
+
+	// DIP C
+	{ "免費遊玩",			1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",			1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",                          1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",                          1, 0x38, 0, 7, dip_coin1      },
@@ -1493,7 +2131,7 @@ static dipswitch_t dipswitch_cawing[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -1561,6 +2199,43 @@ static void dip_save_cawing(void)
 
 static dipswitch_t dipswitch_nemo[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",                          1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",                          1, 0x38, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "血量",		1, 0x18, 0, 2, {"最小","中等","最大"} },
+
+	// DIP C
+	{ "生命",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "免费游玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",	1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",                          1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",                          1, 0x38, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "血量",		1, 0x18, 0, 2, {"最小","中等","最大"} },
+
+	// DIP C
+	{ "生命",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "免費遊玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",	1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",                          1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",                          1, 0x38, 0, 7, dip_coin1      },
@@ -1578,7 +2253,7 @@ static dipswitch_t dipswitch_nemo[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -1658,6 +2333,39 @@ static void dip_save_nemo(void)
 
 static dipswitch_t dipswitch_sf2[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关", 	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",				1, 0x07, 0, 7, dip_difficulty },
+
+	// DIP C
+	{ "免费游玩",			1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",			1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關", 	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",				1, 0x07, 0, 7, dip_difficulty },
+
+	// DIP C
+	{ "免費遊玩",			1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",			1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",                          1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",                          1, 0x38, 0, 7, dip_coin1      },
@@ -1673,7 +2381,7 @@ static dipswitch_t dipswitch_sf2[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -1681,6 +2389,41 @@ static dipswitch_t dipswitch_sf2[] =
 
 static dipswitch_t dipswitch_sf2j[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关", 	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",				1, 0x07, 0, 7, dip_difficulty },
+	{ "2人游戏",			1, 0x08, 0, 1, {"1币/无继续","2币/胜利者继续"} },
+
+	// DIP C
+	{ "免费游玩",			1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",			1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關", 	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",				1, 0x07, 0, 7, dip_difficulty },
+	{ "2人遊戲",			1, 0x08, 0, 1, {"1幣/無繼續","2幣/勝利者繼續"} },
+
+	// DIP C
+	{ "免費遊玩",			1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",			1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",                          1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",                          1, 0x38, 0, 7, dip_coin1      },
@@ -1697,7 +2440,7 @@ static dipswitch_t dipswitch_sf2j[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -1757,6 +2500,47 @@ static void dip_save_sf2(int type)
 
 static dipswitch_t dipswitch_3wonders[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投币AB",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+	{ "锁定",				1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "生命(Midnight Wanderers)",      1, 0x03, 0, 3, {"1","2","3","5"} },
+	{ "难度(Midnight Wanderers)", 1, 0x0c, 0, 3, {"简单","普通","困难","最难"} },
+	{ "生命(Chariot)",                 1, 0x30, 0, 3, {"1","2","3","5"} },
+	{ "难度(Chariot)",            1, 0xc0, 0, 3, {"简单","普通","困难","最难"} },
+
+	// DIP C
+	{ "生命(Don't Pull)",	1, 0x03, 0, 3, {"1","2","3","5"} },
+	{ "难度(Don't Pull)",	1, 0x08, 0, 3, {"简单","普通","困难","最难"} },
+	{ "翻转屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",			1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣AB",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+	{ "鎖定",				1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "生命(Midnight Wanderers)",      1, 0x03, 0, 3, {"1","2","3","5"} },
+	{ "難度(Midnight Wanderers)", 1, 0x0c, 0, 3, {"簡單","普通","困難","最難"} },
+	{ "生命(Chariot)",                 1, 0x30, 0, 3, {"1","2","3","5"} },
+	{ "難度(Chariot)",            1, 0xc0, 0, 3, {"簡單","普通","困難","最難"} },
+
+	// DIP C
+	{ "生命(Don't Pull)",	1, 0x03, 0, 3, {"1","2","3","5"} },
+	{ "難度(Don't Pull)",	1, 0x08, 0, 3, {"簡單","普通","困難","最難"} },
+	{ "翻轉屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",			1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",                          1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",                          1, 0x38, 0, 7, dip_coin1      },
@@ -1776,7 +2560,7 @@ static dipswitch_t dipswitch_3wonders[] =
 	{ "Demo Sounds",             1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",          1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",               1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -1910,10 +2694,49 @@ static void dip_save_3wonders(void)
 
 static dipswitch_t dipswitch_kod[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投币槽",				1, 0x08, 0, 1, {"1","3"}      },
+	{ "游玩模式",			1, 0x10, 0, 1, {"2人","3人"} },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "生命",		1, 0x38, 0, 7, {"1","2","3","4","5","6","7","8"} },
+	{ "奖励生命",	1, 0xc0, 0, 3, {"8万,每次40万","10万,每45万","16万,每45万","无"} },
+
+	// DIP C
+	{ "免费游玩",		1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",			1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",		1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣槽",				1, 0x08, 0, 1, {"1","3"}      },
+	{ "遊玩模式",			1, 0x10, 0, 1, {"2人","3人"} },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "生命",		1, 0x38, 0, 7, {"1","2","3","4","5","6","7","8"} },
+	{ "獎勵生命",	1, 0xc0, 0, 3, {"8萬,每次40萬","10萬,每45萬","16萬,每45萬","無"} },
+
+	// DIP C
+	{ "免費遊玩",		1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",			1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",		1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coinage",                         1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin Slots",                      1, 0x08, 0, 1, {"1","3"}      },
-	{ "Play Mode",                       1, 0x10, 0, 1, {"2Players","3 Players"} },
+	{ "Play Mode",                       1, 0x10, 0, 1, {"2 Players","3 Players"} },
 	{ "2 Coins to Start, 1 to Continue", 1, 0x40, 0, 1, dip_on_off     },
 
 	// DIP B
@@ -1928,7 +2751,7 @@ static dipswitch_t dipswitch_kod[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -1936,10 +2759,49 @@ static dipswitch_t dipswitch_kod[] =
 
 static dipswitch_t dipswitch_kodj[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投币槽",				1, 0x08, 0, 1, {"1","3"}      },
+	{ "游玩模式",			1, 0x10, 0, 1, {"2人","3人"} },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "生命",		1, 0x38, 0, 7, {"1","2","3","4","5","6","7","8"} },
+	{ "奖励生命",	1, 0xc0, 0, 3, {"8万,每次40万","20万,每45万","16万,每45万","无"} },
+
+	// DIP C
+	{ "免费游玩",		1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",			1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",		1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣槽",				1, 0x08, 0, 1, {"1","3"}      },
+	{ "遊玩模式",			1, 0x10, 0, 1, {"2人","3人"} },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "生命",		1, 0x38, 0, 7, {"1","2","3","4","5","6","7","8"} },
+	{ "獎勵生命",	1, 0xc0, 0, 3, {"8萬,每次40萬","20萬,每45萬","16萬,每45萬","無"} },
+
+	// DIP C
+	{ "免費遊玩",		1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",			1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",		1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",		1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",		1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",		1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coinage",                         1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin Slots",                      1, 0x08, 0, 1, {"1","3"}      },
-	{ "Play Mode",                       1, 0x10, 0, 1, {"2Players","3 Players"} },
+	{ "Play Mode",                       1, 0x10, 0, 1, {"2 Players","3 Players"} },
 	{ "2 Coins to Start, 1 to Continue", 1, 0x40, 0, 1, dip_on_off     },
 
 	// DIP B
@@ -1954,7 +2816,7 @@ static dipswitch_t dipswitch_kodj[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -1968,8 +2830,8 @@ static void dip_load_kod(int type)
 
 	// DIP A
 	(dip++)->value = dip_load_coin1a();
-	(dip++)->value = dip_load_bit(DIP_A, 3, 1);
-	(dip++)->value = dip_load_bit(DIP_A, 4, 1);
+	(dip++)->value = dip_load_bit(DIP_A, 3, 0);
+	(dip++)->value = dip_load_bit(DIP_A, 4, 0);
 	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
 
 	// DIP B
@@ -2010,8 +2872,8 @@ static void dip_save_kod(int type)
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
-	dip_save_bit(DIP_A, (dip++)->value, 3, 1);
-	dip_save_bit(DIP_A, (dip++)->value, 4, 1);
+	dip_save_bit(DIP_A, (dip++)->value, 3, 0);
+	dip_save_bit(DIP_A, (dip++)->value, 4, 0);
 	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
 
 	// DIP B
@@ -2050,6 +2912,43 @@ static void dip_save_kod(int type)
 
 static dipswitch_t dipswitch_captcomm[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度1",		1, 0x07, 0, 7, dip_difficulty },
+	{ "难度2",		1, 0x18, 0, 3, {"简单","普通","困难","最难"} },
+	{ "游玩模式",	1, 0xc0, 0, 3, {"1人","2人","3人","4人"} },
+
+	// DIP C
+	{ "生命",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "免费游玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",	1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度1",		1, 0x07, 0, 7, dip_difficulty },
+	{ "難度2",		1, 0x18, 0, 3, {"簡單","普通","困難","最難"} },
+	{ "遊玩模式",	1, 0xc0, 0, 3, {"1人","2人","3人","4人"} },
+
+	// DIP C
+	{ "生命",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "免費遊玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",	1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coinage",                         1, 0x07, 0, 7, dip_coin1      },
 	{ "2 Coins to Start, 1 to Continue", 1, 0x40, 0, 1, dip_on_off     },
@@ -2067,7 +2966,7 @@ static dipswitch_t dipswitch_captcomm[] =
 	{ "Demo Sounds",    1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue", 1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",      1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -2161,6 +3060,45 @@ static void dip_save_captcomm(void)
 
 static dipswitch_t dipswitch_knights[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "敌方攻击频率",	1, 0x07, 0, 7, dip_difficulty },
+	{ "敌方攻击力量",	1, 0x38, 0, 7, dip_difficulty },
+	{ "投币槽",			1, 0x40, 0, 1, {"1","3"}      },
+	{ "游玩模式",		1, 0x80, 0, 1, {"2人","3人"} },
+
+	// DIP C
+	{ "生命",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "免费游玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",	1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "敵方攻擊頻率",	1, 0x07, 0, 7, dip_difficulty },
+	{ "敵方攻擊力量",	1, 0x38, 0, 7, dip_difficulty },
+	{ "投幣槽",			1, 0x40, 0, 1, {"1","3"}      },
+	{ "遊玩模式",		1, 0x80, 0, 1, {"2人","3人"} },
+
+	// DIP C
+	{ "生命",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "免費遊玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",	1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coinage",                         1, 0x07, 0, 7, dip_coin1      },
 	{ "2 Coins to Start, 1 to Continue", 1, 0x40, 0, 1, dip_on_off     },
@@ -2169,7 +3107,7 @@ static dipswitch_t dipswitch_knights[] =
 	{ "Enemy's attack frequency", 1, 0x07, 0, 7, dip_difficulty },
 	{ "Enemy's attack power",     1, 0x38, 0, 7, dip_difficulty },
 	{ "Coin Slots",               1, 0x40, 0, 1, {"1","3"}      },
-	{ "Play Mode",                1, 0x80, 0, 1, {"3 Players","2 Players"} },
+	{ "Play Mode",                1, 0x80, 0, 1, {"2 Players","3 Players"} },
 
 	// DIP C
 	{ "Lives",          1, 0x03, 0, 3, {"1","2","3","4"} },
@@ -2179,7 +3117,7 @@ static dipswitch_t dipswitch_knights[] =
 	{ "Demo Sounds",    1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue", 1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",      1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -2206,8 +3144,8 @@ static void dip_load_knights(void)
 	case 0x30: (dip++)->value = 4; break;
 	case 0x38: (dip++)->value = 3; break;
 	}
-	(dip++)->value = dip_load_bit(DIP_B, 6, 1);
-	(dip++)->value = dip_load_bit(DIP_B, 7, 1);
+	(dip++)->value = dip_load_bit(DIP_B, 6, 0);
+	(dip++)->value = dip_load_bit(DIP_B, 7, 0);
 
 	// DIP C
 	switch (cps1_dipswitch[DIP_C] & 0x03)
@@ -2246,8 +3184,8 @@ static void dip_save_knights(void)
 	case 6: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x20; break;
 	case 7: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x18; break;
 	}
-	dip_save_bit(DIP_B, (dip++)->value, 6, 1);
-	dip_save_bit(DIP_B, (dip++)->value, 7, 1);
+	dip_save_bit(DIP_B, (dip++)->value, 6, 0);
+	dip_save_bit(DIP_B, (dip++)->value, 7, 0);
 
 	// DIP C
 	switch ((dip++)->value)
@@ -2271,6 +3209,43 @@ static void dip_save_knights(void)
 
 static dipswitch_t dipswitch_varth[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投币B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "奖励生命",	1, 0x18, 0, 3, {"60万,每140万","60万,200万,450万","120万,350万","200万"} },
+
+	// DIP C
+	{ "生命",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "免费游玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",	1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣B",				1, 0x38, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "獎勵生命",	1, 0x18, 0, 3, {"60萬,每140萬","60萬,200萬,450萬","120萬,350萬","200萬"} },
+
+	// DIP C
+	{ "生命",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "免費遊玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",	1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",                          1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin B",                          1, 0x38, 0, 7, dip_coin1      },
@@ -2288,7 +3263,7 @@ static dipswitch_t dipswitch_varth[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -2370,6 +3345,43 @@ static void dip_save_varth(void)
 
 static dipswitch_t dipswitch_cworld2j[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+	{ "打开测试模式",		1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",		1, 0x07, 0, 4, {"最简单","简单","普通","困难","最难"} },
+	{ "Extend",		1, 0x18, 0, 2, {"N","E","D"} },
+	{ "生命",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
+
+	// DIP C
+	{ "免费游玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",	1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣A",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+	{ "打開測試模式",		1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",		1, 0x07, 0, 4, {"最簡單","簡單","普通","困難","最難"} },
+	{ "Extend",		1, 0x18, 0, 2, {"N","E","D"} },
+	{ "生命",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
+
+	// DIP C
+	{ "免費遊玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",	1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coin A",                          1, 0x07, 0, 7, dip_coin1      },
 	{ "2 Coins to Start, 1 to Continue", 1, 0x40, 0, 1, dip_on_off     },
@@ -2387,7 +3399,7 @@ static dipswitch_t dipswitch_cworld2j[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -2483,6 +3495,43 @@ static void dip_save_cworld2j(void)
 
 static dipswitch_t dipswitch_qad[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+	{ "打开测试模式",		1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",		1, 0x07, 0, 4, {"最简单","简单","普通","困难","最难"} },
+	{ "知识",		1, 0x18, 0, 3, {"简单","普通","困难","最难"} },
+	{ "生命",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
+
+	// DIP C
+	{ "免费游玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",	1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+	{ "打開測試模式",		1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",		1, 0x07, 0, 4, {"最簡單","簡單","普通","困難","最難"} },
+	{ "知識",		1, 0x18, 0, 3, {"簡單","普通","困難","最難"} },
+	{ "生命",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
+
+	// DIP C
+	{ "免費遊玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",	1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coinage",                         1, 0x07, 0, 7, dip_coin1      },
 	{ "2 Coins to Start, 1 to Continue", 1, 0x40, 0, 1, dip_on_off     },
@@ -2500,7 +3549,7 @@ static dipswitch_t dipswitch_qad[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -2508,6 +3557,41 @@ static dipswitch_t dipswitch_qad[] =
 
 static dipswitch_t dipswitch_qadj[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+	{ "打开测试模式",		1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",		1, 0x07, 0, 4, {"最简单","简单","普通","困难","最难"} },
+	{ "生命",		1, 0xe0, 0, 2, {"1","2","3"} },
+
+	// DIP C
+	{ "免费游玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",	1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+	{ "打開測試模式",		1, 0x80, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",		1, 0x07, 0, 4, {"最簡單","簡單","普通","困難","最難"} },
+	{ "生命",		1, 0xe0, 0, 2, {"1","2","3"} },
+
+	// DIP C
+	{ "免費遊玩",	1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",	1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",	1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coinage",                         1, 0x07, 0, 7, dip_coin1      },
 	{ "2 Coins to Start, 1 to Continue", 1, 0x40, 0, 1, dip_on_off     },
@@ -2524,7 +3608,7 @@ static dipswitch_t dipswitch_qadj[] =
 	{ "Demo Sounds",         1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -2686,6 +3770,41 @@ static void dip_save_qad(int type)
 
 static dipswitch_t dipswitch_qtono2[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2币开始,1币续关",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "生命",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
+
+	// DIP C
+	{ "无限生命(金手指)",	1, 0x02, 0, 1, dip_on_off     },
+	{ "免费游玩",			1, 0x04, 0, 1, dip_on_off     },
+	{ "锁定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允许续关",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "游戏模式",			1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣",				1, 0x07, 0, 7, dip_coin1      },
+	{ "2幣開始,1幣續關",	1, 0x40, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "生命",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
+
+	// DIP C
+	{ "無限生命(金手指)",	1, 0x02, 0, 1, dip_on_off     },
+	{ "免費遊玩",			1, 0x04, 0, 1, dip_on_off     },
+	{ "鎖定",				1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",			1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",			1, 0x20, 0, 1, dip_on_off     },
+	{ "允許續關",			1, 0x40, 0, 1, dip_yes_no     },
+	{ "遊戲模式",			1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coinage",                         1, 0x07, 0, 7, dip_coin1      },
 	{ "2 Coins to Start, 1 to Continue", 1, 0x40, 0, 1, dip_on_off     },
@@ -2702,7 +3821,7 @@ static dipswitch_t dipswitch_qtono2[] =
 	{ "Demo Sounds",            1, 0x20, 0, 1, dip_on_off     },
 	{ "Allow Continue",         1, 0x40, 0, 1, dip_yes_no     },
 	{ "Game Mode",              1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -2769,7 +3888,51 @@ static void dip_save_qtono2(void)
 /*--------------------------------------
   megaman / rockmanj
 --------------------------------------*/
-
+#if DIPSW_CHINESE_SIMPLIFIED
+#define dip_coin_megaman	\
+{							\
+	"9币玩1次",				\
+	"8币玩1次",				\
+	"7币玩1次t",			\
+	"6币玩1次",				\
+	"5币玩1次",				\
+	"4币玩1次",				\
+	"3币玩1次",				\
+	"2币玩1次",				\
+	"2币开始,1币续关",		\
+	"1币玩2次",				\
+	"1币玩3次",				\
+	"1币玩4次",				\
+	"1币玩5次",				\
+	"1币玩6次",				\
+	"1币玩7次",				\
+	"1币玩8次",				\
+	"1币玩9次",				\
+	"免费游玩"				\
+}
+#elif DIPSW_CHINESE_TRADITIONAL
+#define dip_coin_megaman	\
+{							\
+	"9幣玩1次",				\
+	"8幣玩1次",				\
+	"7幣玩1次t",			\
+	"6幣玩1次",				\
+	"5幣玩1次",				\
+	"4幣玩1次",				\
+	"3幣玩1次",				\
+	"2幣玩1次",				\
+	"2幣開始,1幣續關",		\
+	"1幣玩2次",				\
+	"1幣玩3次",				\
+	"1幣玩4次",				\
+	"1幣玩5次",				\
+	"1幣玩6次",				\
+	"1幣玩7次",				\
+	"1幣玩8次",				\
+	"1幣玩9次",				\
+	"免費遊玩"				\
+}
+#else
 #define dip_coin_megaman				\
 {										\
 	"9 Coins/1 Credit",					\
@@ -2791,9 +3954,40 @@ static void dip_save_qtono2(void)
 	"1 Coins/9 Credits",				\
 	"Free Play"							\
 }
-
+#endif
 static dipswitch_t dipswitch_megaman[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币",		1, 0x1f, 0, 18, dip_coin_megaman },
+	{ "投币槽",		1, 0x60, 0, 2, {"1,分开","1,联机","2,联机"} },
+
+	// DIP B
+	{ "难度",		1, 0x03, 0, 3, {"简单","普通","困难","最难"} },
+	{ "时间",		1, 0x0c, 0, 3, {"100秒","90秒","70秒","60秒"} },
+	{ "声音",		1, 0x40, 0, 1, dip_on_off },
+
+	// DIP C
+	{ "翻转屏幕",	1, 0x01, 0, 1, dip_on_off     },
+	{ "演示声音",	1, 0x02, 0, 1, dip_on_off     },
+	{ "允许续关",	1, 0x04, 0, 1, dip_yes_no     },
+	{ "游戏模式",	1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣",		1, 0x1f, 0, 18, dip_coin_megaman },
+	{ "投幣槽",		1, 0x60, 0, 2, {"1,分開","1,聯機","2,聯機"} },
+
+	// DIP B
+	{ "難度",		1, 0x03, 0, 3, {"簡單","普通","困難","最難"} },
+	{ "時間",		1, 0x0c, 0, 3, {"100秒","90秒","70秒","60秒"} },
+	{ "聲音",		1, 0x40, 0, 1, dip_on_off },
+
+	// DIP C
+	{ "翻轉屏幕",	1, 0x01, 0, 1, dip_on_off     },
+	{ "演示聲音",	1, 0x02, 0, 1, dip_on_off     },
+	{ "允許續關",	1, 0x04, 0, 1, dip_yes_no     },
+	{ "遊戲模式",	1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coinage",             1, 0x1f, 0, 18, dip_coin_megaman },
 	{ "Coin slots",          1, 0x60, 0, 2, {"1, Individual","1, Common","2, Common"} },
@@ -2808,7 +4002,7 @@ static dipswitch_t dipswitch_megaman[] =
 	{ "Demo Sounds",         1, 0x02, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x04, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -2816,6 +4010,35 @@ static dipswitch_t dipswitch_megaman[] =
 
 static dipswitch_t dipswitch_rockmanj[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币",		1, 0x1f, 0, 18, dip_coin_megaman },
+	{ "投币槽",		1, 0x60, 0, 2, {"1,分开","1,联机","2,联机"} },
+
+	// DIP B
+	{ "难度",		1, 0x03, 0, 3, {"简单","普通","困难","最难"} },
+	{ "时间",		1, 0x0c, 0, 3, {"100秒","90秒","70秒","60秒"} },
+
+	// DIP C
+	{ "翻转屏幕",	1, 0x01, 0, 1, dip_on_off     },
+	{ "演示声音",	1, 0x02, 0, 1, dip_on_off     },
+	{ "允许续关",	1, 0x04, 0, 1, dip_yes_no     },
+	{ "游戏模式",	1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣",		1, 0x1f, 0, 18, dip_coin_megaman },
+	{ "投幣槽",		1, 0x60, 0, 2, {"1,分開","1,聯機","2,聯機"} },
+
+	// DIP B
+	{ "難度",		1, 0x03, 0, 3, {"簡單","普通","困難","最難"} },
+	{ "時間",		1, 0x0c, 0, 3, {"100秒","90秒","70秒","60秒"} },
+
+	// DIP C
+	{ "翻轉屏幕",	1, 0x01, 0, 1, dip_on_off     },
+	{ "演示聲音",	1, 0x02, 0, 1, dip_on_off     },
+	{ "允許續關",	1, 0x04, 0, 1, dip_yes_no     },
+	{ "遊戲模式",	1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coinage",             1, 0x1f, 0, 18, dip_coin_megaman },
 	{ "Coin slots",          1, 0x60, 0, 2, {"1, Individual","1, Common","2, Common"} },
@@ -2829,7 +4052,7 @@ static dipswitch_t dipswitch_rockmanj[] =
 	{ "Demo Sounds",         1, 0x02, 0, 1, dip_on_off     },
 	{ "Allow Continue",      1, 0x04, 0, 1, dip_yes_no     },
 	{ "Game Mode",           1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,
@@ -2967,6 +4190,35 @@ static void dip_save_megaman(int type)
 
 static dipswitch_t dipswitch_pnickj[] =
 {
+#if DIPSW_CHINESE_SIMPLIFIED
+	// DIP A
+	{ "投币",		1, 0x07, 0, 7, dip_coin1      },
+	{ "投币槽",		1, 0x08, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "难度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "对战模式",	1, 0xc0, 0, 3, {"1局","3局","5局","7局"} },
+
+	// DIP C
+	{ "锁定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻转屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示声音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "游戏模式",	1, 0x80, 0, 1, dip_game_mode  },
+#elif DIPSW_CHINESE_TRADITIONAL
+	// DIP A
+	{ "投幣",		1, 0x07, 0, 7, dip_coin1      },
+	{ "投幣槽",		1, 0x08, 0, 1, dip_on_off     },
+
+	// DIP B
+	{ "難度",		1, 0x07, 0, 7, dip_difficulty },
+	{ "對戰模式",	1, 0xc0, 0, 3, {"1局","3局","5局","7局"} },
+
+	// DIP C
+	{ "鎖定",		1, 0x08, 0, 1, dip_on_off     },
+	{ "翻轉屏幕",	1, 0x10, 0, 1, dip_on_off     },
+	{ "演示聲音",	1, 0x20, 0, 1, dip_on_off     },
+	{ "遊戲模式",	1, 0x80, 0, 1, dip_game_mode  },
+#else
 	// DIP A
 	{ "Coinage",       1, 0x07, 0, 7, dip_coin1      },
 	{ "Coin Slots",    1, 0x08, 0, 1, dip_on_off     },
@@ -2980,7 +4232,7 @@ static dipswitch_t dipswitch_pnickj[] =
 	{ "Flip Screen",   1, 0x10, 0, 1, dip_on_off     },
 	{ "Demo Sounds",   1, 0x20, 0, 1, dip_on_off     },
 	{ "Game Mode",     1, 0x80, 0, 1, dip_game_mode  },
-
+#endif
 	MENU_BLANK,
 	MENU_RETURN,
 	MENU_END,

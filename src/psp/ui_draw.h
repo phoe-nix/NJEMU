@@ -2,7 +2,7 @@
 
 	ui_draw.c
 
-	PSP 儐乕僓僀儞僞僼僃乕僗昤夋娭悢
+	PSP ユーザインタフェース描画関数
 
 ******************************************************************************/
 
@@ -93,34 +93,34 @@ enum
 
 
 /*------------------------------------------------------
-	僥乕僽儖摍
+	テーブル等
 ------------------------------------------------------*/
 
-// 儐乕僓僀儞僞僼僃乕僗僇儔乕僨乕僞
+// ユーザインタフェースカラーデータ
 extern UI_PALETTE ui_palette[UI_PAL_MAX];
 
-// 僎乕儉夋柺梡僗儌乕儖僼僅儞僩
+// ゲーム画面用スモールフォント
 extern const UINT8 font_s[];
 
-// 僟僀傾儘僌摍偺塭僨乕僞
+// ダイアログ等の影データ
 extern const UINT8 shadow[9][8][4];
 
-// Shift JIS 僼僅儞僩僥乕僽儖
+// Shift JIS フォントテーブル
 extern const UINT16 sjis_table[];
 
 
 /*------------------------------------------------------
-	儐乕僓僀儞僞僼僃乕僗弶婜壔
+	ユーザインタフェース初期化
 ------------------------------------------------------*/
 
 void ui_init(void);
 
 
 /*------------------------------------------------------
-	僼僅儞僩娗棟
+	フォント管理
 ------------------------------------------------------*/
 
-// 僾儘億乕僔儑僫儖僼僅儞僩
+// プロポーショナルフォント
 int graphic_font_get_gryph(struct font_t *font, UINT16 code);
 int graphic_font_get_pitch(UINT16 code);
 
@@ -133,15 +133,15 @@ int jpn_h14p_get_pitch(UINT16 code);
 int jpn_z14p_get_gryph(struct font_t *font, UINT16 code);
 int jpn_z14p_get_pitch(UINT16 code);
 
-// 傾僀僐儞(彫)
+// アイコン(小)
 int icon_s_get_gryph(struct font_t *font, UINT16 code);
 int icon_s_get_light(struct font_t *font, UINT16 code);
 
-// 傾僀僐儞(戝)
+// アイコン(大)
 int icon_l_get_gryph(struct font_t *font, UINT16 code);
 int icon_l_get_light(struct font_t *font, UINT16 code);
 
-// 摍暆僼僅儞僩
+// 等幅フォント
 #ifdef COMMAND_LIST
 int command_font_get_gryph(struct font_t *font, UINT16 code);
 int ascii_14_get_gryph(struct font_t *font, UINT16 code);
@@ -152,14 +152,14 @@ int jpn_z14_get_gryph(struct font_t *font, UINT16 code);
 
 
 /*------------------------------------------------------
-	僼僅儞僩昤夋暆庢摼 (儐乕僓僀儞僞僼僃乕僗梡)
+	フォント描画幅取得 (ユーザインタフェース用)
 ------------------------------------------------------*/
 
 int uifont_get_string_width(const char *s);
 
 
 /*------------------------------------------------------
-	僼僅儞僩昤夋 (儐乕僓僀儞僞僼僃乕僗梡)
+	フォント描画 (ユーザインタフェース用)
 ------------------------------------------------------*/
 
 void uifont_print(int sx, int sy, int r, int g, int b, const char *s);
@@ -169,7 +169,7 @@ void uifont_print_shadow_center(int sy, int r, int g, int b, const char *s);
 
 
 /*------------------------------------------------------
-	僼僅儞僩昤夋 (僥僉僗僩昞帵梡)
+	フォント描画 (テキスト表示用)
 ------------------------------------------------------*/
 
 #ifdef COMMAND_LIST
@@ -178,7 +178,7 @@ void textfont_print(int sx, int sy, int r, int g, int b, const char *s, int flag
 
 
 /*------------------------------------------------------
-	傾僀僐儞昤夋 (儐乕僓僀儞僞僼僃乕僗梡)
+	アイコン描画 (ユーザインタフェース用)
 ------------------------------------------------------*/
 
 void small_icon(int sx, int sy, int r, int g, int b, int no);
@@ -193,14 +193,14 @@ int ui_light_update(void);
 
 
 /*------------------------------------------------------
-	儃儕儏乕儉昤夋 (CFW 3.52埲崀偺儐乕僓乕儌乕僪偺傒)
+	ボリューム描画 (CFW 3.52以降のユーザーモードのみ)
 ------------------------------------------------------*/
 
 void draw_volume(int volume);
 
 
 /*------------------------------------------------------
-	僼僅儞僩昤夋 (僎乕儉夋柺梡)
+	フォント描画 (ゲーム画面用)
 ------------------------------------------------------*/
 
 void small_font_print(int sx, int sy, const char *s, int bg);
@@ -210,7 +210,7 @@ void debug_font_printf(void *frame, int x, int y, const char *text, ...);
 
 
 /*------------------------------------------------------
-	恾宍昤夋 (儐乕僓僀儞僞僼僃乕僗梡)
+	図形描画 (ユーザインタフェース用)
 ------------------------------------------------------*/
 
 void hline(int sx, int ex, int y, int r, int g, int b);
@@ -231,7 +231,7 @@ void draw_bar_shadow(void);
 void draw_box_shadow(int sx, int sy, int ex, int ey);
 
 /*------------------------------------------------------
-	儐乕僓僀儞僞僼僃乕僗怓愝掕
+	ユーザインタフェース色設定
 ------------------------------------------------------*/
 
 #if PSP_VIDEO_32BPP
@@ -240,7 +240,7 @@ void set_ui_color(UI_PALETTE *pal, int r, int g, int b);
 #endif
 
 /*------------------------------------------------------
-	儘僑昤夋
+	ロゴ描画
 ------------------------------------------------------*/
 
 void logo(int sx, int sy, int r, int g, int b);

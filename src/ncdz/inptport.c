@@ -258,7 +258,13 @@ void update_inputport(void)
 		setup_autofire();
 		buttons = poll_gamepad();
 	}
-
+/*
+	else if ((buttons & PSP_CTRL_RTRIGGER) && (buttons & PSP_CTRL_SELECT))
+	{
+		commandlist(1);
+		buttons = poll_gamepad();
+	}
+*/
 	buttons = update_autofire(buttons);
 
 	for (i = 0; i < MAX_INPUTS; i++)

@@ -91,7 +91,7 @@ static cfg_type default_options[] =
 
 #if PSP_VIDEO_32BPP
 	{ CFG_NONE,	"[Color Settings]", },
-	{ CFG_INT,	"BGImageType",			&bgimage_type,					  0,   3 },
+	{ CFG_INT,	"BGImageType",			&bgimage_type,					  3,   3 },
 	{ CFG_INT,	"BGImageBlightness",	&bgimage_blightness,			 50, 100 },
 	{ CFG_INT,	"TitleFontR",			&ui_palette[UI_PAL_TITLE].r,	255, 255 },
 	{ CFG_INT,	"TitleFontG",			&ui_palette[UI_PAL_TITLE].g,	255, 255 },

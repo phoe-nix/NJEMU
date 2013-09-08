@@ -101,6 +101,7 @@ struct driver_t CPS1_driver[] =
 	{"ffightub",CPS_B_05, 0,                    GFX_FFIGHT   },
 	{"ffightj", CPS_B_04, 0,                    GFX_FFIGHT   },
 	{"ffightj1",CPS_B_02, 0,                    GFX_FFIGHT   },
+	{"ffightj2",CPS_B_02, 0,                    GFX_FFIGHT   },
 #if !RELEASE
 	{"ffightb", CPS_B_01, 0,                    GFX_FFIGHT   },
 #endif
@@ -227,8 +228,9 @@ struct driver_t CPS1_driver[] =
 	{"wofhgz",  QSOUND_1, 0,                    GFX_WOF      },
 	{"wofdyg",  QSOUND_1, 0,                    GFX_WOF      },
 	{"wofyxg",  QSOUND_1, 0,                    GFX_WOF      },
-	{"wofzhy",  QSOUND_1, 0,                    GFX_WOF      },
-	{"wofmr",   QSOUND_1, 0,                    GFX_WOF      },
+	{"wofhfh",  NOBATTRY, 0,                    GFX_WOF      },
+	{"wofchs",  NOBATTRY, 0,                    GFX_WOF      },
+	{"wofjboss",QSOUND_1, 0,                    GFX_WOF      },
 #endif
 	{"dino",    QSOUND_2, 0,                    GFX_DINO     },
 	{"dinou",   QSOUND_2, 0,                    GFX_DINO     },
@@ -238,7 +240,7 @@ struct driver_t CPS1_driver[] =
 	{"dinoh",   NOBATTRY, 0,                    GFX_DINO     },
 	{"dinoha",  NOBATTRY, 0,                    GFX_DINO     },
 	{"dinohb",  QSOUND_2, 0,                    GFX_DINO     },
-	{"dinoz",   QSOUND_2, 0,                    GFX_DINO     },
+	{"dinohunt",NOBATTRY, 0,                    GFX_DINO     },
 #endif
 	{"punisher",QSOUND_3, 0,                    GFX_PUNISHER },
 	{"punishru",QSOUND_3, 0,                    GFX_PUNISHER },

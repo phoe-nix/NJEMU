@@ -8,18 +8,28 @@
 # Configuration
 #------------------------------------------------------------------------------
 
-BUILD_CPS1PSP = 1
+#BUILD_CPS1PSP = 1
 #BUILD_CPS2PSP = 1
-#BUILD_MVSPSP = 1
+BUILD_MVSPSP = 1
 #BUILD_NCDZPSP = 1
 
-PSP_SLIM = 1
+#PSP_SLIM = 1
 #KERNEL_MODE = 1
 COMMAND_LIST = 1
 ADHOC = 1
 SAVE_STATE = 1
-UI_32BPP = 1
+#UI_32BPP = 1
 #RELEASE = 1
+
+#------------------------------------------------------------------------------
+# Dip switch translation/Dip 开关翻译 简体中文=CHINESE_SIMPLIFIED
+#------------------------------------------------------------------------------
+DIPSW_CHINESE_SIMPLIFIED = 1
+#DIPSW_CHINESE_TRADITIONAL = 1
+
+#------------------------------------------------------------------------------
+# Version
+#------------------------------------------------------------------------------
 
 VERSION_MAJOR = 2
 VERSION_MINOR = 3
@@ -69,7 +79,37 @@ else
 VERSION_STR = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_BUILD)
 endif
 
-EXTRA_TARGETS = maketree EBOOT.PBP delelf
+ifdef BUILD_CPS1PSP
+ifdef PSP_SLIM
+EXTRA_TARGETS = maketree SLIM/CPS1/EBOOT.PBP delelf
+else
+EXTRA_TARGETS = maketree 3XX/CPS1/EBOOT.PBP delelf
+endif
+endif
+
+ifdef BUILD_CPS2PSP
+ifdef PSP_SLIM
+EXTRA_TARGETS = maketree SLIM/CPS2/EBOOT.PBP delelf
+else
+EXTRA_TARGETS = maketree 3XX/CPS2/EBOOT.PBP delelf
+endif
+endif
+
+ifdef BUILD_MVSPSP
+ifdef PSP_SLIM
+EXTRA_TARGETS = maketree SLIM/MVS/EBOOT.PBP delelf
+else
+EXTRA_TARGETS = maketree 3XX/MVS/EBOOT.PBP delelf
+endif
+endif
+
+ifdef BUILD_NCDZPSP
+ifdef PSP_SLIM
+EXTRA_TARGETS = maketree SLIM/NCDZ/EBOOT.PBP delelf
+else
+EXTRA_TARGETS = maketree 3XX/NCDZ/EBOOT.PBP delelf
+endif
+endif
 
 #------------------------------------------------------------------------------
 # Utilities
@@ -266,6 +306,17 @@ else
 CDEFS += -DRELEASE=0
 endif
 
+ifdef DIPSW_CHINESE_SIMPLIFIED
+CDEFS += -DDIPSW_CHINESE_SIMPLIFIED=1
+else
+CDEFS += -DDIPSW_CHINESE_SIMPLIFIED=0
+endif
+
+ifdef DIPSW_CHINESE_TRADITIONAL
+CDEFS += -DDIPSW_CHINESE_TRADITIONAL=1
+else
+CDEFS += -DDIPSW_CHINESE_TRADITIONAL=0
+endif
 
 #------------------------------------------------------------------------------
 # Linker Flags

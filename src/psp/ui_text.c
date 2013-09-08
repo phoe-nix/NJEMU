@@ -121,9 +121,9 @@ static const char *text[4][UI_TEXT_MAX] =
 		"480x270 (16:9)",
 		"Rotate Screen",
 #else
+		"348x224 (14:9)",
+		"398x224 (16:9)",
 		"360x270 (4:3)",
-		"362x272 (4:3)",
-		"368x272 (1.35:1)",
 		"420x270 (14:9)",
 		"480x270 (16:9)",
 #endif
@@ -315,6 +315,7 @@ static const char *text[4][UI_TEXT_MAX] =
 		"Button Layout",
 		"Type 1 (NEOGEO PAD)",
 		"Type 2 (MVS)",
+		"Type 3 (PlayStation)",
 		"User Define",
 #endif
 
@@ -560,10 +561,11 @@ static const char *text[4][UI_TEXT_MAX] =
 		"Checking game ID...\n",
 #endif
 		"Cheat menu",
+		"Cheat",
 		"Select cheat",
-
+/*
 		"Memory free",
-		"Mem free",
+		"Mem free",*/
 		NULL
 	},
 	{
@@ -673,9 +675,9 @@ static const char *text[4][UI_TEXT_MAX] =
 		"480x270 (16:9)",
 		"画面を回転",
 #else
+		"348x224 (14:9)",
+		"398x224 (16:9)",
 		"360x270 (4:3)",
-		"362x272 (4:3)",
-		"368x272 (1.35:1)",
 		"420x270 (14:9)",
 		"480x270 (16:9)",
 #endif
@@ -867,6 +869,7 @@ static const char *text[4][UI_TEXT_MAX] =
 		"ボタン配置",
 		"タイプ1 (NEO·GEOパッド)",
 		"タイプ2 (MVS)",
+		"タイプ3 (PlayStation)",
 		"ユーザ定義",
 #endif
 
@@ -1112,10 +1115,11 @@ static const char *text[4][UI_TEXT_MAX] =
 		"ゲームIDをチェック中...\n",
 #endif
 		"チートメニュー",
+		"チート",
 		"チートを選択します。",
-
+/*
 		"メモリ解放",
-		"メモリ解放設定を変更します。",
+		"メモリ解放設定を変更します。",*/
 		NULL
 	},
 	{
@@ -1225,9 +1229,9 @@ static const char *text[4][UI_TEXT_MAX] =
 		"480x270 (16:9)",
 		"画面旋转",
 #else
+		"348x224 (14:9)",
+		"398x224 (16:9)",
 		"360x270 (4:3)",
-		"362x272 (4:3)",
-		"368x272 (1.35:1)",
 		"420x270 (14:9)",
 		"480x270 (16:9)",
 #endif
@@ -1342,12 +1346,12 @@ static const char *text[4][UI_TEXT_MAX] =
 		"Select",
 #else
 		"投币",
-		"服务投币",
+		"调试投币",
 #endif
 #if (EMU_SYSTEM == MVS)
 		"测试开关",
 #elif (EMU_SYSTEM != NCDZ)
-		"服务开关",
+		"调试开关",
 #endif
 #if (EMU_SYSTEM == MVS || EMU_SYSTEM == NCDZ)
 		"连发A",
@@ -1419,6 +1423,7 @@ static const char *text[4][UI_TEXT_MAX] =
 		"按键模式",
 		"类型1 (NEOGEO按键)",
 		"类型2 (街机)",
+		"类型3 (PlayStation)",
 		"自定",
 #endif
 
@@ -1664,10 +1669,11 @@ static const char *text[4][UI_TEXT_MAX] =
 		"正在检查游戏ID\n",
 #endif
 		"金手指菜单",
+		"金手指",
 		"选择金手指代码",
-
+/*
 		"内存释放",
-		"更改内存释放的设置",
+		"更改内存释放的设置",*/
 		NULL
 	},
 	{
@@ -1777,9 +1783,9 @@ static const char *text[4][UI_TEXT_MAX] =
 		"480x270 (16:9)",
 		"畫面旋轉",
 #else
+		"348x224 (14:9)",
+		"398x224 (16:9)",
 		"360x270 (4:3)",
-		"362x272 (4:3)",
-		"368x272 (1.35:1)",
 		"420x270 (14:9)",
 		"480x270 (16:9)",
 #endif
@@ -1894,12 +1900,12 @@ static const char *text[4][UI_TEXT_MAX] =
 		"Select",
 #else
 		"投幣",
-		"服務投幣",
+		"調試投幣",
 #endif
 #if (EMU_SYSTEM == MVS)
 		"測試開關",
 #elif (EMU_SYSTEM != NCDZ)
-		"服務開關",
+		"調試開關",
 #endif
 #if (EMU_SYSTEM == MVS || EMU_SYSTEM == NCDZ)
 		"連發A",
@@ -1971,6 +1977,7 @@ static const char *text[4][UI_TEXT_MAX] =
 		"按鍵模式",
 		"類型1 (NEOGEO按鍵)",
 		"類型2 (街機)",
+		"類型3 (PlayStation)",
 		"自定",
 #endif
 
@@ -2216,10 +2223,11 @@ static const char *text[4][UI_TEXT_MAX] =
 		"正在檢查遊戲ID\n",
 #endif
 		"金手指菜單",
+		"金手指",
 		"選擇金手指代碼",
-
+/*
 		"內存釋放",
-		"更改內存釋放的設置",
+		"更改內存釋放的設置",*/
 		NULL
 	}
 };

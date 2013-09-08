@@ -697,7 +697,7 @@ static cfg_type gamecfg_pzloop2[] =
 	case INPTYPE_dynwar:
 	case INPTYPE_ffight:	// button 3 (cheat)
 	case INPTYPE_mtwins:
-	case INPTYPE_3wonders:
+//	case INPTYPE_3wonders:
 	case INPTYPE_pnickj:
 	case INPTYPE_pang3:
 	case INPTYPE_megaman:
@@ -705,6 +705,10 @@ static cfg_type gamecfg_pzloop2[] =
 	case INPTYPE_slammast:
 #if !RELEASE
 	case INPTYPE_knightsh:
+	case INPTYPE_wofh:
+	case INPTYPE_wof3js:
+	case INPTYPE_wofsj:
+	case INPTYPE_dinoh:
 #endif
 		gamecfg = gamecfg_3buttons;
 		break;

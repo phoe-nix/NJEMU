@@ -612,6 +612,79 @@ int kof2003_decrypt_68k(void)
 	return 0;
 }
 
+// Thanks to IQ_132 for the info
+int kof2003h_decrypt_68k(void)
+{
+	const UINT8 xor1[0x20] =
+	{
+		0xc2, 0x4b, 0x74, 0xfd, 0x0b, 0x34, 0xeb, 0xd7,
+		0x10, 0x6d, 0xf9, 0xce, 0x5d, 0xd5, 0x61, 0x29,
+		0xf5, 0xbe, 0x0d, 0x82, 0x72, 0x45, 0x0f, 0x24,
+		0xb3, 0x34, 0x1b, 0x99, 0xea, 0x09, 0xf3, 0x03
+	};
+	const UINT8 xor2[0x20] =
+	{
+		0x2b, 0x09, 0xd0, 0x7f, 0x51, 0x0b, 0x10, 0x4c,
+		0x5b, 0x07, 0x70, 0x9d, 0x3e, 0x0b, 0xb0, 0xb6,
+		0x54, 0x09, 0xe0, 0xcc, 0x3d, 0x0d, 0x80, 0x99,
+		0x87, 0x03, 0x90, 0x82, 0xfe, 0x04, 0x20, 0x18
+	};
+
+	UINT32 i, offset;
+	UINT8 *rom = memory_region_cpu1;
+#ifdef PSP_SLIM
+	UINT8 *buf = (UINT8 *)psp2k_mem_offset;
+#else
+	UINT8 *buf = (UINT8 *)malloc(0x800000);
+#endif
+
+	if (buf)
+	{
+		for (i = 0; i < 0x100000; i++)
+		{
+			rom[0x800000 + i] ^= rom[0x100002 | i];
+		}
+		for (i = 0; i < 0x100000; i++)
+		{
+			rom[i] ^= xor1[i & 0x1f];
+		}
+		for (i = 0x100000; i < 0x800000; i++)
+		{
+			rom[i] ^= xor2[i & 0x1f];
+		}
+
+		for (i = 0x100000; i < 0x800000; i += 4)
+		{
+			UINT16 rom16;
+
+			rom16 = rom[i + 1] | (rom[i + 2] << 8);
+			rom16 = BITSWAP16(rom16,15,14,13,12,5,4,7,6,9,8,11,10,3,2,1,0);
+			rom[i + 1] = rom16 & 0xff;
+			rom[i + 2] = rom16 >> 8;
+		}
+
+		for (i = 0; i < 0x10; i++)
+		{
+			offset = (i & 0xf0) + BITSWAP8((i & 0x0f),7,6,5,4,0,1,2,3);
+			memcpy(&buf[i << 16], &rom[offset << 16], 0x10000);
+		}
+		memcpy(rom, buf, 0x100000);
+
+		for (i = 0x100000; i < 0x900000; i += 0x100)
+		{
+			offset = (i & 0xf000ff) + ((i & 0x000f00) ^ 0x00400) + (BITSWAP8(((i & 0x0ff000) >> 12),4,5,6,7,1,0,3,2) << 12);
+			memcpy(&buf[i - 0x100000], &rom[offset], 0x100);
+		}
+		memcpy(&rom[0x100000], &buf[0x700000], 0x100000);
+		memcpy(&rom[0x200000], &buf[0x000000], 0x700000);
+#ifndef PSP_SLIM
+		free(buf);
+#endif
+		return 1;
+	}
+	return 0;
+}
+
 
 int kof2003biosdecode(void)
 {
@@ -1356,7 +1429,7 @@ int kf2k4pls_px_decrypt(void)
 }
 
 /*-----------------------------------------------------
-	偁傜偐偠傔暅崋張棟傪峴偆昁梫偑柍偄傕偺
+	あらかじめ復号処理を行う必要が無いもの
 -----------------------------------------------------*/
 
 void cthd2003_sx_decrypt(void)
@@ -1474,7 +1547,7 @@ void matrimbl_mx_decrypt(void)
 }
 
 /*-----------------------------------------------------
-	僷僢僠
+	パッチ
 -----------------------------------------------------*/
 
 void patch_cthd2003(void)

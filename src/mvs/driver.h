@@ -2,7 +2,7 @@
 
 	driver.c
 
-	MVS ƒhƒ‰ƒCƒo
+	MVS ¥É¥é¥¤¥Ð
 
 ******************************************************************************/
 
@@ -45,7 +45,7 @@
 #define NGH_superspy	0x0011		// 0011 (c) 1990 SNK
 // 0012
 // 0013
-#define NGH_mutnat		0x00014		// 0014 (c) 1992 SNK
+#define NGH_mutnat		0x0014		// 0014 (c) 1992 SNK
 // 0015
 #define NGH_kotm		0x0016		// 0016 (c) 1991 SNK
 #define NGH_sengoku		0x0017		// 0017 (c) 1991 SNK
@@ -129,7 +129,7 @@
 #define NGH_rbff1		0x0095		// 0095 (c) 1995 SNK
 #define NGH_aof3		0x0096		// 0096 (c) 1996 SNK
 #define NGH_sonicwi3	0x0097		// 0097 (c) 1995 Video System Co.
-// 0098 Idol Mahjong - final romance 2 (CD only? not confirmed, MVS might exist)
+#define NGH_fr2ch		0x0098		// 0098 Idol Mahjong - final romance 2 (CD only? not confirmed, MVS might exist)
 // 0099 Neo Pool Masters
 #define NGH_turfmast	0x0200		// 0200 (c) 1996 Nazca
 #define NGH_mslug		0x0201		// 0201 (c) 1996 Nazca
@@ -151,7 +151,7 @@
 #define NGH_ninjamas	0x0217		// 0217 (c) 1996 ADK / SNK
 #define NGH_ragnagrd	0x0218		// 0218 (c) 1996 Saurus
 #define NGH_pgoal		0x0219		// 0219 (c) 1996 Saurus
-// 0220 Choutetsu Brikin'ger - iron clad (MVS existance seems to have been confirmed)
+#define NGH_ironclad	0x0220		// 0220 Choutetsu Brikin'ger - iron clad (MVS existance seems to have been confirmed)
 #define NGH_magdrop2	0x0221		// 0221 (c) 1996 Data East Corporation
 #define NGH_samsho4		0x0222		// 0222 (c) 1996 SNK
 #define NGH_rbffspec	0x0223		// 0223 (c) 1996 SNK
@@ -242,7 +242,7 @@ enum
 	INIT_kof2003,		// 19
 	INIT_samsh5sp,		// 20
 
-	// SNKˆÈŠO
+	// SNKÒÔÍâ
 	INIT_nitd,			// 21
 	INIT_s1945p,		// 22
 	INIT_pnyaa,			// 23
@@ -304,7 +304,6 @@ enum
 	// MAME 0.113 - 0.119
 	INIT_ct2k3sa,		// 69
 #endif
-
 	MAX_INIT
 };
 
@@ -450,7 +449,10 @@ int mslug5_decrypt_68k(void);
 int svcchaos_px_decrypt(void);
 int kf2k3pcb_decrypt_68k(void);
 int kof2003_decrypt_68k(void);
+int kof2003h_decrypt_68k(void);
 int kof2003biosdecode(void);
+
+void neogeo_cmc50_m1_decrypt(void);
 
 #if !RELEASE
 int kog_px_decrypt(void);

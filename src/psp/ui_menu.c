@@ -15,8 +15,8 @@
 /*------------------------------------------------------
 	DAVEX: VARIABLES GLOBALES DE CHEATS
 ------------------------------------------------------*/
-int gnum_cheats = 0;
-cheat_st* gcheat_game[MAX_CHEATS];
+int cheat_num = 0;
+gamecheat_t* gamecheat[MAX_CHEATS];
 
 
 /*------------------------------------------------------
@@ -29,6 +29,7 @@ static int menu_reset(void)
 	{
 		video_clear_screen();
 		video_flip_screen(1);
+		cheat_num = 0; 			//disable cheat
 		Loop = LOOP_RESET;
 		Sleep = 0;
 		return 1;
@@ -40,6 +41,21 @@ static int menu_reset(void)
 /*------------------------------------------------------
 	¥¨¥ß¥å¥ì©`¥·¥ç¥óÔÙÆð„Ó
 ------------------------------------------------------*/
+#if (EMU_SYSTEM != CPS2 && EMU_SYSTEM != NCDZ)
+static int menu_resetdip(void)
+{
+	if (messagebox(MB_RESTARTEMULATION))
+	{
+		video_clear_screen();
+		video_flip_screen(1);
+		cheat_num = 0; 			//disable cheat
+		Loop = LOOP_RESET;		//dip no need to restart
+//		Loop = LOOP_RESTART;
+		Sleep = 0;
+	}
+	return 1;
+}
+#endif
 
 static int menu_restart(void)
 {
@@ -47,6 +63,7 @@ static int menu_restart(void)
 	{
 		video_clear_screen();
 		video_flip_screen(1);
+		cheat_num = 0; 			//disable cheat
 		Loop = LOOP_RESTART;
 		Sleep = 0;
 	}
@@ -62,7 +79,7 @@ static int menu_browser(void)
 {
 	if (messagebox(MB_RETURNTOFILEBROWSER))
 	{
-	gnum_cheats = 0; 
+	cheat_num = 0;  			//disable cheat
 	Loop = LOOP_BROWSER;
 	Sleep = 0;
 	return 1;
@@ -109,7 +126,6 @@ static int menu_cmdlist(void)
 #define GAMECFG_MAX_ITEMS	32
 #define CHEATCFG_MAX_ITEMS	MAX_CHEATS //davex cheats
 
-
 typedef struct {
 	const char *label;
 	int *value;
@@ -118,7 +134,7 @@ typedef struct {
 	int old_value;
 	int value_max;
 	const char *values_label[MAX_CHEAT_OPTION];
-} cheat_gamecfg_t;
+} cheatcfg_t;
 
 typedef struct {
 	const char *label;
@@ -378,18 +394,18 @@ static int menu_gamecfg(void)
 	return 0;
 }
 
+/*------------------------------------------------------
+	CHEAT OPTIONS DAVEX
+------------------------------------------------------*/
 
-//>>>>>>>>>>>>>>>>>>>>>>CHEAT OPTIONS DAVEX///////////////////////////////////
 
-
-
-int add_new_cheat(int type, char *cheat_name, cheat_st** new_cheat){
-    cheat_st *cheat;
+int add_new_cheat(int type, char *cheat_name, gamecheat_t** new_cheat){
+    gamecheat_t *cheat;
     int i;
 
-		if( gnum_cheats >= MAX_CHEATS){ *(new_cheat) = NULL; return -1; }
+		if( cheat_num >= MAX_CHEATS){ *(new_cheat) = NULL; return -1; }
 
-    cheat = (cheat_st *) malloc( sizeof(cheat_st) );
+    cheat = (gamecheat_t *) malloc( sizeof(gamecheat_t) );
 		if( cheat == NULL) return -1;
 
 	//Se reserva la memoria dinamica del nombre del cheat
@@ -409,21 +425,19 @@ int add_new_cheat(int type, char *cheat_name, cheat_st** new_cheat){
 		cheat->cheat_option[i] = NULL;
 	
     //Se agrega el cheat al arreglo de cheats
-    gcheat_game[gnum_cheats++] = cheat;
+    gamecheat[cheat_num++] = cheat;
 
 	*(new_cheat) = cheat; //se regresa la referencia para agregar los addres_value
 	return 0;
 
 }
 
-
 const char *DISABLED_LABEL = "Disabled";
 const char *ENABLED_LABEL = "Enabled";
 
-
-int add_new_cheat_option(char *label, cheat_st* cheat,cheat_option_st** new_cheat_option){
+int add_new_cheat_option(char *label, gamecheat_t* cheat,cheat_option_t** new_cheat_option){
 	int i;
-	cheat_option_st *cheat_option;
+	cheat_option_t *cheat_option;
 	
 	//Se verifican indices
 	//if( cheat->num_cheat_options >= MAX_CHEAT_OPTION  ) return -1;
@@ -431,7 +445,7 @@ int add_new_cheat_option(char *label, cheat_st* cheat,cheat_option_st** new_chea
 	if( cheat->num_cheat_options >= MAX_CHEAT_OPTION  ){ *(new_cheat_option) = NULL;  return -1; }
 		
 	
-	cheat_option = (cheat_option_st*) malloc( sizeof(cheat_option_st) );
+	cheat_option = (cheat_option_t*) malloc( sizeof(cheat_option_t) );
 	if( cheat_option == NULL)
 		return -10;
 		
@@ -453,8 +467,6 @@ int add_new_cheat_option(char *label, cheat_st* cheat,cheat_option_st** new_chea
 		
 	}
 
-  
-
 	//se inicializan los cheat_values
 	cheat_option->num_cheat_values = 0;
 	for(i = 0; i< MAX_CHEAT_VALUE; i++){
@@ -467,15 +479,15 @@ int add_new_cheat_option(char *label, cheat_st* cheat,cheat_option_st** new_chea
 	return 0;
 }
 
-int add_new_cheat_value(int cpu, int address, int value, cheat_option_st *cheat_option){
+int add_new_cheat_value(int cpu, int address, int value, cheat_option_t *cheat_option){
 	
-	cheat_value_st *cheat_value;
+	cheat_value_t *cheat_value;
 	
 	if( cheat_option == NULL) return -200;
 	if( cheat_option->num_cheat_values >= MAX_CHEAT_VALUE) return -201;	
 	
 
-	cheat_value = (cheat_value_st *) malloc( sizeof(cheat_value_st) );
+	cheat_value = (cheat_value_t *) malloc( sizeof(cheat_value_t) );
 	if( cheat_value == NULL)
 		return -100;
 
@@ -489,12 +501,12 @@ int add_new_cheat_value(int cpu, int address, int value, cheat_option_st *cheat_
 
 int cheat_clear(void){
 
-  cheat_st *a_cheat = NULL;
-	cheat_option_st *a_cheat_option = NULL;
-	cheat_value_st *a_cheat_value = NULL;
+  gamecheat_t *a_cheat = NULL;
+	cheat_option_t *a_cheat_option = NULL;
+	cheat_value_t *a_cheat_value = NULL;
 	int c,i,j;
-    for( c = 0; c < gnum_cheats; c++){ //arreglo de cheats
-        a_cheat = gcheat_game[c];
+    for( c = 0; c < cheat_num; c++){ //arreglo de cheats
+        a_cheat = gamecheat[c];
         free( a_cheat->cheat_name); //etiqueta del cheat
         
 
@@ -518,7 +530,7 @@ int cheat_clear(void){
         free( a_cheat);
     }
 
-    gnum_cheats = 0; //se pone el numero de cheats a 0 
+    cheat_num = 0; //se pone el numero de cheats a 0 
     
     return 0;
 }
@@ -529,11 +541,11 @@ int axtoi(char *str_num){
   return n;
 }
 
-int parse_cheat_option_line(char *line, cheat_st* cheat ){
+int parse_cheat_option_line(char *line, gamecheat_t* cheat ){
 
     //se analiza una linea de tipo 
     //1 "Blanka - Rolling Attack", 0, 0xFF8456, 0x06, 0, 0xFF8458, 0x06
-    cheat_option_st* new_cheat_option = NULL;
+    cheat_option_t* new_cheat_option = NULL;
     char buff[512] = {0};
     char *ptrTok = NULL;
     char *tmpPtr = NULL;
@@ -646,7 +658,7 @@ void cheats_load(void){
 		char* buff_ptr = NULL;
     
     //Si ya hay elementos, no agregar mas a la funcion
-		if( gnum_cheats > 0) return; 
+		if( cheat_num > 0) return; 
 		
 		sprintf(fn, "%scheats/%s.ini", launchDir, game_name);
 		
@@ -698,14 +710,14 @@ void cheats_load_file(char *fn){
 	  
     int cheat_detected = 0;
     char buff[ MAX_BUFF];
-    cheat_st* new_cheat = NULL;
+    gamecheat_t* new_cheat = NULL;
 		FILE *fp;
 		char * ptr_tmp = NULL;
     char clean_label[50];
     int i;
     
     //Si ya hay elementos, no agregar mas a la funcion
-		if( gnum_cheats > 0) return; 
+		if( cheat_num > 0) return; 
 		
 		
     fp = fopen(fn, "r");
@@ -781,48 +793,43 @@ int get_free_memory()
  
 	return total_mem;
 }
-
-
-
-
-
-//<<<<<<<<<<<<<<<<<<<CHEAT OPTIONS DAVEX///////////////////////////////////
-
+/*------------------------------------------------------
+	CHEAT OPTIONSDAVEX
+------------------------------------------------------*/
 //menu que se llena a partir de los cheatgame
 //static int menu_gamecfg_davex(void)
-int menu_gamecfg_davex(void)
+int menu_cheatcfg(void)
 {
 
-	
 	int sel = 0, rows = 13, top = 0;
 	int i, arrowl, arrowr, prev_sel, update = 1;
-	cheat_gamecfg_t gamecfg[CHEATCFG_MAX_ITEMS];
-	int gamecfg_num;
+	cheatcfg_t cheatcfg[CHEATCFG_MAX_ITEMS];
+	int cheatcfg_num;
 	int c;
 	
-	cheat_st *a_cheat = NULL;
-	cheat_option_st *a_cheat_option = NULL;
+	gamecheat_t *a_cheat = NULL;
+	cheat_option_t *a_cheat_option = NULL;
 	
 	
 	//Advertencia:limite de menus a GAMECFG_MAX_ITEMS
 	for (i = 0; i < CHEATCFG_MAX_ITEMS; i++)
-		gamecfg[i].enable = 1;
+		cheatcfg[i].enable = 1;
 		
 	//Inicializar los cheats	
 	cheats_load();
 	
 	
-	for( c = 0; c < gnum_cheats; c++){
-			a_cheat = gcheat_game[c];
+	for( c = 0; c < cheat_num; c++){
+			a_cheat = gamecheat[c];
 			
       if( a_cheat->cheat_name == NULL)
       	return 0;
       else
-				gamecfg[c].label     = (const char*)a_cheat->cheat_name;
+				cheatcfg[c].label     = (const char*)a_cheat->cheat_name;
 				
-			gamecfg[c].value     = &(a_cheat->curr_option);
-			gamecfg[c].flag      = CFG_CONTINUE;
-			gamecfg[c].value_max = (int) (a_cheat->num_cheat_options - 1);
+			cheatcfg[c].value     = &(a_cheat->curr_option);
+			cheatcfg[c].flag      = CFG_CONTINUE;
+			cheatcfg[c].value_max = (int) (a_cheat->num_cheat_options - 1);
 
 			
 			
@@ -834,26 +841,26 @@ int menu_gamecfg_davex(void)
 				if(a_cheat_option->label == NULL)
 					return 0;
 				else
-					gamecfg[c].values_label[z] = a_cheat_option->label;
+					cheatcfg[c].values_label[z] = a_cheat_option->label;
 				
 			}
 			
 			
-			if (gamecfg[c].value){
-				if (*gamecfg[c].value < 0) *gamecfg[c].value = 0;
-				if (*gamecfg[c].value > gamecfg[c].value_max)*gamecfg[c].value = gamecfg[c].value_max;
+			if (cheatcfg[c].value){
+				if (*cheatcfg[c].value < 0) *cheatcfg[c].value = 0;
+				if (*cheatcfg[c].value > cheatcfg[c].value_max)*cheatcfg[c].value = cheatcfg[c].value_max;
 					
-				gamecfg[c].old_value = *gamecfg[c].value;
+				cheatcfg[c].old_value = *cheatcfg[c].value;
 			}
 	}
-	gamecfg_num = gnum_cheats;
+	cheatcfg_num = cheat_num;
 	
-	if( gnum_cheats <= 0)
+	if( cheat_num <= 0)
 		return 0;
 
 	
 	pad_wait_clear();
-	load_background(WP_GAMECFG);
+	load_background(WP_DIPSW);
 	ui_popup_reset();
 
 	do
@@ -864,84 +871,86 @@ int menu_gamecfg_davex(void)
 
 			arrowl = 0;
 			arrowr = 0;
-			if (gamecfg[sel].value)
+			if (cheatcfg[sel].value)
 			{
-				int cur = *gamecfg[sel].value;
+				int cur = *cheatcfg[sel].value;
 
 				if (cur > 0) arrowl = 1;
-				if (cur < gamecfg[sel].value_max) arrowr = 1;
+				if (cur < cheatcfg[sel].value_max) arrowr = 1;
 			}
 
-			small_icon_shadow(8, 3, UI_COLOR(UI_PAL_TITLE), ICON_CONFIG);
-			uifont_print_shadow(36, 5, UI_COLOR(UI_PAL_TITLE), TEXT(GAME_CONFIGURATION_MENU));
-			draw_scrollbar(470, 26, 479, 270, rows, gamecfg_num, sel);
+			small_icon_shadow(8, 3, UI_COLOR(UI_PAL_TITLE), ICON_DIPSWITCH);
+			uifont_print_shadow(36, 5, UI_COLOR(UI_PAL_TITLE), TEXT(CHEAT_CONFIGURATION_MENU));
+			draw_scrollbar(470, 26, 479, 270, rows, cheatcfg_num, sel);
 
 			for (i = 0; i < rows; i++)
 			{
-				if (top + i >= gamecfg_num) break;
+				if (top + i >= cheatcfg_num) break;
 
-				if (gamecfg[top + i].label[0] == '\n')
+				if (cheatcfg[top + i].label[0] == '\n')
 					continue;
 
-				if (gamecfg[top + i].enable)
+				if (cheatcfg[top + i].enable)
 				{
 					int inc = 0;
 					if ((top + i) == sel)
 					{
-						uifont_print_shadow(16, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), gamecfg[top + i].label);
+						uifont_print_shadow(16, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), cheatcfg[top + i].label);
 						if (arrowl)
 						{
 							uifont_print_shadow(180 + inc, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
 						}
 					}
 					else
-						uifont_print(16, 40 + i * 17, UI_COLOR(UI_PAL_NORMAL), gamecfg[top + i].label);
+						uifont_print(16, 40 + i * 17, UI_COLOR(UI_PAL_NORMAL), cheatcfg[top + i].label);
 				}
 				else
 				{
 					if ((top + i) == sel)
-						uifont_print_shadow(16, 40 + i * 17, COLOR_GRAY, gamecfg[top + i].label);
+						uifont_print_shadow(16, 40 + i * 17, COLOR_GRAY, cheatcfg[top + i].label);
 					else
-						uifont_print(16, 40 + i * 17, COLOR_DARKGRAY, gamecfg[top + i].label);
+						uifont_print(16, 40 + i * 17, COLOR_DARKGRAY, cheatcfg[top + i].label);
 				}
 
-				if (gamecfg[top + i].value)
+				if (cheatcfg[top + i].value)
 				{
-					int val = *gamecfg[top + i].value;
+					int val = *cheatcfg[top + i].value;
 					int inc = 0;
 
-					if (gamecfg[top + i].enable)
+					if (cheatcfg[top + i].enable)
 					{
 						if ((top + i) == sel)
 						{
-							uifont_print_shadow(200 + inc, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), gamecfg[top + i].values_label[val]);
+							uifont_print_shadow(200 + inc, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), cheatcfg[top + i].values_label[val]);
 							if (arrowr)
 							{
-								int width = uifont_get_string_width(gamecfg[top + i].values_label[val]);
+								int width = uifont_get_string_width(cheatcfg[top + i].values_label[val]);
 								uifont_print_shadow(204 + width + inc, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_RIGHTTRIANGLE);
 							}
 						}
 						else
-							uifont_print(200 + inc, 40 + i * 17, UI_COLOR(UI_PAL_NORMAL), gamecfg[top + i].values_label[val]);
+							uifont_print(200 + inc, 40 + i * 17, UI_COLOR(UI_PAL_NORMAL), cheatcfg[top + i].values_label[val]);
 						
 					}
 					else
 					{
 						if ((top + i) == sel)
-							uifont_print_shadow(200 + inc, 40 + i * 17, COLOR_GRAY, gamecfg[top + i].values_label[val]);
+							uifont_print_shadow(200 + inc, 40 + i * 17, COLOR_GRAY, cheatcfg[top + i].values_label[val]);
 						else
-							uifont_print(200 + inc, 40 + i * 17, COLOR_DARKGRAY, gamecfg[top + i].values_label[val]);
+							uifont_print(200 + inc, 40 + i * 17, COLOR_DARKGRAY, cheatcfg[top + i].values_label[val]);
 					}
 				}
 			}
 
 			update  = draw_battery_status(1);
+			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
 			video_flip_screen(1);
 		}
 		else
 		{
 			update  = draw_battery_status(0);
+			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
 			video_wait_vsync();
 		}
@@ -951,56 +960,57 @@ int menu_gamecfg_davex(void)
 		if (pad_pressed(PSP_CTRL_UP))
 		{
 			sel--;
-			if (sel < 0) sel = gamecfg_num - 1;
-			if (gamecfg[sel].label[0] == '\n') sel--;
+			if (sel < 0) sel = cheatcfg_num - 1;
+			if (cheatcfg[sel].label[0] == '\n') sel--;
 		}
 		else if (pad_pressed(PSP_CTRL_DOWN))
 		{
 			sel++;
-			if (sel > gamecfg_num - 1) sel = 0;
-			if (gamecfg[sel].label[0] == '\n') sel++;
+			if (sel > cheatcfg_num - 1) sel = 0;
+			if (cheatcfg[sel].label[0] == '\n') sel++;
 		}
 		else if (pad_pressed(PSP_CTRL_LEFT))
 		{
-			if (gamecfg[sel].value && gamecfg[sel].enable)
+			if (cheatcfg[sel].value && cheatcfg[sel].enable)
 			{
-				int cur = *gamecfg[sel].value;
+				int cur = *cheatcfg[sel].value;
 
 				if (cur > 0)
 				{
-					*gamecfg[sel].value = cur - 1;
+					*cheatcfg[sel].value = cur - 1;
 					update = 1;
 				}
 			}
 		}
 		else if (pad_pressed(PSP_CTRL_RIGHT))
 		{
-			if (gamecfg[sel].value && gamecfg[sel].enable)
+			if (cheatcfg[sel].value && cheatcfg[sel].enable)
 			{
-				int cur = *gamecfg[sel].value;
+				int cur = *cheatcfg[sel].value;
 
-				if (cur < gamecfg[sel].value_max)
+				if (cur < cheatcfg[sel].value_max)
 				{
-					*gamecfg[sel].value = cur + 1;
+					*cheatcfg[sel].value = cur + 1;
 					update = 1;
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+/*		else if (pad_pressed(PSP_CTRL_CIRCLE))
 		{
-			if (sel == gamecfg_num - 1)
+			if (sel == cheatcfg_num - 1)
 				break;
 		}
+*/
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
-			help(HELP_GAMECONFIG);
+			help(HELP_CHEATCONFIG);
 			update = 1;
 		}
 
-		if (top > gamecfg_num - rows) top = gamecfg_num - rows;
+		if (top > cheatcfg_num - rows) top = cheatcfg_num - rows;
 		if (top < 0) top = 0;
-		if (sel >= gamecfg_num) sel = 0;
-		if (sel < 0) sel = gamecfg_num - 1;
+		if (sel >= cheatcfg_num) sel = 0;
+		if (sel < 0) sel = cheatcfg_num - 1;
 		if (sel >= top + rows) top = sel - rows + 1;
 		if (sel < top) top = sel;
 
@@ -1012,11 +1022,11 @@ int menu_gamecfg_davex(void)
 
 	} while (!pad_pressed(PSP_CTRL_CROSS));
 
-	for (i = 0; i < gamecfg_num; i++)
+	for (i = 0; i < cheatcfg_num; i++)
 	{
-		if (gamecfg[i].value && gamecfg[i].flag == CFG_RESTART)
+		if (cheatcfg[i].value && cheatcfg[i].flag == CFG_RESTART)
 		{
-			if (gamecfg[i].old_value != *gamecfg[i].value)
+			if (cheatcfg[i].old_value != *cheatcfg[i].value)
 			{
 				menu_restart();
 				return 1;
@@ -1026,12 +1036,10 @@ int menu_gamecfg_davex(void)
 
 	return 0;
 }
-
-
-
-
-//menu que crea estructuras dinamicas
-int menu_gamecfg_davex_memfree(void)
+/*------------------------------------------------------
+	menu que crea estructuras dinamicas
+------------------------------------------------------*/
+/*int menu_cheatcfg_memfree(void)
 {
 	
 	int sel = 0, rows = 13, top = 0;
@@ -1256,209 +1264,7 @@ int menu_gamecfg_davex_memfree(void)
 	return 0;
 }
 
-/*
-int menu_gamecfg_davex_memfree(void)
-{
-
-	int sel = 0, rows = 13, top = 0;
-	int i, arrowl, arrowr, prev_sel, update = 1;
-	gamecfg_t gamecfg[1];
-	int gamecfg_num;
-	char buff[256];
-	int mem_free = 0;
-	
-	mem_free = get_free_memory();
-	//un_valor_dummmy = 0;
-	
-	
-	sprintf(buff, "M:%d", mem_free);
-	
-	gamecfg[0].enable = 1;
-	gamecfg[0].label     = buff;
-	gamecfg[0].value     = &un_valor_dummy;
-	gamecfg[0].flag      = CFG_CONTINUE;
-	gamecfg[0].value_max = 0;
-	
-	
-	gamecfg_num = 1;
-	
-	pad_wait_clear();
-	load_background(WP_GAMECFG);
-	ui_popup_reset();
-
-	do
-	{
-		if (update)
-		{
-			show_background();
-
-			arrowl = 0;
-			arrowr = 0;
-			if (gamecfg[sel].value)
-			{
-				int cur = *gamecfg[sel].value;
-
-				if (cur > 0) arrowl = 1;
-				if (cur < gamecfg[sel].value_max) arrowr = 1;
-			}
-
-			small_icon_shadow(8, 3, UI_COLOR(UI_PAL_TITLE), ICON_CONFIG);
-			uifont_print_shadow(36, 5, UI_COLOR(UI_PAL_TITLE), TEXT(GAME_CONFIGURATION_MENU));
-			draw_scrollbar(470, 26, 479, 270, rows, gamecfg_num, sel);
-
-			for (i = 0; i < rows; i++)
-			{
-				if (top + i >= gamecfg_num) break;
-
-				if (gamecfg[top + i].label[0] == '\n')
-					continue;
-
-				if (gamecfg[top + i].enable)
-				{
-					int inc = 0;
-					if ((top + i) == sel)
-					{
-						uifont_print_shadow(16, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), gamecfg[top + i].label);
-						if (arrowl)
-						{
-							uifont_print_shadow(180 + inc, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
-						}
-					}
-					else
-						uifont_print(16, 40 + i * 17, UI_COLOR(UI_PAL_NORMAL), gamecfg[top + i].label);
-				}
-				else
-				{
-					if ((top + i) == sel)
-						uifont_print_shadow(16, 40 + i * 17, COLOR_GRAY, gamecfg[top + i].label);
-					else
-						uifont_print(16, 40 + i * 17, COLOR_DARKGRAY, gamecfg[top + i].label);
-				}
-
-				if (gamecfg[top + i].value)
-				{
-					int val = *gamecfg[top + i].value;
-					int inc = 0;
-
-					if (gamecfg[top + i].enable)
-					{
-						if ((top + i) == sel)
-						{
-							uifont_print_shadow(200 + inc, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), gamecfg[top + i].values_label[val]);
-							if (arrowr)
-							{
-								int width = uifont_get_string_width(gamecfg[top + i].values_label[val]);
-								uifont_print_shadow(204 + width + inc, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_RIGHTTRIANGLE);
-							}
-						}
-						else
-							uifont_print(200 + inc, 40 + i * 17, UI_COLOR(UI_PAL_NORMAL), gamecfg[top + i].values_label[val]);
-						
-					}
-					else
-					{
-						if ((top + i) == sel)
-							uifont_print_shadow(200 + inc, 40 + i * 17, COLOR_GRAY, gamecfg[top + i].values_label[val]);
-						else
-							uifont_print(200 + inc, 40 + i * 17, COLOR_DARKGRAY, gamecfg[top + i].values_label[val]);
-					}
-				}
-			}
-
-			update  = draw_battery_status(1);
-			update |= ui_show_popup(1);
-			video_flip_screen(1);
-		}
-		else
-		{
-			update  = draw_battery_status(0);
-			update |= ui_show_popup(0);
-			video_wait_vsync();
-		}
-
-		prev_sel = sel;
-
-		if (pad_pressed(PSP_CTRL_UP))
-		{
-			sel--;
-			if (sel < 0) sel = gamecfg_num - 1;
-			if (gamecfg[sel].label[0] == '\n') sel--;
-		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
-		{
-			sel++;
-			if (sel > gamecfg_num - 1) sel = 0;
-			if (gamecfg[sel].label[0] == '\n') sel++;
-		}
-		else if (pad_pressed(PSP_CTRL_LEFT))
-		{
-			if (gamecfg[sel].value && gamecfg[sel].enable)
-			{
-				int cur = *gamecfg[sel].value;
-
-				if (cur > 0)
-				{
-					*gamecfg[sel].value = cur - 1;
-					update = 1;
-				}
-			}
-		}
-		else if (pad_pressed(PSP_CTRL_RIGHT))
-		{
-			if (gamecfg[sel].value && gamecfg[sel].enable)
-			{
-				int cur = *gamecfg[sel].value;
-
-				if (cur < gamecfg[sel].value_max)
-				{
-					*gamecfg[sel].value = cur + 1;
-					update = 1;
-				}
-			}
-		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
-		{
-			if (sel == gamecfg_num - 1)
-				break;
-		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
-		{
-			help(HELP_GAMECONFIG);
-			update = 1;
-		}
-
-		if (top > gamecfg_num - rows) top = gamecfg_num - rows;
-		if (top < 0) top = 0;
-		if (sel >= gamecfg_num) sel = 0;
-		if (sel < 0) sel = gamecfg_num - 1;
-		if (sel >= top + rows) top = sel - rows + 1;
-		if (sel < top) top = sel;
-
-		if (prev_sel != sel) update = 1;
-
-		pad_update();
-
-		if (Loop == LOOP_EXIT) break;
-
-	} while (!pad_pressed(PSP_CTRL_CROSS));
-
-	for (i = 0; i < gamecfg_num; i++)
-	{
-		if (gamecfg[i].value && gamecfg[i].flag == CFG_RESTART)
-		{
-			if (gamecfg[i].old_value != *gamecfg[i].value)
-			{
-				menu_restart();
-				return 1;
-			}
-		}
-	}
-
-	return 0;
-}
 */
-
-
 /*------------------------------------------------------
 	¥Ü¥¿¥óÔO¶¨¥á¥Ë¥å©`
 ------------------------------------------------------*/
@@ -1500,6 +1306,7 @@ enum
 {
 	NEOGEO_PAD = 0,
 	NEOGEO_MVS,
+	NEOGEO_PS,
 	USER_DEFINE
 };
 #endif
@@ -1534,7 +1341,7 @@ static int menu_keycfg(void)
 #if (EMU_SYSTEM == CPS2)
 	const char *progear_p2[2];
 #elif (EMU_SYSTEM == MVS || EMU_SYSTEM == NCDZ)
-	const char *layout[3];
+	const char *layout[4];
 #endif
 
 #define INCLUDE_KEYCFG_MENU
@@ -1562,7 +1369,8 @@ static int menu_keycfg(void)
 #elif (EMU_SYSTEM == MVS || EMU_SYSTEM == NCDZ)
 	layout[0] = TEXT(LAYOUT_TYPE1);
 	layout[1] = TEXT(LAYOUT_TYPE2);
-	layout[2] = TEXT(LAYOUT_USER);
+	layout[2] = TEXT(LAYOUT_TYPE3);
+	layout[3] = TEXT(LAYOUT_USER);
 #endif
 
 	i = 0;
@@ -1613,6 +1421,9 @@ static int menu_keycfg(void)
 	else if (keycfg[6].value == 7 && keycfg[7].value == 8 && keycfg[8].value == 6 && keycfg[9].value == 5)
 	{
 		keycfg[0].value = NEOGEO_MVS;
+	}
+	else if (keycfg[6].value == 7 && keycfg[7].value == 6 && keycfg[8].value == 8 && keycfg[9].value == 5){
+		keycfg[0].value = NEOGEO_PS;
 	}
 	else
 	{
@@ -1770,6 +1581,12 @@ static int menu_keycfg(void)
 					keycfg[8].value = 6;
 					keycfg[9].value = 5;
 					break;
+				case NEOGEO_PS:
+					keycfg[6].value = 7;
+					keycfg[7].value = 6;
+					keycfg[8].value = 8;
+					keycfg[9].value = 5;
+					break;
 				}
 			}
 #endif
@@ -1813,6 +1630,15 @@ static int menu_keycfg(void)
 					keycfg[8].value = 6;
 					keycfg[9].value = 5;
 				}
+				else if (keycfg[sel].value == 1)
+				{
+					keycfg[sel].value++;
+					update = 1;
+					keycfg[6].value = 7;
+					keycfg[7].value = 6;
+					keycfg[8].value = 8;
+					keycfg[9].value = 5;
+				}
 			}
 #endif
 		}
@@ -1846,6 +1672,9 @@ static int menu_keycfg(void)
 			else if (keycfg[6].value == 7 && keycfg[7].value == 8 && keycfg[8].value == 6 && keycfg[9].value == 5)
 			{
 				keycfg[0].value = NEOGEO_MVS;
+			}
+			else if (keycfg[6].value == 7 && keycfg[7].value == 6 && keycfg[8].value == 8 && keycfg[9].value == 5){
+				keycfg[0].value = NEOGEO_PS;
 			}
 			else
 			{
@@ -2161,7 +1990,7 @@ static void state_refresh_screen(int reload_thumbnail)
 	uifont_print_shadow(i + 16, 5, UI_COLOR(UI_PAL_NORMAL), "|");
 	uifont_print_shadow(i + 24, 5, UI_COLOR(UI_PAL_TITLE), buf);
 
-	if (ui_text_get_language() == LANG_JAPANESE)
+	if (ui_text_get_language() == LANG_JAPANESE || LANG_CHINESE_SIMPLIFIED || LANG_CHINESE_TRADITIONAL)
 		x = 12;
 	else
 		x = 0;
@@ -2527,11 +2356,13 @@ static menu2_t mainmenu2[] =
 #if (EMU_SYSTEM != CPS2 && EMU_SYSTEM != NCDZ)
 	{ MENU_DIP_SWITCH_SETTINGS, menu_dipswitch, ICON_DIPSWITCH, MENUHELP_DIP_SWITCH_SETTINGS },
 #endif
-	{ MENU_RESET_EMULATION,     menu_reset,     ICON_SYSTEM,    MENUHELP_RESET_EMULATION     },
-	{ MENU_RETURN_TO_BROWSER,   menu_browser,   ICON_FOLDER,    MENUHELP_RETURN_TO_BROWSER   },
-	{ MENU_RETURN_TO_GAME,		NULL,			 ICON_RETURN,    MENUHELP_RETURN_TO_GAME      },
-	{ MENU_ESPECIAL_DAVEX,  	menu_gamecfg_davex,   ICON_CONFIG,    MENUAYUDA_ESPECIAL_DAVEX  },
-	{ MENU_MEM_FREE_DAVEX,  	menu_gamecfg_davex_memfree,   ICON_FOLDER,    MENUAYUDA_MEM_FREE_DAVEX  },
+	{ MENU_RESET_EMULATION,		menu_reset,		 ICON_SYSTEM,		MENUHELP_RESET_EMULATION     },
+	{ MENU_RETURN_TO_BROWSER,	menu_browser,	 ICON_FOLDER,		MENUHELP_RETURN_TO_BROWSER   },
+	{ MENU_RETURN_TO_GAME,		NULL,			 ICON_RETURN,		MENUHELP_RETURN_TO_GAME      },
+	{ MENU_CHEAT_CONFIGURATION,	menu_cheatcfg,	 ICON_DIPSWITCH,	MENUHELP_CHEAT_CONFIGURATION },
+/*
+	{ MENU_MEM_FREE_DAVEX,  	menu_cheatcfg_memfree,   ICON_FOLDER,    MENUAYUDA_MEM_FREE_DAVEX  },
+*/
 	{ MENU_EXIT_EMULATOR,		menu_exit,      ICON_EXIT,      MENUHELP_EXIT_EMULATOR       },
 	MENU_END
 };
@@ -2697,6 +2528,19 @@ void showmenu(void)
 			}
 			else break;
 		}
+
+/*PRESS HOME TO EXIT IN MAIN MENU
+		else if (readHomeButton())
+		{
+			if (messagebox(MB_EXITEMULATION))
+			{
+				Loop = LOOP_EXIT;
+				show_exit_screen();
+				break;
+			}
+			update = 1;
+			pad_wait_clear();
+		}*/
 #ifdef SAVE_STATE
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
@@ -2717,7 +2561,7 @@ void showmenu(void)
 		if (prev_sel != sel) update |= 1;
 
 		pad_update();
-
+		if (sel >= rows) update = UI_FULL_REFRESH;	//fix main menu text do not update
 		if (Loop == LOOP_EXIT) break;
 
 	} while (!pad_pressed(PSP_CTRL_CROSS));
@@ -2924,12 +2768,14 @@ void show_color_menu(void)
 			}
 
 			update  = draw_battery_status(1);
+			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
 			video_flip_screen(1);
 		}
 		else
 		{
 			update  = draw_battery_status(0);
+			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
 			video_wait_vsync();
 		}
@@ -3071,7 +2917,8 @@ void show_color_menu(void)
 		}
 		else if (pad_pressed(PSP_CTRL_TRIANGLE))
 		{
-			bgimage_type = BG_DEFAULT;
+//			bgimage_type = BG_DEFAULT;
+			bgimage_type = 3;
 			bgimage_blightness = 50;
 			set_ui_color(&ui_palette[UI_PAL_TITLE],    255, 255, 255);
 			set_ui_color(&ui_palette[UI_PAL_SELECT],   255, 255, 255);
