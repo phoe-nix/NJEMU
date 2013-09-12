@@ -1,4 +1,16 @@
-20130908MVS修复亚版家用机BIOS花屏，添加X键从BIOS选择菜单返回游戏列表
+20130913
+MVS添加并支持KOF98AE，感谢OrochiZ改的代码
+
+20130912
+MVS添加KOF2000和KOF2002的仿PS2版
+MVS支持80M的CROM，可正常模拟KOF2002仿PS2版
+MVS修复KOF2000n无法使用家用机模式
+
+20130910
+MVS添加BAN BAN BUSTER和Treasure of the Caribbean
+
+20130908
+MVS修复亚版家用机BIOS花屏，添加X键从BIOS选择菜单返回游戏列表
 MVS修复按键设置丢失问题
 MVS更改分辨率
 菜单优化
