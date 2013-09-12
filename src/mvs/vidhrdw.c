@@ -489,6 +489,10 @@ void neogeo_video_init(void)
 	high_tile_mask  = (no_of_tiles > 0x10000) ? 0x10000 : 0;
 	high_tile_mask |= (no_of_tiles > 0x20000) ? 0x20000 : 0;
 	high_tile_mask |= (no_of_tiles > 0x40000) ? 0x40000 : 0;
+	high_tile_mask |= (no_of_tiles > 0x60000) ? 0x60000 : 0;//支持扩容CROM
+	high_tile_mask |= (no_of_tiles > 0x80000) ? 0x80000 : 0;//支持扩容CROM
+	high_tile_mask |= (no_of_tiles > 0xa0000) ? 0xa0000 : 0;//支持扩容CROM
+	high_tile_mask |= (no_of_tiles > 0xc0000) ? 0xc0000 : 0;//支持扩容CROM
 
 	sprite_gfx_code_mask = 0xffffffff;
 

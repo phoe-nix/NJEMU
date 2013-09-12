@@ -3,6 +3,7 @@
 2020bbh,2020 Super Baseball (set 3)
 3countb,3 Count Bout
 alpham2,Alpha Mission II
+alpham2p,Alpha Mission II (prototype)
 androdun,Andro Dunos
 aodk,Aggressors of Dark Kombat
 aof,Art of Fighting
@@ -11,15 +12,18 @@ aof2a,Art of Fighting 2 (set 2)
 aof3,Art of Fighting 3 - The Path of the Warrior
 aof3k,Art of Fighting 3 - The Path of the Warrior (Korean release)
 bakatono,Bakatonosama Mahjong Manyuki
+bbbuster,Bang Bang Busters
 bangbead,Bang Bead
 bjourney,Blue's Journey
 blazstar,Blazing Star
 breakers,Breakers
 breakrev,Breakers Revenge
-bstars,Baseball Stars Professional
+bstars,Baseball Stars Professional (set 1)
+bstarsh,Baseball Stars Professional (set 2)
 bstars2,Baseball Stars 2
 burningf,Burning Fight (set 1)
 burningh,Burning Fight (set 2)
+burningfp,Burning Fight (prototype)
 crsword,Crossed Swords
 ctomaday,Captain Tomaday
 cyberlip,Cyber-Lip
@@ -44,10 +48,14 @@ ghostlop,Ghostlop (prototype)
 goalx3,Goal! Goal! Goal!
 gowcaizr,Voltage Fighter - Gowcaizer
 gpilots,Ghost Pilots
+gpilotsh,Ghost Pilots (change)
 gururin,Gururin
+ironclad,Choutetsu Brikin'ger - iron clad
+ironclado,Choutetsu Brikin'ger - iron clad(prototype / bootleg),GAME_BOOTLEG
 irrmaze,The Irritating Maze
 janshin,Jyanshin Densetsu - Quest of Jongmaster
-jockeygp,Jockey Grand Prix
+jockeygp,Jockey Grand Prix (set 1)
+jockeygpa,Jockey Grand Prix (set 2)
 joyjoy,Puzzled
 kabukikl,Far East of Eden - Kabuki Klash
 karnovr,Karnov's Revenge
@@ -55,9 +63,12 @@ kf2k3pcb,The King of Fighters 2003 (Japan / JAMMA PCB)
 kizuna,Kizuna Encounter - Super Tag Battle
 kof2000,The King of Fighters 2000
 kof2000n,The King of Fighters 2000 (not encrypted)
+kof2kps2,The King of Fighters 2000 PlayStation 2 Version V1.0[EGCG],GAME_BOOTLEG
 kof2001,The King of Fighters 2001 (set 1)
 kof2001h,The King of Fighters 2001 (set 2)
+kof2k1bs,The King of Fighters 2001 PlayStation 2 Version V1.0[EGCG],GAME_BOOTLEG
 kof2002,The King of Fighters 2002
+kf2k2ps2,The King of Fighters 2002 PlayStation 2 Version,GAME_BOOTLEG
 kof2003,The King of Fighters 2003 (World / US / MVS)
 kof94,The King of Fighters '94
 kof95,The King of Fighters '95 (set 1)
@@ -66,9 +77,12 @@ kof96,The King of Fighters '96 (set 1)
 kof96h,The King of Fighters '96 (set 2)
 kof97,The King of Fighters '97 (set 1)
 kof97a,The King of Fighters '97 (set 2)
+kof97k,The King of Fighters '97 (Korean board)
 kof98,The King of Fighters '98 - The Slugfest
-kof98k,The King of Fighters '98 - The Slugfest (Korean board)
+kof98k,The King of Fighters '98 - The Slugfest (Korean board 1)
+kof98ka,The King of Fighters '98 - The Slugfest (Korean board 2)
 kof98n,The King of Fighters '98 - The Slugfest (not encrypted)
+kof98ae,The King of Fighters '98 Anniversary Edition[EGCG],GAME_BOOTLEG
 kof99,The King of Fighters '99 - Millennium Battle (set 1)
 kof99a,The King of Fighters '99 - Millennium Battle (set 2)
 kof99e,The King of Fighters '99 - Millennium Battle (earlier)
@@ -77,6 +91,7 @@ kof99p,The King of Fighters '99 - Millennium Battle (prototype)
 kotm,King of the Monsters (set 1)
 kotmh,King of the Monsters (set 2)
 kotm2,King of the Monsters 2 - The Next Thing
+kotm2p,King of the Monsters 2 - The Next Thing (prototype)
 lastblad,The Last Blade (set 1)
 lastbldh,The Last Blade (set 2)
 lastsold,The Last Soldier (Korean release of The Last Blade)
@@ -98,9 +113,13 @@ ms5pcb,Metal Slug 5 (JAMMA PCB)
 mslug,Metal Slug - Super Vehicle-001
 mslug2,Metal Slug 2 - Super Vehicle-001/II
 mslug3,Metal Slug 3
+mslug3h,Metal Slug 3 (P not encrypted)
 mslug3n,Metal Slug 3 (not encrypted)
-mslug4,Metal Slug 4
-mslug5,Metal Slug 5
+mslug4,Metal Slug 4 (set 1)
+mslug4h,Metal Slug 4 (set 2)
+mslug5,Metal Slug 5 (set 1)
+mslug5h,Metal Slug 5 (set 2)
+mslug5b,Metal Slug 5 (bootleg),GAME_BOOTLEG
 mslugx,Metal Slug X - Super Vehicle-001
 mutnat,Mutation Nation
 nam1975,NAM-1975
@@ -108,7 +127,7 @@ ncombat,Ninja Combat (set 1)
 ncombath,Ninja Combat (set 2)
 ncommand,Ninja Commando
 neobombe,Neo Bomberman
-neocup98,Neo-Geo Cup '98 - The Road to the Victory
+neocup98,Neo-Geo Cup '98 - The Road to the Victory,GAME_NOT_WORK
 neodrift,Neo Drift Out - New Technology
 neomrdo,Neo Mr. Do!
 ninjamas,Ninja Master's - haoh-ninpo-cho
@@ -128,13 +147,17 @@ puzzldpr,Puzzle De Pon! R!
 puzzledp,Puzzle De Pon!
 quizdai2,Quiz Meitantei Neo & Geo - Quiz Daisousa Sen part 2
 quizdais,Quiz Daisousa Sen - The Last Count Down
+quizdaisk,Quiz Daisousa Sen - The Last Count Down (Korean)
 quizkof,Quiz King of Fighters
+quizkofk,Quiz King of Fighters (Korean)
 ragnagrd,Ragnagard
-rbff1,Real Bout Fatal Fury
+rbff1,Real Bout Fatal Fury (set 1)
+rbff1a,Real Bout Fatal Fury (set 2)
 rbff2,Real Bout Fatal Fury 2 - The Newcomers (set 1)
-rbff2h,Real Bout Fatal Fury 2 - The Newcomers (set 2)
+rbff2a,Real Bout Fatal Fury 2 - The Newcomers (set 2)
 rbff2k,Real Bout Fatal Fury 2 - The Newcomers (Korean release)
 rbffspec,Real Bout Fatal Fury Special
+rbffspeck,Real Bout Fatal Fury Special (Korean)
 ridhero,Riding Hero (set 1)
 ridheroh,Riding Hero (set 2)
 roboarma,Robo Army (set 2)
@@ -145,10 +168,14 @@ samsh5sh,Samurai Shodown V Special (set 2 / censored)
 samsh5sn,Samurai Shodown V Special (set 3 / less censored)
 samsh5sp,Samurai Shodown V Special (set 1 / uncensored)
 samsho,Samurai Shodown
+samshoh,Samurai Shodown (change)
 samsho2,Samurai Shodown II
+samsho2k,Samurai Shodown II (Korean 1)
+samsho2k2,Samurai Shodown II (Korean 2)
 samsho3,Samurai Shodown III (set 1)
 samsho3a,Samurai Shodown III (set 2)
 samsho4,Samurai Shodown IV - Amakusa's Revenge
+samsho4k,Samurai Shodown IV - Amakusa's Revenge (Korean)
 samsho5,Samurai Shodown V (set 1)
 samsho5h,Samurai Shodown V (set 2)
 savagere,Savage Reign
@@ -161,6 +188,7 @@ shocktr2,Shock Troopers - 2nd Squad
 shocktra,Shock Troopers (set 2)
 shocktro,Shock Troopers (set 1)
 socbrawl,Soccer Brawl
+socbrawlh,Soccer Brawl (change)
 sonicwi2,Aero Fighters 2
 sonicwi3,Aero Fighters 3
 spinmast,Spin Master
@@ -177,6 +205,7 @@ svcpcb,SvC Chaos - SNK vs Capcom (JAMMA PCB),GAME_NOT_WORK
 svcpcba,SVC Chaos - SNK vs CAPCOM (JAMMA PCB / set 2)
 tophunta,Top Hunter - Roddy & Cathy (set 2)
 tophuntr,Top Hunter - Roddy & Cathy (set 1)
+totcarib,Treasure of the Caribbean
 tpgolf,Top Player's Golf
 trally,Thrash Rally
 turfmast,Neo Turf Masters
@@ -199,7 +228,9 @@ zupapa,Zupapa!
 kof96ep,The King of Fighters '96 (bootleg),GAME_BOOTLEG
 kof97pls,The King of Fighters '97 Plus (bootleg),GAME_BOOTLEG
 kof97pla,The King of Fighters '97 Plus 2003 (bootleg),GAME_BOOTLEG
+kof97d,The King of Fighters '97 Dream,GAME_BOOTLEG
 kog,King of Gladiator (KOF'97 bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+kogd,King of Gladiator (KOF'97 bootleg / decrypt),GAME_BOOTLEG
 zintrckb,Zintrick / Oshidashi Zentrix (bootleg),GAME_BOOTLEG
 zintrkcd,Zintrick / Oshidashi Zentrix (CD to MVS Conversion),GAME_BOOTLEG
 garoubl,Garou - Mark of the Wolves (bootleg),GAME_BOOTLEG
@@ -222,7 +253,6 @@ kf2k5uni,The King of Fighters 10th Anniversary 2005 Unique (KOF2002 bootleg),GAM
 kf10thep,The King of Fighters 10th Anniversary Extra Plus (KOF2002 bootleg),GAME_BOOTLEG
 kof2k4se,The King of Fighters Special Edition 2004 (KOF2002 bootleg),GAME_BOOTLEG
 kf2k4pls,The King of Fighters Special Edition 2004 Plus (KOF2002 bootleg),GAME_BOOTLEG
-mslug5b,Metal Slug 5 (bootleg),GAME_BOOTLEG
 ms5plus,Metal Slug 5 Plus (bootleg),GAME_BOOTLEG
 nitdbl,Nightmare in the Dark (bootleg),GAME_BOOTLEG
 svcboot,SvC Chaos - SNK vs Capcom (bootleg),GAME_BOOTLEG
@@ -243,8 +273,8 @@ diggerma,Digger Man (prototype),GAME_BOOTLEG
 columnsn,Columns (PD),GAME_BOOTLEG
 poknight,Poker Night (PD),GAME_BOOTLEG
 neonopon,Neo No Panepon (beta / PD),GAME_BOOTLEG
-neopong,Neo Pong (v1.1 / PD),GAME_BOOTLEG
 npong10,Neo Pong (v1.0 / PD),GAME_NOT_WORK|GAME_BOOTLEG
+neopong,Neo Pong (v1.1 / PD),GAME_BOOTLEG
 frogfest,Frog Feast (PD),GAME_BOOTLEG
 ltorb1,Jonas Indiana and the Lost Temple of RA (20050717 / PD),GAME_BOOTLEG
 cnbe,Codename - Blut Engel (2006-01-19 / PD),GAME_BOOTLEG
@@ -253,3 +283,8 @@ neodemo,Neo-Demo (PD),GAME_BOOTLEG
 ngem2k,NGEM2K (beta 2006-01-18 / PD),GAME_BOOTLEG
 neo2500,Neo 2500 Demo (PD),GAME_BOOTLEG
 syscheck,Neo System Check (ver 1.0b / PD),GAME_BOOTLEG
+kof2k2cn,The King of Fighters 2002(Chinese),GAME_BOOTLEG
+kof2kcn,The King of Fighters 2000(Chinese),GAME_BOOTLEG
+kof98cn,The King of Fighters '98(Chinese),GAME_BOOTLEG
+kof98C,The King of Fighters '98 Combo,GAME_BOOTLEG
+kof96ae,The King of Fighters '96 ae,GAME_BOOTLEG

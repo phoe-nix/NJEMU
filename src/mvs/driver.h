@@ -102,7 +102,7 @@
 #define NGH_pspikes2	0x0068		// 0068 (c) 1994 Video System Co.
 #define NGH_fatfury3	0x0069		// 0069 (c) 1995 SNK
 #define NGH_zupapa		0x0070		// 0070 Zupapa - released in 2001, 1994 prototype probably exists
-// 0071 Bang Bang Busters (prototype) 1994 Visco
+#define NGH_bbbuster	0x0071		// 0071 Bang Bang Busters (prototype) 1994 Visco
 // 0072 Last Odyssey Pinball Fantasia (prototype) 1995 Monolith
 #define NGH_panicbom	0x0073		// 0073 (c) 1994 Eighting / Hudson
 #define NGH_aodk		0x0074		// 0074 (c) 1994 ADK / SNK
@@ -420,6 +420,7 @@ void zupapa_AES_protection(void);
 void sengoku3_AES_protection(void);
 void nitd_AES_protection(void);
 void kof2000_AES_protection(void);
+//void kof2000n_AES_protection(void);
 
 #if !RELEASE
 WRITE16_HANDLER( kof10th_protection_w );

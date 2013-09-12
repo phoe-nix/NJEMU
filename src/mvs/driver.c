@@ -1582,6 +1582,8 @@ void kof2000_AES_protection(void)
 	/* Patch out loop to disable console mode */
 	UINT16 *mem16 = (UINT16 *)memory_region_cpu1;
 	mem16[0xa226e >> 1] = 0x4e75;
+//	UINT8 *mem8 = (UINT8 *)memory_region_cpu1;
+//	mem8[0x109 >> 1] = 0x01;
 }
 
 void mslug5_AES_protection(void)

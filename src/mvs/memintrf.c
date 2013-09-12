@@ -11,15 +11,30 @@
 #define M68K_AMASK 0x00ffffff
 #define Z80_AMASK 0x0000ffff
 
-#define READ_BYTE(mem, offset)			mem[offset ^ 1]
-#define READ_WORD(mem, offset)			*(UINT16 *)&mem[offset]
-#define WRITE_BYTE(mem, offset, data)	mem[offset ^ 1] = data
-#define WRITE_WORD(mem, offset, data)	*(UINT16 *)&mem[offset] = data
+#define READ_BYTE(mem, offset)							mem[offset ^ 1]
+#define WRITE_BYTE(mem, offset, data)					mem[offset ^ 1] = data
 
 #define READ_MIRROR_BYTE(mem, offset, amask)			mem[(offset & amask) ^ 1]
-#define READ_MIRROR_WORD(mem, offset, amask)			*(UINT16 *)&mem[offset & amask]
 #define WRITE_MIRROR_BYTE(mem, offset, data, amask)		mem[(offset & amask) ^ 1] = data
+
+/*
+#define READ_WORD(mem, offset)							*(UINT16 *)&mem[offset]
+#define WRITE_WORD(mem, offset, data)					*(UINT16 *)&mem[offset] = data
+#define READ_MIRROR_WORD(mem, offset, amask)			*(UINT16 *)&mem[offset & amask]
 #define WRITE_MIRROR_WORD(mem, offset, data, amask)		*(UINT16 *)&mem[offset & amask] = data
+*/
+
+/* thanks OrochiZ
+#define READ_WORD(mem, offset)							mem[offset] | mem[offset + 1] << 8
+#define WRITE_WORD(mem, offset, data)					mem[offset] = data & 0xff; mem[offset + 1] = (data >> 8) & 0xff
+#define READ_MIRROR_WORD(mem, offset, amask)			mem[offset & amask] | mem[(offset & amask) + 1] << 8
+#define WRITE_MIRROR_WORD(mem, offset, data, amask)		mem[offset & amask] = data & 0xFF; mem[(offset & amask) + 1] = (data >> 8) & 0xFF
+*/
+
+#define READ_WORD(mem, offset)							mem[offset] | mem[offset + 1] << 8
+#define WRITE_WORD(mem, offset, data)					mem[offset] = data & 0xff; mem[offset + 1] = (data >> 8) & 0xff
+#define READ_MIRROR_WORD(mem, offset, amask)			mem[offset & amask] | mem[(offset + 1) & amask ] << 8
+#define WRITE_MIRROR_WORD(mem, offset, data, amask)		mem[offset & amask] = data & 0xff; mem[(offset + 1) & amask] = (data >> 8) & 0xff
 
 #define str_cmp(s1, s2)		strnicmp(s1, s2, strlen(s2))
 
@@ -1802,6 +1817,10 @@ int memory_init(void)
 	case INIT_kof2000:
 		neogeo_protection_r = kof2000_protection_r;
 		neogeo_protection_w = kof2000_protection_w;
+		kof2000_AES_protection();
+		break;
+
+	case INIT_kof2000n:
 		kof2000_AES_protection();
 		break;
 

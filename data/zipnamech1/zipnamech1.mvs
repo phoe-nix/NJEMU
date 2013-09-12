@@ -12,6 +12,7 @@ aof2a,龙虎拳2 (set 2)
 aof3,龙虎拳外伝
 aof3k,龙虎拳外伝 (韩国版)
 bakatono,麻雀漫游记
+bbbuster,泡泡大作战
 bangbead,冲击弹珠
 bjourney,拉吉少年
 blazstar,死亡之星 2 - 燃烧星球
@@ -37,7 +38,7 @@ fbfrenzy,疯狂美式足球
 fightfev,狂热格斗(set 1)
 fightfva,狂热格斗(set 2)
 flipshot,盾牌大战
-fswords,侍魂Ⅲ - 战士之剑(韩国版)
+fswords,侍魂Ⅲ - 斩红朗无双剑(韩国版)
 galaxyfg,银河快打
 ganryu,武藏岩流记
 garou,饿狼 - 群狼之证 (set 1)
@@ -50,10 +51,10 @@ gpilots,魔鬼飞行员
 gpilotsh,魔鬼飞行员(替换版)
 gururin,小人国解谜
 ironclad,超铁战记(工程版)
-ironclado,超铁战记(工程版/初期)
+ironclado,超铁战记(盗版),GAME_BOOTLEG
 irrmaze,电流急急棒
 janshin,雀神伝说
-jockeygp,赌马大亨
+jockeygp,赌马大亨(版本 1)
 jockeygpa,赌马大亨(版本 2)
 joyjoy,阳光方块
 kabukikl,天外魔境 真伝
@@ -62,9 +63,12 @@ kf2k3pcb,拳皇 2003 (Japan / JAMMA PCB)
 kizuna,风云默示录 2 - 超级组队战
 kof2000,拳皇 2000
 kof2000n,拳皇 2000 (未加密)
+kof2kps2,拳皇 2000 仿PS2版 V1.0[EGCG],GAME_BOOTLEG
 kof2001,拳皇 2001 (set 1)
 kof2001h,拳皇 2001 (set 2)
+kof2k1bs,拳皇 2001 仿PS2版 V1.0[EGCG],GAME_BOOTLEG
 kof2002,拳皇 2002
+kf2k2ps2,拳皇 2002 仿PS2版 V0.4[EGCG],GAME_BOOTLEG
 kof2003,拳皇 2003
 kof94,拳皇 '94
 kof95,拳皇 '95 (set 1)
@@ -78,6 +82,7 @@ kof98,拳皇 '98 - DREAM MATCH NEVER ENDS
 kof98k,拳皇 '98 - DREAM MATCH NEVER ENDS (韩国版 1)
 kof98ka,拳皇 '98 - DREAM MATCH NEVER ENDS (韩国版 2)
 kof98n,拳皇 '98 - DREAM MATCH NEVER ENDS (未加密)
+kof98ae,拳皇 '98 Anniversary Edition[EGCG],GAME_BOOTLEG
 kof99,拳皇 '99 - Millennium Battle (set 1)
 kof99a,拳皇 '99 - Millennium Battle (set 2)
 kof99e,拳皇 '99 - Millennium Battle (earlier)
@@ -114,6 +119,7 @@ mslug4,合金弹头4(版本 1)
 mslug4h,合金弹头4(版本 2)
 mslug5,合金弹头5(版本 1)
 mslug5h,合金弹头5(版本 2)
+mslug5b,合金弹头5(盗版),GAME_BOOTLEG
 mslugx,合金弹头X - SUPER VEHICLE-001
 mutnat,外星游龙
 nam1975,越南 - 1975
@@ -145,7 +151,7 @@ quizdaisk,问答大搜查线 - 最后倒计时(韩国版)
 quizkof,拳皇大问答
 quizkofk,拳皇大问答(韩国版)
 ragnagrd,神凰拳
-rbff1,真 饿狼传说
+rbff1,真 饿狼传说(版本 1)
 rbff1a,真 饿狼传说(版本 2)
 rbff2,真 饿狼传说Ⅱ - 新挑战者(set 1)
 rbff2a,真 饿狼传说Ⅱ - 新挑战者(set 2)
@@ -199,6 +205,7 @@ svcpcb,SvC 大乱斗 (JAMMA PCB / set 1),GAME_NOT_WORK
 svcpcba,SvC 大乱斗 (JAMMA PCB / set 2)
 tophunta,顶尖猎人 (set 2)
 tophuntr,顶尖猎人 (set 1)
+totcarib,加勒比海盗
 tpgolf,顶尖高尔夫
 trally,极速英豪
 turfmast,Neo 高尔夫
@@ -246,7 +253,6 @@ kf2k5uni,拳皇 10 周年纪念版 2005 Unique (KOF2002 bootleg),GAME_BOOTLEG
 kf10thep,拳皇 10 周年纪念版 Extra Plus (KOF2002 bootleg),GAME_BOOTLEG
 kof2k4se,拳皇 Special Edition 2004 (KOF2002 bootleg),GAME_BOOTLEG
 kf2k4pls,拳皇 Special Edition 2004 Plus (KOF2002 bootleg),GAME_BOOTLEG
-ms5plus,合金弹头 5 PLUS(盗版),GAME_BOOTLEG
 ms5plus,合金弹头 5 Plus(盗版),GAME_BOOTLEG
 nitdbl,午夜噩梦(盗版),GAME_BOOTLEG
 svcboot,SNK VS. CAPKOM SVC CHAOS (MVS)(盗版),GAME_BOOTLEG
@@ -267,6 +273,7 @@ diggerma,掘地人 (工程版),GAME_BOOTLEG
 columnsn,魔法宝石 (PD),GAME_BOOTLEG
 poknight,扑克之夜 (PD),GAME_BOOTLEG
 neonopon,Neo 智力方块 (beta / PD),GAME_BOOTLEG
+npong10,Neo 弹球 (v1.0 / PD),GAME_NOT_WORK|GAME_BOOTLEG
 neopong,Neo 弹球 (v1.1 / PD),GAME_BOOTLEG
 frogfest,浮游城 (PD),GAME_BOOTLEG
 ltorb1,Jonas Indiana and the Lost Temple of RA (20050717 / PD),GAME_BOOTLEG
@@ -276,10 +283,8 @@ neodemo,Neo-Demo (PD),GAME_BOOTLEG
 ngem2k,NGEM2K (beta 2006-01-18 / PD),GAME_BOOTLEG
 neo2500,Neo 2500 Demo (PD),GAME_BOOTLEG
 syscheck,Neo System Check (ver 1.0b / PD),GAME_BOOTLEG
-kof2k2cn,拳皇 2002CN,GAME_BOOTLEG
-kof2kcn,拳皇 2000CN,GAME_BOOTLEG
-kof98cn,拳皇 98CN,GAME_BOOTLEG
+kof2k2cn,拳皇 2002中文版,GAME_BOOTLEG
+kof2kcn,拳皇 2000中文版,GAME_BOOTLEG
+kof98cn,拳皇 98中文版,GAME_BOOTLEG
 kof98C,拳皇 98Combo,GAME_BOOTLEG
-kof2kbsd,拳皇 2000bsd,GAME_BOOTLEG
 kof96ae,拳皇 96ae,GAME_BOOTLEG
-kof2k1bs,拳皇 2001 Plus (bs / bootleg),GAME_BOOTLEG
