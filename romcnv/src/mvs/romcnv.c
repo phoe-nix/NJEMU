@@ -40,7 +40,7 @@ enum
 
 
 /******************************************************************************
-	僌儘乕僶儖曄悢
+	グローバル変数
 ******************************************************************************/
 
 UINT8 *memory_region_gfx2;
@@ -53,7 +53,7 @@ UINT32 memory_length_sound1;
 
 
 /******************************************************************************
-	儘乕僇儖曄悢
+	ローカル変数
 ******************************************************************************/
 
 static UINT32 gfx_total_elements[TILE_TYPE_MAX];
@@ -96,6 +96,7 @@ struct cacheinfo_t
 
 struct cacheinfo_t MVS_cacheinfo[] =
 {
+//     name,  parent,  crom,  srom,  vrom
 	{ "aof2a",    "aof2",     0, 0, 0 },
 	{ "fatfursa", "fatfursp", 0, 0, 0 },
 	{ "kof95a",   "kof95",    0, 0, 0 },
@@ -108,14 +109,18 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "kof97a",   "kof97",    0, 0, 0 },
 	{ "kof97pls", "kof97",    0, 0, 0 },
 	{ "kof97pla", "kof97",    0, 1, 0 },
+	{ "kof97ps",  "kof97",    1, 0, 0 },
 	{ "kog",      "kof97",    1, 1, 0 },
 	{ "lastbldh", "lastblad", 0, 0, 0 },
 	{ "lastsold", "lastblad", 0, 0, 0 },
 	{ "shocktra", "shocktro", 0, 0, 0 },
 	{ "rbff2h",   "rbff2",    0, 0, 0 },
 	{ "rbff2k",   "rbff2",    0, 0, 0 },
+	{ "kof98c",   "kof98",    1, 1, 0 },
+	{ "kof98cn",  "kof98",    1, 1, 0 },
 	{ "kof98k",   "kof98",    0, 0, 0 },
 	{ "kof98n",   "kof98",    0, 0, 0 },
+	{ "kof98ae",  "kof98",    1, 1, 1 },
 	{ "breakrev", "breakers", 1, 1, 1 },
 	{ "lans2004", "shocktr2", 1, 1, 1 },
 	{ "kof99a",   "kof99",    0, 0, 0 },
@@ -126,22 +131,28 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "garoubl",  "garoup",   0, 1, 1 },
 	{ "mslug3n",  "mslug3",   0, 0, 0 },
 	{ "mslug3b6", "mslug3",   0, 1, 0 },
+	{ "kof2kd",   "kof2000",  1, 1, 0 },
 	{ "kof2000n", "kof2000",  0, 0, 0 },
+	{ "kof2kcn",  "kof2000",  1, 1, 0 },
+	{ "kof2kps2", "kof2000",  1, 1, 0 },
 	{ "kof2001h", "kof2001",  0, 0, 0 },
 	{ "kf2k1pls", "kof2001",  0, 0, 0 },
 	{ "kf2k1pa",  "kof2001",  0, 0, 0 },
+	{ "kof2k1bs", "kof2001",  1, 1, 0 },
 	{ "cthd2003", "kof2001",  1, 1, 0 },
 	{ "cthd2k3a", "kof2001",  1, 1, 1 },
 	{ "ct2k3sp",  "kof2001",  1, 1, 0 },
 	{ "ct2k3sa",  "kof2001",  1, 1, 0 },
 	{ "ms4plus",  "mslug4",   0, 0, 0 },
 	{ "kof2002b", "kof2002",  1, 0, 0 },
+	{ "kf2k2cn",  "kof2002",  1, 1, 0 },
 	{ "kf2k2pls", "kof2002",  0, 0, 0 },
 	{ "kf2k2pla", "kof2002",  0, 0, 0 },
 	{ "kf2k2plb", "kof2002",  0, 0, 0 },
 	{ "kf2k2plc", "kof2002",  0, 1, 0 },
 	{ "kf2k2mp",  "kof2002",  0, 1, 0 },
 	{ "kf2k2mp2", "kof2002",  0, 1, 0 },
+	{ "kf2k2ps2", "kof2002",  1, 1, 1 },
 	{ "matrimbl", "matrim",   0, 0, 1 },
 	{ "mslug5b",  "mslug5",   0, 0, 0 },
 	{ "ms5plus",  "mslug5",   0, 1, 0 },
@@ -164,7 +175,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 
 
 /******************************************************************************
-	MVS梡娭悢
+	MVS用関数
 ******************************************************************************/
 
 static void neogeo_decode_spr(UINT8 *mem, UINT32 length, UINT8 *usage)
@@ -439,7 +450,7 @@ static int load_rom_info(const char *game_name)
 			{
 				if (buf[0] == '\r' || buf[0] == '\n')
 				{
-					// 夵峴
+					// 改行
 					continue;
 				}
 				else if (str_cmp(buf, "FILENAME(") == 0)

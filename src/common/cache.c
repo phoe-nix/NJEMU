@@ -22,13 +22,13 @@
 #define CACHE_SAFETY		0x20000		// ¥­¥ã¥Ã¥·¥å´_±£áá¤Î¿Õ¤­¥á¥â¥ê¥µ¥¤¥º
 #define BLOCK_SIZE			0x10000		// 1¥Ö¥í¥Ã¥¯¤Î¥µ¥¤¥º = 64KB
 #define BLOCK_MASK			0xffff
-#define BLOCK_SHIFT			16
+#define BLOCK_SHIFT			16			// 16
 #define BLOCK_NOT_CACHED	0xffff
 #define BLOCK_EMPTY			0xffffffff
 
 #if (EMU_SYSTEM == MVS)
-#define MAX_PCM_BLOCKS		0x100
-#define MAX_PCM_SIZE		0x30
+#define MAX_PCM_BLOCKS		0x100		// 0x100
+#define MAX_PCM_SIZE		0x30		// 0x30
 #endif
 
 

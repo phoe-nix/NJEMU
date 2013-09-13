@@ -2,7 +2,7 @@
 
 	cache.c
 
-	儊儌儕僉儍僢僔儏僀儞僞僼僃乕僗娭悢
+	メモリキャッシュインタフェース関数
 
 ******************************************************************************/
 
@@ -19,7 +19,7 @@
 #elif (EMU_SYSTEM == MVS)
 #define GFX_MEMORY			memory_region_gfx3
 #define GFX_SIZE			memory_length_gfx3
-#define MAX_CACHE_BLOCKS	0x400
+#define MAX_CACHE_BLOCKS	0x800	//支持扩容CROM，原始0x400
 #endif
 
 enum

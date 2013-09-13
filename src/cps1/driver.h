@@ -192,6 +192,7 @@ void pang3_decode(void);
 #if !RELEASE
 void kodb_init(void);
 void sf2m13_init(void);
+void wofb_init(void);
 void wofh_init(void);
 void wof3js_init(void);
 void wof3sj_init(void);
