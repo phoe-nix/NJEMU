@@ -1,3 +1,7 @@
+20130915
+MVS更新转换工具，避免重复转换添加的子ROM
+kof99n改为kof99k
+
 20130913
 MVS添加KOF97仿PS版，更新转换工具
 MVS添加并支持KOF98AE，感谢OrochiZ改的代码
