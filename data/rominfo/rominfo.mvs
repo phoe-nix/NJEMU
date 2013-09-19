@@ -1,4 +1,4 @@
-FILENAME( kof98ae, neogeo, 0, 0, 0, 0 )
+FILENAME( kof98ae, kof98, 0, 0, 0, 0 )
 	REGION( 0x700000, CPU1, 0 )
 	ROM( 0, 242-p1.rom, 0x000000, 0x100000, 0xc9188c66 )
 	ROM( 0, 242-p2.rom, 0x100000, 0x600000, 0x609fac6b )
@@ -48,6 +48,31 @@ FILENAME( sbp, neogeo, 0, 0, 0, 0 )
 	REGION( 0x400000, GFX3, 0 )
 	ROMX( 0, 001-003-03b.u3, 0x0000000, 0x200000, 0x44791317, 1, 1 )
 	ROMX( 0, 001-003-04b.u4, 0x0000001, 0x200000, 0xa3a1c0df, 1, 1 )
+END
+
+FILENAME( kof97ps, kof97, 0, 0, 0, 0 )
+	REGION( 0x500000, CPU1, 0 )
+	ROM( 0, kof97ps_p1.rom, 0x000000, 0x100000, 0xfc25feec )
+	ROM( 0, kof97ps_p2.rom, 0x100000, 0x400000, 0x90723643 )
+
+	REGION( 0x20000, GFX2, 0 )
+	ROM( 0, 232-s1.bin, 0x00000, 0x20000, 0x8514ecf5 )
+
+	REGION( 0x30000, CPU2, 0 )
+	ROM( 0, 232-m1.bin, 0x10000, 0x20000, 0x45348747 )
+
+	REGION( 0xc00000, SOUND1, SOUND_DISABLE )
+	ROM( 0, 232-v1.bin, 0x000000, 0x400000, 0x22a2b5b5 )
+	ROM( 0, 232-v2.bin, 0x400000, 0x400000, 0x2304e744 )
+	ROM( 0, 232-v3.bin, 0x800000, 0x400000, 0x759eb954 )
+
+	REGION( 0x2800000, GFX3, 0 )
+	ROMX( 0, 232-c1.bin, 0x0000000, 0x800000, 0x748ade86, 1, 1 )
+	ROMX( 0, 232-c2.bin, 0x0000001, 0x800000, 0x3270fa6e, 1, 1 )
+	ROMX( 0, 232-c3.bin, 0x1000000, 0x800000, 0x581d6618, 1, 1 )
+	ROMX( 0, 232-c4.bin, 0x1000001, 0x800000, 0x49bb1e68, 1, 1 )
+	ROMX( 0, 232-c5.bin, 0x2000000, 0x400000, 0x47711a8c, 1, 1 )
+	ROMX( 0, 232-c6.bin, 0x2000001, 0x400000, 0x6703a48a, 1, 1 )
 END
 
 FILENAME( kof97oro, kof97, 0, 0, 66, 0 )
@@ -199,7 +224,7 @@ FILENAME( kof97yk, neogeo, 0, 0, 0, 0 )
 	ROMX( 0, 232-c6.bin, 0x2000001, 0x400000, 0x4ff4d47b, 1, 1 )
 END
 
-FILENAME( kf2k2ps2, neogeo, 0, 0, 0, 0 )
+FILENAME( kf2k2ps2, kof2002, 0, 0, 0, 0 )
 	REGION( 0x600000, CPU1, 0 )
 	ROM( 0, kf2k2ps2-p1.bin, 0x000000, 0x100000, 0x336c4ca8 )
 	ROM( 0, kf2k2ps2-p2.bin, 0x100000, 0x500000, 0xcb0032bf )
@@ -283,7 +308,7 @@ FILENAME( kof96th, neogeo, 0, 0, 0, 0 )
 	ROMX( 0, 214-c7.bin, 0x3800001, 0x400000, 0x3687331b, 1, 1 )
 END
 
-FILENAME( kof2kps2, neogeo, 0, 0, 11, 0 )
+FILENAME( kof2kps2, kof2000, 0, 0, 11, 0 )
 	REGION( 0x500000, CPU1, 0 )
 	ROM( 0, kof2kps2-p1.bin, 0x000000, 0x100000, 0x56941018 )
 	ROM( 0, kof2kps2-p2.bin, 0x100000, 0x400000, 0x1669a5ad )
@@ -311,7 +336,7 @@ FILENAME( kof2kps2, neogeo, 0, 0, 11, 0 )
 	ROMX( 0, 257-c8.bin, 0x3000001, 0x800000, 0xba92f698, 1, 1 )
 END
 
-FILENAME( kof2kd, neogeo, 0, 0, 11, 0 )
+FILENAME( kof2kd, kof2000, 0, 0, 11, 0 )
 	REGION( 0x500000, CPU1, 0 )
 	ROM( 0, 257-p1n.bin, 0x000000, 0x100000, 0x391948a6 )
 	ROM( 0, 257-p2n.bin, 0x100000, 0x400000, 0x7a6d80b8 )
@@ -364,7 +389,7 @@ FILENAME( kogd, kof97, 0, 0, 0, 0 )
 	ROMX( 0, 232-c6.bin, 0x2000001, 0x400000, 0xb057db30, 1, 1 )
 END
 
-FILENAME( kof2kcn, neogeo, 0, 0, 11, 0 )
+FILENAME( kof2kcn, kof2000, 0, 0, 11, 0 )
 	REGION( 0x500000, CPU1, 0 )
 	ROM( 0, 257-p1n.bin, 0x000000, 0x100000, 0x72544473 )
 	ROM( 0, 257-p2n.bin, 0x100000, 0x400000, 0x85f35b22 )
@@ -475,7 +500,7 @@ FILENAME( kof2000n, kof2000, 0, 0, 11, 0 )
 	ROMX( 0, 257-c8.c8, 0x3000001, 0x800000, 0xb1afa60b, 1, 1 )
 END
 
-FILENAME( kof98c, neogeo, 0, 0, 0, 0 )
+FILENAME( kof98c, kof98, 0, 0, 0, 0 )
 	REGION( 0x500000, CPU1, 0 )
 	ROM( 0, 242-pn1.bin, 0x000000, 0x100000, 0x3678800f )
 	ROM( 0, 242-p2.bin, 0x100000, 0x400000, 0xd6499d6b )
@@ -503,7 +528,7 @@ FILENAME( kof98c, neogeo, 0, 0, 0, 0 )
 	ROMX( 0, 242-c8.bin, 0x3000001, 0x800000, 0xc823e045, 1, 1 )
 END
 
-FILENAME( kof2K2cn, kof2002, 0, 0, 0, 0 )
+FILENAME( kof2k2cn, kof2002, 0, 0, 0, 0 )
 	REGION( 0x500000, CPU1, 0 )
 	ROM( 0, 265-p1.bin, 0x000000, 0x100000, 0x83607019 )
 	ROM( 0, 265-p2.bin, 0x100000, 0x400000, 0x8b347f9e )
@@ -2506,28 +2531,6 @@ FILENAME( wh2j, neogeo, 0, 0, 0, 0 )
 	ROM( 0, 064-v2.bin, 0x200000, 0x200000, 0xb6527edd )
 
 	REGION( 0x1000000, GFX3, 0 )
-	ROMX( 0, 064-c13.bin, 0x000000, 0x400000, 0x771a6365, 1, 1 )
-	ROMX( 0, 064-c24.bin, 0x000001, 0x400000, 0xe7863a05, 1, 1 )
-	ROMX( 0, 064-c57.bin, 0x800000, 0x400000, 0x64594ed4, 1, 1 )
-	ROMX( 0, 064-c68.bin, 0x800001, 0x400000, 0x6e385398, 1, 1 )
-END
-
-FILENAME( wh2jh, neogeo, 0, 0, 0, 0 )
-	REGION( 0x200000, CPU1, 0 )
-	ROM( 0, 064-p1.bin, 0x100000, 0x100000, 0x385a2e86 )
-	ROM( 1, 0x000000, 0x100000, 0x00000000 )
-
-	REGION( 0x20000, GFX2, 0 )
-	ROM( 0, 064-s1.bin, 0x00000, 0x20000, 0x2a03998a )
-
-	REGION( 0x30000, CPU2, 0 )
-	ROM( 0, 064-m1.bin, 0x10000, 0x20000, 0xd2eec9d3 )
-
-	REGION( 0x400000, SOUND1, 0 )
-	ROM( 0, 064-v1.bin, 0x000000, 0x200000, 0xaa277109 )
-	ROM( 0, 064-v2.bin, 0x200000, 0x200000, 0xb6527edd )
-
-	REGION( 0x1000000, GFX3, 0 )
 	ROMX( 0, 064-c1.bin, 0x000000, 0x200000, 0x2ec87cea, 1, 1 )
 	ROMX( 0, 064-c2.bin, 0x000001, 0x200000, 0x526b81ab, 1, 1 )
 	ROMX( 0, 064-c3.bin, 0x400000, 0x200000, 0x436d1b31, 1, 1 )
@@ -3623,33 +3626,6 @@ FILENAME( kof96, neogeo, 0, 0, 0, 0 )
 
 	REGION( 0x20000, GFX2, 0 )
 	ROM( 0, 214-s1.bin, 0x00000, 0x20000, 0x1254cbdb )
-
-	REGION( 0x30000, CPU2, 0 )
-	ROM( 0, 214-m1.bin, 0x10000, 0x20000, 0xdabc427c )
-
-	REGION( 0xa00000, SOUND1, 0 )
-	ROM( 0, 214-v1.bin, 0x000000, 0x400000, 0x63f7b045 )
-	ROM( 0, 214-v2.bin, 0x400000, 0x400000, 0x25929059 )
-	ROM( 0, 214-v3.bin, 0x800000, 0x200000, 0x92a2257d )
-
-	REGION( 0x2000000, GFX3, 0 )
-	ROMX( 0, 214-c1.bin, 0x0000000, 0x400000, 0x7ecf4aa2, 1, 1 )
-	ROMX( 0, 214-c2.bin, 0x0000001, 0x400000, 0x05b54f37, 1, 1 )
-	ROMX( 0, 214-c3.bin, 0x0800000, 0x400000, 0x64989a65, 1, 1 )
-	ROMX( 0, 214-c4.bin, 0x0800001, 0x400000, 0xafbea515, 1, 1 )
-	ROMX( 0, 214-c5.bin, 0x1000000, 0x400000, 0x2a3bbd26, 1, 1 )
-	ROMX( 0, 214-c6.bin, 0x1000001, 0x400000, 0x44d30dc7, 1, 1 )
-	ROMX( 0, 214-c7.bin, 0x1800000, 0x400000, 0x3687331b, 1, 1 )
-	ROMX( 0, 214-c8.bin, 0x1800001, 0x400000, 0xfa1461ad, 1, 1 )
-END
-
-FILENAME( kof96r, kof96, 0, 0, 0, 0 )
-	REGION( 0x300000, CPU1, 0 )
-	ROM( 0, 214-p1.bin, 0x000000, 0x100000, 0x72ace3c1 )
-	ROM( 0, 214-p2.bin, 0x100000, 0x200000, 0x002ccb73 )
-
-	REGION( 0x20000, GFX2, 0 )
-	ROM( 0, 214-s1.bin, 0x00000, 0x20000, 0xf304df75 )
 
 	REGION( 0x30000, CPU2, 0 )
 	ROM( 0, 214-m1.bin, 0x10000, 0x20000, 0xdabc427c )
@@ -4969,7 +4945,7 @@ FILENAME( kof99e, kof99, 0, 0, 4, 0 )
 	ROMX( 0, 251-c8.bin, 0x3000001, 0x800000, 0x8d921c68, 1, 1 )
 END
 
-FILENAME( kof99n, kof99, 0, 0, 5, 0 )
+FILENAME( kof99k, kof99, 0, 0, 5, 0 )
 	REGION( 0x500000, CPU1, 0 )
 	ROM( 0, 152-p1.bin, 0x000000, 0x100000, 0xf2c7ddfa )
 	ROM( 0, 152-p2.bin, 0x100000, 0x400000, 0x274ef47a )

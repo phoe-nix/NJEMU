@@ -24,7 +24,7 @@
 #define NGH_superspy	0x0011		// 0011 (c) 1990 SNK
 // 0012
 // 0013
-#define NGH_mutnat		0x00014		// 0014 (c) 1992 SNK
+#define NGH_mutnat		0x0014		// 0014 (c) 1992 SNK
 // 0015
 #define NGH_kotm		0x0016		// 0016 (c) 1991 SNK
 #define NGH_sengoku		0x0017		// 0017 (c) 1991 SNK
@@ -221,7 +221,7 @@ enum
 	INIT_kof2003,		// 19
 	INIT_samsh5sp,		// 20
 
-	// SNKà»äO
+	// SNK“‘Õ‚
 	INIT_nitd,			// 21
 	INIT_s1945p,		// 22
 	INIT_pnyaa,			// 23

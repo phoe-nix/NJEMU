@@ -63,11 +63,13 @@ kf2k3pcb,The King of Fighters 2003 (Japan / JAMMA PCB)
 kizuna,Kizuna Encounter - Super Tag Battle
 kof2000,The King of Fighters 2000
 kof2000n,The King of Fighters 2000 (not encrypted)
+kof2kcn,The King of Fighters 2000(Chinese),GAME_BOOTLEG
 kof2kps2,The King of Fighters 2000 PlayStation 2 Version V1.0[EGCG],GAME_BOOTLEG
 kof2001,The King of Fighters 2001 (set 1)
 kof2001h,The King of Fighters 2001 (set 2)
 kof2k1bs,The King of Fighters 2001 PlayStation 2 Version V1.0[EGCG],GAME_BOOTLEG
 kof2002,The King of Fighters 2002
+kof2k2cn,The King of Fighters 2002(Chinese),GAME_BOOTLEG
 kf2k2ps2,The King of Fighters 2002 PlayStation 2 Version,GAME_BOOTLEG
 kof2003,The King of Fighters 2003 (World / US / MVS)
 kof94,The King of Fighters '94
@@ -75,18 +77,22 @@ kof95,The King of Fighters '95 (set 1)
 kof95a,The King of Fighters '95 (set 2)
 kof96,The King of Fighters '96 (set 1)
 kof96h,The King of Fighters '96 (set 2)
+kof96ae,The King of Fighters '96 ae,GAME_BOOTLEG
 kof97,The King of Fighters '97 (set 1)
 kof97a,The King of Fighters '97 (set 2)
 kof97k,The King of Fighters '97 (Korean board)
+kof97ps,The King of Fighters '97 PlayStation Version[EGCG],GAME_BOOTLEG
 kof98,The King of Fighters '98 - The Slugfest
 kof98k,The King of Fighters '98 - The Slugfest (Korean board 1)
 kof98ka,The King of Fighters '98 - The Slugfest (Korean board 2)
 kof98n,The King of Fighters '98 - The Slugfest (not encrypted)
 kof98ae,The King of Fighters '98 Anniversary Edition[EGCG],GAME_BOOTLEG
+kof98c,The King of Fighters '98 Combo,GAME_BOOTLEG
+kof98cn,The King of Fighters '98(Chinese),GAME_BOOTLEG
 kof99,The King of Fighters '99 - Millennium Battle (set 1)
 kof99a,The King of Fighters '99 - Millennium Battle (set 2)
 kof99e,The King of Fighters '99 - Millennium Battle (earlier)
-kof99n,The King of Fighters '99 - Millennium Battle (not encrypted)
+kof99k,The King of Fighters '99 - Millennium Battle (Korean)
 kof99p,The King of Fighters '99 - Millennium Battle (prototype)
 kotm,King of the Monsters (set 1)
 kotmh,King of the Monsters (set 2)
@@ -283,8 +289,3 @@ neodemo,Neo-Demo (PD),GAME_BOOTLEG
 ngem2k,NGEM2K (beta 2006-01-18 / PD),GAME_BOOTLEG
 neo2500,Neo 2500 Demo (PD),GAME_BOOTLEG
 syscheck,Neo System Check (ver 1.0b / PD),GAME_BOOTLEG
-kof2k2cn,The King of Fighters 2002(Chinese),GAME_BOOTLEG
-kof2kcn,The King of Fighters 2000(Chinese),GAME_BOOTLEG
-kof98cn,The King of Fighters '98(Chinese),GAME_BOOTLEG
-kof98C,The King of Fighters '98 Combo,GAME_BOOTLEG
-kof96ae,The King of Fighters '96 ae,GAME_BOOTLEG

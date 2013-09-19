@@ -31,7 +31,7 @@ enum
 
 
 /******************************************************************************
-	儘乕僇儖曄悢
+	ローカル変数
 ******************************************************************************/
 
 static UINT8  *memory_region_gfx1;
@@ -153,7 +153,7 @@ struct cacheinfo_t CPS2_cacheinfo[] =
 
 
 /******************************************************************************
-	CPS2梡娭悢
+	CPS2用関数
 ******************************************************************************/
 
 static void unshuffle(UINT64 *buf, int len)
@@ -503,7 +503,11 @@ static void clear_empty_blocks(void)
 	size = blocks_available << 16;
 	if (size != memory_length_gfx1)
 	{
+#ifdef CHINESE
+		printf("删除空白砖块 (完整大小: %d 字节 -> %d 字节)\n", memory_length_gfx1, size);
+#else
 		printf("remove empty tiles (total size: %d bytes -> %d bytes)\n", memory_length_gfx1, size);
+#endif
 	}
 }
 
@@ -536,7 +540,11 @@ static int calc_pen_usage(void)
 
 	if (!gfx_pen_usage[TILE08] || !gfx_pen_usage[TILE16] || !gfx_pen_usage[TILE32])
 	{
+#ifdef CHINESE
+		printf("错误: 无法分配内存.\n");
+#else
 		printf("ERROR: Could not allocate memory.\n");
+#endif
 		return 0;
 	}
 
@@ -697,8 +705,11 @@ static int load_rom_gfx1(void)
 				error_crc(fname);
 			return 0;
 		}
-
+#ifdef CHINESE
+		printf("正在读取 \"%s\"\n", fname);
+#else
 		printf("Loading \"%s\"\n", fname);
+#endif
 
 		i = rom_load(gfx1rom, memory_region_gfx1, i, num_gfx1rom);
 
@@ -858,8 +869,11 @@ static void free_memory(void)
 static int convert_rom(char *game_name)
 {
 	int i, res;
-
+#ifdef CHINESE
+	printf("正在检查ROM文件... (%s)\n", game_name);
+#else
 	printf("Checking ROM file... (%s)\n", game_name);
+#endif
 
 	memory_region_gfx1 = NULL;
 	memory_length_gfx1 = 0;
@@ -872,9 +886,15 @@ static int convert_rom(char *game_name)
 	{
 		switch (res)
 		{
+#ifdef CHINESE
+		case 1: printf("错误: 此游戏暂时不支持.\n"); break;
+		case 2: printf("错误: 没有找到ROM. (zip文件名不正确)\n"); break;
+		case 3: printf("错误: 没有找到rominfo.cps2.\n"); break;
+#else
 		case 1: printf("ERROR: This game is not supported.\n"); break;
 		case 2: printf("ERROR: ROM not found. (zip file name incorrect)\n"); break;
 		case 3: printf("ERROR: rominfo.cps2 not found.\n"); break;
+#endif
 		}
 		return 0;
 	}
@@ -900,7 +920,11 @@ static int convert_rom(char *game_name)
 	}
 
 	if (strlen(parent_name))
+#ifdef CHINESE
+		printf("子ROM版本 (主ROM名: %s)\n", parent_name);
+#else
 		printf("Clone set (parent: %s)\n", parent_name);
+#endif
 
 	i = 0;
 	cacheinfo = NULL;
@@ -930,7 +954,11 @@ static int convert_rom(char *game_name)
 	}
 	else
 	{
+#ifdef CHINESE
+		printf("错误: 未知的romset.\n");
+#else
 		printf("ERROR: Unknown romset.\n");
+#endif
 	}
 
 	return 0;
@@ -985,12 +1013,21 @@ static int create_raw_cache(char *game_name)
 	if ((fp = fopen(fname, "wb")) == NULL)
 	{
 		chdir("..");
+#ifdef CHINESE
+		printf("错误: 无法创建文件.\n");
+#else
 		printf("ERROR: Could not create file.\n");
+#endif
 		return 0;
 	}
 
+#ifdef CHINESE
+	printf("缓存名: cache%c%s.cache\n", delimiter, game_name);
+	printf("正在创建缓存文件...\n");
+#else
 	printf("cache name: cache%c%s.cache\n", delimiter, game_name);
 	printf("Create cache file...\n");
+#endif
 
 	fwrite(version, 1, sizeof(version), fp);
 	fwrite(gfx_pen_usage[TILE08], 1, gfx_total_elements[TILE08], fp);
@@ -1040,16 +1077,28 @@ static int create_zip_cache(char *game_name)
 	sprintf(zipname, "%s%ccache%c%s_cache.zip", launchDir, delimiter, delimiter, game_name);
 	remove(zipname);
 
+#ifdef CHINESE
+	printf("缓存名: cache%c%s_cache.zip\n", delimiter, game_name);
+	printf("正在创建缓存文件...\n");
+#else
 	printf("cache name: cache%c%s_cache.zip\n", delimiter, game_name);
 	printf("Create cache file...\n");
-
+#endif
 	if (zip_open(zipname, "wb") < 0)
 	{
+#ifdef CHINESE
+		printf("错误: 无法创建zip文件 \"cache%c%s_cache.zip\".\n", delimiter, game_name);
+#else
 		printf("ERROR: Could not create zip file \"cache%c%s_cache.zip\".\n", delimiter, game_name);
+#endif
 		goto error;
 	}
 
+#ifdef CHINESE
+	printf("压缩为zip文件... \"cache%c%s_cache.zip\"\n", delimiter, game_name);
+#else
 	printf("Compress to zip file... \"cache%c%s_cache.zip\"\n", delimiter, game_name);
+#endif
 
 	for (block = 0; block < 0x200; block++)
 		if (!block_empty[block]) total++;
@@ -1084,7 +1133,11 @@ static int create_zip_cache(char *game_name)
 error:
 	zip_close();
 
+#ifdef CHINESE
+	if (!res) printf("错误: 无法创建文件.\n");
+#else
 	if (!res) printf("ERROR: Could not create file.\n");
+#endif
 
 	chdir("..");
 
@@ -1103,9 +1156,15 @@ int main(int argc, char *argv[])
 #endif
 	check_byte_order();
 
+#ifdef CHINESE
+	printf("----------------------------------------------\n");
+	printf(" CPS2PSP ROM 转换器  " VERSION_STR "\n");
+	printf("----------------------------------------------\n\n");
+#else
 	printf("----------------------------------------------\n");
 	printf(" ROM converter for CPS2PSP " VERSION_STR "\n");
 	printf("----------------------------------------------\n\n");
+#endif
 
 	if (argc > 1)
 	{
@@ -1151,7 +1210,11 @@ int main(int argc, char *argv[])
 		if (mkdir("cache") != 0)
 #endif
 		{
+#ifdef CHINESE
+			printf("错误: 无法创建\"cache\"目录.\n");
+#else
 			printf("ERROR: Could not create directory \"cache\".\n");
+#endif
 			goto error;
 		}
 	}
@@ -1204,14 +1267,24 @@ int main(int argc, char *argv[])
 
 			strcpy(game_name, CPS2_cacheinfo[i].name);
 
+#ifdef CHINESE
 			printf("\n-------------------------------------------\n");
 			printf("  ROM set: %s\n", game_name);
 			printf("-------------------------------------------\n\n");
+#else
+			printf("\n-------------------------------------------\n");
+			printf("  ROM set: %s\n", game_name);
+			printf("-------------------------------------------\n\n");
+#endif
 
 			chdir(launchDir);
 			if (!convert_rom(game_name))
 			{
+#ifdef CHINESE
+				printf("错误: 转换失败. - 跳过\n\n");
+#else
 				printf("ERROR: Convert failed. - Skip\n\n");
+#endif
 			}
 			else
 			{
@@ -1220,20 +1293,32 @@ int main(int argc, char *argv[])
 				else
 					res = create_raw_cache(game_name);
 
+#ifdef CHINESE
+				if (res) printf("完成.\n\n");
+#else
 				if (res) printf("Done.\n\n");
+#endif
 			}
 			free_memory();
 		}
-
+#ifdef CHINESE
+		printf("完成.\n");
+		printf("请将cache内的文件夹复制到\"/PSP/GAMES/cps2psp/cache\".\n");
+#else
 		printf("complete.\n");
 		printf("Please copy these files to directory \"/PSP/GAMES/cps2psp/cache\".\n");
+#endif
 	}
 	else
 	{
 #ifdef WIN32
 		if (!path_found)
 		{
+#ifdef CHINESE
+			printf("请选择ROM文件.\n");
+#else
 			printf("Please select ROM file.\n");
+#endif
 
 			if (!file_dialog(NULL, "zip file (*.zip)\0*.zip\0", game_dir, OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY))
 				goto error;
@@ -1267,12 +1352,21 @@ int main(int argc, char *argv[])
 			*p++;
 		}
 
+#ifdef CHINESE
+		printf("路径: %s\n", zip_dir);
+		printf("文件名: %s\n", game_name);
+#else
 		printf("path: %s\n", zip_dir);
 		printf("file name: %s\n", game_name);
+#endif
 
 		if ((p = strrchr(game_name, '.')) == NULL)
 		{
+#ifdef CHINESE
+			printf("请输入正确的路径.\n");
+#else
 			printf("Please input correct path.\n");
+#endif
 			goto error;
 		}
 		*p = '\0';
@@ -1295,8 +1389,14 @@ int main(int argc, char *argv[])
 		if (res)
 #endif
 		{
+#ifdef CHINESE
+			printf("完成.\n");
+			printf("请将\"cache%c%s_cache\"文件夹复制到\"/PSP/GAMES/cps2psp/cache\".\n", delimiter, game_name);
+#else
 			printf("complete.\n");
 			printf("Please copy \"cache%c%s.cache\" to directory \"/PSP/GAMES/cps2psp/cache\".\n", delimiter, game_name);
+#endif
+
 		}
 		free_memory();
 	}
@@ -1305,7 +1405,11 @@ error:
 #ifdef WIN32
 	if (pause)
 	{
+#ifdef CHINESE
+		printf("请按任意键退出.\n");
+#else
 		printf("Press any key to exit.\n");
+#endif
 		getch();
 	}
 #endif

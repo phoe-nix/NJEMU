@@ -102,6 +102,7 @@ enum
 	INIT_wofsjb,		// 11
 	INIT_dinob,			// 12
 	INIT_dinoh,			// 13
+	INIT_dinohunt,		// 14
 #endif
 	INIT_MAX
 };
@@ -198,6 +199,7 @@ void wof3js_init(void);
 void wof3sj_init(void);
 void wofsjb_init(void);
 void dinob_init(void);
+void dinohunt_init(void);
 #endif
 
 int cps1_driver_init(void);

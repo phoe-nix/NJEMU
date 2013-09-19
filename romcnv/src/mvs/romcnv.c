@@ -107,10 +107,13 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "kof96ep",  "kof96",    0, 0, 0 },
 	{ "kizuna",   "savagere", 1, 1, 1 },
 	{ "kof97a",   "kof97",    0, 0, 0 },
+	{ "kof97d",   "kof97",    0, 0, 0 },
+	{ "kof97k",   "kof97",    0, 0, 0 },
 	{ "kof97pls", "kof97",    0, 0, 0 },
 	{ "kof97pla", "kof97",    0, 1, 0 },
 	{ "kof97ps",  "kof97",    1, 0, 0 },
 	{ "kog",      "kof97",    1, 1, 0 },
+	{ "kod",      "kof97",    1, 1, 0 },
 	{ "lastbldh", "lastblad", 0, 0, 0 },
 	{ "lastsold", "lastblad", 0, 0, 0 },
 	{ "shocktra", "shocktro", 0, 0, 0 },
@@ -119,16 +122,18 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "kof98c",   "kof98",    1, 1, 0 },
 	{ "kof98cn",  "kof98",    1, 1, 0 },
 	{ "kof98k",   "kof98",    0, 0, 0 },
+	{ "kof98ka",  "kof98",    0, 0, 0 },
 	{ "kof98n",   "kof98",    0, 0, 0 },
 	{ "kof98ae",  "kof98",    1, 1, 1 },
 	{ "breakrev", "breakers", 1, 1, 1 },
 	{ "lans2004", "shocktr2", 1, 1, 1 },
 	{ "kof99a",   "kof99",    0, 0, 0 },
 	{ "kof99e",   "kof99",    0, 0, 0 },
-	{ "kof99n",   "kof99",    0, 0, 0 },
+	{ "kof99k",   "kof99",    0, 0, 0 },
 	{ "kof99p",   "kof99",    1, 1, 0 },
 	{ "garouo",   "garou",    0, 0, 0 },
 	{ "garoubl",  "garoup",   0, 1, 1 },
+	{ "mslug3h",  "mslug3",   0, 0, 0 },
 	{ "mslug3n",  "mslug3",   0, 0, 0 },
 	{ "mslug3b6", "mslug3",   0, 1, 0 },
 	{ "kof2kd",   "kof2000",  1, 1, 0 },
@@ -143,6 +148,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "cthd2k3a", "kof2001",  1, 1, 1 },
 	{ "ct2k3sp",  "kof2001",  1, 1, 0 },
 	{ "ct2k3sa",  "kof2001",  1, 1, 0 },
+	{ "mslug4h",  "mslug4",   0, 0, 0 },
 	{ "ms4plus",  "mslug4",   0, 0, 0 },
 	{ "kof2002b", "kof2002",  1, 0, 0 },
 	{ "kf2k2cn",  "kof2002",  1, 1, 0 },
@@ -155,6 +161,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "kf2k2ps2", "kof2002",  1, 1, 1 },
 	{ "matrimbl", "matrim",   0, 0, 1 },
 	{ "mslug5b",  "mslug5",   0, 0, 0 },
+	{ "mslug5h",  "mslug5",   0, 0, 0 },
 	{ "ms5plus",  "mslug5",   0, 1, 0 },
 	{ "svcpcba",  "svcpcb",   0, 0, 0 },
 	{ "samsho5h", "samsho5",  0, 0, 0 },
@@ -170,6 +177,14 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "kf2k3bla", "kf2k3bl",  0, 0, 0 },
 	{ "kf2k3pl",  "kf2k3bl",  0, 1, 0 },
 	{ "kf2k3upl", "kf2k3bl",  0, 1, 0 },
+	{ "ironclado","ironclad", 0, 0, 0 },
+	{ "jockeygpa","jockeygp", 0, 0, 0 },
+	{ "rbff1a",   "rbff1",    0, 0, 0 },
+	{ "rbffspeck","rbffspec", 0, 0, 0 },
+	{ "samsho2k", "samsho2",  0, 0, 0 },
+	{ "samsho2k2","samsho2",  0, 0, 0 },
+	{ "samsho4k", "samsho4",  0, 0, 0 },
+	{ "shocktroa","shocktro", 0, 0, 0 },
 	{ NULL }
 };
 
@@ -282,9 +297,11 @@ static int load_rom_gfx2(void)
 					error_crc(fname);
 				return 0;
 			}
-
+#ifdef CHINESE
+			printf("正在读取 \"%s\"\n", fname);
+#else
 			printf("Loading \"%s\"\n", fname);
-
+#endif
 			i = rom_load(gfx2rom, memory_region_gfx2, i, num_gfx2rom);
 
 			file_close();
@@ -328,9 +345,11 @@ static int load_rom_gfx3(void)
 				error_crc(fname);
 			return 0;
 		}
-
+#ifdef CHINESE
+		printf("正在读取 \"%s\"\n", fname);
+#else
 		printf("Loading \"%s\"\n", fname);
-
+#endif
 		i = rom_load(gfx3rom, memory_region_gfx3, i, num_gfx3rom);
 
 		file_close();
@@ -367,8 +386,11 @@ static int load_rom_sound1(void)
 			return 0;
 		}
 
+#ifdef CHINESE
+		printf("正在读取 \"%s\"\n", fname);
+#else
 		printf("Loading \"%s\"\n", fname);
-
+#endif
 		i = rom_load(snd1rom, memory_region_sound1, i, num_snd1rom);
 
 		file_close();
@@ -653,9 +675,11 @@ void free_memory(void)
 static int convert_rom(char *game_name)
 {
 	int i, res;
-
+#ifdef CHINESE
+	printf("正在检查ROM文件... (%s)\n", game_name);
+#else
 	printf("Checking ROM file... (%s)\n", game_name);
-
+#endif
 	memory_region_gfx2   = NULL;
 	memory_region_gfx3   = NULL;
 	memory_region_sound1 = NULL;
@@ -671,17 +695,27 @@ static int convert_rom(char *game_name)
 	{
 		switch (res)
 		{
+#ifdef CHINESE
+		case 1: printf("错误: 此游戏暂时不支持.\n"); break;
+		case 2: printf("错误: 没有找到ROM. (zip文件名不正确)\n"); break;
+		case 3: printf("错误: 没有找到rominfo.mvs.\n"); break;
+		case 4: printf("消息: 不需要转换此游戏.\n"); break;
+#else
 		case 1: printf("ERROR: This game is not supported.\n"); break;
 		case 2: printf("ERROR: ROM not found. (zip file name incorrect)\n"); break;
 		case 3: printf("ERROR: rominfo.mvs not found.\n"); break;
 		case 4: printf("INFO: No need to convert this game.\n"); break;
+#endif
 		}
 		return 0;
 	}
 
 	if (strlen(parent_name))
+#ifdef CHINESE
+		printf("子ROM版本 (主ROM名: %s)\n", parent_name);
+#else
 		printf("Clone set (parent: %s)\n", parent_name);
-
+#endif
 	if (psp2k) disable_sound = 0;
 
 	if (encrypt_snd1 || disable_sound)
@@ -929,9 +963,11 @@ static int create_raw_cache(char *game_name)
 	sprintf(version, "MVS_V%d%d\0", VERSION_MAJOR, VERSION_MINOR);
 
 	chdir("cache");
-
+#ifdef CHINESE
+	printf("正在创建缓存文件...\n");
+#else
 	printf("Create cache file...\n");
-
+#endif
 	sprintf(fname, "%s_cache", game_name);
 	if (chdir(fname) != 0)
 	{
@@ -941,7 +977,11 @@ static int create_raw_cache(char *game_name)
 		if (mkdir(fname) != 0)
 #endif
 		{
+#ifdef CHINESE
+			printf("错误: 无法创建文件夹.\n");
+#else
 			printf("ERROR: Could not create folder.\n");
+#endif
 			chdir(launchDir);
 			return 0;
 		}
@@ -995,8 +1035,11 @@ error:
 
 	sprintf(fname, "cache_%s", game_name);
 	rmdir(fname);
-
+#ifdef CHINESE
+	printf("错误: 无法创建文件.\n");
+#else
 	printf("ERROR: Could not create file.\n");
+#endif
 	chdir("..");
 	return 0;
 }
@@ -1012,10 +1055,15 @@ int main(int argc, char *argv[])
 	check_windows_version();
 #endif
 	check_byte_order();
-
+#ifdef CHINESE
+	printf("----------------------------------------------\n");
+	printf(" MVSPSP ROM 转换器  " VERSION_STR "\n");
+	printf("----------------------------------------------\n\n");
+#else
 	printf("----------------------------------------------\n");
 	printf(" ROM converter for MVSPSP " VERSION_STR "\n");
 	printf("----------------------------------------------\n\n");
+#endif
 
 	psp2k = 0;
 	if (argc > 1)
@@ -1062,7 +1110,11 @@ int main(int argc, char *argv[])
 		if (mkdir("cache") != 0)
 #endif
 		{
+#ifdef CHINESE
+			printf("错误: 无法创建\"cache\"目录.\n");
+#else
 			printf("ERROR: Could not create directory \"cache\".\n");
+#endif
 			goto error;
 		}
 	}
@@ -1138,36 +1190,56 @@ int main(int argc, char *argv[])
 			}
 			if (!convert_crom && !convert_srom && !convert_vrom)
 				continue;
-
+#ifdef CHINESE
 			printf("\n-------------------------------------------\n");
 			printf("  ROM set: %s\n", game_name);
 			printf("-------------------------------------------\n\n");
+#else
+			printf("\n-------------------------------------------\n");
+			printf("  ROM set: %s\n", game_name);
+			printf("-------------------------------------------\n\n");
+#endif
 
 			chdir(launchDir);
 			if (!convert_rom(game_name))
 			{
+#ifdef CHINESE
+				printf("跳过.\n\n");
+#else
 				printf("Skip.\n\n");
+#endif
 			}
 			else
 			{
 				if (create_raw_cache(game_name))
 				{
+#ifdef CHINESE
+					printf("完成.\n\n");
+#else
 					printf("Done.\n\n");
+#endif
 				}
 			}
 			free_memory();
 		}
-
+#ifdef CHINESE
+		printf("完成.\n");
+		printf("请将cache内的文件夹复制到\"/PSP/GAMES/mvspsp/cache\".\n");
+#else
 		printf("complete.\n");
 		printf("Please copy these files to directory \"/PSP/GAMES/mvspsp/cache\".\n");
+#endif
 	}
 	else
 	{
 #ifdef WIN32
 		if (!path_found)
 		{
+#ifdef CHINESE
+			printf("请选择ROM文件.\n");
+#else
 			printf("Please select ROM file.\n");
-
+#endif
 			if (!file_dialog(NULL, "zip file (*.zip)\0*.zip\0", game_dir, OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY))
 				goto error;
 		}
@@ -1199,18 +1271,28 @@ int main(int argc, char *argv[])
 			*p = tolower(*p);
 			*p++;
 		}
-
+#ifdef CHINESE
+		printf("路径: %s\n", zip_dir);
+		printf("文件名: %s\n", game_name);
+#else
 		printf("path: %s\n", zip_dir);
 		printf("filename: %s\n", game_name);
-
+#endif
 		if ((p = strrchr(game_name, '.')) == NULL)
 		{
+#ifdef CHINESE
+			printf("请输入正确的路径.\n");
+#else
 			printf("Please input correct path.\n");
+#endif
 			goto error;
 		}
 		*p = '\0';
-
+#ifdef CHINESE
+		printf("缓存文件夹名: cache%c%s_cache\n", delimiter, game_name);
+#else
 		printf("cache folder name: cache%c%s_cache\n", delimiter, game_name);
+#endif
 
 		convert_crom = 1;
 		convert_srom = 1;
@@ -1231,8 +1313,13 @@ int main(int argc, char *argv[])
 		if (res)
 #endif
 		{
+#ifdef CHINESE
+			printf("完成.\n");
+			printf("请将\"cache%c%s_cache\"文件夹复制到\"/PSP/GAMES/mvspsp/cache\".\n", delimiter, game_name);
+#else
 			printf("complete.\n");
 			printf("Please copy \"cache%c%s_cache\" folder to directory \"/PSP/GAMES/mvspsp/cache\".\n", delimiter, game_name);
+#endif
 		}
 		free_memory();
 	}
@@ -1241,7 +1328,11 @@ error:
 #ifdef WIN32
 	if (pause)
 	{
+#ifdef CHINESE
+		printf("请按任意键退出.\n");
+#else
 		printf("Press any key to exit.\n");
+#endif
 		getch();
 	}
 #endif

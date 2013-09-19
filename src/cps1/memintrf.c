@@ -701,6 +701,7 @@ int memory_init(void)
 	case INIT_wofsjb:   wofsjb_init();     break;
 	case INIT_dinoh:    dino_decode();     break;
 	case INIT_dinob:    dinob_init();      break;
+	case INIT_dinohunt: dinohunt_init();   break;
 #endif
 	}
 

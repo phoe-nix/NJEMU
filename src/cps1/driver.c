@@ -199,6 +199,7 @@ struct driver_t CPS1_driver[] =
 	{"wofb",    CPS_B_01, 0,                    GFX_WOF      },
 	{"wofh",    HACK_B_2, CPS1_KLUDGE_WOFB,     GFX_WOF      },
 	{"wofha",   HACK_B_2, CPS1_KLUDGE_WOFB,     GFX_WOF      },
+	{"wofhfh",  NOBATTRY, 0,                    GFX_WOF      },
 	{"wof3js",  CPS_B_01, 0,                    GFX_WOF      },
 	{"wof3sj",  HACK_B_2, CPS1_KLUDGE_WOFB,     GFX_WOF      },
 	{"wof3sja", HACK_B_2, CPS1_KLUDGE_WOFB,     GFX_WOF      },
@@ -228,9 +229,9 @@ struct driver_t CPS1_driver[] =
 	{"wofhgz",  QSOUND_1, 0,                    GFX_WOF      },
 	{"wofdyg",  QSOUND_1, 0,                    GFX_WOF      },
 	{"wofyxg",  QSOUND_1, 0,                    GFX_WOF      },
-	{"wofhfh",  NOBATTRY, 0,                    GFX_WOF      },
+	{"wofzhy",  QSOUND_1, 0,                    GFX_WOF      },
+	{"wofmr",   QSOUND_1, 0,                    GFX_WOF      },
 	{"wofchs",  NOBATTRY, 0,                    GFX_WOF      },
-	{"wofjboss",QSOUND_1, 0,                    GFX_WOF      },
 #endif
 	{"dino",    QSOUND_2, 0,                    GFX_DINO     },
 	{"dinou",   QSOUND_2, 0,                    GFX_DINO     },
@@ -471,7 +472,8 @@ READ8_HANDLER( cps1_sound_command_r )
 WRITE16_HANDLER( cps1_sound_command_w )
 {
 #if !RELEASE
-	if (machine_init_type == INIT_dinoh)
+	if (machine_init_type == INIT_dinoh
+	 || machine_init_type == INIT_dinohunt)
 	{
 		/* Pass the Sound Code to the Q-Sound Shared Ram */
 		qsound_sharedram1[0x0001] = data;
@@ -1366,6 +1368,69 @@ void dinob_init(void)
 
 	dino_decode();
 }
+
+void dinohunt_init(void)
+{
+	UINT8 *mem8 = memory_region_cpu1;
+
+    mem8[0xaacf4] = 0x71;
+    mem8[0xaacf5] = 0x4e;
+
+    mem8[0x6AA] = 0xD8;
+    mem8[0x6AB] = 0x13;
+    mem8[0x6AC] = 0xF1;
+    mem8[0x6AD] = 0x00;
+    mem8[0x6AE] = 0x07;
+    mem8[0x6AF] = 0x80;
+    mem8[0x6B0] = 0xD8;
+    mem8[0x6B1] = 0x13;
+    mem8[0x6B2] = 0xF1;
+    mem8[0x6B3] = 0x00;
+    mem8[0x6B4] = 0x09;
+    mem8[0x6B5] = 0x80;
+
+    mem8[0x43A] = 0x71;
+    mem8[0x43B] = 0x4E;
+    mem8[0x43C] = 0x71;
+    mem8[0x43D] = 0x4E;
+    mem8[0x43E] = 0x71;
+    mem8[0x43F] = 0x4E;
+    mem8[0x440] = 0x71;
+    mem8[0x441] = 0x4E;
+
+    mem8[0x664] = 0xD8;
+    mem8[0x665] = 0x33;
+    mem8[0x666] = 0xF1;
+    mem8[0x667] = 0x00;
+    mem8[0x668] = 0x02;
+    mem8[0x669] = 0x80;
+
+    mem8[0x75E] = 0x39;
+    mem8[0x75F] = 0x12;
+    mem8[0x760] = 0xF1;
+    mem8[0x761] = 0x00;
+    mem8[0x762] = 0x01;
+    mem8[0x763] = 0xC0;
+
+    mem8[0x790] = 0x39;
+    mem8[0x791] = 0x12;
+    mem8[0x792] = 0xF1;
+    mem8[0x793] = 0x00;
+    mem8[0x794] = 0x01;
+    mem8[0x795] = 0xC0;
+
+    mem8[0x7B4] = 0x79;
+    mem8[0x7B5] = 0x1B;
+    mem8[0x7B6] = 0xF1;
+    mem8[0x7B7] = 0x00;
+    mem8[0x7B8] = 0x01;
+    mem8[0x7B9] = 0xC0;
+    mem8[0x7BA] = 0x18;
+    mem8[0x7BB] = 0x00;
+
+	dino_decode();
+}
+
 #endif /* RELEASE */
 
 
