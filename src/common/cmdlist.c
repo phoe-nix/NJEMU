@@ -2,7 +2,7 @@
 
 	cmdlist.c
 
-	MAME Plus!宍幃僐儅儞僪儕僗僩價儏乕傾
+	MAME Plus!形式コマンドリストビューア
 
 ******************************************************************************/
 
@@ -10,7 +10,7 @@
 
 
 /******************************************************************************
-	掕悢/儅僋儘
+	定数/マクロ
 ******************************************************************************/
 
 #define issjis1(c)	(((c) >= 0x81 && (c) <= 0xfe))
@@ -39,7 +39,7 @@ enum
 
 
 /******************************************************************************
-	儘乕僇儖峔憿懱/曄悢
+	ローカル構造体/変数
 ******************************************************************************/
 
 typedef struct cmdlist_t
@@ -70,11 +70,11 @@ static int menu_open;
 
 
 /******************************************************************************
-	僐儅儞僪儕僗僩價儏乕傾
+	コマンドリストビューア
 ******************************************************************************/
 
 /*--------------------------------------------------------
-	儔僀儞僶僢僼傽偐傜僞僌傪庢摼
+	ラインバッファからタグを取得
 --------------------------------------------------------*/
 
 static int cmdlist_get_tag(char *buf)
@@ -90,7 +90,7 @@ static int cmdlist_get_tag(char *buf)
 
 
 /*--------------------------------------------------------
-	儔僀儞僶僢僼傽偐傜抣傪庢摼
+	ラインバッファから値を取得
 --------------------------------------------------------*/
 
 static char *cmdlist_get_value(char *buf)
@@ -103,7 +103,7 @@ static char *cmdlist_get_value(char *buf)
 
 
 /*--------------------------------------------------------
-	僥僉僗僩偺夵峴僐乕僪傪敾暿
+	テキストの改行コードを判別
 --------------------------------------------------------*/
 
 static int check_linefeed_code(const char *buf)
@@ -125,7 +125,7 @@ static int check_linefeed_code(const char *buf)
 
 
 /*--------------------------------------------------------
-	僥僉僗僩偺暥帤僐乕僪傪敾暿
+	テキストの文字コードを判別
 --------------------------------------------------------*/
 
 static int check_text_encode(char *buf, int size)
@@ -167,7 +167,7 @@ static int check_text_encode(char *buf, int size)
 
 
 /*--------------------------------------------------------
-	僐儅儞僪儕僗僩偺儘乕僪
+	コマンドリストのロード
 --------------------------------------------------------*/
 
 void load_commandlist(const char *game_name, const char *parent_name)
@@ -204,14 +204,14 @@ void load_commandlist(const char *game_name, const char *parent_name)
 	fread(buf, 1, size, fp);
 	fclose(fp);
 
-	// 夵峴僐乕僪僠僃僢僋
+	// 改行コードチェック
 	lf_code = check_linefeed_code(linebuf);
 	if (lf_code == LF_MAC)
 		lf = _CR;
 	else
 		lf = _LF;
 
-	// 僐儅儞僪夝愅奐巒
+	// コマンド解析開始
 retry:
 	found = 0;
 	line  = 0;
@@ -239,12 +239,12 @@ retry:
 			case TAG_INFO:
 				if (found && start && end)
 				{
-					// 惓忢廔椆
+					// 正常終了
 					found = 2;
 				}
 				else if (found)
 				{
-					// 僐儅儞僪偑柍偄偐丄彂幃偑堎忢
+					// コマンドが無いか、書式が異常
 					found = 0;
 				}
 				else if ((p = cmdlist_get_value(linebuf)) != NULL)
@@ -312,14 +312,14 @@ retry:
 			goto retry;
 		}
 
-		// 尒偮偐傜側偐偭偨応崌偼廔椆
+		// 見つからなかった場合は終了
 		free(buf);
 		return;
 	}
 
 	free(buf);
 
-	// 僶僢僼傽傪妋曐偟丄撉傒崬傒
+	// バッファを確保し、読み込み
 	size = end - start;
 
 	if ((cmdbuf = calloc(1, size)) == NULL)
@@ -330,15 +330,15 @@ retry:
 	fread(cmdbuf, 1, size, fp);
 	fclose(fp);
 
-	// 暥帤僐乕僪僠僃僢僋
+	// 文字コードチェック
 	if (charset == CHARSET_DEFAULT)
 		charset = check_text_encode(cmdbuf, size);
 
-	// 峴暘妱梡儊儌儕傪妋曐
+	// 行分割用メモリを確保
 	if ((cmdline = calloc(num_lines, sizeof(char *))) == NULL)
 		goto error;
 
-	// 僶僢僼傽傪峴枅偵暘妱
+	// バッファを行毎に分割
 	p = cmdbuf;
 	for (line = 0; line < num_lines; line++)
 	{
@@ -364,7 +364,7 @@ retry:
 		}
 	}
 
-	// 僐儅儞僪儕僗僩峔憿懱偺妋曐
+	// コマンドリスト構造体の確保
 	if ((cmd = (CMDLIST **)calloc(num_items, sizeof(CMDLIST *))) == NULL)
 		goto error;
 
@@ -374,7 +374,7 @@ retry:
 			goto error;
 	}
 
-	// 奺崁栚偺峴悢傪僠僃僢僋屻丄搊榐
+	// 各項目の行数をチェック後、登録
 	for (i = 0; i < 2; i++)
 	{
 		int item_line = 0;
@@ -425,7 +425,7 @@ retry:
 	free(cmdline);
 	cmdline = NULL;
 
-	// 昞帵忣曬偺弶婜壔
+	// 表示情報の初期化
 	sel_line   = 0;
 	prev_line  = 0;
 	rows_line  = (charset & CHARSET_SHIFTJIS) ? 16 : 14;
@@ -440,7 +440,7 @@ retry:
 	show_items = rows_item;
 	if (num_items < show_items) show_items = num_items;
 
-	// 崁栚儊僯儏乕偺暆傪寁嶼
+	// 項目メニューの幅を計算
 	item_sx = 480;
 	for (item = 0; item < num_items; item++)
 	{
@@ -460,7 +460,7 @@ error:
 
 
 /*--------------------------------------------------------
-	僐儅儞僪儕僗僩偺夝曻
+	コマンドリストの解放
 --------------------------------------------------------*/
 
 void free_commandlist(void)
@@ -496,7 +496,7 @@ void free_commandlist(void)
 
 
 /*--------------------------------------------------------
-	僐儅儞僪儕僗僩昞帵
+	コマンドリスト表示
 --------------------------------------------------------*/
 
 void commandlist(int flag)
@@ -724,7 +724,7 @@ void commandlist(int flag)
 
 
 /******************************************************************************
-	僐儅儞僪儕僗僩僒僀僘弅彫張棟
+	コマンドリストサイズ縮小処理
 ******************************************************************************/
 
 #define INFO_SEEK	0
@@ -743,7 +743,7 @@ int commandlist_size_reduction(void)
 {
 	FILE *fp;
 	char path[MAX_PATH], path2[MAX_PATH];
-	char *p, linebuf[256], rom_name[256][16];
+	char *p, linebuf[256], rom_name[512][16];//256
 	int i, j, l, found = 0, total_roms = 0;
 	int num_games, charset, progress;
 	int header_end, body_start, body_end;
@@ -826,7 +826,7 @@ int commandlist_size_reduction(void)
 	msg_printf("\n");
 	msg_printf(TEXT(CHECKING_COMMAND_DAT_FORMAT));
 
-	// 搊榐偝傟偰偄傞僎乕儉悢傪僠僃僢僋
+	// 登録されているゲーム数をチェック
 	while (fgets(linebuf, 255, fp) != NULL)
 	{
 		if (strrchr(linebuf, '\r') == NULL)
@@ -868,7 +868,7 @@ int commandlist_size_reduction(void)
 					{
 						if (body_start == -1)
 						{
-							// 嵟弶偺 $info 傪婰榐
+							// 最初の $info を記録
 							body_start = line;
 						}
 						num_games++;
@@ -877,7 +877,7 @@ int commandlist_size_reduction(void)
 				}
 				else if (!strncmp(linebuf, "$end", 4))
 				{
-					// 嵟屻偺 $end 傪婰榐
+					// 最後の $end を記録
 					body_end = line;
 				}
 			}
@@ -924,7 +924,7 @@ int commandlist_size_reduction(void)
 		charset = check_text_encode(textbuf, org_size);
 	}
 
-	// 峴偺埵抲傪曐懚
+	// 行の位置を保存
 	line_ptr[0] = strtok(textbuf, "\n");
 
 	i = 1;
@@ -940,12 +940,12 @@ int commandlist_size_reduction(void)
 			*p = '\0';
 	}
 
-	// 戅旔僼傽僀儖柤傪嶌惉
+	// 退避ファイル名を作成
 	sprintf(path2, "%scommand.org", launchDir);
 
 	sceIoRemove(path2);
 
-	// 儕僱乕儉偟偰戅旔 (戅旔僼傽僀儖柤: command.org)
+	// リネームして退避 (退避ファイル名: command.org)
 	if (sceIoRename(path, path2) < 0)
 	{
 		msg_printf(TEXT(COULD_NOT_RENAME_FILE));
@@ -953,7 +953,7 @@ int commandlist_size_reduction(void)
 	}
 
 	//------------------------------------------------------------------
-	// 弅彫張棟奐巒
+	// 縮小処理開始
 	//------------------------------------------------------------------
 	if ((fp = fopen(path, "w")) == NULL)
 	{
@@ -978,7 +978,7 @@ int commandlist_size_reduction(void)
 		line2++;
 	}
 
-	// 僿僢僟傪僐僺乕
+	// ヘッダをコピー
 	if (header_end != -1)
 	{
 		for (; l <= header_end; l++)
@@ -1002,7 +1002,7 @@ int commandlist_size_reduction(void)
 		case INFO_SEEK:
 			if (linebuf[0] == '$')
 			{
-				// 僐儅儞僪儕僗僩奐巒
+				// コマンドリスト開始
 				if (!strnicmp(linebuf, "$info", 5) && strchr(linebuf, '=') != NULL)
 				{
 					char *name;
@@ -1083,14 +1083,14 @@ int commandlist_size_reduction(void)
 		case CMD_SEEK:
 			if (!strnicmp(linebuf, "$cmd", 4))
 			{
-				// 僐儅儞僪奐巒
+				// コマンド開始
 				progress = END_SEEK;
 				fprintf(fp, "$cmd\r\n");
 				line2++;
 			}
 			else if (!strnicmp(linebuf, "$info", 5))
 			{
-				// 師偺僐儅儞僪 - 1峴栠偡
+				// 次のコマンド - 1行戻す
 				fprintf(fp, "\r\n");
 				progress = INFO_SEEK;
 				l--;
@@ -1100,14 +1100,14 @@ int commandlist_size_reduction(void)
 		case END_SEEK:
 			if (!strnicmp(linebuf, "$end", 4))
 			{
-				// 僐儅儞僪廔椆
+				// コマンド終了
 				progress = CMD_SEEK;
 				fprintf(fp, "$end\r\n");
 				line2++;
 			}
 			else
 			{
-				// 僐儅儞僪儕僗僩偺拞恎 - 偦偺傑傑弌椡
+				// コマンドリストの中身 - そのまま出力
 				fprintf(fp, "%s\r\n", linebuf);
 				line2++;
 			}
@@ -1147,9 +1147,9 @@ error:
 
 	msg_printf("\n");
 	msg_printf(TEXT(PRESS_ANY_BUTTON2));
+	pad_wait_press(PAD_WAIT_INFINITY);
 
 cancel:
-	pad_wait_press(PAD_WAIT_INFINITY);
 	pad_wait_clear();
 	ui_popup_reset();
 

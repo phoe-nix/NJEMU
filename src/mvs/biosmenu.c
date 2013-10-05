@@ -251,7 +251,8 @@ void bios_select(int flag)
 	load_background(BG_DEFAULT);
 	ui_popup_reset();
 
-	while (1)
+//	while (1)
+	do
 	{
 		if (update)
 		{
@@ -360,7 +361,7 @@ void bios_select(int flag)
 		pad_update();
 
 		if (Loop == LOOP_EXIT) break;
-	}
+	} while (!pad_pressed(PSP_CTRL_CROSS));
 
 	pad_wait_clear();
 	ui_popup_reset();
