@@ -1,3 +1,17 @@
+20131120  
+CPS  
+修复热键无法保存的问题  
+MVS  
+更新neocrypt.c，同步MAME的源码(M1解密代码未移植成功)  
+更新转换工具，去除多余转换的ROM  
+添加ROM支持:  
+kof96cn,拳皇 '96 (中文版)  
+kof97cn,拳皇 '97 (中文版)  
+kof97oro,拳皇 '97 Plus 2003 (盗版)  
+kof97pla,拳皇 '97 Plus 2003 (盗版/hack) 更名  
+kog,拳皇 '97 KOG (盗版) 解锁，修复死机(测试多次暂时未死过机)  
+kof99ae,拳皇 '99 Anniversary Edition 公测版20130113  
+
 20131005	
 修复缩减command死机
 
