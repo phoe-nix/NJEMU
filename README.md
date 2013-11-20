@@ -11,6 +11,7 @@ kof97oro,拳皇 '97 Plus 2003 (盗版)
 kof97pla,拳皇 '97 Plus 2003 (盗版/hack) 更名  
 kog,拳皇 '97 KOG (盗版) 解锁，修复死机(测试多次暂时未死过机)  
 kof99ae,拳皇 '99 Anniversary Edition 公测版20130113  
+mslugxc1,合金弹头X 多载具版  
 
 20131005	
 修复缩减command死机
