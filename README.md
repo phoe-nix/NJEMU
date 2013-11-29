@@ -1,6 +1,14 @@
+20131130  
+MVS 
+添加GAME_HACK文字颜色 
+添加ROM支持:  
+sthoopcd,街头篮球 (Neo CD 转换),GAME_HACK 
+lasthpcd,最后的希望 (Neo CD转换),GAME_HACK  
+...
+
 20131125  
-MVS
-fr2ch 偶像麻将CD转换版同步至MAME，修复后期关卡花屏问题？
+MVS 
+fr2ch 偶像麻将CD转换版同步至MAME，修复后期关卡花屏问题
 
 20131120  
 CPS  
