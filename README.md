@@ -1,10 +1,8 @@
 20131204
 
-修复neo git BIOS按键
-
-修复command缩减问题
-
-优化字库
+修复neo git BIOS按键 
+修复command缩减问题 
+优化字库 
 
 
 20131203
