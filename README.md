@@ -143,6 +143,15 @@ MVS更新UNIBIOS 3.0
 
 字库使用黑体制作，使用GBK编码，command中的编码必须用GBK
 
++++++++++++++++++++++++++++++
+[HISTORY]
+
+-
+2.3.1 - 2007/10/28 (first release)
+-
+
++++++++++++++++++++++++++++++
+
 ----Licence----
 Codes added by phoe-nix is licenced under GPLv3.
 
