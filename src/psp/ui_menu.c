@@ -242,7 +242,7 @@ static int menu_gamecfg(void)
 
 			small_icon_shadow(8, 3, UI_COLOR(UI_PAL_TITLE), ICON_CONFIG);
 			uifont_print_shadow(36, 5, UI_COLOR(UI_PAL_TITLE), TEXT(GAME_CONFIGURATION_MENU));
-			draw_scrollbar(470, 26, 479, 270, rows, gamecfg_num, sel);
+			draw_scrollbar(469, 26, 479, 270, rows, gamecfg_num, sel);
 
 			for (i = 0; i < rows; i++)
 			{
@@ -361,8 +361,8 @@ static int menu_gamecfg(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_GAMECONFIG);
-			update = 1;
 		}
+		update = 1;
 
 		if (top > gamecfg_num - rows) top = gamecfg_num - rows;
 		if (top < 0) top = 0;
@@ -800,9 +800,9 @@ int get_free_memory()
 //static int menu_gamecfg_davex(void)
 int menu_cheatcfg(void)
 {
-
-	int sel = 0, rows = 13, top = 0;
-	int i, arrowl, arrowr, prev_sel, update = 1;
+	static int sel = 0, prev_sel = 0;//keep sel
+	static int rows = 13, top = 0;
+	int i, arrowl, arrowr, update = 1;
 	cheatcfg_t cheatcfg[CHEATCFG_MAX_ITEMS];
 	int cheatcfg_num;
 	int c;
@@ -881,7 +881,7 @@ int menu_cheatcfg(void)
 
 			small_icon_shadow(8, 3, UI_COLOR(UI_PAL_TITLE), ICON_DIPSWITCH);
 			uifont_print_shadow(36, 5, UI_COLOR(UI_PAL_TITLE), TEXT(CHEAT_CONFIGURATION_MENU));
-			draw_scrollbar(470, 26, 479, 270, rows, cheatcfg_num, sel);
+			draw_scrollbar(469, 26, 479, 270, rows, cheatcfg_num, sel);
 
 			for (i = 0; i < rows; i++)
 			{
@@ -1004,9 +1004,8 @@ int menu_cheatcfg(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_CHEATCONFIG);
-			update = 1;
 		}
-
+		update = 1;
 		if (top > cheatcfg_num - rows) top = cheatcfg_num - rows;
 		if (top < 0) top = 0;
 		if (sel >= cheatcfg_num) sel = 0;
@@ -1021,7 +1020,7 @@ int menu_cheatcfg(void)
 		if (Loop == LOOP_EXIT) break;
 
 	} while (!pad_pressed(PSP_CTRL_CROSS));
-
+/*
 	for (i = 0; i < cheatcfg_num; i++)
 	{
 		if (cheatcfg[i].value && cheatcfg[i].flag == CFG_RESTART)
@@ -1033,7 +1032,7 @@ int menu_cheatcfg(void)
 			}
 		}
 	}
-
+*/
 	return 0;
 }
 /*------------------------------------------------------
@@ -1114,7 +1113,7 @@ int menu_cheatcfg(void)
 
 			small_icon_shadow(8, 3, UI_COLOR(UI_PAL_TITLE), ICON_CONFIG);
 			uifont_print_shadow(36, 5, UI_COLOR(UI_PAL_TITLE), TEXT(GAME_CONFIGURATION_MENU));
-			draw_scrollbar(470, 26, 479, 270, rows, gamecfg_num, sel);
+			draw_scrollbar(469, 26, 479, 270, rows, gamecfg_num, sel);
 
 			for (i = 0; i < rows; i++)
 			{
@@ -1231,8 +1230,8 @@ int menu_cheatcfg(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_GAMECONFIG);
-			update = 1;
 		}
+		update = 1;
 
 		if (top > gamecfg_num - rows) top = gamecfg_num - rows;
 		if (top < 0) top = 0;
@@ -1443,7 +1442,7 @@ static int menu_keycfg(void)
 
 			small_icon_shadow(8, 3, UI_COLOR(UI_PAL_TITLE), ICON_KEYCONFIG);
 			uifont_print_shadow(36, 5, UI_COLOR(UI_PAL_TITLE), TEXT(KEY_CONFIGURATION_MENU));
-			draw_scrollbar(470, 26, 479, 270, rows, keycfg_num, sel);
+			draw_scrollbar(469, 26, 479, 270, rows, keycfg_num, sel);
 
 			arrowl = 0;
 			arrowr = 0;
@@ -1650,8 +1649,8 @@ static int menu_keycfg(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_KEYCONFIG);
-			update = 1;
 		}
+		update = 1;
 
 		if (top > keycfg_num - rows) top = keycfg_num - rows;
 		if (top < 0) top = 0;
@@ -1757,7 +1756,7 @@ static int menu_dipswitch(void)
 
 			small_icon_shadow(8, 3, UI_COLOR(UI_PAL_TITLE), ICON_DIPSWITCH);
 			uifont_print_shadow(36, 5, UI_COLOR(UI_PAL_TITLE), TEXT(DIP_SWITCH_SETTINGS_MENU));
-			draw_scrollbar(470, 26, 479, 270, rows, dipswitch_num, sel);
+			draw_scrollbar(469, 26, 479, 270, rows, dipswitch_num, sel);
 
 			for (i = 0; i < rows; i++)
 			{
@@ -1878,8 +1877,8 @@ static int menu_dipswitch(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_DIPSWITCH);
-			update = 1;
 		}
+		update = 1;
 
 		if (top > dipswitch_num - rows) top = dipswitch_num - rows;
 		if (top < 0) top = 0;
@@ -1990,8 +1989,8 @@ static void state_refresh_screen(int reload_thumbnail)
 	uifont_print_shadow(i + 16, 5, UI_COLOR(UI_PAL_NORMAL), "|");
 	uifont_print_shadow(i + 24, 5, UI_COLOR(UI_PAL_TITLE), buf);
 
-	if (ui_text_get_language() == LANG_JAPANESE || LANG_CHINESE_SIMPLIFIED || LANG_CHINESE_TRADITIONAL)
-		x = 12;
+	if (ui_text_get_language() == LANG_JAPANESE)
+		x = 20;
 	else
 		x = 0;
 
@@ -2302,8 +2301,8 @@ static int menu_state(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_STATE);
-			update = 1;
 		}
+		update = 1;
 
 		if (prev_sel != state_sel || prev_func != state_func)
 			update = 1;
@@ -2370,9 +2369,9 @@ static menu2_t mainmenu2[] =
 
 void showmenu(void)
 {
-	static int sel = 0;
-	int rows = 7, top = 0;
-	int i, prev_sel = 0, update = 1;
+	static int sel = 0, prev_sel = 0;
+	static int rows = 7, top = 0;
+	int i, update = 1;
 	int mainmenu_num = 0;
 	char buf[128];
 	menu_t mainmenu[MENU_MAX_ITEMS];
@@ -2425,7 +2424,7 @@ void showmenu(void)
 			small_icon_shadow(8, 3, UI_COLOR(UI_PAL_TITLE), ICON_SYSTEM);
 			uifont_print_shadow(36, 5, UI_COLOR(UI_PAL_TITLE), TEXT(MAIN_MENU));
 #endif
-			draw_scrollbar(470, 26, 479, 270, rows, mainmenu_num, sel);
+			draw_scrollbar(469, 26, 479, 270, rows, mainmenu_num, sel);
 
 			for (i = 0; i < rows; i++)
 			{
@@ -2547,9 +2546,9 @@ void showmenu(void)
 			if (menu_state()) break;
 			pad_wait_clear();
 			load_background(WP_LOGO);
-			update = 1;
 		}
 #endif
+		update = 1;
 
 		if (top > mainmenu_num - rows) top = mainmenu_num - rows;
 		if (top < 0) top = 0;
@@ -2561,7 +2560,7 @@ void showmenu(void)
 		if (prev_sel != sel) update |= 1;
 
 		pad_update();
-		if (sel >= rows) update = UI_FULL_REFRESH;	//fix main menu text do not update
+		//if (sel >= rows) update = UI_FULL_REFRESH;	//fix main menu text do not update
 		if (Loop == LOOP_EXIT) break;
 
 	} while (!pad_pressed(PSP_CTRL_CROSS));
@@ -2705,7 +2704,7 @@ void show_color_menu(void)
 				sprintf(buf, "%3d%%", bgimage_blightness);
 				if (sel_y)
 				{
-					if (bgimage_blightness != 0)   uifont_print(200, 213, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
+					if (bgimage_blightness != 10)   uifont_print(200, 213, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
 					if (bgimage_blightness != 100) uifont_print(262, 213, UI_COLOR(UI_PAL_SELECT), FONT_RIGHTTRIANGLE);
 					uifont_print_center(213, UI_COLOR(UI_PAL_SELECT), buf);
 				}
@@ -2829,8 +2828,8 @@ void show_color_menu(void)
 
 				case 1:
 					bgimage_blightness -= 5;
-					if (bgimage_blightness < 5)
-						bgimage_blightness = 5;
+					if (bgimage_blightness < 10)
+						bgimage_blightness = 10;
 					reload_bg = 1;
 					break;
 
@@ -2936,8 +2935,8 @@ void show_color_menu(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_COLORSETTINGS);
-			update = 1;
 		}
+		update = 1;
 
 		if (reload_bg)
 		{

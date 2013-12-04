@@ -14,6 +14,7 @@ aof3k,アートオブファイティング龍虎の拳外伝 (Korean release)
 bakatono,バカ殿様 麻雀漫遊記
 bbbuster,BANG BANG BUSTERS
 bangbead,バンビード
+bangbedp,バンビード (prototype)
 bjourney,ラギ
 blazstar,ブレイジングスター
 breakers,ブレイカーズ
@@ -51,7 +52,7 @@ gpilots,ゴーストパイロット
 gpilotsh,ゴーストパイロット (change)
 gururin,ぐるりん
 ironclad,超鉄ブリキンガー (prototype)
-ironclado,超鉄ブリキンガー (bootleg),GAME_BOOTLEG
+ironclado,超鉄ブリキンガー (prototype / bootleg),GAME_BOOTLEG
 irrmaze,ウッチャンナンチャンの炎のチャレンジャー ウルトラ電流イライラ棒
 janshin,雀神伝説 - QUEST OF JONGMASTER
 jockeygp,ジョッキーグランプリ (set 1)
@@ -70,6 +71,7 @@ kof2k1bs,ザ·キング·オブ·ファイターズ 2001 PlayStation 2 Version V1.0[EGCG],GA
 kof2002,ザ·キング·オブ·ファイターズ2002
 kf2k2ps2,ザ·キング·オブ·ファイターズ 2002 PlayStation 2 Version V0.4[EGCG],GAME_BOOTLEG
 kof2003,ザ·キング·オブ·ファイターズ2003 (World / US / MVS)
+kf2k3ps2,ザ·キング·オブ·ファイターズ 2003 PlayStation 2 Version,GAME_BOOTLEG
 kof94,ザ·キング·オブ·ファイターズ'94
 kof95,ザ·キング·オブ·ファイターズ'95 (set 1)
 kof95a,ザ·キング·オブ·ファイターズ'95 (set 2)
@@ -227,8 +229,9 @@ wjammers,フライングパワーディスク
 zedblade,オペレーションラグナロク
 zupapa,ズパパ!
 kof96ep,ザ·キング·オブ·ファイターズ'96 (bootleg),GAME_BOOTLEG
+kof97oro,ザ·キング·オブ·ファイターズ'97 PLUS 2003 (bootleg),GAME_BOOTLEG
 kof97pls,ザ·キング·オブ·ファイターズ'97 PLUS (bootleg),GAME_BOOTLEG
-kof97pla,ザ·キング·オブ·ファイターズ'97 PLUS 2003 (bootleg),GAME_BOOTLEG
+kof97pla,ザ·キング·オブ·ファイターズ'97 PLUS 2003 (bootleg / hack),GAME_BOOTLEG
 kof97d,ザ·キング·オブ·ファイターズ'97 夢回,GAME_BOOTLEG
 kog,キング·オブ·グラディエーター (KOF'97 bootleg),GAME_BOOTLEG
 kogd,キング·オブ·グラディエーター (KOF'97 bootleg / decrypt),GAME_BOOTLEG
@@ -289,3 +292,4 @@ kof2kcn,拳皇 2000中文版,GAME_BOOTLEG
 kof98cn,拳皇 98中文版,GAME_BOOTLEG
 kof98C,拳皇 98Combo,GAME_BOOTLEG
 kof96ae,拳皇 96ae,GAME_BOOTLEG
+lasthpcd,最后的希望 (Neo CD转换),GAME_HACK

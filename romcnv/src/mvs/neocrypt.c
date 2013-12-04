@@ -697,7 +697,55 @@ void kof2000_neogeo_gfx_decrypt(int extra_xor)
 	neogeo_sfix_decrypt();
 }
 
-void svcpcb_cx_decrypt(void)
+/***************************************************************************
+
+    NeoGeo *bootleg* Encryption
+
+    Many of the NeoGeo bootlegs use their own form of encryption and
+    protection, presumably to make them harder for other bootleggser to
+    copy.  This encryption often involves non-trivial scrambling of the
+    program roms and the games are protected using an Altera chip which
+    provides some kind of rom overlay, patching parts of the code.
+    The graphics roms are usually scrambled in a different way to the
+    official SNK cartridges too.
+
+***************************************************************************/
+
+/* CMC42 protection chip */
+void cmc42_neogeo_gfx_decrypt(int extra_xor)
+{
+	type0_t03 =          kof99_type0_t03;
+	type0_t12 =          kof99_type0_t12;
+	type1_t03 =          kof99_type1_t03;
+	type1_t12 =          kof99_type1_t12;
+	address_8_15_xor1 =  kof99_address_8_15_xor1;
+	address_8_15_xor2 =  kof99_address_8_15_xor2;
+	address_16_23_xor1 = kof99_address_16_23_xor1;
+	address_16_23_xor2 = kof99_address_16_23_xor2;
+	address_0_7_xor =    kof99_address_0_7_xor;
+	neogeo_gfx_decrypt(extra_xor);
+}
+
+/* CMC50 protection chip */
+void cmc50_neogeo_gfx_decrypt(int extra_xor)
+{
+	type0_t03 =          kof2000_type0_t03;
+	type0_t12 =          kof2000_type0_t12;
+	type1_t03 =          kof2000_type1_t03;
+	type1_t12 =          kof2000_type1_t12;
+	address_8_15_xor1 =  kof2000_address_8_15_xor1;
+	address_8_15_xor2 =  kof2000_address_8_15_xor2;
+	address_16_23_xor1 = kof2000_address_16_23_xor1;
+	address_16_23_xor2 = kof2000_address_16_23_xor2;
+	address_0_7_xor =    kof2000_address_0_7_xor;
+	neogeo_gfx_decrypt(extra_xor);
+
+	/* here I should also decrypt the sound ROM */
+}
+
+
+/* ms5pcb and svcpcb have an additional scramble on top of the standard CMC scrambling */
+void svcpcb_gfx_decrypt(void)
 {
 	const UINT8 xor[4] = { 0x34, 0x21, 0xc4, 0xe9 };
 	UINT32 i, offset;
@@ -725,9 +773,10 @@ void svcpcb_cx_decrypt(void)
 
 	for (i = 0; i < memory_length_gfx3 / 4; i++)
 	{
-		offset = BITSWAP24((i & 0x1fffff), 0x17, 0x16, 0x15, 0x04, 0x0b, 0x0e, 0x08, 0x0c,
-										   0x10, 0x00, 0x0a, 0x13, 0x03, 0x06, 0x02, 0x07,
-										   0x0d, 0x01, 0x11, 0x09, 0x14, 0x0f, 0x12, 0x05);
+		offset = BITSWAP24((i & 0x1fffff),
+		0x17, 0x16, 0x15, 0x04, 0x0b, 0x0e, 0x08, 0x0c,
+		0x10, 0x00, 0x0a, 0x13, 0x03, 0x06, 0x02, 0x07,
+		0x0d, 0x01, 0x11, 0x09, 0x14, 0x0f, 0x12, 0x05);
 		offset ^= 0x0c8923;
 		offset += i & 0xffe00000;
 		memcpy(&rom[i * 4], &buf[offset * 4], 4);
@@ -735,7 +784,9 @@ void svcpcb_cx_decrypt(void)
 	free(buf);
 }
 
-void svcpcb_sx_decrypt(void)
+
+/* and a further swap on the s1 data */
+void svcpcb_s1data_decrypt(void)
 {
 	UINT32 i;
 	UINT8 *rom = memory_region_gfx2;
@@ -746,7 +797,10 @@ void svcpcb_sx_decrypt(void)
 	}
 }
 
-void kf2k3pcb_cx_decrypt(void)
+
+/* kf2k3pcb has an additional scramble on top of the standard CMC scrambling */
+/* Thanks to Razoola & Halrin for the info */
+void kf2k3pcb_gfx_decrypt(void)
 {
 	const UINT8 xor[4] = { 0x34, 0x21, 0xc4, 0xe9 };
 	UINT32 i, offset;
@@ -784,7 +838,9 @@ void kf2k3pcb_cx_decrypt(void)
 	free(buf);
 }
 
-void kf2k3pcb_sx_decrypt(void)
+
+/* and a further swap on the s1 data */
+void kf2k3pcb_decrypt_s1data(void)
 {
 	UINT32 i;
 	UINT8 *src, *dst;
@@ -880,52 +936,6 @@ void neo_pcm2_swap(int value)
 	free(buf);
 }
 
-
-/***************************************************************************
-
-    NeoGeo *bootleg* Encryption
-
-    Many of the NeoGeo bootlegs use their own form of encryption and
-    protection, presumably to make them harder for other bootleggser to
-    copy.  This encryption often involves non-trivial scrambling of the
-    program roms and the games are protected using an Altera chip which
-    provides some kind of rom overlay, patching parts of the code.
-    The graphics roms are usually scrambled in a different way to the
-    official SNK cartridges too.
-
-***************************************************************************/
-
-/* CMC42 protection chip */
-void cmc42_neogeo_gfx_decrypt(int extra_xor)
-{
-	type0_t03 =          kof99_type0_t03;
-	type0_t12 =          kof99_type0_t12;
-	type1_t03 =          kof99_type1_t03;
-	type1_t12 =          kof99_type1_t12;
-	address_8_15_xor1 =  kof99_address_8_15_xor1;
-	address_8_15_xor2 =  kof99_address_8_15_xor2;
-	address_16_23_xor1 = kof99_address_16_23_xor1;
-	address_16_23_xor2 = kof99_address_16_23_xor2;
-	address_0_7_xor =    kof99_address_0_7_xor;
-	neogeo_gfx_decrypt(extra_xor);
-}
-
-/* CMC50 protection chip */
-void cmc50_neogeo_gfx_decrypt(int extra_xor)
-{
-	type0_t03 =          kof2000_type0_t03;
-	type0_t12 =          kof2000_type0_t12;
-	type1_t03 =          kof2000_type1_t03;
-	type1_t12 =          kof2000_type1_t12;
-	address_8_15_xor1 =  kof2000_address_8_15_xor1;
-	address_8_15_xor2 =  kof2000_address_8_15_xor2;
-	address_16_23_xor1 = kof2000_address_16_23_xor1;
-	address_16_23_xor2 = kof2000_address_16_23_xor2;
-	address_0_7_xor =    kof2000_address_0_7_xor;
-	neogeo_gfx_decrypt(extra_xor);
-
-	/* here I should also decrypt the sound ROM */
-}
 
 int neogeo_bootleg_cx_decrypt(void)
 {

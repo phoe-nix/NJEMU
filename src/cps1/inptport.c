@@ -15,8 +15,8 @@
 
 int option_controller;
 int cps1_dipswitch[3];
-UINT16 ALIGN_DATA cps1_port_value[CPS1_PORT_MAX];
-
+//UINT16 ALIGN_DATA cps1_port_value[CPS1_PORT_MAX];
+UINT16 cps1_port_value[CPS1_PORT_MAX];
 int ALIGN_DATA input_map[MAX_INPUTS];
 int input_max_players;
 int input_max_buttons;

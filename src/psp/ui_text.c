@@ -530,7 +530,6 @@ static const char *text[4][UI_TEXT_MAX] =
 		/* biosmenu.c */
 		"BIOS select menu",
 		"BIOS not found.",
-		"Select BIOS and press " FONT_CIRCLE " button.",
 		"All NVRAM files are removed.\n",
 
 		/* memintrf.c */
@@ -1084,7 +1083,6 @@ static const char *text[4][UI_TEXT_MAX] =
 		/* biosmenu.c */
 		"BIOS選択メニュー",
 		"BIOSが見つかりません。",
-		"BIOSを選択し、" FONT_CIRCLE "ボタンを押してください。",
 		"NVRAMファイルは全て削除されました。\n",
 
 		/* memintrf.c */
@@ -1198,8 +1196,8 @@ static const char *text[4][UI_TEXT_MAX] =
 		"设置为开始目录",
 		"更改数值",
 		"选择",
-		"选择编号",
-		"切换",
+		"选择存档",
+		"切换功能",
 		"执行",
 		"选择项目",
 		"选择项目/更改数值",
@@ -1431,7 +1429,7 @@ static const char *text[4][UI_TEXT_MAX] =
 		"此游戏没有DIP开关",
 
 		"即时存档/读档",
-		"编号%d:",
+		"存档%d:",
 		"空",
 		"读取",
 		"删除",
@@ -1638,7 +1636,6 @@ static const char *text[4][UI_TEXT_MAX] =
 		/* biosmenu.c */
 		"BIOS选择菜单",
 		"没有找到BIOS",
-		"选择BIOS并按"FONT_CIRCLE"键",
 		"所有NVRAM文件已被删除\n",
 
 		/* memintrf.c */
@@ -1752,7 +1749,7 @@ static const char *text[4][UI_TEXT_MAX] =
 		"設置為開始目錄",
 		"更改數值",
 		"選擇",
-		"選擇編號",
+		"選擇存檔",
 		"切換",
 		"執行",
 		"選擇項目",
@@ -1985,7 +1982,7 @@ static const char *text[4][UI_TEXT_MAX] =
 		"此遊戲沒有DIP開關",
 
 		"即時存檔/讀檔",
-		"編號%d:",
+		"存檔%d:",
 		"空",
 		"讀取",
 		"刪除",
@@ -2192,7 +2189,6 @@ static const char *text[4][UI_TEXT_MAX] =
 		/* biosmenu.c */
 		"BIOS選擇菜單",
 		"沒有找到BIOS",
-		"選擇BIOS並按"FONT_CIRCLE"鍵",
 		"所有NVRAM文件已被刪除\n",
 
 		/* memintrf.c */

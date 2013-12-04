@@ -8,6 +8,7 @@ stridrua,ストライダー飛竜 [Strider] (US set 2)
 striderj,ストライダー飛竜 (Japan set 1)
 stridrja,ストライダー飛竜 (Japan set 2)
 dynwar,天地を喰らう [Dynasty Wars] (World)
+dynwaru,天地を喰らう [Dynasty Wars] (US)
 dynwarj,天地を喰らう (Japan)
 willow,ウィロー (US)
 willowj,ウィロー (Japan - Japanese)
@@ -20,7 +21,8 @@ ffightua,ファイナルファイト (US 900112)
 ffightub,ファイナルファイト (US 900613)
 ffightj,ファイナルファイト (Japan)
 ffightj1,ファイナルファイト (Japan 900305)
-ffightb,ファイナルファイト Betlog Hack,GAME_BOOTLEG
+ffightj2,ファイナルファイト (Japan 900112)
+ffightb,ファイナルファイト Betlog Hack,GAME_HACK
 1941,1941 - Counter Attack (World)
 1941j,1941 - Counter Attack (Japan)
 mercs,戦場の狼Ⅱ [Mercs] (World 900302)
@@ -66,8 +68,8 @@ knightsu,ナイツ·オブ·ザ·ラウンド (US 911127)
 knightsj,ナイツ·オブ·ザ·ラウンド (Japan 911127)
 knightsb,ナイツ·オブ·ザ·ラウンド (bootleg),GAME_BOOTLEG
 knightsh,ナイツ·オブ·ザ·ラウンド (hack),GAME_BOOTLEG
-knightsi,ナイツ·オブ·ザ·ラウンド (顕示亂步),GAME_BOOTLEG
-knightsr,ナイツ·オブ·ザ·ラウンド (随机版),GAME_BOOTLEG
+knightsi,ナイツ·オブ·ザ·ラウンド (显示乱数),GAME_HACK
+knightsr,ナイツ·オブ·ザ·ラウンド (随机版),GAME_HACK
 sf2ce,ストリートファイターⅡ' - Champion Edition (World 920313)
 sf2ceua,ストリートファイターⅡ' - Champion Edition (US 920313)
 sf2ceub,ストリートファイターⅡ' - Champion Edition (US 920513)
@@ -138,5 +140,5 @@ pnickj,ぷにっきぃず (Japan 940608)
 pnicku,ぷにっきぃず (USA 940608 Loca Test Version)
 pang3,パン! 3 (Euro 950511)
 pang3j,パン! 3 - 怪盗たちの華麗な午後 - (Japan 950511)
-sfzch,ストリートファイターZERO (Japan CPS Changer)
-sfach,ストリートファイターALPHA (USA 950727 Publicity)
+sfzch,ストリートファイターZERO (Japan CPS Changer),GAME_HACK
+sfach,ストリートファイターALPHA (USA 950727 Publicity),GAME_HACK

@@ -14,9 +14,10 @@
 
 #define GAME_NOT_WORK	0x01
 #define GAME_BOOTLEG	0x02
-#define GAME_BADROM		0x04
-#define GAME_HAS_TITLE	0x08
-#define GAME_IS_NEOCD	0x10
+#define GAME_HACK		0x04
+#define GAME_BADROM		0x08
+#define GAME_HAS_TITLE	0x10
+#define GAME_IS_NEOCD	0x20
 
 #define FTYPE_UPPERDIR	0
 #define FTYPE_DIR		1
@@ -342,6 +343,8 @@ static int load_zipname(void)
 		{
 			if (strstr(flag, "GAME_BOOTLEG"))
 				zipname[zipname_num].flag |= GAME_BOOTLEG;
+			if (strstr(flag, "GAME_HACK"))
+				zipname[zipname_num].flag |= GAME_HACK;
 			if (strstr(flag, "GAME_NOT_WORK"))
 				zipname[zipname_num].flag |= GAME_NOT_WORK;
 		}
@@ -1091,6 +1094,8 @@ void file_browser(void)
 						uifont_print_shadow(36, 40 + i * 20, COLOR_GRAY, files[sel]->title);
 					else if (files[sel]->flag & GAME_BOOTLEG)
 						uifont_print_shadow(36, 40 + i * 20, COLOR_YELLOW, files[sel]->title);
+					else if (files[sel]->flag & GAME_HACK)
+						uifont_print_shadow(36, 40 + i * 20, COLOR_GREEN, files[sel]->title);
 					else
 						uifont_print_shadow(36, 40 + i * 20, UI_COLOR(UI_PAL_SELECT), files[sel]->title);
 
@@ -1157,6 +1162,8 @@ void file_browser(void)
 						uifont_print(36, 40 + i * 20, COLOR_DARKGRAY, files[top + i]->title);
 					else if (files[top + i]->flag & GAME_BOOTLEG)
 						uifont_print(36, 40 + i * 20, COLOR_DARKYELLOW, files[top + i]->title);
+					else if (files[top + i]->flag & GAME_HACK)
+						uifont_print(36, 40 + i * 20, COLOR_DARKGREEN, files[top + i]->title);
 					else
 						uifont_print(36, 40 + i * 20, UI_COLOR(UI_PAL_NORMAL), files[top + i]->title);
 				}
@@ -1418,8 +1425,8 @@ void file_browser(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_FILEBROWSER);
-			update = 1;
 		}
+		update = 1;
 
 		if (top > nfiles - rows) top = nfiles - rows;
 		if (top < 0) top = 0;

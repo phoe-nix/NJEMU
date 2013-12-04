@@ -103,17 +103,20 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "samsho3a", "samsho3",  0, 0, 0 },
 	{ "fswords",  "samsho3",  0, 0, 0 },
 	{ "aof3k",    "aof3",     0, 0, 0 },
+	{ "kof96cn",  "kof96",    1, 1, 0 },
 	{ "kof96h",   "kof96",    0, 0, 0 },
 	{ "kof96ep",  "kof96",    0, 0, 0 },
 	{ "kizuna",   "savagere", 1, 1, 1 },
 	{ "kof97a",   "kof97",    0, 0, 0 },
+	{ "kof97cn",  "kof97",    1, 1, 0 },
 	{ "kof97d",   "kof97",    0, 0, 0 },
 	{ "kof97k",   "kof97",    0, 0, 0 },
 	{ "kof97pls", "kof97",    0, 0, 0 },
 	{ "kof97pla", "kof97",    0, 1, 0 },
 	{ "kof97ps",  "kof97",    1, 0, 0 },
 	{ "kog",      "kof97",    1, 1, 0 },
-	{ "kod",      "kof97",    1, 1, 0 },
+	{ "kogd",     "kof97",    1, 1, 0 },
+	{ "kof97oro", "kof97",    1, 1, 0 },
 	{ "lastbldh", "lastblad", 0, 0, 0 },
 	{ "lastsold", "lastblad", 0, 0, 0 },
 	{ "shocktra", "shocktro", 0, 0, 0 },
@@ -131,6 +134,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "kof99e",   "kof99",    0, 0, 0 },
 	{ "kof99k",   "kof99",    0, 0, 0 },
 	{ "kof99p",   "kof99",    1, 1, 0 },
+	{ "kof99ae",  "kof99",    1, 1, 1 },
 	{ "garouo",   "garou",    0, 0, 0 },
 	{ "garoubl",  "garoup",   0, 1, 1 },
 	{ "mslug3h",  "mslug3",   0, 0, 0 },
@@ -151,7 +155,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "mslug4h",  "mslug4",   0, 0, 0 },
 	{ "ms4plus",  "mslug4",   0, 0, 0 },
 	{ "kof2002b", "kof2002",  1, 0, 0 },
-	{ "kf2k2cn",  "kof2002",  1, 1, 0 },
+	{ "kof2k2cn", "kof2002",  1, 1, 0 },
 	{ "kf2k2pls", "kof2002",  0, 0, 0 },
 	{ "kf2k2pla", "kof2002",  0, 0, 0 },
 	{ "kf2k2plb", "kof2002",  0, 0, 0 },
@@ -177,6 +181,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "kf2k3bla", "kf2k3bl",  0, 0, 0 },
 	{ "kf2k3pl",  "kf2k3bl",  0, 1, 0 },
 	{ "kf2k3upl", "kf2k3bl",  0, 1, 0 },
+	{ "kf2k3ps2", "kof2003",  1, 1, 1 },
 	{ "ironclado","ironclad", 0, 0, 0 },
 	{ "jockeygpa","jockeygp", 0, 0, 0 },
 	{ "rbff1a",   "rbff1",    0, 0, 0 },
@@ -510,6 +515,7 @@ static int load_rom_info(const char *game_name)
 						rom_start = 1;
 					}
 				}
+/*
 				else if (rom_start && str_cmp(buf, "END") == 0)
 				{
 					fclose(fp);
@@ -517,6 +523,25 @@ static int load_rom_info(const char *game_name)
 						return 0;
 					else
 						return 4;
+				}
+*/
+				else if (rom_start && str_cmp(buf, "END") == 0)
+				{
+					fclose(fp);
+					if (psp2k)
+						{
+						if ((total_size > 0x2b50000) || (encrypt_gfx3))
+						return 0;
+						else
+						return 4;
+						}
+					else
+						{
+						if (total_size >= 16*1024*1024)
+						return 0;
+						else
+						return 4;
+						}
 				}
 			}
 			else if (rom_start)
@@ -728,28 +753,28 @@ static int convert_rom(char *game_name)
 				{
 				case INIT_kof2002:	neo_pcm2_swap(0);		break;
 				case INIT_mslug5:	neo_pcm2_swap(2);		break;
-				case INIT_svchaosa:	neo_pcm2_swap(3);		break;
+				case INIT_svchaosa:neo_pcm2_swap(3);		break;
 				case INIT_samsho5:	neo_pcm2_swap(4);		break;
 				case INIT_kof2003:	neo_pcm2_swap(5);		break;
-				case INIT_samsh5sp:	neo_pcm2_swap(6);		break;
+				case INIT_samsh5sp:neo_pcm2_swap(6);		break;
 				case INIT_pnyaa:	neo_pcm2_snk_1999(4);	break;
 				case INIT_mslug4:	neo_pcm2_snk_1999(8);	break;
-				case INIT_rotd:		neo_pcm2_snk_1999(16);	break;
+				case INIT_rotd:	neo_pcm2_snk_1999(16);	break;
 				case INIT_matrim:	neo_pcm2_swap(1);		break;
 
 				case INIT_ms5pcb:	neo_pcm2_swap(2);		break;
 				case INIT_svcpcb:	neo_pcm2_swap(3);		break;
-				case INIT_kf2k3pcb:	neo_pcm2_swap(5);		break;
+				case INIT_kf2k3pcb:neo_pcm2_swap(5);		break;
 
-				case INIT_kof2002b:	neo_pcm2_swap(0);		break;
-				case INIT_kf2k2pls:	neo_pcm2_swap(0);		break;
-				case INIT_kf2k2plc:	neo_pcm2_swap(0);		break;
+				case INIT_kof2002b:neo_pcm2_swap(0);		break;
+				case INIT_kf2k2pls:neo_pcm2_swap(0);		break;
+				case INIT_kf2k2plc:neo_pcm2_swap(0);		break;
 				case INIT_kf2k2mp:	neo_pcm2_swap(0);		break;
-				case INIT_kf2k2mp2:	neo_pcm2_swap(0);		break;
+				case INIT_kf2k2mp2:neo_pcm2_swap(0);		break;
 				case INIT_ms5plus:	neo_pcm2_swap(2);		break;
 				case INIT_mslug5b:	neo_pcm2_swap(2);		break;
-				case INIT_samsho5b:	samsho5b_vx_decrypt();	break;
-				case INIT_lans2004:	lans2004_vx_decrypt();	break;
+				case INIT_samsho5b:samsho5b_vx_decrypt();	break;
+				case INIT_lans2004:lans2004_vx_decrypt();	break;
 
 				default: goto error;
 				}
@@ -774,45 +799,45 @@ static int convert_rom(char *game_name)
 			case INIT_mslug3:	kof99_neogeo_gfx_decrypt(0xad);		break;
 			case INIT_mslug3n:	kof99_neogeo_gfx_decrypt(0xad);		break;
 			case INIT_kof2000:	kof2000_neogeo_gfx_decrypt(0x00);	break;
-			case INIT_kof2000n:	kof2000_neogeo_gfx_decrypt(0x00);	break;
+			case INIT_kof2000n:kof2000_neogeo_gfx_decrypt(0x00);	break;
 			case INIT_zupapa:	kof99_neogeo_gfx_decrypt(0xbd);		break;
-			case INIT_sengoku3:	kof99_neogeo_gfx_decrypt(0xfe);		break;
+			case INIT_sengoku3:kof99_neogeo_gfx_decrypt(0xfe);		break;
 			case INIT_kof2001:	kof2000_neogeo_gfx_decrypt(0x1e);	break;
 			case INIT_kof2002:	kof2000_neogeo_gfx_decrypt(0xec);	break;
 			case INIT_mslug5:	kof2000_neogeo_gfx_decrypt(0x19);	break;
-			case INIT_svchaosa:	kof2000_neogeo_gfx_decrypt(0x57);	break;
+			case INIT_svchaosa:kof2000_neogeo_gfx_decrypt(0x57);	break;
 			case INIT_samsho5:	kof2000_neogeo_gfx_decrypt(0x0f);	break;
 			case INIT_kof2003:	kof2000_neogeo_gfx_decrypt(0x9d);	break;
-			case INIT_samsh5sp:	kof2000_neogeo_gfx_decrypt(0x0d);	break;
-			case INIT_nitd:		kof99_neogeo_gfx_decrypt(0xff);		break;
+			case INIT_samsh5sp:kof2000_neogeo_gfx_decrypt(0x0d);	break;
+			case INIT_nitd:	kof99_neogeo_gfx_decrypt(0xff);		break;
 			case INIT_s1945p:	kof99_neogeo_gfx_decrypt(0x05);		break;
 			case INIT_pnyaa:	kof2000_neogeo_gfx_decrypt(0x2e);	break;
-			case INIT_preisle2:	kof99_neogeo_gfx_decrypt(0x9f);		break;
+			case INIT_preisle2:kof99_neogeo_gfx_decrypt(0x9f);		break;
 			case INIT_ganryu:	kof99_neogeo_gfx_decrypt(0x07);		break;
-			case INIT_bangbead:	kof99_neogeo_gfx_decrypt(0xf8);		break;
+			case INIT_bangbead:kof99_neogeo_gfx_decrypt(0xf8);		break;
 			case INIT_mslug4:	kof2000_neogeo_gfx_decrypt(0x31);	break;
-			case INIT_rotd:		kof2000_neogeo_gfx_decrypt(0x3f);	break;
+			case INIT_rotd:	kof2000_neogeo_gfx_decrypt(0x3f);	break;
 			case INIT_matrim:	kof2000_neogeo_gfx_decrypt(0x6a);	break;
-			case INIT_jockeygp:	kof2000_neogeo_gfx_decrypt(0xac);	break;
+			case INIT_jockeygp:kof2000_neogeo_gfx_decrypt(0xac);	break;
 
 			// Jamma PCB
 
 			case INIT_ms5pcb:
-				svcpcb_cx_decrypt();
+				svcpcb_gfx_decrypt();
 				kof2000_neogeo_gfx_decrypt(0x19);
-				svcpcb_sx_decrypt();
+				svcpcb_s1data_decrypt();
 				break;
 
 			case INIT_svcpcb:
-				svcpcb_cx_decrypt();
+				svcpcb_gfx_decrypt();
 				kof2000_neogeo_gfx_decrypt(0x57);
-				svcpcb_sx_decrypt();
+				svcpcb_s1data_decrypt();
 				break;
 
 			case INIT_kf2k3pcb:
-				kf2k3pcb_cx_decrypt();
+				kf2k3pcb_gfx_decrypt();
 				kof2000_neogeo_gfx_decrypt(0x9d);
-				kf2k3pcb_sx_decrypt();
+				kf2k3pcb_decrypt_s1data();
 				break;
 
 			// bootleg
@@ -889,6 +914,11 @@ static int convert_rom(char *game_name)
 				break;
 
 			case INIT_kog:
+				neogeo_bootleg_cx_decrypt();
+				neogeo_bootleg_sx_decrypt(1);
+				break;
+
+			case INIT_kof97oro:
 				neogeo_bootleg_cx_decrypt();
 				neogeo_bootleg_sx_decrypt(1);
 				break;

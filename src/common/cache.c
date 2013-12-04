@@ -20,7 +20,7 @@
 #define MAX_CACHE_SIZE		0x140		// 上限 20MB 0x140
 #endif
 #define CACHE_SAFETY		0x20000		// キャッシュ確保後の空きメモリサイズ
-#define BLOCK_SIZE			0x10000		// 1ブロックのサイズ = 64KB
+#define BLOCK_SIZE			0x10000		// 1ブロックのサイズ = 64KB 0x10000 图像有关
 #define BLOCK_MASK			0xffff
 #define BLOCK_SHIFT			16			// 16
 #define BLOCK_NOT_CACHED	0xffff

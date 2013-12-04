@@ -204,7 +204,7 @@
 #define	NGH_samsho5		0x0270		// 0270 (c) 2003 Playmore
 #define	NGH_kof2003		0x0271		// 0271 (c) 2003 Playmore/
 #define	NGH_samsh5sp	0x0272		// 0272 (c) 2003 Playmore
-
+// sbp					// (c) 2004 Vektorlogic
 // The BrezzaSoft games don't have proper ID codes
 #define NGH_vliner		(0x0000 | FLAG_BRAZ)
 #define NGH_vlinero		(0x0000 | FLAG_BRAZ)
@@ -298,11 +298,12 @@ enum
 	INIT_kf2k2plc,		// 64
 	INIT_kf2k4pls,		// 65
 	INIT_kof97pla,		// 66
-	INIT_fr2ch,			// 67
+	INIT_sbp,			// 67
 	INIT_mslug5b,		// 68
 
 	// MAME 0.113 - 0.119
 	INIT_ct2k3sa,		// 69
+	INIT_kof97oro,		// 70
 #endif
 	MAX_INIT
 };
@@ -412,6 +413,10 @@ WRITE16_HANDLER( brza_sram_w );
 
 READ16_HANDLER( vliner_r );
 
+READ16_HANDLER( sbp_lowerrom_r );
+WRITE16_HANDLER( sbp_lowerrom_w );
+void sbp_protection(void);
+
 void mslug4_AES_protection(void);
 void rotd_AES_protection(void);
 void matrim_AES_protection(void);
@@ -420,7 +425,6 @@ void zupapa_AES_protection(void);
 void sengoku3_AES_protection(void);
 void nitd_AES_protection(void);
 void kof2000_AES_protection(void);
-//void kof2000n_AES_protection(void);
 
 #if !RELEASE
 WRITE16_HANDLER( kof10th_protection_w );
@@ -429,7 +433,6 @@ READ16_HANDLER( ms5plus_protection_r );
 WRITE16_HANDLER( ms5plus_protection_w );
 WRITE16_HANDLER( kf2k3bl_protection_w);
 WRITE16_HANDLER( kf2k3pl_protection_w);
-WRITE16_HANDLER( fr2ch_protection_w);
 #endif
 
 
@@ -444,19 +447,21 @@ void garouo_decrypt_68k(void);
 void mslug3_decrypt_68k(void);
 void kof2000_decrypt_68k(void);
 int kof2002_decrypt_68k(void);
+int matrim_decrypt_68k(void);
 int samsho5_decrypt_68k(void);
-int samsh5p_decrypt_68k(void);
+int samsh5sp_decrypt_68k(void);
 int mslug5_decrypt_68k(void);
-int svcchaos_px_decrypt(void);
+int svc_px_decrypt(void);
 int kf2k3pcb_decrypt_68k(void);
 int kof2003_decrypt_68k(void);
 int kof2003h_decrypt_68k(void);
-int kof2003biosdecode(void);
+int kf2k3pcb_sp1_decrypt(void);
 
-void neogeo_cmc50_m1_decrypt(void);
+int neogeo_cmc50_m1_decrypt(void);
 
 #if !RELEASE
 int kog_px_decrypt(void);
+int kof97oro_px_decode(void);
 int kof10th_px_decrypt(void);
 int kf10thep_px_decrypt(void);
 int kf2k5uni_px_decrypt(void);

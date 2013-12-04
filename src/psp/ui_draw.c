@@ -35,9 +35,9 @@
 
 #define isascii(c)			((c)  >= 0x20 && (c) <= 0x7e)
 #define islatin1(c)			((c)  >= 0x80)
-#define iskana(c)			((c)  >= 0xa0 && (c) <= 0xdf)
-#define issjis1(c)			(((c) >= 0x81 && (c) <= 0xfe))
-#define issjis2(c)			((c)  >= 0x40 && (c) <= 0xfe && (c) != 0x7f && (c) != 0xff)
+//#define iskana(c)			((c)  >= 0xa0 && (c) <= 0xdf)
+#define isgbk1(c)			(((c) >= 0x81 && (c) <= 0xfe))
+#define isgbk2(c)			((c)  >= 0x40 && (c) <= 0xfe && (c) != 0x7f && (c) != 0xff)
 
 #define NUM_SMALL_FONTS		0x60
 #define MAX_STR_LEN			256
@@ -47,8 +47,8 @@ enum
 	FONT_TYPE_CONTROL = 0,
 	FONT_TYPE_ASCII,
 	FONT_TYPE_GRAPHIC,
-	FONT_TYPE_JPNHAN,
-	FONT_TYPE_JPNZEN,
+//	FONT_TYPE_JPNHAN,
+	FONT_TYPE_GBKSIMHEI,
 #ifdef COMMAND_LIST
 	FONT_TYPE_LATIN1,
 	FONT_TYPE_COMMAND,
@@ -490,10 +490,10 @@ static UINT16 latin1_get_code(const UINT8 *s, int *type)
 }
 
 /*------------------------------------------------------
-	フォントコード取得 (SHIFT-JISデコード)
+	フォントコード取得 (GBKデコード)
 ------------------------------------------------------*/
 
-static UINT16 sjis_get_code(const UINT8 *s, int *type)
+static UINT16 gbk_get_code(const UINT8 *s, int *type)
 {
 	UINT8 c1 = s[0];
 	UINT8 c2 = s[1];
@@ -504,10 +504,10 @@ static UINT16 sjis_get_code(const UINT8 *s, int *type)
 		*type = FONT_TYPE_COMMAND;
 		return code;
 	}
-	else if (issjis1(c1) && issjis2(c2))
+	else if (isgbk1(c1) && isgbk2(c2))
 	{
-		*type = FONT_TYPE_JPNZEN;
-		return sjis_table[(c2 | (c1 << 8)) - 0x8140];
+		*type = FONT_TYPE_GBKSIMHEI;
+		return gbk_table[(c2 | (c1 << 8)) - 0x8140];
 	}
 	else if (isascii(c1))
 	{
@@ -516,11 +516,11 @@ static UINT16 sjis_get_code(const UINT8 *s, int *type)
 			*type = FONT_TYPE_ASCII;
 			return c1 - 0x20;
 		}
-		else
-		{
-			*type = FONT_TYPE_JPNHAN;
-			return 0;
-		}
+//		else
+//		{
+//			*type = FONT_TYPE_JPNHAN;
+//			return 0;
+//		}
 	}
 //	else if (iskana(c1))
 //	{
@@ -543,21 +543,21 @@ INLINE UINT16 uifont_get_code(const UINT8 *s, int *type)
 	UINT8 c1 = s[0];
 	UINT8 c2 = s[1];
 
-	if (issjis1(c1) && issjis2(c2))
+	if (isgbk1(c1) && isgbk2(c2))
 	{
-		*type = FONT_TYPE_JPNZEN;
-		return sjis_table[(c2 | (c1 << 8)) - 0x8140];
+		*type = FONT_TYPE_GBKSIMHEI;
+		return gbk_table[(c2 | (c1 << 8)) - 0x8140];
 	}
 //	else if (c1 == 0xa5)
 //	{
 //		*type = FONT_TYPE_ASCII;
 //		return 0x7f - 0x20;
 //	}
-	else if (c1 == 0x5c)
-	{
-		*type = FONT_TYPE_JPNHAN;
-		return 0;
-	}
+//	else if (c1 == 0x5c)
+//	{
+//		*type = FONT_TYPE_JPNHAN;
+//		return 0;
+//	}
 //	else if (iskana(c1))
 //	{
 //		*type = FONT_TYPE_JPNHAN;
@@ -613,13 +613,13 @@ int uifont_get_string_width(const char *s)
 				p++;
 				break;
 
-			case FONT_TYPE_JPNHAN:
-				width += jpn_h14p_get_pitch(code);
-				p++;
-				break;
+//			case FONT_TYPE_JPNHAN:
+//				width += jpn_h14p_get_pitch(code);
+//				p++;
+//				break;
 
-			case FONT_TYPE_JPNZEN:
-				width += jpn_z14p_get_pitch(code);
+			case FONT_TYPE_GBKSIMHEI:
+				width += gbk_s14p_get_pitch(code);
 				p += 2;
 				break;
 
@@ -978,17 +978,17 @@ INLINE void uifont_draw(int sx, int sy, int r, int g, int b, const char *s)
 			p++;
 			break;
 
-		case FONT_TYPE_JPNHAN:
-			if (jpn_h14p_get_gryph(&font, code))
-			{
-				res = internal_font_putc(&font, sx, sy, r, g, b);
-				sx += font.pitch;
-			}
-			p++;
-			break;
+//		case FONT_TYPE_JPNHAN:
+//			if (jpn_h14p_get_gryph(&font, code))
+//			{
+//				res = internal_font_putc(&font, sx, sy, r, g, b);
+//				sx += font.pitch;
+//			}
+//			p++;
+//			break;
 
-		case FONT_TYPE_JPNZEN:
-			if (jpn_z14p_get_gryph(&font, code))
+		case FONT_TYPE_GBKSIMHEI:
+			if (gbk_s14p_get_gryph(&font, code))
 			{
 				res = internal_font_putc(&font, sx, sy, r, g, b);
 				sx += font.pitch;
@@ -1039,17 +1039,17 @@ INLINE void uifont_draw_shadow(int sx, int sy, const char *s)
 			p++;
 			break;
 
-		case FONT_TYPE_JPNHAN:
-			if ((res = jpn_h14p_get_gryph(&font, code)) != 0)
-			{
-				res = internal_shadow_putc(&font, sx, sy);
-				sx += font.pitch;
-			}
-			p++;
-			break;
+//		case FONT_TYPE_JPNHAN:
+//			if ((res = jpn_h14p_get_gryph(&font, code)) != 0)
+//			{
+//				res = internal_shadow_putc(&font, sx, sy);
+//				sx += font.pitch;
+//			}
+//			p++;
+//			break;
 
-		case FONT_TYPE_JPNZEN:
-			if ((res = jpn_z14p_get_gryph(&font, code)) != 0)
+		case FONT_TYPE_GBKSIMHEI:
+			if ((res = gbk_s14p_get_gryph(&font, code)) != 0)
 			{
 				res = internal_shadow_putc(&font, sx, sy);
 				sx += font.pitch;
@@ -1208,7 +1208,7 @@ INLINE void latin1_draw(int sx, int sy, int r, int g, int b, const char *s)
 	日本語フォント描画
 ------------------------------------------------------*/
 
-INLINE void sjis_draw(int sx, int sy, int r, int g, int b, const char *s)
+INLINE void gbk_draw(int sx, int sy, int r, int g, int b, const char *s)
 {
 	int type, res = 1;
 	UINT16 code;
@@ -1221,7 +1221,7 @@ INLINE void sjis_draw(int sx, int sy, int r, int g, int b, const char *s)
 
 	while (*p && res)
 	{
-		code = sjis_get_code(p, &type);
+		code = gbk_get_code(p, &type);
 
 		switch (type)
 		{
@@ -1234,17 +1234,17 @@ INLINE void sjis_draw(int sx, int sy, int r, int g, int b, const char *s)
 			p++;
 			break;
 
-		case FONT_TYPE_JPNHAN:
-			if ((res = jpn_h14_get_gryph(&font, code)) != 0)
-			{
-				res = internal_font_putc(&font, sx, sy, r, g, b);
-			}
-			sx += FONTSIZE / 2;
-			p++;
-			break;
+//		case FONT_TYPE_JPNHAN:
+//			if ((res = jpn_h14_get_gryph(&font, code)) != 0)
+//			{
+//				res = internal_font_putc(&font, sx, sy, r, g, b);
+//			}
+//			sx += FONTSIZE / 2;
+//			p++;
+//			break;
 
-		case FONT_TYPE_JPNZEN:
-			if ((res = jpn_z14_get_gryph(&font, code)) != 0)
+		case FONT_TYPE_GBKSIMHEI:
+			if ((res = gbk_s14_get_gryph(&font, code)) != 0)
 			{
 				res = internal_font_putc(&font, sx, sy, r, g, b);
 			}
@@ -1305,8 +1305,8 @@ INLINE void sjis_draw(int sx, int sy, int r, int g, int b, const char *s)
 
 void textfont_print(int sx, int sy, int r, int g, int b, const char *s, int flag)
 {
-	if (flag & CHARSET_SHIFTJIS)
-		sjis_draw(sx, sy, r, g, b, s);
+	if (flag & CHARSET_GBK)
+		gbk_draw(sx, sy, r, g, b, s);
 	else
 		latin1_draw(sx, sy, r, g, b, s);
 }

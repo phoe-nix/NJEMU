@@ -10,15 +10,15 @@
 
 #BUILD_CPS1PSP = 1
 #BUILD_CPS2PSP = 1
-BUILD_MVSPSP = 1
-#BUILD_NCDZPSP = 1
+#BUILD_MVSPSP = 1
+BUILD_NCDZPSP = 1
 
 #PSP_SLIM = 1
 #KERNEL_MODE = 1
 COMMAND_LIST = 1
 ADHOC = 1
 SAVE_STATE = 1
-#UI_32BPP = 1
+UI_32BPP = 1
 #RELEASE = 1
 
 #------------------------------------------------------------------------------
@@ -188,10 +188,8 @@ FONTOBJS = \
 	$(OBJ)/$(OS)/font/command.o \
 	$(OBJ)/$(OS)/font/ascii_14.o \
 	$(OBJ)/$(OS)/font/latin1_14.o \
-	$(OBJ)/$(OS)/font/jpn_h14.o \
-	$(OBJ)/$(OS)/font/jpn_h14p.o \
-	$(OBJ)/$(OS)/font/jpn_z14.o \
-	$(OBJ)/$(OS)/font/sjis_tbl.o
+	$(OBJ)/$(OS)/font/gbk_s14.o \
+	$(OBJ)/$(OS)/font/gbk_tbl.o
 
 OSOBJS = \
 	$(OBJ)/$(OS)/$(OS).o \

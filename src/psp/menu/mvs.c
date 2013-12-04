@@ -49,6 +49,7 @@ static gamecfg2_t gamecfg_mvs[] =
 	if (machine_init_type == INIT_ms5pcb
 	||	machine_init_type == INIT_svcpcb
 	||	machine_init_type == INIT_kf2k3pcb
+	||	machine_init_type == INIT_jockeygp
 	||	neogeo_bios >= NEOGEO_GIT)
 	{
 		gamecfg[0].enable = 0;

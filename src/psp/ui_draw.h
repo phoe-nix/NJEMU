@@ -84,6 +84,7 @@ enum
 #define CHARSET_ISO8859_1	1
 #define CHARSET_LATIN1		1
 #define CHARSET_SHIFTJIS	2
+#define CHARSET_GBK			2
 
 #define UI_COLOR(no)	ui_palette[no].r,ui_palette[no].g,ui_palette[no].b
 
@@ -105,8 +106,8 @@ extern const UINT8 font_s[];
 // •¿•§•¢•Ì•∞µ»§Œ”∞•«©`•ø
 extern const UINT8 shadow[9][8][4];
 
-// Shift JIS •’•©•Û•»•∆©`•÷•Î
-extern const UINT16 sjis_table[];
+// GBK •’•©•Û•»•∆©`•÷•Î
+extern const UINT16 gbk_table[];
 
 
 /*------------------------------------------------------
@@ -127,11 +128,11 @@ int graphic_font_get_pitch(UINT16 code);
 int ascii_14p_get_gryph(struct font_t *font, UINT16 code);
 int ascii_14p_get_pitch(UINT16 code);
 
-int jpn_h14p_get_gryph(struct font_t *font, UINT16 code);
-int jpn_h14p_get_pitch(UINT16 code);
+//int jpn_h14p_get_gryph(struct font_t *font, UINT16 code);
+//int jpn_h14p_get_pitch(UINT16 code);
 
-int jpn_z14p_get_gryph(struct font_t *font, UINT16 code);
-int jpn_z14p_get_pitch(UINT16 code);
+int gbk_s14p_get_gryph(struct font_t *font, UINT16 code);
+int gbk_s14p_get_pitch(UINT16 code);
 
 // •¢•§•≥•Û(–°)
 int icon_s_get_gryph(struct font_t *font, UINT16 code);
@@ -146,8 +147,8 @@ int icon_l_get_light(struct font_t *font, UINT16 code);
 int command_font_get_gryph(struct font_t *font, UINT16 code);
 int ascii_14_get_gryph(struct font_t *font, UINT16 code);
 int latin1_14_get_gryph(struct font_t *font, UINT16 code);
-int jpn_h14_get_gryph(struct font_t *font, UINT16 code);
-int jpn_z14_get_gryph(struct font_t *font, UINT16 code);
+//int jpn_h14_get_gryph(struct font_t *font, UINT16 code);
+int gbk_s14_get_gryph(struct font_t *font, UINT16 code);
 #endif
 
 

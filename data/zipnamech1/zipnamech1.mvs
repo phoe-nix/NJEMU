@@ -14,7 +14,7 @@ aof3k,龙虎之拳3 - 斗士的路途 (韩国版)
 bakatono,麻雀漫游记
 bbbuster,泡泡大作战
 bangbead,碰碰球
-bangbedp,碰碰球 (未加密),GAME_BOOTLEG
+bangbedp,碰碰球 (工程版)
 bjourney,蓝色之旅
 blazstar,闪亮之星
 breakers,爆裂人
@@ -61,23 +61,54 @@ jockeygpa,赌马大亨 (版本2)
 joyjoy,阳光方块
 kabukikl,天外魔境真传 - 东方伊甸园
 karnovr,斗士的历史
-kizuna,风云默示录 2 - 超级组队战
+kof94,拳皇 '94
+kof95,拳皇 '95 (版本1)
+kof95a,拳皇 '95 (版本2)
+kof96,拳皇 '96 (版本1)
+kof96h,拳皇 '96 (版本2)
+kof96cn,拳皇 '96 (中文版),GAME_HACK
+kof96ae,拳皇 '96 AE,GAME_HACK
+kof96ep,拳皇 '96 (盗版),GAME_BOOTLEG
+kof97,拳皇 '97 (版本1)
+kof97a,拳皇 '97 (版本2)
+kof97cn,拳皇 '97 (中文版),GAME_HACK
+kof97k,拳皇 '97 (韩国版)
+kof97d,拳皇 '97 梦回,GAME_HACK
+kof97oro,拳皇 '97 Plus 2003 (盗版),GAME_BOOTLEG
+kof97pls,拳皇 '97 Plus (盗版),GAME_BOOTLEG
+kof97pla,拳皇 '97 Plus 2003 (盗版/hack),GAME_BOOTLEG
+kof97ps,拳皇 '97 仿PS改良最终版[EGCG],GAME_HACK
+kog,拳皇 '97 KOG (盗版),GAME_BOOTLEG
+kogd,拳皇 '97 KOG (盗版解密),GAME_BOOTLEG
+kof98,拳皇 '98 - 梦战斗未结束
+kof98k,拳皇 '98 - 梦战斗未结束 (韩国版1)
+kof98ka,拳皇 '98 - 梦战斗未结束 (韩国版2)
+kof98n,拳皇 '98 - 梦战斗未结束 (未加密)
+kof98ae,拳皇 '98 Anniversary Edition[EGCG],GAME_HACK
+kof98c,拳皇 '98 Combo,GAME_HACK
+kof98cn,拳皇 '98 (中文版),GAME_HACK
+kof99,拳皇 '99 - 千年之战 (版本1)
+kof99a,拳皇 '99 - 千年之战 (版本2)
+kof99e,拳皇 '99 - 千年之战 (早期版本)
+kof99k,拳皇 '99 - 千年之战 (韩国版)
+kof99p,拳皇 '99 - 千年之战 (工程版)
+kof99ae,拳皇 '99 Anniversary Edition 公测版20130113,GAME_HACK
 kof2000,拳皇 2000
 kof2000n,拳皇 2000 (未加密)
-kof2kcn,拳皇 2000 中文版,GAME_BOOTLEG
-kof2kps2,拳皇 2000 仿PS2版 V1.0[EGCG],GAME_BOOTLEG
+kof2kcn,拳皇 2000 中文版,GAME_HACK
+kof2kps2,拳皇 2000 仿PS2版 V1.0[EGCG],GAME_HACK
 kof2001,拳皇 2001 
 kof2001h,拳皇 2001 (替换版)
 kf2k1pls,拳皇 2001 Plus (盗版1),GAME_BOOTLEG
 kf2k1pa,拳皇 2001 Plus (盗版2),GAME_BOOTLEG
-kof2k1bs,拳皇 2001 仿PS2版 V1.0[EGCG],GAME_BOOTLEG
+kof2k1bs,拳皇 2001 仿PS2版 V1.0[EGCG],GAME_HACK
 cthd2003,拳皇 2001 卧虎藏龙 2003 (盗版1),GAME_BOOTLEG
 cthd2k3a,拳皇 2001 卧虎藏龙 2003 (盗版2),GAME_BOOTLEG
 ct2k3sp,拳皇 2001 卧虎藏龙  2003 Super Plus (盗版),GAME_BOOTLEG
 ct2k3sa,拳皇 2001 卧虎藏龙 2003 Super Plus alternate (盗版),GAME_BOOTLEG
 kof2002,拳皇 2002
-kof2k2cn,拳皇 2002 中文版,GAME_BOOTLEG
-kf2k2ps2,拳皇 2002 仿PS2版 V0.4[EGCG],GAME_BOOTLEG
+kof2k2cn,拳皇 2002 中文版,GAME_HACK
+kf2k2ps2,拳皇 2002 仿PS2版 V0.4[EGCG],GAME_HACK
 kof2002b,拳皇 2002 (盗版),GAME_BOOTLEG
 kf2k2pls,拳皇 2002 Plus (盗版1),GAME_BOOTLEG
 kf2k2pla,拳皇 2002 Plus (盗版2),GAME_BOOTLEG
@@ -96,34 +127,7 @@ kf2k3bl,拳皇 2003 (盗版1),GAME_BOOTLEG
 kf2k3bla,拳皇 2003 (盗版2),GAME_BOOTLEG
 kf2k3pl,拳皇 2004 EX / 英雄 (KOF2003盗版),GAME_BOOTLEG
 kf2k3upl,拳皇 2004 EX / 终极增强版 (KOF2003盗版),GAME_BOOTLEG
-kof94,拳皇 '94
-kof95,拳皇 '95 (版本1)
-kof95a,拳皇 '95 (版本2)
-kof96,拳皇 '96 (版本1)
-kof96h,拳皇 '96 (版本2)
-kof96ae,拳皇 '96 AE,GAME_BOOTLEG
-kof96ep,拳皇 '96 (盗版),GAME_BOOTLEG
-kof97,拳皇 '97 (版本1)
-kof97a,拳皇 '97 (版本2)
-kof97k,拳皇 '97 (韩国版)
-kof97d,拳皇 '97 梦回,GAME_BOOTLEG
-kof97pls,拳皇 '97 Plus (盗版),GAME_BOOTLEG
-kof97pla,拳皇 '97 Plus 2003 (盗版),GAME_BOOTLEG
-kof97ps,拳皇 '97 仿PS改良最终版[EGCG],GAME_BOOTLEG
-kog,拳皇 '97 KOG (盗版),GAME_BOOTLEG,GAME_NOT_WORK
-kogd,拳皇 '97 KOG (盗版解密),GAME_BOOTLEG
-kof98,拳皇 '98 - 梦战斗未结束
-kof98k,拳皇 '98 - 梦战斗未结束 (韩国版1)
-kof98ka,拳皇 '98 - 梦战斗未结束 (韩国版2)
-kof98n,拳皇 '98 - 梦战斗未结束 (未加密)
-kof98ae,拳皇 '98 Anniversary Edition[EGCG],GAME_BOOTLEG
-kof98c,拳皇 '98 Combo,GAME_BOOTLEG
-kof98cn,拳皇 '98 中文版,GAME_BOOTLEG
-kof99,拳皇 '99 - 千年之战 (版本1)
-kof99a,拳皇 '99 - 千年之战 (版本2)
-kof99e,拳皇 '99 - 千年之战 (早期版本)
-kof99k,拳皇 '99 - 千年之战 (韩国版)
-kof99p,拳皇 '99 - 千年之战 (工程版)
+kf2k3ps2,拳皇 2003 仿PS2版,GAME_HACK
 kotm,魔兽之王 
 kotmh,魔兽之王 (替换版)
 kotm2,魔兽之王2 - 下一个目标
@@ -146,21 +150,22 @@ matrimbl,新豪血寺一族“斗婚”(盗版),GAME_BOOTLEG
 miexchng,钱币对抗赛
 minasan,麻雀大富翁
 mosyougi,将棋达人
-mslug,合金弹头 - 超级坦克-001
-mslug2,合金弹头2 - 超级坦克-001/II
+mslug,合金弹头1 超级坦克-001
+mslug2,合金弹头2 超级坦克-001/II
 mslug3,合金弹头3
 mslug3h,合金弹头3 (P未加密)
 mslug3n,合金弹头3 (未加密)
 mslug3b6,合金弹头6 (合金弹头3 盗版),GAME_BOOTLEG
-mslug4,合金弹头4 (版本 1)
-mslug4h,合金弹头4 (版本 2)
+mslug4,合金弹头4 (版本1)
+mslug4h,合金弹头4 (版本2)
 ms4plus,合金弹头4 Plus (盗版),GAME_BOOTLEG
-ms5pcb,合金弹头5 (JAMMA PCB)
 mslug5,合金弹头5 (版本1)
 mslug5h,合金弹头5 (版本2)
 mslug5b,合金弹头5 (盗版),GAME_BOOTLEG
+ms5pcb,合金弹头5 (JAMMA PCB)
 ms5plus,合金弹头5 Plus (盗版),GAME_BOOTLEG
-mslugx,合金弹头X - 超级坦克-001
+mslugx,合金弹头X 超级坦克 001
+mslugxc1,合金弹头X 多载具版,GAME_HACK
 mutnat,外星游龙
 nam1975,越战 - 1975
 ncombat,忍者大战 (版本1)
@@ -221,6 +226,8 @@ samsho4k,侍魂Ⅳ - 霸王传说 武士传奇 (韩国版)
 samsho5,侍魂零 
 samsho5h,侍魂零 (替换版)
 savagere,风云默示录 - 格斗创世
+kizuna,风云默示录 2 - 超级组队战
+sbp,Super Bubble Pop
 sdodgeb,热血斗球传说
 sengokh,战国传承 (替换版)
 sengoku,战国传承 
@@ -229,6 +236,7 @@ sengoku3,战国传承2001
 shocktr2,突击奇兵 - 第二分队
 shocktra,突击奇兵 (版本2)
 shocktro,突击奇兵 (版本1)
+lans2004,突击奇兵2004 (突击奇兵 盗版),GAME_BOOTLEG
 socbrawl,机器人足球
 socbrawlh,机器人足球 (替换版)
 sonicwi2,音速战机 2
@@ -270,21 +278,22 @@ whp,世界英雄完美版
 wjammers,超级飞碟球
 zedblade,末日之战
 zupapa,欢乐精灵! - 星星大作战
-zintrckb,水滴对战气泡 (Neo CD 转换hack/盗版),GAME_BOOTLEG
-zintrkcd,水滴对战气泡 (Neo CD 转换)
-lans2004,突击奇兵2004 (突击奇兵 盗版),GAME_BOOTLEG
-fr2ch,偶像麻将 最终罗曼史2 (Neo CD转换)
+zintrckb,水滴对战气泡 (Hack),GAME_HACK
+zintrkcd,水滴对战气泡 (Neo CD 转换),GAME_HACK
+fr2ch,偶像麻将 最终罗曼史2 (Neo CD转换),GAME_HACK
+sthoopcd,街头篮球 (Neo CD 转换),GAME_HACK
 diggerma,挖地先生 (工程版),GAME_BOOTLEG
-columnsn,魔法宝石 (PD),GAME_BOOTLEG
-poknight,扑克之夜 (PD),GAME_BOOTLEG
-neonopon,Neo 智力方块 (beta / PD),GAME_BOOTLEG
-npong10,Neo 弹球 (v1.0 / PD),GAME_NOT_WORK|GAME_BOOTLEG
-neopong,Neo 弹球 (v1.1 / PD),GAME_BOOTLEG
-frogfest,浮游城 (PD),GAME_BOOTLEG
-ltorb1,Jonas Indiana and the Lost Temple of RA (20050717 / PD),GAME_BOOTLEG
-cnbe,Codename - Blut Engel (2006-01-19 / PD),GAME_BOOTLEG
-beast,兽之影 (demo / PD),GAME_BOOTLEG
-neodemo,Neo-Demo (PD),GAME_BOOTLEG
-ngem2k,NGEM2K (beta 2006-01-18 / PD),GAME_BOOTLEG
-neo2500,Neo 2500 Demo (PD),GAME_BOOTLEG
-syscheck,Neo System Check (ver 1.0b / PD),GAME_BOOTLEG
+columnsn,魔法宝石 (PD),GAME_HACK
+poknight,扑克之夜 (PD),GAME_HACK
+neonopon,Neo 智力方块 (beta/PD),GAME_HACK
+npong10,Neo 弹球 (v1.0 / PD),GAME_NOT_WORK|,GAME_HACK
+neopong,Neo 弹球 (v1.1 / PD),GAME_HACK
+frogfest,浮游城 (PD),GAME_HACK
+ltorb1,Jonas Indiana and the Lost Temple of RA (20050717/PD),GAME_HACK
+cnbe,Codename - Blut Engel (2006-01-19/PD),GAME_HACK
+beast,兽之影 (demo / PD),GAME_HACK
+neodemo,Neo-Demo (PD),GAME_HACK
+ngem2k,NGEM2K (beta 2006-01-18/PD),GAME_HACK
+neo2500,Neo 2500 Demo (PD),GAME_HACK
+syscheck,Neo System Check (ver 1.0b/PD),GAME_HACK
+lasthpcd,最后的希望 (Neo CD 转换),GAME_HACK

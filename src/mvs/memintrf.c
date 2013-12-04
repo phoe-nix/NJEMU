@@ -568,14 +568,14 @@ static int load_rom_cpu1(void)
 		case INIT_kof98:    res = kof98_decrypt_68k();    break;
 		case INIT_kof2002:  res = kof2002_decrypt_68k();  break;
 		case INIT_mslug5:   res = mslug5_decrypt_68k();   break;
-		case INIT_svchaosa: res = svcchaos_px_decrypt();  break;
+		case INIT_svchaosa: res = svc_px_decrypt();  break;
 		case INIT_samsho5:  res = samsho5_decrypt_68k();  break;
 		case INIT_kof2003:  res = kof2003_decrypt_68k();  break;
-		case INIT_samsh5sp: res = samsh5p_decrypt_68k();  break;
+		case INIT_samsh5sp: res = samsh5sp_decrypt_68k();  break;
 		case INIT_matrim:   res = kof2002_decrypt_68k();  break;
 
 		case INIT_ms5pcb:   res = mslug5_decrypt_68k();   break;
-		case INIT_svcpcb:   res = svcchaos_px_decrypt();  break;
+		case INIT_svcpcb:   res = svc_px_decrypt();  break;
 		case INIT_kf2k3pcb: res = kf2k3pcb_decrypt_68k(); break;
 
 #if !RELEASE
@@ -595,6 +595,7 @@ static int load_rom_cpu1(void)
 		case INIT_kf2k3pl:  res = kf2k3pl_px_decrypt();   break;
 		case INIT_kf2k3upl: kf2k3upl_px_decrypt();        break;
 		case INIT_kog:      res = kog_px_decrypt();       break;
+		case INIT_kof97oro: res = kof97oro_px_decode();   break;
 		case INIT_kof10th:  res = kof10th_px_decrypt();   break;
 		case INIT_kf10thep: res = kf10thep_px_decrypt();  break;
 		case INIT_kf2k5uni: res = kf2k5uni_px_decrypt();  break;
@@ -659,20 +660,21 @@ static int load_rom_cpu2(void)
 		file_close();
 	}
 
-#if !RELEASE
 	if (encrypt_cpu2)
 	{
 		switch (machine_init_type)
 		{
+		case INIT_jockeygp: neogeo_cmc50_m1_decrypt(); break;
+#if !RELEASE
 		case INIT_cthd2003: cthd2003_mx_decrypt(); break;
 		case INIT_cthd2k3a: cthd2003_mx_decrypt(); break;
 		case INIT_ct2k3sp:  cthd2003_mx_decrypt(); break;
 		case INIT_ct2k3sa:  cthd2003_mx_decrypt(); break;
 		case INIT_kf2k5uni: kf2k5uni_mx_decrypt(); break;
 		case INIT_matrimbl: matrimbl_mx_decrypt(); break;
+#endif
 		}
 	}
-#endif
 
 	memcpy(memory_region_cpu2, &memory_region_cpu2[0x10000], 0x10000);
 
@@ -1083,7 +1085,7 @@ static int load_rom_user1(int reload)
 		{
 			if (machine_init_type == INIT_kf2k3pcb)
 			{
-				if (kof2003biosdecode() == 0)
+				if (kf2k3pcb_sp1_decrypt() == 0)
 				{
 					msg_printf(TEXT(COULD_NOT_ALLOCATE_MEMORY_FOR_DECRYPT_ROM));
 					msg_printf(TEXT(PRESS_ANY_BUTTON2));
@@ -1851,6 +1853,12 @@ int memory_init(void)
 		neogeo_ngh = NGH_jockeygp;
 		break;
 
+	case INIT_sbp:
+		neogeo_protection_r = sbp_lowerrom_r;
+		neogeo_protection_w = sbp_lowerrom_w;
+		sbp_protection();
+		break;
+
 	case INIT_nitd:
 		nitd_AES_protection();
 		break;
@@ -1938,10 +1946,6 @@ int memory_init(void)
 		mslug4_AES_protection();
 		break;
 
-	case INIT_fr2ch:
-		patch_fr2ch();
-		neogeo_protection_w = fr2ch_protection_w;
-		break;
 #endif
 	}
 

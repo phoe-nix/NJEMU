@@ -36,17 +36,20 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "samsho3a", "samsho3",  0, 0, 0 },
 	{ "fswords",  "samsho3",  0, 0, 0 },
 	{ "aof3k",    "aof3",     0, 0, 0 },
+	{ "kof96cn",  "kof96",    1, 1, 0 },
 	{ "kof96h",   "kof96",    0, 0, 0 },
 	{ "kof96ep",  "kof96",    0, 0, 0 },
 	{ "kizuna",   "savagere", 1, 1, 1 },
 	{ "kof97a",   "kof97",    0, 0, 0 },
+	{ "kof97cn",  "kof97",    1, 1, 0 },
 	{ "kof97d",   "kof97",    0, 0, 0 },
 	{ "kof97k",   "kof97",    0, 0, 0 },
 	{ "kof97pls", "kof97",    0, 0, 0 },
 	{ "kof97pla", "kof97",    0, 1, 0 },
 	{ "kof97ps",  "kof97",    1, 0, 0 },
 	{ "kog",      "kof97",    1, 1, 0 },
-	{ "kod",      "kof97",    1, 1, 0 },
+	{ "kogd",     "kof97",    1, 1, 0 },
+	{ "kof97oro", "kof97",    1, 1, 0 },
 	{ "lastbldh", "lastblad", 0, 0, 0 },
 	{ "lastsold", "lastblad", 0, 0, 0 },
 	{ "shocktra", "shocktro", 0, 0, 0 },
@@ -64,6 +67,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "kof99e",   "kof99",    0, 0, 0 },
 	{ "kof99k",   "kof99",    0, 0, 0 },
 	{ "kof99p",   "kof99",    1, 1, 0 },
+	{ "kof99ae",  "kof99",    1, 1, 1 },
 	{ "garouo",   "garou",    0, 0, 0 },
 	{ "garoubl",  "garoup",   0, 1, 1 },
 	{ "mslug3h",  "mslug3",   0, 0, 0 },
@@ -84,7 +88,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "mslug4h",  "mslug4",   0, 0, 0 },
 	{ "ms4plus",  "mslug4",   0, 0, 0 },
 	{ "kof2002b", "kof2002",  1, 0, 0 },
-	{ "kf2k2cn",  "kof2002",  1, 1, 0 },
+	{ "kof2k2cn", "kof2002",  1, 1, 0 },
 	{ "kf2k2pls", "kof2002",  0, 0, 0 },
 	{ "kf2k2pla", "kof2002",  0, 0, 0 },
 	{ "kf2k2plb", "kof2002",  0, 0, 0 },
@@ -110,6 +114,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "kf2k3bla", "kf2k3bl",  0, 0, 0 },
 	{ "kf2k3pl",  "kf2k3bl",  0, 1, 0 },
 	{ "kf2k3upl", "kf2k3bl",  0, 1, 0 },
+	{ "kf2k3ps2", "kof2003",  1, 1, 1 },
 	{ "ironclado","ironclad", 0, 0, 0 },
 	{ "jockeygpa","jockeygp", 0, 0, 0 },
 	{ "rbff1a",   "rbff1",    0, 0, 0 },
@@ -1599,6 +1604,72 @@ READ16_HANDLER( vliner_r )
 }
 
 
+READ16_HANDLER( sbp_lowerrom_r )
+{
+	UINT16* rom = (UINT16*)memory_region_cpu1;
+	UINT16 origdata = rom[(offset+(0x200/2))];
+	UINT16 data =  BITSWAP16(origdata, 11,10,9,8,15,14,13,12,3,2,1,0,7,6,5,4);
+	int realoffset = 0x200+(offset*2);
+//	logerror("sbp_lowerrom_r offset %08x data %04x\n", realoffset, data );
+
+	// there is actually data in the rom here already, maybe we should just return it 'as is'
+	if (realoffset==0xd5e) return origdata;
+
+	return data;
+	if (offset < 0x00200/2)
+	{
+		offset -= 0x00200/2;
+		return 0xffff;
+	}
+}
+
+WRITE16_HANDLER( sbp_lowerrom_w )
+{
+	int realoffset = 0x200+(offset*2);
+
+	// the actual data written is just pulled from the end of the rom, and unused space
+	// maybe this is just some kind of watchdog for the protection device and it doesn't
+	// matter?
+	if (realoffset == 0x1080)
+	{
+		if (data==0x4e75)
+		{
+			return;
+		}
+		else if (data==0xffff)
+		{
+			return;
+		}
+	}
+	if (offset < 0x00200/2)
+	{
+		offset -= 0x00200/2;
+		COMBINE_DATA(&CartRAM[offset & 0xffff]);
+	}
+//	printf("sbp_lowerrom_w offset %08x data %04x\n", realoffset, data );
+}
+
+void sbp_protection(void)
+{
+	// there seems to be a protection device living around here..
+	// if you nibble swap the data in the rom the game will boot
+	// there are also writes to 0x1080..
+	//
+	// other stuff going on as well tho, the main overlay is still missing, and p1 inputs don't work
+//	m_maincpu->space(AS_PROGRAM).install_read_handler(0x00200, 0x001fff, read16_delegate(FUNC(sbp_lowerrom_r),this));
+//	m_maincpu->space(AS_PROGRAM).install_write_handler(0x00200, 0x001fff, write16_delegate(FUNC(sbp_lowerrom_w),this));
+
+
+	/* the game code clears the text overlay used ingame immediately after writing it.. why? protection? sloppy code that the hw ignores? imperfect emulation? */
+	{
+		UINT16* rom = (UINT16*)memory_region_cpu1;
+
+		rom[0x2a6f8/2] = 0x4e71;
+		rom[0x2a6fa/2] = 0x4e71;
+		rom[0x2a6fc/2] = 0x4e71;
+	}
+
+}
 /************************ AES Protection************************
   To allow console mode
 ***************************************************************/
@@ -1797,22 +1868,6 @@ WRITE16_HANDLER( kf2k3pl_protection_w)
 			neogeo_set_cpu1_second_bank(address + 0x100000);
 
 			memory_region_cpu1[0x58196] = prt;
-		}
-	}
-}
-
-WRITE16_HANDLER( fr2ch_protection_w )
-{
-	int i, n;
-	UINT8 *src = memory_region_gfx3;
-
-	if (offset == 1)
-	{
-		for (i = 0; i < 0x200000; i++)
-		{
-			n = src[0x200000 + i];
-			src[0x200000 + i] = src[0x400000 + i];
-			src[0x400000 + i] = n;
 		}
 	}
 }

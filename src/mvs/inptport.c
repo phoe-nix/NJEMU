@@ -70,7 +70,9 @@ void check_input_mode(void)
 {
 	if (machine_init_type == INIT_ms5pcb
 	||	machine_init_type == INIT_svcpcb
-	||	machine_init_type == INIT_kf2k3pcb)
+	||	machine_init_type == INIT_kf2k3pcb
+	||	machine_init_type == INIT_jockeygp
+	||	neogeo_bios == NEOGEO_GIT)
 	{
 		neogeo_input_mode = INPUT_MVS;
 		return;

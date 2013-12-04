@@ -249,11 +249,11 @@ void draw_scrollbar(int sx, int sy, int ex, int ey, int disp_lines, int total_li
 		uifont_print(sx - 2, sy - 2, UI_COLOR(UI_PAL_SELECT), FONT_UPTRIANGLE);
 		uifont_print(sx - 2, ey - 11, UI_COLOR(UI_PAL_SELECT), FONT_DOWNTRIANGLE);
 
-		height -= 23;
+		height -= 23;//height -= 23
 		sy += 11;
 
-		if (total_lines > 4)
-			bar_size = height >> 2;	// 最低限必要なサイズ
+		if (total_lines > 4)//total_lines > 4
+			bar_size = height >> 2;// 最低限必要なサイズheight >> 2
 		else
 			bar_size = height / total_lines;
 		line_height = (height - bar_size) / (total_lines - 1);
@@ -963,6 +963,23 @@ static UI_HELP *help_init(int number)
 		HELP_ENABLE(SET_SELECTED_DIRECTORY_AS_STARTUP)
 		HELP_END
 		break;
+
+#if (EMU_SYSTEM == MVS)
+	case HELP_SELECTBIOS:
+		HELP_SET_NAME(BIOS_SELECT_MENU)
+		HELP_ENABLE(SCROLL)
+		HELP_DISABLE()
+		HELP_ENABLE(SELECT)
+		HELP_ENABLE(RETURN_TO_MAIN_MENU)
+		HELP_DISABLE()
+		HELP_DISABLE()
+		HELP_DISABLE()
+		HELP_ENABLE(SHOW_THIS_HELP)
+		HELP_DISABLE()
+		HELP_DISABLE()
+		HELP_END
+		break;
+#endif
 
 	case HELP_GAMECONFIG:
 		HELP_SET_NAME(GAME_CONFIGURATION_MENU)

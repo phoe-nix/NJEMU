@@ -281,6 +281,7 @@ enum
 
 	// MAME 0.113 - 0.119
 	INIT_ct2k3sa,		// 69
+	INIT_kof97oro,		// 70
 
 	MAX_INIT
 };
@@ -291,8 +292,8 @@ void kof99_neogeo_gfx_decrypt(int extra_xor);
 void kof2000_neogeo_gfx_decrypt(int extra_xor);
 void svcpcb_gfx_decrypt(void);
 void svcpcb_s1data_decrypt(void);
-void kf2k3pcb_cx_decrypt(void);
-void kf2k3pcb_sx_decrypt(void);
+void kf2k3pcb_gfx_decrypt(void);
+void kf2k3pcb_decrypt_s1data(void);
 
 void neo_pcm2_snk_1999(int value);
 void neo_pcm2_swap(int value);

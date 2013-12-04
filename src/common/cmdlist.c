@@ -13,8 +13,8 @@
 	定数/マクロ
 ******************************************************************************/
 
-#define issjis1(c)	(((c) >= 0x81 && (c) <= 0xfe))
-#define issjis2(c)	((c) >= 0x40 && (c) <= 0xfe && (c) != 0x7f && (c) != 0xff)
+#define gbk1(c)	(((c) >= 0x81 && (c) <= 0xfe))
+#define gbk2(c)	((c) >= 0x40 && (c) <= 0xfe && (c) != 0x7f && (c) != 0xff)
 
 #define _CR		0x0d
 #define _LF		0x0a
@@ -149,7 +149,7 @@ static int check_text_encode(char *buf, int size)
 			count2 += 2;
 			i += 2;
 		}
-		else if (issjis1(p[i]) && issjis2(p[i + 1]))
+		else if (gbk1(p[i]) && gbk2(p[i + 1]))
 		{
 			count1++;
 			i += 2;
@@ -160,7 +160,7 @@ static int check_text_encode(char *buf, int size)
 	per = (count1 * 100) / (size - count2);
 
 	if (per > 20)
-		return CHARSET_SHIFTJIS;
+		return CHARSET_GBK;
 	else
 		return CHARSET_LATIN1;
 }
@@ -174,7 +174,7 @@ void load_commandlist(const char *game_name, const char *parent_name)
 {
 	FILE *fp;
 	char path[MAX_PATH];
-	char lf, *p, *buf, linebuf[256];
+	char lf, *p, *buf, linebuf[512];//256
 	const char *name = game_name;
 	int i, found, line, item;
 	int size, start, end, pos;
@@ -281,7 +281,11 @@ retry:
 			case TAG_CHARSET:
 				if ((p = cmdlist_get_value(linebuf)) != NULL)
 				{
-					if (stricmp(p, "Shift_JIS") == 0)
+					if (stricmp(p, "GBK") == 0)
+					{
+						charset = CHARSET_GBK;
+					}
+					else if (stricmp(p, "Shift_JIS") == 0)
 					{
 						charset = CHARSET_SHIFTJIS;
 					}
@@ -428,7 +432,7 @@ retry:
 	// 表示情報の初期化
 	sel_line   = 0;
 	prev_line  = 0;
-	rows_line  = (charset & CHARSET_SHIFTJIS) ? 16 : 14;
+	rows_line  = (charset & CHARSET_GBK) ? 16 : 14;
 	show_lines = rows_line;
 	num_lines  = cmd[0]->lines;
 	if (num_lines < show_lines) show_lines = num_lines;
@@ -546,7 +550,7 @@ void commandlist(int flag)
 			uifont_print_shadow(36, 5, UI_COLOR(UI_PAL_TITLE), title);
 			draw_battery_status(1);
 
-			if (charset & CHARSET_SHIFTJIS)
+			if (charset & CHARSET_GBK)
 			{
 				for (y = 0; y < show_lines; y++)
 					textfont_print(6, 37 + 14 * y, UI_COLOR(UI_PAL_SELECT), cmd[sel_item]->line[y + sel_line], charset);
@@ -743,7 +747,7 @@ int commandlist_size_reduction(void)
 {
 	FILE *fp;
 	char path[MAX_PATH], path2[MAX_PATH];
-	char *p, linebuf[256], rom_name[512][16];//256
+	char *p, linebuf[512], rom_name[512][16];//256
 	int i, j, l, found = 0, total_roms = 0;
 	int num_games, charset, progress;
 	int header_end, body_start, body_end;
@@ -768,7 +772,7 @@ int commandlist_size_reduction(void)
 		}
 	}
 
-	while (fgets(linebuf, 255, fp))
+	while (fgets(linebuf, 511, fp))//255
 	{
 		char *name = strtok(linebuf, ",");
 		strcpy(rom_name[total_roms++], name);
@@ -827,14 +831,14 @@ int commandlist_size_reduction(void)
 	msg_printf(TEXT(CHECKING_COMMAND_DAT_FORMAT));
 
 	// 登録されているゲーム数をチェック
-	while (fgets(linebuf, 255, fp) != NULL)
+	while (fgets(linebuf, 511, fp) != NULL)//255
 	{
 		if (strrchr(linebuf, '\r') == NULL)
 		{
 			if (strrchr(linebuf, '\n') == NULL)
 			{
-				linebuf[253] = '\r';
-				linebuf[254] = '\n';
+				linebuf[509] = '\r';//253
+				linebuf[510] = '\n';//254
 			}
 		}
 
@@ -851,7 +855,11 @@ int commandlist_size_reduction(void)
 					strtok(linebuf, " =");
 					if ((type = strtok(NULL, " =")) != NULL)
 					{
-						if (!stricmp(type, "Shift_JIS"))
+						if (!stricmp(type, "GBK"))
+						{
+							charset = CHARSET_GBK;
+						}
+						else if (!stricmp(type, "Shift_JIS"))
 						{
 							charset = CHARSET_SHIFTJIS;
 						}
@@ -970,7 +978,9 @@ int commandlist_size_reduction(void)
 
 	if (charset != CHARSET_DEFAULT)
 	{
-		if (charset == CHARSET_SHIFTJIS)
+		if (charset == CHARSET_GBK)
+			fprintf(fp, "$charset=gbk\r\n");
+		else if (charset == CHARSET_SHIFTJIS)
 			fprintf(fp, "$charset=shift_jis\r\n");
 		else
 			fprintf(fp, "$charset=latin1\r\n");
@@ -1014,7 +1024,7 @@ int commandlist_size_reduction(void)
 
 						if (strchr(name, ','))
 						{
-							char linebuf2[256], *name2;
+							char linebuf2[512], *name2;//256
 
 							strcpy(linebuf2, name);
 							name2 = strtok(linebuf2, ",");
