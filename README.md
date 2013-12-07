@@ -1,3 +1,6 @@
+20131207(测试)  
+MVS更新neocrypt.c，同步MAME150和PLUS的ROM版本 
+
 20131204	
 修复neo git BIOS按键  
 修复command缩减问题 
