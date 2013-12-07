@@ -2,7 +2,7 @@
 
 	memintrf.c
 
-	MVS¥á¥â¥ê¥¤¥ó¥¿¥Õ¥§©`¥¹évÊı
+	MVSãƒ¡ãƒ¢ãƒªã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹é–¢æ•°
 
 ******************************************************************************/
 
@@ -24,7 +24,7 @@
 #define WRITE_MIRROR_WORD(mem, offset, data, amask)		*(UINT16 *)&mem[offset & amask] = data
 */
 
-/* thanks OrochiZ
+/* thanks OrochiZ, this can play kof98ae and kof99ae
 #define READ_WORD(mem, offset)							mem[offset] | mem[offset + 1] << 8
 #define WRITE_WORD(mem, offset, data)					mem[offset] = data & 0xff; mem[offset + 1] = (data >> 8) & 0xff
 #define READ_MIRROR_WORD(mem, offset, amask)			mem[offset & amask] | mem[(offset & amask) + 1] << 8
@@ -68,7 +68,7 @@ enum
 
 
 /******************************************************************************
-	¥°¥í©`¥Ğ¥ë‰äÊı
+	ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°
 ******************************************************************************/
 
 UINT8 *memory_region_cpu1;
@@ -117,7 +117,7 @@ INT32 psp2k_mem_left = PSP2K_MEM_SIZE;
 
 
 /******************************************************************************
-	¥í©`¥«¥ë˜‹ÔìÌå/‰äÊı
+	ãƒ­ãƒ¼ã‚«ãƒ«æ§‹é€ ä½“/å¤‰æ•°
 ******************************************************************************/
 
 static struct rom_t cpu1rom[MAX_CPU1ROM];
@@ -155,7 +155,7 @@ static UINT8 *neogeo_sram;
 
 
 /******************************************************************************
-	¥×¥í¥È¥¿¥¤¥×
+	ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—
 ******************************************************************************/
 
 static UINT16 (*neogeo_protection_r)(UINT32 offset, UINT16 mem_mask);
@@ -451,7 +451,7 @@ static int build_zoom_tables(void)
 
 
 /******************************************************************************
-	PSP-2000ÓÃ¥á¥â¥ê¹ÜÀí
+	PSP-2000ç”¨ãƒ¡ãƒ¢ãƒªç®¡ç†
 ******************************************************************************/
 
 #ifdef PSP_SLIM
@@ -459,7 +459,7 @@ static int build_zoom_tables(void)
 #define MEMORY_IS_PSP2K(mem)	((UINT32)mem >= PSP2K_MEM_TOP)
 
 /*--------------------------------------------------------
-	’ˆˆ¤µ¤ì¤¿îIÓò¤«¤é¥á¥â¥ê¤ò´_±£
+	æ‹¡å¼µã•ã‚ŒãŸé ˜åŸŸã‹ã‚‰ãƒ¡ãƒ¢ãƒªã‚’ç¢ºä¿
 --------------------------------------------------------*/
 
 static void *psp2k_mem_alloc(INT32 size)
@@ -477,7 +477,7 @@ static void *psp2k_mem_alloc(INT32 size)
 
 
 /*--------------------------------------------------------
-	’ˆˆ¤µ¤ì¤¿îIÓò¤Ø¥á¥â¥ê¤òÒÆ„Ó
+	æ‹¡å¼µã•ã‚ŒãŸé ˜åŸŸã¸ãƒ¡ãƒ¢ãƒªã‚’ç§»å‹•
 --------------------------------------------------------*/
 
 static void *psp2k_mem_move(void *mem, INT32 size)
@@ -498,13 +498,13 @@ static void *psp2k_mem_move(void *mem, INT32 size)
 
 
 /*--------------------------------------------------------
-	¥á¥â¥ê¹ ‡ì¤ò´_ÕJ¤·¤Æfree()
+	ãƒ¡ãƒ¢ãƒªç¯„å›²ã‚’ç¢ºèªã—ã¦free()
 --------------------------------------------------------*/
 
 static void psp2k_mem_free(void *mem)
 {
 	if (!mem || MEMORY_IS_PSP2K(mem))
-		return;	// ’ˆˆ¥á¥â¥ê¤Ï½â·Å¤·¤Ê¤¤(¥Õ¥ê©`¥º¤¹¤ë)
+		return;	// æ‹¡å¼µãƒ¡ãƒ¢ãƒªã¯è§£æ”¾ã—ãªã„(ãƒ•ãƒªãƒ¼ã‚ºã™ã‚‹)
 
 	free(mem);
 }
@@ -513,7 +513,7 @@ static void psp2k_mem_free(void *mem)
 
 
 /******************************************************************************
-	ROMÕi¤ßŞz¤ß
+	ROMèª­ã¿è¾¼ã¿
 ******************************************************************************/
 
 /*--------------------------------------------------------
@@ -561,14 +561,14 @@ static int load_rom_cpu1(void)
 		{
 		case INIT_kof99:    kof99_decrypt_68k();          break;
 		case INIT_garou:    garou_decrypt_68k();          break;
-		case INIT_garouo:   garouo_decrypt_68k();         break;
+		case INIT_garouh:   garouh_decrypt_68k();         break;
 		case INIT_mslug3:   mslug3_decrypt_68k();         break;
 		case INIT_kof2000:  kof2000_decrypt_68k();        break;
 
 		case INIT_kof98:    res = kof98_decrypt_68k();    break;
 		case INIT_kof2002:  res = kof2002_decrypt_68k();  break;
 		case INIT_mslug5:   res = mslug5_decrypt_68k();   break;
-		case INIT_svchaosa: res = svc_px_decrypt();  break;
+		case INIT_svc:      res = svc_px_decrypt();       break;
 		case INIT_samsho5:  res = samsho5_decrypt_68k();  break;
 		case INIT_kof2003:  res = kof2003_decrypt_68k();  break;
 		case INIT_samsh5sp: res = samsh5sp_decrypt_68k();  break;
@@ -664,14 +664,55 @@ static int load_rom_cpu2(void)
 	{
 		switch (machine_init_type)
 		{
-		case INIT_jockeygp: neogeo_cmc50_m1_decrypt(); break;
+		case INIT_kof2000:
+		case INIT_kof2000n:
+		case INIT_kof2001:
+		case INIT_kof2002:
+		case INIT_mslug5:
+		case INIT_svc:
+		case INIT_samsho5:
+		case INIT_kof2003:
+		case INIT_kof2003h:
+		case INIT_samsh5sp:
+		case INIT_pnyaa:
+		case INIT_mslug4:
+		case INIT_rotd:
+		case INIT_matrim:
+		case INIT_ms5pcb:
+		case INIT_svcpcb:
+		case INIT_kf2k3pcb:
+		case INIT_jockeygp:
+#if RELEASE
+			neogeo_cmc50_m1_decrypt();
+			break;
+#endif
 #if !RELEASE
-		case INIT_cthd2003: cthd2003_mx_decrypt(); break;
-		case INIT_cthd2k3a: cthd2003_mx_decrypt(); break;
-		case INIT_ct2k3sp:  cthd2003_mx_decrypt(); break;
-		case INIT_ct2k3sa:  cthd2003_mx_decrypt(); break;
-		case INIT_kf2k5uni: kf2k5uni_mx_decrypt(); break;
-		case INIT_matrimbl: matrimbl_mx_decrypt(); break;
+		case INIT_kf2k2pls:
+		case INIT_kf2k2mp:
+		case INIT_kf2k2mp2:
+		case INIT_ms5plus:
+		case INIT_ms4plus:
+		case INIT_kf2k1pls:
+		case INIT_kf2k1pa:
+		case INIT_kof2002b:
+		case INIT_kf2k2plc:
+		case INIT_mslug5b:
+			neogeo_cmc50_m1_decrypt();
+			break;
+		case INIT_cthd2003:
+		case INIT_cthd2k3a:
+		case INIT_ct2k3sp:
+		case INIT_ct2k3sa:
+			cthd2003_mx_decrypt();
+			break;
+
+		case INIT_kf2k5uni:
+			kf2k5uni_mx_decrypt();
+			break;
+
+		case INIT_matrimbl:
+			matrimbl_mx_decrypt();
+			break;
 #endif
 		}
 	}
@@ -1123,7 +1164,7 @@ static int load_rom_user1(int reload)
 }
 
 /*--------------------------------------------------------
-	USER2 (kof10th/kf10thepŒŸÓÃ)
+	USER2 (kof10th/kf10thepå°‚ç”¨)
 --------------------------------------------------------*/
 
 #if !RELEASE
@@ -1170,7 +1211,7 @@ static int load_rom_user2(void)
 #endif
 
 /*--------------------------------------------------------
-	ROMÇéˆó¤ò¥Ç©`¥¿¥Ù©`¥¹¤Ç½âÎö
+	ROMæƒ…å ±ã‚’ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã§è§£æ
 --------------------------------------------------------*/
 
 static int load_rom_info(const char *game_name)
@@ -1213,7 +1254,7 @@ static int load_rom_info(const char *game_name)
 		if ((buf = (char *)malloc(size)) == NULL)
 		{
 			sceIoClose(fd);
-			return 3;	// ÊÖ’i¤­
+			return 3;	// æ‰‹æŠœã
 		}
 
 		sceIoRead(fd, buf, size);
@@ -1239,7 +1280,7 @@ static int load_rom_info(const char *game_name)
 			{
 				if (linebuf[0] == '\r' || linebuf[0] == '\n')
 				{
-					// ¸ÄĞĞ
+					// æ”¹è¡Œ
 					continue;
 				}
 				else if (str_cmp(linebuf, "FILENAME(") == 0)
@@ -1510,11 +1551,11 @@ static int load_rom_info(const char *game_name)
 
 
 /******************************************************************************
-	¥á¥â¥ê¥¤¥ó¥¿¥Õ¥§©`¥¹évÊı
+	ãƒ¡ãƒ¢ãƒªã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹é–¢æ•°
 ******************************************************************************/
 
 /*------------------------------------------------------
-	¥á¥â¥ê¥¤¥ó¥¿¥Õ¥§©`¥¹³õÆÚ»¯
+	ãƒ¡ãƒ¢ãƒªã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹åˆæœŸåŒ–
 -----------------------------------------------------*/
 
 int memory_init(void)
@@ -1582,7 +1623,7 @@ int memory_init(void)
 #ifdef ADHOC
 	if (adhoc_enable)
 	{
-		/* AdHocÍ¨ĞÅ•r¤ÏÒ»²¿¥ª¥×¥·¥ç¥ó¤Ç¹Ì¶¨¤ÎÔO¶¨¤òÊ¹ÓÃ */
+		/* AdHocé€šä¿¡æ™‚ã¯ä¸€éƒ¨ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§å›ºå®šã®è¨­å®šã‚’ä½¿ç”¨ */
 		neogeo_raster_enable = 0;
 		psp_cpuclock         = PSPCLOCK_333;
 		option_vsync         = 0;
@@ -1713,11 +1754,11 @@ int memory_init(void)
 #ifdef PSP_SLIM
 	if (psp2k_mem_left != PSP2K_MEM_SIZE)
 	{
-		// sound1¤Ç’ˆˆ¥á¥â¥ê¤Ë´_±£¤·¤¿ˆöºÏ
+		// sound1ã§æ‹¡å¼µãƒ¡ãƒ¢ãƒªã«ç¢ºä¿ã—ãŸå ´åˆ
 
-		// ¥­¥ã¥Ã¥·¥åîIÓò¤ò˜OÁ¦¶à¤¯È¡¤ë¤¿¤á¤Ë¤³¤ì¤Ş¤Ç´_±£¤·¤¿¥á¥â¥ê¤ÇÒÆ„Ó¿ÉÄÜ¤Ê¤â¤Î¤ò
-		// ’ˆˆ¥á¥â¥ê¤ËÒÆ„Ó¤¹¤ë¡£
-		// ˜OÁ¦ßB¾A¤·¤¿´ó¤­¤ÊîIÓò¤ò¿Õ¤±¤¿¤¤¤Î¤Ç¡¢´_±£¤·¤¿¤Î¤ÈÄæ¤Îí˜¤ÇÒÆ„Ó¡£
+		// ã‚­ãƒ£ãƒƒã‚·ãƒ¥é ˜åŸŸã‚’æ¥µåŠ›å¤šãå–ã‚‹ãŸã‚ã«ã“ã‚Œã¾ã§ç¢ºä¿ã—ãŸãƒ¡ãƒ¢ãƒªã§ç§»å‹•å¯èƒ½ãªã‚‚ã®ã‚’
+		// æ‹¡å¼µãƒ¡ãƒ¢ãƒªã«ç§»å‹•ã™ã‚‹ã€‚
+		// æ¥µåŠ›é€£ç¶šã—ãŸå¤§ããªé ˜åŸŸã‚’ç©ºã‘ãŸã„ã®ã§ã€ç¢ºä¿ã—ãŸã®ã¨é€†ã®é †ã§ç§»å‹•ã€‚
 
 		memory_region_user3 = psp2k_mem_move(memory_region_user3, memory_length_user3);
 		memory_region_gfx4  = psp2k_mem_move(memory_region_gfx4,  memory_length_gfx4);
@@ -1746,14 +1787,14 @@ int memory_init(void)
 		neogeo_save_sound_flag = 0;
 	}
 
-	// FIX¥Ğ¥ó¥¯¥¿¥¤¥×ÔO¶¨
+	// FIXãƒãƒ³ã‚¯ã‚¿ã‚¤ãƒ—è¨­å®š
 	switch (machine_init_type)
 	{
 	case INIT_garou:
-	case INIT_garouo:
+	case INIT_garouh:
 	case INIT_mslug4:
 	case INIT_mslug3:
-	case INIT_mslug3n:
+	case INIT_mslug3h:
 	case INIT_samsho5:
 	case INIT_samsh5sp:
 		neogeo_fix_bank_type = 1;
@@ -1763,9 +1804,10 @@ int memory_init(void)
 	case INIT_kof2000n:
 	case INIT_matrim:
 	case INIT_svcpcb:
-	case INIT_svchaosa:
+	case INIT_svc:
 	case INIT_kf2k3pcb:
 	case INIT_kof2003:
+	case INIT_kof2003h:
 #if !RELEASE
 	case INIT_matrimbl:
 #endif
@@ -1806,9 +1848,9 @@ int memory_init(void)
 		neogeo_protection_w = garou_protection_w;
 		break;
 
-	case INIT_garouo:
+	case INIT_garouh:
 		neogeo_protection_r = garou_protection_r;
-		neogeo_protection_w = garouo_protection_w;
+		neogeo_protection_w = garouh_protection_w;
 		break;
 
 	case INIT_mslug3:
@@ -1834,7 +1876,7 @@ int memory_init(void)
 		break;
 
 	case INIT_svcpcb:
-	case INIT_svchaosa:
+	case INIT_svc:
 	case INIT_kof2003:
 	case INIT_kf2k3pcb:
 		neogeo_protection_r = pvc_protection_r;
@@ -1956,7 +1998,7 @@ int memory_init(void)
 
 
 /*------------------------------------------------------
-	¥á¥â¥ê¥¤¥ó¥¿¥Õ¥§©`¥¹½KÁË
+	ãƒ¡ãƒ¢ãƒªã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹çµ‚äº†
 ------------------------------------------------------*/
 
 void memory_shutdown(void)
@@ -2014,11 +2056,11 @@ void memory_shutdown(void)
 
 
 /******************************************************************************
-	M68000 ¥á¥â¥ê¥ê©`¥É/¥é¥¤¥ÈévÊı
+	M68000 ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ãƒ‰/ãƒ©ã‚¤ãƒˆé–¢æ•°
 ******************************************************************************/
 
 /*------------------------------------------------------
-	M68000¥á¥â¥ê¥ê©`¥É (byte)
+	M68000ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ãƒ‰ (byte)
 ------------------------------------------------------*/
 
 UINT8 m68000_read_memory_8(UINT32 offset)
@@ -2055,7 +2097,7 @@ UINT8 m68000_read_memory_8(UINT32 offset)
 
 
 /*------------------------------------------------------
-	M68000¥ê©`¥É¥á¥â¥ê (word)
+	M68000ãƒªãƒ¼ãƒ‰ãƒ¡ãƒ¢ãƒª (word)
 ------------------------------------------------------*/
 
 UINT16 m68000_read_memory_16(UINT32 offset)
@@ -2089,7 +2131,7 @@ UINT16 m68000_read_memory_16(UINT32 offset)
 
 
 /*------------------------------------------------------
-	M68000¥é¥¤¥È¥á¥â¥ê (byte)
+	M68000ãƒ©ã‚¤ãƒˆãƒ¡ãƒ¢ãƒª (byte)
 ------------------------------------------------------*/
 
 void m68000_write_memory_8(UINT32 offset, UINT8 data)
@@ -2123,7 +2165,7 @@ void m68000_write_memory_8(UINT32 offset, UINT8 data)
 
 
 /*------------------------------------------------------
-	M68000¥é¥¤¥È¥á¥â¥ê (word)
+	M68000ãƒ©ã‚¤ãƒˆãƒ¡ãƒ¢ãƒª (word)
 ------------------------------------------------------*/
 
 void m68000_write_memory_16(UINT32 offset, UINT16 data)
@@ -2154,11 +2196,11 @@ void m68000_write_memory_16(UINT32 offset, UINT16 data)
 
 
 /******************************************************************************
-	Z80 ¥á¥â¥ê¥ê©`¥É/¥é¥¤¥ÈévÊı
+	Z80 ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ãƒ‰/ãƒ©ã‚¤ãƒˆé–¢æ•°
 ******************************************************************************/
 
 /*------------------------------------------------------
-	Z80¥ê©`¥É¥á¥â¥ê (byte)
+	Z80ãƒªãƒ¼ãƒ‰ãƒ¡ãƒ¢ãƒª (byte)
 ------------------------------------------------------*/
 
 UINT8 z80_read_memory_8(UINT32 offset)
@@ -2168,7 +2210,7 @@ UINT8 z80_read_memory_8(UINT32 offset)
 
 
 /*------------------------------------------------------
-	Z80¥é¥¤¥È¥á¥â¥ê (byte)
+	Z80ãƒ©ã‚¤ãƒˆãƒ¡ãƒ¢ãƒª (byte)
 ------------------------------------------------------*/
 
 void z80_write_memory_8(UINT32 offset, UINT8 data)
@@ -2181,7 +2223,7 @@ void z80_write_memory_8(UINT32 offset, UINT8 data)
 
 
 /******************************************************************************
-	¥»©`¥Ö/¥í©`¥É ¥¹¥Æ©`¥È
+	ã‚»ãƒ¼ãƒ–/ãƒ­ãƒ¼ãƒ‰ ã‚¹ãƒ†ãƒ¼ãƒˆ
 ******************************************************************************/
 
 #ifdef SAVE_STATE
