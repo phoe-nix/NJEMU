@@ -40,7 +40,7 @@ enum
 
 
 /******************************************************************************
-	¥°¥í©`¥Ğ¥ë‰äÊı
+	ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°
 ******************************************************************************/
 
 UINT8 *memory_region_gfx2;
@@ -53,7 +53,7 @@ UINT32 memory_length_sound1;
 
 
 /******************************************************************************
-	¥í©`¥«¥ë‰äÊı
+	ãƒ­ãƒ¼ã‚«ãƒ«å¤‰æ•°
 ******************************************************************************/
 
 static UINT32 gfx_total_elements[TILE_TYPE_MAX];
@@ -178,6 +178,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "svcplus",  "svcboot",  0, 1, 0 },
 	{ "svcplusa", "svcboot",  0, 0, 0 },
 	{ "svcsplus", "svcboot",  0, 1, 0 },
+	{ "svcps2",   "svc",      1, 1, 1 },
 	{ "kf2k3bla", "kf2k3bl",  0, 0, 0 },
 	{ "kf2k3pl",  "kf2k3bl",  0, 1, 0 },
 	{ "kf2k3upl", "kf2k3bl",  0, 1, 0 },
@@ -195,7 +196,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 
 
 /******************************************************************************
-	MVSÓÃévÊı
+	MVSç”¨é–¢æ•°
 ******************************************************************************/
 
 static void neogeo_decode_spr(UINT8 *mem, UINT32 length, UINT8 *usage)
@@ -303,7 +304,7 @@ static int load_rom_gfx2(void)
 				return 0;
 			}
 #ifdef CHINESE
-			printf("ÕıÔÚ¶ÁÈ¡ \"%s\"\n", fname);
+			printf("æ­£åœ¨è¯»å– \"%s\"\n", fname);
 #else
 			printf("Loading \"%s\"\n", fname);
 #endif
@@ -351,7 +352,7 @@ static int load_rom_gfx3(void)
 			return 0;
 		}
 #ifdef CHINESE
-		printf("ÕıÔÚ¶ÁÈ¡ \"%s\"\n", fname);
+		printf("æ­£åœ¨è¯»å– \"%s\"\n", fname);
 #else
 		printf("Loading \"%s\"\n", fname);
 #endif
@@ -392,7 +393,7 @@ static int load_rom_sound1(void)
 		}
 
 #ifdef CHINESE
-		printf("ÕıÔÚ¶ÁÈ¡ \"%s\"\n", fname);
+		printf("æ­£åœ¨è¯»å– \"%s\"\n", fname);
 #else
 		printf("Loading \"%s\"\n", fname);
 #endif
@@ -477,7 +478,7 @@ static int load_rom_info(const char *game_name)
 			{
 				if (buf[0] == '\r' || buf[0] == '\n')
 				{
-					// ¸ÄĞĞ
+					// æ”¹è¡Œ
 					continue;
 				}
 				else if (str_cmp(buf, "FILENAME(") == 0)
@@ -701,7 +702,7 @@ static int convert_rom(char *game_name)
 {
 	int i, res;
 #ifdef CHINESE
-	printf("ÕıÔÚ¼ì²éROMÎÄ¼ş... (%s)\n", game_name);
+	printf("æ­£åœ¨æ£€æŸ¥ROMæ–‡ä»¶... (%s)\n", game_name);
 #else
 	printf("Checking ROM file... (%s)\n", game_name);
 #endif
@@ -721,10 +722,10 @@ static int convert_rom(char *game_name)
 		switch (res)
 		{
 #ifdef CHINESE
-		case 1: printf("´íÎó: ´ËÓÎÏ·ÔİÊ±²»Ö§³Ö.\n"); break;
-		case 2: printf("´íÎó: Ã»ÓĞÕÒµ½ROM. (zipÎÄ¼şÃû²»ÕıÈ·)\n"); break;
-		case 3: printf("´íÎó: Ã»ÓĞÕÒµ½rominfo.mvs.\n"); break;
-		case 4: printf("ÏûÏ¢: ²»ĞèÒª×ª»»´ËÓÎÏ·.\n"); break;
+		case 1: printf("é”™è¯¯: æ­¤æ¸¸æˆæš‚æ—¶ä¸æ”¯æŒ.\n"); break;
+		case 2: printf("é”™è¯¯: æ²¡æœ‰æ‰¾åˆ°ROM. (zipæ–‡ä»¶åä¸æ­£ç¡®)\n"); break;
+		case 3: printf("é”™è¯¯: æ²¡æœ‰æ‰¾åˆ°rominfo.mvs.\n"); break;
+		case 4: printf("æ¶ˆæ¯: ä¸éœ€è¦è½¬æ¢æ­¤æ¸¸æˆ.\n"); break;
 #else
 		case 1: printf("ERROR: This game is not supported.\n"); break;
 		case 2: printf("ERROR: ROM not found. (zip file name incorrect)\n"); break;
@@ -737,7 +738,7 @@ static int convert_rom(char *game_name)
 
 	if (strlen(parent_name))
 #ifdef CHINESE
-		printf("×ÓROM°æ±¾ (Ö÷ROMÃû: %s)\n", parent_name);
+		printf("å­ROMç‰ˆæœ¬ (ä¸»ROMå: %s)\n", parent_name);
 #else
 		printf("Clone set (parent: %s)\n", parent_name);
 #endif
@@ -753,7 +754,7 @@ static int convert_rom(char *game_name)
 				{
 				case INIT_kof2002:	neo_pcm2_swap(0);		break;
 				case INIT_mslug5:	neo_pcm2_swap(2);		break;
-				case INIT_svchaosa:neo_pcm2_swap(3);		break;
+				case INIT_svc:     neo_pcm2_swap(3);       break;
 				case INIT_samsho5:	neo_pcm2_swap(4);		break;
 				case INIT_kof2003:	neo_pcm2_swap(5);		break;
 				case INIT_samsh5sp:neo_pcm2_swap(6);		break;
@@ -793,11 +794,11 @@ static int convert_rom(char *game_name)
 			switch (machine_init_type)
 			{
 			case INIT_kof99:	kof99_neogeo_gfx_decrypt(0x00);		break;
-			case INIT_kof99n:	kof99_neogeo_gfx_decrypt(0x00);		break;
+			case INIT_kof99k:	kof99_neogeo_gfx_decrypt(0x00);		break;
 			case INIT_garou:	kof99_neogeo_gfx_decrypt(0x06);		break;
-			case INIT_garouo:	kof99_neogeo_gfx_decrypt(0x06);		break;
+			case INIT_garouh:	kof99_neogeo_gfx_decrypt(0x06);		break;
 			case INIT_mslug3:	kof99_neogeo_gfx_decrypt(0xad);		break;
-			case INIT_mslug3n:	kof99_neogeo_gfx_decrypt(0xad);		break;
+			case INIT_mslug3h:	kof99_neogeo_gfx_decrypt(0xad);		break;
 			case INIT_kof2000:	kof2000_neogeo_gfx_decrypt(0x00);	break;
 			case INIT_kof2000n:kof2000_neogeo_gfx_decrypt(0x00);	break;
 			case INIT_zupapa:	kof99_neogeo_gfx_decrypt(0xbd);		break;
@@ -805,7 +806,7 @@ static int convert_rom(char *game_name)
 			case INIT_kof2001:	kof2000_neogeo_gfx_decrypt(0x1e);	break;
 			case INIT_kof2002:	kof2000_neogeo_gfx_decrypt(0xec);	break;
 			case INIT_mslug5:	kof2000_neogeo_gfx_decrypt(0x19);	break;
-			case INIT_svchaosa:kof2000_neogeo_gfx_decrypt(0x57);	break;
+			case INIT_svc:     kof2000_neogeo_gfx_decrypt(0x57);	break;
 			case INIT_samsho5:	kof2000_neogeo_gfx_decrypt(0x0f);	break;
 			case INIT_kof2003:	kof2000_neogeo_gfx_decrypt(0x9d);	break;
 			case INIT_samsh5sp:kof2000_neogeo_gfx_decrypt(0x0d);	break;
@@ -994,7 +995,7 @@ static int create_raw_cache(char *game_name)
 
 	chdir("cache");
 #ifdef CHINESE
-	printf("ÕıÔÚ´´½¨»º´æÎÄ¼ş...\n");
+	printf("æ­£åœ¨åˆ›å»ºç¼“å­˜æ–‡ä»¶...\n");
 #else
 	printf("Create cache file...\n");
 #endif
@@ -1008,7 +1009,7 @@ static int create_raw_cache(char *game_name)
 #endif
 		{
 #ifdef CHINESE
-			printf("´íÎó: ÎŞ·¨´´½¨ÎÄ¼ş¼Ğ.\n");
+			printf("é”™è¯¯: æ— æ³•åˆ›å»ºæ–‡ä»¶å¤¹.\n");
 #else
 			printf("ERROR: Could not create folder.\n");
 #endif
@@ -1066,7 +1067,7 @@ error:
 	sprintf(fname, "cache_%s", game_name);
 	rmdir(fname);
 #ifdef CHINESE
-	printf("´íÎó: ÎŞ·¨´´½¨ÎÄ¼ş.\n");
+	printf("é”™è¯¯: æ— æ³•åˆ›å»ºæ–‡ä»¶.\n");
 #else
 	printf("ERROR: Could not create file.\n");
 #endif
@@ -1087,7 +1088,7 @@ int main(int argc, char *argv[])
 	check_byte_order();
 #ifdef CHINESE
 	printf("----------------------------------------------\n");
-	printf(" MVSPSP ROM ×ª»»Æ÷  " VERSION_STR "\n");
+	printf(" MVSPSP ROM è½¬æ¢å™¨  " VERSION_STR "\n");
 	printf("----------------------------------------------\n\n");
 #else
 	printf("----------------------------------------------\n");
@@ -1141,7 +1142,7 @@ int main(int argc, char *argv[])
 #endif
 		{
 #ifdef CHINESE
-			printf("´íÎó: ÎŞ·¨´´½¨\"cache\"Ä¿Â¼.\n");
+			printf("é”™è¯¯: æ— æ³•åˆ›å»º\"cache\"ç›®å½•.\n");
 #else
 			printf("ERROR: Could not create directory \"cache\".\n");
 #endif
@@ -1234,7 +1235,7 @@ int main(int argc, char *argv[])
 			if (!convert_rom(game_name))
 			{
 #ifdef CHINESE
-				printf("Ìø¹ı.\n\n");
+				printf("è·³è¿‡.\n\n");
 #else
 				printf("Skip.\n\n");
 #endif
@@ -1244,7 +1245,7 @@ int main(int argc, char *argv[])
 				if (create_raw_cache(game_name))
 				{
 #ifdef CHINESE
-					printf("Íê³É.\n\n");
+					printf("å®Œæˆ.\n\n");
 #else
 					printf("Done.\n\n");
 #endif
@@ -1253,8 +1254,8 @@ int main(int argc, char *argv[])
 			free_memory();
 		}
 #ifdef CHINESE
-		printf("Íê³É.\n");
-		printf("Çë½«cacheÄÚµÄÎÄ¼ş¼Ğ¸´ÖÆµ½\"/PSP/GAMES/mvspsp/cache\".\n");
+		printf("å®Œæˆ.\n");
+		printf("è¯·å°†cacheå†…çš„æ–‡ä»¶å¤¹å¤åˆ¶åˆ°\"/PSP/GAMES/mvspsp/cache\".\n");
 #else
 		printf("complete.\n");
 		printf("Please copy these files to directory \"/PSP/GAMES/mvspsp/cache\".\n");
@@ -1266,7 +1267,7 @@ int main(int argc, char *argv[])
 		if (!path_found)
 		{
 #ifdef CHINESE
-			printf("ÇëÑ¡ÔñROMÎÄ¼ş.\n");
+			printf("è¯·é€‰æ‹©ROMæ–‡ä»¶.\n");
 #else
 			printf("Please select ROM file.\n");
 #endif
@@ -1302,8 +1303,8 @@ int main(int argc, char *argv[])
 			*p++;
 		}
 #ifdef CHINESE
-		printf("Â·¾¶: %s\n", zip_dir);
-		printf("ÎÄ¼şÃû: %s\n", game_name);
+		printf("è·¯å¾„: %s\n", zip_dir);
+		printf("æ–‡ä»¶å: %s\n", game_name);
 #else
 		printf("path: %s\n", zip_dir);
 		printf("filename: %s\n", game_name);
@@ -1311,7 +1312,7 @@ int main(int argc, char *argv[])
 		if ((p = strrchr(game_name, '.')) == NULL)
 		{
 #ifdef CHINESE
-			printf("ÇëÊäÈëÕıÈ·µÄÂ·¾¶.\n");
+			printf("è¯·è¾“å…¥æ­£ç¡®çš„è·¯å¾„.\n");
 #else
 			printf("Please input correct path.\n");
 #endif
@@ -1319,7 +1320,7 @@ int main(int argc, char *argv[])
 		}
 		*p = '\0';
 #ifdef CHINESE
-		printf("»º´æÎÄ¼ş¼ĞÃû: cache%c%s_cache\n", delimiter, game_name);
+		printf("ç¼“å­˜æ–‡ä»¶å¤¹å: cache%c%s_cache\n", delimiter, game_name);
 #else
 		printf("cache folder name: cache%c%s_cache\n", delimiter, game_name);
 #endif
@@ -1344,8 +1345,8 @@ int main(int argc, char *argv[])
 #endif
 		{
 #ifdef CHINESE
-			printf("Íê³É.\n");
-			printf("Çë½«\"cache%c%s_cache\"ÎÄ¼ş¼Ğ¸´ÖÆµ½\"/PSP/GAMES/mvspsp/cache\".\n", delimiter, game_name);
+			printf("å®Œæˆ.\n");
+			printf("è¯·å°†\"cache%c%s_cache\"æ–‡ä»¶å¤¹å¤åˆ¶åˆ°\"/PSP/GAMES/mvspsp/cache\".\n", delimiter, game_name);
 #else
 			printf("complete.\n");
 			printf("Please copy \"cache%c%s_cache\" folder to directory \"/PSP/GAMES/mvspsp/cache\".\n", delimiter, game_name);
@@ -1359,7 +1360,7 @@ error:
 	if (pause)
 	{
 #ifdef CHINESE
-		printf("Çë°´ÈÎÒâ¼üÍË³ö.\n");
+		printf("è¯·æŒ‰ä»»æ„é”®é€€å‡º.\n");
 #else
 		printf("Press any key to exit.\n");
 #endif
