@@ -2,7 +2,7 @@
 
 	ui_menu.c
 
-	PSP ¥á¥Ë¥å©`
+	PSP ãƒ¡ãƒ‹ãƒ¥ãƒ¼
 
 ******************************************************************************/
 
@@ -20,7 +20,7 @@ gamecheat_t* gamecheat[MAX_CHEATS];
 
 
 /*------------------------------------------------------
-	¥¨¥ß¥å¥ì©`¥·¥ç¥ó¥ê¥»¥Ã¥È
+	ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãƒªã‚»ãƒƒãƒˆ
 ------------------------------------------------------*/
 
 static int menu_reset(void)
@@ -39,7 +39,7 @@ static int menu_reset(void)
 
 
 /*------------------------------------------------------
-	¥¨¥ß¥å¥ì©`¥·¥ç¥óÔÙÆð„Ó
+	ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³å†èµ·å‹•
 ------------------------------------------------------*/
 #if (EMU_SYSTEM != CPS2 && EMU_SYSTEM != NCDZ)
 static int menu_resetdip(void)
@@ -72,7 +72,7 @@ static int menu_restart(void)
 
 
 /*------------------------------------------------------
-	¥Õ¥¡¥¤¥ë¥Ö¥é¥¦¥¶¤Ë‘ø¤ë
+	ãƒ•ã‚¡ã‚¤ãƒ«ãƒ–ãƒ©ã‚¦ã‚¶ã«æˆ»ã‚‹
 ------------------------------------------------------*/
 
 static int menu_browser(void)
@@ -89,7 +89,7 @@ static int menu_browser(void)
 
 
 /*------------------------------------------------------
-	¥¨¥ß¥å¥ì©`¥¿½KÁË
+	ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿çµ‚äº†
 ------------------------------------------------------*/
 
 static int menu_exit(void)
@@ -105,7 +105,7 @@ static int menu_exit(void)
 
 
 /*------------------------------------------------------
-	¥³¥Þ¥ó¥É¥ê¥¹¥È±íÊ¾
+	ã‚³ãƒžãƒ³ãƒ‰ãƒªã‚¹ãƒˆè¡¨ç¤º
 ------------------------------------------------------*/
 
 #ifdef COMMAND_LIST
@@ -120,7 +120,7 @@ static int menu_cmdlist(void)
 
 
 /*------------------------------------------------------
-	¥²©`¥àÔO¶¨¥á¥Ë¥å©`
+	ã‚²ãƒ¼ãƒ è¨­å®šãƒ¡ãƒ‹ãƒ¥ãƒ¼
 ------------------------------------------------------*/
 
 #define GAMECFG_MAX_ITEMS	32
@@ -361,8 +361,8 @@ static int menu_gamecfg(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_GAMECONFIG);
+			update = 1;
 		}
-		update = 1;
 
 		if (top > gamecfg_num - rows) top = gamecfg_num - rows;
 		if (top < 0) top = 0;
@@ -1004,8 +1004,8 @@ int menu_cheatcfg(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_CHEATCONFIG);
+			update = 1;
 		}
-		update = 1;
 		if (top > cheatcfg_num - rows) top = cheatcfg_num - rows;
 		if (top < 0) top = 0;
 		if (sel >= cheatcfg_num) sel = 0;
@@ -1230,8 +1230,8 @@ int menu_cheatcfg(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_GAMECONFIG);
+			update = 1;
 		}
-		update = 1;
 
 		if (top > gamecfg_num - rows) top = gamecfg_num - rows;
 		if (top < 0) top = 0;
@@ -1265,7 +1265,7 @@ int menu_cheatcfg(void)
 
 */
 /*------------------------------------------------------
-	¥Ü¥¿¥óÔO¶¨¥á¥Ë¥å©`
+	ãƒœã‚¿ãƒ³è¨­å®šãƒ¡ãƒ‹ãƒ¥ãƒ¼
 ------------------------------------------------------*/
 
 #define KEYCFG_MAX_ITEMS	40
@@ -1649,8 +1649,8 @@ static int menu_keycfg(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_KEYCONFIG);
+			update = 1;
 		}
-		update = 1;
 
 		if (top > keycfg_num - rows) top = keycfg_num - rows;
 		if (top < 0) top = 0;
@@ -1709,7 +1709,7 @@ static int menu_keycfg(void)
 
 
 /*------------------------------------------------------
-	¥Ç¥£¥Ã¥×¥¹¥¤¥Ã¥ÁÔO¶¨¥á¥Ë¥å©`
+	ãƒ‡ã‚£ãƒƒãƒ—ã‚¹ã‚¤ãƒƒãƒè¨­å®šãƒ¡ãƒ‹ãƒ¥ãƒ¼
 ------------------------------------------------------*/
 
 #if (EMU_SYSTEM != CPS2 && EMU_SYSTEM != NCDZ)
@@ -1877,8 +1877,8 @@ static int menu_dipswitch(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_DIPSWITCH);
+			update = 1;
 		}
-		update = 1;
 
 		if (top > dipswitch_num - rows) top = dipswitch_num - rows;
 		if (top < 0) top = 0;
@@ -1912,7 +1912,7 @@ static int menu_dipswitch(void)
 
 
 /*------------------------------------------------------
-	¥»©`¥Ö/¥í©`¥É¥¹¥Æ©`¥È
+	ã‚»ãƒ¼ãƒ–/ãƒ­ãƒ¼ãƒ‰ã‚¹ãƒ†ãƒ¼ãƒˆ
 ------------------------------------------------------*/
 
 #ifdef SAVE_STATE
@@ -2301,8 +2301,8 @@ static int menu_state(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_STATE);
+			update = 1;
 		}
-		update = 1;
 
 		if (prev_sel != state_sel || prev_func != state_func)
 			update = 1;
@@ -2323,7 +2323,7 @@ static int menu_state(void)
 
 
 /*------------------------------------------------------
-	¥á¥¤¥ó¥á¥Ë¥å©`
+	ãƒ¡ã‚¤ãƒ³ãƒ¡ãƒ‹ãƒ¥ãƒ¼
 ------------------------------------------------------*/
 
 #define MENU_MAX_ITEMS	16
@@ -2612,7 +2612,7 @@ void showmenu(void)
 #if PSP_VIDEO_32BPP
 
 /*------------------------------------------------------
-	¥«¥é©`ÔO¶¨¥á¥Ë¥å©`
+	ã‚«ãƒ©ãƒ¼è¨­å®šãƒ¡ãƒ‹ãƒ¥ãƒ¼
 ------------------------------------------------------*/
 
 #define COLOR_ITEMS 12
@@ -2935,8 +2935,8 @@ void show_color_menu(void)
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_COLORSETTINGS);
+			update = 1;
 		}
-		update = 1;
 
 		if (reload_bg)
 		{
