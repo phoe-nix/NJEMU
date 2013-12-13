@@ -129,7 +129,7 @@
 #define NGH_rbff1		0x0095		// 0095 (c) 1995 SNK
 #define NGH_aof3		0x0096		// 0096 (c) 1996 SNK
 #define NGH_sonicwi3	0x0097		// 0097 (c) 1995 Video System Co.
-#define NGH_fr2ch		0x0098		// 0098 Idol Mahjong - final romance 2 (CD only? not confirmed, MVS might exist)
+#define NGH_fr2ch		0x0098		// 0098 (c) 1995 Idol Mahjong - final romance 2 (CD only? not confirmed, MVS might exist)
 // 0099 Neo Pool Masters
 #define NGH_turfmast	0x0200		// 0200 (c) 1996 Nazca
 #define NGH_mslug		0x0201		// 0201 (c) 1996 Nazca
@@ -151,7 +151,7 @@
 #define NGH_ninjamas	0x0217		// 0217 (c) 1996 ADK / SNK
 #define NGH_ragnagrd	0x0218		// 0218 (c) 1996 Saurus
 #define NGH_pgoal		0x0219		// 0219 (c) 1996 Saurus
-#define NGH_ironclad	0x0220		// 0220 Choutetsu Brikin'ger - iron clad (MVS existance seems to have been confirmed)
+#define NGH_ironclad	0x0220		// 0220 (c) 1996 Saurus Choutetsu Brikin'ger - iron clad (MVS existance seems to have been confirmed)
 #define NGH_magdrop2	0x0221		// 0221 (c) 1996 Data East Corporation
 #define NGH_samsho4		0x0222		// 0222 (c) 1996 SNK
 #define NGH_rbffspec	0x0223		// 0223 (c) 1996 SNK
@@ -305,7 +305,7 @@ enum
 	// MAME 0.113 - 0.119
 	INIT_ct2k3sa,		// 70
 #endif
-	INIT_sbp,			// 71	not work
+//	INIT_sbp,			// 71	not work
 	MAX_INIT
 };
 
@@ -494,7 +494,7 @@ void cthd2003_AES_protection(void);
 
 void patch_cthd2003(void);
 void patch_kof97pla(void);
-void patch_fr2ch(void);
+void patch_kf2k3pcb(void);
 #endif /* RELEASE */
 
 
