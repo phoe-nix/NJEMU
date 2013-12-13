@@ -2,7 +2,7 @@
 These codes are from MAME
 http://mamedev.org/source/src/mame/machine/neocrypt.c.html
 Mod Update by phoe-nix
-			2013.12.07
+                                                2013.12.07
 ***************************************************************************/
 #include "mvs.h"
 /***************************************************************************
@@ -1805,6 +1805,17 @@ void patch_kof97pla(void)
 	mem8[0x1394d] = 0x1;
 	mem8[0x1394e] = 0x6c;
 	mem8[0x1394f] = 0x91;
+}
+
+void patch_kf2k3pcb(void)
+{
+	UINT8 *rom;
+	UINT32 i;
+	rom = memory_region_cpu2;
+	for (i = 0; i < 0x90000; i++)
+	{
+		rom[i] = BITSWAP8(rom[i], 5, 6, 1, 4, 3, 0, 7, 2);
+	}
 }
 
 #endif /* RELEASE */
