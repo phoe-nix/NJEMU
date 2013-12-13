@@ -24,7 +24,7 @@
 #define WRITE_MIRROR_WORD(mem, offset, data, amask)		*(UINT16 *)&mem[offset & amask] = data
 */
 
-/* thanks OrochiZ, this can play kof98ae and kof99ae
+/* thanks OrochiZ
 #define READ_WORD(mem, offset)							mem[offset] | mem[offset + 1] << 8
 #define WRITE_WORD(mem, offset, data)					mem[offset] = data & 0xff; mem[offset + 1] = (data >> 8) & 0xff
 #define READ_MIRROR_WORD(mem, offset, amask)			mem[offset & amask] | mem[(offset & amask) + 1] << 8
@@ -571,11 +571,11 @@ static int load_rom_cpu1(void)
 		case INIT_svc:      res = svc_px_decrypt();       break;
 		case INIT_samsho5:  res = samsho5_decrypt_68k();  break;
 		case INIT_kof2003:  res = kof2003_decrypt_68k();  break;
-		case INIT_samsh5sp: res = samsh5sp_decrypt_68k();  break;
+		case INIT_samsh5sp: res = samsh5sp_decrypt_68k(); break;
 		case INIT_matrim:   res = kof2002_decrypt_68k();  break;
 
 		case INIT_ms5pcb:   res = mslug5_decrypt_68k();   break;
-		case INIT_svcpcb:   res = svc_px_decrypt();  break;
+		case INIT_svcpcb:   res = svc_px_decrypt();       break;
 		case INIT_kf2k3pcb: res = kf2k3pcb_decrypt_68k(); break;
 
 #if !RELEASE
@@ -1877,10 +1877,17 @@ int memory_init(void)
 
 	case INIT_svcpcb:
 	case INIT_svc:
+	case INIT_svcboot:
+	case INIT_svcsplus:
 	case INIT_kof2003:
+		neogeo_protection_r = pvc_protection_r;
+		neogeo_protection_w = pvc_protection_w;
+		break;
+
 	case INIT_kf2k3pcb:
 		neogeo_protection_r = pvc_protection_r;
 		neogeo_protection_w = pvc_protection_w;
+		patch_kf2k3pcb();
 		break;
 
 	case INIT_vliner:
@@ -1893,12 +1900,6 @@ int memory_init(void)
 		neogeo_protection_r = brza_sram_r;
 		neogeo_protection_w = brza_sram_w;
 		neogeo_ngh = NGH_jockeygp;
-		break;
-
-	case INIT_sbp:
-		neogeo_protection_r = sbp_lowerrom_r;
-		neogeo_protection_w = sbp_lowerrom_w;
-		sbp_protection();
 		break;
 
 	case INIT_nitd:
@@ -1967,12 +1968,6 @@ int memory_init(void)
 	case INIT_kf2k3pl:
 		neogeo_protection_r = pvc_protection_r;
 		neogeo_protection_w = kf2k3pl_protection_w;
-		break;
-
-	case INIT_svcboot:
-	case INIT_svcsplus:
-		neogeo_protection_r = pvc_protection_r;
-		neogeo_protection_w = pvc_protection_w;
 		break;
 
 	case INIT_kof10th:
@@ -2270,7 +2265,8 @@ STATE_LOAD( memory )
 		}
 	}
 	if (machine_init_type == INIT_ms5pcb
-	||	machine_init_type == INIT_svcpcb)
+	||	machine_init_type == INIT_svcpcb
+	||	machine_init_type == INIT_kf2k3pcb)
 	{
 		memcpy(memory_region_user1, memory_region_user1 + 0x20000 + neogeo_hard_dipsw * 0x20000, 0x20000);
 	}
