@@ -2,7 +2,7 @@
 
 	ui_text.c
 
-	•Ê©`•∂•§•Û•ø•’•ß©`•π•∆•≠•π•»π‹¿Ì
+	„É¶„Éº„Ç∂„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„ÉÜ„Ç≠„Çπ„ÉàÁÆ°ÁêÜ
 
 ******************************************************************************/
 
@@ -554,6 +554,7 @@ enum
 	CHEAT_CONFIGURATION_MENU,
 	MENU_CHEAT_CONFIGURATION,
 	MENUHELP_CHEAT_CONFIGURATION,
+	CHEAT_FOR_THIS_GAME_NOT_FOUND,
 /*	
 	MENU_MEM_FREE_DAVEX,
 	MENUAYUDA_MEM_FREE_DAVEX,
