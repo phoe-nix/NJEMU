@@ -258,7 +258,7 @@ static int menu_gamecfg(void)
 						uifont_print_shadow(16, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), gamecfg[top + i].label);
 						if (arrowl)
 						{
-							uifont_print_shadow(180, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
+							uifont_print_shadow(190, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
 						}
 					}
 					else
@@ -280,22 +280,22 @@ static int menu_gamecfg(void)
 					{
 						if ((top + i) == sel)
 						{
-							uifont_print_shadow(200, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), gamecfg[top + i].values_label[val]);
+							uifont_print_shadow(210, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), gamecfg[top + i].values_label[val]);
 							if (arrowr)
 							{
 								int width = uifont_get_string_width(gamecfg[top + i].values_label[val]);
-								uifont_print_shadow(204 + width, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_RIGHTTRIANGLE);
+								uifont_print_shadow(214 + width, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_RIGHTTRIANGLE);
 							}
 						}
 						else
-							uifont_print(200, 40 + i * 17, UI_COLOR(UI_PAL_NORMAL), gamecfg[top + i].values_label[val]);
+							uifont_print(210, 40 + i * 17, UI_COLOR(UI_PAL_NORMAL), gamecfg[top + i].values_label[val]);
 					}
 					else
 					{
 						if ((top + i) == sel)
-							uifont_print_shadow(200, 40 + i * 17, COLOR_GRAY, gamecfg[top + i].values_label[val]);
+							uifont_print_shadow(210, 40 + i * 17, COLOR_GRAY, gamecfg[top + i].values_label[val]);
 						else
-							uifont_print(200, 40 + i * 17, COLOR_DARKGRAY, gamecfg[top + i].values_label[val]);
+							uifont_print(210, 40 + i * 17, COLOR_DARKGRAY, gamecfg[top + i].values_label[val]);
 					}
 				}
 			}
@@ -499,31 +499,33 @@ int add_new_cheat_value(int cpu, int address, int value, cheat_option_t *cheat_o
 	return 0;
 }
 
-int cheat_clear(void){
-
+int cheat_clear(void)
+{
   gamecheat_t *a_cheat = NULL;
 	cheat_option_t *a_cheat_option = NULL;
 	cheat_value_t *a_cheat_value = NULL;
 	int c,i,j;
-    for( c = 0; c < cheat_num; c++){ //arreglo de cheats
+    for( c = 0; c < cheat_num; c++)
+	{ //arreglo de cheats
         a_cheat = gamecheat[c];
         free( a_cheat->cheat_name); //etiqueta del cheat
-        
 
         //Se limpian los cheat option
-		for(i = 0; i < a_cheat->num_cheat_options; i++){
+		for(i = 0; i < a_cheat->num_cheat_options; i++)
+		{
 			a_cheat_option = a_cheat->cheat_option[i];
-			
+
             free( a_cheat_option->label ); //se libera la etiqueta de la opcion
-			
+
 			//Se imprimen los cheat_value
-			for(  j = 0; j< a_cheat_option->num_cheat_values; j++){
+			for(  j = 0; j< a_cheat_option->num_cheat_values; j++)
+			{
                 a_cheat_value = a_cheat_option->cheat_value[j];
                 free( a_cheat_value);	
 			}
             //aqui ya se puede eliminar el cheat_option
             free( a_cheat_option);
-			
+
 	    }
 
         //se libera el cheat
@@ -531,7 +533,7 @@ int cheat_clear(void){
     }
 
     cheat_num = 0; //se pone el numero de cheats a 0 
-    
+
     return 0;
 }
 
@@ -663,7 +665,11 @@ void cheats_load(void){
 		sprintf(fn, "%scheats/%s.ini", launchDir, game_name);
 		
     fp = fopen(fn, "r");
-    if( fp == NULL) return;
+    if( fp == NULL)
+	{
+		ui_popup(TEXT(CHEAT_FOR_THIS_GAME_NOT_FOUND));
+		return;
+	}
     	
     //se revisa si la primera linea es un include
     if(  fgets(buff, MAX_BUFF, fp)	){
@@ -806,7 +812,7 @@ int menu_cheatcfg(void)
 	cheatcfg_t cheatcfg[CHEATCFG_MAX_ITEMS];
 	int cheatcfg_num;
 	int c;
-	
+
 	gamecheat_t *a_cheat = NULL;
 	cheat_option_t *a_cheat_option = NULL;
 	
@@ -865,6 +871,7 @@ int menu_cheatcfg(void)
 
 	do
 	{
+	int cur = *cheatcfg[sel].value;
 		if (update)
 		{
 			show_background();
@@ -873,8 +880,6 @@ int menu_cheatcfg(void)
 			arrowr = 0;
 			if (cheatcfg[sel].value)
 			{
-				int cur = *cheatcfg[sel].value;
-
 				if (cur > 0) arrowl = 1;
 				if (cur < cheatcfg[sel].value_max) arrowr = 1;
 			}
@@ -898,7 +903,7 @@ int menu_cheatcfg(void)
 						uifont_print_shadow(16, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), cheatcfg[top + i].label);
 						if (arrowl)
 						{
-							uifont_print_shadow(180 + inc, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
+							uifont_print_shadow(190 + inc, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
 						}
 					}
 					else
@@ -921,23 +926,23 @@ int menu_cheatcfg(void)
 					{
 						if ((top + i) == sel)
 						{
-							uifont_print_shadow(200 + inc, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), cheatcfg[top + i].values_label[val]);
+							uifont_print_shadow(210 + inc, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), cheatcfg[top + i].values_label[val]);
 							if (arrowr)
 							{
 								int width = uifont_get_string_width(cheatcfg[top + i].values_label[val]);
-								uifont_print_shadow(204 + width + inc, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_RIGHTTRIANGLE);
+								uifont_print_shadow(214 + width + inc, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_RIGHTTRIANGLE);
 							}
 						}
 						else
-							uifont_print(200 + inc, 40 + i * 17, UI_COLOR(UI_PAL_NORMAL), cheatcfg[top + i].values_label[val]);
+							uifont_print(210 + inc, 40 + i * 17, UI_COLOR(UI_PAL_NORMAL), cheatcfg[top + i].values_label[val]);
 						
 					}
 					else
 					{
 						if ((top + i) == sel)
-							uifont_print_shadow(200 + inc, 40 + i * 17, COLOR_GRAY, cheatcfg[top + i].values_label[val]);
+							uifont_print_shadow(210 + inc, 40 + i * 17, COLOR_GRAY, cheatcfg[top + i].values_label[val]);
 						else
-							uifont_print(200 + inc, 40 + i * 17, COLOR_DARKGRAY, cheatcfg[top + i].values_label[val]);
+							uifont_print(210 + inc, 40 + i * 17, COLOR_DARKGRAY, cheatcfg[top + i].values_label[val]);
 					}
 				}
 			}
@@ -973,8 +978,6 @@ int menu_cheatcfg(void)
 		{
 			if (cheatcfg[sel].value && cheatcfg[sel].enable)
 			{
-				int cur = *cheatcfg[sel].value;
-
 				if (cur > 0)
 				{
 					*cheatcfg[sel].value = cur - 1;
@@ -986,8 +989,6 @@ int menu_cheatcfg(void)
 		{
 			if (cheatcfg[sel].value && cheatcfg[sel].enable)
 			{
-				int cur = *cheatcfg[sel].value;
-
 				if (cur < cheatcfg[sel].value_max)
 				{
 					*cheatcfg[sel].value = cur + 1;
@@ -995,12 +996,29 @@ int menu_cheatcfg(void)
 				}
 			}
 		}
-/*		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PSP_CTRL_CIRCLE))
 		{
-			if (sel == cheatcfg_num - 1)
-				break;
+			if (cheatcfg[sel].value && cheatcfg[sel].enable)
+			{
+				if (cur > 0)
+				{
+					*cheatcfg[sel].value = 0;
+					update = 1;
+				}
+			}
 		}
-*/
+		else if (pad_pressed(PSP_CTRL_SQUARE))
+		{
+			if (cheatcfg[sel].value && cheatcfg[sel].enable)
+			{
+				if (cur > 0)
+				{
+					*cheatcfg[sel].value = 0;
+					update = 1;
+				}
+			}
+		}
+
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			help(HELP_CHEATCONFIG);
@@ -1506,22 +1524,22 @@ static int menu_keycfg(void)
 				if ((top + i) == sel)
 				{
 					uifont_print_shadow(16, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), label);
-					uifont_print_shadow(190, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), name);
+					uifont_print_shadow(210, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), name);
 
 					if (arrowl)
 					{
-						uifont_print_shadow(170, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
+						uifont_print_shadow(190, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
 					}
 					if (arrowr)
 					{
 						int width = uifont_get_string_width(name);
-						uifont_print_shadow(194 + width, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_RIGHTTRIANGLE);
+						uifont_print_shadow(214 + width, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_RIGHTTRIANGLE);
 					}
 				}
 				else
 				{
 					uifont_print(16, 40 + i * 17, UI_COLOR(UI_PAL_NORMAL), label);
-					uifont_print(190, 40 + i * 17, UI_COLOR(UI_PAL_NORMAL), name);
+					uifont_print(210, 40 + i * 17, UI_COLOR(UI_PAL_NORMAL), name);
 				}
 			}
 
@@ -1775,7 +1793,7 @@ static int menu_dipswitch(void)
 					{
 						uifont_print_shadow(16, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), dipswitch[top + i].label);
 						if (arrowl)
-							uifont_print_shadow(sx - 20, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
+							uifont_print_shadow(sx - 40, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
 					}
 				}
 				else
