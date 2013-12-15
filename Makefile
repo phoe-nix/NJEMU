@@ -10,10 +10,10 @@
 
 #BUILD_CPS1PSP = 1
 #BUILD_CPS2PSP = 1
-#BUILD_MVSPSP = 1
-BUILD_NCDZPSP = 1
+BUILD_MVSPSP = 1
+#BUILD_NCDZPSP = 1
 
-#PSP_SLIM = 1
+PSP_SLIM = 1
 #KERNEL_MODE = 1
 COMMAND_LIST = 1
 ADHOC = 1
@@ -22,7 +22,7 @@ UI_32BPP = 1
 #RELEASE = 1
 
 #------------------------------------------------------------------------------
-# Dip switch translation/Dip ¿ª¹Ø·­Òë ¼òÌåÖÐÎÄ=CHINESE_SIMPLIFIED
+# Dip switch translation/Dip å¼€å…³ç¿»è¯‘ ç®€ä½“ä¸­æ–‡=CHINESE_SIMPLIFIED
 #------------------------------------------------------------------------------
 DIPSW_CHINESE_SIMPLIFIED = 1
 #DIPSW_CHINESE_TRADITIONAL = 1
@@ -219,10 +219,15 @@ ZLIB = \
 	$(OBJ)/zlib/adler32.o \
 	$(OBJ)/zlib/compress.o \
 	$(OBJ)/zlib/uncompr.o \
+	$(OBJ)/zlib/gzclose.o \
+	$(OBJ)/zlib/gzlib.o \
+	$(OBJ)/zlib/gzread.o \
+	$(OBJ)/zlib/gzwrite.o \
 	$(OBJ)/zlib/crc32.o \
 	$(OBJ)/zlib/deflate.o \
 	$(OBJ)/zlib/inflate.o \
 	$(OBJ)/zlib/inftrees.o \
+	$(OBJ)/zlib/infback.o \
 	$(OBJ)/zlib/inffast.o \
 	$(OBJ)/zlib/trees.o \
 	$(OBJ)/zlib/zutil.o
@@ -253,7 +258,8 @@ CFLAGS = \
 	-Wwrite-strings \
 	-Wmissing-prototypes \
 	-Wsign-compare \
-	-Werror
+	-Werror \
+	-DZLIB_CONST
 
 
 #------------------------------------------------------------------------------
