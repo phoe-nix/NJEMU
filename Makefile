@@ -394,4 +394,14 @@ delelf:
 	@$(RM) -f $(TARGET).elf
 
 maketree:
+	@$(MD) 3xx
+	@$(MD) 3xx/cps1
+	@$(MD) 3xx/cps2
+	@$(MD) 3xx/mvs
+	@$(MD) 3xx/ncdz
+	@$(MD) slim
+	@$(MD) slim/cps1
+	@$(MD) slim/cps2
+	@$(MD) slim/mvs
+	@$(MD) slim/ncdz
 	@$(MD) -p $(subst //,\,$(sort $(OBJDIRS)))
