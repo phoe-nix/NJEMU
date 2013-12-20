@@ -1,4 +1,4 @@
-FILENAME( wofhfh, wof, 3, 39, 1, 0 )
+FILENAME( wofhfh, wof, 3, 40, 1, 0 )
 	REGION( 0x100000, CPU1, 0 )
 	ROM( 0, tk2a_23b.rom, 0x000000, 0x80000, 0x6ae4b312 )
 	ROM( 0, tk2a_22b.rom, 0x080000, 0x80000, 0x94e8d01a )
