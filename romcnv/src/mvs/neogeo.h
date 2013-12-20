@@ -204,11 +204,11 @@ enum
 	INIT_kof98,			// 2
 	INIT_mslugx,		// 3
 	INIT_kof99,			// 4
-	INIT_kof99n,		// 5
+	INIT_kof99k,		// 5
 	INIT_garou,			// 6
-	INIT_garouo,		// 7
+	INIT_garouh,		// 7
 	INIT_mslug3,		// 8
-	INIT_mslug3n,		// 9
+	INIT_mslug3h,		// 9
 	INIT_kof2000,		// 10
 	INIT_kof2000n,		// 11
 	INIT_zupapa,		// 12
@@ -216,72 +216,73 @@ enum
 	INIT_kof2001,		// 14
 	INIT_kof2002,		// 15
 	INIT_mslug5,		// 16
-	INIT_svchaosa,		// 17
+	INIT_svc,			// 17
 	INIT_samsho5,		// 18
 	INIT_kof2003,		// 19
-	INIT_samsh5sp,		// 20
+	INIT_kof2003h,		// 20
+	INIT_samsh5sp,		// 21
 
 	// SNK“‘Õ‚
-	INIT_nitd,			// 21
-	INIT_s1945p,		// 22
-	INIT_pnyaa,			// 23
-	INIT_preisle2,		// 24
-	INIT_ganryu,		// 25
-	INIT_bangbead,		// 26
-	INIT_mslug4,		// 27
-	INIT_rotd,			// 28
-	INIT_matrim,		// 29
+	INIT_nitd,			// 22
+	INIT_s1945p,		// 23
+	INIT_pnyaa,			// 24
+	INIT_preisle2,		// 25
+	INIT_ganryu,		// 26
+	INIT_bangbead,		// 27
+	INIT_mslug4,		// 28
+	INIT_rotd,			// 29
+	INIT_matrim,		// 30
 
 	// JAMMA PCB
-	INIT_ms5pcb,		// 30
-	INIT_svcpcb,		// 31
-	INIT_kf2k3pcb,		// 32
+	INIT_ms5pcb,		// 31
+	INIT_svcpcb,		// 32
+	INIT_kf2k3pcb,		// 33
 
 	// BrezzaSoft
-	INIT_jockeygp,		// 33
-	INIT_vliner,		// 34
+	INIT_jockeygp,		// 34
+	INIT_vliner,		// 35
 
 	// bootleg
-	INIT_garoubl,		// 35
-	INIT_kf2k2pls,		// 36
-	INIT_kf2k2mp,		// 37
-	INIT_kf2k2mp2,		// 38
-	INIT_ms5plus,		// 39
-	INIT_svcboot,		// 40
-	INIT_svcplus,		// 41
-	INIT_svcplusa,		// 42
-	INIT_svcsplus,		// 43
-	INIT_samsho5b,		// 44
-	INIT_kf2k3bl,		// 45
-	INIT_kf2k3pl,		// 46
-	INIT_kf2k3upl,		// 47
-	INIT_kog,			// 48
-	INIT_kof10th,		// 49
-	INIT_kf10thep,		// 50
-	INIT_kf2k5uni,		// 51
-	INIT_cthd2003,		// 52
-	INIT_ct2k3sp,		// 53
-	INIT_kof2k4se,		// 54
-	INIT_lans2004,		// 55
-	INIT_mslug3b6,		// 56
-	INIT_ms4plus,		// 57
+	INIT_garoubl,		// 36
+	INIT_kf2k2pls,		// 37
+	INIT_kf2k2mp,		// 38
+	INIT_kf2k2mp2,		// 39
+	INIT_ms5plus,		// 40
+	INIT_svcboot,		// 41
+	INIT_svcplus,		// 42
+	INIT_svcplusa,		// 43
+	INIT_svcsplus,		// 44
+	INIT_samsho5b,		// 45
+	INIT_kf2k3bl,		// 46
+	INIT_kf2k3pl,		// 47
+	INIT_kf2k3upl,		// 48
+	INIT_kog,			// 49
+	INIT_kof97oro,		// 50
+	INIT_kof10th,		// 51
+	INIT_kf10thep,		// 52
+	INIT_kf2k5uni,		// 53
+	INIT_cthd2003,		// 54
+	INIT_ct2k3sp,		// 55
+	INIT_kof2k4se,		// 56
+	INIT_lans2004,		// 57
+	INIT_mslug3b6,		// 58
+	INIT_ms4plus,		// 59
 
 	// bootleg (MAME plus)
-	INIT_kof96ep,		// 58
-	INIT_kf2k1pls,		// 59
-	INIT_kf2k1pa,		// 60
-	INIT_cthd2k3a,		// 61
-	INIT_kof2002b,		// 62
-	INIT_matrimbl,		// 63
-	INIT_kf2k2plc,		// 64
-	INIT_kf2k4pls,		// 65
-	INIT_kof97pla,		// 66
-	INIT_fr2ch,			// 67
-	INIT_mslug5b,		// 68
+	INIT_kof96ep,		// 60
+	INIT_kf2k1pls,		// 61
+	INIT_kf2k1pa,		// 62
+	INIT_cthd2k3a,		// 63
+	INIT_kof2002b,		// 64
+	INIT_matrimbl,		// 65
+	INIT_kf2k2plc,		// 66
+	INIT_kf2k4pls,		// 67
+	INIT_kof97pla,		// 68
+	INIT_mslug5b,		// 69
 
 	// MAME 0.113 - 0.119
-	INIT_ct2k3sa,		// 69
-	INIT_kof97oro,		// 70
+	INIT_ct2k3sa,		// 70
+	INIT_sbp,			// 71
 
 	MAX_INIT
 };

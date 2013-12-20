@@ -1,3 +1,9 @@
+20131220  
+MVS  
+修正ZIPNAME  
+添加KOF97天下布武085、KOF96SP、更新KOF96AE2.0  
+neogeo的ROMS已同步至MAME150  
+
 20131207  
 (测试，百度网盘暂时未提供对应MAME150的ROM)  
 MVS更新neocrypt.c，同步MAME150和PLUS的ROM版本 

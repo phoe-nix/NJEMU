@@ -2,7 +2,7 @@
 
 	ui_menu.c
 
-	PSP „É°„Éã„É•„Éº
+	PSP •·•À•Â©`
 
 ******************************************************************************/
 
@@ -20,7 +20,7 @@ gamecheat_t* gamecheat[MAX_CHEATS];
 
 
 /*------------------------------------------------------
-	„Ç®„Éü„É•„É¨„Éº„Ç∑„Éß„É≥„É™„Çª„ÉÉ„Éà
+	•®•ﬂ•Â•Ï©`•∑•Á•Û•Í•ª•√•»
 ------------------------------------------------------*/
 
 static int menu_reset(void)
@@ -39,7 +39,7 @@ static int menu_reset(void)
 
 
 /*------------------------------------------------------
-	„Ç®„Éü„É•„É¨„Éº„Ç∑„Éß„É≥ÂÜçËµ∑Âãï
+	•®•ﬂ•Â•Ï©`•∑•Á•Û‘Ÿ∆Ñ”
 ------------------------------------------------------*/
 #if (EMU_SYSTEM != CPS2 && EMU_SYSTEM != NCDZ)
 static int menu_resetdip(void)
@@ -72,7 +72,7 @@ static int menu_restart(void)
 
 
 /*------------------------------------------------------
-	„Éï„Ç°„Ç§„É´„Éñ„É©„Ç¶„Ç∂„Å´Êàª„Çã
+	•’•°•§•Î•÷•È•¶•∂§Àë¯§Î
 ------------------------------------------------------*/
 
 static int menu_browser(void)
@@ -89,7 +89,7 @@ static int menu_browser(void)
 
 
 /*------------------------------------------------------
-	„Ç®„Éü„É•„É¨„Éº„ÇøÁµÇ‰∫Ü
+	•®•ﬂ•Â•Ï©`•øΩK¡À
 ------------------------------------------------------*/
 
 static int menu_exit(void)
@@ -105,7 +105,7 @@ static int menu_exit(void)
 
 
 /*------------------------------------------------------
-	„Ç≥„Éû„É≥„Éâ„É™„Çπ„ÉàË°®Á§∫
+	•≥•ﬁ•Û•…•Í•π•»±Ì æ
 ------------------------------------------------------*/
 
 #ifdef COMMAND_LIST
@@ -120,7 +120,7 @@ static int menu_cmdlist(void)
 
 
 /*------------------------------------------------------
-	„Ç≤„Éº„É†Ë®≠ÂÆö„É°„Éã„É•„Éº
+	•≤©`•‡‘O∂®•·•À•Â©`
 ------------------------------------------------------*/
 
 #define GAMECFG_MAX_ITEMS	32
@@ -823,25 +823,25 @@ int menu_cheatcfg(void)
 		
 	//Inicializar los cheats	
 	cheats_load();
-	
-	
-	for( c = 0; c < cheat_num; c++){
-			a_cheat = gamecheat[c];
-			
-      if( a_cheat->cheat_name == NULL)
-      	return 0;
-      else
-				cheatcfg[c].label     = (const char*)a_cheat->cheat_name;
-				
-			cheatcfg[c].value     = &(a_cheat->curr_option);
-			cheatcfg[c].flag      = CFG_CONTINUE;
-			cheatcfg[c].value_max = (int) (a_cheat->num_cheat_options - 1);
 
-			
-			
+
+	for( c = 0; c < cheat_num; c++)
+	{
+		a_cheat = gamecheat[c];
+
+    if( a_cheat->cheat_name == NULL)
+
+		return 0;
+    else
+		cheatcfg[c].label     = (const char*)a_cheat->cheat_name;
+		cheatcfg[c].value     = &(a_cheat->curr_option);
+		cheatcfg[c].flag      = CFG_CONTINUE;
+		cheatcfg[c].value_max = (int) (a_cheat->num_cheat_options - 1);
+
 			//ADVERTENCIA: el limite es MAX_CHEAT_OPTION
 			int z = 0;
-			for( z = 0; z< a_cheat->num_cheat_options; z++){
+			for( z = 0; z< a_cheat->num_cheat_options; z++)
+			{
 				a_cheat_option = a_cheat->cheat_option[z];
 				
 				if(a_cheat_option->label == NULL)
@@ -852,7 +852,8 @@ int menu_cheatcfg(void)
 			}
 			
 			
-			if (cheatcfg[c].value){
+			if (cheatcfg[c].value)
+			{
 				if (*cheatcfg[c].value < 0) *cheatcfg[c].value = 0;
 				if (*cheatcfg[c].value > cheatcfg[c].value_max)*cheatcfg[c].value = cheatcfg[c].value_max;
 					
@@ -1283,7 +1284,7 @@ int menu_cheatcfg(void)
 
 */
 /*------------------------------------------------------
-	„Éú„Çø„É≥Ë®≠ÂÆö„É°„Éã„É•„Éº
+	•‹•ø•Û‘O∂®•·•À•Â©`
 ------------------------------------------------------*/
 
 #define KEYCFG_MAX_ITEMS	40
@@ -1439,7 +1440,8 @@ static int menu_keycfg(void)
 	{
 		keycfg[0].value = NEOGEO_MVS;
 	}
-	else if (keycfg[6].value == 7 && keycfg[7].value == 6 && keycfg[8].value == 8 && keycfg[9].value == 5){
+	else if (keycfg[6].value == 7 && keycfg[7].value == 6 && keycfg[8].value == 8 && keycfg[9].value == 5)
+	{
 		keycfg[0].value = NEOGEO_PS;
 	}
 	else
@@ -1690,7 +1692,8 @@ static int menu_keycfg(void)
 			{
 				keycfg[0].value = NEOGEO_MVS;
 			}
-			else if (keycfg[6].value == 7 && keycfg[7].value == 6 && keycfg[8].value == 8 && keycfg[9].value == 5){
+			else if (keycfg[6].value == 7 && keycfg[7].value == 6 && keycfg[8].value == 8 && keycfg[9].value == 5)
+			{
 				keycfg[0].value = NEOGEO_PS;
 			}
 			else
@@ -1727,7 +1730,7 @@ static int menu_keycfg(void)
 
 
 /*------------------------------------------------------
-	„Éá„Ç£„ÉÉ„Éó„Çπ„Ç§„ÉÉ„ÉÅË®≠ÂÆö„É°„Éã„É•„Éº
+	•«•£•√•◊•π•§•√•¡‘O∂®•·•À•Â©`
 ------------------------------------------------------*/
 
 #if (EMU_SYSTEM != CPS2 && EMU_SYSTEM != NCDZ)
@@ -1930,7 +1933,7 @@ static int menu_dipswitch(void)
 
 
 /*------------------------------------------------------
-	„Çª„Éº„Éñ/„É≠„Éº„Éâ„Çπ„ÉÜ„Éº„Éà
+	•ª©`•÷/•Ì©`•…•π•∆©`•»
 ------------------------------------------------------*/
 
 #ifdef SAVE_STATE
@@ -2341,7 +2344,7 @@ static int menu_state(void)
 
 
 /*------------------------------------------------------
-	„É°„Ç§„É≥„É°„Éã„É•„Éº
+	•·•§•Û•·•À•Â©`
 ------------------------------------------------------*/
 
 #define MENU_MAX_ITEMS	16
@@ -2630,7 +2633,7 @@ void showmenu(void)
 #if PSP_VIDEO_32BPP
 
 /*------------------------------------------------------
-	„Ç´„É©„ÉºË®≠ÂÆö„É°„Éã„É•„Éº
+	•´•È©`‘O∂®•·•À•Â©`
 ------------------------------------------------------*/
 
 #define COLOR_ITEMS 12

@@ -2,7 +2,7 @@
 
 	ui_text.c
 
-	„É¶„Éº„Ç∂„Ç§„É≥„Çø„Éï„Çß„Éº„Çπ„ÉÜ„Ç≠„Çπ„ÉàÁÆ°ÁêÜ
+	•Ê©`•∂•§•Û•ø•’•ß©`•π•∆•≠•π•»π‹¿Ì
 
 ******************************************************************************/
 
@@ -526,6 +526,7 @@ enum
 	/* memintrf.c */
 	ROMINFO_NOT_FOUND,
 	LOADING_BIOS,
+	DECRYPTING,
 	LOADING_DECRYPTED_GFX2_ROM,
 	LOADING_DECRYPTED_SOUND1_ROM,
 	COULD_NOT_ALLOCATE_MEMORY_FOR_DECRYPT_ROM,

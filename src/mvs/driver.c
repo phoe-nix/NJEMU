@@ -2,7 +2,7 @@
 
 	driver.c
 
-	MVS „Éâ„É©„Ç§„Éê
+	MVS •…•È•§•–
 
 ******************************************************************************/
 
@@ -16,7 +16,7 @@
 
 
 /******************************************************************************
-	„Ç∞„É≠„Éº„Éê„É´Â§âÊï∞
+	•∞•Ì©`•–•Îâ‰ ˝
 ******************************************************************************/
 
 int neogeo_driver_type;
@@ -36,17 +36,19 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "samsho3a", "samsho3",  0, 0, 0 },
 	{ "fswords",  "samsho3",  0, 0, 0 },
 	{ "aof3k",    "aof3",     0, 0, 0 },
+	{ "kof96ae",  "kof96",    1, 1, 1 },
 	{ "kof96cn",  "kof96",    1, 1, 0 },
 	{ "kof96h",   "kof96",    0, 0, 0 },
 	{ "kof96ep",  "kof96",    0, 0, 0 },
 	{ "kizuna",   "savagere", 1, 1, 1 },
-	{ "kof97a",   "kof97",    0, 0, 0 },
+	{ "kof97h",   "kof97",    0, 0, 0 },
 	{ "kof97cn",  "kof97",    1, 1, 0 },
 	{ "kof97d",   "kof97",    0, 0, 0 },
 	{ "kof97k",   "kof97",    0, 0, 0 },
 	{ "kof97pls", "kof97",    0, 0, 0 },
 	{ "kof97pla", "kof97",    0, 1, 0 },
 	{ "kof97ps",  "kof97",    1, 0, 0 },
+	{ "kof97yk",  "kof97",    1, 1, 1 },
 	{ "kog",      "kof97",    1, 1, 0 },
 	{ "kogd",     "kof97",    1, 1, 0 },
 	{ "kof97oro", "kof97",    1, 1, 0 },
@@ -129,7 +131,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 
 
 /******************************************************************************
-	„É≠„Éº„Ç´„É´Â§âÊï∞
+	•Ì©`•´•Îâ‰ ˝
 ******************************************************************************/
 
 static int raster_enable;
@@ -167,7 +169,7 @@ static UINT16 neogeo_rng = 0x2345;
 
 
 /******************************************************************************
-	„Éó„É≠„Éà„Çø„Ç§„Éó
+	•◊•Ì•»•ø•§•◊
 ******************************************************************************/
 
 static void update_interrupts(void);
@@ -1058,7 +1060,7 @@ void neogeo_z80_port_w(UINT16 port, UINT8 data)
 
 
 /******************************************************************************
-	„Çµ„Ç¶„É≥„ÉâIRQ„Éè„É≥„Éâ„É©
+	•µ•¶•Û•…IRQ•œ•Û•…•È
 ******************************************************************************/
 
 void neogeo_sound_irq(int irq)
@@ -1068,7 +1070,7 @@ void neogeo_sound_irq(int irq)
 
 
 /******************************************************************************
-	„Éó„É≠„ÉÜ„ÇØ„Ç∑„Éß„É≥
+	•◊•Ì•∆•Ø•∑•Á•Û
 ******************************************************************************/
 
 /*------------------------------------------------------
@@ -1105,7 +1107,7 @@ void mslugx_install_protection(void)
 
 
 /*------------------------------------------------------
-	$200000„É°„É¢„É™„Éè„É≥„Éâ„É© („Éó„É≠„ÉÜ„ÇØ„Ç∑„Éß„É≥„Å™„Åó)
+	$200000•·•‚•Í•œ•Û•…•È (•◊•Ì•∆•Ø•∑•Á•Û§ §∑)
 ------------------------------------------------------*/
 
 READ16_HANDLER( neogeo_secondbank_r )
@@ -1571,7 +1573,7 @@ WRITE16_HANDLER( pvc_protection_w )
 /*------------------------------------------------------
 	Brezzasoft
 
-	ÂÆüÈöõ„Å´„ÅØ„Éó„É≠„ÉÜ„ÇØ„Éà„Åß„ÅØ„Å™„ÅÑ„Åå„Éó„É≠„ÉÜ„ÇØ„Éà„Å®„Åó„Å¶Âá¶ÁêÜ
+	ågÎH§À§œ•◊•Ì•∆•Ø•»§«§œ§ §§§¨•◊•Ì•∆•Ø•»§»§∑§∆ÑI¿Ì
 ------------------------------------------------------*/
 
 READ16_HANDLER( brza_sram_r )
@@ -1604,73 +1606,6 @@ READ16_HANDLER( vliner_r )
 	return 0xffff;
 }
 
-
-READ16_HANDLER( sbp_lowerrom_r )
-{
-	UINT16* rom = (UINT16*)memory_region_cpu1;
-	UINT16 origdata = rom[(offset+(0x200/2))];
-	UINT16 data =  BITSWAP16(origdata, 11,10,9,8,15,14,13,12,3,2,1,0,7,6,5,4);
-	int realoffset = 0x200+(offset*2);
-//	logerror("sbp_lowerrom_r offset %08x data %04x\n", realoffset, data );
-
-	// there is actually data in the rom here already, maybe we should just return it 'as is'
-	if (realoffset==0xd5e) return origdata;
-
-	return data;
-	if (offset < 0x00200/2)
-	{
-		offset -= 0x00200/2;
-		return 0xffff;
-	}
-}
-
-WRITE16_HANDLER( sbp_lowerrom_w )
-{
-	int realoffset = 0x200+(offset*2);
-
-	// the actual data written is just pulled from the end of the rom, and unused space
-	// maybe this is just some kind of watchdog for the protection device and it doesn't
-	// matter?
-	if (realoffset == 0x1080)
-	{
-		if (data==0x4e75)
-		{
-			return;
-		}
-		else if (data==0xffff)
-		{
-			return;
-		}
-	}
-	if (offset < 0x00200/2)
-	{
-		offset -= 0x00200/2;
-		COMBINE_DATA(&CartRAM[offset & 0xffff]);
-	}
-//	printf("sbp_lowerrom_w offset %08x data %04x\n", realoffset, data );
-}
-
-void sbp_protection(void)
-{
-	// there seems to be a protection device living around here..
-	// if you nibble swap the data in the rom the game will boot
-	// there are also writes to 0x1080..
-	//
-	// other stuff going on as well tho, the main overlay is still missing, and p1 inputs don't work
-//	m_maincpu->space(AS_PROGRAM).install_read_handler(0x00200, 0x001fff, read16_delegate(FUNC(sbp_lowerrom_r),this));
-//	m_maincpu->space(AS_PROGRAM).install_write_handler(0x00200, 0x001fff, write16_delegate(FUNC(sbp_lowerrom_w),this));
-
-
-	/* the game code clears the text overlay used ingame immediately after writing it.. why? protection? sloppy code that the hw ignores? imperfect emulation? */
-	{
-		UINT16* rom = (UINT16*)memory_region_cpu1;
-
-		rom[0x2a6f8/2] = 0x4e71;
-		rom[0x2a6fa/2] = 0x4e71;
-		rom[0x2a6fc/2] = 0x4e71;
-	}
-
-}
 /************************ AES Protection************************
   To allow console mode
 ***************************************************************/
@@ -1888,7 +1823,7 @@ void cthd2003_AES_protection(void)
 
 
 /******************************************************************************
-	„Çª„Éº„Éñ/„É≠„Éº„Éâ „Çπ„ÉÜ„Éº„Éà
+	•ª©`•÷/•Ì©`•… •π•∆©`•»
 ******************************************************************************/
 
 #ifdef SAVE_STATE

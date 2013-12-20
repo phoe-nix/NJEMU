@@ -274,8 +274,8 @@ static cfg_type gamecfg_vliner[] =
 	{ CFG_PAD,	"Big",			&input_map[P1_BUTTONA],PSP_CTRL_CROSS,		0	},
 	{ CFG_PAD,	"Small",		&input_map[P1_BUTTONB],PSP_CTRL_CIRCLE,	0	},
 	{ CFG_PAD,	"DoubleUp",		&input_map[P1_BUTTONC],PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Start_Collect",&input_map[P1_BUTTOND],PSP_CTRL_TRIANGLE,	0	},
-	{ CFG_PAD,	"Payout",		&input_map[P1_START],	PSP_CTRL_START,		0	},
+	{ CFG_PAD,	"Payout",       &input_map[P1_BUTTOND],PSP_CTRL_TRIANGLE,	0	},
+	{ CFG_PAD,	"Start_Collect",&input_map[P1_START],	PSP_CTRL_START,		0	},
 	{ CFG_PAD,	"Coin",			&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
 
 	{ CFG_NONE,	"[Switch Settings]", },

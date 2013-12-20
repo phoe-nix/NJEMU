@@ -13,16 +13,16 @@
 BUILD_MVSPSP = 1
 #BUILD_NCDZPSP = 1
 
-PSP_SLIM = 1
+#PSP_SLIM = 1
 #KERNEL_MODE = 1
 COMMAND_LIST = 1
 ADHOC = 1
 SAVE_STATE = 1
-UI_32BPP = 1
+#UI_32BPP = 1
 #RELEASE = 1
 
 #------------------------------------------------------------------------------
-# Dip switch translation/Dip å¼€å…³ç¿»è¯‘ ç®€ä½“ä¸­æ–‡=CHINESE_SIMPLIFIED
+# Dip switch translation/Dip ¿ª¹Ø·­Òë ¼òÌåÖÐÎÄ=CHINESE_SIMPLIFIED
 #------------------------------------------------------------------------------
 DIPSW_CHINESE_SIMPLIFIED = 1
 #DIPSW_CHINESE_TRADITIONAL = 1
