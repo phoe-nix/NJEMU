@@ -283,6 +283,7 @@ static const char *text[4][UI_TEXT_MAX] =
 		"Hotkey 1+3+4",
 		"Hotkey 2+3+4",
 		"Hotkey 1+2+3+4",
+		"Hotkey 4+5+6",
 #endif
 #if (EMU_SYSTEM != NCDZ)
 		"Analog Sensitivity",
@@ -838,6 +839,7 @@ static const char *text[4][UI_TEXT_MAX] =
 		"1+3+4同時押し",
 		"2+3+4同時押し",
 		"1+2+3+4同時押し",
+		"4+5+6同時押し",
 #endif
 #if (EMU_SYSTEM != NCDZ)
 		"アナログ感度",
@@ -1393,6 +1395,7 @@ static const char *text[4][UI_TEXT_MAX] =
 		"热键1+3+4",
 		"热键2+3+4",
 		"热键1+2+3+4",
+		"热键4+5+6",
 #endif
 #if (EMU_SYSTEM != NCDZ)
 		"摇杆灵敏度",
@@ -1632,7 +1635,7 @@ static const char *text[4][UI_TEXT_MAX] =
 
 #ifdef PSP_SLIM
 		/* vidhrdw.c */
-		"正在解密图像数据\n",
+		"正在展开图像数据\n",
 #endif
 
 #elif (EMU_SYSTEM == MVS)
@@ -1948,6 +1951,7 @@ static const char *text[4][UI_TEXT_MAX] =
 		"熱鍵1+3+4",
 		"熱鍵2+3+4",
 		"熱鍵1+2+3+4",
+		"熱鍵4+5+6",
 #endif
 #if (EMU_SYSTEM != NCDZ)
 		"搖桿靈敏度",
@@ -2187,7 +2191,7 @@ static const char *text[4][UI_TEXT_MAX] =
 
 #ifdef PSP_SLIM
 		/* vidhrdw.c */
-		"正在解密圖像數據\n",
+		"正在展開圖像數據\n",
 #endif
 
 #elif (EMU_SYSTEM == MVS)

@@ -184,6 +184,7 @@ static void update_inputport0(void)
 			if (input_flag[P1_12])		 value &= ~0x0030;
 			if (input_flag[P1_13])		 value &= ~0x0050;
 			if (input_flag[P1_23])		 value &= ~0x0060;
+			if (input_flag[P1_123])     value &= ~0x0070;
 		}
 		else if (option_controller == INPUT_PLAYER2)
 		{
@@ -197,6 +198,7 @@ static void update_inputport0(void)
 			if (input_flag[P1_12])		 value &= ~0x3000;
 			if (input_flag[P1_13])		 value &= ~0x5000;
 			if (input_flag[P1_23])		 value &= ~0x6000;
+			if (input_flag[P1_123])     value &= ~0x7000;
 		}
 		break;
 
@@ -316,11 +318,13 @@ static void update_inputport1(void)
 			if (input_flag[P1_BUTTON4]) value &= ~0x0001;
 			if (input_flag[P1_BUTTON5]) value &= ~0x0002;
 			if (input_flag[P1_BUTTON6]) value &= ~0x0004;
+			if (input_flag[P1_456])     value &= ~0x0007;
 		}
 		else if (option_controller == INPUT_PLAYER2)
 		{
 			if (input_flag[P1_BUTTON4]) value &= ~0x0010;
 			if (input_flag[P1_BUTTON5]) value &= ~0x0020;
+			if (input_flag[P1_456])     value &= ~0x0030;
 		}
 		break;
 
@@ -469,6 +473,7 @@ static void update_inputport2(void)
 		{
 			// Player 2 button 6
 			if (input_flag[P1_BUTTON6]) value &= ~0x4000;
+			if (input_flag[P1_456])     value &= ~0x4000;
 		}
 		break;
 

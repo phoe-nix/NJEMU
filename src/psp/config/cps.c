@@ -410,6 +410,10 @@ static cfg_type gamecfg_6buttons[] =
 	{ CFG_PAD,	"Autofire6",			&input_map[P1_AF_6],	0,	0	},
 	{ CFG_INT,	"AFInterval",			&af_interval,			1,	10	},
 
+	{ CFG_NONE,	"[Hotkey Settings]", },
+	{ CFG_PAD,	"Hotkeye123",	&input_map[P1_123],	0,	0	},
+	{ CFG_PAD,	"Hotkeye456",	&input_map[P1_456],	0,	0	},
+
 	{ CFG_NONE,	"[System Key Settings]", },
 	{ CFG_PAD,	"Snapshot",				&input_map[SNAPSHOT],	0,	0	},
 	{ CFG_PAD,	"SwitchPlayer",			&input_map[SWPLAYER],	0,	0	},
@@ -585,6 +589,10 @@ static cfg_type gamecfg_sfzch[] =
 	{ CFG_PAD,	"Autofire5",	&input_map[P1_AF_5],	0,	0	},
 	{ CFG_PAD,	"Autofire6",	&input_map[P1_AF_6],	0,	0	},
 	{ CFG_INT,	"AFInterval",	&af_interval,			1,	10	},
+
+	{ CFG_NONE,	"[Hotkey Settings]", },
+	{ CFG_PAD,	"Hotkeye123",	&input_map[P1_123],	0,	0	},
+	{ CFG_PAD,	"Hotkeye456",	&input_map[P1_456],	0,	0	},
 
 	{ CFG_NONE,	"[System Key Settings]", },
 	{ CFG_PAD,	"Snapshot",		&input_map[SNAPSHOT],	0,	0	},

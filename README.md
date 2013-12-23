@@ -1,3 +1,9 @@
+20131223  
+CPS  
+添加sfz系列的热键1+2+3和4+5+6  
+MVS  
+调整KOF2001仿PS2版的ROMINFO
+
 20131220  
 MVS  
 修正ZIPNAME  

@@ -51,10 +51,11 @@ enum
 	P1_134,			// 30
 	P1_234,			// 31
 	P1_1234,		// 32
+	P1_456,			// 33
 	
-	SNAPSHOT,		// 33
-	SWPLAYER,		// 34
-	COMMANDLIST,	// 35
+	SNAPSHOT,		// 34
+	SWPLAYER,		// 35
+	COMMANDLIST,	// 36
 	
 	MAX_INPUTS
 };

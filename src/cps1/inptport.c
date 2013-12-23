@@ -15,8 +15,7 @@
 
 int option_controller;
 int cps1_dipswitch[3];
-//UINT16 ALIGN_DATA cps1_port_value[CPS1_PORT_MAX];
-UINT16 cps1_port_value[CPS1_PORT_MAX];
+UINT16 ALIGN_DATA cps1_port_value[CPS1_PORT_MAX];
 int ALIGN_DATA input_map[MAX_INPUTS];
 int input_max_players;
 int input_max_buttons;
@@ -93,6 +92,7 @@ static void update_inputport0(void)
 			if (input_flag[P1_COIN])    value &= ~0x0404;
 			if (input_flag[P1_START])   value &= ~0x1010;
 			if (input_flag[P1_BUTTON6]) value &= ~0x4040;
+			if (input_flag[P1_456])     value &= ~0x4141;
 		}
 		else if (option_controller == INPUT_PLAYER2)
 		{
@@ -100,6 +100,7 @@ static void update_inputport0(void)
 			if (input_flag[P1_COIN])    value &= ~0x0808;
 			if (input_flag[P1_START])   value &= ~0x2020;
 			if (input_flag[P1_BUTTON6]) value &= ~0x8080;
+			if (input_flag[P1_456])     value &= ~0x8282;
 		}
 		break;
 
@@ -395,6 +396,7 @@ static void update_inputport1(void)
 			if (input_flag[P1_134])	 value &= ~0x00d0;
 			if (input_flag[P1_234])	 value &= ~0x00e0;
 			if (input_flag[P1_1234])	 value &= ~0x00f0;
+			if (input_flag[P1_456])     value &= ~0x0080;
 		}
 		else if (option_controller == INPUT_PLAYER2)
 		{
@@ -416,6 +418,7 @@ static void update_inputport1(void)
 			if (input_flag[P1_134])	 value &= ~0xd000;
 			if (input_flag[P1_234])	 value &= ~0xe000;
 			if (input_flag[P1_1234])	 value &= ~0xf000;
+			if (input_flag[P1_456])     value &= ~0x8000;
 		}
 		break;
 
