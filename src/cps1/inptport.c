@@ -104,6 +104,23 @@ static void update_inputport0(void)
 		}
 		break;
 
+	case INPTYPE_wofch:
+		if (option_controller == INPUT_PLAYER1)
+		{
+			if (input_flag[P1_BUTTON5]) value &= ~0x0101;
+			if (input_flag[P1_COIN])    value &= ~0x0404;
+			if (input_flag[P1_START])   value &= ~0x1010;
+			if (input_flag[P1_BUTTON6]) value &= ~0x4040;
+		}
+		else if (option_controller == INPUT_PLAYER2)
+		{
+			if (input_flag[P1_BUTTON5]) value &= ~0x0202;
+			if (input_flag[P1_COIN])    value &= ~0x0808;
+			if (input_flag[P1_START])   value &= ~0x2020;
+			if (input_flag[P1_BUTTON6]) value &= ~0x8080;
+		}
+		break;
+
 #if !RELEASE
 	case INPTYPE_wofh:
 	case INPTYPE_wofsj:
@@ -238,7 +255,7 @@ static void update_inputport1(void)
 	case INPTYPE_dynwar:
 	case INPTYPE_ffight:	// button 3 (cheat)
 	case INPTYPE_mtwins:
-//	case INPTYPE_3wonders:
+//	case INPTYPE_3wonders:// button 3 (cheat)
 	case INPTYPE_pnickj:
 	case INPTYPE_pang3:
 	case INPTYPE_megaman:
@@ -246,10 +263,12 @@ static void update_inputport1(void)
 	case INPTYPE_sf2:
 	case INPTYPE_sf2j:
 #if !RELEASE
+	case INPTYPE_kodh:
 	case INPTYPE_knightsh:
 	case INPTYPE_wofh:
 	case INPTYPE_wof3js:
 	case INPTYPE_dinoh:
+	case INPTYPE_punisherbz:
 #endif
 		if (option_controller == INPUT_PLAYER1)
 		{
@@ -420,6 +439,30 @@ static void update_inputport1(void)
 			if (input_flag[P1_1234])	 value &= ~0xf000;
 			if (input_flag[P1_456])     value &= ~0x8000;
 		}
+
+	case INPTYPE_wofch:
+		if (option_controller == INPUT_PLAYER1)
+		{
+			if (input_flag[P1_RIGHT])   value &= ~0x0001;
+			if (input_flag[P1_LEFT])    value &= ~0x0002;
+			if (input_flag[P1_DOWN])    value &= ~0x0004;
+			if (input_flag[P1_UP])      value &= ~0x0008;
+			if (input_flag[P1_BUTTON1]) value &= ~0x0010;
+			if (input_flag[P1_BUTTON2]) value &= ~0x0020;
+			if (input_flag[P1_BUTTON3]) value &= ~0x0040;
+			if (input_flag[P1_BUTTON4]) value &= ~0x0080;
+		}
+		else if (option_controller == INPUT_PLAYER2)
+		{
+			if (input_flag[P1_RIGHT])   value &= ~0x0100;
+			if (input_flag[P1_LEFT])    value &= ~0x0200;
+			if (input_flag[P1_DOWN])    value &= ~0x0400;
+			if (input_flag[P1_UP])      value &= ~0x0800;
+			if (input_flag[P1_BUTTON1]) value &= ~0x1000;
+			if (input_flag[P1_BUTTON2]) value &= ~0x2000;
+			if (input_flag[P1_BUTTON3]) value &= ~0x4000;
+			if (input_flag[P1_BUTTON4]) value &= ~0x8000;
+		}
 		break;
 
 	default:
@@ -474,6 +517,7 @@ static void update_inputport2(void)
 	case INPTYPE_captcomm:
 	case INPTYPE_slammast:
 #if !RELEASE
+	case INPTYPE_kodh:
 	case INPTYPE_knightsh:
 	case INPTYPE_wof3js:
 	case INPTYPE_dinoh:
@@ -705,6 +749,7 @@ int input_init(void)
 	case INPTYPE_wof:
 	case INPTYPE_dino:
 #if !RELEASE
+	case INPTYPE_kodh:
 	case INPTYPE_knightsh:
 	case INPTYPE_wofh:
 	case INPTYPE_wof3js:
@@ -733,17 +778,20 @@ int input_init(void)
 	case INPTYPE_dynwar:
 	case INPTYPE_ffight:	// button 3 (cheat)
 	case INPTYPE_mtwins:
-//	case INPTYPE_3wonders:
+//	case INPTYPE_3wonders:// button 3 (cheat)
 	case INPTYPE_pnickj:
 	case INPTYPE_pang3:
 	case INPTYPE_megaman:
 	case INPTYPE_rockmanj:
 	case INPTYPE_slammast:
 #if !RELEASE
+	case INPTYPE_kodh:
 	case INPTYPE_knightsh:
 	case INPTYPE_wofh:
 	case INPTYPE_wof3js:
+	case INPTYPE_wofsj:
 	case INPTYPE_dinoh:
+	case INPTYPE_punisherbz:
 #endif
 		input_max_buttons = 3;
 		break;

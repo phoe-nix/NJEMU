@@ -1796,7 +1796,7 @@ static int menu_dipswitch(void)
 					{
 						uifont_print_shadow(16, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), dipswitch[top + i].label);
 						if (arrowl)
-							uifont_print_shadow(sx - 40, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
+							uifont_print_shadow(sx - 20, 40 + i * 17, UI_COLOR(UI_PAL_SELECT), FONT_LEFTTRIANGLE);
 					}
 				}
 				else

@@ -349,8 +349,39 @@ static keycfg2_t keycfg_sfzch[] =
 	{ AUTOFIRE6,        KEYCFG_BUTTON, P1_AF_6     },
 	{ AUTOFIRE_INV,     KEYCFG_NUMBER, 0           },
 	MENU_BLANK,
-	{ HOTKEY_123,       KEYCFG_BUTTON, P1_123      },
-	{ HOTKEY_456,       KEYCFG_BUTTON, P1_456      },
+	{ SAVE_SCREENSHOT,  KEYCFG_BUTTON, SNAPSHOT    },
+	{ SWITCH_PLAYER,    KEYCFG_BUTTON, SWPLAYER    },
+	{ _COMMAND_LIST,    KEYCFG_BUTTON, COMMANDLIST },
+	MENU_BLANK,
+	MENU_RETURN,
+	MENU_END
+};
+
+static keycfg2_t keycfg_wofch[] =
+{
+	{ INPUT_UP,         KEYCFG_BUTTON, P1_UP       },
+	{ INPUT_DOWN,       KEYCFG_BUTTON, P1_DOWN     },
+	{ INPUT_LEFT,       KEYCFG_BUTTON, P1_LEFT     },
+	{ INPUT_RIGHT,      KEYCFG_BUTTON, P1_RIGHT    },
+	{ INPUT_BUTTON1,    KEYCFG_BUTTON, P1_BUTTON1  },
+	{ INPUT_BUTTON2,    KEYCFG_BUTTON, P1_BUTTON2  },
+	{ INPUT_BUTTON3,    KEYCFG_BUTTON, P1_BUTTON3  },
+	{ INPUT_BUTTON4,    KEYCFG_BUTTON, P1_BUTTON4  },
+	{ INPUT_BUTTON5,    KEYCFG_BUTTON, P1_BUTTON5  },
+	{ INPUT_BUTTON6,    KEYCFG_BUTTON, P1_BUTTON6  },
+	{ INPUT_START,      KEYCFG_BUTTON, P1_START    },
+	{ INPUT_PAUSE,      KEYCFG_BUTTON, P1_COIN     },
+	MENU_BLANK,
+	{ INPUT_SERVCOIN,   KEYCFG_BUTTON, SERV_COIN   },
+	{ INPUT_SERVSWITCH, KEYCFG_BUTTON, SERV_SWITCH },
+	MENU_BLANK,
+	{ AUTOFIRE1,        KEYCFG_BUTTON, P1_AF_1     },
+	{ AUTOFIRE2,        KEYCFG_BUTTON, P1_AF_2     },
+	{ AUTOFIRE3,        KEYCFG_BUTTON, P1_AF_3     },
+	{ AUTOFIRE4,        KEYCFG_BUTTON, P1_AF_4     },
+	{ AUTOFIRE5,        KEYCFG_BUTTON, P1_AF_5     },
+	{ AUTOFIRE6,        KEYCFG_BUTTON, P1_AF_6     },
+	{ AUTOFIRE_INV,     KEYCFG_NUMBER, 0           },
 	MENU_BLANK,
 	{ SAVE_SCREENSHOT,  KEYCFG_BUTTON, SNAPSHOT    },
 	{ SWITCH_PLAYER,    KEYCFG_BUTTON, SWPLAYER    },
@@ -472,11 +503,13 @@ static keycfg2_t keycfg_pzloop2[] =
 	case INPTYPE_rockmanj:
 	case INPTYPE_slammast:
 #if !RELEASE
+	case INPTYPE_kodh:
 	case INPTYPE_knightsh:
 	case INPTYPE_wofh:
 	case INPTYPE_wof3js:
 	case INPTYPE_wofsj:
 	case INPTYPE_dinoh:
+	case INPTYPE_punisherbz:
 #endif
 		keycfg2 = keycfg_3buttons;
 		break;
@@ -488,6 +521,10 @@ static keycfg2_t keycfg_pzloop2[] =
 
 	case INPTYPE_sfzch:
 		keycfg2 = keycfg_sfzch;
+		break;
+
+	case INPTYPE_wofch:
+		keycfg2 = keycfg_wofch;
 		break;
 
 	case INPTYPE_cworld2j:

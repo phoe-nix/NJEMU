@@ -81,6 +81,9 @@ enum
 	INPTYPE_wof3js,		// 40
 	INPTYPE_wofsj,		// 41
 	INPTYPE_dinoh,		// 42
+	INPTYPE_kodh,		// 43
+	INPTYPE_punisherbz,	// 44
+	INPTYPE_wofch,		// 45
 #endif
 	INPTYPE_MAX			// MAX
 };
@@ -103,6 +106,7 @@ enum
 	INIT_dinob,			// 12
 	INIT_dinoh,			// 13
 	INIT_dinohunt,		// 14
+	INIT_sf2m3,			// 15
 #endif
 	INIT_MAX
 };
@@ -200,6 +204,7 @@ void wof3sj_init(void);
 void wofsjb_init(void);
 void dinob_init(void);
 void dinohunt_init(void);
+void sf2m3_init(void);
 #endif
 
 int cps1_driver_init(void);

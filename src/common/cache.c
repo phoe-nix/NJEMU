@@ -15,7 +15,7 @@
 #define MIN_CACHE_SIZE		0x20		// 下限  原始0x40,4MB
 #endif
 #ifdef PSP_SLIM
-#define MAX_CACHE_SIZE		0x200		// 上限 32MB 0x200
+#define MAX_CACHE_SIZE		0x200		// 上限 32MB 0x200  exit pspfiler and tempgba,crash. 
 #else
 #define MAX_CACHE_SIZE		0x140		// 上限 20MB 0x140
 #endif
@@ -28,7 +28,7 @@
 
 #if (EMU_SYSTEM == MVS)
 #define MAX_PCM_BLOCKS		0x100		// 0x100
-#define MAX_PCM_SIZE		0x30		// 0x30
+#define MAX_PCM_SIZE		0x30		// 0x30 数值越小剩余内存越大
 #endif
 
 
@@ -38,7 +38,7 @@
 
 UINT32 (*read_cache)(UINT32 offset);
 void (*update_cache)(UINT32 offset);
-#if (EMU_SYSTEM != MVS)
+#if (EMU_SYSTEM == CPS2)
 UINT32 block_offset[MAX_CACHE_BLOCKS];
 UINT8  *block_empty = (UINT8 *)block_offset;
 #endif
@@ -723,8 +723,9 @@ int cache_start(void)
 		update_cache = update_cache_dynamic;
 
 		// 確保可能なサイズをチェック
+
 #ifdef PSP_SLIM
-		if (psp2k_mem_left == PSP2K_MEM_SIZE)
+		if (psp2k_mem_left == PSP2K_MEM_SIZE)//ui32 bug
 		{
 			GFX_MEMORY = (UINT8 *)PSP2K_MEM_TOP;
 			i = MAX_CACHE_SIZE;
@@ -732,6 +733,7 @@ int cache_start(void)
 		}
 		else
 #endif
+
 		{
 			for (i = GFX_SIZE >> BLOCK_SHIFT; i >= MIN_CACHE_SIZE; i--)
 			{
