@@ -9,16 +9,16 @@
 #------------------------------------------------------------------------------
 
 #BUILD_CPS1PSP = 1
-#BUILD_CPS2PSP = 1
-BUILD_MVSPSP = 1
+BUILD_CPS2PSP = 1
+#BUILD_MVSPSP = 1
 #BUILD_NCDZPSP = 1
 
-#PSP_SLIM = 1
+PSP_SLIM = 1
 #KERNEL_MODE = 1
 COMMAND_LIST = 1
 ADHOC = 1
 SAVE_STATE = 1
-#UI_32BPP = 1
+UI_32BPP = 1
 #RELEASE = 1
 
 #------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ DIPSW_CHINESE_SIMPLIFIED = 1
 
 VERSION_MAJOR = 2
 VERSION_MINOR = 3
-VERSION_BUILD = 1
+VERSION_BUILD = 5
 
 
 #------------------------------------------------------------------------------

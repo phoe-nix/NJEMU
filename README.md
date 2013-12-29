@@ -1,3 +1,9 @@
+20131229  
+CPS2 ROMSET同步至MAME151  
+
+20131227  
+CPS1 ROMSET同步至MAME152  
+
 20131223  
 CPS  
 添加sfz系列的热键1+2+3和4+5+6  
@@ -6,6 +12,8 @@ MVS
 
 20131220  
 MVS  
+修正rominfo  
+更新转换工具，转换过程无报错  
 修正ZIPNAME  
 添加KOF97天下布武085、KOF96SP、更新KOF96AE2.0  
 neogeo的ROMS已同步至MAME150  

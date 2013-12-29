@@ -954,6 +954,7 @@ void file_browser(void)
 #else
 	draw_dialog(240-(i+62), 136-48, 240+(i+62), 136+48);
 	uifont_print_shadow_center(136-30, 255,255,120, APPNAME_STR " " VERSION_STR);
+	uifont_print_shadow_center(136-07, 255,255,255, "for PSP");
 	uifont_print_shadow_center(136+ 6, 200,200,200, "NJ (http://nj-emu.tfact.net)");
 	uifont_print_shadow_center(136+20, 200,200,200, "2011-2013 (https://github.com/phoe-nix/NJEMU)");
 #endif

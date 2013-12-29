@@ -1,8 +1,13 @@
-1941,1941 反击战 (世界版)
+1941,1941 反击战 (世界版 900227)
+1941r1,1941 反击战 (世界版)
+1941u,1941 反击战 (美版 900227)
 1941j,1941 反击战 (日版)
-captcomm,名将 (世界版 911014)
-captcomu,名将 (美版 910928)
-captcomj,名将 (日版 911202)
+captcomm,名将 (世界版 911202)
+captcommr1,名将 (世界版 911014)
+captcommu,名将 (美版 910928)
+captcommj,名将 (日版 911202)
+captcommjr1,名将 (日版 910928)
+captcommb,名将 (盗版),GAME_BOOTLEG
 cawing,飞空之翼 (世界版 901012)
 cawingr1,飞空之翼 (世界版 901009)
 cawingu,飞空之翼 (美版 901012)
@@ -17,37 +22,55 @@ dinoha,恐龙世纪 (盗版2),GAME_BOOTLEG
 dinohb,恐龙世纪 (盗版3),GAME_BOOTLEG
 dinohunt,恐龙猎人 (中国盗版),GAME_BOOTLEG
 dynwar,吞食天地 (世界版)
-dynwaru,吞食天地 (美版)
+dynwara,吞食天地 (美版)
 dynwarj,吞食天地 (日版)
-ffight,快打旋风 (世界版)
-ffightu,快打旋风 (美版)
+dynwarjr,吞食天地 (日版2)
+ffight,快打旋风 (世界版1)
+ffighta,快打旋风 (世界版2)
+ffightu,快打旋风 (美版1)
+ffightu1,快打旋风 (美版2)
 ffightua,快打旋风 (美版 900112)
 ffightub,快打旋风 (美版 900613)
 ffightj,快打旋风 (日版)
-ffightj1,快打旋风 (日版 900305)
-ffightj2,快打旋风 (日版 900112)
-ffightb,快打旋风 (Betlog Hack),GAME_HACK
-forgottn,失落的世界 (美版)
+ffightj1,快打旋风 (日版 900112)
+ffightj2,快打旋风 (日版 900305)
+ffightj3,快打旋风 (日版 900613)
+ffightjh,快打旋风 (日版 Hack),GAME_HACK
+ffightbl,快打旋风 (盗版),GAME_NOT_WORK|GAME_BOOTLEG
+fcrash,快打旋风 Final Crash (盗版),GAME_NOT_WORK|GAME_BOOTLEG
+forgottn,失落的世界 (世界版)
+forgottnu,失落的世界 (美版 B-Board 88621B-2 Rev. C)
+forgottnu1,失落的世界 (美版 B-Board 88618B-2 Rev. C)
+forgottnua,失落的世界 (美版 B-Board 88618B-2 Rev. A)
+forgottnuaa,失落的世界 (美版 B-Board 88618B-2 Rev. AA)
 lostwrld,失落的世界 (日版)
+lostwrldo,失落的世界 (日版 Old Ver.)
 ghouls,魔界村 (世界版)
 ghoulsu,魔界村 (美版)
 daimakai,魔界村 (日版)
+daimakair,魔界村 (日版2)
 knights,圆卓骑士 (世界版 911127)
 knightsu,圆卓骑士 (美版 911127)
-knightsj,圆卓骑士 (日版 911127)
-knightsb,圆卓骑士 (盗版)
+knightsj,圆卓骑士 (日版2 911127)
+knightsja,圆卓骑士 (日版1 911127)
+knightsb,圆卓骑士 (盗版1),GAME_BOOTLEG
+knightsb2,圆卓骑士 (盗版2),GAME_BOOTLEG
 knightsh,圆卓骑士 (hack版),GAME_BOOTLEG
 knightsi,圆卓骑士 (显示随机值),GAME_HACK
 knightsr,圆卓骑士 (随机版),GAME_HACK
-kod,龙王 (世界版 910711)
+kod,龙王 (世界版 910805)
+kodr1,龙王 (世界版 910711)
 kodu,龙王 (美版 910910)
-kodj,龙王 (日版 910805)
+kodj,龙王 (日版1 910805)
+kodja,龙王 (日版2 910805)
 kodb,龙王 (盗版),GAME_BOOTLEG
-megaman,洛克人 力量之战 (CPS1 亚洲版 951006)
+kodh,龙王 (hack),GAME_BOOTLEG
+megaman,洛克人 力量之战 (CPS1 美版 951006)
+megamana,洛克人 力量之战 (CPS1 亚洲版 951006)
 rockmanj,洛克人 力量之战 (CPS1 日版 950922)
 mercs,战场之狼2 (世界版 900302)
-mercsu,战场之狼2 (美版 900302)
-mercsua,战场之狼2 (美版 900608)
+mercsu,战场之狼2 (美版 900608)
+mercsur1,战场之狼2 (美版 900302)
 mercsj,战场之狼2 (日版 900302)
 msword,魔法剑 勇敢的幻想 (世界版 900725)
 mswordr1,魔法剑 勇敢的幻想 (世界版 900623)
@@ -57,79 +80,116 @@ mtwins,双麟儿 (世界版 900619)
 chikij,双麟儿 (日版 900619)
 nemo,梦幻冒险 (世界版 901130)
 nemoj,梦幻冒险 (日版 901120)
-pang3,魔法气泡3 (欧版 950511)
+pang3,魔法气泡3 (欧版 950601)
+pang3r1,魔法气泡3 (欧版 950511)
 pang3j,魔法气泡3 (日版 950511)
+pang3b,魔法气泡3 (盗版),GAME_BOOTLEG
 pnickj,魔法方块 (日版 940608)
 pnicku,魔法方块 (美版 940608 Loca Test Version)
 punisher,惩罚者 (世界版 930422)
-punishru,惩罚者 (美版 930422)
-punishrj,惩罚者 (日版 930422)
+punisheru,惩罚者 (美版 930422)
+punisherh,惩罚者 (西班牙版 930422)
+punisherj,惩罚者 (日版 930422)
+punisherbz,惩罚者 - 飙风战警 (中国盗版),GAME_BOOTLEG
 qad,龙之谜题 (美版 920701)
-qadj,龙之谜题 (日版 940921)
-qtono2,问答 殿样之野望2 全国版 (日版 950123)
+qadjr,龙之谜题 (日版 940921)
+qtono2j,问答 殿样之野望2 全国版 (日版 950123)
 slammast,摔角霸王 (世界版 930713)
-slammasu,摔角霸王 (美版 930713)
+slammastu,摔角霸王 (美版 930713)
 mbomberj,摔角霸王 肌肉爆弹 (日版 930713)
 mbombrd,摔角霸王 热力战士 (世界版 931206)
 mbombrdj,摔角霸王 热力战士 (日版 931206)
 sf2,街头霸王2 天下斗士 (世界版 910522)
 sf2eb,街头霸王2 天下斗士 (世界版 910214)
+sf2ed,街头霸王2 天下斗士 (世界版 910318)
+sf2ee,街头霸王2 天下斗士 (世界版 910228)
 sf2ua,街头霸王2 天下斗士 (美版 910206)
 sf2ub,街头霸王2 天下斗士 (美版 910214)
+sf2uc,街头霸王2 天下斗士 (美版 910306)
 sf2ud,街头霸王2 天下斗士 (美版 910318)
 sf2ue,街头霸王2 天下斗士 (美版 910228)
 sf2uf,街头霸王2 天下斗士 (美版 910411)
-sf2ui,街头霸王2 天下斗士 (美版 910522)
+sf2ug,街头霸王2 天下斗士 (美版 910522 Rev. G)
+sf2ui,街头霸王2 天下斗士 (美版 910522 Rev. I)
 sf2uk,街头霸王2 天下斗士 (美版 911101)
 sf2j,街头霸王2 天下斗士 (日版 911210)
 sf2ja,街头霸王2 天下斗士 (日版 910214)
 sf2jc,街头霸王2 天下斗士 (日版 910306)
-sf2ce,街头霸王2 四大天王 (世界版 920313)
+sf2jf,街头霸王2 天下斗士 (日版 910411)
+sf2jh,街头霸王2 天下斗士 (日版 910522)
+sf2jl,街头霸王2 天下斗士 (日版 920312)
+sf2qp1,街头霸王2 天下斗士 魔法 Delta 加速版,GAME_BOOTLEG
+sf2ebbl,街头霸王2 天下斗士 TAB Austria (盗版1),GAME_BOOTLEG
+sf2thndr,街头霸王2 天下斗士 Thunder Edition,GAME_BOOTLEG
+sf2ce,街头霸王2 四大天王 (世界版 920513)
+sf2ceea,街头霸王2 四大天王 (世界版 920313)
 sf2ceua,街头霸王2 四大天王 (美版 920313)
 sf2ceub,街头霸王2 四大天王 (美版 920513)
 sf2ceuc,街头霸王2 四大天王 (美版 920803)
-sf2cej,街头霸王2 四大天王 (日版 920513)
+sf2ceja,街头霸王2 四大天王 (日版 920322)
+sf2cejb,街头霸王2 四大天王 (日版 920513)
+sf2cejc,街头霸王2 四大天王 (日版 920803)
+sf2bhh,街头霸王2 四大天王 (Hung Hsi),GAME_NOT_WORK|GAME_BOOTLEG
 sf2rb,街头霸王2 四大天王 (彩虹版1),GAME_BOOTLEG
 sf2rb2,街头霸王2 四大天王 (彩虹版2),GAME_BOOTLEG
+sf2rb3,街头霸王2 四大天王 (彩虹版3),GAME_BOOTLEG
 sf2red,街头霸王2 四大天王 (赤色波动),GAME_BOOTLEG
 sf2v004,街头霸王2 四大天王 (V004),GAME_NOT_WORK|GAME_BOOTLEG
-sf2accp2,街头霸王2 四大天王 (加速版 Pt.II),GAME_BOOTLEG
+sf2acc,街头霸王2 四大天王 (加速版1),GAME_NOT_WORK|GAME_BOOTLEG
+sf2acca,街头霸王2 四大天王 (加速版2),GAME_NOT_WORK|GAME_BOOTLEG
+sf2accp2,街头霸王2 四大天王 (加速版3),GAME_BOOTLEG
+sf2amf,街头霸王2 四大天王 Alpha Magic-F,GAME_BOOTLEG
+sf2dkot2,街头霸王2 四大天王 Double K.O.加速版Ⅱ,GAME_NOT_WORK|GAME_BOOTLEG
 sf2m1,街头霸王2 四大天王 (M1),GAME_NOT_WORK|GAME_BOOTLEG
 sf2m2,街头霸王2 四大天王 (M2),GAME_BOOTLEG
 sf2m3,街头霸王2 四大天王 (M3),GAME_NOT_WORK|GAME_BOOTLEG
 sf2m4,街头霸王2 四大天王 (M4),GAME_BOOTLEG
 sf2m5,街头霸王2 四大天王 (M5),GAME_BOOTLEG
-sf2m6,街头霸王2 四大天王 (降龙2),GAME_BOOTLEG
+sf2m6,街头霸王2 四大天王 (M6) 降龙,GAME_BOOTLEG
 sf2m7,街头霸王2 四大天王 (M7),GAME_BOOTLEG
-sf2m8,街头霸王2 四大天王 (M8),GAME_BOOTLEG
+sf2m8,街头霸王2 四大天王 (M8),GAME_NOT_WORK|GAME_BOOTLEG
+sf2yyc,街头霸王2 四大天王 YYC,GAME_NOT_WORK|GAME_BOOTLEG
+sf2koryu,街头霸王2 四大天王 (降龙),GAME_BOOTLEG
+sf2mdt,街头霸王2 四大天王 Magic Delta 加速版1,GAME_BOOTLEG
+sf2mdta,街头霸王2 四大天王 Magic Delta 加速版2,GAME_NOT_WORK|GAME_BOOTLEG
+sf2dongb,街头霸王2 四大天王 (东方不败),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m9,街头霸王2 四大天王 (M9),GAME_BOOTLEG
+sf2m10,街头霸王2 四大天王 (M10),GAME_BOOTLEG
+sf2m11,街头霸王2 四大天王 (M11),GAME_BOOTLEG
+sf2m12,街头霸王2 四大天王 (M12),GAME_BOOTLEG
 sf2m13,街头霸王2 四大天王 (M13),GAME_BOOTLEG
+sf2m14,街头霸王2 四大天王 (M14),GAME_BOOTLEG
 sf2tlona,街头霸王2 四大天王 (屠龙1),GAME_BOOTLEG
 sf2tlonb,街头霸王2 四大天王 (屠龙2),GAME_BOOTLEG
-sf2yyc,街头霸王2 四大天王 (YYC),GAME_NOT_WORK|GAME_BOOTLEG
-sf2koryu,街头霸王2 四大天王 (降龙1),GAME_BOOTLEG
 sf2hf,街头霸王2 加速版 终极格斗 (世界版 921209)
-sf2t,街头霸王2 加速版 终极格斗 (美版 921209)
-sf2tj,街头霸王2 加速版 终极格斗 (日版 921209)
+sf2hfu,街头霸王2 加速版 终极格斗 (美版 921209)
+sf2hfj,街头霸王2 加速版 终极格斗 (日版 921209)
 sfzch,街头霸王 Zero CPS2 转换版 (日版 951020),GAME_HACK
 sfach,街头霸王 Alpha (美版 950727 Publicity),GAME_HACK
 strider,出击飞龙 (美版1)
-stridrua,出击飞龙 (美版2)
+striderua,出击飞龙 (美版2)
 striderj,出击飞龙 (日版1)
-stridrja,出击飞龙 (日版2)
+striderjr,出击飞龙 (日版2)
 3wonders,三个奇迹 (世界版 910520)
-3wonderu,三个奇迹 (美版 910520)
+3wondersr1,三个奇迹 (世界版 910513)
+3wondersu,三个奇迹 (美版 910520)
 wonder3,三个奇迹 (日版 910520)
+3wondersb,三个奇迹 (盗版),GAME_NOT_WORK|GAME_BOOTLEG
+3wondersh,三个奇迹 (hack),GAME_BOOTLEG
 unsquad,战区88 (美版)
 area88,战区88 (日版)
+area88r,战区88 (日版2)
 varth,威虎战机 雷雨行动 (世界版 920714)
 varthr1,威虎战机 雷雨行动 (世界版 920612)
 varthu,威虎战机 雷雨行动 (美版 920612)
 varthj,威虎战机 雷雨行动 (日版 920714)
 willow,威洛之旅 (美版)
-willowj,威洛之旅 (日版 日文)
-willowje,威洛之旅 (日版 英文)
-wof,三国志Ⅱ 天命勇士 (世界版 921002)
+willowo,威洛之旅 (美版2)
+willowj,威洛之旅 (日版)
+wof,三国志Ⅱ 天命勇士 (世界版 921031)
+wofr1,三国志Ⅱ 天命勇士 (世界版 921002)
 wofa,三国志Ⅱ 吞食天地 (亚洲版 921005)
+wofch,三国志Ⅱ 吞食天地 CPS 转换版 (日版 921031),GAME_HACK
 wofchs,三国志Ⅱ 吞食天地 (中文版 921005),GAME_HACK
 wofu,三国志Ⅱ 天命勇士 (美版 921031)
 wofj,三国志Ⅱ 吞食天地 (日版 921031)

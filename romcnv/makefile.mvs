@@ -14,11 +14,11 @@ TARGET = romcnv_mvs
 #------------------------------------------------------------------------------
 # Defines
 #------------------------------------------------------------------------------
-CHINESE = 1
+#CHINESE = 1
 
 VERSION_MAJOR = 2
 VERSION_MINOR = 3
-VERSION_BUILD = 0
+VERSION_BUILD = 5
 
 EXENAME_STR = $(TARGET)
 VERSION_STR = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_BUILD)
