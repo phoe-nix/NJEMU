@@ -540,7 +540,7 @@ static int png_read_file(FILE *fp, struct png_info *p)
 
 
 /*--------------------------------------------------------
-	攚宨夋憸偺柧搙傪曄峏
+	背景画像の明度を変更
 --------------------------------------------------------*/
 
 #if PSP_VIDEO_32BPP
@@ -577,7 +577,7 @@ INLINE void adjust_blightness(UINT8 *r, UINT8 *g, UINT8 *b)
 
 
 /*--------------------------------------------------------
-	PNG撉傒崬傒
+	PNG読み込み
 --------------------------------------------------------*/
 
 int load_png(const char *name, int number)
@@ -879,7 +879,7 @@ static int png_deflate_image(struct png_info *p)
 	}
 
 	stream.next_in   = (Bytef*)p->image;
-	stream.avail_in  = p->height * p->rowbytes;
+	stream.avail_in  = p->height * (p->rowbytes + 1);//
 	stream.next_out  = p->zimage;
 	stream.avail_out = (uInt)&zbuff_size;
 	stream.zalloc    = (alloc_func)png_zcalloc;
@@ -978,7 +978,7 @@ static int png_create_datastream(SceUID fd)
 
 
 /*--------------------------------------------------------
-	PNG曐懚
+	PNG保存
 --------------------------------------------------------*/
 
 int save_png(const char *path)
