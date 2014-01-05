@@ -6641,7 +6641,7 @@ FILENAME( xmcota, cps2, 0, 1, 0, 0 )
 	ROM( 2, xmn.12m, 0x200000, 0x200000, 0x729c188f )
 END
 
-FILENAME( xmcotar1, cps2, 0, 1, 0, 0 )
+FILENAME( xmcotar1, xmcota, 0, 1, 0, 0 )
 	REGION( 0x400000, CPU1, 0 )
 	ROM( 0, xmne.03e, 0x000000, 0x80000, 0xa9a09b09 )
 	ROM( 0, xmne.04e, 0x080000, 0x80000, 0x52fa2106 )
@@ -7988,7 +7988,7 @@ FILENAME( vsavd, vsav, 0, 1, 0, 0 )
 	ROM( 2, vm3.12m, 0x400000, 0x400000, 0x9cd71557 )
 END
 
-FILENAME( xmcotar1d, cps2, 0, 1, 0, 0 )
+FILENAME( xmcotar1d, xmcota, 0, 1, 0, 0 )
 	REGION( 0x400000, CPU1, 0 )
 	ROM( 0, xmned.03e, 0x000000, 0x80000, 0xbef56003 )
 	ROM( 0, xmned.04e, 0x080000, 0x80000, 0xb1a21fa6 )
@@ -8555,7 +8555,7 @@ FILENAME( mshvsfu1d, mshvsf, 0, 1, 0, 0 )
 	ROM( 2, mvs.12m, 0x400000, 0x400000, 0xf2fd7f68 )
 END
 
-FILENAME( spf2td, cps2, 0, 6, 0, 0 )
+FILENAME( spf2td, spf2t, 0, 6, 0, 0 )
 	REGION( 0x100000, CPU1, 0 )
 	ROM( 0, pzfu_d.03a, 0x000000, 0x80000, 0x7836b903 )
 	ROM( 0, pzf.04,     0x080000, 0x80000, 0xb80649e2 )
