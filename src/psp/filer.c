@@ -450,7 +450,7 @@ static void checkStartupDir(void)
 #endif
 	checkDir("roms");
 	checkDir("config");
-	checkDir("snap");
+//	checkDir("snap");
 #ifdef SAVE_STATE
 	checkDir("state");
 #endif
@@ -623,7 +623,7 @@ static void getDir(const char *path)
 			if (stricmp(dir.d_name, "cache") == 0) continue;
 #endif
 			if (stricmp(dir.d_name, "config") == 0) continue;
-			if (stricmp(dir.d_name, "snap") == 0) continue;
+//			if (stricmp(dir.d_name, "snap") == 0) continue;
 #if (EMU_SYSTEM != NCDZ)
 			if (stricmp(dir.d_name, "nvram") == 0) continue;
 #endif
@@ -950,13 +950,13 @@ void file_browser(void)
 	uifont_print_shadow_center(136-30, 255,255,120, APPNAME_STR " " VERSION_STR);
 	uifont_print_shadow_center(136-07, 255,255,255, "for PSP Slim");
 	uifont_print_shadow_center(136+06, 200,200,200, "NJ (http://nj-emu.tfact.net)");
-	uifont_print_shadow_center(136+20, 200,200,200, "2011-2013 (https://github.com/phoe-nix/NJEMU)");
+	uifont_print_shadow_center(136+20, 200,200,200, "2011-2014 (https://github.com/phoe-nix/NJEMU)");
 #else
 	draw_dialog(240-(i+62), 136-48, 240+(i+62), 136+48);
 	uifont_print_shadow_center(136-30, 255,255,120, APPNAME_STR " " VERSION_STR);
 	uifont_print_shadow_center(136-07, 255,255,255, "for PSP");
 	uifont_print_shadow_center(136+ 6, 200,200,200, "NJ (http://nj-emu.tfact.net)");
-	uifont_print_shadow_center(136+20, 200,200,200, "2011-2013 (https://github.com/phoe-nix/NJEMU)");
+	uifont_print_shadow_center(136+20, 200,200,200, "2011-2014 (https://github.com/phoe-nix/NJEMU)");
 #endif
 	video_flip_screen(1);
 

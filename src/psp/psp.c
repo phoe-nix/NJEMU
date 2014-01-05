@@ -6,6 +6,11 @@
 
 ******************************************************************************/
 
+#include <pspsdk.h>
+#include <pspctrl.h>
+#include <pspimpose_driver.h>
+
+#include "SystemButtons.h"
 #include "psp.h"
 
 
@@ -25,6 +30,7 @@ PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER);
 volatile int Loop;
 volatile int Sleep;
 char launchDir[MAX_PATH];
+char screenshotDir[MAX_PATH];  // スクリーンショト保存PATH
 int psp_cpuclock = PSPCLOCK_333;
 int devkit_version;
 int njemu_debug;
@@ -166,6 +172,23 @@ int main(int argc, char *argv[])
 
 	getcwd(launchDir, MAX_PATH - 1);
 	strcat(launchDir, "/");
+
+	memset(screenshotDir, 0x00, sizeof(screenshotDir));
+
+#if	(EMU_SYSTEM == CPS1)
+	strcat(screenshotDir, "ms0:/PICTURE/CPS1");
+#endif
+#if	(EMU_SYSTEM == CPS2)
+	strcat(screenshotDir, "ms0:/PICTURE/CPS2");
+#endif
+#if	(EMU_SYSTEM == MVS)
+	strcat(screenshotDir, "ms0:/PICTURE/MVS");
+#endif
+#if	(EMU_SYSTEM == NCDZ)
+	strcat(screenshotDir, "ms0:/PICTURE/NCDZ");
+#endif
+
+	sceIoMkdir(screenshotDir,0777); // スクショ用フォルダ作成
 
 	devkit_version = sceKernelDevkitVersion();
 	njemu_debug = 0;

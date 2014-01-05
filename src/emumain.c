@@ -383,6 +383,8 @@ void show_fatal_error(void)
 	スクリーンショット保存
 ------------------------------------------------------*/
 
+extern char screenshotDir[MAX_PATH];  // スクリーンショト保存PATH
+
 void save_snapshot(void)
 {
 	char path[MAX_PATH];
@@ -403,14 +405,14 @@ void save_snapshot(void)
 
 		while (1)
 		{
-			sprintf(path, "%ssnap/%s_%02d.png", launchDir, game_name, snap_no);
+			sprintf(path, "%s/%s_%02d.png", screenshotDir, game_name, snap_no);
 			if ((fp = fopen(path, "rb")) == NULL) break;
 			fclose(fp);
 			snap_no++;
 		}
 	}
 
-	sprintf(path, "%ssnap/%s_%02d.png", launchDir, game_name, snap_no);
+	sprintf(path, "%s/%s_%02d.png", screenshotDir, game_name, snap_no);
 	if (save_png(path))
 		ui_popup(TEXT(SNAPSHOT_SAVED_AS_x_PNG), game_name, snap_no++);
 
