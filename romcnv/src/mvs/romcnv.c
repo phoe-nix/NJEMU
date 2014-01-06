@@ -175,6 +175,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "samsho5b", "samsho5",  1, 1, 1 },
 	{ "samsh5sph","samsh5sp", 0, 0, 0 },
 	{ "samsh5spho","samsh5sp", 0, 0, 0 },
+	{ "kof2k4se", "kof2002",  1, 1, 1 },
 	{ "kf2k4pls", "kof2k4se", 0, 1, 0 },
 	{ "kf10thep", "kof10th",  1, 1, 0 },
 	{ "kf2k5uni", "kof10th",  0, 0, 0 },

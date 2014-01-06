@@ -1233,14 +1233,14 @@ int kf2k2mp2_px_decrypt(void)
 
 int kof2k4se_px_decrypt(void)
 {
-	const UINT32 sec[] = { 0x300000, 0x200000, 0x100000, 0x000000 };
-	UINT32 i;
-	UINT8 *src = &memory_region_cpu1[0x100000];
+	UINT8 *src = memory_region_cpu1 + 0x100000;
 #ifdef PSP_SLIM
 	UINT8 *dst = (UINT8 *)psp2k_mem_offset;
 #else
 	UINT8 *dst = (UINT8 *)malloc(0x400000);
 #endif
+	UINT32 i;
+	const UINT32 sec[] = { 0x300000, 0x200000, 0x100000, 0x000000 };
 
 	if (dst)
 	{
