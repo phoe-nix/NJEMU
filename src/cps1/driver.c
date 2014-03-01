@@ -142,7 +142,7 @@ struct driver_t CPS1_driver[] =
 	{"cawingu",    CPS_B_16, 0,                    GFX_CAWING   },
 	{"cawingj",    CPS_B_16, 0,                    GFX_CAWING   },
 #if !RELEASE
-	{"cawingb",    CPS_B_16, CPS1_KLUDGE_CAWINGB,  GFX_CAWING   },//
+//	{"cawingb",    CPS_B_16, CPS1_KLUDGE_CAWINGB,  GFX_CAWING   },//
 #endif
 	{"sf2",        CPS_B_11, 0,                    GFX_SF2      },
 	{"sf2eb",      CPS_B_17, 0,                    GFX_SF2      },
@@ -289,6 +289,7 @@ struct driver_t CPS1_driver[] =
 	{"wofyxg",     QSOUND_1, 0,                    GFX_WOF      },
 	{"wofzhy",     QSOUND_1, 0,                    GFX_WOF      },
 	{"wofmr",      QSOUND_1, 0,                    GFX_WOF      },
+	{"wof5boss",   QSOUND_1, 0,                    GFX_WOF      },
 #endif
 	{"dino",       QSOUND_2, 0,                    GFX_DINO     },
 	{"dinou",      QSOUND_2, 0,                    GFX_DINO     },
@@ -321,7 +322,7 @@ struct driver_t CPS1_driver[] =
 	{"sf2hfj",     NOBATTRY, 0,                    GFX_SF2HF    },
 	{"qad",        BATTRY_7, 0,                    GFX_QAD      },
 	{"qadjr",      NOBATTRY, 0,                    GFX_QADJ     },
-	{"qtono2",     NOBATTRY, 0,                    GFX_QTONO2   },
+	{"qtono2j",    NOBATTRY, 0,                    GFX_QTONO2   },
 	{"megaman",    NOBATTRY, 0,                    GFX_MEGAMAN  },
 	{"megamana",   NOBATTRY, 0,                    GFX_MEGAMAN  },
 	{"rockmanj",   NOBATTRY, 0,                    GFX_MEGAMAN  },
