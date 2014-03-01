@@ -83,7 +83,7 @@ static cfg_type gamecfg_2buttons[] =
 	{ CFG_INT,	"AFInterval",			&af_interval,			1,	10	},
 
 	{ CFG_NONE,	"[Hotkey Settings]", },
-	{ CFG_PAD,	"Hotkeye12",	&input_map[P1_12],		0,	0	},
+	{ CFG_PAD,	"Hotkey12",				&input_map[P1_12],		0,	0	},
 
 	{ CFG_NONE,	"[System Key Settings]", },
 	{ CFG_PAD,	"Snapshot",				&input_map[SNAPSHOT],	0,	0	},
@@ -146,7 +146,7 @@ static cfg_type gamecfg_2buttons_rot[] =
 	{ CFG_INT,	"AFInterval",			&af_interval,			1,	10	},
 
 	{ CFG_NONE,	"[Hotkey Settings]", },
-	{ CFG_PAD,	"Hotkeye12",	&input_map[P1_12],		0,	0	},
+	{ CFG_PAD,	"Hotkey12",				&input_map[P1_12],		0,	0	},
 
 	{ CFG_NONE,	"[System Key Settings]", },
 	{ CFG_PAD,	"Snapshot",				&input_map[SNAPSHOT],	0,	0	},
@@ -210,10 +210,10 @@ static cfg_type gamecfg_3buttons[] =
 	{ CFG_INT,	"AFInterval",			&af_interval,			1,	10	},
 
 	{ CFG_NONE,	"[Hotkey Settings]", },
-	{ CFG_PAD,	"Hotkeye12",	&input_map[P1_12],		0,	0	},
-	{ CFG_PAD,	"Hotkeye13",	&input_map[P1_13],		0,	0	},
-	{ CFG_PAD,	"Hotkeye23",	&input_map[P1_23],		0,	0	},
-	{ CFG_PAD,	"Hotkeye123",	&input_map[P1_123],	0,	0	},
+	{ CFG_PAD,	"Hotkey12",				&input_map[P1_12],		0,	0	},
+	{ CFG_PAD,	"Hotkey13",				&input_map[P1_13],		0,	0	},
+	{ CFG_PAD,	"Hotkey23",				&input_map[P1_23],		0,	0	},
+	{ CFG_PAD,	"Hotkey123",			&input_map[P1_123],	0,	0	},
 
 	{ CFG_NONE,	"[System Key Settings]", },
 	{ CFG_PAD,	"Snapshot",				&input_map[SNAPSHOT],	0,	0	},
@@ -270,10 +270,10 @@ static cfg_type gamecfg_3buttons_rot[] =
 	{ CFG_INT,	"AFInterval",			&af_interval,			1,	10	},
 
 	{ CFG_NONE,	"[Hotkey Settings]", },
-	{ CFG_PAD,	"Hotkeye12",	&input_map[P1_12],		0,	0	},
-	{ CFG_PAD,	"Hotkeye13",	&input_map[P1_13],		0,	0	},
-	{ CFG_PAD,	"Hotkeye23",	&input_map[P1_23],		0,	0	},
-	{ CFG_PAD,	"Hotkeye123",	&input_map[P1_123],	0,	0	},
+	{ CFG_PAD,	"Hotkey12",				&input_map[P1_12],		0,	0	},
+	{ CFG_PAD,	"Hotkey13",				&input_map[P1_13],		0,	0	},
+	{ CFG_PAD,	"Hotkey23",				&input_map[P1_23],		0,	0	},
+	{ CFG_PAD,	"Hotkey123",			&input_map[P1_123],	0,	0	},
 
 	{ CFG_NONE,	"[System Key Settings]", },
 	{ CFG_PAD,	"Snapshot",				&input_map[SNAPSHOT],	0,	0	},
@@ -330,17 +330,17 @@ static cfg_type gamecfg_4buttons[] =
 	{ CFG_INT,	"AFInterval",			&af_interval,			1,	10	},
 
 	{ CFG_NONE,	"[Hotkey Settings]", },
-	{ CFG_PAD,	"Hotkeye12",	&input_map[P1_12],		0,	0	},
-	{ CFG_PAD,	"Hotkeye13",	&input_map[P1_13],		0,	0	},
-	{ CFG_PAD,	"Hotkeye14",	&input_map[P1_14],		0,	0	},
-	{ CFG_PAD,	"Hotkeye23",	&input_map[P1_23],		0,	0	},
-	{ CFG_PAD,	"Hotkeye24",	&input_map[P1_24],		0,	0	},
-	{ CFG_PAD,	"Hotkeye34",	&input_map[P1_34],		0,	0	},
-	{ CFG_PAD,	"Hotkeye123",	&input_map[P1_123],	0,	0	},
-	{ CFG_PAD,	"Hotkeye124",	&input_map[P1_124],	0,	0	},
-	{ CFG_PAD,	"Hotkeye134",	&input_map[P1_134],	0,	0	},
-	{ CFG_PAD,	"Hotkeye234",	&input_map[P1_234],	0,	0	},
-	{ CFG_PAD,	"Hotkeye1234",	&input_map[P1_1234],	0,	0	},
+	{ CFG_PAD,	"Hotkey12",				&input_map[P1_12],		0,	0	},
+	{ CFG_PAD,	"Hotkey13",				&input_map[P1_13],		0,	0	},
+	{ CFG_PAD,	"Hotkey14",				&input_map[P1_14],		0,	0	},
+	{ CFG_PAD,	"Hotkey23",				&input_map[P1_23],		0,	0	},
+	{ CFG_PAD,	"Hotkey24",				&input_map[P1_24],		0,	0	},
+	{ CFG_PAD,	"Hotkey34",				&input_map[P1_34],		0,	0	},
+	{ CFG_PAD,	"Hotkey123",			&input_map[P1_123],	0,	0	},
+	{ CFG_PAD,	"Hotkey124",			&input_map[P1_124],	0,	0	},
+	{ CFG_PAD,	"Hotkey134",			&input_map[P1_134],	0,	0	},
+	{ CFG_PAD,	"Hotkey234",			&input_map[P1_234],	0,	0	},
+	{ CFG_PAD,	"Hotkey1234",			&input_map[P1_1234],	0,	0	},
 
 	{ CFG_NONE,	"[System Key Settings]", },
 	{ CFG_PAD,	"Snapshot",				&input_map[SNAPSHOT],	0,	0	},
@@ -411,8 +411,8 @@ static cfg_type gamecfg_6buttons[] =
 	{ CFG_INT,	"AFInterval",			&af_interval,			1,	10	},
 
 	{ CFG_NONE,	"[Hotkey Settings]", },
-	{ CFG_PAD,	"Hotkeye123",	&input_map[P1_123],	0,	0	},
-	{ CFG_PAD,	"Hotkeye456",	&input_map[P1_456],	0,	0	},
+	{ CFG_PAD,	"Hotkey123",			&input_map[P1_123],	0,	0	},
+	{ CFG_PAD,	"Hotkey456",			&input_map[P1_456],	0,	0	},
 
 	{ CFG_NONE,	"[System Key Settings]", },
 	{ CFG_PAD,	"Snapshot",				&input_map[SNAPSHOT],	0,	0	},
@@ -591,8 +591,8 @@ static cfg_type gamecfg_sfzch[] =
 	{ CFG_INT,	"AFInterval",	&af_interval,			1,	10	},
 
 	{ CFG_NONE,	"[Hotkey Settings]", },
-	{ CFG_PAD,	"Hotkeye123",	&input_map[P1_123],	0,	0	},
-	{ CFG_PAD,	"Hotkeye456",	&input_map[P1_456],	0,	0	},
+	{ CFG_PAD,	"Hotkey123",	&input_map[P1_123],	0,	0	},
+	{ CFG_PAD,	"Hotkey456",	&input_map[P1_456],	0,	0	},
 
 	{ CFG_NONE,	"[System Key Settings]", },
 	{ CFG_PAD,	"Snapshot",		&input_map[SNAPSHOT],	0,	0	},
@@ -713,10 +713,10 @@ static cfg_type gamecfg_progear[] =
 	{ CFG_INT,	"AFInterval",			&af_interval,			1,	10	},
 
 	{ CFG_NONE,	"[Hotkey Settings]", },
-	{ CFG_PAD,	"Hotkeye12",	&input_map[P1_12],		0,	0	},
-	{ CFG_PAD,	"Hotkeye13",	&input_map[P1_13],		0,	0	},
-	{ CFG_PAD,	"Hotkeye23",	&input_map[P1_23],		0,	0	},
-	{ CFG_PAD,	"Hotkeye123",	&input_map[P1_123],	0,	0	},
+	{ CFG_PAD,	"Hotkey12",				&input_map[P1_12],		0,	0	},
+	{ CFG_PAD,	"Hotkey13",				&input_map[P1_13],		0,	0	},
+	{ CFG_PAD,	"Hotkey23",				&input_map[P1_23],		0,	0	},
+	{ CFG_PAD,	"Hotkey123",			&input_map[P1_123],	0,	0	},
 
 	{ CFG_NONE,	"[System Key Settings]", },
 	{ CFG_PAD,	"Snapshot",				&input_map[SNAPSHOT],	0,	0	},
