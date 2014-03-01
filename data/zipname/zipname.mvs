@@ -86,14 +86,14 @@ kof98h,The King of Fighters '98 (NGH-2420)
 kof98k,The King of Fighters '98 - The Slugfest (Korean board 1)
 kof98ka,The King of Fighters '98 - The Slugfest (Korean board 2)
 kof98ae,The King of Fighters '98 Anniversary Edition[EGCG],GAME_HACK
-kof98c,The King of Fighters '98 Combo,GAME_HACK
+kof98c,The King of Fighters '98 Combo 20140214[ivex],GAME_HACK
 kof98cn,The King of Fighters '98(Chinese),GAME_HACK
 kof99,The King of Fighters '99 (NGM-2510)
 kof99h,The King of Fighters '99 (NGH-2510)
 kof99e,The King of Fighters '99 (earlier)
 kof99k,The King of Fighters '99 (Korean release)
 kof99p,The King of Fighters '99 (prototype)
-kof99ae,The King of Fighters '99 AE 20130113,GAME_HACK
+kof99ae,The King of Fighters '99 Anniversary Edition 20140209[yashional],GAME_HACK
 kof2000,The King of Fighters 2000 (NGM-2570)(NGH-2570)
 kof2000n,The King of Fighters 2000 (not encrypted)
 kof2kcn,The King of Fighters 2000(Chinese),GAME_HACK
@@ -109,7 +109,7 @@ ct2k3sp,Crouching Tiger Hidden Dragon 2003 Super Plus (KOF2001 bootleg),GAME_BOO
 ct2k3sa,Crouching Tiger Hidden Dragon 2003 Super Plus alternate (KOF2001 bootleg),GAME_BOOTLEG
 kof2002,The King of Fighters 2002 (NGM-2650)(NGH-2650)
 kof2k2cn,The King of Fighters 2002 (Chinese),GAME_HACK
-kof2k2tg3,The King of Fighters 2002 tian guo san shen,GAME_HACK
+kof2k2tg3,The King of Fighters 2002 3rd Strike Of The Orichi[EGCG],GAME_HACK
 kf2k2ps2,The King of Fighters 2002 PlayStation 2 Version,GAME_HACK
 kof2002b,The King of Fighters 2002 (bootleg),GAME_BOOTLEG
 kf2k2pls,The King of Fighters 2002 Plus (set 1 / bootleg),GAME_BOOTLEG
