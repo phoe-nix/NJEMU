@@ -1,3 +1,8 @@
+20140301  
+config文件中Hotkeye***更正为Hotkey***  
+MVS 添加unibios 3.1  
+MVS 更新KOF98 COMBO和KOF99AE  
+
 20140107  
 修正kof2k4se花屏  
 
