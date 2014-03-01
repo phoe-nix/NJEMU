@@ -546,7 +546,7 @@ void neogeo_video_reset(void)
 
 	next_update_first_line = FIRST_VISIBLE_LINE;
 
-	if (neogeo_bios >= UNI_V30 && neogeo_bios < DEBUG_BIOS)
+	if (neogeo_bios >= UNI_V31 && neogeo_bios < DEBUG_BIOS)
 		max_sprite_number = 32;
 	else if (neogeo_bios == ASIA_AES
 	|| neogeo_bios == JAPAN_AES

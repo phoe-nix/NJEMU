@@ -30,6 +30,7 @@ const char *bios_name[BIOS_MAX] =
 	"Asia AES",
 	"Japan AES",
 
+	"Unibios MVS (Hack, Ver. 3.1)",
 	"Unibios MVS (Hack, Ver. 3.0)",
 	"Unibios MVS (Hack, Ver. 2.3)",
 	"Unibios MVS (Hack, Ver. 2.2)",
@@ -59,6 +60,7 @@ const UINT32 bios_crc[BIOS_MAX] =
 	0xd27a71f1,	// Asia AES
 	0x16d0c132,	// Japan AES
 
+	0x0c58093f,	// Unibios V3.1
 	0xa97c89a9,	// Unibios V3.0
 	0x27664eb5,	// Unibios V2.3
 	0x2d50996a,	// Unibios V2.2
@@ -88,6 +90,7 @@ const UINT32 bios_patch_address[BIOS_MAX] =
 	0x000000,	// Asia AES
 	0x000000,	// Japan AES
 
+	0x000000,	// Unibios V3.1
 	0x000000,	// Unibios V3.0
 	0x000000,	// Unibios V2.3
 	0x000000,	// Unibios V2.2

@@ -350,7 +350,7 @@ void neogeo_reset_driver_type(void)
 
 	raster_enable = neogeo_raster_enable;
 
-	if (neogeo_bios >= UNI_V30 && neogeo_bios <= UNI_V20)
+	if (neogeo_bios >= UNI_V31 && neogeo_bios <= UNI_V20)
 		raster_enable = 1;
 
 	if (raster_enable)
@@ -521,7 +521,7 @@ INLINE void set_main_cpu_vector_table_source(UINT8 data)
 	}
 	else
 	{
-		if (neogeo_bios >= UNI_V30 && neogeo_bios < DEBUG_BIOS)
+		if (neogeo_bios >= UNI_V31 && neogeo_bios < DEBUG_BIOS)
 			max_sprite_number = 32;
 		else if (neogeo_bios == ASIA_AES
 		|| neogeo_bios == JAPAN_AES
