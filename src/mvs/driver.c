@@ -98,6 +98,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "kf2k2mp",  "kof2002",  0, 1, 0 },
 	{ "kf2k2mp2", "kof2002",  0, 1, 0 },
 	{ "kf2k2ps2", "kof2002",  1, 1, 1 },
+	{ "kf2k2ur",  "kof2002",  1, 1, 1 },
 	{ "kof2k2tg3","kof2002",  1, 1, 1 },
 	{ "matrimbl", "matrim",   0, 0, 1 },
 	{ "mslug5b",  "mslug5",   0, 0, 0 },

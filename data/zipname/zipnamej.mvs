@@ -102,7 +102,7 @@ kof2001,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2001 (NGM-262?)
 kof2001h,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2001 (NGH-2621)
 kf2k1pls,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2001 PLUS (set 1 / bootleg),GAME_BOOTLEG
 kf2k1pa,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2001 PLUS (set 2 / bootleg),GAME_BOOTLEG
-kof2k1bs,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º 2001 PlayStation 2 Version V1.0[EGCG],GAME_HACK
+kof2k1bs,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2001 PlayStation 2 Version V1.0[EGCG],GAME_HACK
 cthd2003,ÅP»¢Êiýˆ CROUCHING TIGER HIDDEN DRAGON 2003 (KOF2001 bootleg / set 1),GAME_BOOTLEG
 cthd2k3a,ÅP»¢Êiýˆ CROUCHING TIGER HIDDEN DRAGON 2003 (KOF2001 bootleg / set 2),GAME_BOOTLEG
 ct2k3sp,ÅP»¢Êiýˆ CROUCHING TIGER HIDDEN DRAGON 2003 SUPER PLUS (KOF2001 bootleg),GAME_BOOTLEG
@@ -110,7 +110,8 @@ ct2k3sa,ÅP»¢Êiýˆ CROUCHING TIGER HIDDEN DRAGON 2003 SUPER PLUS alternate (KOF200
 kof2002,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2002 (NGM-2650)(NGH-2650)
 kof2k2cn,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2002 (Chinese),GAME_HACK
 kof2k2tg3,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2002 3rd Strike Of The Orichi[EGCG],GAME_HACK
-kf2k2ps2,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º 2002 PlayStation 2 Version V0.4[EGCG],GAME_BOOTLEG
+kf2k2ps2,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2002 PlayStation 2 Version V0.4[EGCG],GAME_BOOTLEG
+kf2k2ur,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2002 Remix Ultra 3.5[FCHT],GAME_HACK
 kof2002b,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2002 (bootleg),GAME_BOOTLEG
 kf2k2pls,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2002 PLUS (set 1 / bootleg),GAME_BOOTLEG
 kf2k2pla,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2002 PLUS (set 2 / bootleg),GAME_BOOTLEG
@@ -130,7 +131,7 @@ kf2k3bl,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2003 (set 1 / bootleg),GAME_BOOTLEG
 kf2k3bla,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2003 (set 2 / bootleg),GAME_BOOTLEG
 kf2k3pl,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2004 PLUS / HERO (KOF2003 bootleg),GAME_BOOTLEG
 kf2k3upl,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2004 ULTRA PLUS (KOF2003 bootleg),GAME_BOOTLEG
-kf2k3ps2,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º 2003 PlayStation 2 Version,GAME_BOOTLEG
+kf2k3ps2,¥¶¡¤¥­¥ó¥°¡¤¥ª¥Ö¡¤¥Õ¥¡¥¤¥¿©`¥º2003 PlayStation 2 Version,GAME_BOOTLEG
 kotm,¥­¥ó¥°¡¤¥ª¥Ö¡¤¥¶¡¤¥â¥ó¥¹¥¿©`¥º (set 1)
 kotmh,¥­¥ó¥°¡¤¥ª¥Ö¡¤¥¶¡¤¥â¥ó¥¹¥¿©`¥º (set 2)
 kotm2,¥­¥ó¥°¡¤¥ª¥Ö¡¤¥¶¡¤¥â¥ó¥¹¥¿©`¥º2 The Next Thing (NGM-039)(NGH-039)
