@@ -1,3 +1,7 @@
+20140307  
+ROM转换工具修正中文名路径,测试路径“桌面”可正常转换  
+MVS 添加KOF2002 Remix Ultra 3.5[FCHT]  
+
 20140301  
 config文件中Hotkeye***更正为Hotkey***  
 MVS 添加unibios 3.1  
