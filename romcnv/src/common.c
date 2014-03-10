@@ -341,8 +341,11 @@ int file_dialog(HWND hwnd, LPCSTR filter, char *fname, UINT32 flags)
 	OFN.lpstrFile   = fname;
 	OFN.nMaxFile    = MAX_PATH*2;
 	OFN.Flags       = flags;
+#ifdef CHINESE
+	OFN.lpstrTitle  = "选择zip压缩的ROM文件.";
+#else
 	OFN.lpstrTitle  = "Select zipped ROM file.";
-
+#endif
 	return GetOpenFileName(&OFN);
 }
 
@@ -362,7 +365,11 @@ int folder_dialog(HWND hwnd, char *path)
 	{
 		memset(&BINFO, 0, sizeof(BINFO));
 		BINFO.hwndOwner = hwnd;
+#ifdef CHINESE
+		BINFO.lpszTitle = "选择ROM文件夹";
+#else
 		BINFO.lpszTitle = "Select ROM folder";
+#endif
 		BINFO.ulFlags = BIF_RETURNONLYFSDIRS;
 
 		pidl = SHBrowseForFolder(&BINFO);
@@ -380,7 +387,28 @@ int folder_dialog(HWND hwnd, char *path)
 /*--------------------------------------------------------
 	デリミタを変換
 --------------------------------------------------------*/
+#ifdef CHINESE
+#define isgbk1(c)	(((c) >= 0x81 && (c) <= 0xfe))
 
+void convert_delimiter(char *path)
+{
+	if (!is_win9x)
+	{
+		char *p = path;
+		int i, len = strlen(path);
+
+		for (i = 0; i < len; i++)
+		{
+			if (*p == '\\')
+			{
+				if (i == 0 || !isgbk1(*(UINT8 *)(p - 0)))
+					*p = '/';
+			}
+			p++;
+		}
+	}
+}
+#else
 #define issjis1(c)	(((c) >= 0x81 && (c) <= 0x9f) | ((c) >= 0xe0 && (c) <= 0xfc))
 
 void convert_delimiter(char *path)
@@ -401,5 +429,5 @@ void convert_delimiter(char *path)
 		}
 	}
 }
-
+#endif
 #endif /* WIN32 */
