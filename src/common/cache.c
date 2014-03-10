@@ -14,12 +14,16 @@
 #else
 #define MIN_CACHE_SIZE		0x20		// 下限  原始0x40,4MB
 #endif
+/*
+32MB 0x200 660CFW exit pspfiler and tempgba,crash.
+26MB 0x1a0 620CFW push vol and screen button crash.
+*/
 #ifdef PSP_SLIM
-#define MAX_CACHE_SIZE		0x200		// 上限 32MB 0x200  exit pspfiler and tempgba,crash. 
+#define MAX_CACHE_SIZE		0x200		// 上限 32MB 0x200  
 #else
 #define MAX_CACHE_SIZE		0x140		// 上限 20MB 0x140
 #endif
-#define CACHE_SAFETY		0x20000		// キャッシュ確保後の空きメモリサイズ
+#define CACHE_SAFETY		0x20000		// キャッシュ確保後の空きメモリサイズ 128KB
 #define BLOCK_SIZE			0x10000		// 1ブロックのサイズ = 64KB 0x10000 图像有关
 #define BLOCK_MASK			0xffff
 #define BLOCK_SHIFT			16			// 16
