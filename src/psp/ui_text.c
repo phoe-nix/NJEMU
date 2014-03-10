@@ -111,6 +111,7 @@ static const char *text[4][UI_TEXT_MAX] =
 		"Enable",
 		"Disable",
 		"Return to main menu",
+
 		"Game configuration menu",
 		"Raster Effects",
 		"Stretch Screen",
@@ -1347,7 +1348,7 @@ static const char *text[4][UI_TEXT_MAX] =
 #endif
 		"开始",
 #if (EMU_SYSTEM == NCDZ)
-		"Select",
+		"选择",
 #else
 		"投币",
 		"调试投币",
@@ -1903,7 +1904,7 @@ static const char *text[4][UI_TEXT_MAX] =
 #endif
 		"開始",
 #if (EMU_SYSTEM == NCDZ)
-		"Select",
+		"選擇",
 #else
 		"投幣",
 		"調試投幣",

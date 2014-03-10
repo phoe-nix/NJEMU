@@ -757,6 +757,7 @@ int memory_init(void)
 	||	!strcmp(game_name, "mmatrixd")
 	||	!strcmp(game_name, "progearud")
 	||	!strcmp(game_name, "progearjd")
+	||	!strcmp(game_name, "progearjbl") // not an actual phoenix set, but works as one
 	||	!strcmp(game_name, "hsf2d"))
 		phoenix_edition = 1;
 	else

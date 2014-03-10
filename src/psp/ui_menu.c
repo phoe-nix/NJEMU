@@ -327,6 +327,18 @@ static int menu_gamecfg(void)
 			if (sel > gamecfg_num - 1) sel = 0;
 			if (gamecfg[sel].label[0] == '\n') sel++;
 		}
+		else if (pad_pressed(PSP_CTRL_LTRIGGER))
+		{
+			sel -= rows;
+			if (sel < 0) sel = 0;
+			if (gamecfg[sel].label[0] == '\n') sel--;
+		}
+		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		{
+			sel += rows;
+			if (sel >= gamecfg_num) sel = gamecfg_num - 1;
+			if (gamecfg[sel].label[0] == '\n') sel++;
+		}
 		else if (pad_pressed(PSP_CTRL_LEFT))
 		{
 			if (gamecfg[sel].value && gamecfg[sel].enable)
@@ -358,7 +370,7 @@ static int menu_gamecfg(void)
 			if (sel == gamecfg_num - 1)
 				break;
 		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PSP_CTRL_SELECT))
 		{
 			help(HELP_GAMECONFIG);
 			update = 1;
@@ -975,6 +987,18 @@ int menu_cheatcfg(void)
 			if (sel > cheatcfg_num - 1) sel = 0;
 			if (cheatcfg[sel].label[0] == '\n') sel++;
 		}
+		else if (pad_pressed(PSP_CTRL_LTRIGGER))
+		{
+			sel -= rows;
+			if (sel < 0) sel = 0;
+			if (cheatcfg[sel].label[0] == '\n') sel--;
+		}
+		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		{
+			sel += rows;
+			if (sel >= cheatcfg_num) sel = cheatcfg_num - 1;
+			if (cheatcfg[sel].label[0] == '\n') sel++;
+		}
 		else if (pad_pressed(PSP_CTRL_LEFT))
 		{
 			if (cheatcfg[sel].value && cheatcfg[sel].enable)
@@ -1007,7 +1031,7 @@ int menu_cheatcfg(void)
 					update = 1;
 				}
 			}
-		}
+		}/*
 		else if (pad_pressed(PSP_CTRL_SQUARE))
 		{
 			if (cheatcfg[sel].value && cheatcfg[sel].enable)
@@ -1018,9 +1042,8 @@ int menu_cheatcfg(void)
 					update = 1;
 				}
 			}
-		}
-
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		}*/
+		else if (pad_pressed(PSP_CTRL_SELECT))
 		{
 			help(HELP_CHEATCONFIG);
 			update = 1;
@@ -1572,6 +1595,18 @@ static int menu_keycfg(void)
 			if (sel > keycfg_num - 1) sel = 0;
 			if (keycfg[sel].label[0] == '\n') sel++;
 		}
+		else if (pad_pressed(PSP_CTRL_LTRIGGER))
+		{
+			sel -= rows;
+			if (sel < 0) sel = 0;
+			if (keycfg[sel].label[0] == '\n') sel--;
+		}
+		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		{
+			sel += rows;
+			if (sel >= keycfg_num) sel = keycfg_num - 1;
+			if (keycfg[sel].label[0] == '\n') sel++;
+		}
 		else if (pad_pressed(PSP_CTRL_LEFT))
 		{
 			if (keycfg[sel].type)
@@ -1666,7 +1701,7 @@ static int menu_keycfg(void)
 			if (sel == keycfg_num - 1)
 				break;
 		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PSP_CTRL_SELECT))
 		{
 			help(HELP_KEYCONFIG);
 			update = 1;
@@ -1864,6 +1899,18 @@ static int menu_dipswitch(void)
 			if (sel > dipswitch_num - 1) sel = 0;
 			if (dipswitch[sel].label[0] == '\n') sel++;
 		}
+		else if (pad_pressed(PSP_CTRL_LTRIGGER))
+		{
+			sel -= rows;
+			if (sel < 0) sel = 0;
+			if (dipswitch[sel].label[0] == '\n') sel--;
+		}
+		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		{
+			sel += rows;
+			if (sel >= dipswitch_num) sel = dipswitch_num - 1;
+			if (dipswitch[sel].label[0] == '\n') sel++;
+		}
 		else if (pad_pressed(PSP_CTRL_LEFT))
 		{
 			if (dipswitch[sel].mask)
@@ -1895,7 +1942,7 @@ static int menu_dipswitch(void)
 			if (sel == dipswitch_num - 1)
 				break;
 		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PSP_CTRL_SELECT))
 		{
 			help(HELP_DIPSWITCH);
 			update = 1;
@@ -2319,7 +2366,7 @@ static int menu_state(void)
 			}
 			if (res) return 1;
 		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PSP_CTRL_SELECT))
 		{
 			help(HELP_STATE);
 			update = 1;
@@ -2548,7 +2595,11 @@ void showmenu(void)
 			}
 			else break;
 		}
-
+		else if (pad_pressed(PSP_CTRL_SELECT))
+		{
+			help(HELP_MAINMENU);
+			update = 1;
+		}
 /*PRESS HOME TO EXIT IN MAIN MENU
 		else if (readHomeButton())
 		{
@@ -2953,7 +3004,7 @@ void show_color_menu(void)
 			reload_bg = 1;
 			update = 1;
 		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PSP_CTRL_SELECT))
 		{
 			help(HELP_COLORSETTINGS);
 			update = 1;
@@ -2969,7 +3020,7 @@ void show_color_menu(void)
 
 		if (Loop == LOOP_EXIT) break;
 
-	} while (!pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PSP_CTRL_RTRIGGER) && !pad_pressed(PSP_CTRL_CROSS));
 
 	pad_wait_clear();
 	load_background(WP_FILER);

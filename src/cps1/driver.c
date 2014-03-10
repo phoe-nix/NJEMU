@@ -142,7 +142,7 @@ struct driver_t CPS1_driver[] =
 	{"cawingu",    CPS_B_16, 0,                    GFX_CAWING   },
 	{"cawingj",    CPS_B_16, 0,                    GFX_CAWING   },
 #if !RELEASE
-//	{"cawingb",    CPS_B_16, CPS1_KLUDGE_CAWINGB,  GFX_CAWING   },//
+	{"cawingb",    CPS_B_16, CPS1_KLUDGE_CAWINGB,  GFX_CAWING   },//
 #endif
 	{"sf2",        CPS_B_11, 0,                    GFX_SF2      },
 	{"sf2eb",      CPS_B_17, 0,                    GFX_SF2      },

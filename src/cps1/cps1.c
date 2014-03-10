@@ -35,6 +35,8 @@ static int cps1_init(void)
 	{
 		sprintf(adhoc_matching, "%s_%s", PBPNAME_STR, game_name);
 
+		Loop = LOOP_EXEC;//
+
 		if (adhocInit(adhoc_matching) == 0)
 		{
 			if ((adhoc_server = adhocSelect()) >= 0)
@@ -76,6 +78,8 @@ static void cps1_reset(void)
 	video_set_mode(16);
 	video_clear_screen();
 
+	Loop = LOOP_EXEC;
+
 	autoframeskip_reset();
 
 	cps1_driver_reset();
@@ -86,10 +90,7 @@ static void cps1_reset(void)
 	sound_reset();
 
 	blit_clear_all_sprite();
-
-	Loop = LOOP_EXEC;
 }
-
 
 /*--------------------------------------------------------
 	CPS•®•ﬂ•Â•Ï©`•∑•Á•ÛΩK¡À
@@ -193,8 +194,8 @@ static void cps1_run(void)
 			
 			apply_cheat(); //davex cheat
 			timer_update_cpu();
-			update_inputport();
 			update_screen();
+			update_inputport();
 		}
 
 		video_clear_screen();

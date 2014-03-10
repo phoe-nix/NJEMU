@@ -153,6 +153,7 @@ int messagebox(int number);
 enum
 {
 	HELP_FILEBROWSER = 0,
+	HELP_MAINMENU,
 #if (EMU_SYSTEM == MVS)
 	HELP_SELECTBIOS,
 #endif

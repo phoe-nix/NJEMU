@@ -680,7 +680,7 @@ void commandlist(int flag)
 			if (menu_open == 0) menu_counter = 4;
 			pad_wait_clear();
 		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PSP_CTRL_SELECT))
 		{
 			help(HELP_COMMANDLIST);
 			update = 1;

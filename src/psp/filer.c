@@ -1385,14 +1385,14 @@ void file_browser(void)
 			pad_wait_clear();
 		}
 #if (EMU_SYSTEM == MVS)
-		else if (pad_pressed(PSP_CTRL_START))
+		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			strcpy(game_dir, curr_dir);
 			bios_select(0);
 			update = 1;
 		}
 #elif (EMU_SYSTEM == NCDZ)
-		else if (pad_pressed(PSP_CTRL_START))
+		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
 			if (!bios_error)
 			{
@@ -1408,7 +1408,7 @@ void file_browser(void)
 			pad_wait_clear();
 		}
 #endif
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PSP_CTRL_START))
 		{
 			if (files[sel]->type == FTYPE_DIR)
 			{
@@ -1423,7 +1423,7 @@ void file_browser(void)
 			update = 1;
 		}
 #endif
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PSP_CTRL_SELECT))
 		{
 			help(HELP_FILEBROWSER);
 			update = 1;
