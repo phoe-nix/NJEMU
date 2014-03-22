@@ -267,6 +267,7 @@ static cfg_type gamecfg_3buttons_rot[] =
 	{ CFG_NONE,	"[Autofire Settings]", },
 	{ CFG_PAD,	"Autofire1",			&input_map[P1_AF_1],	0,	0	},
 	{ CFG_PAD,	"Autofire2",			&input_map[P1_AF_2],	0,	0	},
+	{ CFG_PAD,	"Autofire3",			&input_map[P1_AF_3],	0,	0	},
 	{ CFG_INT,	"AFInterval",			&af_interval,			1,	10	},
 
 	{ CFG_NONE,	"[Hotkey Settings]", },
@@ -327,6 +328,7 @@ static cfg_type gamecfg_4buttons[] =
 	{ CFG_PAD,	"Autofire1",			&input_map[P1_AF_1],	0,	0	},
 	{ CFG_PAD,	"Autofire2",			&input_map[P1_AF_2],	0,	0	},
 	{ CFG_PAD,	"Autofire3",			&input_map[P1_AF_3],	0,	0	},
+	{ CFG_PAD,	"Autofire4",			&input_map[P1_AF_4],	0,	0	},
 	{ CFG_INT,	"AFInterval",			&af_interval,			1,	10	},
 
 	{ CFG_NONE,	"[Hotkey Settings]", },
@@ -460,6 +462,26 @@ static cfg_type gamecfg_quiz[] =
 	{ CFG_NONE,	"[Switch Settings]", },
 	{ CFG_PAD,	"ServiceCoin",			&input_map[SERV_COIN],	0,		0		},
 	{ CFG_PAD,	"ServiceSwitch",		&input_map[SERV_SWITCH],0,		0		},
+
+	{ CFG_NONE,	"[Autofire Settings]", },
+	{ CFG_PAD,	"Autofire1",			&input_map[P1_AF_1],	0,	0	},
+	{ CFG_PAD,	"Autofire2",			&input_map[P1_AF_2],	0,	0	},
+	{ CFG_PAD,	"Autofire3",			&input_map[P1_AF_3],	0,	0	},
+	{ CFG_PAD,	"Autofire4",			&input_map[P1_AF_4],	0,	0	},
+	{ CFG_INT,	"AFInterval",			&af_interval,			1,	10	},
+
+	{ CFG_NONE,	"[Hotkey Settings]", },
+	{ CFG_PAD,	"Hotkey12",				&input_map[P1_12],		0,	0	},
+	{ CFG_PAD,	"Hotkey13",				&input_map[P1_13],		0,	0	},
+	{ CFG_PAD,	"Hotkey14",				&input_map[P1_14],		0,	0	},
+	{ CFG_PAD,	"Hotkey23",				&input_map[P1_23],		0,	0	},
+	{ CFG_PAD,	"Hotkey24",				&input_map[P1_24],		0,	0	},
+	{ CFG_PAD,	"Hotkey34",				&input_map[P1_34],		0,	0	},
+	{ CFG_PAD,	"Hotkey123",			&input_map[P1_123],	0,	0	},
+	{ CFG_PAD,	"Hotkey124",			&input_map[P1_124],	0,	0	},
+	{ CFG_PAD,	"Hotkey134",			&input_map[P1_134],	0,	0	},
+	{ CFG_PAD,	"Hotkey234",			&input_map[P1_234],	0,	0	},
+	{ CFG_PAD,	"Hotkey1234",			&input_map[P1_1234],	0,	0	},
 #if (EMU_SYSTEM == CPS1)
 	{ CFG_INT,	"DipSwitchA",			&cps1_dipswitch[0],		0xff,	0xff	},
 	{ CFG_INT,	"DipSwitchB",			&cps1_dipswitch[1],		0xff,	0xff	},

@@ -216,6 +216,7 @@ static void update_inputport0(void)
 			if (input_flag[P1_BUTTON4]) value &= ~0x0080;
 			if (input_flag[P1_12])		 value &= ~0x0030;
 			if (input_flag[P1_13])		 value &= ~0x0050;
+			if (input_flag[P1_14])		 value &= ~0x0090;
 			if (input_flag[P1_23])		 value &= ~0x0060;
 			if (input_flag[P1_24])		 value &= ~0x00a0;
 			if (input_flag[P1_34])		 value &= ~0x00c0;
@@ -235,6 +236,12 @@ static void update_inputport0(void)
 			if (input_flag[P1_BUTTON2]) value &= ~0x2000;
 			if (input_flag[P1_BUTTON3]) value &= ~0x4000;
 			if (input_flag[P1_BUTTON4]) value &= ~0x8000;
+			if (input_flag[P1_12])		 value &= ~0x3000;
+			if (input_flag[P1_13])		 value &= ~0x5000;
+			if (input_flag[P1_14])		 value &= ~0x9000;
+			if (input_flag[P1_23])		 value &= ~0x6000;
+			if (input_flag[P1_24])		 value &= ~0xa000;
+			if (input_flag[P1_34])		 value &= ~0xc000;
 			if (input_flag[P1_123])	 value &= ~0x7000;
 			if (input_flag[P1_124])	 value &= ~0xb000;
 			if (input_flag[P1_134])	 value &= ~0xd000;
@@ -252,6 +259,7 @@ static void update_inputport0(void)
 			if (input_flag[P1_BUTTON1]) value &= ~0x0008;
 			if (input_flag[P1_12])		 value &= ~0x000c;
 			if (input_flag[P1_13])		 value &= ~0x000a;
+			if (input_flag[P1_14])		 value &= ~0x0009;
 			if (input_flag[P1_23])		 value &= ~0x0006;
 			if (input_flag[P1_24])		 value &= ~0x0005;
 			if (input_flag[P1_34])		 value &= ~0x0003;
@@ -269,6 +277,7 @@ static void update_inputport0(void)
 			if (input_flag[P1_BUTTON1]) value &= ~0x0800;
 			if (input_flag[P1_12])		 value &= ~0x0c00;
 			if (input_flag[P1_13])		 value &= ~0x0a00;
+			if (input_flag[P1_14])		 value &= ~0x0900;
 			if (input_flag[P1_23])		 value &= ~0x0600;
 			if (input_flag[P1_24])		 value &= ~0x0500;
 			if (input_flag[P1_34])		 value &= ~0x0300;
@@ -380,6 +389,7 @@ static void update_inputport1(void)
 			if (input_flag[P1_BUTTON4]) value &= ~0x0080;
 			if (input_flag[P1_12])		 value &= ~0x0030;
 			if (input_flag[P1_13])		 value &= ~0x0050;
+			if (input_flag[P1_14])		 value &= ~0x0090;
 			if (input_flag[P1_23])		 value &= ~0x0060;
 			if (input_flag[P1_24])		 value &= ~0x00a0;
 			if (input_flag[P1_34])		 value &= ~0x00c0;
@@ -401,6 +411,7 @@ static void update_inputport1(void)
 			if (input_flag[P1_BUTTON4]) value &= ~0x8000;
 			if (input_flag[P1_12])		 value &= ~0x3000;
 			if (input_flag[P1_13])		 value &= ~0x5000;
+			if (input_flag[P1_14])		 value &= ~0x9000;
 			if (input_flag[P1_23])		 value &= ~0x6000;
 			if (input_flag[P1_24])		 value &= ~0xa000;
 			if (input_flag[P1_34])		 value &= ~0xc000;
