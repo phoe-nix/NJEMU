@@ -1,285 +1,234 @@
-1944,1944: The Loop Master (USA 000620)
-1944j,1944: The Loop Master (Japan 000620)
-1944d,1944: The Loop Master (USA 000620 Phoenix Edition),GAME_BOOTLEG
-19xx,19XX: The War Against Destiny (USA 951207)
-19xxa,19XX: The War Against Destiny (Asia 951207)
-19xxj,19XX: The War Against Destiny (Japan 960104)
-19xxjr1,19XX: The War Against Destiny (Japan 951225)
-19xxjr2,19XX: The War Against Destiny (Japan 951207)
-19xxh,19XX: The War Against Destiny (Hispanic 951218)
-19xxb,19XX: The War Against Destiny (Brazil 951218)
-19xxd,19XX: The War Against Destiny (USA 951207 Phoenix Edition),GAME_BOOTLEG
-armwar,Armored Warriors (Euro 941024)
-armwarr1,Armored Warriors (Euro 941011)
-armwaru,Armored Warriors (USA 941024)
-armwaru1,Armored Warriors (USA 940920)
-pgear,Powered Gear: Strategic Variant Armor Equipment (Japan 941024)
-pgearr1,Powered Gear: Strategic Variant Armor Equipment (Japan 940916)
-armwara,Armored Warriors (Asia 940920)
-armwar1d,Armored Warriors (Euro 941011 Phoenix Edition),GAME_BOOTLEG
-avsp,Alien vs. Predator (Euro 940520)
-avspu,Alien vs. Predator (USA 940520)
-avspj,Alien vs. Predator (Japan 940520)
-avspa,Alien vs. Predator (Asia 940520)
-avsph,Alien vs. Predator (Hispanic 940520)
-avspd,Alien vs. Predator (Euro 940520 Phoenix Edition),GAME_BOOTLEG
-batcir,Battle Circuit (Euro 970319)
-batcira,Battle Circuit (Asia 970319)
-batcirj,Battle Circuit (Japan 970319)
-batcird,Battle Circuit (Euro 970319 Phoenix Edition),GAME_BOOTLEG
-choko,Choko (Japan 010820)
-csclub,Capcom Sports Club (Euro 971017)
-csclub1,Capcom Sports Club (Euro 970722)
-cscluba,Capcom Sports Club (Asia 970722)
-csclubj,Capcom Sports Club (Japan 970722)
-csclubh,Capcom Sports Club (Hispanic 970722)
-csclub1d,Capcom Sports Club (Euro 970722 Phoenix Edition),GAME_BOOTLEG
-cybots,Cyberbots: Fullmetal Madness (Euro 950424)
-cybotsu,Cyberbots: Fullmetal Madness (USA 950424)
-cybotsj,Cyberbots: Fullmetal Madness (Japan 950420)
-cybotsud,Cyberbots: Fullmetal Madness (USA 950424 Phoenix Edition),GAME_BOOTLEG
-cybotsjd,Cyberbots: Fullmetal Madness (Japan 950420 Phoenix Edition),GAME_BOOTLEG
-dimahoo,Dimahoo (Euro 000121)
-dimahoou,Dimahoo (USA 000121)
-dimahoud,Dimahoo (USA 000121 Phoenix Edition),GAME_BOOTLEG
-gmahou,Great Mahou Daisakusen (Japan 000121)
-ddtod,Dungeons & Dragons: Tower of Doom (Euro 940412)
-ddtodr1,Dungeons & Dragons: Tower of Doom (Euro 940113)
-ddtodu,Dungeons & Dragons: Tower of Doom (USA 940125)
-ddtodur1,Dungeons & Dragons: Tower of Doom (USA 940113)
-ddtodj,Dungeons & Dragons: Tower of Doom (Japan 940412)
-ddtodjr1,Dungeons & Dragons: Tower of Doom (Japan 940125)
-ddtodjr2,Dungeons & Dragons: Tower of Doom (Japan 940113)
-ddtoda,Dungeons & Dragons: Tower of Doom (Asia 940412)
-ddtodar1,Dungeons & Dragons: Tower of Doom (Asia 940113)
-ddtodh,Dungeons & Dragons: Tower of Doom (Hispanic 940412)
-ddtodhr1,Dungeons & Dragons: Tower of Doom (Hispanic 940125)
-ddtodhr2,Dungeons & Dragons: Tower of Doom (Hispanic 940113)
-ddtodd,Dungeons & Dragons: Tower of Doom (Euro 940412 Phoenix Edition),GAME_BOOTLEG
-ddsom,Dungeons & Dragons: Shadow over Mystara (Euro 960619)
-ddsomr1,Dungeons & Dragons: Shadow over Mystara (Euro 960223)
-ddsomr2,Dungeons & Dragons: Shadow over Mystara (Euro 960209)
-ddsomr3,Dungeons & Dragons: Shadow over Mystara (Euro 960208)
-ddsomu,Dungeons & Dragons: Shadow over Mystara (USA 960619)
-ddsomur1,Dungeons & Dragons: Shadow over Mystara (USA 960209)
-ddsomj,Dungeons & Dragons: Shadow over Mystara (Japan 960619)
-ddsomjr1,Dungeons & Dragons: Shadow over Mystara (Japan 960206)
-ddsoma,Dungeons & Dragons: Shadow over Mystara (Asia 960619)
-ddsomh,Dungeons & Dragons: Shadow over Mystara (Hispanic 960223)
-ddsomb,Dungeons & Dragons: Shadow over Mystara (Brazil 960223)
-ddsomud,Dungeons & Dragons: Shadow over Mystara (USA 960619 Phoenix Edition),GAME_BOOTLEG
-dstlk,Darkstalkers: The Night Warriors (Euro 940705)
-dstlku,Darkstalkers: The Night Warriors (USA 940818)
-dstlkur1,Darkstalkers: The Night Warriors (USA 940705)
-dstlka,Darkstalkers: The Night Warriors (Asia 940705)
-dstlkh,Darkstalkers: The Night Warriors (Hispanic 940818)
-dstlku1d,Darkstalkers: The Night Warriors (USA 940705 Phoenix Edition),GAME_BOOTLEG
-vampj,Vampire: The Night Warriors (Japan 940705)
-vampja,Vampire: The Night Warriors (Japan 940705 alt)
-vampjr1,Vampire: The Night Warriors (Japan 940630)
-ecofghtr,Eco Fighters (World 931203)
-ecofghtru,Eco Fighters (USA 940215)
-ecofghtru1,Eco Fighters (USA 931203)
-uecology,Ultimate Ecology (Japan 931203)
-ecofghtra,Eco Fighters (Asia 931203)
-ecofghtrh,Eco Fighters (Hispanic 931203)
-ecofghtrd,Eco Fighters (World 931203 Phoenix Edition),GAME_BOOTLEG
-gigawing,Giga Wing (USA 990222)
-gigawingj,Giga Wing (Japan 990223)
-gigawinga,Giga Wing (Asia 990222)
-gigawingh,Giga Wing (Hispanic 990222)
-gigawingb,Giga Wing (Brazil 990222)
-gigawingd,Giga Wing (USA 990222 Phoenix Edition),GAME_BOOTLEG
-gigawingjd,Giga Wing (Japan 990223 Phoenix Edition),GAME_BOOTLEG
-hsf2,Hyper Street Fighter II: The Anniversary Edition (USA 040202)
-hsf2a,Hyper Street Fighter II: The Anniversary Edition (Asia 040202)
-hsf2j,Hyper Street Fighter II: The Anniversary Edition (Japan 031222)
-hsf2d,Hyper Street Fighter II: The Anniversary Edition (Asia 040202 Phoenix Edition),GAME_BOOTLEG
-jyangoku,Jyangokushi: Haoh no Saihai (Japan 990527)
-mmatrix,Mars Matrix: Hyper Solid Shooting (USA 000412)
-mmatrixj,Mars Matrix: Hyper Solid Shooting (Japan 000412)
-mmatrixd,Mars Matrix: Hyper Solid Shooting (USA 000412 Phoenix Edition),GAME_BOOTLEG
-mmancp2u,Mega Man: The Power Battle (CPS2 - USA 951006 / SAMPLE Version)
-rmancp2j,Rockman: The Power Battle (CPS2 - Japan 950922)
-megaman2,Mega Man 2: The Power Fighters (USA 960708)
-megaman2a,Mega Man 2: The Power Fighters (Asia 960708)
-rockman2j,Rockman 2: The Power Fighters (Japan 960708)
-megaman2h,Mega Man 2: The Power Fighters (Hispanic 960712)
-megamn2d,Mega Man 2: The Power Fighters (USA 960708 Phoenix Edition),GAME_BOOTLEG
-mpang,Mighty! Pang (Euro 001010)
-mpangr1,Mighty! Pang (Euro 000925)
-mpangu,Mighty! Pang (USA 001010)
-mpangj,Mighty! Pang (Japan 001011)
-msh,Marvel Super Heroes (Euro 951024)
-mshu,Marvel Super Heroes (USA 951024)
-mshj,Marvel Super Heroes (Japan 951117)
-mshjr1,Marvel Super Heroes (Japan 951024)
-msha,Marvel Super Heroes (Asia 951024)
-mshh,Marvel Super Heroes (Hispanic 951117)
-mshb,Marvel Super Heroes (Brazil 951117)
-mshud,Marvel Super Heroes (US 951024 Phoenix Edition),GAME_BOOTLEG
-mshvsf,Marvel Super Heroes Vs. Street Fighter (Euro 970625)
-mshvsfu,Marvel Super Heroes Vs. Street Fighter (USA 970827)
-mshvsfu1,Marvel Super Heroes Vs. Street Fighter (USA 970625)
-mshvsfj,Marvel Super Heroes Vs. Street Fighter (Japan 970707)
-mshvsfj1,Marvel Super Heroes Vs. Street Fighter (Japan 970702)
-mshvsfj2,Marvel Super Heroes Vs. Street Fighter (Japan 970625)
-mshvsfh,Marvel Super Heroes Vs. Street Fighter (Hispanic 970625)
-mshvsfa,Marvel Super Heroes Vs. Street Fighter (Asia 970625)
-mshvsfa1,Marvel Super Heroes Vs. Street Fighter (Asia 970620)
-mshvsfb,Marvel Super Heroes Vs. Street Fighter (Brazil 970827)
-mshvsfb1,Marvel Super Heroes Vs. Street Fighter (Brazil 970625)
-mshvsfu1d,Marvel Super Heroes Vs. Street Fighter (USA 970625 Phoenix Edition),GAME_BOOTLEG
-mvsc,Marvel Vs. Capcom: Clash of Super Heroes (Euro 980123)
-mvscr1,Marvel Vs. Capcom: Clash of Super Heroes (Euro 980112)
-mvscu,Marvel Vs. Capcom: Clash of Super Heroes (USA 980123)
-mvscur1,Marvel Vs. Capcom: Clash of Super Heroes (USA 971222)
-mvscj,Marvel Vs. Capcom: Clash of Super Heroes (Japan 980123)
-mvscjr1,Marvel Vs. Capcom: Clash of Super Heroes (Japan 980112)
-mvscjsing,Marvel Vs. Capcom: Clash of Super Heroes (Japan 980123) (Single PCB)
-mvsca,Marvel Vs. Capcom: Clash of Super Heroes (Asia 980123)
-mvscar1,Marvel Vs. Capcom: Clash of Super Heroes (Asia 980112)
-mvsch,Marvel Vs. Capcom: Clash of Super Heroes (Hispanic 980123)
-mvscb,Marvel Vs. Capcom: Clash of Super Heroes (Brazil 980123)
-mvscud,Marvel Vs. Capcom: Clash of Super Heroes (USA 980123 Phoenix Edition),GAME_BOOTLEG
-nwarr,Night Warriors: Darkstalkers' Revenge (Euro 950316)
-nwarru,Night Warriors: Darkstalkers' Revenge (USA 950406)
-nwarrh,Night Warriors: Darkstalkers' Revenge (Hispanic 950403)
-nwarrb,Night Warriors: Darkstalkers' Revenge (Brazil 950403)
-nwarra,Night Warriors: Darkstalkers' Revenge (Asia 950302)
-vhuntj,Vampire Hunter: Darkstalkers' Revenge (Japan 950316)
-vhuntjr1s,Vampire Hunter: Darkstalkers' Revenge (Japan 950307 stop version)
-vhuntjr1,Vampire Hunter: Darkstalkers' Revenge (Japan 950307)
-vhuntjr2,Vampire Hunter: Darkstalkers' Revenge (Japan 950302)
-nwarrud,Night Warriors: Darkstalkers' Revenge (USA 950406 Phoenix Edition),GAME_BOOTLEG
-vhunt2,Vampire Hunter 2: Darkstalkers Revenge (Japan 970929)
-vhunt2r1,Vampire Hunter 2: Darkstalkers Revenge (Japan 970913)
-vhunt2d,Vampire Hunter 2: Darkstalkers Revenge (Japan 970913 Phoenix Edition),GAME_BOOTLEG
-vsav,Vampire Savior: The Lord of Vampire (Euro 970519)
-vsavu,Vampire Savior: The Lord of Vampire (USA 970519)
-vsavj,Vampire Savior: The Lord of Vampire (Japan 970519)
-vsava,Vampire Savior: The Lord of Vampire (Asia 970519)
-vsavh,Vampire Savior: The Lord of Vampire (Hispanic 970519)
-vsavd,Vampire Savior: The Lord of Vampire (Euro 970519 Phoenix Edition),GAME_BOOTLEG
-vsav2,Vampire Savior 2: The Lord of Vampire (Japan 970913)
-vsav2d,Vampire Savior 2: The Lord of Vampire (Japan 970913 Phoenix Edition),GAME_BOOTLEG
-progear,Progear (USA 010117)
-progearj,Progear no Arashi (Japan 010117)
-progeara,Progear (Asia 010117)
-progearud,Progear (USA 010117 Phoenix Edition),GAME_BOOTLEG
-progearjd,Progear (Japan 010117 Phoenix Edition),GAME_BOOTLEG
-progearjbl,Progear (Japan 010117 (decrypted bootleg),GAME_BOOTLEG
-pzloop2,Puzz Loop 2 (Euro 010302)
-pzloop2j,Puzz Loop 2 (Japan 010226)
-pzloop2jr1,Puzz Loop 2 (Japan 010205)
-qndream,Quiz Nanairo Dreams: Nijiirochou no Kiseki (Japan 960826)
-ringdest,Ring of Destruction: Slammasters II (Euro 940902)
-ringdesta,Ring of Destruction: Slammasters II (Asia 940831)
-smbomb,Super Muscle Bomber: The International Blowout (Japan 940831)
-smbombr1,Super Muscle Bomber: The International Blowout (Japan 940808)
-ringdstd,Ring of Destruction: Slammasters II (Euro 940902 Phoenix Edition),GAME_BOOTLEG
-sgemf,Super Gem Fighter Mini Mix (USA 970904)
-pfghtj,Pocket Fighter (Japan 970904)
-sgemfa,Super Gem Fighter: Mini Mix (Asia 970904)
-sgemfh,Super Gem Fighter: Mini Mix (Hispanic 970904)
-sgemfd,Super Gem Fighter Mini Mix (USA 970904 Phoenix Edition),GAME_BOOTLEG
-spf2t,Super Puzzle Fighter II Turbo (USA 960620)
-spf2xj,Super Puzzle Fighter II X (Japan 960531)
-spf2ta,Super Puzzle Fighter II Turbo (Asia 960529)
-spf2th,Super Puzzle Fighter II Turbo (Hispanic 960531)
-spf2h,Super Puzzle Fighter II Turbo (boss unlock)GAME_HACK
-spf2td,Super Puzzle Fighter II Turbo (USA 960620 Phoenix Edition),GAME_BOOTLEG
-spf2xjd,Super Puzzle Fighter II X (Japan 960531 Phoenix Edition),GAME_BOOTLEG
-sfa,Street Fighter Alpha: Warriors' Dreams (Euro 950727)
-sfar1,Street Fighter Alpha: Warriors' Dreams (Euro 950718)
-sfar2,Street Fighter Alpha: Warriors' Dreams (Euro 950627)
-sfar3,Street Fighter Alpha: Warriors' Dreams (Euro 950605)
-sfau,Street Fighter Alpha: Warriors' Dreams (USA 950627)
-sfza,Street Fighter Zero (Asia 950627)
-sfzar1,Street Fighter Zero (Asia 950605)
-sfzj,Street Fighter Zero (Japan 950727)
-sfzjr1,Street Fighter Zero (Japan 950627)
-sfzjr2,Street Fighter Zero (Japan 950605)
-sfzh,Street Fighter Zero (Hispanic 950718)
-sfzhr1,Street Fighter Zero (Hispanic 950627)
-sfzb,Street Fighter Zero (Brazil 951109)
-sfzbr1,Street Fighter Zero (Brazil 950727)
-sfad,Street Fighter Alpha: Warriors' Dreams (Euro 950727 Phoenix Edition),GAME_BOOTLEG
-sfa2,Street Fighter Alpha 2 (Euro 960229)
-sfa2u,Street Fighter Alpha 2 (USA 960430)
-sfa2ur1,Street Fighter Alpha 2 (USA 960306)
-sfz2j,Street Fighter Zero 2 (Japan 960430)
-sfz2jr1,Street Fighter Zero 2 (Japan 960227)
-sfz2a,Street Fighter Zero 2 (Asia 960227)
-sfz2b,Street Fighter Zero 2 (Brazil 960531)
-sfz2br1,Street Fighter Zero 2 (Brazil 960304)
-sfz2h,Street Fighter Zero 2 (Hispanic 960304)
-sfz2n,Street Fighter Zero 2 (Oceania 960229)
-sfz2al,Street Fighter Zero 2 Alpha (Asia 960826)
-sfz2alj,Street Fighter Zero 2 Alpha (Japan 960805)
-sfz2alh,Street Fighter Zero 2 Alpha (Hispanic 960813)
-sfz2alb,Street Fighter Zero 2 Alpha (Brazil 960813)
-sfz2ad,Street Fighter Zero 2 (Asia 960227 Phoenix Edition),GAME_BOOTLEG
-sfz2jd,Street Fighter Zero 2 (Japan 960227 Phoenix Edition),GAME_BOOTLEG
-sfz2ald,Street Fighter Zero 2 Alpha (Asia 960826 Phoenix Edition),GAME_BOOTLEG
-sfa3,Street Fighter Alpha 3 (Euro 980904)
-sfa3u,Street Fighter Alpha 3 (USA 980904)
-sfa3ur1,Street Fighter Alpha 3 (USA 980629)
-sfa3h,Street Fighter Alpha 3 (Hispanic 980904)
-sfa3hr1,Street Fighter Alpha 3 (Hispanic 980629)
-sfa3b,Street Fighter Alpha 3 (Brazil 980629)
-sfz3j,Street Fighter Zero 3 (Japan 980904)
-sfz3jr1,Street Fighter Zero 3 (Japan 980727)
-sfz3jr2,Street Fighter Zero 3 (Japan 980629)
-sfz3a,Street Fighter Zero 3 (Asia 980904)
-sfz3ar1,Street Fighter Zero 3 (Asia 980701)
-sfa3ud,Street Fighter Alpha 3 (USA 980904 Phoenix Edition),GAME_BOOTLEG
-sfz3jr2d,Street Fighter Zero 3 (Japan 980629 Phoenix Edition),GAME_BOOTLEG
-ssf2,Super Street Fighter II: The New Challengers (World 930911)
-ssf2u,Super Street Fighter II: The New Challengers (USA 930911)
-ssf2a,Super Street Fighter II: The New Challengers (Asia 931005)
-ssf2ar1,Super Street Fighter II: The New Challengers (Asia 930914)
-ssf2j,Super Street Fighter II: The New Challengers (Japan 931005)
-ssf2jr1,Super Street Fighter II: The New Challengers (Japan 930911)
-ssf2jr2,Super Street Fighter II: The New Challengers (Japan 930910)
-ssf2h,Super Street Fighter II: The New Challengers (Hispanic 930911)
-ssf2ud,Super Street Fighter II: The New Challengers (USA 930911 Phoenix Edition),GAME_BOOTLEG
-ssf2tb,Super Street Fighter II: The Tournament Battle (World 931119)
-ssf2tbr1,Super Street Fighter II: The Tournament Battle (World 930911)
-ssf2tbj,Super Street Fighter II: The Tournament Battle (Japan 930911)
-ssf2tbh,Super Street Fighter II: The Tournament Battle (Hispanic 931005)
-ssf2tbd,Super Street Fighter II: The Tournament Battle (World 931119 Phoenix Edition),GAME_BOOTLEG
-ssf2t,Super Street Fighter II Turbo (World 940223)
-ssf2ta,Super Street Fighter II Turbo (Asia 940223)
-ssf2tu,Super Street Fighter II Turbo (USA 940323)
-ssf2tur1,Super Street Fighter II Turbo (USA 940223)
-ssf2xj,Super Street Fighter II X: Grand Master Challenge (Japan 940223)
-ssf2xjr,Super Street Fighter II X: Grand Master Challenge (Japan 940223 rent version)
-ssf2xjd,Super Street Fighter II X: Grand Master Challenge (Japan 940223 Phoenix Edition),GAME_BOOTLEG
-xmcota,X-Men: Children of the Atom (Euro 950331)
-xmcotar1,X-Men: Children of the Atom (Euro 950105)
-xmcotau,X-Men: Children of the Atom (USA 950105)
-xmcotah,X-Men: Children of the Atom (Hispanic 950331)
-xmcotahr1,X-Men: Children of the Atom (Hispanic 950105)
-xmcotaj,X-Men: Children of the Atom (Japan 950105)
-xmcotaj1,X-Men: Children of the Atom (Japan 941222)
-xmcotaj2,X-Men: Children of the Atom (Japan 941219)
-xmcotaj3,X-Men: Children of the Atom (Japan 941217)
-xmcotajr,X-Men: Children of the Atom (Japan 941208 rent version)
-xmcotaa,X-Men: Children of the Atom (Asia 950105)
-xmcotaar1,X-Men: Children of the Atom (Asia 941217)
-xmcotar1d,X-Men: Children of the Atom (Euro 950105 Phoenix Edition),GAME_BOOTLEG
-xmvsf,X-Men Vs. Street Fighter (Euro 961004)
-xmvsfr1,X-Men Vs. Street Fighter (Euro 960910)
-xmvsfu,X-Men Vs. Street Fighter (USA 961023)
-xmvsfur1,X-Men Vs. Street Fighter (USA 961004)
-xmvsfj,X-Men Vs. Street Fighter (Japan 961004)
-xmvsfjr1,X-Men Vs. Street Fighter (Japan 960910)
-xmvsfjr2,X-Men Vs. Street Fighter (Japan 960909)
-xmvsfa,X-Men Vs. Street Fighter (Asia 961023)
-xmvsfar1,X-Men Vs. Street Fighter (Asia 961004)
-xmvsfar2,X-Men Vs. Street Fighter (Asia 960919)
-xmvsfar3,X-Men Vs. Street Fighter (Asia 960910)
-xmvsfh,X-Men Vs. Street Fighter (Hispanic 961004)
-xmvsfb,X-Men Vs. Street Fighter (Brazil 961023)
-xmvsfu1d,X-Men Vs. Street Fighter (USA 961004 Phoenix Edition),GAME_BOOTLEG
+1941,1941 - Counter Attack (World 900227)
+1941r1,1941 - Counter Attack (World)
+1941u,1941 - Counter Attack (USA 900227)
+1941j,1941 - Counter Attack (Japan)
+captcomm,Captain Commando (World 911202)
+captcommr1,Captain Commando (World 911014)
+captcommu,Captain Commando (USA 910928)
+captcommj,Captain Commando (Japan 911202)
+captcommjr1,Captain Commando (Japan 910928)
+captcommb,Captain Commando (bootleg),GAME_BOOTLEG
+cawing,Carrier Air Wing (World 901012)
+cawingr1,Carrier Air Wing (World 901009)
+cawingu,Carrier Air Wing (USA 901012)
+cawingj,U.S. Navy (Japan 901012)
+cworld2j,Adventure Quiz Capcom World 2 (Japan 920611)
+dino,Cadillacs and Dinosaurs (World 930201)
+dinou,Cadillacs and Dinosaurs (US 930201)
+dinoj,Cadillacs Kyouryuu-Shinseiki (Japan 930201)
+dinob,Cadillacs and Dinosaurs (bootleg),GAME_BOOTLEG
+dinoh,Cadillacs and Dinosaurs (bootleg / set 1),GAME_BOOTLEG
+dinoha,Cadillacs and Dinosaurs (bootleg / set 2),GAME_BOOTLEG
+dinohb,Cadillacs and Dinosaurs (bootleg / set 3),GAME_BOOTLEG
+dinohunt,Cadillacs and Dinosaurs (Dinosaur Hunter),GAME_BOOTLEG
+dynwar,Dynasty Wars (USA B-Board 89624B-?)
+dynwara,Dynasty Wars (USA B-Board 88622B-3)
+dynwarj,Tenchi wo Kurau (Japan)
+dynwarjr,Tenchi wo Kurau (Japan Resale Ver.)
+ffight,Final Fight (World set 1)
+ffighta,Final Fight (World set 2)
+ffightu,Final Fight (USA set 1)
+ffightu1,Final Fight (USA set 2)
+ffightua,Final Fight (US 900112)
+ffightub,Final Fight (US 900613)
+ffightj,Final Fight (Japan)
+ffightj1,Final Fight (Japan 900112)
+ffightj2,Final Fight (Japan 900305)
+ffightj3,Final Fight (Japan 900613)
+ffightjh,Street Smart / Final Fight (Japan hack),GAME_HACK
+ffightbl,Final Fight (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+fcrash,Final Crash (bootleg of Final Fight),GAME_NOT_WORK|GAME_BOOTLEG
+forgottn,Forgotten Worlds (World)
+forgottnu,Forgotten Worlds (USA B-Board 88621B-2 Rev. C)
+forgottnu1,Forgotten Worlds (USA B-Board 88618B-2 Rev. C)
+forgottnua,Forgotten Worlds (USA B-Board 88618B-2 Rev. A)
+forgottnuaa,Forgotten Worlds (USA B-Board 88618B-2 Rev. AA)
+lostwrld,Lost Worlds (Japan)
+lostwrldo,Lost Worlds (Japan Old Ver.)
+ghouls,Ghouls'n Ghosts (World)
+ghoulsu,Ghouls'n Ghosts (US)
+daimakai,Daimakaimura (Japan)
+daimakair,Daimakaimura (Japan Resale Ver.)
+ganbare,Ganbare Marin-kun (Marine 2K0411 JPN),GAME_NOT_WORK|
+knights,Knights of the Round (World 911127)
+knightsu,Knights of the Round (USA 911127)
+knightsj,Knights of the Round (Japan 911127 B-Board 91634B-2)
+knightsja,Knights of the Round (Japan 911127 B-Board 89625B-1)
+knightsb,Knights of the Round (bootleg / set 1),GAME_BOOTLEG
+knightsb2,Knights of the Round (bootleg / set 2),GAME_BOOTLEG
+knightsh,Knights of the Round (hack),GAME_BOOTLEG
+knightsi,Knights of the Round (Show random value),GAME_HACK
+knightsr,Knights of the Round (RANDOM),GAME_HACK
+kod,The King of Dragons (World 910805)
+kodr1,The King of Dragons (World 910711)
+kodu,The King of Dragons (USA 910910)
+kodj,The King of Dragons (Japan 910805 B-Board 90629B-3)
+kodja,The King of Dragons (Japan 910805 B-Board 89625B-1)
+kodb,The King of Dragons (bootleg),GAME_BOOTLEG
+kodh,The King of Dragons (hack),GAME_BOOTLEG
+megaman,Mega Man - The Power Battle (CPS1 USA 951006)
+megamana,Mega Man - The Power Battle (CPS1 Asia 951006)
+rockmanj,Rockman - The Power Battle (CPS1 Japan 950922)
+mercs,Mercs (World 900302)
+mercsu,Mercs (US 900608)
+mercsur1,Mercs (US 900302)
+mercsj,Senjou no Ookami II (Japan 900302)
+mtwins,Mega Twins (World 900619)
+chikij,Chiki Chiki Boys (Japan 900619)
+nemo,Nemo (World 901130)
+nemoj,Nemo (Japan 901120)
+msword,Magic Sword - Heroic Fantasy (World 900725)
+mswordr1,Magic Sword - Heroic Fantasy (World 900623)
+mswordu,Magic Sword - Heroic Fantasy (USA 900725)
+mswordj,Magic Sword (Japan 900623)
+pang3,Pang! 3 (Euro 950601)
+pang3r1,Pang! 3 (Euro 950511)
+pang3j,Pang! 3 (Japan 950511)
+pang3b,Pang! 3 (bootleg),GAME_BOOTLEG
+pnickj,Pnickies (Japan 940608)
+pnicku,Pnickies (USA 940608 Loca Test Version)
+punisher,The Punisher (World 930422)
+punisheru,The Punisher (USA 930422)
+punisherh,The Punisher (Hispanic 930422)
+punisherj,The Punisher (Japan 930422)
+punisherbz,The Punisher - Biaofeng Zhanjing(Chinese bootleg),GAME_BOOTLEG
+qad,Quiz & Dragons (USA 920701)
+qadjr,Quiz & Dragons (Japan 940921)
+qtono2j,Quiz Tonosama no Yabou 2 Zenkoku-ban (Japan 950123)
+slammast,Saturday Night Slam Masters (World 930713)
+slammastu,Saturday Night Slam Masters (USA 930713)
+mbomberj,Muscle Bomber - The Body Explosion (Japan 930713)
+mbombrd,Muscle Bomber Duo - Ultimate Team Battle (World 931206)
+mbombrdj,Muscle Bomber Duo - Heat Up Warriors (Japan 931206)
+sf2,Street Fighter II - The World Warrior (World 910522)
+sf2eb,Street Fighter II - The World Warrior (World 910214)
+sf2ed,Street Fighter II - The World Warrior (World 910318)
+sf2ee,Street Fighter II - The World Warrior (World 910228)
+sf2ua,Street Fighter II - The World Warrior (USA 910206)
+sf2ub,Street Fighter II - The World Warrior (USA 910214)
+sf2uc,Street Fighter II - The World Warrior (USA 910306)
+sf2ud,Street Fighter II - The World Warrior (USA 910318)
+sf2ue,Street Fighter II - The World Warrior (USA 910228)
+sf2uf,Street Fighter II - The World Warrior (USA 910411)
+sf2ug,Street Fighter II - The World Warrior (USA 910522 Rev. G)
+sf2ui,Street Fighter II - The World Warrior (USA 910522 Rev. I)
+sf2uk,Street Fighter II - The World Warrior (USA 911101)
+sf2j,Street Fighter II - The World Warrior (Japan 911210)
+sf2ja,Street Fighter II - The World Warrior (Japan 910214)
+sf2jc,Street Fighter II - The World Warrior (Japan 910306)
+sf2jf,Street Fighter II - The World Warrior (Japan 910411)
+sf2jh,Street Fighter II - The World Warrior (Japan 910522)
+sf2jl,Street Fighter II - The World Warrior (Japan 920312)
+sf2qp1,Street Fighter II - The World Warrior (Quicken Pt-I bootleg),GAME_BOOTLEG
+sf2ebbl,Street Fighter II - The World Warrior TAB Austria (bootleg set 1),GAME_BOOTLEG
+sf2thndr,Street Fighter II - The World Warrior Thunder Edition (bootleg),GAME_BOOTLEG
+sf2ce,Street Fighter II' - Champion Edition (World 920513)
+sf2ceea,Street Fighter II' - Champion Edition (World 920313)
+sf2ceua,Street Fighter II' - Champion Edition (USA 920313)
+sf2ceub,Street Fighter II' - Champion Edition (USA 920513)
+sf2ceuc,Street Fighter II' - Champion Edition (USA 920803)
+sf2ceja,Street Fighter II' - Champion Edition (Japan 920322)
+sf2cejb,Street Fighter II' - Champion Edition (Japan 920513)
+sf2cejc,Street Fighter II' - Champion Edition (Japan 920803)
+sf2bhh,Street Fighter II' - Champion Edition (Hung Hsi bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+sf2rb,Street Fighter II' - Champion Edition (Rainbow set 1),GAME_BOOTLEG
+sf2rb2,Street Fighter II' - Champion Edition (Rainbow set 2),GAME_BOOTLEG
+sf2rb3,Street Fighter II' - Champion Edition (Rainbow set 3),GAME_BOOTLEG
+sf2red,Street Fighter II' - Champion Edition (Red Wave),GAME_BOOTLEG
+sf2v004,Street Fighter II' - Champion Edition (V004),GAME_NOT_WORK|GAME_BOOTLEG
+sf2acc,Street Fighter II' - Champion Edition (Accelerator bootleg set 1),GAME_NOT_WORK|GAME_BOOTLEG
+sf2acca,Street Fighter II' - Champion Edition (Accelerator bootleg set 2),GAME_NOT_WORK|GAME_BOOTLEG
+sf2accp2,Street Fighter II' - Champion Edition (Accelerator bootleg set 3),GAME_BOOTLEG
+sf2amf,Street Fighter II' - Champion Edition (Alpha Magic-F bootleg set 1),GAME_BOOTLEG
+sf2amf2,Street Fighter II' - Champion Edition (Alpha Magic-F bootleg set 1),GAME_BOOTLEG
+sf2dkot2,Street Fighter II' - Champion Edition (Double K.O. Turbo II bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+sf2ceblp,Street Fighter II' - Champion Edition (protected bootleg on non-dash board),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m1,Street Fighter II' - Champion Edition (M1 bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m2,Street Fighter II' - Champion Edition (M2 bootleg),GAME_BOOTLEG
+sf2m3,Street Fighter II' - Champion Edition (M3 bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m4,Street Fighter II' - Champion Edition (M4 bootleg),GAME_BOOTLEG
+sf2m5,Street Fighter II' - Champion Edition (M5 bootleg),GAME_BOOTLEG
+sf2m6,Street Fighter II' - Champion Edition (M6 bootleg),GAME_BOOTLEG
+sf2m7,Street Fighter II' - Champion Edition (M7 bootleg),GAME_BOOTLEG
+sf2m8,Street Fighter II' - Champion Edition (M8 bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+sf2yyc,Street Fighter II' - Champion Edition (YYC bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+sf2koryu,Street Fighter II' - Champion Edition (Xiang Long Chinese bootleg),GAME_BOOTLEG
+sf2mdt,Street Fighter II': Magic Delta Turbo (bootleg set 1),GAME_BOOTLEG
+sf2mdta,Street Fighter II': Magic Delta Turbo (bootleg set 2),GAME_NOT_WORK|GAME_BOOTLEG
+sf2mdtb,Street Fighter II': Magic Delta Turbo (bootleg set 3),GAME_NOT_WORK|GAME_BOOTLEG
+sf2dongb,Street Fighter II' - Champion Edition (Dongfang Bubai protection bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m9,Street Fighter II' - Champion Edition (M9 bootleg),GAME_BOOTLEG
+sf2m10,Street Fighter II' - Champion Edition (M10 bootleg),GAME_BOOTLEG
+sf2m11,Street Fighter II' - Champion Edition (M11 bootleg),GAME_BOOTLEG
+sf2m12,Street Fighter II' - Champion Edition (M12 bootleg),GAME_BOOTLEG
+sf2m13,Street Fighter II' - Champion Edition (M13 bootleg),GAME_BOOTLEG
+sf2m14,Street Fighter II' - Champion Edition (M14 bootleg),GAME_BOOTLEG
+sf2tlona,Street Fighter II' - Champion Edition Tu Long (Chinese bootleg set 1),GAME_BOOTLEG
+sf2tlonb,Street Fighter II' - Champion Edition Tu Long (Chinese bootleg set 2),GAME_BOOTLEG
+sf2hf,Street Fighter II' - Hyper Fighting (World 921209)
+sf2hfu,Street Fighter II' - Hyper Fighting (USA 921209)
+sf2hfj,Street Fighter II' Turbo - Hyper Fighting (Japan 921209)
+sfzch,Street Fighter ZERO (Japan 951020 CPS Changer)
+sfach,Street Fighter ALPHA (USA 950727 Publicity)
+strider,Strider (USA, B-Board 89624B-2)
+striderua,Strider (USA, B-Board 89624B-3)
+striderj,Strider Hiryu (Japan)
+striderjr,Strider Hiryu (Japan Resale Ver.)
+3wonders,Three Wonders (World 910520)
+3wondersr1,Three Wonders (World 910513)
+3wondersu,Three Wonders (USA 910520)
+wonder3,Wonder 3 (Japan 910520)
+3wondersb,Three Wonders (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+3wondersh,Three Wonders (hack),GAME_BOOTLEG
+unsquad,U.N. Squadron (USA)
+area88,Area 88 (Japan)
+area88r,Area 88 (Japan Resale Ver.)
+varth,Varth - Operation Thunderstorm (World 920714)
+varthr1,Varth - Operation Thunderstorm (World 920612)
+varthu,Varth - Operation Thunderstorm (US 920612)
+varthj,Varth - Operation Thunderstorm (Japan 920714)
+willow,Willow (USA)
+willowo,Willow (USA Old Ver.)
+willowj,Willow (Japan)
+wof,Warriors of Fate (World 921031)
+wofr1,Warriors of Fate (World 921002)
+wofa,Sangokushi II (Asia 921005)
+wofch,Sangokushi II (CPS Changer Japan 921031),GAME_HACK
+wofchs,Sangokushi II (Chinese 921005),GAME_HACK
+wofu,Warriors of Fate (USA 921031)
+wofj,Tenchi wo Kurau II - Sekiheki no Tatakai (Japan 921031)
+wofb,Warriors of Fate (bootleg),GAME_NOT_WORKING|GAME_BOOTLEG
+wofh,Legend of Three Kingdoms' Heroes (bootleg / set 1),GAME_BOOTLEG
+wofha,Legend of Three Kingdoms' Heroes (bootleg / set 2),GAME_BOOTLEG
+wofhfh,Huo Feng Huang(Chinese bootleg of Sangokushi II),GAME_BOOTLEG
+wof3js,Three Sword Masters (bootleg),GAME_BOOTLEG
+wof3sj,Three Holy Swords (bootleg / set 1),GAME_BOOTLEG
+wof3sja,Three Holy Swords (bootleg / set 2),GAME_BOOTLEG
+wofsj,Holy Sword Three Kingdoms (bootleg / set 1),GAME_BOOTLEG
+wofsja,Holy Sword Three Kingdoms (bootleg / set 2),GAME_BOOTLEG
+wofsjb,Holy Sword Three Kingdoms (bootleg / set 3),GAME_BOOTLEG
+wofth,Warriors of Fate (Di ren ti huan Enhanced),GAME_HACK
+wofjjq,Warriors of Fate (Xue xing Enhanced),GAME_HACK
+woffh,Warriors of Fate (Fen hong Enhanced),GAME_HACK
+wofzhs,Warriors of Fate (Zhao huan shou Enhanced),GAME_HACK
+wofbio,Warriors of Fate (Boss Enhanced),GAME_HACK
+wofctj,Warriors of Fate (Cao zhi jian Enhanced),GAME_HACK
+wofctm,Warriors of Fate (Cao zhi ma Enhanced),GAME_HACK
+wofgyc,Warriors of Fate (Guan yu chi tu ma Enhanced),GAME_HACK
+wofgyq,Warriors of Fate (Guan yu Enhanced),GAME_HACK
+wofhzj,Warriors of Fate (Huang zhong Enhanced),GAME_HACK
+wofjqz,Warriors of Fate (Jian qi zong heng Enhanced),GAME_HACK
+wofsjj,Warriors of Fate (Shen jian + Jian qi Enhanced),GAME_HACK
+wofyjs,Warriors of Fate (Yu jian shu Enhanced),GAME_HACK
+wofzyq,Warriors of Fate (Zhao yun bao li Enhanced),GAME_HACK
+wofzy2,Warriors of Fate (Zhao yun lian ti Enhanced),GAME_HACK
+wofzy3,Warriors of Fate (Zhao yun sheng long Enhanced),GAME_HACK
+wofsbl,Warriors of Fate (Shen bing li qi Enhanced),GAME_HACK
+wofsz,Warriors of Fate (Shao zhu Enhanced),GAME_HACK
+wofdy,Warriors of Fate (Di yu Enhanced),GAME_HACK
+wofbt,Warriors of Fate (Zhang fei Enhanced),GAME_HACK
+wofhgz,Warriors of Fate (Han guang zhan Enhanced),GAME_HACK
+wofdyg,Warriors of Fate (Di yi guan Enhanced),GAME_HACK
+wofyxg,Warriors of Fate (Ying xiong guan Enhanced),GAME_HACK
+wofmr,Warriors of Fate (Mei ren guan Enhanced),GAME_HACK
+wofzhy,Warriors of Fate (Zhao huan shou & Yu jian shu Enhanced),GAME_HACK
