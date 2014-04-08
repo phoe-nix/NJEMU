@@ -1,230 +1,285 @@
-1941,1941 ������ (����� 900227)
-1941r1,1941 ������ (�����)
-1941u,1941 ������ (���� 900227)
-1941j,1941 ������ (�հ�)
-captcomm,���� (����� 911202)
-captcommr1,���� (����� 911014)
-captcommu,���� (���� 910928)
-captcommj,���� (�հ� 911202)
-captcommjr1,���� (�հ� 910928)
-captcommb,���� (�I��),GAME_BOOTLEG
-cawing,�w��֮�� (����� 901012)
-cawingr1,�w��֮�� (����� 901009)
-cawingu,�w��֮�� (���� 901012)
-cawingj,�w��֮�� (�հ� 901012)
-cworld2j,���տ�����2 (�հ� 920611)
-dino,�������o (����� 930201)
-dinou,�������o (���� 930201)
-dinoj,�������o (�հ� 930201)
-dinob,�������o (�I��),GAME_BOOTLEG
-dinoh,�������o (�I��1),GAME_BOOTLEG
-dinoha,�������o (�I��2),GAME_BOOTLEG
-dinohb,�������o (�I��3),GAME_BOOTLEG
-dinohunt,�����C�� (�Ї��I��),GAME_BOOTLEG
-dynwar,��ʳ��� (�����)
-dynwara,��ʳ��� (����)
-dynwarj,��ʳ��� (�հ�)
-dynwarjr,��ʳ��� (�հ�2)
-ffight,������L (�����1)
-ffighta,������L (�����2)
-ffightu,������L (����1)
-ffightu1,������L (����2)
-ffightua,������L (���� 900112)
-ffightub,������L (���� 900613)
-ffightj,������L (�հ�)
-ffightj1,������L (�հ� 900112)
-ffightj2,������L (�հ� 900305)
-ffightj3,������L (�հ� 900613)
-ffightjh,������L (�հ� Hack),GAME_HACK
-ffightbl,������L (�I��),GAME_NOT_WORK|GAME_BOOTLEG
-fcrash,������L Final Crash (�I��),GAME_NOT_WORK|GAME_BOOTLEG
-forgottn,ʧ������� (�����)
-forgottnu,ʧ������� (���� B-Board 88621B-2 Rev. C)
-forgottnu1,ʧ������� (���� B-Board 88618B-2 Rev. C)
-forgottnua,ʧ������� (���� B-Board 88618B-2 Rev. A)
-forgottnuaa,ʧ������� (���� B-Board 88618B-2 Rev. AA)
-lostwrld,ʧ������� (�հ�)
-lostwrldo,ʧ������� (�հ� Old Ver.)
-ghouls,ħ��� (�����)
-ghoulsu,ħ��� (����)
-daimakai,ħ��� (�հ�)
-daimakair,ħ��� (�հ�2)
-knights,�A׿�Tʿ (����� 911127)
-knightsu,�A׿�Tʿ (���� 911127)
-knightsj,�A׿�Tʿ (�հ�2 911127)
-knightsja,�A׿�Tʿ (�հ�1 911127)
-knightsb,�A׿�Tʿ (�I��1),GAME_BOOTLEG
-knightsb2,�A׿�Tʿ (�I��2),GAME_BOOTLEG
-knightsh,�A׿�Tʿ (hack��),GAME_BOOTLEG
-knightsi,�A׿�Tʿ (�@ʾ�S�Cֵ),GAME_HACK
-knightsr,�A׿�Tʿ (�S�C��),GAME_HACK
-kod,���� (����� 910805)
-kodr1,���� (����� 910711)
-kodu,���� (���� 910910)
-kodj,���� (�հ�1 910805)
-kodja,���� (�հ�2 910805)
-kodb,���� (�I��),GAME_BOOTLEG
-kodh,���� (hack),GAME_BOOTLEG
-megaman,����� ����֮�� (CPS1 ���� 951006)
-megamana,����� ����֮�� (CPS1 ���ް� 951006)
-rockmanj,����� ����֮�� (CPS1 �հ� 950922)
-mercs,����֮��2 (����� 900302)
-mercsu,����֮��2 (���� 900608)
-mercsur1,����֮��2 (���� 900302)
-mercsj,����֮��2 (�հ� 900302)
-msword,ħ���� �¸ҵĻ��� (����� 900725)
-mswordr1,ħ���� �¸ҵĻ��� (����� 900623)
-mswordu,ħ���� �¸ҵĻ��� (���� 900725)
-mswordj,ħ���� (�հ� 900623)
-mtwins,�p�냺 (����� 900619)
-chikij,�p�냺 (�հ� 900619)
-nemo,����ð�U (����� 901130)
-nemoj,����ð�U (�հ� 901120)
-pang3,ħ������3 (�W�� 950601)
-pang3r1,ħ������3 (�W�� 950511)
-pang3j,ħ������3 (�հ� 950511)
-pang3b,ħ������3 (�I��),GAME_BOOTLEG
-pnickj,ħ�����K (�հ� 940608)
-pnicku,ħ�����K (���� 940608 Loca Test Version)
-punisher,���P�� (����� 930422)
-punisheru,���P�� (���� 930422)
-punisherh,���P�� (�������� 930422)
-punisherj,���P�� (�հ� 930422)
-punisherbz,���P�� - �j�L�� (�Ї��I��),GAME_BOOTLEG
-qad,��֮�i�} (���� 920701)
-qadjr,��֮�i�} (�հ� 940921)
-qtono2j,���� ���֮Ұ��2 ȫ���� (�հ� 950123)
-slammast,ˤ�ǰ��� (����� 930713)
-slammastu,ˤ�ǰ��� (���� 930713)
-mbomberj,ˤ�ǰ��� ���ⱬ�� (�հ� 930713)
-mbombrd,ˤ�ǰ��� ������ʿ (����� 931206)
-mbombrdj,ˤ�ǰ��� ������ʿ (�հ� 931206)
-sf2,���^����2 �����Yʿ (����� 910522)
-sf2eb,���^����2 �����Yʿ (����� 910214)
-sf2ed,���^����2 �����Yʿ (����� 910318)
-sf2ee,���^����2 �����Yʿ (����� 910228)
-sf2ua,���^����2 �����Yʿ (���� 910206)
-sf2ub,���^����2 �����Yʿ (���� 910214)
-sf2uc,���^����2 �����Yʿ (���� 910306)
-sf2ud,���^����2 �����Yʿ (���� 910318)
-sf2ue,���^����2 �����Yʿ (���� 910228)
-sf2uf,���^����2 �����Yʿ (���� 910411)
-sf2ug,���^����2 �����Yʿ (���� 910522 Rev. G)
-sf2ui,���^����2 �����Yʿ (���� 910522 Rev. I)
-sf2uk,���^����2 �����Yʿ (���� 911101)
-sf2j,���^����2 �����Yʿ (�հ� 911210)
-sf2ja,���^����2 �����Yʿ (�հ� 910214)
-sf2jc,���^����2 �����Yʿ (�հ� 910306)
-sf2jf,���^����2 �����Yʿ (�հ� 910411)
-sf2jh,���^����2 �����Yʿ (�հ� 910522)
-sf2jl,���^����2 �����Yʿ (�հ� 920312)
-sf2qp1,���^����2 �����Yʿ ħ�� Delta ���ٰ�,GAME_BOOTLEG
-sf2ebbl,���^����2 �����Yʿ TAB Austria (�I��1),GAME_BOOTLEG
-sf2thndr,���^����2 �����Yʿ Thunder Edition,GAME_BOOTLEG
-sf2ce,���^����2 �Ĵ����� (����� 920513)
-sf2ceea,���^����2 �Ĵ����� (����� 920313)
-sf2ceua,���^����2 �Ĵ����� (���� 920313)
-sf2ceub,���^����2 �Ĵ����� (���� 920513)
-sf2ceuc,���^����2 �Ĵ����� (���� 920803)
-sf2ceja,���^����2 �Ĵ����� (�հ� 920322)
-sf2cejb,���^����2 �Ĵ����� (�հ� 920513)
-sf2cejc,���^����2 �Ĵ����� (�հ� 920803)
-sf2bhh,���^����2 �Ĵ����� (Hung Hsi),GAME_NOT_WORK|GAME_BOOTLEG
-sf2rb,���^����2 �Ĵ����� (�ʺ��1),GAME_BOOTLEG
-sf2rb2,���^����2 �Ĵ����� (�ʺ��2),GAME_BOOTLEG
-sf2rb3,���^����2 �Ĵ����� (�ʺ��3),GAME_BOOTLEG
-sf2red,���^����2 �Ĵ����� (��ɫ����),GAME_BOOTLEG
-sf2v004,���^����2 �Ĵ����� (V004),GAME_BOOTLEG
-sf2acc,���^����2 �Ĵ����� (���ٰ�1),GAME_NOT_WORK|GAME_BOOTLEG
-sf2acca,���^����2 �Ĵ����� (���ٰ�2),GAME_NOT_WORK|GAME_BOOTLEG
-sf2accp2,���^����2 �Ĵ����� (���ٰ�3),GAME_BOOTLEG
-sf2amf,���^����2 �Ĵ����� Alpha Magic-F,GAME_BOOTLEG
-sf2dkot2,���^����2 �Ĵ����� Double K.O.���ٰ��,GAME_NOT_WORK|GAME_BOOTLEG
-sf2m1,���^����2 �Ĵ����� (M1),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m2,���^����2 �Ĵ����� (M2),GAME_BOOTLEG
-sf2m3,���^����2 �Ĵ����� (M3),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m4,���^����2 �Ĵ����� (M4),GAME_BOOTLEG
-sf2m5,���^����2 �Ĵ����� (M5),GAME_BOOTLEG
-sf2m6,���^����2 �Ĵ����� (M6) ����,GAME_BOOTLEG
-sf2m7,���^����2 �Ĵ����� (M7),GAME_BOOTLEG
-sf2m8,���^����2 �Ĵ����� (M8),GAME_NOT_WORK|GAME_BOOTLEG
-sf2yyc,���^����2 �Ĵ����� YYC,GAME_NOT_WORK|GAME_BOOTLEG
-sf2koryu,���^����2 �Ĵ����� (����),GAME_BOOTLEG
-sf2mdt,���^����2 �Ĵ����� Magic Delta ���ٰ�1,GAME_BOOTLEG
-sf2mdta,���^����2 �Ĵ����� Magic Delta ���ٰ�2,GAME_NOT_WORK|GAME_BOOTLEG
-sf2dongb,���^����2 �Ĵ����� (�|������),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m9,���^����2 �Ĵ����� (M9),GAME_BOOTLEG
-sf2m10,���^����2 �Ĵ����� (M10),GAME_BOOTLEG
-sf2m11,���^����2 �Ĵ����� (M11),GAME_BOOTLEG
-sf2m12,���^����2 �Ĵ����� (M12),GAME_BOOTLEG
-sf2m13,���^����2 �Ĵ����� (M13),GAME_BOOTLEG
-sf2m14,���^����2 �Ĵ����� (M14),GAME_BOOTLEG
-sf2tlona,���^����2 �Ĵ����� (����1),GAME_BOOTLEG
-sf2tlonb,���^����2 �Ĵ����� (����2),GAME_BOOTLEG
-sf2hf,���^����2 ���ٰ� �K�O���Y (����� 921209)
-sf2hfu,���^����2 ���ٰ� �K�O���Y (���� 921209)
-sf2hfj,���^����2 ���ٰ� �K�O���Y (�հ� 921209)
-sfzch,���^���� Zero CPS2 �D�Q�� (�հ� 951020),GAME_HACK
-sfach,���^���� Alpha (���� 950727 Publicity),GAME_HACK
-strider,�����w�� (����1)
-striderua,�����w�� (����2)
-striderj,�����w�� (�հ�1)
-striderjr,�����w�� (�հ�2)
-3wonders,�������E (����� 910520)
-3wondersr1,�������E (����� 910513)
-3wondersu,�������E (���� 910520)
-wonder3,�������E (�հ� 910520)
-3wondersb,�������E (�I��),GAME_NOT_WORK|GAME_BOOTLEG
-3wondersh,�������E (hack),GAME_BOOTLEG
-unsquad,���^88 (����)
-area88,���^88 (�հ�)
-area88r,���^88 (�հ�2)
-varth,������C �����Є� (����� 920714)
-varthr1,������C �����Є� (����� 920612)
-varthu,������C �����Є� (���� 920612)
-varthj,������C �����Є� (�հ� 920714)
-willow,����֮�� (����)
-willowo,����֮�� (����2)
-willowj,����֮�� (�հ�)
-wof,�����I�� ������ʿ (����� 921031)
-wofr1,�����I�� ������ʿ (����� 921002)
-wofa,�����I�� ��ʳ��� (���ް� 921005)
-wofch,�����I�� ��ʳ��� CPS �D�Q�� (�հ� 921031),GAME_HACK
-wofchs,�����I�� ��ʳ��� (���İ� 921005),GAME_HACK
-wofu,�����I�� ������ʿ (���� 921031)
-wofj,�����I�� ��ʳ��� (�հ� 921031)
-wofb,�����I�� ��ʳ��� (�I��),GAME_NOT_WORK|GAME_BOOTLEG
-wofh,�����I�� ����Ӣ�ۂ� (�I��1),GAME_BOOTLEG
-wofha,�����I�� ����Ӣ�ۂ� (�I��2),GAME_BOOTLEG
-wofhfh,�����I�� ���P�� (�Ї��I��),GAME_BOOTLEG
-wof3js,�����I�� �����} (�I��),GAME_BOOTLEG
-wof3sj,�����I�� ���}�� (�I��1),GAME_BOOTLEG
-wof3sja,�����I�� ���}�� (�I��2),GAME_BOOTLEG
-wofsj,�����I�� �����} (�I��1),GAME_BOOTLEG
-wofsja,�����I�� �����} (�I��2),GAME_BOOTLEG
-wofsjb,�����I�� �����} (�I��3),GAME_BOOTLEG
-wofth,�����I�� ���֮�� ������Q��,GAME_HACK
-wofjjq,�����I�� ���֮�� Ѫ�ȼӏ���,GAME_HACK
-woffh,�����I�� ���֮�� �ۼt��,GAME_HACK
-wofzhs,�����I�� ���֮�� �ن�����,GAME_HACK
-wofbio,�����I�� ���֮�� BOSS�ӏ���,GAME_HACK
-wofctj,�����I�� ���֮�� ���S����,GAME_HACK
-wofctm,�����I�� ���֮�� ���S�R��,GAME_HACK
-wofgyc,�����I�� ���֮�� �P������R��,GAME_HACK
-wofgyq,�����I�� ���֮�� �P��������,GAME_HACK
-wofhzj,�����I�� ���֮�� �S�Ҽӏ���,GAME_HACK
-wofjqz,�����I�� ���֮�� ����v�M��,GAME_HACK
-wofsjj,�����I�� ���֮�� ����������,GAME_HACK
-wofyjs,�����I�� ���֮�� �����g��,GAME_HACK
-wofzyq,�����I�� ���֮�� �w���Ѫ������,GAME_HACK
-wofzy2,�����I�� ���֮�� �w녏����B����,GAME_HACK
-wofzy3,�����I�� ���֮�� �w녏���������,GAME_HACK
-wofsbl,�����I�� ���֮�� ���������,GAME_HACK
-wofsz,�����I�� ���֮�� ���i��,GAME_HACK
-wofdy,�����I�� ���֮�� �تz��,GAME_HACK
-wofbt,�����I�� ���֮�� ���w����������,GAME_HACK
-wofhgz,�����I�� ���֮�� �����,GAME_HACK
-wofdyg,�����I�� ���֮�� ���µ�һ�P,GAME_HACK
-wofyxg,�����I�� ���֮�� Ӣ���P,GAME_HACK
-wofmr,�����I�� ���֮�� �����P,GAME_HACK
-wofzhy,�����I�� ���֮�� �ن����������g��,GAME_HACK
+1944,1944 循環征服者 (美版 000620)
+1944j,1944 循環征服者 (日版 000620)
+1944d,1944 循環征服者 (美版 000620 Phoenix Edition),GAME_BOOTLEG
+19xx,19XX 命運否決戰 (美版 951207)
+19xxa,19XX 命運否決戰 (亞洲版 951207)
+19xxj,19XX 命運否決戰 (日版 960104)
+19xxjr1,19XX 命運否決戰 (日版 951225)
+19xxjr2,19XX 命運否決戰 (日版 951207)
+19xxh,19XX 命運否決戰 (西班牙版 951218)
+19xxb,19XX 命運否決戰 (巴西版 951218)
+19xxd,19XX 命運否決戰 (美版 951207 Phoenix Edition),GAME_BOOTLEG
+armwar,裝甲勇士 (歐洲版 941024)
+armwarr1,裝甲勇士 (歐洲版 941011)
+armwaru,裝甲勇士 (美版 941024)
+armwaru1,裝甲勇士 (美版 940920)
+pgear,裝甲勇士 (日版 941024)
+pgearr1,裝甲勇士 (日版 940916)
+armwara,裝甲勇士 (亞洲版 941024)
+armwar1d,裝甲勇士 (歐洲版 941011 Phoenix Edition),GAME_BOOTLEG
+avsp,異形對終極戰士 (歐洲版 940520)
+avspu,異形對終極戰士 (美版 940520)
+avspj,異形對終極戰士 (日版 940520)
+avspa,異形對終極戰士 (亞洲版 940520)
+avsph,異形對終極戰士 (西班牙版 940520)
+avspd,異形對終極戰士 (歐洲版 940520 Phoenix Edition),GAME_BOOTLEG
+batcir,戰鬥回路 (歐洲版 970319)
+batcira,戰鬥回路 (亞洲版 970319)
+batcirj,戰鬥回路 (日版 970319)
+batcird,戰鬥回路 (歐洲版 970319 Phoenix Edition),GAME_BOOTLEG
+choko,長江 雀牌遊戲 (日版 010820)
+csclub,卡普空運動俱樂部 (歐洲版 971017)
+csclub1,卡普空運動俱樂部 (歐洲版 970722)
+cscluba,卡普空運動俱樂部 (亞洲版 970722)
+csclubj,卡普空運動俱樂部 (日版 970722)
+csclubh,卡普空運動俱樂部 (西班牙版 970722)
+csclub1d,卡普空運動俱樂部 (歐洲版 970722 Phoenix Edition),GAME_BOOTLEG
+cybots,裝甲之戰 全金屬狂潮 (歐洲版 950424)
+cybotsu,裝甲之戰 全金屬狂潮 (美版 950424)
+cybotsj,裝甲之戰 全金屬狂潮 (日版 950420)
+cybotsud,裝甲之戰 全金屬狂潮 (美版 950424 Phoenix Edition),GAME_BOOTLEG
+cybotsjd,裝甲之戰 全金屬狂潮 (日版 950420 Phoenix Edition),GAME_BOOTLEG
+dimahoo,超級魔法大作戰 (歐洲版 000121)
+dimahoou,超級魔法大作戰 (美版 000121)
+dimahoud,超級魔法大作戰 (美版 000121 Phoenix Edition),GAME_BOOTLEG
+gmahou,超級魔法大作戰 (日版 000121)
+ddtod,龍與地下城1 毀滅之塔 (歐洲版 940412)
+ddtodr1,龍與地下城1 毀滅之塔 (歐洲版 940113)
+ddtodu,龍與地下城1 毀滅之塔 (美版 940125)
+ddtodur1,龍與地下城1 毀滅之塔 (美版 940113)
+ddtodj,龍與地下城1 毀滅之塔 (日版 940412)
+ddtodjr1,龍與地下城1 毀滅之塔 (日版 940125)
+ddtodjr2,龍與地下城1 毀滅之塔 (日版 940113)
+ddtoda,龍與地下城1 毀滅之塔 (亞洲版 940412)
+ddtodar1,龍與地下城1 毀滅之塔 (亞洲版 940113)
+ddtodh,龍與地下城1 毀滅之塔 (西班牙版 940412)
+ddtodhr1,龍與地下城1 毀滅之塔 (西班牙版 940125)
+ddtodhr2,龍與地下城1 毀滅之塔 (西班牙版 940113)
+ddtodd,龍與地下城1 毀滅之塔 (歐洲版 940412 Phoenix Edition),GAME_BOOTLEG
+ddsom,龍與地下城2 暗黑秘影 (歐洲版 960619)
+ddsomr1,龍與地下城2 暗黑秘影 (歐洲版 960223)
+ddsomr2,龍與地下城2 暗黑秘影 (歐洲版 960209)
+ddsomr3,龍與地下城2 暗黑秘影 (歐洲版 960208)
+ddsomu,龍與地下城2 暗黑秘影 (美版 960619)
+ddsomur1,龍與地下城2 暗黑秘影 (美版 960209)
+ddsomj,龍與地下城2 暗黑秘影 (日版 960619)
+ddsomjr1,龍與地下城2 暗黑秘影 (日版 960206)
+ddsoma,龍與地下城2 暗黑秘影 (亞洲版 960619)
+ddsomh,龍與地下城2 暗黑秘影 (西班牙版 960223)
+ddsomb,龍與地下城2 暗黑秘影 (巴西版 960223)
+ddsomud,龍與地下城2 暗黑秘影 (美版 960619 Phoenix Edition),GAME_BOOTLEG
+dstlk,惡魔戰士 午夜鬥士 (歐版 940705)
+dstlku,惡魔戰士 午夜鬥士 (美版 940818)
+dstlkur1,惡魔戰士 午夜鬥士 (美版 940705)
+dstlka,惡魔戰士 午夜鬥士 (亞洲版 940705)
+dstlkh,惡魔戰士 午夜鬥士 (西班牙版 940818)
+dstlku1d,惡魔戰士 午夜鬥士 (美版 940705 Phoenix Edition),GAME_BOOTLEG
+vampj,惡魔戰士 午夜鬥士 (日版 940705)
+vampja,惡魔戰士 午夜鬥士 (日版 940705 alt)
+vampjr1,惡魔戰士 午夜鬥士 (日版 940630)
+ecofghtr,ECO 超戰機 (世界版 931203)
+ecofghtru,ECO 超戰機 (美版 940215)
+ecofghtru1,ECO 超戰機 (美版 931203)
+uecology,ECO 超戰機 (日版 931203)
+ecofghtra,ECO 超戰機 (亞洲版 931203)
+ecofghtrh,ECO 超戰機 (西班牙版 931203)
+ecofghtrd,Eco 超戰機 (世界版 931203 Phoenix Edition),GAME_BOOTLEG
+gigawing,雷鳥之翼 (美版 990222)
+gigawingj,雷鳥之翼 (日版 990223)
+gigawinga,雷鳥之翼 (亞洲版 990222)
+gigawingh,雷鳥之翼 (西班牙版 990222)
+gigawingb,雷鳥之翼 (巴西版 990222)
+gigawingd,雷鳥之翼 (美版 990222 Phoenix Edition),GAME_BOOTLEG
+gigawingjd,雷鳥之翼 (日版 990223 Phoenix Edition),GAME_BOOTLEG
+hsf2,超級街頭霸王2 紀念版 (美版 040202)
+hsf2a,超級街頭霸王2 紀念版 (亞洲版 040202)
+hsf2j,超級街頭霸王2 紀念版 (日版 031222)
+hsf2d,超級街頭霸王2 紀念版 (亞洲版 040202 Phoenix Edition),GAME_BOOTLEG
+jyangoku,雀三國誌 (日版 990527)
+mmatrix,彈丸地獄 (美版 000412)
+mmatrixj,彈丸地獄 (日版 000412)
+mmatrixd,彈丸地獄 (美版 000412 Phoenix Edition),GAME_BOOTLEG
+mmancp2u,洛克人 力量對決 (CPS2 美版 951006 樣品版)
+rmancp2j,洛克人 力量對決 (CPS2 日版 950922)
+megaman2,洛克人2 力量對決 (美版 960708)
+megaman2a,洛克人2 力量對決 (亞洲版 960708)
+rockman2j,洛克人2 力量對決 (日版 960708)
+megaman2h,洛克人2 力量對決 (西班牙版 960712)
+megamn2d,洛克人2 力量對決 (美版 960708 Phoenix Edition),GAME_BOOTLEG
+mpang,魔鬼氣泡 (歐洲版 001010)
+mpangr1,魔鬼氣泡 (歐洲版 000925)
+mpangu,魔鬼氣泡 (美版 001010)
+mpangj,魔鬼氣泡 (日版 001011)
+msh,超級漫畫英雄 (歐洲版 951024)
+mshu,超級漫畫英雄 (美版 951024)
+mshj,超級漫畫英雄 (日版 951117)
+mshjr1,超級漫畫英雄 (日版 951024)
+msha,超級漫畫英雄 (亞洲版 951024)
+mshh,超級漫畫英雄 (西班牙版 951117)
+mshb,超級漫畫英雄 (巴西版 951117)
+mshud,超級漫畫英雄 (美版 951024 Phoenix Edition),GAME_BOOTLEG
+mshvsf,超級漫畫英雄對街頭霸王 (歐洲版 970625)
+mshvsfu,超級漫畫英雄對街頭霸王 (美版 970827)
+mshvsfu1,超級漫畫英雄對街頭霸王 (美版 970625)
+mshvsfj,超級漫畫英雄對街頭霸王 (日版 970707)
+mshvsfj1,超級漫畫英雄對街頭霸王 (日版 970702)
+mshvsfj2,超級漫畫英雄對街頭霸王 (日版 970625)
+mshvsfh,超級漫畫英雄對街頭霸王 (西班牙版 970625)
+mshvsfa,超級漫畫英雄對街頭霸王 (亞洲版 970625)
+mshvsfa1,超級漫畫英雄對街頭霸王 (亞洲版 970620)
+mshvsfb,超級漫畫英雄對街頭霸王 (巴西版 970827)
+mshvsfb1,超級漫畫英雄對街頭霸王 (巴西版 970625)
+mshvsfu1d,超級漫畫英雄對街頭霸王 (美版 970625 Phoenix Edition),GAME_BOOTLEG
+mvsc,超級漫畫英雄對CAPCOM (歐洲版 980123)
+mvscr1,超級漫畫英雄對CAPCOM (歐洲版 980112)
+mvscu,超級漫畫英雄對CAPCOM (美版 980123)
+mvscur1,超級漫畫英雄對CAPCOM (美版 971222)
+mvscj,超級漫畫英雄對CAPCOM (日版 980123)
+mvscjr1,超級漫畫英雄對CAPCOM (日版 980112)
+mvscjsing,超級漫畫英雄對CAPCOM (日版 980123) (Single PCB)
+mvsca,超級漫畫英雄對CAPCOM (亞洲版 980123)
+mvscar1,超級漫畫英雄對CAPCOM (亞洲版 980112)
+mvsch,超級漫畫英雄對CAPCOM (西班牙版 980123)
+mvscb,超級漫畫英雄對CAPCOM (巴西版 980123)
+mvscud,超級漫畫英雄對CAPCOM (美版 980123 Phoenix Edition),GAME_BOOTLEG
+nwarr,惡魔戰士 惡魔的復仇 (美版 950316)
+nwarru,惡魔戰士 惡魔的復仇 (美版 950406)
+nwarrh,惡魔戰士 惡魔的復仇 (西班牙版 950403)
+nwarrb,惡魔戰士 惡魔的復仇 (巴西版 950403)
+nwarra,惡魔戰士 惡魔的復仇 (亞洲版 950302)
+vhuntj,惡魔戰士 惡魔的復仇 (日版 950316)
+vhuntjr1s,惡魔戰士 惡魔的復仇 (日版 950307 stop version)
+vhuntjr1,惡魔戰士 惡魔的復仇 (日版 950307)
+vhuntjr2,惡魔戰士 惡魔的復仇 (日版 950302)
+nwarrud,惡魔戰士 惡魔的復仇 (美版 950406 Phoenix Edition),GAME_BOOTLEG
+vhunt2,惡魔戰士2 惡魔的復仇 (日版 970929)
+vhunt2r1,惡魔戰士2 惡魔的復仇 (日版 970913)
+vhunt2d,惡魔戰士2 惡魔的復仇 (日版 970913 Phoenix Edition),GAME_BOOTLEG
+vsav,惡魔戰士 罪惡救世主 (歐洲版 970519)
+vsavu,惡魔戰士 罪惡救世主 (美版 970519)
+vsavj,惡魔戰士 罪惡救世主 (日版 970519)
+vsava,惡魔戰士 罪惡救世主 (亞洲版 970519)
+vsavh,惡魔戰士 罪惡救世主 (西班牙版 970519)
+vsavd,惡魔戰士 罪惡救世主 (歐洲版 970519 Phoenix Edition),GAME_BOOTLEG
+vsav2,惡魔戰士2 罪惡救世主 (日版 970913)
+vsav2d,惡魔戰士2 罪惡救世主 (日版 970913 Phoenix Edition),GAME_BOOTLEG
+progear,逆轉之嵐 (美版 010117)
+progearj,逆轉之嵐 (日版 010117)
+progeara,逆轉之嵐 (亞洲版 010117)
+progearud,逆轉之嵐 (美版 010117 Phoenix Edition),GAME_BOOTLEG
+progearjd,逆轉之嵐 (日版 010117 Phoenix Edition),GAME_BOOTLEG
+progearjbl,逆轉之嵐 (日版 010117 (解密盜版),GAME_BOOTLEG
+pzloop2,旋轉氣泡2 (歐洲版 010302)
+pzloop2j,旋轉氣泡2 (日版 010226)
+pzloop2jr1,旋轉氣泡2 (日版 010205)
+qndream,七彩夢 虹色町的奇跡 (日版 960826)
+ringdest,摔角霸王2 連環爆裂 (歐洲版 940902)
+ringdesta,摔角霸王2 連環爆裂 (亞洲版 940831)
+smbomb,摔角霸王2 連環爆裂 (日版 940831)
+smbombr1,摔角霸王2 連環爆裂 (日版 940808)
+ringdstd,摔角霸王2 連環爆裂 (歐洲版 940902 Phoenix Edition),GAME_BOOTLEG
+sgemf,口袋戰士 (美版 970904)
+pfghtj,口袋戰士 (日版 970904)
+sgemfa,口袋戰士 (亞洲版 970904)
+sgemfh,口袋戰士 (西班牙版 970904)
+sgemfd,口袋戰士 (美版 970904 Phoenix Edition),GAME_BOOTLEG
+spf2t,超級方塊戰士Ⅱ 加速版 (美版 960620)
+spf2xj,超級方塊戰士Ⅱ X (日版 960531)
+spf2ta,超級方塊戰士Ⅱ 加速版 (亞洲版 960529)
+spf2th,超級方塊戰士Ⅱ 加速版 (西班牙版 960531)
+spf2h,超級方塊戰士Ⅱ 加速版 (可直接選隱藏人物),GAME_HACK
+spf2td,超級方塊戰士Ⅱ 加速版 (美版 960620 Phoenix Edition),GAME_BOOTLEG
+spf2xjd,超級方塊戰士Ⅱ X (日版 960531 Phoenix Edition),GAME_BOOTLEG
+sfa,街頭霸王 Alpha 鬥士之夢 (歐洲版 950727)
+sfar1,街頭霸王 Alpha 鬥士之夢 (歐洲版 950718)
+sfar2,街頭霸王 Alpha 鬥士之夢 (歐洲版 950627)
+sfar3,街頭霸王 Alpha 鬥士之夢 (歐洲版 950605)
+sfau,街頭霸王 Alpha 鬥士之夢 (美版 950627)
+sfza,街頭霸王 Zero (亞洲版 950627)
+sfzar1,街頭霸王 Zero (亞洲版 950605)
+sfzj,街頭霸王 Zero (日版 950727)
+sfzjr1,街頭霸王 Zero (日版 950627)
+sfzjr2,街頭霸王 Zero (日版 950605)
+sfzh,街頭霸王 Zero (西班牙版 950718)
+sfzhr1,街頭霸王 Zero (西班牙版 950627)
+sfzb,街頭霸王 Zero (巴西版 951109)
+sfzbr1,街頭霸王 Zero (巴西版 950727)
+sfad,街頭霸王 Alpha 鬥士之夢 (歐洲版 950727 Phoenix Edition),GAME_BOOTLEG
+sfa2,街頭霸王 Alpha 2 (歐版 960229)
+sfa2u,街頭霸王 Alpha 2 (美版 960430)
+sfa2ur1,街頭霸王 Alpha 2 (美版 960306)
+sfz2j,街頭霸王 Zero 2 (日版 960430)
+sfz2jr1,街頭霸王 Zero 2 (日版 960227)
+sfz2a,街頭霸王 Zero 2 (亞洲版 960227)
+sfz2b,街頭霸王 Zero 2 (巴西版 960531)
+sfz2br1,街頭霸王 Zero 2 (巴西版 960304)
+sfz2h,街頭霸王 Zero 2 (西班牙版 960304)
+sfz2n,街頭霸王 Zero 2 (大洋洲版 960229)
+sfz2al,街頭霸王 Zero 2 Alpha (亞洲版 960826)
+sfz2alj,街頭霸王 Zero 2 Alpha (日版 960805)
+sfz2alh,街頭霸王 Zero 2 Alpha (西班牙版 960813)
+sfz2alb,街頭霸王 Zero 2 Alpha (巴西版 960813)
+sfz2ad,街頭霸王 Zero 2 (亞洲版 960227 Phoenix Edition),GAME_BOOTLEG
+sfz2jd,街頭霸王 Zero 2 (日版 960227 Phoenix Edition),GAME_BOOTLEG
+sfz2ald,街頭霸王 Zero 2 Alpha (亞洲版 960826 Phoenix Edition),GAME_BOOTLEG
+sfa3,街頭霸王 Alpha 3 (歐版 980904)
+sfa3u,街頭霸王 Alpha 3 (美版 980904)
+sfa3ur1,街頭霸王 Alpha 3 (美版 980629)
+sfa3h,街頭霸王 Alpha 3 (西班牙版 980904)
+sfa3hr1,街頭霸王 Alpha 3 (西班牙版 980629)
+sfa3b,街頭霸王 Alpha 3 (巴西版 980629)
+sfz3j,街頭霸王 Zero 3 (日版 980904)
+sfz3jr1,街頭霸王 Zero 3 (日版 980727)
+sfz3jr2,街頭霸王 Zero 3 (日版 980629)
+sfz3a,街頭霸王 Zero 3 (亞洲版 980904)
+sfz3ar1,街頭霸王 Zero 3 (亞洲版 980701)
+sfa3ud,街頭霸王 Alpha 3 (美版 980904 Phoenix Edition),GAME_BOOTLEG
+sfz3jr2d,街頭霸王 Zero 3 (日版 980629 Phoenix Edition),GAME_BOOTLEG
+ssf2,超級街頭霸王 2 新的挑戰者 (世界版 930911)
+ssf2u,超級街頭霸王 2 新的挑戰者 (美版 930911)
+ssf2a,超級街頭霸王 2 新的挑戰者 (亞洲版 931005)
+ssf2ar1,超級街頭霸王 2 新的挑戰者 (亞洲版 930914)
+ssf2j,超級街頭霸王 2 新的挑戰者 (日版 931005)
+ssf2jr1,超級街頭霸王 2 新的挑戰者 (日版 930911)
+ssf2jr2,超級街頭霸王 2 新的挑戰者 (日版 930910)
+ssf2h,超級街頭霸王 2 新的挑戰者 (西班牙版 930911)
+ssf2ud,超級街頭霸王 2 新的挑戰者 (美版 930911 Phoenix Edition),GAME_BOOTLEG
+ssf2tb,超級街頭霸王 2 聯賽 (世界版 931119)
+ssf2tbr1,超級街頭霸王 2 聯賽 (世界版 930911)
+ssf2tbj,超級街頭霸王 2 聯賽 (日版 930911)
+ssf2tbh,超級街頭霸王 2 聯賽 (西班牙版 931005)
+ssf2tbd,超級街頭霸王 2 聯賽 (世界版 931119 Phoenix Edition),GAME_BOOTLEG
+ssf2t,超級街頭霸王 2 加速版 (世界版 940223)
+ssf2ta,超級街頭霸王 2 加速版 (亞洲版 940223)
+ssf2tu,超級街頭霸王 2 加速版 (美版 940323)
+ssf2tur1,超級街頭霸王 2 加速版 (美版 940223)
+ssf2xj,超級街頭霸王 2 X 超級大師聯賽 (日版 940223)
+ssf2xjr,超級街頭霸王 2 X 超級大師聯賽 (日版 940223 rent version)
+ssf2xjd,超級街頭霸王 2 X 超級大師聯賽 (日版 940223 Phoenix Edition),GAME_BOOTLEG
+xmcota,X戰警格鬥版 (歐洲版 950331)
+xmcotar1,X戰警格鬥版 (歐洲版 950105)
+xmcotau,X戰警格鬥版 (美版 950105)
+xmcotah,X戰警格鬥版 (西班牙版 950331)
+xmcotahr1,X戰警格鬥版 (西班牙版 950105)
+xmcotaj,X戰警格鬥版 (日版 950105)
+xmcotaj1,X戰警格鬥版 (日版 941222)
+xmcotaj2,X戰警格鬥版 (日版 941219)
+xmcotaj3,X戰警格鬥版 (日版 941217)
+xmcotajr,X戰警格鬥版 (日版 941208 rent版)
+xmcotaa,X戰警格鬥版 (亞洲版 950105)
+xmcotaar1,X戰警格鬥版 (亞洲版 941217)
+xmcotar1d,X戰警格鬥版 (歐洲版 950105 Phoenix Edition),GAME_BOOTLEG
+xmvsf,X戰警對街頭霸王 (歐洲版 961004)
+xmvsfr1,X戰警對街頭霸王 (歐洲版 960910)
+xmvsfu,X戰警對街頭霸王 (美版 961023)
+xmvsfur1,X戰警對街頭霸王 (美版 961004)
+xmvsfj,X戰警對街頭霸王 (日版 961004)
+xmvsfjr1,X戰警對街頭霸王 (日版 960910)
+xmvsfjr2,X戰警對街頭霸王 (日版 960909)
+xmvsfa,X戰警對街頭霸王 (亞洲版 961023)
+xmvsfar1,X戰警對街頭霸王 (亞洲版 961004)
+xmvsfar2,X戰警對街頭霸王 (亞洲版 960919)
+xmvsfar3,X戰警對街頭霸王 (亞洲版 960910)
+xmvsfh,X戰警對街頭霸王 (西班牙版 961004)
+xmvsfb,X戰警對街頭霸王 (巴西版 961023)
+xmvsfu1d,X戰警對街頭霸王 (美版 961004 Phoenix Edition),GAME_BOOTLEG
