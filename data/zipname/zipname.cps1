@@ -73,14 +73,14 @@ mercs,Mercs (World 900302)
 mercsu,Mercs (US 900608)
 mercsur1,Mercs (US 900302)
 mercsj,Senjou no Ookami II (Japan 900302)
-mtwins,Mega Twins (World 900619)
-chikij,Chiki Chiki Boys (Japan 900619)
-nemo,Nemo (World 901130)
-nemoj,Nemo (Japan 901120)
 msword,Magic Sword - Heroic Fantasy (World 900725)
 mswordr1,Magic Sword - Heroic Fantasy (World 900623)
 mswordu,Magic Sword - Heroic Fantasy (USA 900725)
 mswordj,Magic Sword (Japan 900623)
+mtwins,Mega Twins (World 900619)
+chikij,Chiki Chiki Boys (Japan 900619)
+nemo,Nemo (World 901130)
+nemoj,Nemo (Japan 901120)
 pang3,Pang! 3 (Euro 950601)
 pang3r1,Pang! 3 (Euro 950511)
 pang3j,Pang! 3 (Japan 950511)
@@ -168,8 +168,9 @@ sf2tlonb,Street Fighter II' - Champion Edition Tu Long (Chinese bootleg set 2),G
 sf2hf,Street Fighter II' - Hyper Fighting (World 921209)
 sf2hfu,Street Fighter II' - Hyper Fighting (USA 921209)
 sf2hfj,Street Fighter II' Turbo - Hyper Fighting (Japan 921209)
-sfzch,Street Fighter ZERO (Japan 951020 CPS Changer)
-sfach,Street Fighter ALPHA (USA 950727 Publicity)
+sfzch,Street Fighter Zero (CPS Changer Japan 951020)
+sfach,Street Fighter Alpha (CPS Changer Publicity USA 950727)
+sfzbch,Street Fighter Zero (CPS Changer Brazil 950727)
 strider,Strider (USA, B-Board 89624B-2)
 striderua,Strider (USA, B-Board 89624B-3)
 striderj,Strider Hiryu (Japan)
@@ -193,20 +194,20 @@ willowj,Willow (Japan)
 wof,Warriors of Fate (World 921031)
 wofr1,Warriors of Fate (World 921002)
 wofa,Sangokushi II (Asia 921005)
-wofch,Sangokushi II (CPS Changer Japan 921031),GAME_HACK
+wofch,Sangokushi II (CPS Changer Japan 921031)
 wofchs,Sangokushi II (Chinese 921005),GAME_HACK
 wofu,Warriors of Fate (USA 921031)
 wofj,Tenchi wo Kurau II - Sekiheki no Tatakai (Japan 921031)
 wofb,Warriors of Fate (bootleg),GAME_NOT_WORKING|GAME_BOOTLEG
-wofh,Legend of Three Kingdoms' Heroes (bootleg / set 1),GAME_BOOTLEG
-wofha,Legend of Three Kingdoms' Heroes (bootleg / set 2),GAME_BOOTLEG
+wofh,Sangokushi II: Sanguo Yingxiong Zhuan (Chinese bootleg set 1),GAME_BOOTLEG
+wofha,Sangokushi II: Sanguo Yingxiong Zhuan (Chinese bootleg set 2),GAME_BOOTLEG
 wofhfh,Huo Feng Huang(Chinese bootleg of Sangokushi II),GAME_BOOTLEG
-wof3js,Three Sword Masters (bootleg),GAME_BOOTLEG
-wof3sj,Three Holy Swords (bootleg / set 1),GAME_BOOTLEG
-wof3sja,Three Holy Swords (bootleg / set 2),GAME_BOOTLEG
-wofsj,Holy Sword Three Kingdoms (bootleg / set 1),GAME_BOOTLEG
-wofsja,Holy Sword Three Kingdoms (bootleg / set 2),GAME_BOOTLEG
-wofsjb,Holy Sword Three Kingdoms (bootleg / set 3),GAME_BOOTLEG
+wof3js,Sangokushi II: San Jian Sheng (Chinese bootleg),GAME_BOOTLEG
+wof3sj,Sangokushi II: San Sheng Jian (Chinese bootleg set 1),GAME_BOOTLEG
+wof3sja,Sangokushi II: San Sheng Jian (Chinese bootleg set 2),GAME_BOOTLEG
+wofsj,Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 1),GAME_BOOTLEG
+wofsja,Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 2),GAME_BOOTLEG
+wofsjb,Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 3),GAME_BOOTLEG
 wofth,Warriors of Fate (Di ren ti huan Enhanced),GAME_HACK
 wofjjq,Warriors of Fate (Xue xing Enhanced),GAME_HACK
 woffh,Warriors of Fate (Fen hong Enhanced),GAME_HACK
