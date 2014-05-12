@@ -168,8 +168,9 @@ sf2tlonb,ストリートファイターⅡ' - Champion Edition (屠龍 set 2),GA
 sf2hf,ストリートファイターⅡ' - Hyper Fighting (World 921209)
 sf2hfu,ストリートファイターⅡ' - Hyper Fighting (USA 921209)
 sf2hfj,ストリートファイターⅡ' Turbo - Hyper Fighting (Japan 921209)
-sfzch,ストリートファイターZERO (Japan CPS Changer),GAME_HACK
-sfach,ストリートファイターALPHA (USA 950727 Publicity),GAME_HACK
+sfzch,ストリートファイターZERO (Japan CPS Changer)
+sfach,ストリートファイターALPHA (USA 950727 Publicity)
+sfzbch,ストリートファイターZERO (CPS Changer Brazil 950727)
 strider,ストライダー飛竜 [Strider] (US set 1)
 striderua,ストライダー飛竜 [Strider] (US set 2)
 striderj,ストライダー飛竜 (Japan set 1)
@@ -193,7 +194,7 @@ willowj,ウィロー (Japan)
 wof,天地を喰らうⅡ [Warriors of Fate] (World 921031)
 wofr1,天地を喰らうⅡ [Warriors of Fate] (World 921002)
 wofa,天地を喰らうⅡ [三國誌Ⅱ] (Asia 921005)
-wofch,天地を喰らうⅡ [三國誌Ⅱ] CPS Changer (Japan 921031),GAME_HACK
+wofch,天地を喰らうⅡ [三國誌Ⅱ] (CPS Changer Japan 921031)
 wofchs,天地を喰らうⅡ [三國誌Ⅱ] (Chinese 921005),GAME_HACK
 wofu,天地を喰らうⅡ [Warriors of Fate] (USA 921031)
 wofj,天地を喰らうⅡ - 赤壁の戦い (Japan 921031)
