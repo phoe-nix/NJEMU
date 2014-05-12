@@ -168,8 +168,9 @@ sf2tlonb,街头霸王2 四大天王 (屠龙2),GAME_BOOTLEG
 sf2hf,街头霸王2 加速版 终极格斗 (世界版 921209)
 sf2hfu,街头霸王2 加速版 终极格斗 (美版 921209)
 sf2hfj,街头霸王2 加速版 终极格斗 (日版 921209)
-sfzch,街头霸王 Zero CPS2 转换版 (日版 951020),GAME_HACK
-sfach,街头霸王 Alpha (美版 950727 Publicity),GAME_HACK
+sfzch,少年街霸 Zero (CPS 转换版/日版 951020)
+sfach,少年街霸 Alpha (CPS 转换版/公开版 美版 950727)
+sfzbch,少年街霸 Zero (CPS 转换版/巴西版 950727)
 strider,出击飞龙 (美版1)
 striderua,出击飞龙 (美版2)
 striderj,出击飞龙 (日版1)
@@ -193,7 +194,7 @@ willowj,威洛之旅 (日版)
 wof,三国志Ⅱ 天命勇士 (世界版 921031)
 wofr1,三国志Ⅱ 天命勇士 (世界版 921002)
 wofa,三国志Ⅱ 吞食天地 (亚洲版 921005)
-wofch,三国志Ⅱ 吞食天地 CPS 转换版 (日版 921031),GAME_HACK
+wofch,三国志Ⅱ 吞食天地 (CPS 转换版 日版 921031)
 wofchs,三国志Ⅱ 吞食天地 (中文版 921005),GAME_HACK
 wofu,三国志Ⅱ 天命勇士 (美版 921031)
 wofj,三国志Ⅱ 吞食天地 (日版 921031)
@@ -204,9 +205,9 @@ wofhfh,三国志Ⅱ 火凤凰 (中国盗版),GAME_BOOTLEG
 wof3js,三国志Ⅱ 三剑圣 (盗版),GAME_BOOTLEG
 wof3sj,三国志Ⅱ 三圣剑 (盗版1),GAME_BOOTLEG
 wof3sja,三国志Ⅱ 三圣剑 (盗版2),GAME_BOOTLEG
-wofsj,三国志Ⅱ 三剑圣 (盗版1),GAME_BOOTLEG
-wofsja,三国志Ⅱ 三剑圣 (盗版2),GAME_BOOTLEG
-wofsjb,三国志Ⅱ 三剑圣 (盗版3),GAME_BOOTLEG
+wofsj,三国志Ⅱ 圣剑三国 (盗版1),GAME_BOOTLEG
+wofsja,三国志Ⅱ 圣剑三国 (盗版2),GAME_BOOTLEG
+wofsjb,三国志Ⅱ 圣剑三国 (盗版3),GAME_BOOTLEG
 wofth,三国志Ⅱ 赤壁之战 敌人替换版,GAME_HACK
 wofjjq,三国志Ⅱ 赤壁之战 血腥加强版,GAME_HACK
 woffh,三国志Ⅱ 赤壁之战 粉红版,GAME_HACK
