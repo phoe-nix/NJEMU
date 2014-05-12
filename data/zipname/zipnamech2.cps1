@@ -168,8 +168,9 @@ sf2tlonb,街頭霸王2 四大天王 (屠龍2),GAME_BOOTLEG
 sf2hf,街頭霸王2 加速版 終極格鬥 (世界版 921209)
 sf2hfu,街頭霸王2 加速版 終極格鬥 (美版 921209)
 sf2hfj,街頭霸王2 加速版 終極格鬥 (日版 921209)
-sfzch,街頭霸王 Zero CPS2 轉換版 (日版 951020),GAME_HACK
-sfach,街頭霸王 Alpha (美版 950727 Publicity),GAME_HACK
+sfzch,少年街王 Zero (CPS 轉換版/日版 951020)
+sfach,少年街王 Alpha (CPS 轉換版/公開版/美版 950727)
+sfzbch,少年街王 Zero (CPS 轉換版/巴西版 950727)
 strider,出擊飛龍 (美版1)
 striderua,出擊飛龍 (美版2)
 striderj,出擊飛龍 (日版1)
@@ -193,7 +194,7 @@ willowj,威洛之旅 (日版)
 wof,三國誌Ⅱ 天命勇士 (世界版 921031)
 wofr1,三國誌Ⅱ 天命勇士 (世界版 921002)
 wofa,三國誌Ⅱ 吞食天地 (亞洲版 921005)
-wofch,三國誌Ⅱ 吞食天地 CPS 轉換版 (日版 921031),GAME_HACK
+wofch,三國誌Ⅱ 吞食天地 (CPS 轉換版/日版 921031)
 wofchs,三國誌Ⅱ 吞食天地 (中文版 921005),GAME_HACK
 wofu,三國誌Ⅱ 天命勇士 (美版 921031)
 wofj,三國誌Ⅱ 吞食天地 (日版 921031)
@@ -204,9 +205,9 @@ wofhfh,三國誌Ⅱ 火鳳凰 (中國盜版),GAME_BOOTLEG
 wof3js,三國誌Ⅱ 三劍聖 (盜版),GAME_BOOTLEG
 wof3sj,三國誌Ⅱ 三聖劍 (盜版1),GAME_BOOTLEG
 wof3sja,三國誌Ⅱ 三聖劍 (盜版2),GAME_BOOTLEG
-wofsj,三國誌Ⅱ 三劍聖 (盜版1),GAME_BOOTLEG
-wofsja,三國誌Ⅱ 三劍聖 (盜版2),GAME_BOOTLEG
-wofsjb,三國誌Ⅱ 三劍聖 (盜版3),GAME_BOOTLEG
+wofsj,三國誌Ⅱ 聖劍三國 (盜版1),GAME_BOOTLEG
+wofsja,三國誌Ⅱ 聖劍三國 (盜版2),GAME_BOOTLEG
+wofsjb,三國誌Ⅱ 聖劍三國 (盜版3),GAME_BOOTLEG
 wofth,三國誌Ⅱ 赤壁之戰 敵人替換版,GAME_HACK
 wofjjq,三國誌Ⅱ 赤壁之戰 血腥加強版,GAME_HACK
 woffh,三國誌Ⅱ 赤壁之戰 粉紅版,GAME_HACK
