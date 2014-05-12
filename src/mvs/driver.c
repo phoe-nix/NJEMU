@@ -43,6 +43,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "kof96sp",  "kof96",    1, 1, 0 },
 	{ "kizuna",   "savagere", 1, 1, 1 },
 	{ "kof97h",   "kof97",    0, 0, 0 },
+	{ "kof97c",   "kof97",    1, 1, 0 },
 	{ "kof97cn",  "kof97",    1, 1, 0 },
 	{ "kof97d",   "kof97",    0, 0, 0 },
 	{ "kof97k",   "kof97",    0, 0, 0 },
