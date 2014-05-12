@@ -1,5 +1,16 @@
+20140513  
+MVS  
+添加KOF97 COMBO  
+更新KOF96AE，KOF98COMBO，KOF99AE  
+
+20140429  
+CPS1 添加sfzbch,Street Fighter Zero (CPS Changer, Brazil 950727)  
+CPS2 添加csclubjy,Capcom Sports Club (Japan 970722,yellow case)  
+MVS 添加kof97xt,The King of Fighters '97 - Final Battle (hack)  
+....  
+
 20140307  
-ROM转换工具修正中文名路径,测试路径“桌面”可正常转换  
+ROM转换工具修正中文名路径,测试路径“桌面”可正常转换    
 MVS 添加KOF2002 Remix Ultra 3.5[FCHT]  
 
 20140301  
