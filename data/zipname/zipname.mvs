@@ -66,12 +66,13 @@ kof95h,The King of Fighters '95 (set 2)
 kof95a,The King of Fighters '95 (set 3)
 kof96,The King of Fighters '96 (NGM-214)
 kof96h,The King of Fighters '96 (NGH-214)
-kof96ae,The King Of Fighters '96 AE 2.0[EGCG],GAME_HACK
+kof96ae,The King Of Fighters '96 Anniversary Edition[EGCG],GAME_HACK
 kof96cn,The King of Fighters '96 (Chinese),GAME_HACK
 kof96ep,The King of Fighters '96 (bootleg),GAME_BOOTLEG
-kof96sp,The King of Fighters '96 Remix PLUS 2007 SP[EGCG],GAME_HACK
+kof96sp,The King of Fighters '96 Remix PLUS SP[EGCG],GAME_HACK
 kof97,The King of Fighters '97 (NGM-2320)
 kof97h,The King of Fighters '97 (NGH-2320)
+kof97c,The King of Fighters '97 Combo,GAME_HACK
 kof97cn,The King of Fighters '97 (Chinese),GAME_HACK
 kof97k,The King of Fighters '97 (Korean release)
 kof97d,The King of Fighters '97 Dream,GAME_BOOTLEG
@@ -80,6 +81,7 @@ kof97pla,The King of Fighters '97 Plus 2003 (bootleg / hack),GAME_BOOTLEG
 kof97pls,The King of Fighters '97 Plus (bootleg),GAME_BOOTLEG
 kof97ps,The King of Fighters '97 PlayStation Version[EGCG],GAME_HACK
 kof97yk,The King of Fighters '97 tian xia bu wu,GAME_HACK
+kof97xt,The King of Fighters '97 - Final Battle (hack),GAME_HACK
 kog,King of Gladiator (KOF'97 bootleg),GAME_BOOTLEG
 kogd,King of Gladiator (KOF'97 bootleg / decrypt),GAME_BOOTLEG
 kof98,The King of Fighters '98 (set 1)
@@ -88,14 +90,14 @@ kof98a,The King of Fighters '98 (set 3)
 kof98k,The King of Fighters '98 - The Slugfest (Korean board 1)
 kof98ka,The King of Fighters '98 - The Slugfest (Korean board 2)
 kof98ae,The King of Fighters '98 Anniversary Edition[EGCG],GAME_HACK
-kof98c,The King of Fighters '98 Combo 20140214[ivex],GAME_HACK
+kof98c,The King of Fighters '98 Combo[ivex],GAME_HACK
 kof98cn,The King of Fighters '98(Chinese),GAME_HACK
 kof99,The King of Fighters '99 (NGM-2510)
 kof99h,The King of Fighters '99 (NGH-2510)
 kof99e,The King of Fighters '99 (earlier)
 kof99k,The King of Fighters '99 (Korean release)
 kof99p,The King of Fighters '99 (prototype)
-kof99ae,The King of Fighters '99 Anniversary Edition 20140209[yashional],GAME_HACK
+kof99ae,The King of Fighters '99 Anniversary Edition[yashional],GAME_HACK
 kof2000,The King of Fighters 2000 (NGM-2570)(NGH-2570)
 kof2000n,The King of Fighters 2000 (not encrypted)
 kof2kcn,The King of Fighters 2000(Chinese),GAME_HACK
