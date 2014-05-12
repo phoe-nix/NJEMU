@@ -66,12 +66,13 @@ kof95h,拳皇 '95 (版本2)
 kof95a,拳皇 '95 (版本3)
 kof96,拳皇 '96 (NGM-214)
 kof96h,拳皇 '96 (NGH-214)
-kof96ae,拳皇 '96 AE 2.0[EGCG],GAME_HACK
+kof96ae,拳皇 '96 Anniversary Edition 2.0[EGCG],GAME_HACK
 kof96cn,拳皇 '96 (中文版),GAME_HACK
 kof96ep,拳皇 '96 (盗版),GAME_BOOTLEG
-kof96sp,拳皇 '96 Remix PLUS 2007 SP[EGCG],GAME_HACK
+kof96sp,拳皇 '96 Remix PLUS SP[EGCG],GAME_HACK
 kof97,拳皇 '97 (NGM-2320)
 kof97h,拳皇 '97 (NGH-2320)
+kof97c,拳皇 '97 Combo,GAME_HACK
 kof97cn,拳皇 '97 (中文版),GAME_HACK
 kof97k,拳皇 '97 (韩国版)
 kof97d,拳皇 '97 梦回,GAME_HACK
@@ -80,6 +81,7 @@ kof97pls,拳皇 '97 Plus (盗版),GAME_BOOTLEG
 kof97pla,拳皇 '97 Plus 2003 (盗版/hack),GAME_BOOTLEG
 kof97ps,拳皇 '97 仿PS改良最终版[EGCG],GAME_HACK
 kof97yk,拳皇 '97 天下布武,GAME_HACK
+kof97xt,拳皇 '97 最终决战,GAME_HACK
 kog,拳皇 '97 KOG (盗版),GAME_BOOTLEG
 kogd,拳皇 '97 KOG (盗版解密),GAME_BOOTLEG
 kof98,拳皇 '98 (版本1)
@@ -88,14 +90,14 @@ kof98a,拳皇 '98 (版本3)
 kof98k,拳皇 '98 (韩国版1)
 kof98ka,拳皇 '98 (韩国版2)
 kof98ae,拳皇 '98 Anniversary Edition[EGCG],GAME_HACK
-kof98c,拳皇 '98 Combo 20140214[ivex],GAME_HACK
+kof98c,拳皇 '98 Combo[ivex],GAME_HACK
 kof98cn,拳皇 '98 (中文版),GAME_HACK
 kof99,拳皇 '99 (NGM-2510)
 kof99h,拳皇 '99 (NGH-2510)
 kof99e,拳皇 '99 (早期版)
 kof99k,拳皇 '99 (韩国版)
 kof99p,拳皇 '99 (工程版)
-kof99ae,拳皇 '99 Anniversary Edition 20140209[yashional],GAME_HACK
+kof99ae,拳皇 '99 Anniversary Edition[yashional],GAME_HACK
 kof2000,拳皇 2000 (NGM-2570)(NGH-2570)
 kof2000n,拳皇 2000 (未加密)
 kof2kcn,拳皇 2000 中文版,GAME_HACK
