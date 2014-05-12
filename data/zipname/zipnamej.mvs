@@ -67,11 +67,12 @@ kof95h,ザ·キング·オブ·ファイターズ'95 (set 2)
 kof95a,ザ·キング·オブ·ファイターズ'95 (set 3)
 kof96,ザ·キング·オブ·ファイターズ'96 (NGM-214)
 kof96h,ザ·キング·オブ·ファイターズ'96 (NGH-214)
-kof96ae,ザ·キング·オブ·ファイターズ'96 AE 2.0[EGCG],GAME_HACK
+kof96ae,ザ·キング·オブ·ファイターズ'96 AE[EGCG],GAME_HACK
 kof96cn,ザ·キング·オブ·ファイターズ'96 (Chinese),GAME_HACK
 kof96ep,ザ·キング·オブ·ファイターズ'96 (bootleg),GAME_BOOTLEG
 kof97,ザ·キング·オブ·ファイターズ'97 (NGM-2320)
 kof97h,ザ·キング·オブ·ファイターズ'97 (NGH-2320)
+kof97c,ザ·キング·オブ·ファイターズ'97 Combo,GAME_HACK
 kof97cn,ザ·キング·オブ·ファイターズ'97 (Chinese),GAME_HACK
 kof97k,ザ·キング·オブ·ファイターズ'97 (Korean board)
 kof97d,ザ·キング·オブ·ファイターズ'97 夢回,GAME_BOOTLEG
@@ -80,6 +81,7 @@ kof97pls,ザ·キング·オブ·ファイターズ'97 PLUS (bootleg),GAME_BOOTL
 kof97pla,ザ·キング·オブ·ファイターズ'97 PLUS 2003 (bootleg / hack),GAME_BOOTLEG
 kof97ps,ザ·キング·オブ·ファイターズ'97 PlayStation Version[EGCG],GAME_HACK
 kof97yk,ザ·キング·オブ·ファイターズ'97 天下布武,GAME_HACK
+kof97xt,ザ·キング·オブ·ファイターズ'97 最終の決戰,GAME_HACK
 kog,キング·オブ·グラディエーター (KOF'97 bootleg),GAME_BOOTLEG
 kogd,キング·オブ·グラディエーター (KOF'97 bootleg / decrypt),GAME_BOOTLEG
 kof98,ザ·キング·オブ·ファイターズ'98 (set 1)
@@ -87,15 +89,15 @@ kof98h,ザ·キング·オブ·ファイターズ'98 (set 2)
 kof98a,ザ·キング·オブ·ファイターズ'98 (set 3)
 kof98k,ザ·キング·オブ·ファイターズ'98 (Korean board 1)
 kof98ka,ザ·キング·オブ·ファイターズ'98 (Korean board 2)
-kof98ae,ザ·キング·オブ·ファイターズ'98 Anniversary Edition[EGCG],GAME_HACK
-kof98C,ザ·キング·オブ·ファイターズ'98 Combo 20140214[ivex],GAME_HACK
+kof98ae,ザ·キング·オブ·ファイターズ'98 AE[EGCG],GAME_HACK
+kof98C,ザ·キング·オブ·ファイターズ'98 Combo[ivex],GAME_HACK
 kof98cn,ザ·キング·オブ·ファイターズ'98 (Chinese),GAME_HACK
 kof99,ザ·キング·オブ·ファイターズ'99 (NGM-2510)
 kof99h,ザ·キング·オブ·ファイターズ'99 (NGH-2510)
 kof99e,ザ·キング·オブ·ファイターズ'99 (earlier)
 kof99k,ザ·キング·オブ·ファイターズ'99 (Korean)
 kof99p,ザ·キング·オブ·ファイターズ'99 (prototype)
-kof99ae,ザ·キング·オブ·ファイターズ'99 AE 20140209[yashional],GAME_HACK
+kof99ae,ザ·キング·オブ·ファイターズ'99 AE[yashional],GAME_HACK
 kof2000,ザ·キング·オブ·ファイターズ2000 (NGM-2570)(NGH-2570)
 kof2000n,ザ·キング·オブ·ファイターズ2000 (not encrypted)
 kof2kcn,ザ·キング·オブ·ファイターズ2000 (Chinese),GAME_BOOTLEG
