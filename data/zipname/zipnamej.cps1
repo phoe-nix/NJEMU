@@ -2,234 +2,237 @@
 1941r1,1941 - Counter Attack (World)
 1941u,1941 - Counter Attack (USA 900227)
 1941j,1941 - Counter Attack (Japan)
-captcomm,キャプテンコマンドー (World 911202)
-captcommr1,キャプテンコマンドー (World 911014)
-captcommu,キャプテンコマンドー (USA 910928)
-captcommj,キャプテンコマンドー (Japan 911202)
-captcommjr1,キャプテンコマンドー (Japan 910928)
-captcommb,キャプテンコマンドー (bootleg),GAME_BOOTLEG
-cawing,U.S.ネイビー [Carrier Air Wing] (World 901012)
-cawingr1,U.S.ネイビー [Carrier Air Wing] (World 901009)
-cawingu,U.S.ネイビー [Carrier Air Wing] (USA 901012)
-cawingj,U.S.ネイビー (Japan 901012)
-cworld2j,カプコンワールド2 (Japan 920611)
-dino,キャディラックス [Cadillacs and Dinosaurs] (World 930201)
-dinou,キャディラックス [Cadillacs and Dinosaurs] (USA 930201)
-dinoj,キャディラックス 恐竜新世紀 (Japan 930201)
-dinob,キャディラックス 恐竜新世紀 (bootleg),GAME_BOOTLEG
-dinoh,キャディラックス 恐竜新世紀 (hack set 1),GAME_BOOTLEG
-dinoha,キャディラックス 恐竜新世紀 (hack set 2),GAME_BOOTLEG
-dinohb,キャディラックス 恐竜新世紀 (hack set 3),GAME_BOOTLEG
-dinohunt,キャディラックス 恐竜新世紀 (Chinese bootleg),GAME_BOOTLEG
-dynwar,天地を喰らう [Dynasty Wars] (World)
-dynwara,天地を喰らう [Dynasty Wars] (USA)
-dynwarj,天地を喰らう (Japan set 1)
-dynwarjr1,天地を喰らう (Japan set 2)
-ffight,ファイナルファイト (World set 1)
-ffighta,ファイナルファイト (World set 2)
-ffightu,ファイナルファイト (USA set 1)
-ffightu1,ファイナルファイト (USA set 2)
-ffightua,ファイナルファイト (USA 900112)
-ffightub,ファイナルファイト (USA 900613)
-ffightj,ファイナルファイト (Japan)
-ffightj1,ファイナルファイト (Japan 900112)
-ffightj2,ファイナルファイト (Japan 900305)
-ffightj3,ファイナルファイト (Japan 900613)
-ffightjh,ファイナルファイト Betlog Hack,GAME_HACK
-ffightbl,ファイナルファイト (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
-fcrash,ファイナルファイト Final Crash (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
-forgottn,ロストワールド [Forgotton Worlds]
-forgottnu,ロストワー (USA B-Board 88621B-2 Rev. C)
-forgottnu1,ロストワー (USA B-Board 88618B-2 Rev. C)
-forgottnua,ロストワー (USA B-Board 88618B-2 Rev. A)
-forgottnuaa,ロストワー (USA B-Board 88618B-2 Rev. AA)
-lostwrld,ロストワールド (Japan)
-lostwrldo,ロストワールド (Japan Old Ver.)
-ghouls,大魔界村 [Ghouls'n Ghosts] (World)
-ghoulsu,大魔界村 [Ghouls'n Ghosts] (USA)
-daimakai,大魔界村 (Japan set 1)
-daimakair1,大魔界村 (Japan set 2)
+captcomm,����ץƥ󥳥ޥ�ɩ` (World 911202)
+captcommr1,����ץƥ󥳥ޥ�ɩ` (World 911014)
+captcommu,����ץƥ󥳥ޥ�ɩ` (USA 910928)
+captcommj,����ץƥ󥳥ޥ�ɩ` (Japan 911202)
+captcommjr1,����ץƥ󥳥ޥ�ɩ` (Japan 910928)
+captcommb,����ץƥ󥳥ޥ�ɩ` (bootleg),GAME_BOOTLEG
+captcommp,����ץƥ󥳥ޥ�ɩ` Plus (hack),GAME_HACK
+cawing,U.S.�ͥ��ө` [Carrier Air Wing] (World 901012)
+cawingr1,U.S.�ͥ��ө` [Carrier Air Wing] (World 901009)
+cawingu,U.S.�ͥ��ө` [Carrier Air Wing] (USA 901012)
+cawingj,U.S.�ͥ��ө` (Japan 901012)
+cworld2j,���ץ����`���2 (Japan 920611)
+dino,����ǥ���å��� [Cadillacs and Dinosaurs] (World 930201)
+dinou,����ǥ���å��� [Cadillacs and Dinosaurs] (USA 930201)
+dinoj,����ǥ���å��� �ָo�����o (Japan 930201)
+dinob,����ǥ���å��� �ָo�����o (bootleg),GAME_BOOTLEG
+dinoh,����ǥ���å��� �ָo�����o (hack set 1),GAME_BOOTLEG
+dinoha,����ǥ���å��� �ָo�����o (hack set 2),GAME_BOOTLEG
+dinohb,����ǥ���å��� �ָo�����o (hack set 3),GAME_BOOTLEG
+dinohunt,����ǥ���å��� �ָo�����o (Chinese bootleg),GAME_BOOTLEG
+dynwar,��ؤ�Ф餦 [Dynasty Wars] (World)
+dynwara,��ؤ�Ф餦 [Dynasty Wars] (USA)
+dynwarj,��ؤ�Ф餦 (Japan set 1)
+dynwarjr,��ؤ�Ф餦 (Japan set 2)
+ffight,�ե����ʥ�ե����� (World set 1)
+ffighta,�ե����ʥ�ե����� (World set 2)
+ffightu,�ե����ʥ�ե����� (USA set 1)
+ffightu1,�ե����ʥ�ե����� (USA set 2)
+ffightua,�ե����ʥ�ե����� (USA 900112)
+ffightub,�ե����ʥ�ե����� (USA 900613)
+ffightj,�ե����ʥ�ե����� (Japan)
+ffightj1,�ե����ʥ�ե����� (Japan 900112)
+ffightj2,�ե����ʥ�ե����� (Japan 900305)
+ffightj3,�ե����ʥ�ե����� (Japan 900613)
+ffightjh,�ե����ʥ�ե����� Betlog Hack,GAME_HACK
+ffightbl,�ե����ʥ�ե����� (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+fcrash,�ե����ʥ�ե����� Final Crash (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+forgottn,�����ȥ�`��� [Forgotton Worlds]
+forgottnu,�����ȥ�` (USA B-Board 88621B-2 Rev. C)
+forgottnu1,�����ȥ�` (USA B-Board 88618B-2 Rev. C)
+forgottnua,�����ȥ�` (USA B-Board 88618B-2 Rev. A)
+forgottnuaa,�����ȥ�` (USA B-Board 88618B-2 Rev. AA)
+lostwrld,�����ȥ�`��� (Japan)
+lostwrldo,�����ȥ�`��� (Japan Old Ver.)
+ghouls,��ħ��� [Ghouls'n Ghosts] (World)
+ghoulsu,��ħ��� [Ghouls'n Ghosts] (USA)
+daimakai,��ħ��� (Japan set 1)
+daimakair,��ħ��� (Japan set 2)
 ganbare,Ganbare Marin-kun (Marine 2K0411 JPN),GAME_NOT_WORK|
-knights,ナイツ·オブ·ザ·ラウンド (World 911127)
-knightsu,ナイツ·オブ·ザ·ラウンド (USA 911127)
-knightsj,ナイツ·オブ·ザ·ラウンド (Japan 911127 set 2)
-knightsja,ナイツ·オブ·ザ·ラウンド (Japan 911127 set 1)
-knightsb,ナイツ·オブ·ザ·ラウンド (bootleg set 1),GAME_BOOTLEG
-knightsb2,ナイツ·オブ·ザ·ラウンド (bootleg set 2),GAME_BOOTLEG
-knightsh,ナイツ·オブ·ザ·ラウンド (hack),GAME_BOOTLEG
-knightsi,ナイツ·オブ·ザ·ラウンド (表示乱数),GAME_HACK
-knightsr,ナイツ·オブ·ザ·ラウンド (随机版),GAME_HACK
-kod,キング·オブ·ドラゴンズ [The King of Dragons] (World 910805)
-kodr1,キング·オブ·ドラゴンズ [The King of Dragons] (World 910711)
-kodu,キング·オブ·ドラゴンズ [The King of Dragons] (USA 910910)
-kodj,キング·オブ·ドラゴンズ (Japan 910805 set 1)
-kodja,キング·オブ·ドラゴンズ (Japan 910805 set 2)
-kodb,キング·オブ·ドラゴンズ (bootleg),GAME_BOOTLEG
-kodh,キング·オブ·ドラゴンズ (hack),GAME_BOOTLEG
-megaman,ロックマン ザ·パワー·バトル (CPS1 USA 951006)
-megamana,ロックマン ザ·パワー·バトル (CPS1 Asia 951006)
-rockmanj,ロックマン ザ·パワー·バトル (CPS1Japan 950922)
-mercs,戦場の狼Ⅱ [Mercs] (World 900302)
-mercsu,戦場の狼Ⅱ [Mercs] (USA 900608)
-mercsur1,戦場の狼Ⅱ [Mercs] (USA 900302)
-mercsj,戦場の狼Ⅱ (Japan 900302)
-msword,マジックソード - Heroic Fantasy (World 900725)
-mswordr1,マジックソード - Heroic Fantasy (World 900623)
-mswordu,マジックソード - Heroic Fantasy (USA 900725)
-mswordj,マジックソード (Japan 900623)
-mtwins,チキチキボーイズ [Mega Twins] (World 900619)
-chikij,チキチキボーイズ (Japan 900619)
-nemo,ニモ (World 901130)
-nemoj,ニモ (Japan 901120)
-pang3,パン! 3 (Euro 950601)
-pang3r1,パン! 3 (Euro 950511)
-pang3j,パン! 3 - 怪盗たちの華麗な午後 - (Japan 950511)
-pang3b,パン! 3 (bootleg),GAME_BOOTLEG
-pnickj,ぷにっきぃず (Japan 940608)
-pnicku,ぷにっきぃず (USA 940608 Loca Test Version)
-punisher,パニッシャー [The Punisher] (World 930422)
-punisheru,パニッシャー [The Punisher] (USA 930422)
-punisherh,パニッシャー [The Punisher] (Hispanic 930422)
-punisherj,パニッシャー (Japan 930422)
-punisherbz,パニッシャー biao feng zhan jing (Chinese bootleg),GAME_BOOTLEG
-qad,クイズ＆ドラゴンズ (US 920701)
-qadjr,クイズ＆ドラゴンズ (Japan 940921)
-qtono2j,クイズ殿様の野望2 全国版 (Japan 950123)
-slammast,マッスルボマー [Saturday Night Slam Masters] (World 930713)
-slammastu,マッスルボマー [Saturday Night Slam Masters] (USA 930713)
-mbomberj,マッスルボマー - The Body Explosion (Japan 930713)
-mbombrd,マッスルボマーDuo - Ultimate Team Battle (World 931206)
-mbombrdj,マッスルボマーDuo - Heat Up Warriors (Japan 931206)
-sf2,ストリートファイターⅡ - The World Warrior (World 910522)
-sf2eb,ストリートファイターⅡ - The World Warrior (World 910214)
-sf2ed,ストリートファイターⅡ - The World Warrior (World 910318)
-sf2ee,ストリートファイターⅡ - The World Warrior (World 910228)
-sf2ua,ストリートファイターⅡ - The World Warrior (USA 910206)
-sf2ub,ストリートファイターⅡ - The World Warrior (USA 910214)
-sf2uc,ストリートファイターⅡ - The World Warrior (USA 910306)
-sf2ud,ストリートファイターⅡ - The World Warrior (USA 910318)
-sf2ue,ストリートファイターⅡ - The World Warrior (USA 910228)
-sf2uf,ストリートファイターⅡ - The World Warrior (USA 910411)
-sf2ug,ストリートファイターⅡ - The World Warrior (USA 910522 Rev. G)
-sf2ui,ストリートファイターⅡ - The World Warrior (USA 910522 Rev. I)
-sf2uk,ストリートファイターⅡ - The World Warrior (USA 911101)
-sf2j,ストリートファイターⅡ - The World Warrior (Japan 911210)
-sf2ja,ストリートファイターⅡ - The World Warrior (Japan 910214)
-sf2jc,ストリートファイターⅡ - The World Warrior (Japan 910306)
-sf2jf,ストリートファイターⅡ - The World Warrior (Japan 910411)
-sf2jh,ストリートファイターⅡ - The World Warrior (Japan 910522)
-sf2jl,ストリートファイターⅡ - The World Warrior (Japan 920312)
-sf2qp1,ストリートファイターⅡ- The World Warrior Magic Delta Turbo,GAME_BOOTLEG
-sf2ebbl,ストリートファイターⅡ- The World Warrior TAB Austria (bootleg set 1),GAME_BOOTLEG
-sf2thndr,ストリートファイターⅡ- The World Warrior Thunder Edition,GAME_BOOTLEG
-sf2ce,ストリートファイターⅡ' - Champion Edition (World 920513)
-sf2ceea,ストリートファイターⅡ' - Champion Edition (World 920313)
-sf2ceua,ストリートファイターⅡ' - Champion Edition (USA 920313)
-sf2ceub,ストリートファイターⅡ' - Champion Edition (USA 920513)
-sf2ceuc,ストリートファイターⅡ' - Champion Edition (USA 920803)
-sf2ceja,ストリートファイターⅡ' - Champion Edition (Japan 920322)
-sf2cejb,ストリートファイターⅡ' - Champion Edition (Japan 920513)
-sf2cejc,ストリートファイターⅡ' - Champion Edition (Japan 920803)
-sf2bhh,ストリートファイターⅡ' - Champion Edition (Hung Hsi),GAME_NOT_WORK|GAME_BOOTLEG
-sf2rb,ストリートファイターⅡ' - Champion Edition (Rainbow set 1),GAME_BOOTLEG
-sf2rb2,ストリートファイターⅡ' - Champion Edition (Rainbow set 2),GAME_BOOTLEG
-sf2rb3,ストリートファイターⅡ' - Champion Edition (Rainbow set 3),GAME_BOOTLEG
-sf2red,ストリートファイターⅡ' - Champion Edition (Red Wave),GAME_BOOTLEG
-sf2v004,ストリートファイターⅡ! - Champion Edition (V004),GAME_NOT_WORK|GAME_BOOTLEG
-sf2acc,ストリートファイターⅡ' - Champion Edition (Turbo 1),GAME_NOT_WORK|GAME_BOOTLEG
-sf2acca,ストリートファイターⅡ' - Champion Edition (Turbo 2),GAME_NOT_WORK|GAME_BOOTLEG
-sf2accp2,ストリートファイターⅡ' - Champion Edition (Accelerator Pt.II),GAME_BOOTLEG
-sf2amf,ストリートファイターⅡ' - Champion Edition Alpha Magic-F (set 1),GAME_BOOTLEG
-sf2amf2,ストリートファイターⅡ' - Champion Edition Alpha Magic-F (set 2),GAME_BOOTLEG
-sf2dkot2,ストリートファイターⅡ' - Champion Edition Double K.O.TurboⅡ,GAME_NOT_WORK|GAME_BOOTLEG
-sf2ceblp,ストリートファイターⅡ' - Champion Edition (protected bootleg on non-dash board),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m1,ストリートファイターⅡ' - Champion Edition (M1),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m2,ストリートファイターⅡ' - Champion Edition (M2),GAME_BOOTLEG
-sf2m3,ストリートファイターⅡ' - Champion Edition (M3),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m4,ストリートファイターⅡ' - Champion Edition (M4),GAME_BOOTLEG
-sf2m5,ストリートファイターⅡ' - Champion Edition (M5),GAME_BOOTLEG
-sf2m6,ストリートファイターⅡ' - Champion Edition (降龍 set 2),GAME_BOOTLEG
-sf2m7,ストリートファイターⅡ' - Champion Edition (M7),GAME_BOOTLEG
-sf2m8,ストリートファイターⅡ' - Champion Edition (M8),GAME_NOT_WORK|GAME_BOOTLEG
-sf2yyc,ストリートファイターⅡ' - Champion Edition (YYC),GAME_BOOTLEG
-sf2koryu,ストリートファイターⅡ' - Champion Edition (降龍 set 1),GAME_BOOTLEG
-sf2mdt,ストリートファイターⅡ' - Champion Edition Magic Delta Turbo 1,GAME_BOOTLEG
-sf2mdta,ストリートファイターⅡ' - Champion Edition Magic Delta Turbo 2,GAME_NOT_WORK|GAME_BOOTLEG
-sf2mdtb,ストリートファイターⅡ' - Champion Edition Magic Delta Turbo 3,GAME_NOT_WORK|GAME_BOOTLEG
-sf2dongb,街头霸王2 四大天王 (东方不败),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m9,ストリートファイターⅡ' - Champion Edition (M9),GAME_BOOTLEG
-sf2m10,ストリートファイターⅡ' - Champion Edition (M10),GAME_BOOTLEG
-sf2m11,ストリートファイターⅡ' - Champion Edition (M11),GAME_BOOTLEG
-sf2m12,ストリートファイターⅡ' - Champion Edition (M12),GAME_BOOTLEG
-sf2m13,ストリートファイターⅡ' - Champion Edition (M13),GAME_BOOTLEG
-sf2m14,ストリートファイターⅡ' - Champion Edition (M14),GAME_BOOTLEG
-sf2tlona,ストリートファイターⅡ' - Champion Edition (屠龍 set 1),GAME_BOOTLEG
-sf2tlonb,ストリートファイターⅡ' - Champion Edition (屠龍 set 2),GAME_BOOTLEG
-sf2hf,ストリートファイターⅡ' - Hyper Fighting (World 921209)
-sf2hfu,ストリートファイターⅡ' - Hyper Fighting (USA 921209)
-sf2hfj,ストリートファイターⅡ' Turbo - Hyper Fighting (Japan 921209)
-sfzch,ストリートファイターZERO (Japan CPS Changer)
-sfach,ストリートファイターALPHA (USA 950727 Publicity)
-sfzbch,ストリートファイターZERO (CPS Changer Brazil 950727)
-strider,ストライダー飛竜 [Strider] (US set 1)
-striderua,ストライダー飛竜 [Strider] (US set 2)
-striderj,ストライダー飛竜 (Japan set 1)
-striderjr,ストライダー飛竜 (Japan set 2)
-3wonders,ワンダー3 [Three Wonders] (World 910520)
-3wondersr1,ワンダー3 [Three Wonders] (World 910513)
-3wondersu,ワンダー3 [Three Wonders] (USA 910520)
-wonder3,ワンダー3 (Japan 910520)
-3wondersb,ワンダー3 (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
-3wondersh,ワンダー3 (hack),GAME_BOOTLEG
-unsquad,エリア88 [U.N. Squadron] (USA)
-area88,エリア88 (Japan set 1)
-area88r,エリア88 (Japan set 2)
-varth,バース - Operation Thunderstorm (World 920714)
-varthr1,バース - Operation Thunderstorm (World 920612)
-varthu,バース - Operation Thunderstorm (USA 920612)
-varthj,バース - Operation Thunderstorm (Japan 920714)
-willow,ウィロー (USA set 1)
-willowo,ウィロー (USA set 2)
-willowj,ウィロー (Japan)
-wof,天地を喰らうⅡ [Warriors of Fate] (World 921031)
-wofr1,天地を喰らうⅡ [Warriors of Fate] (World 921002)
-wofa,天地を喰らうⅡ [三國誌Ⅱ] (Asia 921005)
-wofch,天地を喰らうⅡ [三國誌Ⅱ] (CPS Changer Japan 921031)
-wofchs,天地を喰らうⅡ [三國誌Ⅱ] (Chinese 921005),GAME_HACK
-wofu,天地を喰らうⅡ [Warriors of Fate] (USA 921031)
-wofj,天地を喰らうⅡ - 赤壁の戦い (Japan 921031)
-wofb,天地を喰らうⅡ - 赤壁の戦い (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
-wofh,天地を喰らうⅡ - 赤壁の戦い (三國英雄傳 set 1),GAME_BOOTLEG
-wofha,天地を喰らうⅡ - 赤壁の戦い (三國英雄傳 set 2),GAME_BOOTLEG
-wofhfh,天地を喰らうⅡ - 火凤凰 (Chinese bootleg),GAME_BOOTLEG
-wof3js,天地を喰らうⅡ - 赤壁の戦い (三劍聖),GAME_BOOTLEG
-wof3sj,天地を喰らうⅡ - 赤壁の戦い  (三聖劍 set 1),GAME_BOOTLEG
-wof3sja,天地を喰らうⅡ - 赤壁の戦い  (三聖劍 set 2),GAME_BOOTLEG
-wofsj,天地を喰らうⅡ - 赤壁の戦い (聖劍三國 set 1),GAME_BOOTLEG
-wofsja,天地を喰らうⅡ - 赤壁の戦い (聖劍三國 set 2),GAME_BOOTLEG
-wofsjb,天地を喰らうⅡ - 赤壁の戦い (聖劍三國 set 3),GAME_BOOTLEG
-wofth,天地を喰らうⅡ - 赤壁の戦い 敌人替换版,GAME_HACK
-wofjjq,天地を喰らうⅡ - 赤壁の戦い 血腥加强版,GAME_HACK
-woffh,天地を喰らうⅡ - 赤壁の戦い 粉红版,GAME_HACK
-wofzhs,天地を喰らうⅡ - 赤壁の戦い 召唤曾版,GAME_HACK
-wofbio,天地を喰らうⅡ - 赤壁の戦い BOSS加强版,GAME_HACK
-wofctj,天地を喰らうⅡ - 赤壁の戦い 草薙剑版,GAME_HACK
-wofctm,天地を喰らうⅡ - 赤壁の戦い 草薙马版,GAME_HACK
-wofgyc,天地を喰らうⅡ - 赤壁の戦い 关羽赤兔马版,GAME_HACK
-wofgyq,天地を喰らうⅡ - 赤壁の戦い 关羽强化版,GAME_HACK
-wofhzj,天地を喰らうⅡ - 赤壁の戦い 黄忠加强版,GAME_HACK
-wofjqz,天地を喰らうⅡ - 赤壁の戦い 剑气纵横版,GAME_HACK
-wofsjj,天地を喰らうⅡ - 赤壁の戦い 神箭＋剑气版,GAME_HACK
-wofyjs,天地を喰らうⅡ - 赤壁の戦い 御剑术版,GAME_HACK
-wofzyq,天地を喰らうⅡ - 赤壁の戦い 赵云嗜血暴力版,GAME_HACK
-wofzy2,天地を喰らうⅡ - 赤壁の戦い 赵云强化连蹴版,GAME_HACK
-wofzy3,天地を喰らうⅡ - 赤壁の戦い 赵云强化升龙版,GAME_HACK
-wofsbl,天地を喰らうⅡ - 赤壁の戦い 神兵利器版,GAME_HACK
-wofsz,天地を喰らうⅡ - 赤壁の戦い 烧猪版,GAME_HACK
-wofdy,天地を喰らうⅡ - 赤壁の戦い 地狱版,GAME_HACK
-wofbt,天地を喰らうⅡ - 赤壁の戦い 张飞强化暴力版,GAME_HACK
-wofhgz,天地を喰らうⅡ - 赤壁の戦い 寒光斩,GAME_HACK
-wofdyg,天地を喰らうⅡ - 赤壁の戦い 天下第一关,GAME_HACK
-wofyxg,天地を喰らうⅡ - 赤壁の戦い 英雄关,GAME_HACK
-wofmr,天地を喰らうⅡ - 赤壁の戦い 美人关,GAME_HACK
-wofzhy,天地を喰らうⅡ - 赤壁の戦い 召唤曾＆御剑术版,GAME_HACK
+knights,�ʥ��ġ����֡������饦��� (World 911127)
+knightsu,�ʥ��ġ����֡������饦��� (USA 911127)
+knightsj,�ʥ��ġ����֡������饦��� (Japan 911127 set 2)
+knightsja,�ʥ��ġ����֡������饦��� (Japan 911127 set 1)
+knightsb,�ʥ��ġ����֡������饦��� (bootleg set 1),GAME_BOOTLEG
+knightsb2,�ʥ��ġ����֡������饦��� (bootleg set 2),GAME_BOOTLEG
+knightsh,�ʥ��ġ����֡������饦��� (hack),GAME_BOOTLEG
+knightsi,�ʥ��ġ����֡������饦��� (��ʾ����),GAME_HACK
+knightsr,�ʥ��ġ����֡������饦��� (�����),GAME_HACK
+kod,���󥰡����֡��ɥ饴�� [The King of Dragons] (World 910805)
+kodr1,���󥰡����֡��ɥ饴�� [The King of Dragons] (World 910711)
+kodu,���󥰡����֡��ɥ饴�� [The King of Dragons] (USA 910910)
+kodj,���󥰡����֡��ɥ饴�� (Japan 910805 set 1)
+kodja,���󥰡����֡��ɥ饴�� (Japan 910805 set 2)
+kodb,���󥰡����֡��ɥ饴�� (bootleg),GAME_BOOTLEG
+kodh,���󥰡����֡��ɥ饴�� (hack),GAME_BOOTLEG
+megaman,���å��ޥ� �����ѥ�`���Хȥ� (CPS1 USA 951006)
+megamana,���å��ޥ� �����ѥ�`���Хȥ� (CPS1 Asia 951006)
+rockmanj,���å��ޥ� �����ѥ�`���Хȥ� (CPS1Japan 950922)
+mercs,������Ǣ� [Mercs] (World 900302)
+mercsu,������Ǣ� [Mercs] (USA 900608)
+mercsur1,������Ǣ� [Mercs] (USA 900302)
+mercsj,������Ǣ� (Japan 900302)
+msword,�ޥ��å����`�� - Heroic Fantasy (World 900725)
+mswordr1,�ޥ��å����`�� - Heroic Fantasy (World 900623)
+mswordu,�ޥ��å����`�� - Heroic Fantasy (USA 900725)
+mswordj,�ޥ��å����`�� (Japan 900623)
+mtwins,���������ܩ`���� [Mega Twins] (World 900619)
+chikij,���������ܩ`���� (Japan 900619)
+nemo,�˥� (World 901130)
+nemoj,�˥� (Japan 901120)
+pang3,�ѥ�! 3 (Euro 950601)
+pang3r1,�ѥ�! 3 (Euro 950511)
+pang3j,�ѥ�! 3 - �ֵ��������A�������� - (Japan 950511)
+pang3b,�ѥ�! 3 (bootleg),GAME_BOOTLEG
+pnickj,�פˤä����� (Japan 940608)
+pnicku,�פˤä����� (USA 940608 Loca Test Version)
+punisher,�ѥ˥å���` [The Punisher] (World 930422)
+punisheru,�ѥ˥å���` [The Punisher] (USA 930422)
+punisherh,�ѥ˥å���` [The Punisher] (Hispanic 930422)
+punisherj,�ѥ˥å���` (Japan 930422)
+punisherbz,�ѥ˥å���` biao feng zhan jing (Chinese bootleg),GAME_BOOTLEG
+punisherjd,�ѥ˥å���` - Jiao Dao (hack),GAME_HACK
+punisherp,The �ѥ˥å���` Plus,GAME_HACK
+qad,���������ɥ饴�� (US 920701)
+qadjr,���������ɥ饴�� (Japan 940921)
+qtono2j,���������Ұ��2 ȫ���� (Japan 950123)
+slammast,�ޥå���ܥީ` [Saturday Night Slam Masters] (World 930713)
+slammastu,�ޥå���ܥީ` [Saturday Night Slam Masters] (USA 930713)
+mbomberj,�ޥå���ܥީ` - The Body Explosion (Japan 930713)
+mbombrd,�ޥå���ܥީ`Duo - Ultimate Team Battle (World 931206)
+mbombrdj,�ޥå���ܥީ`Duo - Heat Up Warriors (Japan 931206)
+sf2,���ȥ�`�ȥե������`�� - The World Warrior (World 910522)
+sf2eb,���ȥ�`�ȥե������`�� - The World Warrior (World 910214)
+sf2ed,���ȥ�`�ȥե������`�� - The World Warrior (World 910318)
+sf2ee,���ȥ�`�ȥե������`�� - The World Warrior (World 910228)
+sf2ua,���ȥ�`�ȥե������`�� - The World Warrior (USA 910206)
+sf2ub,���ȥ�`�ȥե������`�� - The World Warrior (USA 910214)
+sf2uc,���ȥ�`�ȥե������`�� - The World Warrior (USA 910306)
+sf2ud,���ȥ�`�ȥե������`�� - The World Warrior (USA 910318)
+sf2ue,���ȥ�`�ȥե������`�� - The World Warrior (USA 910228)
+sf2uf,���ȥ�`�ȥե������`�� - The World Warrior (USA 910411)
+sf2ug,���ȥ�`�ȥե������`�� - The World Warrior (USA 910522 Rev. G)
+sf2ui,���ȥ�`�ȥե������`�� - The World Warrior (USA 910522 Rev. I)
+sf2uk,���ȥ�`�ȥե������`�� - The World Warrior (USA 911101)
+sf2j,���ȥ�`�ȥե������`�� - The World Warrior (Japan 911210)
+sf2ja,���ȥ�`�ȥե������`�� - The World Warrior (Japan 910214)
+sf2jc,���ȥ�`�ȥե������`�� - The World Warrior (Japan 910306)
+sf2jf,���ȥ�`�ȥե������`�� - The World Warrior (Japan 910411)
+sf2jh,���ȥ�`�ȥե������`�� - The World Warrior (Japan 910522)
+sf2jl,���ȥ�`�ȥե������`�� - The World Warrior (Japan 920312)
+sf2qp1,���ȥ�`�ȥե������`��- The World Warrior Magic Delta Turbo,GAME_BOOTLEG
+sf2ebbl,���ȥ�`�ȥե������`��- The World Warrior TAB Austria (bootleg set 1),GAME_BOOTLEG
+sf2thndr,���ȥ�`�ȥե������`��- The World Warrior Thunder Edition,GAME_BOOTLEG
+sf2ce,���ȥ�`�ȥե������`��' - Champion Edition (World 920513)
+sf2ceea,���ȥ�`�ȥե������`��' - Champion Edition (World 920313)
+sf2ceua,���ȥ�`�ȥե������`��' - Champion Edition (USA 920313)
+sf2ceub,���ȥ�`�ȥե������`��' - Champion Edition (USA 920513)
+sf2ceuc,���ȥ�`�ȥե������`��' - Champion Edition (USA 920803)
+sf2ceja,���ȥ�`�ȥե������`��' - Champion Edition (Japan 920322)
+sf2cejb,���ȥ�`�ȥե������`��' - Champion Edition (Japan 920513)
+sf2cejc,���ȥ�`�ȥե������`��' - Champion Edition (Japan 920803)
+sf2bhh,���ȥ�`�ȥե������`��' - Champion Edition (Hung Hsi),GAME_NOT_WORK|GAME_BOOTLEG
+sf2rb,���ȥ�`�ȥե������`��' - Champion Edition (Rainbow set 1),GAME_BOOTLEG
+sf2rb2,���ȥ�`�ȥե������`��' - Champion Edition (Rainbow set 2),GAME_BOOTLEG
+sf2rb3,���ȥ�`�ȥե������`��' - Champion Edition (Rainbow set 3),GAME_BOOTLEG
+sf2red,���ȥ�`�ȥե������`��' - Champion Edition (Red Wave),GAME_BOOTLEG
+sf2v004,���ȥ�`�ȥե������`��! - Champion Edition (V004),GAME_NOT_WORK|GAME_BOOTLEG
+sf2acc,���ȥ�`�ȥե������`��' - Champion Edition (Turbo 1),GAME_NOT_WORK|GAME_BOOTLEG
+sf2acca,���ȥ�`�ȥե������`��' - Champion Edition (Turbo 2),GAME_NOT_WORK|GAME_BOOTLEG
+sf2accp2,���ȥ�`�ȥե������`��' - Champion Edition (Accelerator Pt.II),GAME_BOOTLEG
+sf2amf,���ȥ�`�ȥե������`��' - Champion Edition Alpha Magic-F (set 1),GAME_BOOTLEG
+sf2amf2,���ȥ�`�ȥե������`��' - Champion Edition Alpha Magic-F (set 2),GAME_BOOTLEG
+sf2dkot2,���ȥ�`�ȥե������`��' - Champion Edition Double K.O.Turbo��,GAME_NOT_WORK|GAME_BOOTLEG
+sf2ceblp,���ȥ�`�ȥե������`��' - Champion Edition (protected bootleg on non-dash board),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m1,���ȥ�`�ȥե������`��' - Champion Edition (M1),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m2,���ȥ�`�ȥե������`��' - Champion Edition (M2),GAME_BOOTLEG
+sf2m3,���ȥ�`�ȥե������`��' - Champion Edition (M3),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m4,���ȥ�`�ȥե������`��' - Champion Edition (M4),GAME_BOOTLEG
+sf2m5,���ȥ�`�ȥե������`��' - Champion Edition (M5),GAME_BOOTLEG
+sf2m6,���ȥ�`�ȥե������`��' - Champion Edition (���� set 2),GAME_BOOTLEG
+sf2m7,���ȥ�`�ȥե������`��' - Champion Edition (M7),GAME_BOOTLEG
+sf2m8,���ȥ�`�ȥե������`��' - Champion Edition (M8),GAME_NOT_WORK|GAME_BOOTLEG
+sf2yyc,���ȥ�`�ȥե������`��' - Champion Edition (YYC),GAME_BOOTLEG
+sf2koryu,���ȥ�`�ȥե������`��' - Champion Edition (���� set 1),GAME_BOOTLEG
+sf2mdt,���ȥ�`�ȥե������`��' - Champion Edition Magic Delta Turbo 1,GAME_BOOTLEG
+sf2mdta,���ȥ�`�ȥե������`��' - Champion Edition Magic Delta Turbo 2,GAME_NOT_WORK|GAME_BOOTLEG
+sf2mdtb,���ȥ�`�ȥե������`��' - Champion Edition Magic Delta Turbo 3,GAME_NOT_WORK|GAME_BOOTLEG
+sf2dongb,��ͷ����2 �Ĵ����� (��������),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m9,���ȥ�`�ȥե������`��' - Champion Edition (M9),GAME_BOOTLEG
+sf2m10,���ȥ�`�ȥե������`��' - Champion Edition (M10),GAME_BOOTLEG
+sf2m11,���ȥ�`�ȥե������`��' - Champion Edition (M11),GAME_BOOTLEG
+sf2m12,���ȥ�`�ȥե������`��' - Champion Edition (M12),GAME_BOOTLEG
+sf2m13,���ȥ�`�ȥե������`��' - Champion Edition (M13),GAME_BOOTLEG
+sf2m14,���ȥ�`�ȥե������`��' - Champion Edition (M14),GAME_BOOTLEG
+sf2tlona,���ȥ�`�ȥե������`��' - Champion Edition (���� set 1),GAME_BOOTLEG
+sf2tlonb,���ȥ�`�ȥե������`��' - Champion Edition (���� set 2),GAME_BOOTLEG
+sf2hf,���ȥ�`�ȥե������`��' - Hyper Fighting (World 921209)
+sf2hfu,���ȥ�`�ȥե������`��' - Hyper Fighting (USA 921209)
+sf2hfj,���ȥ�`�ȥե������`��' Turbo - Hyper Fighting (Japan 921209)
+sfzch,���ȥ�`�ȥե������`ZERO (Japan CPS Changer)
+sfach,���ȥ�`�ȥե������`ALPHA (USA 950727 Publicity)
+sfzbch,���ȥ�`�ȥե������`ZERO (CPS Changer Brazil 950727)
+strider,���ȥ饤���`�w�o [Strider] (US set 1)
+striderua,���ȥ饤���`�w�o [Strider] (US set 2)
+striderj,���ȥ饤���`�w�o (Japan set 1)
+striderjr,���ȥ饤���`�w�o (Japan set 2)
+3wonders,�����`3 [Three Wonders] (World 910520)
+3wondersr1,�����`3 [Three Wonders] (World 910513)
+3wondersu,�����`3 [Three Wonders] (USA 910520)
+wonder3,�����`3 (Japan 910520)
+3wondersb,�����`3 (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+3wondersh,�����`3 (hack),GAME_BOOTLEG
+unsquad,���ꥢ88 [U.N. Squadron] (USA)
+area88,���ꥢ88 (Japan set 1)
+area88r,���ꥢ88 (Japan set 2)
+varth,�Щ`�� - Operation Thunderstorm (World 920714)
+varthr1,�Щ`�� - Operation Thunderstorm (World 920612)
+varthu,�Щ`�� - Operation Thunderstorm (USA 920612)
+varthj,�Щ`�� - Operation Thunderstorm (Japan 920714)
+willow,�������` (USA set 1)
+willowo,�������` (USA set 2)
+willowj,�������` (Japan)
+wof,��ؤ�Ф餦�� [Warriors of Fate] (World 921031)
+wofr1,��ؤ�Ф餦�� [Warriors of Fate] (World 921002)
+wofa,��ؤ�Ф餦�� [�����I��] (Asia 921005)
+wofch,��ؤ�Ф餦�� [�����I��] (CPS Changer Japan 921031)
+wofchs,��ؤ�Ф餦�� [�����I��] (Chinese 921005),GAME_HACK
+wofu,��ؤ�Ф餦�� [Warriors of Fate] (USA 921031)
+wofj,��ؤ�Ф餦�� - ��ڤΑ餤 (Japan 921031)
+wofb,��ؤ�Ф餦�� - ��ڤΑ餤 (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+wofh,��ؤ�Ф餦�� - ��ڤΑ餤 (����Ӣ�ۂ� set 1),GAME_BOOTLEG
+wofha,��ؤ�Ф餦�� - ��ڤΑ餤 (����Ӣ�ۂ� set 2),GAME_BOOTLEG
+wofhfh,��ؤ�Ф餦�� - ���� (Chinese bootleg),GAME_BOOTLEG
+wof3js,��ؤ�Ф餦�� - ��ڤΑ餤 (�����}),GAME_BOOTLEG
+wof3sj,��ؤ�Ф餦�� - ��ڤΑ餤  (���}�� set 1),GAME_BOOTLEG
+wof3sja,��ؤ�Ф餦�� - ��ڤΑ餤  (���}�� set 2),GAME_BOOTLEG
+wofsj,��ؤ�Ф餦�� - ��ڤΑ餤 (�}������ set 1),GAME_BOOTLEG
+wofsja,��ؤ�Ф餦�� - ��ڤΑ餤 (�}������ set 2),GAME_BOOTLEG
+wofsjb,��ؤ�Ф餦�� - ��ڤΑ餤 (�}������ set 3),GAME_BOOTLEG
+wofth,��ؤ�Ф餦�� - ��ڤΑ餤 �����滻��,GAME_HACK
+wofjjq,��ؤ�Ф餦�� - ��ڤΑ餤 Ѫ�ȼ�ǿ��,GAME_HACK
+woffh,��ؤ�Ф餦�� - ��ڤΑ餤 �ۺ��,GAME_HACK
+wofzhs,��ؤ�Ф餦�� - ��ڤΑ餤 �ٻ�����,GAME_HACK
+wofbio,��ؤ�Ф餦�� - ��ڤΑ餤 BOSS��ǿ��,GAME_HACK
+wofctj,��ؤ�Ф餦�� - ��ڤΑ餤 ���S����,GAME_HACK
+wofctm,��ؤ�Ф餦�� - ��ڤΑ餤 ���S����,GAME_HACK
+wofgyc,��ؤ�Ф餦�� - ��ڤΑ餤 �����������,GAME_HACK
+wofgyq,��ؤ�Ф餦�� - ��ڤΑ餤 ����ǿ����,GAME_HACK
+wofhzj,��ؤ�Ф餦�� - ��ڤΑ餤 ���Ҽ�ǿ��,GAME_HACK
+wofjqz,��ؤ�Ф餦�� - ��ڤΑ餤 �����ݺ��,GAME_HACK
+wofsjj,��ؤ�Ф餦�� - ��ڤΑ餤 �����������,GAME_HACK
+wofyjs,��ؤ�Ф餦�� - ��ڤΑ餤 ��������,GAME_HACK
+wofzyq,��ؤ�Ф餦�� - ��ڤΑ餤 ������Ѫ������,GAME_HACK
+wofzy2,��ؤ�Ф餦�� - ��ڤΑ餤 ����ǿ��������,GAME_HACK
+wofzy3,��ؤ�Ф餦�� - ��ڤΑ餤 ����ǿ��������,GAME_HACK
+wofsbl,��ؤ�Ф餦�� - ��ڤΑ餤 ���������,GAME_HACK
+wofsz,��ؤ�Ф餦�� - ��ڤΑ餤 ������,GAME_HACK
+wofdy,��ؤ�Ф餦�� - ��ڤΑ餤 ������,GAME_HACK
+wofbt,��ؤ�Ф餦�� - ��ڤΑ餤 �ŷ�ǿ��������,GAME_HACK
+wofhgz,��ؤ�Ф餦�� - ��ڤΑ餤 ����ն,GAME_HACK
+wofdyg,��ؤ�Ф餦�� - ��ڤΑ餤 ���µ�һ��,GAME_HACK
+wofyxg,��ؤ�Ф餦�� - ��ڤΑ餤 Ӣ�۹�,GAME_HACK
+wofmr,��ؤ�Ф餦�� - ��ڤΑ餤 ���˹�,GAME_HACK
+wofzhy,��ؤ�Ф餦�� - ��ڤΑ餤 �ٻ�������������,GAME_HACK

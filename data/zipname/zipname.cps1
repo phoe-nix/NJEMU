@@ -8,6 +8,7 @@ captcommu,Captain Commando (USA 910928)
 captcommj,Captain Commando (Japan 911202)
 captcommjr1,Captain Commando (Japan 910928)
 captcommb,Captain Commando (bootleg),GAME_BOOTLEG
+captcommp,Captain Commando Plus (hack),GAME_HACK
 cawing,Carrier Air Wing (World 901012)
 cawingr1,Carrier Air Wing (World 901009)
 cawingu,Carrier Air Wing (USA 901012)
@@ -92,6 +93,8 @@ punisheru,The Punisher (USA 930422)
 punisherh,The Punisher (Hispanic 930422)
 punisherj,The Punisher (Japan 930422)
 punisherbz,The Punisher - Biaofeng Zhanjing(Chinese bootleg),GAME_BOOTLEG
+punisherjd,The Punisher - Jiao Dao,GAME_HACK
+punisherp,The Punisher Plus (hack),GAME_HACK
 qad,Quiz & Dragons (USA 920701)
 qadjr,Quiz & Dragons (Japan 940921)
 qtono2j,Quiz Tonosama no Yabou 2 Zenkoku-ban (Japan 950123)
