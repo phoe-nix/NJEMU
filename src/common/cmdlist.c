@@ -622,15 +622,14 @@ void commandlist(int flag)
 		{
 			if (menu_open)
 			{
-				if (sel_item > 0)
-				{
-					sel_item--;
+				sel_item--;
+				if (sel_item < 0) sel_item=num_items-1;
 					show_lines = rows_line;
 					num_lines = cmd[sel_item]->lines;
 					if (num_lines < show_lines)
 						show_lines = num_lines;
 					sel_line = 0;
-				}
+				
 			}
 			else
 			{
@@ -641,19 +640,73 @@ void commandlist(int flag)
 		{
 			if (menu_open)
 			{
-				if (sel_item < num_items - 1)
-				{
-					sel_item++;
+				sel_item++;
+				if (sel_item > num_items - 1) sel_item = 0;
 					show_lines = rows_line;
 					num_lines = cmd[sel_item]->lines;
 					if (num_lines < show_lines)
 						show_lines = num_lines;
 					sel_line = 0;
-				}
+				
 			}
 			else
 			{
 				if (sel_line + show_lines < num_lines) sel_line++;
+			}
+		}
+		else if (pad_pressed(PSP_CTRL_LTRIGGER))
+		{
+			if (menu_open)
+			{
+				if (sel_item > 3)
+				{
+					sel_item-=3;
+				}
+				else
+				{
+					sel_item = 0;
+				}
+					show_lines = rows_line;
+					num_lines = cmd[sel_item]->lines;
+					if (num_lines < show_lines)
+						show_lines = num_lines;
+					sel_line = 0;
+			}
+			else
+			{
+				if (sel_line > 0)
+				{
+					sel_line -= rows_line;
+					if (sel_line < 0) sel_line = 0;
+				}
+			}
+		}
+		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		{
+			if (menu_open)
+			{
+				if (sel_item < num_items - 3)
+				{
+					sel_item+=3;
+				}
+				else
+				{
+					sel_item = num_items-1;
+				}
+					show_lines = rows_line;
+					num_lines = cmd[sel_item]->lines;
+					if (num_lines < show_lines)
+						show_lines = num_lines;
+					sel_line = 0;
+			}
+			else
+			{
+				if (sel_line + show_lines < num_lines)
+				{
+					sel_line += rows_line;
+					if (sel_line + show_lines > num_lines)
+					sel_line = num_lines - show_lines;
+				}
 			}
 		}
 		else if (pad_pressed(PSP_CTRL_LEFT))
@@ -690,6 +743,8 @@ void commandlist(int flag)
 		{
 			if (top_item > num_items - rows_item) top_item = num_items - rows_item;
 			if (top_item < 0) top_item = 0;
+			if (sel_item >= num_items) sel_item = 0;
+			if (sel_item < 0) sel_item = num_items - 1;
 			if (sel_item >= top_item + rows_item) top_item = sel_item - rows_item + 1;
 			if (sel_item < top_item) top_item = sel_item;
 		}
