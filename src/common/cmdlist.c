@@ -622,14 +622,15 @@ void commandlist(int flag)
 		{
 			if (menu_open)
 			{
-				sel_item--;
-				if (sel_item < 0) sel_item=num_items-1;
+				if (sel_item > 0)
+				{
+					sel_item--;
 					show_lines = rows_line;
 					num_lines = cmd[sel_item]->lines;
 					if (num_lines < show_lines)
 						show_lines = num_lines;
 					sel_line = 0;
-				
+				}
 			}
 			else
 			{
@@ -640,14 +641,15 @@ void commandlist(int flag)
 		{
 			if (menu_open)
 			{
-				sel_item++;
-				if (sel_item > num_items - 1) sel_item = 0;
+				if (sel_item < num_items - 1)
+				{
+					sel_item++;
 					show_lines = rows_line;
 					num_lines = cmd[sel_item]->lines;
 					if (num_lines < show_lines)
 						show_lines = num_lines;
 					sel_line = 0;
-				
+				}
 			}
 			else
 			{
@@ -658,9 +660,9 @@ void commandlist(int flag)
 		{
 			if (menu_open)
 			{
-				if (sel_item > 3)
+				if (sel_item > rows_item)
 				{
-					sel_item-=3;
+					sel_item -= rows_item;
 				}
 				else
 				{
@@ -685,9 +687,9 @@ void commandlist(int flag)
 		{
 			if (menu_open)
 			{
-				if (sel_item < num_items - 3)
+				if (sel_item < num_items - rows_item)
 				{
-					sel_item+=3;
+					sel_item += rows_item;
 				}
 				else
 				{
