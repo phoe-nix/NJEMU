@@ -136,6 +136,7 @@ struct driver_t CPS1_driver[] =
 	{"mtwins",     CPS_B_14, 0,                    GFX_MTWINS   },
 	{"chikij",     CPS_B_14, 0,                    GFX_MTWINS   },
 	{"nemo",       CPS_B_15, 0,                    GFX_NEMO     },
+	{"nemor1",     CPS_B_15, 0,                    GFX_NEMO     },
 	{"nemoj",      CPS_B_15, 0,                    GFX_NEMO     },
 	{"cawing",     CPS_B_16, 0,                    GFX_CAWING   },
 	{"cawingr1",   CPS_B_16, 0,                    GFX_CAWING   },
