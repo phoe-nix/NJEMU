@@ -1135,7 +1135,7 @@ static UINT32 neogeo_prot_data;
 
 READ16_HANDLER( fatfury2_protection_r )
 {
-	UINT16 res = (neogeo_prot_data >> 24) & 0xff;
+	UINT16 res = (neogeo_prot_data >> 24);
 
 	switch (offset & (0xfffff/2))
 	{
@@ -1151,7 +1151,7 @@ READ16_HANDLER( fatfury2_protection_r )
 	case 0x3600c/2:
 		return ((res & 0xf0) >> 4) | ((res & 0x0f) << 4);
 	}
-	return 0xff;
+	return 0;
 }
 
 WRITE16_HANDLER( fatfury2_protection_w )
