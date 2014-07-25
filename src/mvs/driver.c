@@ -1496,7 +1496,7 @@ WRITE16_HANDLER( kof2000_protection_w )
 ------------------------------------------------------*/
 
 static UINT16 CartRAM[0x1000];
-
+/*
 static void pvc_w8(UINT32 offset, UINT8 data)
 {
 	*(((UINT8 *)CartRAM) + offset) = data;
@@ -1506,22 +1506,22 @@ static UINT8 pvc_r8(UINT32 offset)
 {
 	return *(((UINT8 *)CartRAM) + offset);
 }
-
-static void pvc_prot1(void)
+*/
+static void pvc_write_unpack_color(void)
 {
-	UINT8 b1, b2;
+	UINT16 pen = CartRAM[0xff0];
 
-	b1 = pvc_r8(0x1fe1);
-	b2 = pvc_r8(0x1fe0);
+	UINT8 b = ((pen & 0x000f) << 1) | ((pen & 0x1000) >> 12);
+	UINT8 g = ((pen & 0x00f0) >> 3) | ((pen & 0x2000) >> 13);
+	UINT8 r = ((pen & 0x0f00) >> 7) | ((pen & 0x4000) >> 14);
+	UINT8 s = (pen & 0x8000) >> 15;
 
-	pvc_w8(0x1fe2, (((b2 >> 0) & 0xf) << 1) | ((b1 >> 4) & 1));
-	pvc_w8(0x1fe3, (((b2 >> 4) & 0xf) << 1) | ((b1 >> 5) & 1));
-	pvc_w8(0x1fe4, (((b1 >> 0) & 0xf) << 1) | ((b1 >> 6) & 1));
-	pvc_w8(0x1fe5, (b1 >> 7));
+	CartRAM[0xff1] = (g << 8) | b;
+	CartRAM[0xff2] = (s << 8) | r;
 }
-
+/*
 // on writes to e8/e9/ea/eb
-static void pvc_prot2(void)
+static void pvc_write_pack_color(void)
 {
 	UINT8 b1, b2, b3, b4;
 
@@ -1533,16 +1533,31 @@ static void pvc_prot2(void)
 	pvc_w8(0x1fec, (b2 >> 1) | ((b1 >> 1) << 4));
 	pvc_w8(0x1fed, (b4 >> 1) | ((b2 & 1) << 4) | ((b1 & 1) << 5) | ((b4 & 1) << 6) | ((b3 & 1) << 7));
 }
+*/
+static void pvc_write_pack_color(void)
+{
+	UINT16 gb = CartRAM[0xff4];
+	UINT16 sr = CartRAM[0xff5];
+
+	CartRAM[0xff6] = 	((gb & 0x001e) >>  1) |
+						((gb & 0x1e00) >>  5) |
+						((sr & 0x001e) <<  7) |
+						((gb & 0x0001) << 12) |
+						((gb & 0x0100) <<  5) |
+						((sr & 0x0001) << 14) |
+						((sr & 0x0100) <<  7);
+}
 
 static void pvc_write_bankswitch(void)
 {
 	UINT32 bankaddress;
 
 	bankaddress = ((CartRAM[0xff8] >> 8) | (CartRAM[0xff9] << 8));
-
-	*(((UINT8 *)CartRAM) + 0x1ff0)  = 0xa0;
-	*(((UINT8 *)CartRAM) + 0x1ff1) &= 0xfe;
-	*(((UINT8 *)CartRAM) + 0x1ff3) &= 0x7f;
+	CartRAM[0xff8] = (CartRAM[0xff8] & 0xfe00) | 0x00a0;//
+	CartRAM[0xff9] &= 0x7fff;//
+//	*(((UINT8 *)CartRAM) + 0x1ff0)  = 0xa0;
+//	*(((UINT8 *)CartRAM) + 0x1ff1) &= 0xfe;
+//	*(((UINT8 *)CartRAM) + 0x1ff3) &= 0x7f;
 
 	neogeo_set_cpu1_second_bank(bankaddress + 0x100000);
 }
@@ -1566,9 +1581,9 @@ WRITE16_HANDLER( pvc_protection_w )
 		COMBINE_DATA(&CartRAM[offset]);
 
 		if (offset == 0xff0)
-			pvc_prot1();
+			pvc_write_unpack_color();
 		else if (offset >= 0xff4 && offset <= 0xff5)
-			pvc_prot2();
+			pvc_write_pack_color();
 		else if (offset >= 0xff8)
 			pvc_write_bankswitch();
 	}
