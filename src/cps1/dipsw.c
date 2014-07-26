@@ -593,9 +593,93 @@ static void dip_load_forgottn(void)
 	(dip++)->value = dip_load_bit(DIP_B, 7, 1);
 }
 
+static void dip_load_forgottn_jp(void)
+{
+	dipswitch_t *dip = dipswitch_forgottn_jp;
+
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 0);
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	(dip++)->value = dip_load_difficulty1();
+	(dip++)->value = dip_load_bit(DIP_B, 6, 1);
+	(dip++)->value = dip_load_bit(DIP_B, 7, 1);
+}
+
+static void dip_load_forgottn_chs(void)
+{
+	dipswitch_t *dip = dipswitch_forgottn_chs;
+
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 0);
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	(dip++)->value = dip_load_difficulty1();
+	(dip++)->value = dip_load_bit(DIP_B, 6, 1);
+	(dip++)->value = dip_load_bit(DIP_B, 7, 1);
+}
+
+static void dip_load_forgottn_cht(void)
+{
+	dipswitch_t *dip = dipswitch_forgottn_cht;
+
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 0);
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	(dip++)->value = dip_load_difficulty1();
+	(dip++)->value = dip_load_bit(DIP_B, 6, 1);
+	(dip++)->value = dip_load_bit(DIP_B, 7, 1);
+}
+
 static void dip_save_forgottn(void)
 {
 	dipswitch_t *dip = dipswitch_forgottn;
+
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 0);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	dip_save_difficulty1((dip++)->value);
+	dip_save_bit(DIP_B, (dip++)->value, 6, 1);
+	dip_save_bit(DIP_B, (dip++)->value, 7, 1);
+}
+
+static void dip_save_forgottn_jp(void)
+{
+	dipswitch_t *dip = dipswitch_forgottn_jp;
+
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 0);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	dip_save_difficulty1((dip++)->value);
+	dip_save_bit(DIP_B, (dip++)->value, 6, 1);
+	dip_save_bit(DIP_B, (dip++)->value, 7, 1);
+}
+
+static void dip_save_forgottn_chs(void)
+{
+	dipswitch_t *dip = dipswitch_forgottn_chs;
+
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 0);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	dip_save_difficulty1((dip++)->value);
+	dip_save_bit(DIP_B, (dip++)->value, 6, 1);
+	dip_save_bit(DIP_B, (dip++)->value, 7, 1);
+}
+
+static void dip_save_forgottn_cht(void)
+{
+	dipswitch_t *dip = dipswitch_forgottn_cht;
 
 	dip_save_coin1a((dip++)->value);
 	dip_save_coin1b((dip++)->value);
@@ -930,6 +1014,168 @@ static void dip_load_ghouls(int type)
 	load_game_mode;
 }
 
+static void dip_load_ghouls_jp(int type)
+{
+	dipswitch_t *dip;
+
+	switch (type)
+	{
+	case 1:  dip = dipswitch_ghoulsu_jp; break;
+	case 2:  dip = dipswitch_daimakai_jp; break;
+	default: dip = dipswitch_ghouls_jp; break;
+	}
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_cabinet();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty2();
+	switch (cps1_dipswitch[DIP_B] & 0x30)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x20: (dip++)->value = 0; break;
+	case 0x30: (dip++)->value = 2; break;
+	}
+	if (type != 0) (dip++)->value = dip_load_bit(DIP_B, 7, 1);
+
+	// DIP C
+	if (type == 1)
+	{
+		switch (cps1_dipswitch[DIP_C] & 0x03)
+		{
+		case 0x00: (dip++)->value = 0; break;
+		case 0x01: (dip++)->value = 3; break;
+		case 0x02: (dip++)->value = 2; break;
+		case 0x03: (dip++)->value = 1; break;
+		}
+	}
+	else
+	{
+		switch (cps1_dipswitch[DIP_C] & 0x03)
+		{
+		case 0x00: (dip++)->value = 3; break;
+		case 0x01: (dip++)->value = 2; break;
+		case 0x02: (dip++)->value = 1; break;
+		case 0x03: (dip++)->value = 0; break;
+		}
+	}
+	load_flip_screen;
+	load_demo_sounds2;
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_ghouls_chs(int type)
+{
+	dipswitch_t *dip;
+
+	switch (type)
+	{
+	case 1:  dip = dipswitch_ghoulsu_chs; break;
+	case 2:  dip = dipswitch_daimakai_chs; break;
+	default: dip = dipswitch_ghouls_chs; break;
+	}
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_cabinet();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty2();
+	switch (cps1_dipswitch[DIP_B] & 0x30)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x20: (dip++)->value = 0; break;
+	case 0x30: (dip++)->value = 2; break;
+	}
+	if (type != 0) (dip++)->value = dip_load_bit(DIP_B, 7, 1);
+
+	// DIP C
+	if (type == 1)
+	{
+		switch (cps1_dipswitch[DIP_C] & 0x03)
+		{
+		case 0x00: (dip++)->value = 0; break;
+		case 0x01: (dip++)->value = 3; break;
+		case 0x02: (dip++)->value = 2; break;
+		case 0x03: (dip++)->value = 1; break;
+		}
+	}
+	else
+	{
+		switch (cps1_dipswitch[DIP_C] & 0x03)
+		{
+		case 0x00: (dip++)->value = 3; break;
+		case 0x01: (dip++)->value = 2; break;
+		case 0x02: (dip++)->value = 1; break;
+		case 0x03: (dip++)->value = 0; break;
+		}
+	}
+	load_flip_screen;
+	load_demo_sounds2;
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_ghouls_cht(int type)
+{
+	dipswitch_t *dip;
+
+	switch (type)
+	{
+	case 1:  dip = dipswitch_ghoulsu_cht; break;
+	case 2:  dip = dipswitch_daimakai_cht; break;
+	default: dip = dipswitch_ghouls_cht; break;
+	}
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_cabinet();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty2();
+	switch (cps1_dipswitch[DIP_B] & 0x30)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x20: (dip++)->value = 0; break;
+	case 0x30: (dip++)->value = 2; break;
+	}
+	if (type != 0) (dip++)->value = dip_load_bit(DIP_B, 7, 1);
+
+	// DIP C
+	if (type == 1)
+	{
+		switch (cps1_dipswitch[DIP_C] & 0x03)
+		{
+		case 0x00: (dip++)->value = 0; break;
+		case 0x01: (dip++)->value = 3; break;
+		case 0x02: (dip++)->value = 2; break;
+		case 0x03: (dip++)->value = 1; break;
+		}
+	}
+	else
+	{
+		switch (cps1_dipswitch[DIP_C] & 0x03)
+		{
+		case 0x00: (dip++)->value = 3; break;
+		case 0x01: (dip++)->value = 2; break;
+		case 0x02: (dip++)->value = 1; break;
+		case 0x03: (dip++)->value = 0; break;
+		}
+	}
+	load_flip_screen;
+	load_demo_sounds2;
+	load_allow_continue2;
+	load_game_mode;
+}
+
 static void dip_save_ghouls(int type)
 {
 	dipswitch_t *dip;
@@ -939,6 +1185,168 @@ static void dip_save_ghouls(int type)
 	case 1:  dip = dipswitch_ghoulsu; break;
 	case 2:  dip = dipswitch_daimakai; break;
 	default: dip = dipswitch_ghouls; break;
+	}
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_cabinet((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty2((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	if (type != 0) dip_save_bit(DIP_B, (dip++)->value, 7, 1);
+
+	// DIP C
+	if (type == 1)
+	{
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+		case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+		case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+		case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+		}
+	}
+	else
+	{
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+		case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+		case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+		case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+		}
+	}
+	save_flip_screen;
+	save_demo_sounds2;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_ghouls_jp(int type)
+{
+	dipswitch_t *dip;
+
+	switch (type)
+	{
+	case 1:  dip = dipswitch_ghoulsu_jp; break;
+	case 2:  dip = dipswitch_daimakai_jp; break;
+	default: dip = dipswitch_ghouls_jp; break;
+	}
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_cabinet((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty2((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	if (type != 0) dip_save_bit(DIP_B, (dip++)->value, 7, 1);
+
+	// DIP C
+	if (type == 1)
+	{
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+		case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+		case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+		case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+		}
+	}
+	else
+	{
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+		case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+		case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+		case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+		}
+	}
+	save_flip_screen;
+	save_demo_sounds2;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_ghouls_chs(int type)
+{
+	dipswitch_t *dip;
+
+	switch (type)
+	{
+	case 1:  dip = dipswitch_ghoulsu_chs; break;
+	case 2:  dip = dipswitch_daimakai_chs; break;
+	default: dip = dipswitch_ghouls_chs; break;
+	}
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_cabinet((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty2((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	if (type != 0) dip_save_bit(DIP_B, (dip++)->value, 7, 1);
+
+	// DIP C
+	if (type == 1)
+	{
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+		case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+		case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+		case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+		}
+	}
+	else
+	{
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+		case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+		case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+		case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+		}
+	}
+	save_flip_screen;
+	save_demo_sounds2;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_ghouls_cht(int type)
+{
+	dipswitch_t *dip;
+
+	switch (type)
+	{
+	case 1:  dip = dipswitch_ghoulsu_cht; break;
+	case 2:  dip = dipswitch_daimakai_cht; break;
+	default: dip = dipswitch_ghouls_cht; break;
 	}
 
 	// DIP A
@@ -1236,6 +1644,147 @@ static void dip_load_strider(int type)
 	load_game_mode;
 }
 
+static void dip_load_strider_jp(int type)
+{
+	dipswitch_t *dip;
+
+	if (type)
+		dip = dipswitch_stridrua_jp;
+	else
+		dip = dipswitch_strider_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_cabinet();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty2();
+	if (type == 1) (dip++)->value = dip_load_bit(DIP_B, 3, 1);
+	switch (cps1_dipswitch[DIP_B] & 0x30)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x10: (dip++)->value = 2; break;
+	case 0x20: (dip++)->value = 1; break;
+	case 0x30: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 1; break;
+	case 0x80: (dip++)->value = 2; break;
+	case 0xc0: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds2;
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_strider_chs(int type)
+{
+	dipswitch_t *dip;
+
+	if (type)
+		dip = dipswitch_stridrua_chs;
+	else
+		dip = dipswitch_strider_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_cabinet();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty2();
+	if (type == 1) (dip++)->value = dip_load_bit(DIP_B, 3, 1);
+	switch (cps1_dipswitch[DIP_B] & 0x30)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x10: (dip++)->value = 2; break;
+	case 0x20: (dip++)->value = 1; break;
+	case 0x30: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 1; break;
+	case 0x80: (dip++)->value = 2; break;
+	case 0xc0: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds2;
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_strider_cht(int type)
+{
+	dipswitch_t *dip;
+
+	if (type)
+		dip = dipswitch_stridrua_cht;
+	else
+		dip = dipswitch_strider_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_cabinet();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty2();
+	if (type == 1) (dip++)->value = dip_load_bit(DIP_B, 3, 1);
+	switch (cps1_dipswitch[DIP_B] & 0x30)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x10: (dip++)->value = 2; break;
+	case 0x20: (dip++)->value = 1; break;
+	case 0x30: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 1; break;
+	case 0x80: (dip++)->value = 2; break;
+	case 0xc0: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds2;
+	load_allow_continue2;
+	load_game_mode;
+}
+
 static void dip_save_strider(int type)
 {
 	dipswitch_t *dip;
@@ -1244,6 +1793,147 @@ static void dip_save_strider(int type)
 		dip = dipswitch_stridrua;
 	else
 		dip = dipswitch_strider;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_cabinet((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty2((dip++)->value);
+	if (type == 1) dip_save_bit(DIP_B, (dip++)->value, 3, 1);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds2;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_strider_jp(int type)
+{
+	dipswitch_t *dip;
+
+	if (type)
+		dip = dipswitch_stridrua_jp;
+	else
+		dip = dipswitch_strider_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_cabinet((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty2((dip++)->value);
+	if (type == 1) dip_save_bit(DIP_B, (dip++)->value, 3, 1);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds2;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_strider_chs(int type)
+{
+	dipswitch_t *dip;
+
+	if (type)
+		dip = dipswitch_stridrua_chs;
+	else
+		dip = dipswitch_strider_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_cabinet((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty2((dip++)->value);
+	if (type == 1) dip_save_bit(DIP_B, (dip++)->value, 3, 1);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds2;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_strider_cht(int type)
+{
+	dipswitch_t *dip;
+
+	if (type)
+		dip = dipswitch_stridrua_cht;
+	else
+		dip = dipswitch_strider_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -1393,9 +2083,135 @@ static void dip_load_dynwar(void)
 	load_game_mode;
 }
 
+static void dip_load_dynwar_jp(void)
+{
+	dipswitch_t *dip = dipswitch_dynwar_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin2a();
+	(dip++)->value = dip_load_coin2b();
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty2();
+
+	// DIP C
+	(dip++)->value = dip_load_bit(DIP_C, 0, 1);
+	(dip++)->value = dip_load_bit(DIP_C, 1, 1);
+	load_flip_screen;
+	load_demo_sounds2;
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_dynwar_chs(void)
+{
+	dipswitch_t *dip = dipswitch_dynwar_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin2a();
+	(dip++)->value = dip_load_coin2b();
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty2();
+
+	// DIP C
+	(dip++)->value = dip_load_bit(DIP_C, 0, 1);
+	(dip++)->value = dip_load_bit(DIP_C, 1, 1);
+	load_flip_screen;
+	load_demo_sounds2;
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_dynwar_cht(void)
+{
+	dipswitch_t *dip = dipswitch_dynwar_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin2a();
+	(dip++)->value = dip_load_coin2b();
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty2();
+
+	// DIP C
+	(dip++)->value = dip_load_bit(DIP_C, 0, 1);
+	(dip++)->value = dip_load_bit(DIP_C, 1, 1);
+	load_flip_screen;
+	load_demo_sounds2;
+	load_allow_continue2;
+	load_game_mode;
+}
+
 static void dip_save_dynwar(void)
 {
 	dipswitch_t *dip = dipswitch_dynwar;
+
+	// DIP A
+	dip_save_coin2a((dip++)->value);
+	dip_save_coin2b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	// DIP B
+	dip_save_difficulty2((dip++)->value);
+
+	// DIP C
+	dip_save_bit(DIP_C, (dip++)->value, 0, 1);
+	dip_save_bit(DIP_C, (dip++)->value, 1, 1);
+	save_flip_screen;
+	save_demo_sounds2;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_dynwar_jp(void)
+{
+	dipswitch_t *dip = dipswitch_dynwar_jp;
+
+	// DIP A
+	dip_save_coin2a((dip++)->value);
+	dip_save_coin2b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	// DIP B
+	dip_save_difficulty2((dip++)->value);
+
+	// DIP C
+	dip_save_bit(DIP_C, (dip++)->value, 0, 1);
+	dip_save_bit(DIP_C, (dip++)->value, 1, 1);
+	save_flip_screen;
+	save_demo_sounds2;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_dynwar_chs(void)
+{
+	dipswitch_t *dip = dipswitch_dynwar_chs;
+
+	// DIP A
+	dip_save_coin2a((dip++)->value);
+	dip_save_coin2b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	// DIP B
+	dip_save_difficulty2((dip++)->value);
+
+	// DIP C
+	dip_save_bit(DIP_C, (dip++)->value, 0, 1);
+	dip_save_bit(DIP_C, (dip++)->value, 1, 1);
+	save_flip_screen;
+	save_demo_sounds2;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_dynwar_cht(void)
+{
+	dipswitch_t *dip = dipswitch_dynwar_cht;
 
 	// DIP A
 	dip_save_coin2a((dip++)->value);
@@ -1555,9 +2371,255 @@ static void dip_load_willow(void)
 	load_game_mode;
 }
 
+static void dip_load_willow_jp(void)
+{
+	dipswitch_t *dip = dipswitch_willow_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin2a();
+	(dip++)->value = dip_load_coin2b();
+	(dip++)->value = dip_load_cabinet();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty2();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 0; break;
+	case 0x18: (dip++)->value = 1; break;
+	}
+	(dip++)->value = dip_load_bit(DIP_B, 7, 1);
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 0; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_C] & 0x0c)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x04: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x0c: (dip++)->value = 1; break;
+	}
+	load_flip_screen;
+	load_demo_sounds2;
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_willow_chs(void)
+{
+	dipswitch_t *dip = dipswitch_willow_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin2a();
+	(dip++)->value = dip_load_coin2b();
+	(dip++)->value = dip_load_cabinet();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty2();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 0; break;
+	case 0x18: (dip++)->value = 1; break;
+	}
+	(dip++)->value = dip_load_bit(DIP_B, 7, 1);
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 0; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_C] & 0x0c)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x04: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x0c: (dip++)->value = 1; break;
+	}
+	load_flip_screen;
+	load_demo_sounds2;
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_willow_cht(void)
+{
+	dipswitch_t *dip = dipswitch_willow_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin2a();
+	(dip++)->value = dip_load_coin2b();
+	(dip++)->value = dip_load_cabinet();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty2();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 0; break;
+	case 0x18: (dip++)->value = 1; break;
+	}
+	(dip++)->value = dip_load_bit(DIP_B, 7, 1);
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 0; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_C] & 0x0c)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x04: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x0c: (dip++)->value = 1; break;
+	}
+	load_flip_screen;
+	load_demo_sounds2;
+	load_allow_continue2;
+	load_game_mode;
+}
+
 static void dip_save_willow(void)
 {
 	dipswitch_t *dip = dipswitch_willow;
+
+	// DIP A
+	dip_save_coin2a((dip++)->value);
+	dip_save_coin2b((dip++)->value);
+	dip_save_cabinet((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty2((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	dip_save_bit(DIP_B, (dip++)->value, 7, 1);
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x0c; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x04; break;
+	}
+	save_flip_screen;
+	save_demo_sounds2;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_willow_jp(void)
+{
+	dipswitch_t *dip = dipswitch_willow_jp;
+
+	// DIP A
+	dip_save_coin2a((dip++)->value);
+	dip_save_coin2b((dip++)->value);
+	dip_save_cabinet((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty2((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	dip_save_bit(DIP_B, (dip++)->value, 7, 1);
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x0c; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x04; break;
+	}
+	save_flip_screen;
+	save_demo_sounds2;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_willow_chs(void)
+{
+	dipswitch_t *dip = dipswitch_willow_chs;
+
+	// DIP A
+	dip_save_coin2a((dip++)->value);
+	dip_save_coin2b((dip++)->value);
+	dip_save_cabinet((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty2((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	dip_save_bit(DIP_B, (dip++)->value, 7, 1);
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x0c; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x04; break;
+	}
+	save_flip_screen;
+	save_demo_sounds2;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_willow_cht(void)
+{
+	dipswitch_t *dip = dipswitch_willow_cht;
 
 	// DIP A
 	dip_save_coin2a((dip++)->value);
@@ -1712,9 +2774,171 @@ static void dip_load_unsquad(void)
 	load_game_mode;
 }
 
+static void dip_load_unsquad_jp(void)
+{
+	dipswitch_t *dip = dipswitch_unsquad_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin2a();
+	(dip++)->value = dip_load_coin2b();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 0; break;
+	case 0x18: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_unsquad_chs(void)
+{
+	dipswitch_t *dip = dipswitch_unsquad_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin2a();
+	(dip++)->value = dip_load_coin2b();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 0; break;
+	case 0x18: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_unsquad_cht(void)
+{
+	dipswitch_t *dip = dipswitch_unsquad_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin2a();
+	(dip++)->value = dip_load_coin2b();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 0; break;
+	case 0x18: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_unsquad(void)
 {
 	dipswitch_t *dip = dipswitch_unsquad;
+
+	// DIP A
+	dip_save_coin2a((dip++)->value);
+	dip_save_coin2b((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_unsquad_jp(void)
+{
+	dipswitch_t *dip = dipswitch_unsquad_jp;
+
+	// DIP A
+	dip_save_coin2a((dip++)->value);
+	dip_save_coin2b((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_unsquad_chs(void)
+{
+	dipswitch_t *dip = dipswitch_unsquad_chs;
+
+	// DIP A
+	dip_save_coin2a((dip++)->value);
+	dip_save_coin2b((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_unsquad_cht(void)
+{
+	dipswitch_t *dip = dipswitch_unsquad_cht;
 
 	// DIP A
 	dip_save_coin2a((dip++)->value);
@@ -1882,9 +3106,261 @@ static void dip_load_ffight(void)
 	load_game_mode;
 }
 
+static void dip_load_ffight_jp(void)
+{
+	dipswitch_t *dip = dipswitch_ffight_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x60)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x20: (dip++)->value = 2; break;
+	case 0x40: (dip++)->value = 1; break;
+	case 0x60: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_ffight_chs(void)
+{
+	dipswitch_t *dip = dipswitch_ffight_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x60)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x20: (dip++)->value = 2; break;
+	case 0x40: (dip++)->value = 1; break;
+	case 0x60: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_ffight_cht(void)
+{
+	dipswitch_t *dip = dipswitch_ffight_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x60)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x20: (dip++)->value = 2; break;
+	case 0x40: (dip++)->value = 1; break;
+	case 0x60: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_ffight(void)
 {
 	dipswitch_t *dip = dipswitch_ffight;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x60; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_ffight_jp(void)
+{
+	dipswitch_t *dip = dipswitch_ffight_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x60; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_ffight_chs(void)
+{
+	dipswitch_t *dip = dipswitch_ffight_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x60; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_ffight_cht(void)
+{
+	dipswitch_t *dip = dipswitch_ffight_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -2066,9 +3542,231 @@ static void dip_load_1941(void)
 	load_game_mode;
 }
 
+static void dip_load_1941_jp(void)
+{
+	dipswitch_t *dip = dipswitch_1941_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x60)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x20: (dip++)->value = 2; break;
+	case 0x40: (dip++)->value = 1; break;
+	case 0x60: (dip++)->value = 0; break;
+	}
+	(dip++)->value = dip_load_bit(DIP_B, 7, 1);
+
+	// DIP C
+	(dip++)->value = dip_load_bit(DIP_C, 0, 0);
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_1941_chs(void)
+{
+	dipswitch_t *dip = dipswitch_1941_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x60)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x20: (dip++)->value = 2; break;
+	case 0x40: (dip++)->value = 1; break;
+	case 0x60: (dip++)->value = 0; break;
+	}
+	(dip++)->value = dip_load_bit(DIP_B, 7, 1);
+
+	// DIP C
+	(dip++)->value = dip_load_bit(DIP_C, 0, 0);
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_1941_cht(void)
+{
+	dipswitch_t *dip = dipswitch_1941_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x60)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x20: (dip++)->value = 2; break;
+	case 0x40: (dip++)->value = 1; break;
+	case 0x60: (dip++)->value = 0; break;
+	}
+	(dip++)->value = dip_load_bit(DIP_B, 7, 1);
+
+	// DIP C
+	(dip++)->value = dip_load_bit(DIP_C, 0, 0);
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_1941(void)
 {
 	dipswitch_t *dip = dipswitch_1941;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x60; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	dip_save_bit(DIP_B, (dip++)->value, 7, 1);
+
+	// DIP C
+	dip_save_bit(DIP_C, (dip++)->value, 0, 0);
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_1941_jp(void)
+{
+	dipswitch_t *dip = dipswitch_1941_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x60; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	dip_save_bit(DIP_B, (dip++)->value, 7, 1);
+
+	// DIP C
+	dip_save_bit(DIP_C, (dip++)->value, 0, 0);
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_1941_chs(void)
+{
+	dipswitch_t *dip = dipswitch_1941_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x60; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x60; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	dip_save_bit(DIP_B, (dip++)->value, 7, 1);
+
+	// DIP C
+	dip_save_bit(DIP_C, (dip++)->value, 0, 0);
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_1941_cht(void)
+{
+	dipswitch_t *dip = dipswitch_1941_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -2216,9 +3914,135 @@ static void dip_load_mercs(void)
 	load_game_mode;
 }
 
+static void dip_load_mercs_jp(void)
+{
+	dipswitch_t *dip = dipswitch_mercs_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	(dip++)->value = dip_load_bit(DIP_B, 3, 0);
+	(dip++)->value = dip_load_bit(DIP_B, 4, 0);
+
+	// DIP C
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_mercs_chs(void)
+{
+	dipswitch_t *dip = dipswitch_mercs_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	(dip++)->value = dip_load_bit(DIP_B, 3, 0);
+	(dip++)->value = dip_load_bit(DIP_B, 4, 0);
+
+	// DIP C
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_mercs_cht(void)
+{
+	dipswitch_t *dip = dipswitch_mercs_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	(dip++)->value = dip_load_bit(DIP_B, 3, 0);
+	(dip++)->value = dip_load_bit(DIP_B, 4, 0);
+
+	// DIP C
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_mercs(void)
 {
 	dipswitch_t *dip = dipswitch_mercs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	dip_save_bit(DIP_B, (dip++)->value, 3, 0);
+	dip_save_bit(DIP_B, (dip++)->value, 4, 0);
+
+	// DIP C
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_mercs_jp(void)
+{
+	dipswitch_t *dip = dipswitch_mercs_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	dip_save_bit(DIP_B, (dip++)->value, 3, 0);
+	dip_save_bit(DIP_B, (dip++)->value, 4, 0);
+
+	// DIP C
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_mercs_chs(void)
+{
+	dipswitch_t *dip = dipswitch_mercs_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	dip_save_bit(DIP_B, (dip++)->value, 3, 0);
+	dip_save_bit(DIP_B, (dip++)->value, 4, 0);
+
+	// DIP C
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_mercs_cht(void)
+{
+	dipswitch_t *dip = dipswitch_mercs_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -2353,9 +4177,171 @@ static void dip_load_mtwins(void)
 	load_game_mode;
 }
 
+static void dip_load_mtwins_jp(void)
+{
+	dipswitch_t *dip = dipswitch_mtwins_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x38)
+	{
+	case 0x00: case 0x20: (dip++)->value = 3; break;
+	case 0x08: case 0x28: (dip++)->value = 2; break;
+	case 0x10: case 0x30: (dip++)->value = 0; break;
+	case 0x18: case 0x38: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_mtwins_chs(void)
+{
+	dipswitch_t *dip = dipswitch_mtwins_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x38)
+	{
+	case 0x00: case 0x20: (dip++)->value = 3; break;
+	case 0x08: case 0x28: (dip++)->value = 2; break;
+	case 0x10: case 0x30: (dip++)->value = 0; break;
+	case 0x18: case 0x38: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_mtwins_cht(void)
+{
+	dipswitch_t *dip = dipswitch_mtwins_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x38)
+	{
+	case 0x00: case 0x20: (dip++)->value = 3; break;
+	case 0x08: case 0x28: (dip++)->value = 2; break;
+	case 0x10: case 0x30: (dip++)->value = 0; break;
+	case 0x18: case 0x38: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_mtwins(void)
 {
 	dipswitch_t *dip = dipswitch_mtwins;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_mtwins_jp(void)
+{
+	dipswitch_t *dip = dipswitch_mtwins_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_mtwins_chs(void)
+{
+	dipswitch_t *dip = dipswitch_mtwins_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_mtwins_cht(void)
+{
+	dipswitch_t *dip = dipswitch_mtwins_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -2521,9 +4507,249 @@ static void dip_load_msword(void)
 	load_game_mode;
 }
 
+static void dip_load_msword_jp(void)
+{
+	dipswitch_t *dip = dipswitch_msword_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x38)
+	{
+	case 0x00: (dip++)->value = 7; break;
+	case 0x08: (dip++)->value = 6; break;
+	case 0x10: (dip++)->value = 5; break;
+	case 0x18: (dip++)->value = 4; break;
+	case 0x20: (dip++)->value = 0; break;
+	case 0x28: (dip++)->value = 1; break;
+	case 0x30: (dip++)->value = 2; break;
+	case 0x38: (dip++)->value = 3; break;
+	}
+	(dip++)->value = dip_load_bit(DIP_B, 6, 1);
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_msword_chs(void)
+{
+	dipswitch_t *dip = dipswitch_msword_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x38)
+	{
+	case 0x00: (dip++)->value = 7; break;
+	case 0x08: (dip++)->value = 6; break;
+	case 0x10: (dip++)->value = 5; break;
+	case 0x18: (dip++)->value = 4; break;
+	case 0x20: (dip++)->value = 0; break;
+	case 0x28: (dip++)->value = 1; break;
+	case 0x30: (dip++)->value = 2; break;
+	case 0x38: (dip++)->value = 3; break;
+	}
+	(dip++)->value = dip_load_bit(DIP_B, 6, 1);
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_msword_cht(void)
+{
+	dipswitch_t *dip = dipswitch_msword_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x38)
+	{
+	case 0x00: (dip++)->value = 7; break;
+	case 0x08: (dip++)->value = 6; break;
+	case 0x10: (dip++)->value = 5; break;
+	case 0x18: (dip++)->value = 4; break;
+	case 0x20: (dip++)->value = 0; break;
+	case 0x28: (dip++)->value = 1; break;
+	case 0x30: (dip++)->value = 2; break;
+	case 0x38: (dip++)->value = 3; break;
+	}
+	(dip++)->value = dip_load_bit(DIP_B, 6, 1);
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_msword(void)
 {
 	dipswitch_t *dip = dipswitch_msword;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x28; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x38; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 5: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 6: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 7: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	dip_save_bit(DIP_B, (dip++)->value, 6, 1);
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_msword_jp(void)
+{
+	dipswitch_t *dip = dipswitch_msword_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x28; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x38; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 5: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 6: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 7: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	dip_save_bit(DIP_B, (dip++)->value, 6, 1);
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_msword_chs(void)
+{
+	dipswitch_t *dip = dipswitch_msword_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x28; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x38; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 5: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 6: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 7: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	dip_save_bit(DIP_B, (dip++)->value, 6, 1);
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_msword_cht(void)
+{
+	dipswitch_t *dip = dipswitch_msword_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -2682,9 +4908,177 @@ static void dip_load_cawing(void)
 	load_game_mode;
 }
 
+static void dip_load_cawing_jp(void)
+{
+	dipswitch_t *dip = dipswitch_cawing_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 0; break;
+	case 0x18: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_cawing_chs(void)
+{
+	dipswitch_t *dip = dipswitch_cawing_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 0; break;
+	case 0x18: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_cawing_cht(void)
+{
+	dipswitch_t *dip = dipswitch_cawing_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 0; break;
+	case 0x18: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_cawing(void)
 {
 	dipswitch_t *dip = dipswitch_cawing;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_cawing_jp(void)
+{
+	dipswitch_t *dip = dipswitch_cawing_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_cawing_chs(void)
+{
+	dipswitch_t *dip = dipswitch_cawing_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_cawing_cht(void)
+{
+	dipswitch_t *dip = dipswitch_cawing_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -2841,9 +5235,213 @@ static void dip_load_nemo(void)
 	load_game_mode;
 }
 
+static void dip_load_nemo_jp(void)
+{
+	dipswitch_t *dip = dipswitch_nemo_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x18: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x02: (dip++)->value = 0; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_nemo_chs(void)
+{
+	dipswitch_t *dip = dipswitch_nemo_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x18: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x02: (dip++)->value = 0; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_nemo_cht(void)
+{
+	dipswitch_t *dip = dipswitch_nemo_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x18: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x02: (dip++)->value = 0; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_nemo(void)
 {
 	dipswitch_t *dip = dipswitch_nemo;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_nemo_jp(void)
+{
+	dipswitch_t *dip = dipswitch_nemo_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_nemo_chs(void)
+{
+	dipswitch_t *dip = dipswitch_nemo_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_nemo_cht(void)
+{
+	dipswitch_t *dip = dipswitch_nemo_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -3077,11 +5675,155 @@ static void dip_load_sf2(int type)
 	load_game_mode;
 }
 
+static void dip_load_sf2_jp(int type)
+{
+	dipswitch_t *dip;
+
+	dip = (type == 0) ? dipswitch_sf2_jp : dipswitch_sf2j_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	if (type == 1) (dip++)->value = dip_load_bit(DIP_B, 3, 1);
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_sf2_chs(int type)
+{
+	dipswitch_t *dip;
+
+	dip = (type == 0) ? dipswitch_sf2_chs : dipswitch_sf2j_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	if (type == 1) (dip++)->value = dip_load_bit(DIP_B, 3, 1);
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_sf2_cht(int type)
+{
+	dipswitch_t *dip;
+
+	dip = (type == 0) ? dipswitch_sf2_cht : dipswitch_sf2j_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	if (type == 1) (dip++)->value = dip_load_bit(DIP_B, 3, 1);
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_sf2(int type)
 {
 	dipswitch_t *dip;
 
 	dip = (type == 0) ? dipswitch_sf2 : dipswitch_sf2j;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	if (type == 1) dip_save_bit(DIP_B, (dip++)->value, 3, 1);
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_sf2_jp(int type)
+{
+	dipswitch_t *dip;
+
+	dip = (type == 0) ? dipswitch_sf2_jp : dipswitch_sf2j_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	if (type == 1) dip_save_bit(DIP_B, (dip++)->value, 3, 1);
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_sf2_chs(int type)
+{
+	dipswitch_t *dip;
+
+	dip = (type == 0) ? dipswitch_sf2_chs : dipswitch_sf2j_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	if (type == 1) dip_save_bit(DIP_B, (dip++)->value, 3, 1);
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_sf2_cht(int type)
+{
+	dipswitch_t *dip;
+
+	dip = (type == 0) ? dipswitch_sf2_cht : dipswitch_sf2j_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -3267,9 +6009,375 @@ static void dip_load_3wonders(void)
 	load_game_mode;
 }
 
+static void dip_load_3wonders_jp(void)
+{
+	dipswitch_t *dip = dipswitch_3wonders_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	// DIP B
+	switch (cps1_dipswitch[DIP_B] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x03: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x0c)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x04: (dip++)->value = 2; break;
+	case 0x08: (dip++)->value = 1; break;
+	case 0x0c: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x30)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x10: (dip++)->value = 2; break;
+	case 0x20: (dip++)->value = 1; break;
+	case 0x30: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 2; break;
+	case 0x80: (dip++)->value = 1; break;
+	case 0xc0: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x03: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_C] & 0x0c)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x04: (dip++)->value = 2; break;
+	case 0x08: (dip++)->value = 1; break;
+	case 0x0c: (dip++)->value = 0; break;
+	}
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_3wonders_chs(void)
+{
+	dipswitch_t *dip = dipswitch_3wonders_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	// DIP B
+	switch (cps1_dipswitch[DIP_B] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x03: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x0c)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x04: (dip++)->value = 2; break;
+	case 0x08: (dip++)->value = 1; break;
+	case 0x0c: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x30)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x10: (dip++)->value = 2; break;
+	case 0x20: (dip++)->value = 1; break;
+	case 0x30: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 2; break;
+	case 0x80: (dip++)->value = 1; break;
+	case 0xc0: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x03: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_C] & 0x0c)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x04: (dip++)->value = 2; break;
+	case 0x08: (dip++)->value = 1; break;
+	case 0x0c: (dip++)->value = 0; break;
+	}
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_3wonders_cht(void)
+{
+	dipswitch_t *dip = dipswitch_3wonders_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	// DIP B
+	switch (cps1_dipswitch[DIP_B] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x03: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x0c)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x04: (dip++)->value = 2; break;
+	case 0x08: (dip++)->value = 1; break;
+	case 0x0c: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x30)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x10: (dip++)->value = 2; break;
+	case 0x20: (dip++)->value = 1; break;
+	case 0x30: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 2; break;
+	case 0x80: (dip++)->value = 1; break;
+	case 0xc0: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x03: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_C] & 0x0c)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x04: (dip++)->value = 2; break;
+	case 0x08: (dip++)->value = 1; break;
+	case 0x0c: (dip++)->value = 0; break;
+	}
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_3wonders(void)
 {
 	dipswitch_t *dip = dipswitch_3wonders;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	// DIP B
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x03; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x02; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x0c; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x04; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x0c; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x08; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x04; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_3wonders_jp(void)
+{
+	dipswitch_t *dip = dipswitch_3wonders_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	// DIP B
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x03; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x02; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x0c; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x04; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x0c; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x08; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x04; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_3wonders_chs(void)
+{
+	dipswitch_t *dip = dipswitch_3wonders_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	// DIP B
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x03; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x02; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x0c; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x04; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x30; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x0c; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x08; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x04; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x0c; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_3wonders_cht(void)
+{
+	dipswitch_t *dip = dipswitch_3wonders_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -3568,11 +6676,260 @@ static void dip_load_kod(int type)
 	load_game_mode;
 }
 
+static void dip_load_kod_jp(int type)
+{
+	dipswitch_t *dip;
+
+	dip = (type == 0) ? dipswitch_kod_jp : dipswitch_kodj_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 3, 0);
+	(dip++)->value = dip_load_bit(DIP_A, 4, 0);
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x38)
+	{
+	case 0x00: (dip++)->value = 7; break;
+	case 0x08: (dip++)->value = 6; break;
+	case 0x10: (dip++)->value = 5; break;
+	case 0x18: (dip++)->value = 4; break;
+	case 0x20: (dip++)->value = 3; break;
+	case 0x28: (dip++)->value = 2; break;
+	case 0x30: (dip++)->value = 0; break;
+	case 0x38: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 2; break;
+	case 0x80: (dip++)->value = 0; break;
+	case 0xc0: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_kod_chs(int type)
+{
+	dipswitch_t *dip;
+
+	dip = (type == 0) ? dipswitch_kod_chs : dipswitch_kodj_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 3, 0);
+	(dip++)->value = dip_load_bit(DIP_A, 4, 0);
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x38)
+	{
+	case 0x00: (dip++)->value = 7; break;
+	case 0x08: (dip++)->value = 6; break;
+	case 0x10: (dip++)->value = 5; break;
+	case 0x18: (dip++)->value = 4; break;
+	case 0x20: (dip++)->value = 3; break;
+	case 0x28: (dip++)->value = 2; break;
+	case 0x30: (dip++)->value = 0; break;
+	case 0x38: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 2; break;
+	case 0x80: (dip++)->value = 0; break;
+	case 0xc0: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_kod_cht(int type)
+{
+	dipswitch_t *dip;
+
+	dip = (type == 0) ? dipswitch_kod_cht : dipswitch_kodj_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 3, 0);
+	(dip++)->value = dip_load_bit(DIP_A, 4, 0);
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x38)
+	{
+	case 0x00: (dip++)->value = 7; break;
+	case 0x08: (dip++)->value = 6; break;
+	case 0x10: (dip++)->value = 5; break;
+	case 0x18: (dip++)->value = 4; break;
+	case 0x20: (dip++)->value = 3; break;
+	case 0x28: (dip++)->value = 2; break;
+	case 0x30: (dip++)->value = 0; break;
+	case 0x38: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 2; break;
+	case 0x80: (dip++)->value = 0; break;
+	case 0xc0: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_kod(int type)
 {
 	dipswitch_t *dip;
 
 	dip = (type == 0) ? dipswitch_kod : dipswitch_kodj;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 3, 0);
+	dip_save_bit(DIP_A, (dip++)->value, 4, 0);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x38; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x28; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 5: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 6: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 7: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+static void dip_save_kod_jp(int type)
+{
+	dipswitch_t *dip;
+
+	dip = (type == 0) ? dipswitch_kod_jp : dipswitch_kodj_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 3, 0);
+	dip_save_bit(DIP_A, (dip++)->value, 4, 0);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x38; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x28; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 5: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 6: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 7: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+static void dip_save_kod_chs(int type)
+{
+	dipswitch_t *dip;
+
+	dip = (type == 0) ? dipswitch_kod_chs : dipswitch_kodj_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 3, 0);
+	dip_save_bit(DIP_A, (dip++)->value, 4, 0);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x38; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x28; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 5: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 6: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 7: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+static void dip_save_kod_cht(int type)
+{
+	dipswitch_t *dip;
+
+	dip = (type == 0) ? dipswitch_kod_cht : dipswitch_kodj_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -3748,9 +7105,255 @@ static void dip_load_captcomm(void)
 	load_game_mode;
 }
 
+static void dip_load_captcomm_jp(void)
+{
+	dipswitch_t *dip = dipswitch_captcomm_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 0; break;
+	case 0x80: (dip++)->value = 2; break;
+	case 0xc0: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_captcomm_chs(void)
+{
+	dipswitch_t *dip = dipswitch_captcomm_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 0; break;
+	case 0x80: (dip++)->value = 2; break;
+	case 0xc0: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_captcomm_cht(void)
+{
+	dipswitch_t *dip = dipswitch_captcomm_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 0; break;
+	case 0x80: (dip++)->value = 2; break;
+	case 0xc0: (dip++)->value = 1; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_captcomm(void)
 {
 	dipswitch_t *dip = dipswitch_captcomm;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_captcomm_jp(void)
+{
+	dipswitch_t *dip = dipswitch_captcomm_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_captcomm_chs(void)
+{
+	dipswitch_t *dip = dipswitch_captcomm_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_captcomm_cht(void)
+{
+	dipswitch_t *dip = dipswitch_captcomm_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -3930,9 +7533,249 @@ static void dip_load_knights(void)
 	load_game_mode;
 }
 
+static void dip_load_knights_jp(void)
+{
+	dipswitch_t *dip = dipswitch_knights_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x38)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x08: (dip++)->value = 1; break;
+	case 0x10: (dip++)->value = 2; break;
+	case 0x18: (dip++)->value = 7; break;
+	case 0x20: (dip++)->value = 6; break;
+	case 0x28: (dip++)->value = 5; break;
+	case 0x30: (dip++)->value = 4; break;
+	case 0x38: (dip++)->value = 3; break;
+	}
+	(dip++)->value = dip_load_bit(DIP_B, 6, 0);
+	(dip++)->value = dip_load_bit(DIP_B, 7, 0);
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_knights_chs(void)
+{
+	dipswitch_t *dip = dipswitch_knights_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x38)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x08: (dip++)->value = 1; break;
+	case 0x10: (dip++)->value = 2; break;
+	case 0x18: (dip++)->value = 7; break;
+	case 0x20: (dip++)->value = 6; break;
+	case 0x28: (dip++)->value = 5; break;
+	case 0x30: (dip++)->value = 4; break;
+	case 0x38: (dip++)->value = 3; break;
+	}
+	(dip++)->value = dip_load_bit(DIP_B, 6, 0);
+	(dip++)->value = dip_load_bit(DIP_B, 7, 0);
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_knights_cht(void)
+{
+	dipswitch_t *dip = dipswitch_knights_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x38)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x08: (dip++)->value = 1; break;
+	case 0x10: (dip++)->value = 2; break;
+	case 0x18: (dip++)->value = 7; break;
+	case 0x20: (dip++)->value = 6; break;
+	case 0x28: (dip++)->value = 5; break;
+	case 0x30: (dip++)->value = 4; break;
+	case 0x38: (dip++)->value = 3; break;
+	}
+	(dip++)->value = dip_load_bit(DIP_B, 6, 0);
+	(dip++)->value = dip_load_bit(DIP_B, 7, 0);
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x01: (dip++)->value = 3; break;
+	case 0x02: (dip++)->value = 2; break;
+	case 0x03: (dip++)->value = 1; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_knights(void)
 {
 	dipswitch_t *dip = dipswitch_knights;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x38; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 5: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x28; break;
+	case 6: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 7: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x18; break;
+	}
+	dip_save_bit(DIP_B, (dip++)->value, 6, 0);
+	dip_save_bit(DIP_B, (dip++)->value, 7, 0);
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_knights_jp(void)
+{
+	dipswitch_t *dip = dipswitch_knights_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x38; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 5: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x28; break;
+	case 6: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 7: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x18; break;
+	}
+	dip_save_bit(DIP_B, (dip++)->value, 6, 0);
+	dip_save_bit(DIP_B, (dip++)->value, 7, 0);
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_knights_chs(void)
+{
+	dipswitch_t *dip = dipswitch_knights_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x38; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 5: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x28; break;
+	case 6: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 7: cps1_dipswitch[DIP_B] &= ~0x38; cps1_dipswitch[DIP_B] |= 0x18; break;
+	}
+	dip_save_bit(DIP_B, (dip++)->value, 6, 0);
+	dip_save_bit(DIP_B, (dip++)->value, 7, 0);
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_knights_cht(void)
+{
+	dipswitch_t *dip = dipswitch_knights_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -4104,9 +7947,219 @@ static void dip_load_varth(void)
 	load_game_mode;
 }
 
+static void dip_load_varth_jp(void)
+{
+	dipswitch_t *dip = dipswitch_varth_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 1; break;
+	case 0x02: (dip++)->value = 0; break;
+	case 0x03: (dip++)->value = 2; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_varth_chs(void)
+{
+	dipswitch_t *dip = dipswitch_varth_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 1; break;
+	case 0x02: (dip++)->value = 0; break;
+	case 0x03: (dip++)->value = 2; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
+static void dip_load_varth_cht(void)
+{
+	dipswitch_t *dip = dipswitch_varth_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_coin1b();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 1; break;
+	case 0x02: (dip++)->value = 0; break;
+	case 0x03: (dip++)->value = 2; break;
+	}
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue;
+	load_game_mode;
+}
+
 static void dip_save_varth(void)
 {
 	dipswitch_t *dip = dipswitch_varth;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_varth_jp(void)
+{
+	dipswitch_t *dip = dipswitch_varth_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_varth_chs(void)
+{
+	dipswitch_t *dip = dipswitch_varth_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_coin1b((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 1: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 2: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	case 3: cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x00; break;
+	}
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue;
+	save_game_mode;
+}
+
+static void dip_save_varth_cht(void)
+{
+	dipswitch_t *dip = dipswitch_varth_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -4278,9 +8331,261 @@ static void dip_load_cworld2j(void)
 	load_game_mode;
 }
 
+static void dip_load_cworld2j_jp(void)
+{
+	dipswitch_t *dip = dipswitch_cworld2j_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	// DIP B
+	switch (cps1_dipswitch[DIP_B] & 0x07)
+	{
+	case 0x02: (dip++)->value = 4; break;
+	case 0x03: (dip++)->value = 3; break;
+	case 0x04: (dip++)->value = 2; break;
+	case 0x05: (dip++)->value = 1; break;
+	case 0x06: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xe0)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x80: (dip++)->value = 1; break;
+	case 0xa0: (dip++)->value = 3; break;
+	case 0xc0: (dip++)->value = 4; break;
+	case 0xe0: (dip++)->value = 2; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_cworld2j_chs(void)
+{
+	dipswitch_t *dip = dipswitch_cworld2j_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	// DIP B
+	switch (cps1_dipswitch[DIP_B] & 0x07)
+	{
+	case 0x02: (dip++)->value = 4; break;
+	case 0x03: (dip++)->value = 3; break;
+	case 0x04: (dip++)->value = 2; break;
+	case 0x05: (dip++)->value = 1; break;
+	case 0x06: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xe0)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x80: (dip++)->value = 1; break;
+	case 0xa0: (dip++)->value = 3; break;
+	case 0xc0: (dip++)->value = 4; break;
+	case 0xe0: (dip++)->value = 2; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_cworld2j_cht(void)
+{
+	dipswitch_t *dip = dipswitch_cworld2j_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	// DIP B
+	switch (cps1_dipswitch[DIP_B] & 0x07)
+	{
+	case 0x02: (dip++)->value = 4; break;
+	case 0x03: (dip++)->value = 3; break;
+	case 0x04: (dip++)->value = 2; break;
+	case 0x05: (dip++)->value = 1; break;
+	case 0x06: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x00: (dip++)->value = 2; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x18: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0xe0)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x80: (dip++)->value = 1; break;
+	case 0xa0: (dip++)->value = 3; break;
+	case 0xc0: (dip++)->value = 4; break;
+	case 0xe0: (dip++)->value = 2; break;
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue2;
+	load_game_mode;
+}
+
 static void dip_save_cworld2j(void)
 {
 	dipswitch_t *dip = dipswitch_cworld2j;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	// DIP B
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x06; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x05; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x04; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x03; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x02; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xe0; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xa0; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_cworld2j_jp(void)
+{
+	dipswitch_t *dip = dipswitch_cworld2j_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	// DIP B
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x06; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x05; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x04; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x03; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x02; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xe0; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xa0; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_cworld2j_chs(void)
+{
+	dipswitch_t *dip = dipswitch_cworld2j_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	// DIP B
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x06; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x05; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x04; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x03; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x02; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xe0; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xa0; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_cworld2j_cht(void)
+{
+	dipswitch_t *dip = dipswitch_cworld2j_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -4581,6 +8886,231 @@ static void dip_load_qad(int type)
 	load_game_mode;
 }
 
+static void dip_load_qad_jp(int type)
+{
+	dipswitch_t *dip;
+
+	if (type == 0)
+		dip = dipswitch_qad_jp;
+	else
+		dip = dipswitch_qadj_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	// DIP B
+	if (type == 0)
+	{
+		switch (cps1_dipswitch[DIP_B] & 0x07)
+		{
+		case 0x02: (dip++)->value = 4; break;
+		case 0x03: (dip++)->value = 3; break;
+		case 0x04: (dip++)->value = 2; break;
+		case 0x05: (dip++)->value = 1; break;
+		case 0x06: (dip++)->value = 0; break;
+		}
+		switch (cps1_dipswitch[DIP_B] & 0x18)
+		{
+		case 0x00: (dip++)->value = 3; break;
+		case 0x08: (dip++)->value = 2; break;
+		case 0x10: (dip++)->value = 1; break;
+		case 0x18: (dip++)->value = 0; break;
+		}
+		switch (cps1_dipswitch[DIP_B] & 0xe0)
+		{
+		case 0x60: (dip++)->value = 0; break;
+		case 0x80: (dip++)->value = 1; break;
+		case 0xa0: (dip++)->value = 2; break;
+		case 0xc0: (dip++)->value = 3; break;
+		case 0xe0: (dip++)->value = 4; break;
+		}
+	}
+	else
+	{
+		switch (cps1_dipswitch[DIP_B] & 0x07)
+		{
+		case 0x03: (dip++)->value = 4; break;
+		case 0x04: (dip++)->value = 3; break;
+		case 0x05: (dip++)->value = 2; break;
+		case 0x06: (dip++)->value = 1; break;
+		case 0x07: (dip++)->value = 0; break;
+		}
+		switch (cps1_dipswitch[DIP_B] & 0xe0)
+		{
+		case 0xa0: (dip++)->value = 0; break;
+		case 0xc0: (dip++)->value = 1; break;
+		case 0xe0: (dip++)->value = 2; break;
+		}
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	if (type == 0)
+	{
+		load_demo_sounds2;
+	}
+	else
+	{
+		load_demo_sounds;
+	}
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_qad_chs(int type)
+{
+	dipswitch_t *dip;
+
+	if (type == 0)
+		dip = dipswitch_qad_chs;
+	else
+		dip = dipswitch_qadj_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	// DIP B
+	if (type == 0)
+	{
+		switch (cps1_dipswitch[DIP_B] & 0x07)
+		{
+		case 0x02: (dip++)->value = 4; break;
+		case 0x03: (dip++)->value = 3; break;
+		case 0x04: (dip++)->value = 2; break;
+		case 0x05: (dip++)->value = 1; break;
+		case 0x06: (dip++)->value = 0; break;
+		}
+		switch (cps1_dipswitch[DIP_B] & 0x18)
+		{
+		case 0x00: (dip++)->value = 3; break;
+		case 0x08: (dip++)->value = 2; break;
+		case 0x10: (dip++)->value = 1; break;
+		case 0x18: (dip++)->value = 0; break;
+		}
+		switch (cps1_dipswitch[DIP_B] & 0xe0)
+		{
+		case 0x60: (dip++)->value = 0; break;
+		case 0x80: (dip++)->value = 1; break;
+		case 0xa0: (dip++)->value = 2; break;
+		case 0xc0: (dip++)->value = 3; break;
+		case 0xe0: (dip++)->value = 4; break;
+		}
+	}
+	else
+	{
+		switch (cps1_dipswitch[DIP_B] & 0x07)
+		{
+		case 0x03: (dip++)->value = 4; break;
+		case 0x04: (dip++)->value = 3; break;
+		case 0x05: (dip++)->value = 2; break;
+		case 0x06: (dip++)->value = 1; break;
+		case 0x07: (dip++)->value = 0; break;
+		}
+		switch (cps1_dipswitch[DIP_B] & 0xe0)
+		{
+		case 0xa0: (dip++)->value = 0; break;
+		case 0xc0: (dip++)->value = 1; break;
+		case 0xe0: (dip++)->value = 2; break;
+		}
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	if (type == 0)
+	{
+		load_demo_sounds2;
+	}
+	else
+	{
+		load_demo_sounds;
+	}
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_qad_cht(int type)
+{
+	dipswitch_t *dip;
+
+	if (type == 0)
+		dip = dipswitch_qad_cht;
+	else
+		dip = dipswitch_qadj_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+	(dip++)->value = dip_load_bit(DIP_A, 7, 1);
+
+	// DIP B
+	if (type == 0)
+	{
+		switch (cps1_dipswitch[DIP_B] & 0x07)
+		{
+		case 0x02: (dip++)->value = 4; break;
+		case 0x03: (dip++)->value = 3; break;
+		case 0x04: (dip++)->value = 2; break;
+		case 0x05: (dip++)->value = 1; break;
+		case 0x06: (dip++)->value = 0; break;
+		}
+		switch (cps1_dipswitch[DIP_B] & 0x18)
+		{
+		case 0x00: (dip++)->value = 3; break;
+		case 0x08: (dip++)->value = 2; break;
+		case 0x10: (dip++)->value = 1; break;
+		case 0x18: (dip++)->value = 0; break;
+		}
+		switch (cps1_dipswitch[DIP_B] & 0xe0)
+		{
+		case 0x60: (dip++)->value = 0; break;
+		case 0x80: (dip++)->value = 1; break;
+		case 0xa0: (dip++)->value = 2; break;
+		case 0xc0: (dip++)->value = 3; break;
+		case 0xe0: (dip++)->value = 4; break;
+		}
+	}
+	else
+	{
+		switch (cps1_dipswitch[DIP_B] & 0x07)
+		{
+		case 0x03: (dip++)->value = 4; break;
+		case 0x04: (dip++)->value = 3; break;
+		case 0x05: (dip++)->value = 2; break;
+		case 0x06: (dip++)->value = 1; break;
+		case 0x07: (dip++)->value = 0; break;
+		}
+		switch (cps1_dipswitch[DIP_B] & 0xe0)
+		{
+		case 0xa0: (dip++)->value = 0; break;
+		case 0xc0: (dip++)->value = 1; break;
+		case 0xe0: (dip++)->value = 2; break;
+		}
+	}
+
+	// DIP C
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	if (type == 0)
+	{
+		load_demo_sounds2;
+	}
+	else
+	{
+		load_demo_sounds;
+	}
+	load_allow_continue2;
+	load_game_mode;
+}
+
 static void dip_save_qad(int type)
 {
 	dipswitch_t *dip;
@@ -4589,6 +9119,231 @@ static void dip_save_qad(int type)
 		dip = dipswitch_qad;
 	else
 		dip = dipswitch_qadj;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	// DIP B
+	if (type == 0)
+	{
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x06; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x05; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x04; break;
+		case 3: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x03; break;
+		case 4: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x02; break;
+		}
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+		case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+		}
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x60; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x80; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xa0; break;
+		case 3: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+		case 4: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xe0; break;
+		}
+	}
+	else
+	{
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x07; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x06; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x05; break;
+		case 3: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x04; break;
+		case 4: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x03; break;
+		}
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xa0; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xe0; break;
+		}
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	if (type == 0)
+	{
+		save_demo_sounds2;
+	}
+	else
+	{
+		save_demo_sounds;
+	}
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_qad_jp(int type)
+{
+	dipswitch_t *dip;
+
+	if (type == 0)
+		dip = dipswitch_qad_jp;
+	else
+		dip = dipswitch_qadj_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	// DIP B
+	if (type == 0)
+	{
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x06; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x05; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x04; break;
+		case 3: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x03; break;
+		case 4: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x02; break;
+		}
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+		case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+		}
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x60; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x80; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xa0; break;
+		case 3: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+		case 4: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xe0; break;
+		}
+	}
+	else
+	{
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x07; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x06; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x05; break;
+		case 3: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x04; break;
+		case 4: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x03; break;
+		}
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xa0; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xe0; break;
+		}
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	if (type == 0)
+	{
+		save_demo_sounds2;
+	}
+	else
+	{
+		save_demo_sounds;
+	}
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_qad_chs(int type)
+{
+	dipswitch_t *dip;
+
+	if (type == 0)
+		dip = dipswitch_qad_chs;
+	else
+		dip = dipswitch_qadj_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+	dip_save_bit(DIP_A, (dip++)->value, 7, 1);
+
+	// DIP B
+	if (type == 0)
+	{
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x06; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x05; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x04; break;
+		case 3: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x03; break;
+		case 4: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x02; break;
+		}
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+		case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+		}
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x60; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x80; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xa0; break;
+		case 3: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+		case 4: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xe0; break;
+		}
+	}
+	else
+	{
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x07; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x06; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x05; break;
+		case 3: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x04; break;
+		case 4: cps1_dipswitch[DIP_B] &= ~0x07; cps1_dipswitch[DIP_B] |= 0x03; break;
+		}
+		switch ((dip++)->value)
+		{
+		case 0: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xa0; break;
+		case 1: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+		case 2: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xe0; break;
+		}
+	}
+
+	// DIP C
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	if (type == 0)
+	{
+		save_demo_sounds2;
+	}
+	else
+	{
+		save_demo_sounds;
+	}
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_qad_cht(int type)
+{
+	dipswitch_t *dip;
+
+	if (type == 0)
+		dip = dipswitch_qad_cht;
+	else
+		dip = dipswitch_qadj_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -4778,9 +9533,183 @@ static void dip_load_qtono2(void)
 	load_game_mode;
 }
 
+static void dip_load_qtono2_jp(void)
+{
+	dipswitch_t *dip = dipswitch_qtono2_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0xe0)
+	{
+	case 0x60: (dip++)->value = 0; break;
+	case 0x80: (dip++)->value = 1; break;
+	case 0xa0: (dip++)->value = 3; break;
+	case 0xc0: (dip++)->value = 4; break;
+	case 0xe0: (dip++)->value = 2; break;
+	}
+
+	// DIP C
+	(dip++)->value = dip_load_bit(DIP_C, 1, 1);
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_qtono2_chs(void)
+{
+	dipswitch_t *dip = dipswitch_qtono2_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0xe0)
+	{
+	case 0x60: (dip++)->value = 0; break;
+	case 0x80: (dip++)->value = 1; break;
+	case 0xa0: (dip++)->value = 3; break;
+	case 0xc0: (dip++)->value = 4; break;
+	case 0xe0: (dip++)->value = 2; break;
+	}
+
+	// DIP C
+	(dip++)->value = dip_load_bit(DIP_C, 1, 1);
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue2;
+	load_game_mode;
+}
+
+static void dip_load_qtono2_cht(void)
+{
+	dipswitch_t *dip = dipswitch_qtono2_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 6, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0xe0)
+	{
+	case 0x60: (dip++)->value = 0; break;
+	case 0x80: (dip++)->value = 1; break;
+	case 0xa0: (dip++)->value = 3; break;
+	case 0xc0: (dip++)->value = 4; break;
+	case 0xe0: (dip++)->value = 2; break;
+	}
+
+	// DIP C
+	(dip++)->value = dip_load_bit(DIP_C, 1, 1);
+	load_free_play;
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_allow_continue2;
+	load_game_mode;
+}
+
 static void dip_save_qtono2(void)
 {
 	dipswitch_t *dip = dipswitch_qtono2;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x60; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xe0; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xa0; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	}
+
+	// DIP C
+	dip_save_bit(DIP_C, (dip++)->value, 1, 1);
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_qtono2_jp(void)
+{
+	dipswitch_t *dip = dipswitch_qtono2_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x60; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xe0; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xa0; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	}
+
+	// DIP C
+	dip_save_bit(DIP_C, (dip++)->value, 1, 1);
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_qtono2_chs(void)
+{
+	dipswitch_t *dip = dipswitch_qtono2_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 6, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x60; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xe0; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xa0; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0xe0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	}
+
+	// DIP C
+	dip_save_bit(DIP_C, (dip++)->value, 1, 1);
+	save_free_play;
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_allow_continue2;
+	save_game_mode;
+}
+
+static void dip_save_qtono2_cht(void)
+{
+	dipswitch_t *dip = dipswitch_qtono2_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -5124,6 +10053,195 @@ static void dip_load_megaman(int type)
 	load_game_mode;
 }
 
+static void dip_load_megaman_jp(int type)
+{
+	dipswitch_t *dip;
+
+	if (type == 0)
+		dip = dipswitch_megaman_jp;
+	else
+		dip = dipswitch_rockmanj_jp;
+
+	// DIP A
+	switch (cps1_dipswitch[DIP_A] & 0x1f)
+	{
+	case 0x0d: (dip++)->value = 18; break;
+	case 0x0e: (dip++)->value = 8; break;
+	case 0x0f: (dip++)->value = 0; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x11: (dip++)->value = 2; break;
+	case 0x12: (dip++)->value = 3; break;
+	case 0x13: (dip++)->value = 4; break;
+	case 0x14: (dip++)->value = 5; break;
+	case 0x15: (dip++)->value = 6; break;
+	case 0x16: (dip++)->value = 7; break;
+	case 0x17: (dip++)->value = 17; break;
+	case 0x18: (dip++)->value = 16; break;
+	case 0x19: (dip++)->value = 15; break;
+	case 0x1a: (dip++)->value = 14; break;
+	case 0x1b: (dip++)->value = 13; break;
+	case 0x1c: (dip++)->value = 12; break;
+	case 0x1d: (dip++)->value = 11; break;
+	case 0x1e: (dip++)->value = 10; break;
+	case 0x1f: (dip++)->value = 9; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x60)
+	{
+	case 0x20: (dip++)->value = 1; break;
+	case 0x40: (dip++)->value = 0; break;
+	case 0x60: (dip++)->value = 2; break;
+	}
+
+	// DIP B
+	switch (cps1_dipswitch[DIP_B] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x03: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x0c)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x04: (dip++)->value = 2; break;
+	case 0x08: (dip++)->value = 1; break;
+	case 0x0c: (dip++)->value = 0; break;
+	}
+	if (type == 0) (dip++)->value = dip_load_bit(DIP_B, 6, 1);
+
+	// DIP C
+	(dip++)->value = dip_load_bit(DIP_C, 0, 1);
+	(dip++)->value = dip_load_bit(DIP_C, 1, 0);
+	(dip++)->value = dip_load_bit(DIP_C, 2, type);
+	load_game_mode;
+}
+
+static void dip_load_megaman_chs(int type)
+{
+	dipswitch_t *dip;
+
+	if (type == 0)
+		dip = dipswitch_megaman_chs;
+	else
+		dip = dipswitch_rockmanj_chs;
+
+	// DIP A
+	switch (cps1_dipswitch[DIP_A] & 0x1f)
+	{
+	case 0x0d: (dip++)->value = 18; break;
+	case 0x0e: (dip++)->value = 8; break;
+	case 0x0f: (dip++)->value = 0; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x11: (dip++)->value = 2; break;
+	case 0x12: (dip++)->value = 3; break;
+	case 0x13: (dip++)->value = 4; break;
+	case 0x14: (dip++)->value = 5; break;
+	case 0x15: (dip++)->value = 6; break;
+	case 0x16: (dip++)->value = 7; break;
+	case 0x17: (dip++)->value = 17; break;
+	case 0x18: (dip++)->value = 16; break;
+	case 0x19: (dip++)->value = 15; break;
+	case 0x1a: (dip++)->value = 14; break;
+	case 0x1b: (dip++)->value = 13; break;
+	case 0x1c: (dip++)->value = 12; break;
+	case 0x1d: (dip++)->value = 11; break;
+	case 0x1e: (dip++)->value = 10; break;
+	case 0x1f: (dip++)->value = 9; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x60)
+	{
+	case 0x20: (dip++)->value = 1; break;
+	case 0x40: (dip++)->value = 0; break;
+	case 0x60: (dip++)->value = 2; break;
+	}
+
+	// DIP B
+	switch (cps1_dipswitch[DIP_B] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x03: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x0c)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x04: (dip++)->value = 2; break;
+	case 0x08: (dip++)->value = 1; break;
+	case 0x0c: (dip++)->value = 0; break;
+	}
+	if (type == 0) (dip++)->value = dip_load_bit(DIP_B, 6, 1);
+
+	// DIP C
+	(dip++)->value = dip_load_bit(DIP_C, 0, 1);
+	(dip++)->value = dip_load_bit(DIP_C, 1, 0);
+	(dip++)->value = dip_load_bit(DIP_C, 2, type);
+	load_game_mode;
+}
+
+static void dip_load_megaman_cht(int type)
+{
+	dipswitch_t *dip;
+
+	if (type == 0)
+		dip = dipswitch_megaman_cht;
+	else
+		dip = dipswitch_rockmanj_cht;
+
+	// DIP A
+	switch (cps1_dipswitch[DIP_A] & 0x1f)
+	{
+	case 0x0d: (dip++)->value = 18; break;
+	case 0x0e: (dip++)->value = 8; break;
+	case 0x0f: (dip++)->value = 0; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x11: (dip++)->value = 2; break;
+	case 0x12: (dip++)->value = 3; break;
+	case 0x13: (dip++)->value = 4; break;
+	case 0x14: (dip++)->value = 5; break;
+	case 0x15: (dip++)->value = 6; break;
+	case 0x16: (dip++)->value = 7; break;
+	case 0x17: (dip++)->value = 17; break;
+	case 0x18: (dip++)->value = 16; break;
+	case 0x19: (dip++)->value = 15; break;
+	case 0x1a: (dip++)->value = 14; break;
+	case 0x1b: (dip++)->value = 13; break;
+	case 0x1c: (dip++)->value = 12; break;
+	case 0x1d: (dip++)->value = 11; break;
+	case 0x1e: (dip++)->value = 10; break;
+	case 0x1f: (dip++)->value = 9; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x60)
+	{
+	case 0x20: (dip++)->value = 1; break;
+	case 0x40: (dip++)->value = 0; break;
+	case 0x60: (dip++)->value = 2; break;
+	}
+
+	// DIP B
+	switch (cps1_dipswitch[DIP_B] & 0x03)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x03: (dip++)->value = 0; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x0c)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x04: (dip++)->value = 2; break;
+	case 0x08: (dip++)->value = 1; break;
+	case 0x0c: (dip++)->value = 0; break;
+	}
+	if (type == 0) (dip++)->value = dip_load_bit(DIP_B, 6, 1);
+
+	// DIP C
+	(dip++)->value = dip_load_bit(DIP_C, 0, 1);
+	(dip++)->value = dip_load_bit(DIP_C, 1, 0);
+	(dip++)->value = dip_load_bit(DIP_C, 2, type);
+	load_game_mode;
+}
+
 static void dip_save_megaman(int type)
 {
 	dipswitch_t *dip;
@@ -5132,6 +10250,195 @@ static void dip_save_megaman(int type)
 		dip = dipswitch_megaman;
 	else
 		dip = dipswitch_rockmanj;
+
+	// DIP A
+	switch ((dip++)->value)
+	{
+	case 0:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x0f; break;
+	case 1:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x10; break;
+	case 2:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x11; break;
+	case 3:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x12; break;
+	case 4:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x13; break;
+	case 5:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x14; break;
+	case 6:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x15; break;
+	case 7:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x16; break;
+	case 8:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x0e; break;
+	case 9:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1f; break;
+	case 10: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1e; break;
+	case 11: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1d; break;
+	case 12: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1c; break;
+	case 13: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1b; break;
+	case 14: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1a; break;
+	case 15: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x19; break;
+	case 16: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x18; break;
+	case 17: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x17; break;
+	case 18: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x0d; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x60; cps1_dipswitch[DIP_A] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x60; cps1_dipswitch[DIP_A] |= 0x20; break;
+	case 2: cps1_dipswitch[DIP_A] &= ~0x60; cps1_dipswitch[DIP_A] |= 0x60; break;
+	}
+
+	// DIP B
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x03; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x02; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x0c; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x04; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	if (type == 0) dip_save_bit(DIP_B, (dip++)->value, 6, 1);
+
+	// DIP C
+	dip_save_bit(DIP_C, (dip++)->value, 0, 1);
+	dip_save_bit(DIP_C, (dip++)->value, 1, 0);
+	dip_save_bit(DIP_C, (dip++)->value, 2, type);
+	save_game_mode;
+}
+
+static void dip_save_megaman_jp(int type)
+{
+	dipswitch_t *dip;
+
+	if (type == 0)
+		dip = dipswitch_megaman_jp;
+	else
+		dip = dipswitch_rockmanj_jp;
+
+	// DIP A
+	switch ((dip++)->value)
+	{
+	case 0:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x0f; break;
+	case 1:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x10; break;
+	case 2:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x11; break;
+	case 3:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x12; break;
+	case 4:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x13; break;
+	case 5:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x14; break;
+	case 6:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x15; break;
+	case 7:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x16; break;
+	case 8:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x0e; break;
+	case 9:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1f; break;
+	case 10: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1e; break;
+	case 11: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1d; break;
+	case 12: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1c; break;
+	case 13: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1b; break;
+	case 14: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1a; break;
+	case 15: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x19; break;
+	case 16: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x18; break;
+	case 17: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x17; break;
+	case 18: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x0d; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x60; cps1_dipswitch[DIP_A] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x60; cps1_dipswitch[DIP_A] |= 0x20; break;
+	case 2: cps1_dipswitch[DIP_A] &= ~0x60; cps1_dipswitch[DIP_A] |= 0x60; break;
+	}
+
+	// DIP B
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x03; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x02; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x0c; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x04; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	if (type == 0) dip_save_bit(DIP_B, (dip++)->value, 6, 1);
+
+	// DIP C
+	dip_save_bit(DIP_C, (dip++)->value, 0, 1);
+	dip_save_bit(DIP_C, (dip++)->value, 1, 0);
+	dip_save_bit(DIP_C, (dip++)->value, 2, type);
+	save_game_mode;
+}
+
+static void dip_save_megaman_chs(int type)
+{
+	dipswitch_t *dip;
+
+	if (type == 0)
+		dip = dipswitch_megaman_chs;
+	else
+		dip = dipswitch_rockmanj_chs;
+
+	// DIP A
+	switch ((dip++)->value)
+	{
+	case 0:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x0f; break;
+	case 1:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x10; break;
+	case 2:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x11; break;
+	case 3:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x12; break;
+	case 4:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x13; break;
+	case 5:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x14; break;
+	case 6:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x15; break;
+	case 7:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x16; break;
+	case 8:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x0e; break;
+	case 9:  cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1f; break;
+	case 10: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1e; break;
+	case 11: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1d; break;
+	case 12: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1c; break;
+	case 13: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1b; break;
+	case 14: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x1a; break;
+	case 15: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x19; break;
+	case 16: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x18; break;
+	case 17: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x17; break;
+	case 18: cps1_dipswitch[DIP_A] &= ~0x1f; cps1_dipswitch[DIP_A] |= 0x0d; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x60; cps1_dipswitch[DIP_A] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x60; cps1_dipswitch[DIP_A] |= 0x20; break;
+	case 2: cps1_dipswitch[DIP_A] &= ~0x60; cps1_dipswitch[DIP_A] |= 0x60; break;
+	}
+
+	// DIP B
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x03; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x02; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x01; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x03; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x0c; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x04; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x0c; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	if (type == 0) dip_save_bit(DIP_B, (dip++)->value, 6, 1);
+
+	// DIP C
+	dip_save_bit(DIP_C, (dip++)->value, 0, 1);
+	dip_save_bit(DIP_C, (dip++)->value, 1, 0);
+	dip_save_bit(DIP_C, (dip++)->value, 2, type);
+	save_game_mode;
+}
+
+static void dip_save_megaman_cht(int type)
+{
+	dipswitch_t *dip;
+
+	if (type == 0)
+		dip = dipswitch_megaman_cht;
+	else
+		dip = dipswitch_rockmanj_cht;
 
 	// DIP A
 	switch ((dip++)->value)
@@ -5293,9 +10600,159 @@ static void dip_load_pnickj(void)
 	load_game_mode;
 }
 
+static void dip_load_pnickj_jp(void)
+{
+	dipswitch_t *dip = dipswitch_pnickj_jp;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 3, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 2; break;
+	case 0x80: (dip++)->value = 1; break;
+	case 0xc0: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_game_mode;
+}
+
+static void dip_load_pnickj_chs(void)
+{
+	dipswitch_t *dip = dipswitch_pnickj_chs;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 3, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 2; break;
+	case 0x80: (dip++)->value = 1; break;
+	case 0xc0: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_game_mode;
+}
+
+static void dip_load_pnickj_cht(void)
+{
+	dipswitch_t *dip = dipswitch_pnickj_cht;
+
+	// DIP A
+	(dip++)->value = dip_load_coin1a();
+	(dip++)->value = dip_load_bit(DIP_A, 3, 1);
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0xc0)
+	{
+	case 0x00: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 2; break;
+	case 0x80: (dip++)->value = 1; break;
+	case 0xc0: (dip++)->value = 0; break;
+	}
+
+	// DIP C
+	load_freeze;
+	load_flip_screen;
+	load_demo_sounds;
+	load_game_mode;
+}
+
 static void dip_save_pnickj(void)
 {
 	dipswitch_t *dip = dipswitch_pnickj;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 3, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_game_mode;
+}
+
+static void dip_save_pnickj_jp(void)
+{
+	dipswitch_t *dip = dipswitch_pnickj_jp;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 3, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_game_mode;
+}
+
+static void dip_save_pnickj_chs(void)
+{
+	dipswitch_t *dip = dipswitch_pnickj_chs;
+
+	// DIP A
+	dip_save_coin1a((dip++)->value);
+	dip_save_bit(DIP_A, (dip++)->value, 3, 1);
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0xc0; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x80; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0xc0; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+
+	// DIP C
+	save_freeze;
+	save_flip_screen;
+	save_demo_sounds;
+	save_game_mode;
+}
+
+static void dip_save_pnickj_cht(void)
+{
+	dipswitch_t *dip = dipswitch_pnickj_cht;
 
 	// DIP A
 	dip_save_coin1a((dip++)->value);
@@ -5326,120 +10783,120 @@ dipswitch_t *load_dipswitch(int *sx)
 	{
 		switch (machine_input_type)
 		{
-		case INPTYPE_forgottn: dip_load_forgottn(); dipswitch = dipswitch_forgottn_jp; break;
-		case INPTYPE_ghouls:   dip_load_ghouls(0);  dipswitch = dipswitch_ghouls_jp; break;
-		case INPTYPE_ghoulsu:  dip_load_ghouls(1);  dipswitch = dipswitch_ghoulsu_jp; break;
-		case INPTYPE_daimakai: dip_load_ghouls(2);  dipswitch = dipswitch_daimakai_jp; break;
-		case INPTYPE_strider:  dip_load_strider(0); dipswitch = dipswitch_strider_jp; break;
-		case INPTYPE_stridrua: dip_load_strider(1); dipswitch = dipswitch_stridrua_jp; break;
-		case INPTYPE_dynwar:   dip_load_dynwar();   dipswitch = dipswitch_dynwar_jp; break;
-		case INPTYPE_willow:   dip_load_willow();   dipswitch = dipswitch_willow_jp; break;
-		case INPTYPE_unsquad:  dip_load_unsquad();  dipswitch = dipswitch_unsquad_jp; break;
-		case INPTYPE_ffight:   dip_load_ffight();   dipswitch = dipswitch_ffight_jp; break;
-		case INPTYPE_1941:     dip_load_1941();     dipswitch = dipswitch_1941_jp; break;
-		case INPTYPE_mercs:    dip_load_mercs();    dipswitch = dipswitch_mercs_jp; break;
-		case INPTYPE_mtwins:   dip_load_mtwins();   dipswitch = dipswitch_mtwins_jp; break;
-		case INPTYPE_msword:   dip_load_msword();   dipswitch = dipswitch_msword_jp; *sx = 270; break;
-		case INPTYPE_cawing:   dip_load_cawing();   dipswitch = dipswitch_cawing_jp; *sx = 270; break;
-		case INPTYPE_nemo:     dip_load_nemo();     dipswitch = dipswitch_nemo_jp; break;
-		case INPTYPE_sf2:      dip_load_sf2(0);     dipswitch = dipswitch_sf2_jp; break;
-		case INPTYPE_sf2j:     dip_load_sf2(1);     dipswitch = dipswitch_sf2j_jp; break;
-		case INPTYPE_3wonders: dip_load_3wonders(); dipswitch = dipswitch_3wonders_jp; break;
-		case INPTYPE_kod:      dip_load_kod(0);     dipswitch = dipswitch_kod_jp; break;
-		case INPTYPE_kodj:     dip_load_kod(1);     dipswitch = dipswitch_kodj_jp; break;
-		case INPTYPE_captcomm: dip_load_captcomm(); dipswitch = dipswitch_captcomm_jp; break;
+		case INPTYPE_forgottn: dip_load_forgottn_jp(); dipswitch = dipswitch_forgottn_jp; break;
+		case INPTYPE_ghouls:   dip_load_ghouls_jp(0);  dipswitch = dipswitch_ghouls_jp; break;
+		case INPTYPE_ghoulsu:  dip_load_ghouls_jp(1);  dipswitch = dipswitch_ghoulsu_jp; break;
+		case INPTYPE_daimakai: dip_load_ghouls_jp(2);  dipswitch = dipswitch_daimakai_jp; break;
+		case INPTYPE_strider:  dip_load_strider_jp(0); dipswitch = dipswitch_strider_jp; break;
+		case INPTYPE_stridrua: dip_load_strider_jp(1); dipswitch = dipswitch_stridrua_jp; break;
+		case INPTYPE_dynwar:   dip_load_dynwar_jp();   dipswitch = dipswitch_dynwar_jp; break;
+		case INPTYPE_willow:   dip_load_willow_jp();   dipswitch = dipswitch_willow_jp; break;
+		case INPTYPE_unsquad:  dip_load_unsquad_jp();  dipswitch = dipswitch_unsquad_jp; break;
+		case INPTYPE_ffight:   dip_load_ffight_jp();   dipswitch = dipswitch_ffight_jp; break;
+		case INPTYPE_1941:     dip_load_1941_jp();     dipswitch = dipswitch_1941_jp; break;
+		case INPTYPE_mercs:    dip_load_mercs_jp();    dipswitch = dipswitch_mercs_jp; break;
+		case INPTYPE_mtwins:   dip_load_mtwins_jp();   dipswitch = dipswitch_mtwins_jp; break;
+		case INPTYPE_msword:   dip_load_msword_jp();   dipswitch = dipswitch_msword_jp; *sx = 270; break;
+		case INPTYPE_cawing:   dip_load_cawing_jp();   dipswitch = dipswitch_cawing_jp; *sx = 270; break;
+		case INPTYPE_nemo:     dip_load_nemo_jp();     dipswitch = dipswitch_nemo_jp; break;
+		case INPTYPE_sf2:      dip_load_sf2_jp(0);     dipswitch = dipswitch_sf2_jp; break;
+		case INPTYPE_sf2j:     dip_load_sf2_jp(1);     dipswitch = dipswitch_sf2j_jp; break;
+		case INPTYPE_3wonders: dip_load_3wonders_jp(); dipswitch = dipswitch_3wonders_jp; break;
+		case INPTYPE_kod:      dip_load_kod_jp(0);     dipswitch = dipswitch_kod_jp; break;
+		case INPTYPE_kodj:     dip_load_kod_jp(1);     dipswitch = dipswitch_kodj_jp; break;
+		case INPTYPE_captcomm: dip_load_captcomm_jp(); dipswitch = dipswitch_captcomm_jp; break;
 #if !RELEASE
 		case INPTYPE_knightsh:
 #endif
-		case INPTYPE_knights:  dip_load_knights();  dipswitch = dipswitch_knights_jp; break;
-		case INPTYPE_varth:    dip_load_varth();    dipswitch = dipswitch_varth_jp; break;
-		case INPTYPE_cworld2j: dip_load_cworld2j(); dipswitch = dipswitch_cworld2j_jp; break;
-		case INPTYPE_qad:      dip_load_qad(0);     dipswitch = dipswitch_qad_jp; break;
-		case INPTYPE_qadj:     dip_load_qad(1);     dipswitch = dipswitch_qadj_jp; break;
-		case INPTYPE_qtono2:   dip_load_qtono2();   dipswitch = dipswitch_qtono2_jp; break;
-		case INPTYPE_megaman:  dip_load_megaman(0); dipswitch = dipswitch_megaman_jp; break;
-		case INPTYPE_rockmanj: dip_load_megaman(1); dipswitch = dipswitch_rockmanj_jp; break;
-		case INPTYPE_pnickj:   dip_load_pnickj();   dipswitch = dipswitch_pnickj_jp; break;
+		case INPTYPE_knights:  dip_load_knights_jp();  dipswitch = dipswitch_knights_jp; break;
+		case INPTYPE_varth:    dip_load_varth_jp();    dipswitch = dipswitch_varth_jp; break;
+		case INPTYPE_cworld2j: dip_load_cworld2j_jp(); dipswitch = dipswitch_cworld2j_jp; break;
+		case INPTYPE_qad:      dip_load_qad_jp(0);     dipswitch = dipswitch_qad_jp; break;
+		case INPTYPE_qadj:     dip_load_qad_jp(1);     dipswitch = dipswitch_qadj_jp; break;
+		case INPTYPE_qtono2:   dip_load_qtono2_jp();   dipswitch = dipswitch_qtono2_jp; break;
+		case INPTYPE_megaman:  dip_load_megaman_jp(0); dipswitch = dipswitch_megaman_jp; break;
+		case INPTYPE_rockmanj: dip_load_megaman_jp(1); dipswitch = dipswitch_rockmanj_jp; break;
+		case INPTYPE_pnickj:   dip_load_pnickj_jp();   dipswitch = dipswitch_pnickj_jp; break;
 		}
 	}
 	else if (ui_text_get_language() == LANG_CHINESE_SIMPLIFIED)
 	{
 		switch (machine_input_type)
 		{
-		case INPTYPE_forgottn: dip_load_forgottn(); dipswitch = dipswitch_forgottn_chs; break;
-		case INPTYPE_ghouls:   dip_load_ghouls(0);  dipswitch = dipswitch_ghouls_chs; break;
-		case INPTYPE_ghoulsu:  dip_load_ghouls(1);  dipswitch = dipswitch_ghoulsu_chs; break;
-		case INPTYPE_daimakai: dip_load_ghouls(2);  dipswitch = dipswitch_daimakai_chs; break;
-		case INPTYPE_strider:  dip_load_strider(0); dipswitch = dipswitch_strider_chs; break;
-		case INPTYPE_stridrua: dip_load_strider(1); dipswitch = dipswitch_stridrua_chs; break;
-		case INPTYPE_dynwar:   dip_load_dynwar();   dipswitch = dipswitch_dynwar_chs; break;
-		case INPTYPE_willow:   dip_load_willow();   dipswitch = dipswitch_willow_chs; break;
-		case INPTYPE_unsquad:  dip_load_unsquad();  dipswitch = dipswitch_unsquad_chs; break;
-		case INPTYPE_ffight:   dip_load_ffight();   dipswitch = dipswitch_ffight_chs; break;
-		case INPTYPE_1941:     dip_load_1941();     dipswitch = dipswitch_1941_chs; break;
-		case INPTYPE_mercs:    dip_load_mercs();    dipswitch = dipswitch_mercs_chs; break;
-		case INPTYPE_mtwins:   dip_load_mtwins();   dipswitch = dipswitch_mtwins_chs; break;
-		case INPTYPE_msword:   dip_load_msword();   dipswitch = dipswitch_msword_chs; *sx = 270; break;
-		case INPTYPE_cawing:   dip_load_cawing();   dipswitch = dipswitch_cawing_chs; *sx = 270; break;
-		case INPTYPE_nemo:     dip_load_nemo();     dipswitch = dipswitch_nemo_chs; break;
-		case INPTYPE_sf2:      dip_load_sf2(0);     dipswitch = dipswitch_sf2_chs; break;
-		case INPTYPE_sf2j:     dip_load_sf2(1);     dipswitch = dipswitch_sf2j_chs; break;
-		case INPTYPE_3wonders: dip_load_3wonders(); dipswitch = dipswitch_3wonders_chs; break;
-		case INPTYPE_kod:      dip_load_kod(0);     dipswitch = dipswitch_kod_chs; break;
-		case INPTYPE_kodj:     dip_load_kod(1);     dipswitch = dipswitch_kodj_chs; break;
-		case INPTYPE_captcomm: dip_load_captcomm(); dipswitch = dipswitch_captcomm_chs; break;
+		case INPTYPE_forgottn: dip_load_forgottn_chs(); dipswitch = dipswitch_forgottn_chs; break;
+		case INPTYPE_ghouls:   dip_load_ghouls_chs(0);  dipswitch = dipswitch_ghouls_chs; break;
+		case INPTYPE_ghoulsu:  dip_load_ghouls_chs(1);  dipswitch = dipswitch_ghoulsu_chs; break;
+		case INPTYPE_daimakai: dip_load_ghouls_chs(2);  dipswitch = dipswitch_daimakai_chs; break;
+		case INPTYPE_strider:  dip_load_strider_chs(0); dipswitch = dipswitch_strider_chs; break;
+		case INPTYPE_stridrua: dip_load_strider_chs(1); dipswitch = dipswitch_stridrua_chs; break;
+		case INPTYPE_dynwar:   dip_load_dynwar_chs();   dipswitch = dipswitch_dynwar_chs; break;
+		case INPTYPE_willow:   dip_load_willow_chs();   dipswitch = dipswitch_willow_chs; break;
+		case INPTYPE_unsquad:  dip_load_unsquad_chs();  dipswitch = dipswitch_unsquad_chs; break;
+		case INPTYPE_ffight:   dip_load_ffight_chs();   dipswitch = dipswitch_ffight_chs; break;
+		case INPTYPE_1941:     dip_load_1941_chs();     dipswitch = dipswitch_1941_chs; break;
+		case INPTYPE_mercs:    dip_load_mercs_chs();    dipswitch = dipswitch_mercs_chs; break;
+		case INPTYPE_mtwins:   dip_load_mtwins_chs();   dipswitch = dipswitch_mtwins_chs; break;
+		case INPTYPE_msword:   dip_load_msword_chs();   dipswitch = dipswitch_msword_chs; *sx = 270; break;
+		case INPTYPE_cawing:   dip_load_cawing_chs();   dipswitch = dipswitch_cawing_chs; *sx = 270; break;
+		case INPTYPE_nemo:     dip_load_nemo_chs();     dipswitch = dipswitch_nemo_chs; break;
+		case INPTYPE_sf2:      dip_load_sf2_chs(0);     dipswitch = dipswitch_sf2_chs; break;
+		case INPTYPE_sf2j:     dip_load_sf2_chs(1);     dipswitch = dipswitch_sf2j_chs; break;
+		case INPTYPE_3wonders: dip_load_3wonders_chs(); dipswitch = dipswitch_3wonders_chs; break;
+		case INPTYPE_kod:      dip_load_kod_chs(0);     dipswitch = dipswitch_kod_chs; break;
+		case INPTYPE_kodj:     dip_load_kod_chs(1);     dipswitch = dipswitch_kodj_chs; break;
+		case INPTYPE_captcomm: dip_load_captcomm_chs(); dipswitch = dipswitch_captcomm_chs; break;
 #if !RELEASE
 		case INPTYPE_knightsh:
 #endif
-		case INPTYPE_knights:  dip_load_knights();  dipswitch = dipswitch_knights_chs; break;
-		case INPTYPE_varth:    dip_load_varth();    dipswitch = dipswitch_varth_chs; break;
-		case INPTYPE_cworld2j: dip_load_cworld2j(); dipswitch = dipswitch_cworld2j_chs; break;
-		case INPTYPE_qad:      dip_load_qad(0);     dipswitch = dipswitch_qad_chs; break;
-		case INPTYPE_qadj:     dip_load_qad(1);     dipswitch = dipswitch_qadj_chs; break;
-		case INPTYPE_qtono2:   dip_load_qtono2();   dipswitch = dipswitch_qtono2_chs; break;
-		case INPTYPE_megaman:  dip_load_megaman(0); dipswitch = dipswitch_megaman_chs; break;
-		case INPTYPE_rockmanj: dip_load_megaman(1); dipswitch = dipswitch_rockmanj_chs; break;
-		case INPTYPE_pnickj:   dip_load_pnickj();   dipswitch = dipswitch_pnickj_chs; break;
+		case INPTYPE_knights:  dip_load_knights_chs();  dipswitch = dipswitch_knights_chs; break;
+		case INPTYPE_varth:    dip_load_varth_chs();    dipswitch = dipswitch_varth_chs; break;
+		case INPTYPE_cworld2j: dip_load_cworld2j_chs(); dipswitch = dipswitch_cworld2j_chs; break;
+		case INPTYPE_qad:      dip_load_qad_chs(0);     dipswitch = dipswitch_qad_chs; break;
+		case INPTYPE_qadj:     dip_load_qad_chs(1);     dipswitch = dipswitch_qadj_chs; break;
+		case INPTYPE_qtono2:   dip_load_qtono2_chs();   dipswitch = dipswitch_qtono2_chs; break;
+		case INPTYPE_megaman:  dip_load_megaman_chs(0); dipswitch = dipswitch_megaman_chs; break;
+		case INPTYPE_rockmanj: dip_load_megaman_chs(1); dipswitch = dipswitch_rockmanj_chs; break;
+		case INPTYPE_pnickj:   dip_load_pnickj_chs();   dipswitch = dipswitch_pnickj_chs; break;
 		}
 	}
 	else if (ui_text_get_language() == LANG_CHINESE_TRADITIONAL)
 	{
 		switch (machine_input_type)
 		{
-		case INPTYPE_forgottn: dip_load_forgottn(); dipswitch = dipswitch_forgottn_cht; break;
-		case INPTYPE_ghouls:   dip_load_ghouls(0);  dipswitch = dipswitch_ghouls_cht; break;
-		case INPTYPE_ghoulsu:  dip_load_ghouls(1);  dipswitch = dipswitch_ghoulsu_cht; break;
-		case INPTYPE_daimakai: dip_load_ghouls(2);  dipswitch = dipswitch_daimakai_cht; break;
-		case INPTYPE_strider:  dip_load_strider(0); dipswitch = dipswitch_strider_cht; break;
-		case INPTYPE_stridrua: dip_load_strider(1); dipswitch = dipswitch_stridrua_cht; break;
-		case INPTYPE_dynwar:   dip_load_dynwar();   dipswitch = dipswitch_dynwar_cht; break;
-		case INPTYPE_willow:   dip_load_willow();   dipswitch = dipswitch_willow_cht; break;
-		case INPTYPE_unsquad:  dip_load_unsquad();  dipswitch = dipswitch_unsquad_cht; break;
-		case INPTYPE_ffight:   dip_load_ffight();   dipswitch = dipswitch_ffight_cht; break;
-		case INPTYPE_1941:     dip_load_1941();     dipswitch = dipswitch_1941_cht; break;
-		case INPTYPE_mercs:    dip_load_mercs();    dipswitch = dipswitch_mercs_cht; break;
-		case INPTYPE_mtwins:   dip_load_mtwins();   dipswitch = dipswitch_mtwins_cht; break;
-		case INPTYPE_msword:   dip_load_msword();   dipswitch = dipswitch_msword_cht; *sx = 270; break;
-		case INPTYPE_cawing:   dip_load_cawing();   dipswitch = dipswitch_cawing_cht; *sx = 270; break;
-		case INPTYPE_nemo:     dip_load_nemo();     dipswitch = dipswitch_nemo_cht; break;
-		case INPTYPE_sf2:      dip_load_sf2(0);     dipswitch = dipswitch_sf2_cht; break;
-		case INPTYPE_sf2j:     dip_load_sf2(1);     dipswitch = dipswitch_sf2j_cht; break;
-		case INPTYPE_3wonders: dip_load_3wonders(); dipswitch = dipswitch_3wonders_cht; break;
-		case INPTYPE_kod:      dip_load_kod(0);     dipswitch = dipswitch_kod_cht; break;
-		case INPTYPE_kodj:     dip_load_kod(1);     dipswitch = dipswitch_kodj_cht; break;
-		case INPTYPE_captcomm: dip_load_captcomm(); dipswitch = dipswitch_captcomm_cht; break;
+		case INPTYPE_forgottn: dip_load_forgottn_cht(); dipswitch = dipswitch_forgottn_cht; break;
+		case INPTYPE_ghouls:   dip_load_ghouls_cht(0);  dipswitch = dipswitch_ghouls_cht; break;
+		case INPTYPE_ghoulsu:  dip_load_ghouls_cht(1);  dipswitch = dipswitch_ghoulsu_cht; break;
+		case INPTYPE_daimakai: dip_load_ghouls_cht(2);  dipswitch = dipswitch_daimakai_cht; break;
+		case INPTYPE_strider:  dip_load_strider_cht(0); dipswitch = dipswitch_strider_cht; break;
+		case INPTYPE_stridrua: dip_load_strider_cht(1); dipswitch = dipswitch_stridrua_cht; break;
+		case INPTYPE_dynwar:   dip_load_dynwar_cht();   dipswitch = dipswitch_dynwar_cht; break;
+		case INPTYPE_willow:   dip_load_willow_cht();   dipswitch = dipswitch_willow_cht; break;
+		case INPTYPE_unsquad:  dip_load_unsquad_cht();  dipswitch = dipswitch_unsquad_cht; break;
+		case INPTYPE_ffight:   dip_load_ffight_cht();   dipswitch = dipswitch_ffight_cht; break;
+		case INPTYPE_1941:     dip_load_1941_cht();     dipswitch = dipswitch_1941_cht; break;
+		case INPTYPE_mercs:    dip_load_mercs_cht();    dipswitch = dipswitch_mercs_cht; break;
+		case INPTYPE_mtwins:   dip_load_mtwins_cht();   dipswitch = dipswitch_mtwins_cht; break;
+		case INPTYPE_msword:   dip_load_msword_cht();   dipswitch = dipswitch_msword_cht; *sx = 270; break;
+		case INPTYPE_cawing:   dip_load_cawing_cht();   dipswitch = dipswitch_cawing_cht; *sx = 270; break;
+		case INPTYPE_nemo:     dip_load_nemo_cht();     dipswitch = dipswitch_nemo_cht; break;
+		case INPTYPE_sf2:      dip_load_sf2_cht(0);     dipswitch = dipswitch_sf2_cht; break;
+		case INPTYPE_sf2j:     dip_load_sf2_cht(1);     dipswitch = dipswitch_sf2j_cht; break;
+		case INPTYPE_3wonders: dip_load_3wonders_cht(); dipswitch = dipswitch_3wonders_cht; break;
+		case INPTYPE_kod:      dip_load_kod_cht(0);     dipswitch = dipswitch_kod_cht; break;
+		case INPTYPE_kodj:     dip_load_kod_cht(1);     dipswitch = dipswitch_kodj_cht; break;
+		case INPTYPE_captcomm: dip_load_captcomm_cht(); dipswitch = dipswitch_captcomm_cht; break;
 #if !RELEASE
 		case INPTYPE_knightsh:
 #endif
-		case INPTYPE_knights:  dip_load_knights();  dipswitch = dipswitch_knights_cht; break;
-		case INPTYPE_varth:    dip_load_varth();    dipswitch = dipswitch_varth_cht; break;
-		case INPTYPE_cworld2j: dip_load_cworld2j(); dipswitch = dipswitch_cworld2j_cht; break;
-		case INPTYPE_qad:      dip_load_qad(0);     dipswitch = dipswitch_qad_cht; break;
-		case INPTYPE_qadj:     dip_load_qad(1);     dipswitch = dipswitch_qadj_cht; break;
-		case INPTYPE_qtono2:   dip_load_qtono2();   dipswitch = dipswitch_qtono2_cht; break;
-		case INPTYPE_megaman:  dip_load_megaman(0); dipswitch = dipswitch_megaman_cht; break;
-		case INPTYPE_rockmanj: dip_load_megaman(1); dipswitch = dipswitch_rockmanj_cht; break;
-		case INPTYPE_pnickj:   dip_load_pnickj();   dipswitch = dipswitch_pnickj_cht; break;
+		case INPTYPE_knights:  dip_load_knights_cht();  dipswitch = dipswitch_knights_cht; break;
+		case INPTYPE_varth:    dip_load_varth_cht();    dipswitch = dipswitch_varth_cht; break;
+		case INPTYPE_cworld2j: dip_load_cworld2j_cht(); dipswitch = dipswitch_cworld2j_cht; break;
+		case INPTYPE_qad:      dip_load_qad_cht(0);     dipswitch = dipswitch_qad_cht; break;
+		case INPTYPE_qadj:     dip_load_qad_cht(1);     dipswitch = dipswitch_qadj_cht; break;
+		case INPTYPE_qtono2:   dip_load_qtono2_cht();   dipswitch = dipswitch_qtono2_cht; break;
+		case INPTYPE_megaman:  dip_load_megaman_cht(0); dipswitch = dipswitch_megaman_cht; break;
+		case INPTYPE_rockmanj: dip_load_megaman_cht(1); dipswitch = dipswitch_rockmanj_cht; break;
+		case INPTYPE_pnickj:   dip_load_pnickj_cht();   dipswitch = dipswitch_pnickj_cht; break;
 		}
 	}
 	else
@@ -5488,41 +10945,164 @@ dipswitch_t *load_dipswitch(int *sx)
 
 void save_dipswitch(void)
 {
-	switch (machine_input_type)
+	if (ui_text_get_language() == LANG_JAPANESE)
 	{
-	case INPTYPE_forgottn: dip_save_forgottn(); break;
-	case INPTYPE_ghouls:   dip_save_ghouls(0); break;
-	case INPTYPE_ghoulsu:  dip_save_ghouls(1); break;
-	case INPTYPE_daimakai: dip_save_ghouls(2); break;
-	case INPTYPE_strider:  dip_save_strider(0); break;
-	case INPTYPE_stridrua: dip_save_strider(1); break;
-	case INPTYPE_dynwar:   dip_save_dynwar(); break;
-	case INPTYPE_willow:   dip_save_willow(); break;
-	case INPTYPE_unsquad:  dip_save_unsquad(); break;
-	case INPTYPE_ffight:   dip_save_ffight(); break;
-	case INPTYPE_1941:     dip_save_1941(); break;
-	case INPTYPE_mercs:    dip_save_mercs(); break;
-	case INPTYPE_mtwins:   dip_save_mtwins(); break;
-	case INPTYPE_msword:   dip_save_msword(); break;
-	case INPTYPE_cawing:   dip_save_cawing(); break;
-	case INPTYPE_nemo:     dip_save_nemo(); break;
-	case INPTYPE_sf2:      dip_save_sf2(0); break;
-	case INPTYPE_sf2j:     dip_save_sf2(1); break;
-	case INPTYPE_3wonders: dip_save_3wonders(); break;
-	case INPTYPE_kod:      dip_save_kod(0); break;
-	case INPTYPE_kodj:     dip_save_kod(1); break;
-	case INPTYPE_captcomm: dip_save_captcomm(); break;
+		switch (machine_input_type)
+		{
+		case INPTYPE_forgottn: dip_save_forgottn_jp(); break;
+		case INPTYPE_ghouls:   dip_save_ghouls_jp(0); break;
+		case INPTYPE_ghoulsu:  dip_save_ghouls_jp(1); break;
+		case INPTYPE_daimakai: dip_save_ghouls_jp(2); break;
+		case INPTYPE_strider:  dip_save_strider_jp(0); break;
+		case INPTYPE_stridrua: dip_save_strider_jp(1); break;
+		case INPTYPE_dynwar:   dip_save_dynwar_jp(); break;
+		case INPTYPE_willow:   dip_save_willow_jp(); break;
+		case INPTYPE_unsquad:  dip_save_unsquad_jp(); break;
+		case INPTYPE_ffight:   dip_save_ffight_jp(); break;
+		case INPTYPE_1941:     dip_save_1941_jp(); break;
+		case INPTYPE_mercs:    dip_save_mercs_jp(); break;
+		case INPTYPE_mtwins:   dip_save_mtwins_jp(); break;
+		case INPTYPE_msword:   dip_save_msword_jp(); break;
+		case INPTYPE_cawing:   dip_save_cawing_jp(); break;
+		case INPTYPE_nemo:     dip_save_nemo_jp(); break;
+		case INPTYPE_sf2:      dip_save_sf2_jp(0); break;
+		case INPTYPE_sf2j:     dip_save_sf2_jp(1); break;
+		case INPTYPE_3wonders: dip_save_3wonders_jp(); break;
+		case INPTYPE_kod:      dip_save_kod_jp(0); break;
+		case INPTYPE_kodj:     dip_save_kod_jp(1); break;
+		case INPTYPE_captcomm: dip_save_captcomm_jp(); break;
 #if !RELEASE
-	case INPTYPE_knightsh:
+		case INPTYPE_knightsh:
 #endif
-	case INPTYPE_knights:  dip_save_knights(); break;
-	case INPTYPE_varth:    dip_save_varth(); break;
-	case INPTYPE_cworld2j: dip_save_cworld2j(); break;
-	case INPTYPE_qad:      dip_save_qad(0); break;
-	case INPTYPE_qadj:     dip_save_qad(1); break;
-	case INPTYPE_qtono2:   dip_save_qtono2(); break;
-	case INPTYPE_megaman:  dip_save_megaman(0); break;
-	case INPTYPE_rockmanj: dip_save_megaman(1); break;
-	case INPTYPE_pnickj:   dip_save_pnickj(); break;
+		case INPTYPE_knights:  dip_save_knights_jp(); break;
+		case INPTYPE_varth:    dip_save_varth_jp(); break;
+		case INPTYPE_cworld2j: dip_save_cworld2j_jp(); break;
+		case INPTYPE_qad:      dip_save_qad_jp(0); break;
+		case INPTYPE_qadj:     dip_save_qad_jp(1); break;
+		case INPTYPE_qtono2:   dip_save_qtono2_jp(); break;
+		case INPTYPE_megaman:  dip_save_megaman_jp(0); break;
+		case INPTYPE_rockmanj: dip_save_megaman_jp(1); break;
+		case INPTYPE_pnickj:   dip_save_pnickj_jp(); break;
+		}
+	}
+	else if (ui_text_get_language() == LANG_CHINESE_SIMPLIFIED)
+	{
+		switch (machine_input_type)
+		{
+		case INPTYPE_forgottn: dip_save_forgottn_chs(); break;
+		case INPTYPE_ghouls:   dip_save_ghouls_chs(0); break;
+		case INPTYPE_ghoulsu:  dip_save_ghouls_chs(1); break;
+		case INPTYPE_daimakai: dip_save_ghouls_chs(2); break;
+		case INPTYPE_strider:  dip_save_strider_chs(0); break;
+		case INPTYPE_stridrua: dip_save_strider_chs(1); break;
+		case INPTYPE_dynwar:   dip_save_dynwar_chs(); break;
+		case INPTYPE_willow:   dip_save_willow_chs(); break;
+		case INPTYPE_unsquad:  dip_save_unsquad_chs(); break;
+		case INPTYPE_ffight:   dip_save_ffight_chs(); break;
+		case INPTYPE_1941:     dip_save_1941_chs(); break;
+		case INPTYPE_mercs:    dip_save_mercs_chs(); break;
+		case INPTYPE_mtwins:   dip_save_mtwins_chs(); break;
+		case INPTYPE_msword:   dip_save_msword_chs(); break;
+		case INPTYPE_cawing:   dip_save_cawing_chs(); break;
+		case INPTYPE_nemo:     dip_save_nemo_chs(); break;
+		case INPTYPE_sf2:      dip_save_sf2_chs(0); break;
+		case INPTYPE_sf2j:     dip_save_sf2_chs(1); break;
+		case INPTYPE_3wonders: dip_save_3wonders_chs(); break;
+		case INPTYPE_kod:      dip_save_kod_chs(0); break;
+		case INPTYPE_kodj:     dip_save_kod_chs(1); break;
+		case INPTYPE_captcomm: dip_save_captcomm_chs(); break;
+#if !RELEASE
+		case INPTYPE_knightsh:
+#endif
+		case INPTYPE_knights:  dip_save_knights_chs(); break;
+		case INPTYPE_varth:    dip_save_varth_chs(); break;
+		case INPTYPE_cworld2j: dip_save_cworld2j_chs(); break;
+		case INPTYPE_qad:      dip_save_qad_chs(0); break;
+		case INPTYPE_qadj:     dip_save_qad_chs(1); break;
+		case INPTYPE_qtono2:   dip_save_qtono2_chs(); break;
+		case INPTYPE_megaman:  dip_save_megaman_chs(0); break;
+		case INPTYPE_rockmanj: dip_save_megaman_chs(1); break;
+		case INPTYPE_pnickj:   dip_save_pnickj_chs(); break;
+		}
+	}
+	else if (ui_text_get_language() == LANG_CHINESE_TRADITIONAL)
+	{
+		switch (machine_input_type)
+		{
+		case INPTYPE_forgottn: dip_save_forgottn_cht(); break;
+		case INPTYPE_ghouls:   dip_save_ghouls_cht(0); break;
+		case INPTYPE_ghoulsu:  dip_save_ghouls_cht(1); break;
+		case INPTYPE_daimakai: dip_save_ghouls_cht(2); break;
+		case INPTYPE_strider:  dip_save_strider_cht(0); break;
+		case INPTYPE_stridrua: dip_save_strider_cht(1); break;
+		case INPTYPE_dynwar:   dip_save_dynwar_cht(); break;
+		case INPTYPE_willow:   dip_save_willow_cht(); break;
+		case INPTYPE_unsquad:  dip_save_unsquad_cht(); break;
+		case INPTYPE_ffight:   dip_save_ffight_cht(); break;
+		case INPTYPE_1941:     dip_save_1941_cht(); break;
+		case INPTYPE_mercs:    dip_save_mercs_cht(); break;
+		case INPTYPE_mtwins:   dip_save_mtwins_cht(); break;
+		case INPTYPE_msword:   dip_save_msword_cht(); break;
+		case INPTYPE_cawing:   dip_save_cawing_cht(); break;
+		case INPTYPE_nemo:     dip_save_nemo_cht(); break;
+		case INPTYPE_sf2:      dip_save_sf2_cht(0); break;
+		case INPTYPE_sf2j:     dip_save_sf2_cht(1); break;
+		case INPTYPE_3wonders: dip_save_3wonders_cht(); break;
+		case INPTYPE_kod:      dip_save_kod_cht(0); break;
+		case INPTYPE_kodj:     dip_save_kod_cht(1); break;
+		case INPTYPE_captcomm: dip_save_captcomm_cht(); break;
+#if !RELEASE
+		case INPTYPE_knightsh:
+#endif
+		case INPTYPE_knights:  dip_save_knights_cht(); break;
+		case INPTYPE_varth:    dip_save_varth_cht(); break;
+		case INPTYPE_cworld2j: dip_save_cworld2j_cht(); break;
+		case INPTYPE_qad:      dip_save_qad_cht(0); break;
+		case INPTYPE_qadj:     dip_save_qad_cht(1); break;
+		case INPTYPE_qtono2:   dip_save_qtono2_cht(); break;
+		case INPTYPE_megaman:  dip_save_megaman_cht(0); break;
+		case INPTYPE_rockmanj: dip_save_megaman_cht(1); break;
+		case INPTYPE_pnickj:   dip_save_pnickj_cht(); break;
+		}
+	}
+	else
+	{
+		switch (machine_input_type)
+		{
+		case INPTYPE_forgottn: dip_save_forgottn(); break;
+		case INPTYPE_ghouls:   dip_save_ghouls(0); break;
+		case INPTYPE_ghoulsu:  dip_save_ghouls(1); break;
+		case INPTYPE_daimakai: dip_save_ghouls(2); break;
+		case INPTYPE_strider:  dip_save_strider(0); break;
+		case INPTYPE_stridrua: dip_save_strider(1); break;
+		case INPTYPE_dynwar:   dip_save_dynwar(); break;
+		case INPTYPE_willow:   dip_save_willow(); break;
+		case INPTYPE_unsquad:  dip_save_unsquad(); break;
+		case INPTYPE_ffight:   dip_save_ffight(); break;
+		case INPTYPE_1941:     dip_save_1941(); break;
+		case INPTYPE_mercs:    dip_save_mercs(); break;
+		case INPTYPE_mtwins:   dip_save_mtwins(); break;
+		case INPTYPE_msword:   dip_save_msword(); break;
+		case INPTYPE_cawing:   dip_save_cawing(); break;
+		case INPTYPE_nemo:     dip_save_nemo(); break;
+		case INPTYPE_sf2:      dip_save_sf2(0); break;
+		case INPTYPE_sf2j:     dip_save_sf2(1); break;
+		case INPTYPE_3wonders: dip_save_3wonders(); break;
+		case INPTYPE_kod:      dip_save_kod(0); break;
+		case INPTYPE_kodj:     dip_save_kod(1); break;
+		case INPTYPE_captcomm: dip_save_captcomm(); break;
+#if !RELEASE
+		case INPTYPE_knightsh:
+#endif
+		case INPTYPE_knights:  dip_save_knights(); break;
+		case INPTYPE_varth:    dip_save_varth(); break;
+		case INPTYPE_cworld2j: dip_save_cworld2j(); break;
+		case INPTYPE_qad:      dip_save_qad(0); break;
+		case INPTYPE_qadj:     dip_save_qad(1); break;
+		case INPTYPE_qtono2:   dip_save_qtono2(); break;
+		case INPTYPE_megaman:  dip_save_megaman(0); break;
+		case INPTYPE_rockmanj: dip_save_megaman(1); break;
+		case INPTYPE_pnickj:   dip_save_pnickj(); break;
+		}
 	}
 }
