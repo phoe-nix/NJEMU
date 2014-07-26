@@ -14,7 +14,6 @@ aof3k,龍虎之拳3 - 鬥士的路途 (韓國版)
 bakatono,麻雀漫遊記
 bbbuster,泡泡大作戰
 bangbead,碰碰球
-bangbedp,碰碰球 (工程版)
 bjourney,藍色之旅
 blazstar,閃亮之星
 breakers,爆裂人
@@ -71,6 +70,7 @@ kof96ae,拳皇 '96 AE 2.0[EGCG],GAME_HACK
 kof96cn,拳皇 '96 (中文版),GAME_HACK
 kof96ep,拳皇 '96 (盜版),GAME_BOOTLEG
 kof96sp,拳皇 '96 Remix PLUS 2007 SP[EGCG],GAME_HACK
+kof96pm,拳皇 '96 添加練習模式,GAME_HACK
 kof97,拳皇 '97 (NGM-2320)
 kof97h,拳皇 '97 (NGH-2320)
 kof97c,拳皇 '97 Combo,GAME_HACK
@@ -80,6 +80,7 @@ kof97d,拳皇 '97 夢迴,GAME_HACK
 kof97oro,拳皇 '97 Plus 2003 (盜版),GAME_BOOTLEG
 kof97pls,拳皇 '97 Plus (盜版),GAME_BOOTLEG
 kof97pla,拳皇 '97 Plus 2003 (盜版/hack),GAME_BOOTLEG
+kof97prc,拳皇 '97 添加練習模式,GAME_HACK
 kof97ps,拳皇 '97 仿PS改良最終版[EGCG],GAME_HACK
 kof97yk,拳皇 '97 天下布武,GAME_HACK
 kof97xt,拳皇 '97 最終決戰,GAME_HACK

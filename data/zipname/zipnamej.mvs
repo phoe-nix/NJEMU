@@ -14,7 +14,6 @@ aof3k,アートオブファイティング龍虎の拳外伝 (Korean release)
 bakatono,バカ殿様 麻雀漫遊記
 bbbuster,Bang Bang Busters
 bangbead,バンビード
-bangbedp,バンビード (prototype)
 bjourney,ラギ
 blazstar,ブレイジングスター
 breakers,ブレイカーズ
@@ -70,6 +69,8 @@ kof96h,ザ·キング·オブ·ファイターズ'96 (NGH-214)
 kof96ae,ザ·キング·オブ·ファイターズ'96 AE[EGCG],GAME_HACK
 kof96cn,ザ·キング·オブ·ファイターズ'96 (Chinese),GAME_HACK
 kof96ep,ザ·キング·オブ·ファイターズ'96 (bootleg),GAME_BOOTLEG
+kof96sp,ザ·キング·オブ·ファイターズ'96 Remix PLUS SP[EGCG],GAME_HACK
+kof96pm,ザ·キング·オブ·ファイターズ'96 PRACTICE,GAME_HACK
 kof97,ザ·キング·オブ·ファイターズ'97 (NGM-2320)
 kof97h,ザ·キング·オブ·ファイターズ'97 (NGH-2320)
 kof97c,ザ·キング·オブ·ファイターズ'97 Combo,GAME_HACK
@@ -79,6 +80,7 @@ kof97d,ザ·キング·オブ·ファイターズ'97 夢回,GAME_BOOTLEG
 kof97oro,ザ·キング·オブ·ファイターズ'97 PLUS 2003 (bootleg),GAME_BOOTLEG
 kof97pls,ザ·キング·オブ·ファイターズ'97 PLUS (bootleg),GAME_BOOTLEG
 kof97pla,ザ·キング·オブ·ファイターズ'97 PLUS 2003 (bootleg / hack),GAME_BOOTLEG
+kof97prc,ザ·キング·オブ·ファイターズ'97 PRACTICE,GAME_HACK
 kof97ps,ザ·キング·オブ·ファイターズ'97 PlayStation Version[EGCG],GAME_HACK
 kof97yk,ザ·キング·オブ·ファイターズ'97 天下布武,GAME_HACK
 kof97xt,ザ·キング·オブ·ファイターズ'97 最終の決戰,GAME_HACK
@@ -225,7 +227,7 @@ samsho2,真サムライスピリッツ - 覇王丸地獄変
 samsho2k,真サムライスピリッツ (Korean release)
 samsho3,サムライスピリッツ 斬紅朗無双剣 (NGM-087)
 samsho3h,サムライスピリッツ 斬紅朗無双剣 (NGH-087)
-samsho4,サムライスピリッツ 天草光臨
+samsho4,サムライスピリッツ 天草降臨
 samsho4k,サムライスピリッツ 覇王伝説 (Korean release)
 samsho5,サムライスピリッツ零 (NGM-2700)
 samsho5b,サムライスピリッツ零 (bootleg),GAME_BOOTLEG

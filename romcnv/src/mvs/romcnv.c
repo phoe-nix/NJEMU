@@ -96,7 +96,7 @@ struct cacheinfo_t
 
 struct cacheinfo_t MVS_cacheinfo[] =
 {
-//     name,  parent,  crom,  srom,  vrom
+//     name,  parent,     crom,  srom,  vrom
 	{ "aof2a",    "aof2",     0, 0, 0 },
 	{ "fatfursa", "fatfursp", 0, 0, 0 },
 	{ "kof95h",   "kof95",    0, 0, 0 },
@@ -107,6 +107,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "kof96cn",  "kof96",    1, 1, 0 },
 	{ "kof96h",   "kof96",    0, 0, 0 },
 	{ "kof96ep",  "kof96",    0, 0, 0 },
+	{ "kof96pm",  "kof96",    0, 0, 0 },
 	{ "kof96sp",  "kof96",    1, 1, 0 },
 	{ "kizuna",   "savagere", 1, 1, 1 },
 	{ "kof97h",   "kof97",    0, 0, 0 },
@@ -116,6 +117,7 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	{ "kof97k",   "kof97",    0, 0, 0 },
 	{ "kof97pls", "kof97",    0, 0, 0 },
 	{ "kof97pla", "kof97",    0, 1, 0 },
+	{ "kof97prc", "kof97",    0, 0, 0 },
 	{ "kof97ps",  "kof97",    1, 0, 0 },
 	{ "kof97yk",  "kof97",    1, 1, 1 },
 	{ "kof97xt",  "kof97",    1, 1, 0 },
