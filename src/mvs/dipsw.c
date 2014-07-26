@@ -9,13 +9,15 @@
 #include "mvs.h"
 
 #define MENU_BLANK		{ "\n", 0, 0x00, 0, 0, { NULL } }
-#if DIPSW_CHINESE_SIMPLIFIED
-#define MENU_RETURN		{ "返回主菜单", 1, 0x00, 0, 0, { NULL } }
-#elif DIPSW_CHINESE_TRADITIONAL
-#define MENU_RETURN		{ "返回主菜單", 1, 0x00, 0, 0, { NULL } }
-#else
+
+#define MENU_RETURN_CHS	{ "返回主菜单", 1, 0x00, 0, 0, { NULL } }
+
+#define MENU_RETURN_CHT	{ "返回主菜單", 1, 0x00, 0, 0, { NULL } }
+
+#define MENU_RETURN_JP	{ "メインメニューに戻る", 1, 0x00, 0, 0, { NULL } }
+
 #define MENU_RETURN		{ "Return to main menu", 1, 0x00, 0, 0, { NULL } }
-#endif
+
 #define MENU_END		{ "\0", 0, 0x00, 0, 0, { NULL } }
 
 
@@ -36,30 +38,50 @@ int neogeo_hard_dipsw;
 
 static dipswitch_t dipswitch_default[] =
 {
-#if DIPSW_CHINESE_SIMPLIFIED
-	{ "测试开关",					1, 0x01, 0, 1, { "关","开" } },
-	{ "投币槽",						1, 0x02, 0, 1, { "1", "2" } },
-	{ "自动连发(部分游戏)",			1, 0x04, 0, 1, { "关","开" } },
-	{ "联机设置",					1, 0x38, 0, 4, { "关","1","2","3","4" } },
-	{ "免费游玩",					1, 0x40, 0, 1, { "关","开" } },
-	{ "锁定",						1, 0x80, 0, 1, { "关","开" } },
-#elif DIPSW_CHINESE_TRADITIONAL
-	{ "測試開關",					1, 0x01, 0, 1, { "關","開" } },
-	{ "投幣槽",						1, 0x02, 0, 1, { "1", "2" } },
-	{ "自動連發(部分遊戲)",			1, 0x04, 0, 1, { "關","開" } },
-	{ "聯機設置",					1, 0x38, 0, 4, { "關","1","2","3","4" } },
-	{ "免費遊玩",					1, 0x40, 0, 1, { "關","開" } },
-	{ "鎖定",						1, 0x80, 0, 1, { "關","開" } },
-#else
 	{ "Test Switch",				1, 0x01, 0, 1, { "Off","On" } },
 	{ "Coin Chutes",				1, 0x02, 0, 1, { "1", "2" } },
 	{ "Autofire (in some games)",	1, 0x04, 0, 1, { "Off","On" } },
 	{ "COMM Settings",				1, 0x38, 0, 4, { "Off","1","2","3","4" } },
 	{ "Free Play",					1, 0x40, 0, 1, { "Off","On" } },
 	{ "Freeze",						1, 0x80, 0, 1, { "Off","On" } },
-#endif
 	MENU_BLANK,
 	MENU_RETURN,
+	MENU_END,
+};
+static dipswitch_t dipswitch_default_jp[] =
+{
+	{ "Test Switch",				1, 0x01, 0, 1, { "Off","On" } },
+	{ "Coin Chutes",				1, 0x02, 0, 1, { "1", "2" } },
+	{ "Autofire (in some games)",	1, 0x04, 0, 1, { "Off","On" } },
+	{ "COMM Settings",				1, 0x38, 0, 4, { "Off","1","2","3","4" } },
+	{ "Free Play",					1, 0x40, 0, 1, { "Off","On" } },
+	{ "Freeze",						1, 0x80, 0, 1, { "Off","On" } },
+	MENU_BLANK,
+	MENU_RETURN_JP,
+	MENU_END,
+};
+static dipswitch_t dipswitch_default_chs[] =
+{
+	{ "测试开关",					1, 0x01, 0, 1, { "关","开" } },
+	{ "投币槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "自动连发(部分游戏)",			1, 0x04, 0, 1, { "关","开" } },
+	{ "联机设置",					1, 0x38, 0, 4, { "关","1","2","3","4" } },
+	{ "免费游玩",					1, 0x40, 0, 1, { "关","开" } },
+	{ "锁定",						1, 0x80, 0, 1, { "关","开" } },
+	MENU_BLANK,
+	MENU_RETURN_CHS,
+	MENU_END,
+};
+static dipswitch_t dipswitch_default_cht[] =
+{
+	{ "測試開關",					1, 0x01, 0, 1, { "關","開" } },
+	{ "投幣槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "自動連發(部分遊戲)",			1, 0x04, 0, 1, { "關","開" } },
+	{ "聯機設置",					1, 0x38, 0, 4, { "關","1","2","3","4" } },
+	{ "免費遊玩",					1, 0x40, 0, 1, { "關","開" } },
+	{ "鎖定",						1, 0x80, 0, 1, { "關","開" } },
+	MENU_BLANK,
+	MENU_RETURN_CHT,
 	MENU_END,
 };
 
@@ -69,23 +91,6 @@ static dipswitch_t dipswitch_default[] =
 
 static dipswitch_t dipswitch_pcb[] =
 {
-#if DIPSW_CHINESE_SIMPLIFIED
-	{ "测试开关",					1, 0x01, 0, 1, { "关","开" } },
-	{ "投币槽",						1, 0x02, 0, 1, { "1", "2" } },
-	{ "自动连发(部分游戏)",			1, 0x04, 0, 1, { "关","开" } },
-	{ "联机设置",					1, 0x38, 0, 4, { "关","1","2","3","4" } },
-	{ "免费游玩",					1, 0x40, 0, 1, { "关","开" } },
-	{ "锁定",						1, 0x80, 0, 1, { "关","开" } },
-	{ "硬件Dip 3(区域)",			1, 0x01, 0, 1, { "亚版","日版" } },
-#elif DIPSW_CHINESE_TRADITIONAL
-	{ "測試開關",					1, 0x01, 0, 1, { "關","開" } },
-	{ "投幣槽",						1, 0x02, 0, 1, { "1", "2" } },
-	{ "自動連發(部分遊戲)",			1, 0x04, 0, 1, { "關","開" } },
-	{ "聯機設置",					1, 0x38, 0, 4, { "關","1","2","3","4" } },
-	{ "免費遊玩",					1, 0x40, 0, 1, { "關","開" } },
-	{ "鎖定",						1, 0x80, 0, 1, { "關","開" } },
-	{ "硬件Dip 3(區域)",			1, 0x01, 0, 1, { "亞版","日版" } },
-#else
 	{ "Test Switch",				1, 0x01, 0, 1, { "Off","On" } },
 	{ "Coin Chutes",				1, 0x02, 0, 1, { "1", "2" } },
 	{ "Autofire (in some games)",	1, 0x04, 0, 1, { "Off","On" } },
@@ -93,9 +98,47 @@ static dipswitch_t dipswitch_pcb[] =
 	{ "Free Play",					1, 0x40, 0, 1, { "Off","On" } },
 	{ "Freeze",						1, 0x80, 0, 1, { "Off","On" } },
 	{ "Hard Dip 3 (Region)",		1, 0x01, 0, 1, { "Asia","Japan" } },
-#endif
 	MENU_BLANK,
 	MENU_RETURN,
+	MENU_END,
+};
+static dipswitch_t dipswitch_pcb_jp[] =
+{
+	{ "Test Switch",				1, 0x01, 0, 1, { "Off","On" } },
+	{ "Coin Chutes",				1, 0x02, 0, 1, { "1", "2" } },
+	{ "Autofire (in some games)",	1, 0x04, 0, 1, { "Off","On" } },
+	{ "COMM Settings",				1, 0x38, 0, 4, { "Off","1","2","3","4" } },
+	{ "Free Play",					1, 0x40, 0, 1, { "Off","On" } },
+	{ "Freeze",						1, 0x80, 0, 1, { "Off","On" } },
+	{ "Hard Dip 3 (Region)",		1, 0x01, 0, 1, { "Asia","Japan" } },
+	MENU_BLANK,
+	MENU_RETURN_JP,
+	MENU_END,
+};
+static dipswitch_t dipswitch_pcb_chs[] =
+{
+	{ "测试开关",					1, 0x01, 0, 1, { "关","开" } },
+	{ "投币槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "自动连发(部分游戏)",			1, 0x04, 0, 1, { "关","开" } },
+	{ "联机设置",					1, 0x38, 0, 4, { "关","1","2","3","4" } },
+	{ "免费游玩",					1, 0x40, 0, 1, { "关","开" } },
+	{ "锁定",						1, 0x80, 0, 1, { "关","开" } },
+	{ "硬件Dip 3(区域)",			1, 0x01, 0, 1, { "亚版","日版" } },
+	MENU_BLANK,
+	MENU_RETURN_CHS,
+	MENU_END,
+};
+static dipswitch_t dipswitch_pcb_cht[] =
+{
+	{ "測試開關",					1, 0x01, 0, 1, { "關","開" } },
+	{ "投幣槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "自動連發(部分遊戲)",			1, 0x04, 0, 1, { "關","開" } },
+	{ "聯機設置",					1, 0x38, 0, 4, { "關","1","2","3","4" } },
+	{ "免費遊玩",					1, 0x40, 0, 1, { "關","開" } },
+	{ "鎖定",						1, 0x80, 0, 1, { "關","開" } },
+	{ "硬件Dip 3(區域)",			1, 0x01, 0, 1, { "亞版","日版" } },
+	MENU_BLANK,
+	MENU_RETURN_CHT,
 	MENU_END,
 };
 
@@ -104,31 +147,50 @@ static dipswitch_t dipswitch_pcb[] =
 --------------------------------------*/
 
 static dipswitch_t dipswitch_mjneogeo[] =
+{	{ "Test Switch",				1, 0x01, 0, 1, { "Off","On" } },
+	{ "Coin Chutes",				1, 0x02, 0, 1, { "1", "2" } },
+	{ "Mahjong Control Panel",		0, 0x04, 0, 1, { "Off","On" } },
+	{ "COMM Settings",				1, 0x38, 0, 4, { "Off","1","2","3","4" } },
+	{ "Free Play",					1, 0x40, 0, 1, { "Off","On" } },
+	{ "Freeze",						1, 0x80, 0, 1, { "Off","On" } },
+	MENU_BLANK,
+	MENU_RETURN,
+	MENU_END,
+};
+static dipswitch_t dipswitch_mjneogeo_jp[] =
 {
-#if DIPSW_CHINESE_SIMPLIFIED
-	{ "测试开关",					1, 0x01, 0, 1, { "关","开" } },
-	{ "投币槽",						1, 0x02, 0, 1, { "1", "2" } },
-	{ "麻将操作版",					1, 0x04, 0, 1, { "关","开" } },
-	{ "联机设置",					1, 0x38, 0, 4, { "关","1","2","3","4" } },
-	{ "免费游玩",					1, 0x40, 0, 1, { "关","开" } },
-	{ "锁定",						1, 0x80, 0, 1, { "关","开" } },
-#elif DIPSW_CHINESE_TRADITIONAL
-	{ "測試開關",					1, 0x01, 0, 1, { "關","開" } },
-	{ "投幣槽",						1, 0x02, 0, 1, { "1", "2" } },
-	{ "麻將操作版",					1, 0x04, 0, 1, { "關","開" } },
-	{ "聯機設置",					1, 0x38, 0, 4, { "關","1","2","3","4" } },
-	{ "免費遊玩",					1, 0x40, 0, 1, { "關","開" } },
-	{ "鎖定",						1, 0x80, 0, 1, { "關","開" } },
-#else
 	{ "Test Switch",				1, 0x01, 0, 1, { "Off","On" } },
 	{ "Coin Chutes",				1, 0x02, 0, 1, { "1", "2" } },
 	{ "Mahjong Control Panel",		0, 0x04, 0, 1, { "Off","On" } },
 	{ "COMM Settings",				1, 0x38, 0, 4, { "Off","1","2","3","4" } },
 	{ "Free Play",					1, 0x40, 0, 1, { "Off","On" } },
 	{ "Freeze",						1, 0x80, 0, 1, { "Off","On" } },
-#endif
 	MENU_BLANK,
-	MENU_RETURN,
+	MENU_RETURN_JP,
+	MENU_END,
+};
+static dipswitch_t dipswitch_mjneogeo_chs[] =
+{
+	{ "测试开关",					1, 0x01, 0, 1, { "关","开" } },
+	{ "投币槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "麻将操作版",					1, 0x04, 0, 1, { "关","开" } },
+	{ "联机设置",					1, 0x38, 0, 4, { "关","1","2","3","4" } },
+	{ "免费游玩",					1, 0x40, 0, 1, { "关","开" } },
+	{ "锁定",						1, 0x80, 0, 1, { "关","开" } },
+	MENU_BLANK,
+	MENU_RETURN_CHS,
+	MENU_END,
+};
+static dipswitch_t dipswitch_mjneogeo_cht[] =
+{
+	{ "測試開關",					1, 0x01, 0, 1, { "關","開" } },
+	{ "投幣槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "麻將操作版",					1, 0x04, 0, 1, { "關","開" } },
+	{ "聯機設置",					1, 0x38, 0, 4, { "關","1","2","3","4" } },
+	{ "免費遊玩",					1, 0x40, 0, 1, { "關","開" } },
+	{ "鎖定",						1, 0x80, 0, 1, { "關","開" } },
+	MENU_BLANK,
+	MENU_RETURN_CHT,
 	MENU_END,
 };
 
@@ -140,23 +202,6 @@ static dipswitch_t dipswitch_mjneogeo[] =
 #if !RELEASE
 static dipswitch_t dipswitch_kog[] =
 {
-#if DIPSW_CHINESE_SIMPLIFIED
-	{ "测试开关",					1, 0x01, 0, 1, { "关","开" } },
-	{ "投币槽",						1, 0x02, 0, 1, { "1", "2" } },
-	{ "自动连发(部分游戏)",			1, 0x04, 0, 1, { "关","开" } },
-	{ "联机设置",					1, 0x38, 0, 4, { "关","1","2","3","4" } },
-	{ "免费游玩",					1, 0x40, 0, 1, { "关","开" } },
-	{ "锁定",						1, 0x80, 0, 1, { "关","开" } },
-	{ "标题语言",					1, 0x01, 0, 1, { "中文","英文" } },
-#elif DIPSW_CHINESE_TRADITIONAL
-	{ "測試開關",					1, 0x01, 0, 1, { "關","開" } },
-	{ "投幣槽",						1, 0x02, 0, 1, { "1", "2" } },
-	{ "自動連發(部分遊戲)",			1, 0x04, 0, 1, { "關","開" } },
-	{ "聯機設置",					1, 0x38, 0, 4, { "關","1","2","3","4" } },
-	{ "免費遊玩",					1, 0x40, 0, 1, { "關","開" } },
-	{ "鎖定",						1, 0x80, 0, 1, { "關","開" } },
-	{ "標題語言",					1, 0x01, 0, 1, { "中文","英文" } },
-#else
 	{ "Test Switch",				1, 0x01, 0, 1, { "Off","On" } },
 	{ "Coin Chutes",				1, 0x02, 0, 1, { "1", "2" } },
 	{ "Autofire (in some games)",	1, 0x04, 0, 1, { "Off","On" } },
@@ -164,9 +209,47 @@ static dipswitch_t dipswitch_kog[] =
 	{ "Free Play",					1, 0x40, 0, 1, { "Off","On" } },
 	{ "Freeze",						1, 0x80, 0, 1, { "Off","On" } },
 	{ "Title Language",				1, 0x01, 0, 1, { "Chinese","English" } },
-#endif
 	MENU_BLANK,
 	MENU_RETURN,
+	MENU_END,
+};
+static dipswitch_t dipswitch_kog_jp[] =
+{
+	{ "Test Switch",				1, 0x01, 0, 1, { "Off","On" } },
+	{ "Coin Chutes",				1, 0x02, 0, 1, { "1", "2" } },
+	{ "Mahjong Control Panel",		0, 0x04, 0, 1, { "Off","On" } },
+	{ "COMM Settings",				1, 0x38, 0, 4, { "Off","1","2","3","4" } },
+	{ "Free Play",					1, 0x40, 0, 1, { "Off","On" } },
+	{ "Freeze",						1, 0x80, 0, 1, { "Off","On" } },
+	{ "Title Language",				1, 0x01, 0, 1, { "Chinese","English" } },
+	MENU_BLANK,
+	MENU_RETURN_JP,
+	MENU_END,
+};
+static dipswitch_t dipswitch_kog_chs[] =
+{
+	{ "测试开关",					1, 0x01, 0, 1, { "关","开" } },
+	{ "投币槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "自动连发(部分游戏)",			1, 0x04, 0, 1, { "关","开" } },
+	{ "联机设置",					1, 0x38, 0, 4, { "关","1","2","3","4" } },
+	{ "免费游玩",					1, 0x40, 0, 1, { "关","开" } },
+	{ "锁定",						1, 0x80, 0, 1, { "关","开" } },
+	{ "标题语言",					1, 0x01, 0, 1, { "中文","英文" } },
+	MENU_BLANK,
+	MENU_RETURN_CHS,
+	MENU_END,
+};
+static dipswitch_t dipswitch_kog_cht[] =
+{
+	{ "測試開關",					1, 0x01, 0, 1, { "關","開" } },
+	{ "投幣槽",						1, 0x02, 0, 1, { "1", "2" } },
+	{ "自動連發(部分遊戲)",			1, 0x04, 0, 1, { "關","開" } },
+	{ "聯機設置",					1, 0x38, 0, 4, { "關","1","2","3","4" } },
+	{ "免費遊玩",					1, 0x40, 0, 1, { "關","開" } },
+	{ "鎖定",						1, 0x80, 0, 1, { "關","開" } },
+	{ "標題語言",					1, 0x01, 0, 1, { "中文","英文" } },
+	MENU_BLANK,
+	MENU_RETURN_CHT,
 	MENU_END,
 };
 #endif
@@ -176,35 +259,130 @@ dipswitch_t *load_dipswitch(void)
 {
 	UINT8 value = ~neogeo_dipswitch;
 	dipswitch_t *dipswitch = NULL;
-
-	switch (neogeo_ngh)
+	if (ui_text_get_language() == LANG_JAPANESE)
 	{
-	case NGH_mahretsu:
-	case NGH_janshin:
-	case NGH_minasan:
-	case NGH_bakatono:
-	case NGH_fr2ch:
-		dipswitch = dipswitch_mjneogeo;
-		break;
+		switch (neogeo_ngh)
+		{
+		case NGH_mahretsu:
+		case NGH_janshin:
+		case NGH_minasan:
+		case NGH_bakatono:
+		case NGH_fr2ch:
+			dipswitch = dipswitch_mjneogeo_jp;
+			break;
 
-	default:
-		dipswitch = dipswitch_default;
-		break;
-	}
+		default:
+			dipswitch = dipswitch_default_jp;
+			break;
+		}
 
-	if (machine_init_type == INIT_ms5pcb
-	||	machine_init_type == INIT_svcpcb)
-	{
-		dipswitch = dipswitch_pcb;
-		dipswitch[6].value = neogeo_hard_dipsw;
-	}
+		if (machine_init_type == INIT_ms5pcb
+		||	machine_init_type == INIT_svcpcb)
+		{
+			dipswitch = dipswitch_pcb_jp;
+			dipswitch[6].value = neogeo_hard_dipsw;
+		}
 #if !RELEASE
-	else if (machine_init_type == INIT_kog)
-	{
-		dipswitch = dipswitch_kog;
-		dipswitch[6].value = neogeo_hard_dipsw;
+		else if (machine_init_type == INIT_kog)
+		{
+			dipswitch = dipswitch_kog_jp;
+			dipswitch[6].value = neogeo_hard_dipsw;
+		}
 	}
 #endif
+	else if (ui_text_get_language() == LANG_CHINESE_SIMPLIFIED)
+	{
+		switch (neogeo_ngh)
+		{
+		case NGH_mahretsu:
+		case NGH_janshin:
+		case NGH_minasan:
+		case NGH_bakatono:
+		case NGH_fr2ch:
+			dipswitch = dipswitch_mjneogeo_chs;
+			break;
+
+		default:
+			dipswitch = dipswitch_default_chs;
+			break;
+		}
+
+		if (machine_init_type == INIT_ms5pcb
+		||	machine_init_type == INIT_svcpcb)
+		{
+			dipswitch = dipswitch_pcb_chs;
+			dipswitch[6].value = neogeo_hard_dipsw;
+		}
+#if !RELEASE
+		else if (machine_init_type == INIT_kog)
+		{
+			dipswitch = dipswitch_kog_chs;
+			dipswitch[6].value = neogeo_hard_dipsw;
+		}
+	}
+#endif
+	else if (ui_text_get_language() == LANG_CHINESE_TRADITIONAL)
+	{
+		switch (neogeo_ngh)
+		{
+		case NGH_mahretsu:
+		case NGH_janshin:
+		case NGH_minasan:
+		case NGH_bakatono:
+		case NGH_fr2ch:
+			dipswitch = dipswitch_mjneogeo_cht;
+			break;
+
+		default:
+			dipswitch = dipswitch_default_cht;
+			break;
+		}
+
+		if (machine_init_type == INIT_ms5pcb
+		||	machine_init_type == INIT_svcpcb)
+		{
+			dipswitch = dipswitch_pcb_cht;
+			dipswitch[6].value = neogeo_hard_dipsw;
+		}
+#if !RELEASE
+		else if (machine_init_type == INIT_kog)
+		{
+			dipswitch = dipswitch_kog_cht;
+			dipswitch[6].value = neogeo_hard_dipsw;
+		}
+	}
+#endif
+	else
+	{
+		switch (neogeo_ngh)
+		{
+		case NGH_mahretsu:
+		case NGH_janshin:
+		case NGH_minasan:
+		case NGH_bakatono:
+		case NGH_fr2ch:
+			dipswitch = dipswitch_mjneogeo;
+			break;
+
+		default:
+			dipswitch = dipswitch_default;
+			break;
+	}
+
+		if (machine_init_type == INIT_ms5pcb
+		||	machine_init_type == INIT_svcpcb)
+		{
+			dipswitch = dipswitch_pcb;
+			dipswitch[6].value = neogeo_hard_dipsw;
+		}
+#if !RELEASE
+		else if (machine_init_type == INIT_kog)
+		{
+			dipswitch = dipswitch_kog;
+			dipswitch[6].value = neogeo_hard_dipsw;
+		}
+#endif
+	}
 
 	dipswitch[0].value = (value & 0x01) != 0;
 	dipswitch[1].value = (value & 0x02) != 0;
@@ -229,36 +407,99 @@ void save_dipswitch(void)
 {
 	UINT8 value;
 	dipswitch_t *dipswitch = NULL;
-
-	switch (neogeo_ngh)
+	if (ui_text_get_language() == LANG_JAPANESE)
 	{
-	case NGH_mahretsu:
-	case NGH_janshin:
-	case NGH_minasan:
-	case NGH_bakatono:
-	case NGH_fr2ch:
-		dipswitch = dipswitch_mjneogeo;
-		break;
+		switch (neogeo_ngh)
+		{
+		case NGH_mahretsu:
+		case NGH_janshin:
+		case NGH_minasan:
+		case NGH_bakatono:
+		case NGH_fr2ch:
+			dipswitch = dipswitch_mjneogeo_jp;
+			break;
 
-	default:
-		dipswitch = dipswitch_default;
-		break;
-	}
+		default:
+			dipswitch = dipswitch_default_jp;
+			break;
+		}
 
-	if (machine_init_type == INIT_ms5pcb
-	||	machine_init_type == INIT_svcpcb)
-	{
-		dipswitch = dipswitch_pcb;
-		neogeo_hard_dipsw = dipswitch[6].value;
-	}
+		if (machine_init_type == INIT_ms5pcb
+		||	machine_init_type == INIT_svcpcb)
+		{
+			dipswitch = dipswitch_pcb_jp;
+			neogeo_hard_dipsw = dipswitch[6].value;
+		}
 #if !RELEASE
-	else if (machine_init_type == INIT_kog)
-	{
-		dipswitch = dipswitch_kog;
-		neogeo_hard_dipsw = dipswitch[6].value;
-	}
+		else if (machine_init_type == INIT_kog)
+		{
+			dipswitch = dipswitch_kog_jp;
+			neogeo_hard_dipsw = dipswitch[6].value;
+		}
 #endif
+	}
+	else if (ui_text_get_language() == LANG_CHINESE_SIMPLIFIED)
+	{
+		switch (neogeo_ngh)
+		{
+		case NGH_mahretsu:
+		case NGH_janshin:
+		case NGH_minasan:
+		case NGH_bakatono:
+		case NGH_fr2ch:
+			dipswitch = dipswitch_mjneogeo_cht;
+			break;
 
+		default:
+			dipswitch = dipswitch_default_cht;
+			break;
+		}
+
+		if (machine_init_type == INIT_ms5pcb
+		||	machine_init_type == INIT_svcpcb)
+		{
+			dipswitch = dipswitch_pcb_cht;
+			neogeo_hard_dipsw = dipswitch[6].value;
+		}
+#if !RELEASE
+		else if (machine_init_type == INIT_kog)
+		{
+			dipswitch = dipswitch_kog_cht;
+			neogeo_hard_dipsw = dipswitch[6].value;
+		}
+#endif
+	}
+	else
+	{
+		switch (neogeo_ngh)
+		{
+		case NGH_mahretsu:
+		case NGH_janshin:
+		case NGH_minasan:
+		case NGH_bakatono:
+		case NGH_fr2ch:
+			dipswitch = dipswitch_mjneogeo;
+			break;
+
+		default:
+			dipswitch = dipswitch_default;
+			break;
+		}
+
+		if (machine_init_type == INIT_ms5pcb
+		||	machine_init_type == INIT_svcpcb)
+		{
+			dipswitch = dipswitch_pcb;
+			neogeo_hard_dipsw = dipswitch[6].value;
+		}
+#if !RELEASE
+		else if (machine_init_type == INIT_kog)
+		{
+			dipswitch = dipswitch_kog;
+			neogeo_hard_dipsw = dipswitch[6].value;
+		}
+#endif
+	}
 	value = 0;
 	value |= (dipswitch[0].value != 0) ? 0x00: 0x01;
 	value |= (dipswitch[1].value != 0) ? 0x00: 0x02;

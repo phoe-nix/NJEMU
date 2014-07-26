@@ -22,12 +22,6 @@ UI_32BPP = 1
 #RELEASE = 1
 
 #------------------------------------------------------------------------------
-# Dip switch translation/Dip 开关翻译 简体中文=CHINESE_SIMPLIFIED
-#------------------------------------------------------------------------------
-DIPSW_CHINESE_SIMPLIFIED = 1
-#DIPSW_CHINESE_TRADITIONAL = 1
-
-#------------------------------------------------------------------------------
 # Version
 #------------------------------------------------------------------------------
 
@@ -219,19 +213,19 @@ ZLIB = \
 	$(OBJ)/zlib/adler32.o \
 	$(OBJ)/zlib/compress.o \
 	$(OBJ)/zlib/uncompr.o \
-	$(OBJ)/zlib/gzclose.o \
-	$(OBJ)/zlib/gzlib.o \
-	$(OBJ)/zlib/gzread.o \
-	$(OBJ)/zlib/gzwrite.o \
 	$(OBJ)/zlib/crc32.o \
 	$(OBJ)/zlib/deflate.o \
 	$(OBJ)/zlib/inflate.o \
 	$(OBJ)/zlib/inftrees.o \
-	$(OBJ)/zlib/infback.o \
 	$(OBJ)/zlib/inffast.o \
 	$(OBJ)/zlib/trees.o \
 	$(OBJ)/zlib/zutil.o
 
+#	$(OBJ)/zlib/gzclose.o \
+#	$(OBJ)/zlib/gzlib.o \
+#	$(OBJ)/zlib/gzread.o \
+#	$(OBJ)/zlib/gzwrite.o \
+#	$(OBJ)/zlib/infback.o \
 #------------------------------------------------------------------------------
 # Include makefiles
 #------------------------------------------------------------------------------
@@ -308,18 +302,6 @@ ifdef RELEASE
 CDEFS += -DRELEASE=1
 else
 CDEFS += -DRELEASE=0
-endif
-
-ifdef DIPSW_CHINESE_SIMPLIFIED
-CDEFS += -DDIPSW_CHINESE_SIMPLIFIED=1
-else
-CDEFS += -DDIPSW_CHINESE_SIMPLIFIED=0
-endif
-
-ifdef DIPSW_CHINESE_TRADITIONAL
-CDEFS += -DDIPSW_CHINESE_TRADITIONAL=1
-else
-CDEFS += -DDIPSW_CHINESE_TRADITIONAL=0
 endif
 
 #------------------------------------------------------------------------------
