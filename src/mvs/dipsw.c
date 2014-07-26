@@ -447,6 +447,37 @@ void save_dipswitch(void)
 		case NGH_minasan:
 		case NGH_bakatono:
 		case NGH_fr2ch:
+			dipswitch = dipswitch_mjneogeo_chs;
+			break;
+
+		default:
+			dipswitch = dipswitch_default_chs;
+			break;
+		}
+
+		if (machine_init_type == INIT_ms5pcb
+		||	machine_init_type == INIT_svcpcb)
+		{
+			dipswitch = dipswitch_pcb_chs;
+			neogeo_hard_dipsw = dipswitch[6].value;
+		}
+#if !RELEASE
+		else if (machine_init_type == INIT_kog)
+		{
+			dipswitch = dipswitch_kog_chs;
+			neogeo_hard_dipsw = dipswitch[6].value;
+		}
+#endif
+	}
+	else if (ui_text_get_language() == LANG_CHINESE_TRADITIONAL)
+	{
+		switch (neogeo_ngh)
+		{
+		case NGH_mahretsu:
+		case NGH_janshin:
+		case NGH_minasan:
+		case NGH_bakatono:
+		case NGH_fr2ch:
 			dipswitch = dipswitch_mjneogeo_cht;
 			break;
 
