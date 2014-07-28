@@ -2237,11 +2237,9 @@ static void state_delete_slot(void)
 static int menu_state(void)
 {
 	int prev_sel = -1, prev_func = -1, update = 1;
-	int thumbnail_loaded = 0;
 
 	state_func = STATE_FUNC_SAVE;
 	state_sel = 0;
-	thumbnail_loaded = 0;
 
 	pad_wait_clear();
 	load_background(WP_STATE);
@@ -2600,18 +2598,6 @@ void showmenu(void)
 			help(HELP_MAINMENU);
 			update = 1;
 		}
-/*PRESS HOME TO EXIT IN MAIN MENU
-		else if (readHomeButton())
-		{
-			if (messagebox(MB_EXITEMULATION))
-			{
-				Loop = LOOP_EXIT;
-				show_exit_screen();
-				break;
-			}
-			update = 1;
-			pad_wait_clear();
-		}*/
 #ifdef SAVE_STATE
 		else if (pad_pressed(PSP_CTRL_RTRIGGER))
 		{
@@ -2632,7 +2618,7 @@ void showmenu(void)
 		if (prev_sel != sel) update |= 1;
 
 		pad_update();
-		//if (sel >= rows) update = UI_FULL_REFRESH;	//fix main menu text do not update
+
 		if (Loop == LOOP_EXIT) break;
 
 	} while (!pad_pressed(PSP_CTRL_CROSS));

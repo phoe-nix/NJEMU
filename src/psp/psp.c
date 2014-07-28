@@ -2,7 +2,7 @@
 
 	psp.c
 
-	PSP儊僀儞
+	PSPメイン
 
 ******************************************************************************/
 
@@ -24,24 +24,25 @@ PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER);
 
 
 /******************************************************************************
-	僌儘乕僶儖曄悢
+	グローバル変数
 ******************************************************************************/
 
 volatile int Loop;
 volatile int Sleep;
 char launchDir[MAX_PATH];
-char screenshotDir[MAX_PATH];  // 僗僋儕乕儞僔儑僩曐懚PATH
+char screenshotDir[MAX_PATH];  // スクリーンショト保存PATH
 int psp_cpuclock = PSPCLOCK_333;
 int devkit_version;
+int systembuttons_available;
 int njemu_debug;
 
 
 /******************************************************************************
-	僌儘乕僶儖娭悢
+	グローバル関数
 ******************************************************************************/
 
 /*------------------------------------------------------
-	CPU僋儘僢僋愝掕
+	CPUクロック設定
 ------------------------------------------------------*/
 
 void set_cpu_clock(int value)
@@ -57,7 +58,7 @@ void set_cpu_clock(int value)
 
 
 /******************************************************************************
-	儘乕僇儖娭悢
+	ローカル関数
 ******************************************************************************/
 
 /*--------------------------------------------------------
@@ -120,7 +121,7 @@ static SceKernelCallbackFunction PowerCallback(int unknown, int pwrflags, void *
 }
 
 /*--------------------------------------------------------
-	僐乕儖僶僢僋僗儗僢僪嶌惉
+	コールバックスレッド作成
 --------------------------------------------------------*/
 
 static int CallbackThread(SceSize args, void *argp)
@@ -137,7 +138,7 @@ static int CallbackThread(SceSize args, void *argp)
 
 
 /*--------------------------------------------------------
-	僐乕儖僶僢僋僗儗僢僪愝掕
+	コールバックスレッド設定
 --------------------------------------------------------*/
 
 static int SetupCallbacks(void)
@@ -188,7 +189,7 @@ int main(int argc, char *argv[])
 	strcat(screenshotDir, "ms0:/PICTURE/NCDZ");
 #endif
 
-	sceIoMkdir(screenshotDir,0777); // 僗僋僔儑梡僼僅儖僟嶌惉
+	sceIoMkdir(screenshotDir,0777); // スクショ用フォルダ作成
 
 	devkit_version = sceKernelDevkitVersion();
 	njemu_debug = 0;
@@ -211,16 +212,12 @@ int main(int argc, char *argv[])
 	if ((modID = pspSdkLoadStartModule(prx_path, PSP_MEMORY_PARTITION_KERNEL)) >= 0)
 	{
 		initSystemButtons(devkit_version);
-
-		file_browser();
+		systembuttons_available = 1;
 	}
 	else
-	{
-		small_font_printf(0, 0, "Error 0x%08X start SystemButtons.prx.", modID);
-		video_flip_screen(1);
-		sceKernelDelayThread(5*1000*1000);
-	}
+		systembuttons_available = 0;
 
+	file_browser();
 	video_exit();
 
 #ifdef KERNEL_MODE
@@ -234,7 +231,7 @@ int main(int argc, char *argv[])
 
 
 /*--------------------------------------------------------
-	Kernel儌乕僪 main()
+	Kernelモード main()
 --------------------------------------------------------*/
 
 #ifdef KERNEL_MODE

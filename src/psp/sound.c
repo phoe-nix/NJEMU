@@ -147,7 +147,7 @@ int sound_thread_start(void)
 
 	sceAudioSRCChRelease();
 
-	if (sceAudioSRCChReserve(sound->samples, sound->frequency, 2))
+	if (sceAudioSRCChReserve(sound->samples, sound->frequency, 2) < 0)
 	{
 		fatalerror(TEXT(COULD_NOT_RESERVE_AUDIO_CHANNEL_FOR_SOUND));
 		return 0;

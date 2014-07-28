@@ -86,6 +86,7 @@ extern volatile int Sleep;
 extern char launchDir[MAX_PATH];
 extern int psp_cpuclock;
 extern int devkit_version;
+extern int systembuttons_available;
 extern int njemu_debug;
 
 void set_cpu_clock(int value);

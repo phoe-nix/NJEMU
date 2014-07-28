@@ -6,6 +6,8 @@
 
 ******************************************************************************/
 
+#include <psptypes.h>
+#include <pspwlan.h>
 #include "emumain.h"
 #include "zlib/zlib.h"
 
@@ -277,7 +279,7 @@ static int load_zipname(void)
 {
 	FILE *fp;
 	char path[MAX_PATH], buf[256];
-	int size, found = 0;
+	int found = 0;
 
 	if (ui_text_get_language() == LANG_JAPANESE)
 	{
@@ -314,7 +316,7 @@ static int load_zipname(void)
 		return 0;
 
 	fseek(fp, 0, SEEK_END);
-	size = ftell(fp);
+	ftell(fp);
 	fseek(fp, 0, SEEK_SET);
 
 	zipname_num = 0;
@@ -1341,7 +1343,7 @@ void file_browser(void)
 #ifdef ADHOC
 					else if (adhoc_enable)
 					{
-						if (!readWLANSwitch())
+						if (!sceWlanGetSwitchState())
 						{
 							ui_popup(TEXT(PLEASE_TURN_ON_THE_WLAN_SWITCH));
 							adhoc_enable = 0;
