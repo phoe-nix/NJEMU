@@ -31,6 +31,7 @@ enum
 #if !RELEASE
 	MACHINE_kodb,		// 5
 	MACHINE_mercs,		// 6
+	MACHINE_wofhfh,		// 7
 #endif
 	MACHINE_MAX			// MAX
 };
@@ -107,6 +108,7 @@ enum
 	INIT_dinoh,			// 13
 	INIT_dinohunt,		// 14
 	INIT_sf2m3,			// 15
+	INIT_wofb,			// 16
 #endif
 	INIT_MAX
 };

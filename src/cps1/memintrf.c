@@ -667,6 +667,14 @@ int memory_init(void)
 		}
 		memset(memory_region_user2, 0, 0x8000);
 	}
+	else if (machine_driver_type == MACHINE_wofhfh)
+	{
+		machine_sound_type = SOUND_YM2151_CPS1;
+		z80_read_memory_8 = cps1_sound_readmem;
+		z80_write_memory_8 = cps1_sound_writemem;
+
+		memory_region_user2 = memory_region_cpu2;
+	}
 	else
 	{
 		machine_sound_type = SOUND_YM2151_CPS1;

@@ -1543,6 +1543,11 @@ int cps1_driver_init(void)
 		EEPROM_init(&qsound_eeprom_interface);
 		cps1_nvram_read_write(0);
 	}
+	else if (machine_driver_type == MACHINE_wofhfh)
+	{
+		EEPROM_init(&qsound_eeprom_interface);
+		cps1_nvram_read_write(0);
+	}
 	else if (machine_driver_type == MACHINE_pang3)
 	{
 		EEPROM_init(&pang3_eeprom_interface);

@@ -5102,7 +5102,7 @@ FILENAME( wofj, wof, 3, 31, 1, 0 )
 	ROM( 0, tk2_q4.4k, 0x180000, 0x80000, 0x36642e88 )
 END
 
-FILENAME( wofhfh, wof, 3, 40, 1, 0 )
+FILENAME( wofhfh, wof, 7, 40, 0, 0 )
 	REGION( 0x100000, CPU1, 0 )
 	ROM( 0, 23, 0x000000, 0x80000, 0x6ae4b312 )
 	ROM( 0, 22, 0x080000, 0x80000, 0x94e8d01a )
@@ -5117,7 +5117,7 @@ FILENAME( wofhfh, wof, 3, 40, 1, 0 )
 	ROMX( 0, 7, 0x200004, 0x80000, 0x073686a6, 2, 6 )
 	ROMX( 0, 8, 0x200006, 0x80000, 0x5300f8db, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, 9, 0x00000, 0x08000, 0x86fe8a97 )
 	ROM( 1,    0x10000, 0x18000, 0x00000000 )
 
