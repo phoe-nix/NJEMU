@@ -531,6 +531,7 @@ static keycfg2_t keycfg_pzloop2[] =
 	case INPTYPE_wofsj:
 	case INPTYPE_dinoh:
 	case INPTYPE_punisherbz:
+	case INPTYPE_wofhfh:
 #endif
 		keycfg2 = keycfg_3buttons;
 		break;

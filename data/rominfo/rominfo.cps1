@@ -13,7 +13,7 @@ FILENAME( wofchs, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk2_gfx6.rom, 0x200004, 0x80000, 0x0B0B156C, 2, 6 )
 	ROMX( 0, tk2_gfx8.rom, 0x200006, 0x80000, 0x76B9E160, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
 	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
@@ -54,7 +54,7 @@ FILENAME( forgottn, cps1, 1, 1, 0, 0 )
 	ROMX( 0, lw_32.9h,  0x300006, 0x20000, 0x30967a15, 1, 7 )//lw-12.9g
 	ROMX( 0, lw_31.9f,  0x300007, 0x20000, 0xc49d37fb, 1, 7 )//lw-12.9g
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, lw_00.13c, 0x00000, 0x08000, 0x59df2a63 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -93,7 +93,7 @@ FILENAME( forgottnu, forgottn, 1, 1, 0, 0 )
 	ROMX( 0, lw_32.9h,  0x300006, 0x20000, 0x30967a15, 1, 7 )//lw-12.9g
 	ROMX( 0, lw_31.9f,  0x300007, 0x20000, 0xc49d37fb, 1, 7 )//lw-12.9g
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, lw_00.13c, 0x00000, 0x08000, 0x59df2a63 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -120,7 +120,7 @@ FILENAME( forgottnu1, forgottn, 1, 1, 0, 0 )
 	ROMX( 0, lw-05.9e,  0x200004, 0x80000, 0xe4552fd7, 2, 6 )//3
 	ROMX( 0, lw-12.9g,  0x200006, 0x80000, 0x8e6a832b, 2, 6 )//4
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, lw_00.14a, 0x00000, 0x08000, 0x59df2a63 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -147,7 +147,7 @@ FILENAME( forgottnua, forgottn, 1, 1, 0, 0 )
 	ROMX( 0, lw-05.9e,  0x200004, 0x80000, 0xe4552fd7, 2, 6 )//3
 	ROMX( 0, lw-12.9g,  0x200006, 0x80000, 0x8e6a832b, 2, 6 )//4
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, lw_00.14a, 0x00000, 0x08000, 0x59df2a63 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -174,7 +174,7 @@ FILENAME( forgottnuaa, forgottn, 1, 1, 0, 0 )
 	ROMX( 0, lw-05.9e,  0x200004, 0x80000, 0xe4552fd7, 2, 6 )//3
 	ROMX( 0, lw-12.9g,  0x200006, 0x80000, 0x8e6a832b, 2, 6 )//4
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, lw_00.14a, 0x00000, 0x08000, 0x59df2a63 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -201,9 +201,9 @@ FILENAME( lostwrld, forgottn, 1, 1, 0, 0 )
 	ROMX( 0, lw-05.9e,  0x200004, 0x80000, 0xe4552fd7, 2, 6 )
 	ROMX( 0, lw-12.9g,  0x200006, 0x80000, 0x8e6a832b, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, lwu00, 0x00000, 0x08000, 0x59df2a63 )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,        0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, lw-03.14c, 0x00000, 0x20000, 0xce2159e7 )
@@ -228,9 +228,9 @@ FILENAME( lostwrldo, forgottn, 1, 1, 0, 0 )
 	ROMX( 0, lw-05.9e,  0x200004, 0x80000, 0xe4552fd7, 2, 6 )
 	ROMX( 0, lw-12.9g,  0x200006, 0x80000, 0x8e6a832b, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, lwu00, 0x00000, 0x08000, 0x59df2a63 )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,        0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, lw-03.14c, 0x00000, 0x20000, 0xce2159e7 )
@@ -267,7 +267,7 @@ FILENAME( ghouls, cps1, 0, 2, 0, 0 )
 	ROMX( 0, 16.4h,    0x280006, 0x10000, 0xf187ba1c, 1, 7 )
 	ROMX( 0, 25.7h,    0x280007, 0x10000, 0x29f79c78, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 26.10a, 0x00000, 0x08000, 0x3692f6e5 )
 	ROM( 1,         0x10000, 0x08000, 0x00000000 )
 END
@@ -302,7 +302,7 @@ FILENAME( ghoulsu, ghouls, 0, 3, 0, 0 )
 	ROMX( 0, 16.4h,    0x280006, 0x10000, 0xf187ba1c, 1, 7 )
 	ROMX( 0, 25.7h,    0x280007, 0x10000, 0x29f79c78, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 26.10a, 0x00000, 0x08000, 0x3692f6e5 )
 	ROM( 1,         0x10000, 0x08000, 0x00000000 )
 END
@@ -352,7 +352,7 @@ FILENAME( daimakai, ghouls, 0, 4, 0, 0 )
 	ROMX( 0, dm_28.11e, 0x280006, 0x10000, 0xf187ba1c, 1, 7 )
 	ROMX( 0, dm_27.11c, 0x280007, 0x10000, 0x29f79c78, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 37.13c, 0x00000, 0x08000, 0x3692f6e5 )
 	ROM( 1,         0x10000, 0x08000, 0x00000000 )
 END
@@ -372,7 +372,7 @@ FILENAME( daimakair, ghouls, 0, 4, 0, 0 )
 	ROMX( 0, dam_07.9a,  0x200004, 0x80000, 0xec351d78, 2, 6 )
 	ROMX( 0, dam_08.10a, 0x200006, 0x80000, 0xee2acc1e, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, dam_09.12a, 0x00000, 0x08000, 0x0656ff53 )
 	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 END
@@ -395,7 +395,7 @@ FILENAME( strider, cps1, 0, 5, 0, 0 )
 	ROMX( 0, st-4.3a,   0x200004, 0x80000, 0xb7d04e8b, 2, 6 )
 	ROMX( 0, st-8.5a,   0x200006, 0x80000, 0x6b4713b4, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 09.12b, 0x00000, 0x08000, 0x2ed403bc )
 	ROM( 1,         0x10000, 0x08000, 0x00000000 )
 
@@ -422,7 +422,7 @@ FILENAME( striderua, strider, 0, 6, 0, 0 )
 	ROMX( 0, st-4.3a,   0x200004, 0x80000, 0xb7d04e8b, 2, 6 )
 	ROMX( 0, st-8.5a,   0x200006, 0x80000, 0x6b4713b4, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 09(__striderua).12b, 0x00000, 0x08000, 0x08d63519 )
 	ROM( 1,                      0x10000, 0x08000, 0x00000000 )
 
@@ -476,7 +476,7 @@ FILENAME( striderj, strider, 0, 5, 0, 0 )
 	ROMX( 0, sth_29.11e, 0x300006, 0x20000, 0x34ae2997, 1, 7 )
 	ROMX( 0, sth_22.11c, 0x300007, 0x20000, 0x78dd9c48, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sth_23.13c, 0x00000, 0x08000, 0x2ed403bc )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -500,7 +500,7 @@ FILENAME( striderjr, strider, 0, 5, 0, 0 )
 	ROMX( 0, sth_07.9a,  0x200004, 0x80000, 0xb7d04e8b, 2, 6 )
 	ROMX( 0, sth_08.10a, 0x200006, 0x80000, 0x6b4713b4, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sth_09.12a, 0x00000, 0x08000, 0x08d63519 )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -527,9 +527,9 @@ FILENAME( dynwar, cps1, 0, 7, 0, 0 )
 	ROMX( 0, tkm-2.4a,  0x200004, 0x80000, 0xca5c687c, 2, 6 )
 	ROMX( 0, tkm-3.6a,  0x200006, 0x80000, 0xf9fe6591, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, tke17.12b, 0x00000, 0x08000, 0xb3b79d4f )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, tke19.12c, 0x20000, 0x20000, 0x068741db )
@@ -581,7 +581,7 @@ FILENAME( dynwara, dynwar, 0, 7, 0, 0 )
 	ROMX( 0, 29.11e, 0x300006, 0x20000, 0x6b41f82d, 1, 7 )
 	ROMX( 0, 22.11c, 0x300007, 0x20000, 0x52145369, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 23.13c, 0x00000, 0x08000, 0xb3b79d4f )
 	ROM( 1,         0x10000, 0x08000, 0x00000000 )
 
@@ -635,7 +635,7 @@ FILENAME( dynwarj, dynwar, 0, 7, 0, 0 )
 	ROMX( 0, 29.11e,            0x300006, 0x20000, 0x6b41f82d, 1, 7 )
 	ROMX( 0, 22.11c,            0x300007, 0x20000, 0x52145369, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 23.13c, 0x00000, 0x08000, 0xb3b79d4f )
 	ROM( 1,         0x10000, 0x08000, 0x00000000 )
 
@@ -659,9 +659,9 @@ FILENAME( dynwarjr, dynwar, 0, 7, 0, 0 )
 	ROMX( 0, tk1_07.9a,  0x200004, 0x80000, 0xca5c687c, 2, 6 )
 	ROMX( 0, tk1_08.10a, 0x200006, 0x80000, 0xf9fe6591, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, tke17.12b, 0x00000, 0x08000, 0xb3b79d4f )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, tke19.12c, 0x20000, 0x20000, 0x068741db )
@@ -690,9 +690,9 @@ FILENAME( willow, cps1, 0, 8, 0, 0 )
 	ROMX( 0, wl_22.5d, 0x200006, 0x20000, 0xfd3f89f0, 1, 7 )
 	ROMX( 0, wl_12.5c, 0x200007, 0x20000, 0x7da49d69, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, wl_09.rom, 0x00000, 0x08000, 0xf6b3d060 )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, wl_18.rom, 0x00000, 0x20000, 0xbde23d4d )
@@ -721,9 +721,9 @@ FILENAME( willowo, willow, 0, 8, 0, 0 )
 	ROMX( 0, wl_22.5d, 0x200006, 0x20000, 0xfd3f89f0, 1, 7 )
 	ROMX( 0, wl_12.5c, 0x200007, 0x20000, 0x7da49d69, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, wl_09.rom, 0x00000, 0x08000, 0xf6b3d060 )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, wl_18.rom, 0x00000, 0x20000, 0xbde23d4d )
@@ -767,7 +767,7 @@ FILENAME( willowj, willow, 0, 8, 0, 0 )
 	ROMX( 0, wl_28.10e, 0x200006, 0x20000, 0xfd3f89f0, 1, 7 )
 	ROMX( 0, wl_21.10c, 0x200007, 0x20000, 0x7da49d69, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, wl_23.13c, 0x00000, 0x08000, 0xf6b3d060 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -790,7 +790,7 @@ FILENAME( unsquad, cps1, 0, 9, 0, 0 )
 	ROMX( 0, ar-1m.3a, 0x000004, 0x80000, 0x5965ca8d, 2, 6 )
 	ROMX( 0, ar-3m.5a, 0x000006, 0x80000, 0xac6db17d, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ar_09.12b, 0x00000, 0x08000, 0xf3dd1367 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -827,7 +827,7 @@ FILENAME( area88, unsquad, 0, 9, 0, 0 )
 	ROMX( 0, ar_39.9h,  0x100006, 0x20000, 0x9b8e1363, 1, 7 )
 	ROMX( 0, ar_33.9f,  0x100007, 0x20000, 0x3968f4b5, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ar_23.13c, 0x00000, 0x08000, 0xf3dd1367 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -846,7 +846,7 @@ FILENAME( area88r, unsquad, 0, 9, 0, 0 )
 	ROMX( 0, ara_03.5a,  0x000004, 0x80000, 0x5965ca8d, 2, 6 )
 	ROMX( 0, ara_04.6a,  0x000006, 0x80000, 0xac6db17d, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, ara_09.12a, 0x00000, 0x08000, 0xaf88359c )
 	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
@@ -868,7 +868,7 @@ FILENAME( ffight, cps1, 0, 10, 0, 0 )
 	ROMX( 0, ff-1m.3a, 0x000004, 0x80000, 0x0b605e44, 2, 6 )
 	ROMX( 0, ff-3m.5a, 0x000006, 0x80000, 0x52291cd2, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ff_09.12b, 0x00000, 0x08000, 0xb8367eb5 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -891,7 +891,7 @@ FILENAME( ffighta, ffight, 0, 10, 0, 0 )
 	ROMX( 0, ff-1m.3a, 0x000004, 0x80000, 0x0b605e44, 2, 6 )
 	ROMX( 0, ff-3m.5a, 0x000006, 0x80000, 0x52291cd2, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ffe_23.12b, 0x00000, 0x08000, 0xb8367eb5 )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -914,7 +914,7 @@ FILENAME( ffightu, ffight, 0, 10, 0, 0 )
 	ROMX( 0, ff-1m.3a, 0x000004, 0x80000, 0x0b605e44, 2, 6 )
 	ROMX( 0, ff-3m.5a, 0x000006, 0x80000, 0x52291cd2, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ff_09.12b, 0x00000, 0x08000, 0xb8367eb5 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -940,7 +940,7 @@ FILENAME( ffightu1, ffight, 0, 10, 0, 0 )
 	ROMX( 0, ff-1m.3a, 0x000004, 0x80000, 0x0b605e44, 2, 6 )
 	ROMX( 0, ff-3m.5a, 0x000006, 0x80000, 0x52291cd2, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ff_09.12b, 0x00000, 0x08000, 0xb8367eb5 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -963,7 +963,7 @@ FILENAME( ffightua, ffight, 0, 10, 0, 0 )
 	ROMX( 0, ff-1m.3a, 0x000004, 0x80000, 0x0b605e44, 2, 6 )
 	ROMX( 0, ff-3m.5a, 0x000006, 0x80000, 0x52291cd2, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ff_09.12b, 0x00000, 0x08000, 0xb8367eb5 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -986,7 +986,7 @@ FILENAME( ffightub, ffight, 0, 10, 0, 0 )
 	ROMX( 0, ff-1m.3a, 0x000004, 0x80000, 0x0b605e44, 2, 6 )
 	ROMX( 0, ff-3m.5a, 0x000006, 0x80000, 0x52291cd2, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ff_09.12b, 0x00000, 0x08000, 0xb8367eb5 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -1024,7 +1024,7 @@ FILENAME( ffightj, ffight, 0, 10, 0, 0 )
 	ROMX( 0, ffj_39.9h,  0x100006, 0x20000, 0x9416b477, 1, 7 )
 	ROMX( 0, ffj_33.9f,  0x100007, 0x20000, 0x7369fa07, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ff_23.bin, 0x00000, 0x08000, 0xb8367eb5 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -1062,7 +1062,7 @@ FILENAME( ffightj1, ffight, 0, 10, 0, 0 )
 	ROMX( 0, ffj_39.9h,  0x100006, 0x20000, 0x9416b477, 1, 7 )
 	ROMX( 0, ffj_33.9f,  0x100007, 0x20000, 0x7369fa07, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ff_23.13b, 0x00000, 0x08000, 0xb8367eb5 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -1100,7 +1100,7 @@ FILENAME( ffightj2, ffight, 0, 10, 0, 0 )
 	ROMX( 0, ff_39.9h,  0x100006, 0x20000, 0x9416b477, 1, 7 )
 	ROMX( 0, ff_33.9f,  0x100007, 0x20000, 0x7369fa07, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ff_23.13c, 0x00000, 0x08000, 0xb8367eb5 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -1138,7 +1138,7 @@ FILENAME( ffightj3, ffight, 0, 10, 0, 0 )
 	ROMX( 0, ff_39.9h,  0x100006, 0x20000, 0x9416b477, 1, 7 )
 	ROMX( 0, ff_33.9f,  0x100007, 0x20000, 0x7369fa07, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ff_23.13b, 0x00000, 0x08000, 0xb8367eb5 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -1216,7 +1216,7 @@ FILENAME( ffightjh, ffight, 0, 10, 0, 0 )
 	ROMX( 0, ff_3.5a, 0x000004, 0x80000, 0x01d507ae, 2, 6 )
 	ROMX( 0, ff_4.6a, 0x000006, 0x80000, 0xf7c4ceb0, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ff_9.12a, 0x00000, 0x08000, 0xb8367eb5 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -1239,7 +1239,7 @@ FILENAME( 1941, cps1, 0, 11, 0, 1 )
 	ROMX( 0, 41-1m.3a, 0x000004, 0x80000, 0xff77985a, 2, 6 )
 	ROMX( 0, 41-3m.5a, 0x000006, 0x80000, 0x983be58f, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 41_9.12b, 0x00000, 0x08000, 0x0f9d8527 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -1262,7 +1262,7 @@ FILENAME( 1941r1, 1941, 0, 11, 0, 1 )
 	ROMX( 0, 41-1m.3a, 0x000004, 0x80000, 0xff77985a, 2, 6 )
 	ROMX( 0, 41-3m.5a, 0x000006, 0x80000, 0x983be58f, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 41_9.12b, 0x00000, 0x08000, 0x0f9d8527 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -1285,7 +1285,7 @@ FILENAME( 1941u, 1941, 0, 11, 0, 1 )
 	ROMX( 0, 41-1m.3a, 0x000004, 0x80000, 0xff77985a, 2, 6 )
 	ROMX( 0, 41-3m.5a, 0x000006, 0x80000, 0x983be58f, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 41_9.12b, 0x00000, 0x08000, 0x0f9d8527 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -1323,7 +1323,7 @@ FILENAME( 1941j, 1941, 0, 11, 0, 1 )
 	ROMX( 0, 41_39.9h,  0x100006, 0x20000, 0x5b5c3949, 1, 7 )
 	ROMX( 0, 41_33.9f,  0x100007, 0x20000, 0x7a31b0e2, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 41_23.13b, 0x00000, 0x08000, 0x0f9d8527 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -1354,9 +1354,9 @@ FILENAME( mercs, cps1, 6, 12, 0, 1 )
 	ROMX( 0, so2_22.5d,  0x200006, 0x20000, 0xfce9a377, 1, 7 )
 	ROMX( 0, so2_12.5c,  0x200007, 0x20000, 0xb7df8a06, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, so2_09.12b, 0x00000, 0x08000, 0xd09d7c7a )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, so2_18.11c, 0x00000, 0x20000, 0xbbea1643 )
@@ -1385,9 +1385,9 @@ FILENAME( mercsu, mercs, 6, 12, 0, 1 )
 	ROMX( 0, so2_22.5d,  0x200006, 0x20000, 0xfce9a377, 1, 7 )
 	ROMX( 0, so2_12.5c,  0x200007, 0x20000, 0xb7df8a06, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, so2_09.12b, 0x00000, 0x08000, 0xd09d7c7a )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, so2_18.11c, 0x00000, 0x20000, 0xbbea1643 )
@@ -1416,9 +1416,9 @@ FILENAME( mercsur1, mercs, 6, 12, 0, 1 )
 	ROMX( 0, so2_22.5d,  0x200006, 0x20000, 0xfce9a377, 1, 7 )
 	ROMX( 0, so2_12.5c,  0x200007, 0x20000, 0xb7df8a06, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, so2_09.12b, 0x00000, 0x08000, 0xd09d7c7a )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, so2_18.11c, 0x00000, 0x20000, 0xbbea1643 )
@@ -1462,7 +1462,7 @@ FILENAME( mercsj, mercs, 6, 12, 0, 1 )
 	ROMX( 0, so2_28.10e, 0x200006, 0x20000, 0xfce9a377, 1, 7 )
 	ROMX( 0, so2_28.10c, 0x200007, 0x20000, 0xb7df8a06, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, so2_23.13b, 0x00000, 0x08000, 0xd09d7c7a )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -1485,7 +1485,7 @@ FILENAME( mtwins, cps1, 0, 13, 0, 0 )
 	ROMX( 0, ck-1m.3a, 0x000004, 0x80000, 0xf33ca9d4, 2, 6 )
 	ROMX( 0, ck-3m.5a, 0x000006, 0x80000, 0x0ba2047f, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ch_09.12b, 0x00000, 0x08000, 0x4d4255b7 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -1523,7 +1523,7 @@ FILENAME( chikij, mtwins, 0, 13, 0, 0 )
 	ROMX( 0, ch_39.9h,  0x100006, 0x20000, 0x872fb2a4, 1, 7 )
 	ROMX( 0, ch_39.9f,  0x100007, 0x20000, 0x30dc5ded, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ch_23.13b, 0x00000, 0x08000, 0x4d4255b7 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -1546,7 +1546,7 @@ FILENAME( msword, cps1, 0, 14, 0, 0 )
 	ROMX( 0, ms-1m.3a, 0x000004, 0x80000, 0x0d2bbe00, 2, 6 )
 	ROMX( 0, ms-3m.5a, 0x000006, 0x80000, 0x3a1a5bf4, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ms_9.12b, 0x00000, 0x08000, 0x57b29519 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -1569,7 +1569,7 @@ FILENAME( mswordr1, msword, 0, 14, 0, 0 )
 	ROMX( 0, ms-1m.3a, 0x000004, 0x80000, 0x0d2bbe00, 2, 6 )
 	ROMX( 0, ms-3m.5a, 0x000006, 0x80000, 0x3a1a5bf4, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ms_9.12b, 0x00000, 0x08000, 0x57b29519 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -1592,7 +1592,7 @@ FILENAME( mswordu, msword, 0, 14, 0, 0 )
 	ROMX( 0, ms-1m.3a, 0x000004, 0x80000, 0x0d2bbe00, 2, 6 )
 	ROMX( 0, ms-3m.5a, 0x000006, 0x80000, 0x3a1a5bf4, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ms_9.12b, 0x00000, 0x08000, 0x57b29519 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -1630,7 +1630,7 @@ FILENAME( mswordj, msword, 0, 14, 0, 0 )
 	ROMX( 0, ms_39.9h,  0x100006, 0x20000, 0x01efce86, 1, 7 )
 	ROMX( 0, ms_39.9f,  0x100007, 0x20000, 0xce25defc, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ms_23.13b, 0x00000, 0x08000, 0x57b29519 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -1653,7 +1653,7 @@ FILENAME( cawing, cps1, 0, 15, 0, 0 )
 	ROMX( 0, ca-1m.3a, 0x000004, 0x80000, 0x4d0620fd, 2, 6 )
 	ROMX( 0, ca-3m.5a, 0x000006, 0x80000, 0x0b0341c3, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ca_9.12b, 0x00000, 0x08000, 0x96fe7485 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -1676,7 +1676,7 @@ FILENAME( cawingr1, cawing, 0, 15, 0, 0 )
 	ROMX( 0, ca-1m.3a, 0x000004, 0x80000, 0x4d0620fd, 2, 6 )
 	ROMX( 0, ca-3m.5a, 0x000006, 0x80000, 0x0b0341c3, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ca_9.12b, 0x00000, 0x08000, 0x96fe7485 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -1699,7 +1699,7 @@ FILENAME( cawingu, cawing, 0, 15, 0, 0 )
 	ROMX( 0, ca-1m.3a, 0x000004, 0x80000, 0x4d0620fd, 2, 6 )
 	ROMX( 0, ca-3m.5a, 0x000006, 0x80000, 0x0b0341c3, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ca_9.12b, 0x00000, 0x08000, 0x96fe7485 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -1737,9 +1737,9 @@ FILENAME( cawingj, cawing, 0, 15, 0, 0 )
 	ROMX( 0, caj39.9h,  0x100006, 0x20000, 0xeea23b67, 1, 7 )
 	ROMX( 0, caj33.9f,  0x100007, 0x20000, 0xdde3891f, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, caj_23.13b, 0x00000, 0x08000, 0x96fe7485 )
-	ROM( 1,           0x10000, 0x08000, 0x00000000 )
+	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, caj_30.12c, 0x00000, 0x20000, 0x4a613a2c )
@@ -1760,7 +1760,7 @@ FILENAME( nemo, cps1, 0, 16, 0, 0 )
 	ROMX( 0, nm-1m.3a, 0x000004, 0x80000, 0x9e878024, 2, 6 )
 	ROMX( 0, nm-3m.5a, 0x000006, 0x80000, 0xbb01e6b6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, nme_09.12b, 0x00000, 0x08000, 0x0f4b0581 )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -1783,7 +1783,7 @@ FILENAME( nemor1, nemo, 0, 16, 0, 0 )
 	ROMX( 0, nm-1m.3a, 0x000004, 0x80000, 0x9e878024, 2, 6 )
 	ROMX( 0, nm-3m.5a, 0x000006, 0x80000, 0xbb01e6b6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, nme_09.12b, 0x00000, 0x08000, 0x0f4b0581 )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -1821,7 +1821,7 @@ FILENAME( nemoj, nemo, 0, 16, 0, 0 )
 	ROMX( 0, nm_39.9h,  0x100006, 0x20000, 0x6a274ecd, 1, 7 )
 	ROMX( 0, nm_33.9f,  0x100007, 0x20000, 0xc469dc74, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, nme_09.12b, 0x00000, 0x08000, 0x0f4b0581 )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -1855,7 +1855,7 @@ FILENAME( sf2, cps1, 2, 17, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -1889,7 +1889,7 @@ FILENAME( sf2eb, sf2, 2, 17, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -1923,7 +1923,7 @@ FILENAME( sf2ed, sf2, 2, 17, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -1957,7 +1957,7 @@ FILENAME( sf2ee, sf2, 2, 17, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -1991,7 +1991,7 @@ FILENAME( sf2ua, sf2, 2, 17, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2025,7 +2025,7 @@ FILENAME( sf2ub, sf2, 2, 17, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2059,7 +2059,7 @@ FILENAME( sf2uc, sf2, 2, 17, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2093,7 +2093,7 @@ FILENAME( sf2ud, sf2, 2, 17, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2127,7 +2127,7 @@ FILENAME( sf2ue, sf2, 2, 17, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2161,7 +2161,7 @@ FILENAME( sf2uf, sf2, 2, 17, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2195,7 +2195,7 @@ FILENAME( sf2ug, sf2, 2, 17, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2229,7 +2229,7 @@ FILENAME( sf2ui, sf2, 2, 17, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2263,7 +2263,7 @@ FILENAME( sf2uk, sf2, 2, 17, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2297,7 +2297,7 @@ FILENAME( sf2j, sf2, 2, 18, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2331,7 +2331,7 @@ FILENAME( sf2ja, sf2, 2, 18, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2365,7 +2365,7 @@ FILENAME( sf2jc, sf2, 2, 18, 0, 0 )
 	ROMX( 0, sf2-9m.3d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2-11m.5d, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2399,7 +2399,7 @@ FILENAME( sf2jf, sf2, 2, 18, 0, 0 )
 	ROMX( 0, sf2_24.7d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2_26.9d,  0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2433,7 +2433,7 @@ FILENAME( sf2jh, sf2, 2, 18, 0, 0 )
 	ROMX( 0, sf2_24.7d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2_26.9d,  0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2467,7 +2467,7 @@ FILENAME( sf2jl, sf2, 2, 18, 0, 0 )
 	ROMX( 0, sf2_24.7d,  0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2_26.9d,  0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.12a, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2506,7 +2506,7 @@ FILENAME( sf2ebbl, sf2, 2, 18, 0, 0 )
 	ROMX( 0, 08.bin, 0x400003, 0x10000, 0x81c9550f, 1, 7 )
 	ROMX( 1,         0x400007, 0x10000, 0x00000000, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 03.bin, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,         0x10000, 0x08000, 0x00000000 )
 
@@ -2539,7 +2539,7 @@ FILENAME( sf2qp1, sf2, 2, 18, 0, 0 )
 	ROMX( 0, sf2_24.bin, 0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2_26.bin, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.bin, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2573,7 +2573,7 @@ FILENAME( sf2thndr, sf2, 2, 18, 0, 0 )
 	ROMX( 0, sf2_24.bin, 0x400004, 0x80000, 0xc1befaa8, 2, 6 )
 	ROMX( 0, sf2_26.bin, 0x400006, 0x80000, 0x0627c831, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sf2_09.bin, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -2603,7 +2603,7 @@ FILENAME( 3wonders, cps1, 0, 19, 0, 0 )
 	ROMX( 0, rt-2m.4a,  0x200004, 0x80000, 0xe9a034f4, 2, 6 )
 	ROMX( 0, rt-4m.6a,  0x200006, 0x80000, 0xdf0eea8b, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, rt_9.12b, 0x00000, 0x08000, 0xabfca165 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -2633,7 +2633,7 @@ FILENAME( 3wondersr1, 3wonders, 0, 19, 0, 0 )
 	ROMX( 0, rt-2m.4a,  0x200004, 0x80000, 0xe9a034f4, 2, 6 )
 	ROMX( 0, rt-4m.6a,  0x200006, 0x80000, 0xdf0eea8b, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, rt_9(__3wondersr1).12b, 0x00000, 0x08000, 0x7d5a77a7 )
 	ROM( 1,                         0x10000, 0x08000, 0x00000000 )
 
@@ -2663,7 +2663,7 @@ FILENAME( 3wondersu, 3wonders, 0, 19, 0, 0 )
 	ROMX( 0, rt-2m.4a,  0x200004, 0x80000, 0xe9a034f4, 2, 6 )
 	ROMX( 0, rt-4m.6a,  0x200006, 0x80000, 0xdf0eea8b, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, rt_9.12b, 0x00000, 0x08000, 0xabfca165 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -2717,7 +2717,7 @@ FILENAME( wonder3, 3wonders, 0, 19, 0, 0 )
 	ROMX( 0, rt_29.11e, 0x300006, 0x20000, 0x8fa77f9f, 1, 7 )
 	ROMX( 0, rt_22.11c, 0x300007, 0x20000, 0x228a0d4a, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, rt_23.13b, 0x00000, 0x08000, 0xabfca165 )
 //	ROM( 0, rt_23.13b, 0x00000, 0x08000, 0x7d5a77a7 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
@@ -2742,7 +2742,7 @@ FILENAME( 3wondersb, 3wonders, 0, 19, 0, 0 )
 	ROMX( 0, 274001.9,  0x000006, 0x80000, 0xcb73759d, 1, 7 )
 	ROMX( 0, 274001.5,  0x000007, 0x80000, 0x3f765ae8, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 27512.2, 0x00000, 0x08000, 0xabfca165 )
 	ROM( 1,          0x10000, 0x08000, 0x00000000 )
 
@@ -2779,7 +2779,7 @@ FILENAME( 3wondersh, 3wonders, 0, 19, 0, 0 )
 	ROMX( 0, 15.bin, 0x200006, 0x40000, 0xf239341a, 1, 7 )
 	ROMX( 0, 5.bin,  0x200007, 0x40000, 0x947ac944, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, rt_9.12b, 0x00000, 0x08000, 0xabfca165 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -2809,7 +2809,7 @@ FILENAME( kod, cps1, 0, 20, 0, 0 )
 	ROMX( 0, kd-2m.3c, 0x200004, 0x80000, 0x9ef36604, 2, 6 )
 	ROMX( 0, kd-4m.5c, 0x200006, 0x80000, 0x402b9b4f, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kd_9.12a, 0x00000, 0x08000, 0xbac6ec26 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -2839,7 +2839,7 @@ FILENAME( kodr1, kod, 0, 20, 0, 0 )
 	ROMX( 0, kd-2m.3c, 0x200004, 0x80000, 0x9ef36604, 2, 6 )
 	ROMX( 0, kd-4m.5c, 0x200006, 0x80000, 0x402b9b4f, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kd_9(__kodr1).12a, 0x00000, 0x08000, 0xf5514510 )
 	ROM( 1,                    0x10000, 0x08000, 0x00000000 )
 
@@ -2869,7 +2869,7 @@ FILENAME( kodu, kod, 0, 21, 0, 0 )
 	ROMX( 0, kd-2m.3c, 0x200004, 0x80000, 0x9ef36604, 2, 6 )
 	ROMX( 0, kd-4m.5c, 0x200006, 0x80000, 0x402b9b4f, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kd_9.12a, 0x00000, 0x08000, 0xbac6ec26 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -2896,7 +2896,7 @@ FILENAME( kodj, kod, 0, 21, 0, 0 )
 	ROMX( 0, kd-2m.3c, 0x200004, 0x80000, 0x9ef36604, 2, 6 )
 	ROMX( 0, kd-4m.5c, 0x200006, 0x80000, 0x402b9b4f, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kd_9.12a, 0x00000, 0x08000, 0xbac6ec26 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -2950,7 +2950,7 @@ FILENAME( kodja, kod, 0, 21, 0, 0 )
 	ROMX( 0, kd_29.11e, 0x300006, 0x20000, 0xa1eeac03, 1, 7 )
 	ROMX( 0, kd_22.11c, 0x300007, 0x20000, 0x5ade98eb, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kd_23.13b, 0x00000, 0x08000, 0xbac6ec26 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -2974,12 +2974,12 @@ FILENAME( kodb, kod, 5, 20, 6, 0 )
 	ROMX( 0, ai.ic93, 0x000006, 0x80000, 0xcffbf4be, 1, 7 )
 	ROMX( 0, bi.ic94, 0x000007, 0x80000, 0x4a1b43fe, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 1.ic28, 0x00000, 0x08000, 0x01cae60c )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,         0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
-	ROM( 0, 2.ic19, 0x00000, 0x40000, 0xa2db1575 )
+	ROM( 0, 2.ic19,   0x00000, 0x40000, 0xa2db1575 )
 //	ROM( 0, kd18.bin, 0x00000, 0x20000, 0x4c63181d )
 //	ROM( 0, kd19.bin, 0x20000, 0x20000, 0x92941b80 )
 END
@@ -2999,7 +2999,7 @@ FILENAME( kodh, kod, 0, 43, 0, 0 )
 	ROMX( 0, 7.096,     0x200004, 0x80000, 0xc7ab4704, 2, 6 )
 	ROMX( 0, kod12.rom, 0x200006, 0x80000, 0x402b9b4f, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kd09.bin, 0x00000, 0x08000, 0xbac6ec26 )
 	ROM( 1,           0x10000, 0x08000, 0x00000000 )
 
@@ -3025,7 +3025,7 @@ FILENAME( captcomm, cps1, 0, 22, 0, 0 )
 	ROMX( 0, cc-2m.8a,  0x200004, 0x80000, 0x0c69f151, 2, 6 )
 	ROMX( 0, cc-4m.10a, 0x200006, 0x80000, 0x1f9ebb97, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, cc_09.11a, 0x00000, 0x08000, 0x698e8b58 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -3051,7 +3051,7 @@ FILENAME( captcommr1, captcomm, 0, 22, 0, 0 )
 	ROMX( 0, cc-2m.8a,  0x200004, 0x80000, 0x0c69f151, 2, 6 )
 	ROMX( 0, cc-4m.10a, 0x200006, 0x80000, 0x1f9ebb97, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, cc_09.11a, 0x00000, 0x08000, 0x698e8b58 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -3077,7 +3077,7 @@ FILENAME( captcommu, captcomm, 0, 22, 0, 0 )
 	ROMX( 0, cc-2m.8a,  0x200004, 0x80000, 0x0c69f151, 2, 6 )
 	ROMX( 0, cc-4m.10a, 0x200006, 0x80000, 0x1f9ebb97, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, cc_09.11a, 0x00000, 0x08000, 0x698e8b58 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -3103,7 +3103,7 @@ FILENAME( captcommj, captcomm, 0, 22, 0, 0 )
 	ROMX( 0, cc_07.9a,  0x200004, 0x80000, 0x0c69f151, 2, 6 )
 	ROMX( 0, cc_08.10a, 0x200006, 0x80000, 0x1f9ebb97, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ccj_09.12a, 0x00000, 0x08000, 0x698e8b58 )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3129,7 +3129,7 @@ FILENAME( captcommjr1, captcomm, 0, 22, 0, 0 )
 	ROMX( 0, cc_07.9a,  0x200004, 0x80000, 0x0c69f151, 2, 6 )
 	ROMX( 0, cc_08.10a, 0x200006, 0x80000, 0x1f9ebb97, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, ccj_09.12a, 0x00000, 0x08000, 0x698e8b58 )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3163,7 +3163,7 @@ FILENAME( captcommb, captcomm, 0, 22, 0, 0 )
 	ROMX( 1,               0x200003, 0x40000, 0x00000000, 1, 7 )
 	ROMX( 1,               0x200007, 0x40000, 0x00000000, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, l.bin, 0x00000, 0x08000, 0x698e8b58 )
 	ROM( 1,        0x10000, 0x08000, 0x00000000 )
 
@@ -3188,7 +3188,7 @@ FILENAME( captcommp, captcomm, 0, 22, 0, 0 )
 	ROMX( 0, cc-2m.8a,  0x200004, 0x80000, 0x0c69f151, 2, 6 )
 	ROMX( 0, cc-4m.10a, 0x200006, 0x80000, 0x1f9ebb97, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, cc_09.11a, 0x00000, 0x08000, 0x698e8b58 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -3212,7 +3212,7 @@ FILENAME( knights, cps1, 0, 23, 0, 0 )
 	ROMX( 0, kr-2m.8a,  0x200004, 0x80000, 0x0200bc3d, 2, 6 )
 	ROMX( 0, kr-4m.10a, 0x200006, 0x80000, 0x0bb2b4e7, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kr_09.11a, 0x00000, 0x08000, 0x5e44d9ee )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -3236,7 +3236,7 @@ FILENAME( knightsu, knights, 0, 23, 0, 0 )
 	ROMX( 0, kr-2m.8a,  0x200004, 0x80000, 0x0200bc3d, 2, 6 )
 	ROMX( 0, kr-4m.10a, 0x200006, 0x80000, 0x0bb2b4e7, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kr_09.11a, 0x00000, 0x08000, 0x5e44d9ee )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -3260,7 +3260,7 @@ FILENAME( knightsj, knights, 0, 23, 0, 0 )
 	ROMX( 0, kr_07.9a,  0x200004, 0x80000, 0x0200bc3d, 2, 6 )
 	ROMX( 0, kr_08.10a, 0x200006, 0x80000, 0x0bb2b4e7, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kr_09.12a, 0x00000, 0x08000, 0x5e44d9ee )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -3314,7 +3314,7 @@ FILENAME( knightsja, knights, 0, 23, 0, 0 )
 	ROMX( 0, kr_29.11e, 0x300006, 0x20000, 0x1387a076, 1, 7 )
 	ROMX( 0, kr_22.11c, 0x300007, 0x20000, 0xfd351922, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kr_23.13b, 0x00000, 0x08000, 0x5e44d9ee )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -3364,7 +3364,7 @@ FILENAME( knightsb2, knights, 0, 23, 0, 0 )
 	ROMX( 0, kr_gfx6.rom, 0x200004, 0x80000, 0x0200bc3d, 2, 6 )
 	ROMX( 0, kr_gfx8.rom, 0x200006, 0x80000, 0x0bb2b4e7, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kr_09.rom, 0x00000, 0x08000, 0x5e44d9ee )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -3388,7 +3388,7 @@ FILENAME( knightsh, knights, 0, 38, 0, 0 )
 	ROMX( 0, kr_gfx6.rom, 0x200004, 0x80000, 0x0200bc3d, 2, 6 )
 	ROMX( 0, kr_gfx8.rom, 0x200006, 0x80000, 0x0bb2b4e7, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kr_09.rom, 0x00000, 0x08000, 0x5e44d9ee )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -3412,9 +3412,9 @@ FILENAME( knightsi, knights, 0, 23, 0, 0 )
 	ROMX( 0, kr_gfx6.rom, 0x200004, 0x80000, 0x0200bc3d, 2, 6 )
 	ROMX( 0, kr_gfx8.rom, 0x200006, 0x80000, 0x0bb2b4e7, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kr_09.rom, 0x00000, 0x08000, 0x5e44d9ee )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, kr_18.rom, 0x00000, 0x20000, 0xda69d15f )
@@ -3436,9 +3436,9 @@ FILENAME( knightsr, knights, 0, 23, 0, 0 )
 	ROMX( 0, kr_gfx6.rom, 0x200004, 0x80000, 0x0200bc3d, 2, 6 )
 	ROMX( 0, kr_gfx8.rom, 0x200006, 0x80000, 0x0bb2b4e7, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, kr_09.rom, 0x00000, 0x08000, 0x5e44d9ee )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, kr_18.rom, 0x00000, 0x20000, 0xda69d15f )
@@ -3465,7 +3465,7 @@ FILENAME( sf2ce, cps1, 2, 17, 0, 0 )
 	ROMX( 0, s92-11m.4c, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92-13m.6c, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.11a, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3494,7 +3494,7 @@ FILENAME( sf2ceea, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92-11m.4c, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92-13m.6c, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.11a, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3523,7 +3523,7 @@ FILENAME( sf2ceua, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92-11m.4c, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92-13m.6c, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.11a, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3552,7 +3552,7 @@ FILENAME( sf2ceub, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92-11m.4c, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92-13m.6c, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.11a, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3581,7 +3581,7 @@ FILENAME( sf2ceuc, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92-11m.4c, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92-13m.6c, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.11a, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3610,7 +3610,7 @@ FILENAME( sf2ceja, sf2ce, 2, 18, 0, 0 )
 	ROMX( 0, s92-11m.4c, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92-13m.6c, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.11a, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3639,7 +3639,7 @@ FILENAME( sf2cejb, sf2ce, 2, 18, 0, 0 )
 	ROMX( 0, s92-11m.4c, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92-13m.6c, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.11a, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3668,7 +3668,7 @@ FILENAME( sf2cejc, sf2ce, 2, 18, 0, 0 )
 	ROMX( 0, s92-11m.4c, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92-13m.6c, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.11a, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3699,7 +3699,7 @@ FILENAME( sf2bhh, sf2ce, 2, 18, 0, 0 )
 	ROMX( 0, s92-11m.4c, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92-13m.6c, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.11a, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3728,7 +3728,7 @@ FILENAME( sf2rb, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3763,9 +3763,9 @@ FILENAME( sf2rb2, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, s92_18.bin, 0x00000, 0x20000, 0x7f162009 )
@@ -3792,7 +3792,7 @@ FILENAME( sf2rb3, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3821,7 +3821,7 @@ FILENAME( sf2red, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3850,7 +3850,7 @@ FILENAME( sf2v004, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3879,7 +3879,7 @@ FILENAME( sf2acc, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3908,7 +3908,7 @@ FILENAME( sf2acca, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3937,7 +3937,7 @@ FILENAME( sf2accp2, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -3975,7 +3975,7 @@ FILENAME( sf2amf, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, 10.amf,      0x400003, 0x10000, 0x8fea8384, 1, 7 )
 	ROMX( 1,              0x400007, 0x10000, 0x00000000, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 3.amf, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,        0x10000, 0x08000, 0x00000000 )
 
@@ -4016,7 +4016,7 @@ FILENAME( sf2amf2, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, grp4.u28,    0x400007, 0x10000, 0x76f9f91f, 1, 7 )
 	ROMX( 1,              0x400003, 0x10000, 0x00000000, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, 27512.u191, 0x00000, 0x08000, 0xa4823a1b )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4049,7 +4049,7 @@ FILENAME( sf2dkot2, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4095,7 +4095,7 @@ FILENAME( sf2ceblp , sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, 4.bin,  0x400006, 0x40000, 0xf2c400b4, 1, 7 )
 	ROMX( 0, 3.bin,  0x400007, 0x40000, 0x8053335d, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4124,7 +4124,7 @@ FILENAME( sf2m1, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4153,7 +4153,7 @@ FILENAME( sf2m2, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4182,7 +4182,7 @@ FILENAME( sf2m3, sf2ce, 2, 17, 15, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4211,7 +4211,7 @@ FILENAME( sf2m4, sf2ce, 2, 18, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4240,7 +4240,7 @@ FILENAME( sf2m5, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4269,7 +4269,7 @@ FILENAME( sf2m6, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4300,7 +4300,7 @@ FILENAME( sf2m7, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4342,7 +4342,7 @@ FILENAME( sf2m8, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, yyc-9.8,  0x400003, 0x10000, 0x155824a9, 1, 7 )
 	ROMX( 1,           0x400007, 0x10000, 0x00000000, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, a-15.5, 0x00000, 0x08000, 0x6f07d2cb )
 	ROM( 1,         0x10000, 0x08000, 0x00000000 )
 
@@ -4380,7 +4380,7 @@ FILENAME( sf2yyc, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4410,7 +4410,7 @@ FILENAME( sf2mdt, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4440,7 +4440,7 @@ FILENAME( sf2mdta, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4500,7 +4500,7 @@ FILENAME( sf2koryu, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4529,7 +4529,7 @@ FILENAME( sf2dongb, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4559,7 +4559,7 @@ FILENAME( sf2m9, sf2ce, 2, 17, 7, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4589,7 +4589,7 @@ FILENAME( sf2m10, sf2ce, 2, 17, 7, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4619,7 +4619,7 @@ FILENAME( sf2m11, sf2ce, 2, 17, 7, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4649,7 +4649,7 @@ FILENAME( sf2m12, sf2ce, 2, 17, 7, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4679,7 +4679,7 @@ FILENAME( sf2m13, sf2ce, 2, 17, 7, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4709,7 +4709,7 @@ FILENAME( sf2m14, sf2ce, 2, 17, 7, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4739,7 +4739,7 @@ FILENAME( sf2tlona, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4769,7 +4769,7 @@ FILENAME( sf2tlonb, sf2ce, 2, 17, 0, 0 )
 	ROMX( 0, s92_12.bin, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92_13.bin, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.bin, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4807,7 +4807,7 @@ FILENAME( cworld2j, cps1, 0, 25, 0, 0 )
 	ROMX( 0, q5_39.9h,  0x100006, 0x20000, 0xa5839b25, 1, 7 )
 	ROMX( 0, q5_33.9f,  0x100007, 0x20000, 0x04d03930, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, q5_23.13b, 0x00000, 0x08000, 0xe14dc524 )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -4833,7 +4833,7 @@ FILENAME( varth, cps1, 0, 24, 0, 1 )
 	ROMX( 0, va-1m.3a, 0x000004, 0x80000, 0x0b1ace37, 2, 6 )
 	ROMX( 0, va-3m.5a, 0x000006, 0x80000, 0x44dfe706, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, va_09.12b, 0x00000, 0x08000, 0x7a99446e )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -4859,7 +4859,7 @@ FILENAME( varthr1, varth, 0, 24, 0, 1 )
 	ROMX( 0, va-1m.3a, 0x000004, 0x80000, 0x0b1ace37, 2, 6 )
 	ROMX( 0, va-3m.5a, 0x000006, 0x80000, 0x44dfe706, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, va_09.12b, 0x00000, 0x08000, 0x7a99446e )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -4879,7 +4879,7 @@ FILENAME( varthu, varth, 0, 24, 0, 1 )
 	ROMX( 0, va-1m.3a, 0x000004, 0x80000, 0x0b1ace37, 2, 6 )
 	ROMX( 0, va-3m.5a, 0x000006, 0x80000, 0x44dfe706, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, va_09.11a, 0x00000, 0x08000, 0x7a99446e )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -4917,7 +4917,7 @@ FILENAME( varthj, varth, 0, 24, 0, 1 )
 	ROMX( 0, va_39.9h,  0x100006, 0x20000, 0xb0b12f51, 1, 7 )
 	ROMX( 0, va_33.9f,  0x100007, 0x20000, 0x4b003af7, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, va_23.13c, 0x00000, 0x08000, 0x7a99446e )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -4943,7 +4943,7 @@ FILENAME( qad, cps1, 0, 26, 0, 0 )
 	ROMX( 0, qd_38.8h, 0x000006, 0x20000, 0xccdddd1f, 1, 7 )
 	ROMX( 0, qd_32.8f, 0x000007, 0x20000, 0xa8d295d3, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, qd_23.13b, 0x00000, 0x08000, 0xcfb5264b )
 	ROM( 1,            0x10000, 0x08000, 0x00000000 )
 
@@ -4963,7 +4963,7 @@ FILENAME( qadjr, qad, 0, 27, 0, 0 )
 	ROMX( 0, qad_03.5a, 0x000004, 0x80000, 0xcea4ca8c, 2, 6 )
 	ROMX( 0, qad_04.6a, 0x000006, 0x80000, 0x41b74d1b, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, qad_09.12a, 0x00000, 0x08000, 0x733161cc )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -4987,7 +4987,7 @@ FILENAME( wof, cps1, 3, 31, 1, 0 )
 	ROMX( 0, tk2-6m.8a,  0x200004, 0x80000, 0x1abd14d6, 2, 6 )
 	ROMX( 0, tk2-8m.10a, 0x200006, 0x80000, 0xb27948e3, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.5k, 0x00000, 0x08000, 0xc9183a0d )
 	ROM( 1,            0x10000, 0x18000, 0x00000000 )
 
@@ -5013,7 +5013,7 @@ FILENAME( wofr1, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk2-6m.8a,  0x200004, 0x80000, 0x1abd14d6, 2, 6 )
 	ROMX( 0, tk2-8m.10a, 0x200006, 0x80000, 0xb27948e3, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.5k, 0x00000, 0x08000, 0xc9183a0d )
 	ROM( 1,            0x10000, 0x18000, 0x00000000 )
 
@@ -5039,7 +5039,7 @@ FILENAME( wofu, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk2-6m.8a,  0x200004, 0x80000, 0x1abd14d6, 2, 6 )
 	ROMX( 0, tk2-8m.10a, 0x200006, 0x80000, 0xb27948e3, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.5k, 0x00000, 0x08000, 0xc9183a0d )
 	ROM( 1,            0x10000, 0x18000, 0x00000000 )
 
@@ -5065,7 +5065,7 @@ FILENAME( wofa, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk2-6m.8a,  0x200004, 0x80000, 0x1abd14d6, 2, 6 )
 	ROMX( 0, tk2-8m.10a, 0x200006, 0x80000, 0xb27948e3, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.5k, 0x00000, 0x08000, 0xc9183a0d )
 	ROM( 1,            0x10000, 0x18000, 0x00000000 )
 
@@ -5091,7 +5091,7 @@ FILENAME( wofj, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk2_07.9a,  0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk2_08.10a, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.5k, 0x00000, 0x08000, 0xc9183a0d )
 	ROM( 1,            0x10000, 0x18000, 0x00000000 )
 
@@ -5102,7 +5102,7 @@ FILENAME( wofj, wof, 3, 31, 1, 0 )
 	ROM( 0, tk2_q4.4k, 0x180000, 0x80000, 0x36642e88 )
 END
 
-FILENAME( wofhfh, wof, 7, 40, 0, 0 )
+FILENAME( wofhfh, wof, 7, 46, 0, 0 )
 	REGION( 0x100000, CPU1, 0 )
 	ROM( 0, 23, 0x000000, 0x80000, 0x6ae4b312 )
 	ROM( 0, 22, 0x080000, 0x80000, 0x94e8d01a )
@@ -5152,7 +5152,7 @@ FILENAME( wofb, wof, 3, 31, 1, 0 )
 	ROMX( 0, 12-f56b.040, 0x200003, 0x40000, 0xefc17c9a, 1, 7 )
 	ROMX( 1,              0x200007, 0x40000, 0x00000000, 1, 7 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
 	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
@@ -5169,17 +5169,17 @@ FILENAME( wofh, wof, 3, 39, 8, 0 )
 
 	REGION( 0x400000, GFX1, 0 )
 	ROMX( 0, sgyx-1.160, 0x000000, 0x80000, 0xa60be9f6, 2, 6 )
-	ROMX( 1, 0x000004, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200000, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200004, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,             0x000004, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,             0x200000, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,             0x200004, 0x80000, 0x00000000, 2, 6 )
 	ROMX( 0, sgyx-2.160, 0x000002, 0x80000, 0x6ad9d048, 2, 6 )
-	ROMX( 1, 0x000006, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200002, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200006, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,             0x000006, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,             0x200002, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,             0x200006, 0x80000, 0x00000000, 2, 6 )
 
-	REGION( 0x60000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5190,8 +5190,8 @@ END
 
 FILENAME( wof3js, wof, 3, 40, 9, 0 )
 	REGION( 0x200000, CPU1, 0 )
-	ROM( 0, 3js_23.rom, 0x000000, 0x80000, 0x1ebb76da )
-	ROM( 0, 3js_22.rom, 0x080000, 0x80000, 0xf41d6153 )
+	ROM( 0,  3js_23.rom, 0x000000, 0x80000, 0x1ebb76da )
+	ROM( 0,  3js_22.rom, 0x080000, 0x80000, 0xf41d6153 )
 	ROMX( 2, 3js_24.rom, 0x0c0000, 0x20000, 0x06ead409, 1, 1 )
 	ROMX( 2, 3js_28.rom, 0x0c0001, 0x20000, 0x8ba934e6, 1, 1 )
 
@@ -5205,11 +5205,11 @@ FILENAME( wof3js, wof, 3, 40, 9, 0 )
 	ROMX( 0, 3js_gfx6.rom, 0x200004, 0x80000, 0xc22c5bd8, 2, 6 )
 	ROMX( 0, 3js_gfx8.rom, 0x200006, 0x80000, 0xf9cfd08b, 2, 6 )
 
-	REGION( 0x60000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, 3js_09.rom, 0x00000, 0x08000, 0x21ce044c )
-	ROM( 1, 0x10000, 0x08000, 0x00000000 )
+	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, 3js_18.rom, 0x000000, 0x20000, 0xac6e307d )
@@ -5227,17 +5227,17 @@ FILENAME( wof3sj, wof, 3, 39, 10, 0 )
 
 	REGION( 0x400000, GFX1, 0 )
 	ROMX( 0, k6a.160, 0x000000, 0x80000, 0xa121180d, 2, 6 )
-	ROMX( 1, 0x000004, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200000, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200004, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,          0x000004, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,          0x200000, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,          0x200004, 0x80000, 0x00000000, 2, 6 )
 	ROMX( 0, k6b.160, 0x000002, 0x80000, 0xa4db96c4, 2, 6 )
-	ROMX( 1, 0x000006, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200002, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200006, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,          0x000006, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,          0x200002, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,          0x200006, 0x80000, 0x00000000, 2, 6 )
 
-	REGION( 0x60000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5253,17 +5253,17 @@ FILENAME( wofha, wof, 3, 39, 8, 0 )
 
 	REGION( 0x400000, GFX1, 0 )
 	ROMX( 0, sgyx-1.160, 0x000000, 0x80000, 0xa60be9f6, 2, 6 )
-	ROMX( 1, 0x000004, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200000, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200004, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,             0x000004, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,             0x200000, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,             0x200004, 0x80000, 0x00000000, 2, 6 )
 	ROMX( 0, sgyx-2.160, 0x000002, 0x80000, 0x6ad9d048, 2, 6 )
-	ROMX( 1, 0x000006, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200002, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200006, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,             0x000006, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,             0x200002, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,             0x200006, 0x80000, 0x00000000, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5278,17 +5278,17 @@ FILENAME( wof3sja, wof, 3, 39, 10, 0 )
 
 	REGION( 0x400000, GFX1, 0 )
 	ROMX( 0, k6a.160, 0x000000, 0x80000, 0xa121180d, 2, 6 )
-	ROMX( 1, 0x000004, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200000, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200004, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,          0x000004, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,          0x200000, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,          0x200004, 0x80000, 0x00000000, 2, 6 )
 	ROMX( 0, k6b.160, 0x000002, 0x80000, 0xa4db96c4, 2, 6 )
-	ROMX( 1, 0x000006, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200002, 0x80000, 0x00000000, 2, 6 )
-	ROMX( 1, 0x200006, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,          0x000006, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,          0x200002, 0x80000, 0x00000000, 2, 6 )
+	ROMX( 1,          0x200006, 0x80000, 0x00000000, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5312,9 +5312,9 @@ FILENAME( wofsj, wof, 3, 31, 10, 0 )
 	ROMX( 0, tk2_gfx6.rom, 0x200004, 0x80000, 0x1abd14d6, 2, 6 )
 	ROMX( 0, tk2_gfx8.rom, 0x200006, 0x80000, 0xb27948e3, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5337,9 +5337,9 @@ FILENAME( wofsja, wof, 3, 31, 10, 0 )
 	ROMX( 0, tk2_gfx6.rom, 0x200004, 0x80000, 0x1abd14d6, 2, 6 )
 	ROMX( 0, tk2_gfx8.rom, 0x200006, 0x80000, 0xb27948e3, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5363,9 +5363,9 @@ FILENAME( wofsjb, wof, 3, 31, 11, 0 )
 	ROMX( 0, tk2_gfx6.rom, 0x200004, 0x80000, 0x1abd14d6, 2, 6 )
 	ROMX( 0, tk2_gfx8.rom, 0x200006, 0x80000, 0xb27948e3, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5389,9 +5389,9 @@ FILENAME( wofth, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5415,9 +5415,9 @@ FILENAME( wofjjq, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5441,9 +5441,9 @@ FILENAME( woffh, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5467,9 +5467,9 @@ FILENAME( wofzhs, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5493,9 +5493,9 @@ FILENAME( wofbio, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5519,9 +5519,9 @@ FILENAME( wofctj, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5545,9 +5545,9 @@ FILENAME( wofctm, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5571,9 +5571,9 @@ FILENAME( wofgyc, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5597,9 +5597,9 @@ FILENAME( wofgyq, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5623,9 +5623,9 @@ FILENAME( wofhzj, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5649,9 +5649,9 @@ FILENAME( wofjqz, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5675,9 +5675,9 @@ FILENAME( wofsjj, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5701,9 +5701,9 @@ FILENAME( wofyjs, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5727,9 +5727,9 @@ FILENAME( wofzyq, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5753,9 +5753,9 @@ FILENAME( wofzy2, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5779,9 +5779,9 @@ FILENAME( wofzy3, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5805,9 +5805,9 @@ FILENAME( wofsbl, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5831,9 +5831,9 @@ FILENAME( wofsz, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5857,9 +5857,9 @@ FILENAME( wofdy, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5883,9 +5883,9 @@ FILENAME( wofbt, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5909,9 +5909,9 @@ FILENAME( wofhgz, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5935,9 +5935,9 @@ FILENAME( wofdyg, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5961,9 +5961,9 @@ FILENAME( wofyxg, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -5987,9 +5987,9 @@ FILENAME( wofmr, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -6013,9 +6013,9 @@ FILENAME( wofzhy, wof, 3, 31, 1, 0 )
 	ROMX( 0, tk207.bin, 0x200004, 0x80000, 0xd706568e, 2, 6 )
 	ROMX( 0, tk208.bin, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.rom, 0x00000, 0x08000, 0xc9183a0d )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, tk2_q1.rom, 0x000000, 0x80000, 0x611268cf )
@@ -6044,7 +6044,7 @@ FILENAME( sf2hf, cps1, 2, 17, 0, 0 )
 	ROMX( 0, s92-11m.4c, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92-13m.6c, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.11a, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -6073,7 +6073,7 @@ FILENAME( sf2hfu, sf2hf, 2, 17, 0, 0 )
 	ROMX( 0, s92-11m.4c, 0x400004, 0x80000, 0xd6ec9a0a, 2, 6 )
 	ROMX( 0, s92-13m.6c, 0x400006, 0x80000, 0xed2c67f6, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.11a, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -6102,7 +6102,7 @@ FILENAME( sf2hfj, sf2hf, 2, 17, 0, 0 )
 	ROMX( 0, s2t_12.5c,  0x400004, 0x80000, 0x293c888c, 2, 6 )
 	ROMX( 0, s2t_13.6c,  0x400006, 0x80000, 0x842b35a4, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, s92_09.12a, 0x00000, 0x08000, 0x08f6b60e )
 	ROM( 1,             0x10000, 0x08000, 0x00000000 )
 
@@ -6127,7 +6127,7 @@ FILENAME( dino, cps1, 3, 32, 2, 0 )
 	ROMX( 0, cd-6m.8a,  0x200004, 0x80000, 0xe7599ac4, 2, 6 )
 	ROMX( 0, cd-8m.10a, 0x200006, 0x80000, 0x211b4b15, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, cd_q.5k, 0x00000, 0x08000, 0x605fdb0b )
 	ROM( 1,          0x10000, 0x18000, 0x00000000 )
 
@@ -6154,7 +6154,7 @@ FILENAME( dinou, dino, 3, 32, 2, 0 )
 	ROMX( 0, cd-6m.8a,  0x200004, 0x80000, 0xe7599ac4, 2, 6 )
 	ROMX( 0, cd-8m.10a, 0x200006, 0x80000, 0x211b4b15, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, cd_q.5k, 0x00000, 0x08000, 0x605fdb0b )
 	ROM( 1,          0x10000, 0x18000, 0x00000000 )
 
@@ -6181,7 +6181,7 @@ FILENAME( dinoj, dino, 3, 32, 2, 0 )
 	ROMX( 0, cd-6m.8a,  0x200004, 0x80000, 0xe7599ac4, 2, 6 )
 	ROMX( 0, cd-8m.10a, 0x200006, 0x80000, 0x211b4b15, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, cd_q.5k, 0x00000, 0x08000, 0x605fdb0b )
 	ROM( 1,          0x10000, 0x18000, 0x00000000 )
 
@@ -6225,10 +6225,10 @@ FILENAME( dinob, dino, 3, 32, 12, 0 )
 //	ROMX( 0, 10.bin, 0x200003, 0x40000, 0x88847705, 1, 7 )
 //	ROM( 1, 		 0x200007, 0x40000, 0x00000000		 )
 
-	REGION( 0x90000, CPU2, 0 )
-	ROM( 0, 1.bin, 0x00000, 0x80000, 0x7d921309 )
+	REGION( 0x28000, CPU2, 0 )
+	ROM( 0, 1.bin,    0x00000, 0x80000, 0x7d921309 )
 	ROM( 0, cd_q.rom, 0x00000, 0x08000, 0x605fdb0b )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,           0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, cd_q1.rom, 0x000000, 0x80000, 0x60927775 )
@@ -6254,9 +6254,9 @@ FILENAME( dinoh, dino, 3, 42, 13, 0 )
 	ROMX( 0, cd_gfx06.rom, 0x200004, 0x80000, 0xe7599ac4, 2, 6 )
 	ROMX( 0, cd_gfx08.rom, 0x200006, 0x80000, 0x211b4b15, 2, 6 )
 
-	REGION( 0x60000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, cd_q.rom, 0x00000, 0x08000, 0x605fdb0b )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,           0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, cd_q1.rom, 0x000000, 0x80000, 0x60927775 )
@@ -6282,9 +6282,9 @@ FILENAME( dinoha, dino, 3, 42, 13, 0 )
 	ROMX( 1, 0x200002, 0x80000, 0x00000000, 2, 6 )
 	ROMX( 1, 0x200006, 0x80000, 0x00000000, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, cd_q.rom, 0x00000, 0x08000, 0x605fdb0b )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,           0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, cd_q1.rom, 0x000000, 0x80000, 0x60927775 )
@@ -6308,9 +6308,9 @@ FILENAME( dinohb, dino, 3, 42, 12, 0 )
 	ROMX( 1, 0x200002, 0x80000, 0x00000000, 2, 6 )
 	ROMX( 1, 0x200006, 0x80000, 0x00000000, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, cd_q.rom, 0x00000, 0x08000, 0x605fdb0b )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,           0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, cd_q1.rom, 0x000000, 0x80000, 0x60927775 )
@@ -6337,9 +6337,9 @@ FILENAME( dinohunt, dino, 3, 42, 14, 0 )
 	ROMX( 0, u7, 0x200004, 0x80000, 0xa2544d4e, 2, 6 )
 	ROMX( 0, u8, 0x200006, 0x80000, 0x8869bbb1, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, cd_q.rom, 0x00000, 0x08000, 0x605fdb0b )
-	ROM( 1, 0x10000, 0x18000, 0x00000000 )
+	ROM( 1,           0x10000, 0x18000, 0x00000000 )
 
 	REGION( 0x200000, SOUND1, 0 )
 	ROM( 0, cd_q1.rom, 0x000000, 0x80000, 0x60927775 )
@@ -6370,7 +6370,7 @@ FILENAME( punisher, cps1, 3, 33, 3, 0 )
 	ROMX( 0, ps-6m.8a,  0x200004, 0x80000, 0xa544f4cc, 2, 6 )
 	ROMX( 0, ps-8m.10a, 0x200006, 0x80000, 0x8f02f436, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, ps_q.5k, 0x00000, 0x08000, 0x49ff4446 )
 	ROM( 1,          0x10000, 0x18000, 0x00000000 )
 
@@ -6403,7 +6403,7 @@ FILENAME( punisheru, punisher, 3, 33, 3, 0 )
 	ROMX( 0, ps-6m.8a,  0x200004, 0x80000, 0xa544f4cc, 2, 6 )
 	ROMX( 0, ps-8m.10a, 0x200006, 0x80000, 0x8f02f436, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, ps_q.5k, 0x00000, 0x08000, 0x49ff4446 )
 	ROM( 1,          0x10000, 0x18000, 0x00000000 )
 
@@ -6436,7 +6436,7 @@ FILENAME( punisherh, punisher, 3, 33, 3, 0 )
 	ROMX( 0, ps-6m.8a,  0x200004, 0x80000, 0xa544f4cc, 2, 6 )
 	ROMX( 0, ps-8m.10a, 0x200006, 0x80000, 0x8f02f436, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, ps_q.5k, 0x00000, 0x08000, 0x49ff4446 )
 	ROM( 1,          0x10000, 0x18000, 0x00000000 )
 
@@ -6463,7 +6463,7 @@ FILENAME( punisherj, punisher, 3, 33, 3, 0 )
 	ROMX( 0, ps-6m.8a,  0x200004, 0x80000, 0xa544f4cc, 2, 6 )
 	ROMX( 0, ps-8m.10a, 0x200006, 0x80000, 0x8f02f436, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, ps_q.5k, 0x00000, 0x08000, 0x49ff4446 )
 	ROM( 1,          0x10000, 0x18000, 0x00000000 )
 
@@ -6490,7 +6490,7 @@ FILENAME( punisherjd, punisher, 3, 33, 3, 0 )
 	ROMX( 0, ps-6m.8a,  0x200004, 0x80000, 0xa544f4cc, 2, 6 )
 	ROMX( 0, ps-8m.10a, 0x200006, 0x80000, 0x8f02f436, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, ps_q.5k, 0x00000, 0x08000, 0x49ff4446 )
 	ROM( 1,          0x10000, 0x18000, 0x00000000 )
 
@@ -6501,7 +6501,7 @@ FILENAME( punisherjd, punisher, 3, 33, 3, 0 )
 	ROM( 0, ps-q1.4k, 0x180000, 0x80000, 0xbed42f03 )
 END
 
-FILENAME( punisherbz, punisher, 3, 44, 3, 0 )
+FILENAME( punisherbz, punisher, 7, 44, 0, 0 )
 	REGION( 0x200000, CPU1, 0 )
 	ROM( 0, 23.096, 0x000000, 0x80000, 0xbfa45d23 )
 	ROM( 0, 22.096, 0x080000, 0x80000, 0x092578a4 )
@@ -6518,20 +6518,13 @@ FILENAME( punisherbz, punisher, 3, 44, 3, 0 )
 	ROMX( 0, ps-6m.8a,  0x200004, 0x80000, 0xa544f4cc, 2, 6 )
 	ROMX( 0, ps-8m.10a, 0x200006, 0x80000, 0x8f02f436, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
-//	ROM( 0, 9.512, 0x00000, 0x08000, 0xb8367eb5 )
-	ROM( 0, ps_q.5k, 0x00000, 0x08000, 0x49ff4446 )
-	ROM( 1,          0x10000, 0x08000, 0x00000000 )
+	REGION( 0x18000, CPU2, 0 )
+	ROM( 0, 9.512, 0x00000, 0x08000, 0xb8367eb5 )
+	ROM( 1,        0x10000, 0x08000, 0x00000000 )
 
-	REGION( 0x200000, SOUND1, 0 )
-	ROM( 0, ps-q1.1k, 0x000000, 0x80000, 0x31fd8726 )
-	ROM( 0, ps-q1.2k, 0x080000, 0x80000, 0x980a9eef )
-	ROM( 0, ps-q1.3k, 0x100000, 0x80000, 0x0dd44491 )
-	ROM( 0, ps-q1.4k, 0x180000, 0x80000, 0xbed42f03 )
-
-//	REGION( 0x40000, SOUND1, 0 )
-//	ROM( 0, 18.010, 0x00000, 0x20000, 0x375c66e7 )
-//	ROM( 0, 19.010, 0x20000, 0x20000, 0xeb5ca884 )
+	REGION( 0x40000, SOUND1, 0 )
+	ROM( 0, 18.010, 0x00000, 0x20000, 0x375c66e7 )
+	ROM( 0, 19.010, 0x20000, 0x20000, 0xeb5ca884 )
 END
 
 FILENAME( punisherp, punisher, 3, 33, 3, 0 )
@@ -6556,7 +6549,7 @@ FILENAME( punisherp, punisher, 3, 33, 3, 0 )
 	ROMX( 0, ps-6m.8a,  0x200004, 0x80000, 0xa544f4cc, 2, 6 )
 	ROMX( 0, ps-8m.10a, 0x200006, 0x80000, 0x8f02f436, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, ps_q.5k, 0x00000, 0x08000, 0x49ff4446 )
 	ROM( 1,          0x10000, 0x18000, 0x00000000 )
 
@@ -6591,7 +6584,7 @@ FILENAME( slammast, cps1, 3, 34, 4, 0 )
 	ROMX( 0, mb-11m.4c, 0x400004, 0x80000, 0x8fb94743, 2, 6 )
 	ROMX( 0, mb-13m.6c, 0x400006, 0x80000, 0xda810d5f, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, mb_qa.5k, 0x00000, 0x08000, 0xe21a03c4 )
 	ROM( 1,           0x10000, 0x18000, 0x00000000 )
 
@@ -6632,7 +6625,7 @@ FILENAME( slammastu, slammast, 3, 34, 4, 0 )
 	ROMX( 0, mb-11m.4c, 0x400004, 0x80000, 0x8fb94743, 2, 6 )
 	ROMX( 0, mb-13m.6c, 0x400006, 0x80000, 0xda810d5f, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, mb_qa.5k, 0x00000, 0x08000, 0xe21a03c4 )
 	ROM( 1,           0x10000, 0x18000, 0x00000000 )
 
@@ -6670,7 +6663,7 @@ FILENAME( mbomberj, slammast, 3, 34, 4, 0 )
 	ROMX( 0, mb-11m.4c, 0x400004, 0x80000, 0x8fb94743, 2, 6 )
 	ROMX( 0, mb-13m.6c, 0x400006, 0x80000, 0xda810d5f, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, mb_qa.5k, 0x00000, 0x08000, 0xe21a03c4 )
 	ROM( 1,           0x10000, 0x18000, 0x00000000 )
 
@@ -6714,7 +6707,7 @@ FILENAME( mbombrd, cps1, 3, 34, 4, 0 )
 	ROMX( 0, mb-11m.4c, 0x400004, 0x80000, 0x8fb94743, 2, 6 )
 	ROMX( 0, mb-13m.6c, 0x400006, 0x80000, 0xda810d5f, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, mb_q.5k, 0x00000, 0x08000, 0xd6fa76d1 )
 	ROM( 1,          0x10000, 0x18000, 0x00000000 )
 
@@ -6758,7 +6751,7 @@ FILENAME( mbombrdj, mbombrd, 3, 34, 4, 0 )
 	ROMX( 0, mb-11m.4c, 0x400004, 0x80000, 0x8fb94743, 2, 6 )
 	ROMX( 0, mb-13m.6c, 0x400006, 0x80000, 0xda810d5f, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, mb_qa.5k, 0x00000, 0x08000, 0xe21a03c4 )
 	ROM( 1,           0x10000, 0x18000, 0x00000000 )
 
@@ -6798,7 +6791,7 @@ FILENAME( pnickj, cps1, 0, 35, 0, 0 )
 	ROMX( 0, pnij_39.9h,  0x100006, 0x20000, 0x70fbe579, 1, 7 )
 	ROMX( 0, pnij_33.9f,  0x100007, 0x20000, 0x3ed2c680, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, pnij_17.13b, 0x00000, 0x08000, 0xe86f787a )
 	ROM( 1,              0x10000, 0x08000, 0x00000000 )
 
@@ -6830,7 +6823,7 @@ FILENAME( pnicku, pnickj, 0, 35, 0, 0 )
 	ROMX( 0, pnij_39.9h,  0x100006, 0x20000, 0x70fbe579, 1, 7 )
 	ROMX( 0, pnij_33.9f,  0x100007, 0x20000, 0x3ed2c680, 1, 7 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, pnij_17.13b, 0x00000, 0x08000, 0xe86f787a )
 	ROM( 1,              0x10000, 0x08000, 0x00000000 )
 
@@ -6860,7 +6853,7 @@ FILENAME( qtono2j, cps1, 0, 28, 0, 0 )
 	ROMX( 0, tn2-10m.3c, 0x200004, 0x80000, 0xa34ece70, 2, 6 )
 	ROMX( 0, tn2-12m.5c, 0x200006, 0x80000, 0xe04ff2f4, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, tn2j-09.12a, 0x00000, 0x08000, 0xe464b969 )
 	ROM( 1,              0x10000, 0x08000, 0x00000000 )
 
@@ -6880,8 +6873,9 @@ FILENAME( pang3, cps1, 4, 36, 5, 0 )
 	ROMX( 0, pa3-07m.2f, 0x000002, 0x100000, 0x3a4a619d, 2, 6 )
 	ROMX( 1,             0x000006, 0x100000, 0x00000000, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, pa3_11.11f, 0x00000, 0x08000, 0xcb1423a2 )
+    ROM_IGNORE( 0x18000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, pa3_05.10d, 0x00000, 0x20000, 0x73a10d5d )
@@ -6899,8 +6893,9 @@ FILENAME( pang3r1, pang3, 4, 36, 5, 0 )
 	ROMX( 0, pa3-07m.2f, 0x000002, 0x100000, 0x3a4a619d, 2, 6 )
 	ROMX( 1,             0x000006, 0x100000, 0x00000000, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, pa3-11.11f, 0x00000, 0x08000, 0xcb1423a2 )
+    ROM_IGNORE( 0x18000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, pa3-05.10d, 0x00000, 0x20000, 0x73a10d5d )
@@ -6918,8 +6913,9 @@ FILENAME( pang3j, pang3, 4, 36, 5, 0 )
 	ROMX( 0, pa3-07m.2f, 0x000002, 0x100000, 0x3a4a619d, 2, 6 )
 	ROMX( 1,             0x000006, 0x100000, 0x00000000, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, pa3_11.11f, 0x00000, 0x08000, 0xcb1423a2 )
+    ROM_IGNORE( 0x18000 )
 
 	REGION( 0x40000, SOUND1, 0 )
 	ROM( 0, pa3_05.10d, 0x00000, 0x20000, 0x73a10d5d )
@@ -6937,7 +6933,7 @@ FILENAME( pang3b, pang3, 4, 36, 0, 0 )
 	ROMX( 0, pa3-07m.2f, 0x000002, 0x100000, 0x3a4a619d, 2, 6 )
 	ROMX( 1,             0x000006, 0x100000, 0x00000000, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, pa3_11(__pang3b).11f, 0x00000, 0x08000, 0x90a08c46 )
 
 	REGION( 0x40000, SOUND1, 0 )
@@ -7002,7 +6998,7 @@ FILENAME( megamana, megaman, 0, 29, 0, 0 )
 	ROMX( 0, rcm_16.9c,  0x600004, 0x80000, 0x93d97fde, 2, 6 )
 	ROMX( 0, rcm_17.10c, 0x600006, 0x80000, 0x92371042, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, rcm_09.12a, 0x00000, 0x08000, 0x9632d6ef )
 	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
@@ -7035,7 +7031,7 @@ FILENAME( rockmanj, megaman, 0, 30, 0, 0 )
 	ROMX( 0, rcm_16.9c,  0x600004, 0x80000, 0x93d97fde, 2, 6 )
 	ROMX( 0, rcm_17.10c, 0x600006, 0x80000, 0x92371042, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, rcm_09.12a, 0x00000, 0x08000, 0x9632d6ef )
 	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
@@ -7068,7 +7064,7 @@ FILENAME( rockmanj2, megaman, 0, 30, 0, 0 )
 	ROMX( 0, rcm_16.9c,  0x600004, 0x80000, 0x93d97fde, 2, 6 )
 	ROMX( 0, rcm_17.10c, 0x600006, 0x80000, 0x92371042, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, rcm_09.12a, 0x00000, 0x08000, 0x9632d6ef )
 	ROM( 1,             0x10000, 0x18000, 0x00000000 )
 
@@ -7092,7 +7088,7 @@ FILENAME( wofch, wof, 3, 45, 1, 0 )
 	ROMX( 0, tk2(ch)_07.9a,  0x200004, 0x80000, 0xcc9006c9, 2, 6 )
 	ROMX( 0, tk2(ch)_08.10a, 0x200006, 0x80000, 0xd4a19a02, 2, 6 )
 
-	REGION( 0x38000, CPU2, 0 )
+	REGION( 0x28000, CPU2, 0 )
 	ROM( 0, tk2_qa.5k, 0x00000, 0x08000, 0xc9183a0d )
 	ROM( 1,            0x10000, 0x18000, 0x00000000 )
 
@@ -7128,7 +7124,7 @@ FILENAME( sfzch, cps1, 0, 37, 0, 0 )
 	ROMX( 0, sfz16, 0x600004, 0x80000, 0x19a5abd6, 2, 6 )
 	ROMX( 0, sfz17, 0x600006, 0x80000, 0x248b3b73, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sfz09, 0x00000, 0x08000, 0xc772628b )
 	ROM( 1,        0x10000, 0x08000, 0x00000000 )
 
@@ -7162,7 +7158,7 @@ FILENAME( sfach, sfzch, 0, 37, 0, 0 )
 	ROMX( 0, sfz_16.9c,  0x600004, 0x80000, 0x19a5abd6, 2, 6 )
 	ROMX( 0, sfz_17.10c, 0x600006, 0x80000, 0x248b3b73, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sfz09, 0x00000, 0x08000, 0xc772628b )
 	ROM( 1,        0x10000, 0x08000, 0x00000000 )
 
@@ -7196,7 +7192,7 @@ FILENAME( sfzbch, sfzch, 0, 37, 0, 0 )
 	ROMX( 0, sfz_16.9c,  0x600004, 0x80000, 0x19a5abd6, 2, 6 )
 	ROMX( 0, sfz_17.10c, 0x600006, 0x80000, 0x248b3b73, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, sfz09, 0x00000, 0x08000, 0xc772628b )
 	ROM( 1,        0x10000, 0x08000, 0x00000000 )
 
@@ -7219,7 +7215,7 @@ FILENAME( ganbare, cps1, 0, 0, 0, 0 )
 	ROMX( 0, mrnj_07.9a,  0x000004, 0x80000, 0x99afb6c7, 2, 6 )
 	ROMX( 0, mrnj_08.10a, 0x000006, 0x80000, 0x52882c20, 2, 6 )
 
-	REGION( 0x28000, CPU2, 0 )
+	REGION( 0x18000, CPU2, 0 )
 	ROM( 0, mrnj_09.12c, 0x00000, 0x08000, 0x62470d72 )
 	ROM( 1,              0x10000, 0x08000, 0x00000000 )
 

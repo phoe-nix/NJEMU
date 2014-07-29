@@ -269,6 +269,7 @@ static void update_inputport1(void)
 	case INPTYPE_wof3js:
 	case INPTYPE_dinoh:
 	case INPTYPE_punisherbz:
+	case INPTYPE_wofhfh:
 #endif
 		if (option_controller == INPUT_PLAYER1)
 		{
@@ -509,6 +510,7 @@ static void update_inputport2(void)
 	case INPTYPE_knightsh:
 	case INPTYPE_wof3js:
 	case INPTYPE_dinoh:
+	case INPTYPE_wofhfh:
 #endif
 		if (option_controller == INPUT_PLAYER3)
 		{
@@ -518,6 +520,7 @@ static void update_inputport2(void)
 			if (input_flag[P1_UP])      value &= ~0x0808;
 			if (input_flag[P1_BUTTON1]) value &= ~0x1010;
 			if (input_flag[P1_BUTTON2]) value &= ~0x2020;
+			if (input_flag[P1_BUTTON3]) value &= ~0x4040;
 			if (input_flag[P1_COIN])    value &= ~0x4040;
 			if (input_flag[P1_START])   value &= ~0x8080;
 			if (input_flag[P1_12])		 value &= ~0x3030;
@@ -745,6 +748,7 @@ int input_init(void)
 	case INPTYPE_wof3js:
 	case INPTYPE_wofsj:
 	case INPTYPE_dinoh:
+	case INPTYPE_wofhfh:
 #endif
 		input_max_players = 3;
 		break;
@@ -782,6 +786,7 @@ int input_init(void)
 	case INPTYPE_wofsj:
 	case INPTYPE_dinoh:
 	case INPTYPE_punisherbz:
+	case INPTYPE_wofhfh:
 #endif
 		input_max_buttons = 3;
 		break;

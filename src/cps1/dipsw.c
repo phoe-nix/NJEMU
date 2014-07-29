@@ -10774,6 +10774,892 @@ static void dip_save_pnickj_cht(void)
 	save_demo_sounds;
 	save_game_mode;
 }
+#if !RELEASE
+/*--------------------------------------
+  wofhfh
+--------------------------------------*/
+#define dip_coin_wofhfh		\
+{							\
+	"1 Coins/1 Credit",		\
+	"1 Coins/2 Credits",	\
+	"1 Coins/3 Credits",	\
+	"1 Coins/4 Credits",	\
+}
+
+#define dip_coin_wofhfh_jp	\
+{							\
+	"1 Coins/1 Credit",		\
+	"1 Coins/2 Credits",	\
+	"1 Coins/3 Credits",	\
+	"1 Coins/4 Credits",	\
+}
+#define dip_coin_wofhfh_chs	\
+{							\
+	"1币玩1次",	\
+	"1币玩2次",	\
+	"1币玩3次",	\
+	"1币玩4次",	\
+}
+#define dip_coin_wofhfh_cht	\
+{							\
+	"1幣玩1次",	\
+	"1幣玩2次",	\
+	"1幣玩3次",	\
+	"1幣玩4次",	\
+}
+#define dip_Lives			\
+{							\
+	"Start 4/Continue 5",	\
+	"Start 3/Continue 4",	\
+	"Start 2/Continue 3",	\
+	"Start 1/Continue 2",	\
+	"Start 4/Continue 4",	\
+	"Start 3/Continue 3",	\
+	"Start 2/Continue 2",	\
+	"Start 1/Continue 1"	\
+}
+#define dip_Lives_jp		\
+{							\
+	"Start 4/Continue 5",	\
+	"Start 3/Continue 4",	\
+	"Start 2/Continue 3",	\
+	"Start 1/Continue 2",	\
+	"Start 4/Continue 4",	\
+	"Start 3/Continue 3",	\
+	"Start 2/Continue 2",	\
+	"Start 1/Continue 1"	\
+}
+#define dip_Lives_chs		\
+{							\
+	"开始4/续关5",	\
+	"开始3/续关4",	\
+	"开始2/续关3",	\
+	"开始1/续关2",	\
+	"开始4/续关4",	\
+	"开始3/续关3",	\
+	"开始2/续关2",	\
+	"开始1/续关1"	\
+}
+#define dip_Lives_cht		\
+{							\
+	"開始4/續關5",	\
+	"開始3/續關4",	\
+	"開始2/續關3",	\
+	"開始1/續關2",	\
+	"開始4/續關4",	\
+	"開始3/續關3",	\
+	"開始2/續關2",	\
+	"開始1/續關1"	\
+}
+#define dip_coin_slots		\
+{							\
+	"2 Players/1 Shooter",	\
+	"3 Players/1 Shooter",	\
+	"3 Players/3 Shooters",	\
+}
+#define dip_coin_slots_jp	\
+{							\
+	"2 Players/1 Shooter",	\
+	"3 Players/1 Shooter",	\
+	"3 Players/3 Shooters",	\
+}
+#define dip_coin_slots_chs	\
+{							\
+	"2玩家/1投币槽",	\
+	"3玩家/1投币槽",	\
+	"3玩家/3投币槽",	\
+}
+#define dip_coin_slots_cht	\
+{							\
+	"2玩家/1投幣槽",	\
+	"3玩家/1投幣槽",	\
+	"3玩家/3投幣槽",	\
+}
+static dipswitch_t dipswitch_wofhfh[] =
+{
+	// DIP A
+	{ "Coin A",		1, 0x03, 0, 3, dip_coin_wofhfh	},
+
+	// DIP B
+	{ "Difficulty",		1, 0x07, 0, 7, dip_difficulty	},
+	{ "Lives",			1, 0x70, 0, 7, dip_Lives		},
+
+	// DIP C
+	{ "Coin Slots",		1, 0x03, 0, 2, dip_coin_slots	},
+	MENU_BLANK,
+	MENU_RETURN,
+	MENU_END,
+};
+
+static dipswitch_t dipswitch_wofhfh_jp[] =
+{
+	// DIP A
+	{ "Coin A",			1, 0x03, 0, 3, dip_coin_wofhfh_jp	},
+
+	// DIP B
+	{ "Difficulty",		1, 0x07, 0, 7, dip_difficulty_jp	},
+	{ "Lives",			1, 0x70, 0, 7, dip_Lives_jp		},
+
+	// DIP C
+	{ "Coin Slots",		1, 0x03, 0, 2, dip_coin_slots_jp	},
+	MENU_BLANK,
+	MENU_RETURN_JP,
+	MENU_END,
+};
+
+static dipswitch_t dipswitch_wofhfh_chs[] =
+{
+	// DIP A
+	{ "投币A",		1, 0x03, 0, 3, dip_coin_wofhfh_chs	},
+
+	// DIP B
+	{ "难度",		1, 0x07, 0, 7, dip_difficulty_chs	},
+	{ "生命",		1, 0x70, 0, 7, dip_Lives_chs		},
+
+	// DIP C
+	{ "投币槽",		1, 0x03, 0, 2, dip_coin_slots_chs	},
+	MENU_BLANK,
+	MENU_RETURN_CHS,
+	MENU_END,
+};
+
+static dipswitch_t dipswitch_wofhfh_cht[] =
+{
+	// DIP A
+	{ "投幣A",		1, 0x03, 0, 3, dip_coin_wofhfh_cht	},
+
+	// DIP B
+	{ "難度",		1, 0x07, 0, 7, dip_difficulty_cht	},
+	{ "生命",		1, 0x70, 0, 7, dip_Lives_cht		},
+
+	// DIP C
+	{ "投幣槽",		1, 0x03, 0, 2, dip_coin_slots_cht	},
+	MENU_BLANK,
+	MENU_RETURN_CHT,
+	MENU_END,
+};
+
+static void dip_load_wofhfh(void)
+{
+	dipswitch_t *dip = dipswitch_wofhfh;
+
+	// DIP A
+	switch (cps1_dipswitch[DIP_A] & 0x03)
+	{
+	case 0x03: (dip++)->value = 0; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x00: (dip++)->value = 3; break;
+	}
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x70)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x20: (dip++)->value = 2; break;
+	case 0x30: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 4; break;
+	case 0x50: (dip++)->value = 5; break;
+	case 0x60: (dip++)->value = 6; break;
+	case 0x70: (dip++)->value = 7; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x01: (dip++)->value = 0; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x03: (dip++)->value = 2; break;
+	}
+}
+
+static void dip_load_wofhfh_jp(void)
+{
+	dipswitch_t *dip = dipswitch_wofhfh_jp;
+
+	// DIP A
+	switch (cps1_dipswitch[DIP_A] & 0x03)
+	{
+	case 0x03: (dip++)->value = 0; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x00: (dip++)->value = 3; break;
+	}
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x70)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x20: (dip++)->value = 2; break;
+	case 0x30: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 4; break;
+	case 0x50: (dip++)->value = 5; break;
+	case 0x60: (dip++)->value = 6; break;
+	case 0x70: (dip++)->value = 7; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x01: (dip++)->value = 0; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x03: (dip++)->value = 2; break;
+	}
+}
+
+static void dip_load_wofhfh_chs(void)
+{
+	dipswitch_t *dip = dipswitch_wofhfh_chs;
+
+	// DIP A
+	switch (cps1_dipswitch[DIP_A] & 0x03)
+	{
+	case 0x03: (dip++)->value = 0; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x00: (dip++)->value = 3; break;
+	}
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x70)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x20: (dip++)->value = 2; break;
+	case 0x30: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 4; break;
+	case 0x50: (dip++)->value = 5; break;
+	case 0x60: (dip++)->value = 6; break;
+	case 0x70: (dip++)->value = 7; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x01: (dip++)->value = 0; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x03: (dip++)->value = 2; break;
+	}
+}
+
+static void dip_load_wofhfh_cht(void)
+{
+	dipswitch_t *dip = dipswitch_wofhfh_cht;
+
+	// DIP A
+	switch (cps1_dipswitch[DIP_A] & 0x03)
+	{
+	case 0x03: (dip++)->value = 0; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x01: (dip++)->value = 2; break;
+	case 0x00: (dip++)->value = 3; break;
+	}
+
+	// DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x70)
+	{
+	case 0x00: (dip++)->value = 0; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x20: (dip++)->value = 2; break;
+	case 0x30: (dip++)->value = 3; break;
+	case 0x40: (dip++)->value = 4; break;
+	case 0x50: (dip++)->value = 5; break;
+	case 0x60: (dip++)->value = 6; break;
+	case 0x70: (dip++)->value = 7; break;
+	}
+
+	// DIP C
+	switch (cps1_dipswitch[DIP_C] & 0x03)
+	{
+	case 0x01: (dip++)->value = 0; break;
+	case 0x02: (dip++)->value = 1; break;
+	case 0x03: (dip++)->value = 2; break;
+	}
+}
+
+static void dip_save_wofhfh(void)
+{
+	dipswitch_t *dip = dipswitch_wofhfh;
+
+	// DIP A
+	switch ((dip++)->value)
+	{
+	case 0:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x03; break;
+	case 1:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x02; break;
+	case 2:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x01; break;
+	case 3:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 5: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x50; break;
+	case 6: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x60; break;
+	case 7: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x70; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0:  cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 1:  cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 2:  cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	}
+}
+static void dip_save_wofhfh_jp(void)
+{
+	dipswitch_t *dip = dipswitch_wofhfh_jp;
+
+	// DIP A
+	switch ((dip++)->value)
+	{
+	case 0:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x03; break;
+	case 1:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x02; break;
+	case 2:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x01; break;
+	case 3:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 5: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x50; break;
+	case 6: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x60; break;
+	case 7: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x70; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0:  cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 1:  cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 2:  cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	}
+}
+static void dip_save_wofhfh_chs(void)
+{
+	dipswitch_t *dip = dipswitch_wofhfh_chs;
+
+	// DIP A
+	switch ((dip++)->value)
+	{
+	case 0:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x03; break;
+	case 1:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x02; break;
+	case 2:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x01; break;
+	case 3:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 5: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x50; break;
+	case 6: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x60; break;
+	case 7: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x70; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0:  cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 1:  cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 2:  cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	}
+}
+static void dip_save_wofhfh_cht(void)
+{
+	dipswitch_t *dip = dipswitch_wofhfh_cht;
+
+	// DIP A
+	switch ((dip++)->value)
+	{
+	case 0:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x03; break;
+	case 1:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x02; break;
+	case 2:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x01; break;
+	case 3:  cps1_dipswitch[DIP_A] &= ~0x03; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+
+	// DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x00; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x30; break;
+	case 4: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 5: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x50; break;
+	case 6: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x60; break;
+	case 7: cps1_dipswitch[DIP_B] &= ~0x70; cps1_dipswitch[DIP_B] |= 0x70; break;
+	}
+
+	// DIP C
+	switch ((dip++)->value)
+	{
+	case 0:  cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x01; break;
+	case 1:  cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x02; break;
+	case 2:  cps1_dipswitch[DIP_C] &= ~0x03; cps1_dipswitch[DIP_C] |= 0x03; break;
+	}
+}
+
+
+/*--------------------------------------
+  punisherbz
+--------------------------------------*/
+
+static dipswitch_t dipswitch_punisherbz[] =
+{	// DIP A
+	{ "2 Coins to Start, 1 to Continue", 1, 0x08, 0, 1, dip_on_off     },
+	{ "Lives",				1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "Sound",				1, 0x40, 0, 1, {"Q Sound","Monaural"} },
+	{ "Flip Screen",		1, 0x80, 0, 1, dip_on_off },
+	// DIP B
+	{ "Difficulty",			1, 0x07, 0, 7, dip_difficulty	},
+	{ "Extend",				1, 0x18, 0, 3, {"800000","1800000","2800000","No Extend"} },
+	{ "Allow Continue",		1, 0x20, 0, 1, dip_yes_no     },
+	{ "Demo Sounds",		1, 0x40, 0, 1, dip_on_off     },
+	MENU_BLANK,
+	MENU_RETURN,
+	MENU_END,
+};
+static dipswitch_t dipswitch_punisherbz_jp[] =
+{	// DIP A
+	{ "2 Coins to Start, 1 to Continue", 1, 0x08, 0, 1, dip_on_off_jp     },
+	{ "Lives",				1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "Sound",				1, 0x40, 0, 1, {"Q Sound","Monaural"} },
+	{ "Flip Screen",		1, 0x80, 0, 1, dip_on_off_jp },
+	// DIP B
+	{ "Difficulty",			1, 0x07, 0, 7, dip_difficulty_jp	},
+	{ "Extend",				1, 0x18, 0, 3, {"800000","1800000","2800000","No Extend"} },
+	{ "Allow Continue",		1, 0x20, 0, 1, dip_yes_no_jp     },
+	{ "Demo Sounds",		1, 0x40, 0, 1, dip_on_off_jp     },
+	MENU_BLANK,
+	MENU_RETURN_JP,
+	MENU_END,
+};
+static dipswitch_t dipswitch_punisherbz_chs[] =
+{	// DIP A
+	{ "2币开始,1币续关",	1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "生命",				1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "声音",				1, 0x40, 0, 1, {"Q Sound","单声道"} },
+	{ "翻转屏幕",			1, 0x80, 0, 1, dip_on_off_chs },
+	// DIP B
+	{ "难度",				1, 0x07, 0, 7, dip_difficulty_chs	},
+	{ "奖命",				1, 0x18, 0, 3, {"800000","1800000","2800000","No Extend"} },
+	{ "允许续关",			1, 0x20, 0, 1, dip_yes_no_chs     },
+	{ "演示声音",			1, 0x40, 0, 1, dip_on_off_chs     },
+	MENU_BLANK,
+	MENU_RETURN_CHS,
+	MENU_END,
+};
+static dipswitch_t dipswitch_punisherbz_cht[] =
+{	// DIP A
+	{ "2幣開始,1幣續關",	1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "生命",				1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "聲音",				1, 0x40, 0, 1, {"Q Sound","單聲道"} },
+	{ "翻轉屏幕",			1, 0x80, 0, 1, dip_on_off_cht },
+	// DIP B
+	{ "難度",				1, 0x07, 0, 7, dip_difficulty_cht	},
+	{ "獎命",				1, 0x18, 0, 3, {"800000","1800000","2800000","No Extend"} },
+	{ "允許續關",			1, 0x20, 0, 1, dip_yes_no_cht     },
+	{ "演示聲音",			1, 0x40, 0, 1, dip_on_off_cht     },
+	MENU_BLANK,
+	MENU_RETURN_CHT,
+	MENU_END,
+};
+
+static void dip_load_punisherbz(void)
+{
+	dipswitch_t *dip = dipswitch_punisherbz;
+	// DIP A
+	switch (cps1_dipswitch[DIP_A] & 0x08)
+	{
+	case 0x08: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x30)
+	{
+	case 0x30: (dip++)->value = 0; break;
+	case 0x20: (dip++)->value = 1; break;
+	case 0x10: (dip++)->value = 2; break;
+	case 0x00: (dip++)->value = 3; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x40)
+	{
+	case 0x40: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x80)
+	{
+	case 0x80: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	//DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x18: (dip++)->value = 0; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x00: (dip++)->value = 3; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x20)
+	{
+	case 0x20: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x40)
+	{
+	case 0x40: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+}
+static void dip_load_punisherbz_jp(void)
+{
+	dipswitch_t *dip = dipswitch_punisherbz_jp;
+	// DIP A
+	switch (cps1_dipswitch[DIP_A] & 0x08)
+	{
+	case 0x08: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x30)
+	{
+	case 0x30: (dip++)->value = 0; break;
+	case 0x20: (dip++)->value = 1; break;
+	case 0x10: (dip++)->value = 2; break;
+	case 0x00: (dip++)->value = 3; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x40)
+	{
+	case 0x40: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x80)
+	{
+	case 0x80: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	//DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x18: (dip++)->value = 0; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x00: (dip++)->value = 3; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x20)
+	{
+	case 0x20: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x40)
+	{
+	case 0x40: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+}
+static void dip_load_punisherbz_chs(void)
+{
+	dipswitch_t *dip = dipswitch_punisherbz_chs;
+	// DIP A
+	switch (cps1_dipswitch[DIP_A] & 0x08)
+	{
+	case 0x08: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x30)
+	{
+	case 0x30: (dip++)->value = 0; break;
+	case 0x20: (dip++)->value = 1; break;
+	case 0x10: (dip++)->value = 2; break;
+	case 0x00: (dip++)->value = 3; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x40)
+	{
+	case 0x40: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x80)
+	{
+	case 0x80: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	//DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x18: (dip++)->value = 0; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x00: (dip++)->value = 3; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x20)
+	{
+	case 0x20: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x40)
+	{
+	case 0x40: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+}
+static void dip_load_punisherbz_cht(void)
+{
+	dipswitch_t *dip = dipswitch_punisherbz_cht;
+	// DIP A
+	switch (cps1_dipswitch[DIP_A] & 0x08)
+	{
+	case 0x08: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x30)
+	{
+	case 0x30: (dip++)->value = 0; break;
+	case 0x20: (dip++)->value = 1; break;
+	case 0x10: (dip++)->value = 2; break;
+	case 0x00: (dip++)->value = 3; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x40)
+	{
+	case 0x40: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_A] & 0x80)
+	{
+	case 0x80: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	//DIP B
+	(dip++)->value = dip_load_difficulty1();
+	switch (cps1_dipswitch[DIP_B] & 0x18)
+	{
+	case 0x18: (dip++)->value = 0; break;
+	case 0x10: (dip++)->value = 1; break;
+	case 0x08: (dip++)->value = 2; break;
+	case 0x00: (dip++)->value = 3; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x20)
+	{
+	case 0x20: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+	switch (cps1_dipswitch[DIP_B] & 0x40)
+	{
+	case 0x40: (dip++)->value = 0; break;
+	case 0x00: (dip++)->value = 1; break;
+	}
+}
+
+static void dip_save_punisherbz(void)
+{
+	dipswitch_t *dip = dipswitch_punisherbz;
+	// DIP A
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x08; cps1_dipswitch[DIP_A] |= 0x08; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x08; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x30; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x20; break;
+	case 2: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x10; break;
+	case 3: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x40; cps1_dipswitch[DIP_A] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x40; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x80; cps1_dipswitch[DIP_A] |= 0x80; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x80; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	//DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x20; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x20; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x40; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x40; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+}
+static void dip_save_punisherbz_jp(void)
+{
+	dipswitch_t *dip = dipswitch_punisherbz_jp;
+	// DIP A
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x08; cps1_dipswitch[DIP_A] |= 0x08; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x08; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x30; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x20; break;
+	case 2: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x10; break;
+	case 3: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x40; cps1_dipswitch[DIP_A] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x40; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x80; cps1_dipswitch[DIP_A] |= 0x80; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x80; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	//DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x20; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x20; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x40; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x40; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+}
+static void dip_save_punisherbz_chs(void)
+{
+	dipswitch_t *dip = dipswitch_punisherbz_chs;
+	// DIP A
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x08; cps1_dipswitch[DIP_A] |= 0x08; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x08; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x30; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x20; break;
+	case 2: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x10; break;
+	case 3: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x40; cps1_dipswitch[DIP_A] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x40; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x80; cps1_dipswitch[DIP_A] |= 0x80; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x80; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	//DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x20; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x20; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x40; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x40; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+}
+static void dip_save_punisherbz_cht(void)
+{
+	dipswitch_t *dip = dipswitch_punisherbz_cht;
+	// DIP A
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x08; cps1_dipswitch[DIP_A] |= 0x08; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x08; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x30; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x20; break;
+	case 2: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x10; break;
+	case 3: cps1_dipswitch[DIP_A] &= ~0x30; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x40; cps1_dipswitch[DIP_A] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x40; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_A] &= ~0x80; cps1_dipswitch[DIP_A] |= 0x80; break;
+	case 1: cps1_dipswitch[DIP_A] &= ~0x80; cps1_dipswitch[DIP_A] |= 0x00; break;
+	}
+	//DIP B
+	dip_save_difficulty1((dip++)->value);
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x18; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x10; break;
+	case 2: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x08; break;
+	case 3: cps1_dipswitch[DIP_B] &= ~0x18; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x20; cps1_dipswitch[DIP_B] |= 0x20; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x20; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+	switch ((dip++)->value)
+	{
+	case 0: cps1_dipswitch[DIP_B] &= ~0x40; cps1_dipswitch[DIP_B] |= 0x40; break;
+	case 1: cps1_dipswitch[DIP_B] &= ~0x40; cps1_dipswitch[DIP_B] |= 0x00; break;
+	}
+}
+#endif
 
 dipswitch_t *load_dipswitch(int *sx)
 {
@@ -10805,9 +11691,6 @@ dipswitch_t *load_dipswitch(int *sx)
 		case INPTYPE_kod:      dip_load_kod_jp(0);     dipswitch = dipswitch_kod_jp; break;
 		case INPTYPE_kodj:     dip_load_kod_jp(1);     dipswitch = dipswitch_kodj_jp; break;
 		case INPTYPE_captcomm: dip_load_captcomm_jp(); dipswitch = dipswitch_captcomm_jp; break;
-#if !RELEASE
-		case INPTYPE_knightsh:
-#endif
 		case INPTYPE_knights:  dip_load_knights_jp();  dipswitch = dipswitch_knights_jp; break;
 		case INPTYPE_varth:    dip_load_varth_jp();    dipswitch = dipswitch_varth_jp; break;
 		case INPTYPE_cworld2j: dip_load_cworld2j_jp(); dipswitch = dipswitch_cworld2j_jp; break;
@@ -10817,6 +11700,10 @@ dipswitch_t *load_dipswitch(int *sx)
 		case INPTYPE_megaman:  dip_load_megaman_jp(0); dipswitch = dipswitch_megaman_jp; break;
 		case INPTYPE_rockmanj: dip_load_megaman_jp(1); dipswitch = dipswitch_rockmanj_jp; break;
 		case INPTYPE_pnickj:   dip_load_pnickj_jp();   dipswitch = dipswitch_pnickj_jp; break;
+#if !RELEASE
+		case INPTYPE_wofhfh:   dip_load_wofhfh_jp();   dipswitch = dipswitch_wofhfh_jp; break;
+		case INPTYPE_punisherbz:dip_load_punisherbz_jp();   dipswitch = dipswitch_punisherbz_jp; break;
+#endif
 		}
 	}
 	else if (ui_text_get_language() == LANG_CHINESE_SIMPLIFIED)
@@ -10845,9 +11732,6 @@ dipswitch_t *load_dipswitch(int *sx)
 		case INPTYPE_kod:      dip_load_kod_chs(0);     dipswitch = dipswitch_kod_chs; break;
 		case INPTYPE_kodj:     dip_load_kod_chs(1);     dipswitch = dipswitch_kodj_chs; break;
 		case INPTYPE_captcomm: dip_load_captcomm_chs(); dipswitch = dipswitch_captcomm_chs; break;
-#if !RELEASE
-		case INPTYPE_knightsh:
-#endif
 		case INPTYPE_knights:  dip_load_knights_chs();  dipswitch = dipswitch_knights_chs; break;
 		case INPTYPE_varth:    dip_load_varth_chs();    dipswitch = dipswitch_varth_chs; break;
 		case INPTYPE_cworld2j: dip_load_cworld2j_chs(); dipswitch = dipswitch_cworld2j_chs; break;
@@ -10857,6 +11741,10 @@ dipswitch_t *load_dipswitch(int *sx)
 		case INPTYPE_megaman:  dip_load_megaman_chs(0); dipswitch = dipswitch_megaman_chs; break;
 		case INPTYPE_rockmanj: dip_load_megaman_chs(1); dipswitch = dipswitch_rockmanj_chs; break;
 		case INPTYPE_pnickj:   dip_load_pnickj_chs();   dipswitch = dipswitch_pnickj_chs; break;
+#if !RELEASE
+		case INPTYPE_wofhfh:   dip_load_wofhfh_chs();   dipswitch = dipswitch_wofhfh_chs; break;
+		case INPTYPE_punisherbz:dip_load_punisherbz_chs();   dipswitch = dipswitch_punisherbz_chs; break;
+#endif
 		}
 	}
 	else if (ui_text_get_language() == LANG_CHINESE_TRADITIONAL)
@@ -10885,9 +11773,6 @@ dipswitch_t *load_dipswitch(int *sx)
 		case INPTYPE_kod:      dip_load_kod_cht(0);     dipswitch = dipswitch_kod_cht; break;
 		case INPTYPE_kodj:     dip_load_kod_cht(1);     dipswitch = dipswitch_kodj_cht; break;
 		case INPTYPE_captcomm: dip_load_captcomm_cht(); dipswitch = dipswitch_captcomm_cht; break;
-#if !RELEASE
-		case INPTYPE_knightsh:
-#endif
 		case INPTYPE_knights:  dip_load_knights_cht();  dipswitch = dipswitch_knights_cht; break;
 		case INPTYPE_varth:    dip_load_varth_cht();    dipswitch = dipswitch_varth_cht; break;
 		case INPTYPE_cworld2j: dip_load_cworld2j_cht(); dipswitch = dipswitch_cworld2j_cht; break;
@@ -10897,6 +11782,10 @@ dipswitch_t *load_dipswitch(int *sx)
 		case INPTYPE_megaman:  dip_load_megaman_cht(0); dipswitch = dipswitch_megaman_cht; break;
 		case INPTYPE_rockmanj: dip_load_megaman_cht(1); dipswitch = dipswitch_rockmanj_cht; break;
 		case INPTYPE_pnickj:   dip_load_pnickj_cht();   dipswitch = dipswitch_pnickj_cht; break;
+#if !RELEASE
+		case INPTYPE_wofhfh:   dip_load_wofhfh_cht();   dipswitch = dipswitch_wofhfh_cht; break;
+		case INPTYPE_punisherbz:dip_load_punisherbz_cht();   dipswitch = dipswitch_punisherbz_cht; break;
+#endif
 		}
 	}
 	else
@@ -10925,9 +11814,6 @@ dipswitch_t *load_dipswitch(int *sx)
 		case INPTYPE_kod:      dip_load_kod(0);     dipswitch = dipswitch_kod; break;
 		case INPTYPE_kodj:     dip_load_kod(1);     dipswitch = dipswitch_kodj; break;
 		case INPTYPE_captcomm: dip_load_captcomm(); dipswitch = dipswitch_captcomm; break;
-#if !RELEASE
-		case INPTYPE_knightsh:
-#endif
 		case INPTYPE_knights:  dip_load_knights();  dipswitch = dipswitch_knights; break;
 		case INPTYPE_varth:    dip_load_varth();    dipswitch = dipswitch_varth; break;
 		case INPTYPE_cworld2j: dip_load_cworld2j(); dipswitch = dipswitch_cworld2j; break;
@@ -10937,6 +11823,10 @@ dipswitch_t *load_dipswitch(int *sx)
 		case INPTYPE_megaman:  dip_load_megaman(0); dipswitch = dipswitch_megaman; break;
 		case INPTYPE_rockmanj: dip_load_megaman(1); dipswitch = dipswitch_rockmanj; break;
 		case INPTYPE_pnickj:   dip_load_pnickj();   dipswitch = dipswitch_pnickj; break;
+#if !RELEASE
+		case INPTYPE_wofhfh:   dip_load_wofhfh();   dipswitch = dipswitch_wofhfh; break;
+		case INPTYPE_punisherbz:dip_load_punisherbz();   dipswitch = dipswitch_punisherbz; break;
+#endif
 		}
 	}
 	return dipswitch;
@@ -10971,9 +11861,6 @@ void save_dipswitch(void)
 		case INPTYPE_kod:      dip_save_kod_jp(0); break;
 		case INPTYPE_kodj:     dip_save_kod_jp(1); break;
 		case INPTYPE_captcomm: dip_save_captcomm_jp(); break;
-#if !RELEASE
-		case INPTYPE_knightsh:
-#endif
 		case INPTYPE_knights:  dip_save_knights_jp(); break;
 		case INPTYPE_varth:    dip_save_varth_jp(); break;
 		case INPTYPE_cworld2j: dip_save_cworld2j_jp(); break;
@@ -10983,6 +11870,10 @@ void save_dipswitch(void)
 		case INPTYPE_megaman:  dip_save_megaman_jp(0); break;
 		case INPTYPE_rockmanj: dip_save_megaman_jp(1); break;
 		case INPTYPE_pnickj:   dip_save_pnickj_jp(); break;
+#if !RELEASE
+		case INPTYPE_wofhfh:   dip_save_wofhfh_jp(); break;
+		case INPTYPE_punisherbz:dip_save_punisherbz_jp(); break;
+#endif
 		}
 	}
 	else if (ui_text_get_language() == LANG_CHINESE_SIMPLIFIED)
@@ -11011,9 +11902,6 @@ void save_dipswitch(void)
 		case INPTYPE_kod:      dip_save_kod_chs(0); break;
 		case INPTYPE_kodj:     dip_save_kod_chs(1); break;
 		case INPTYPE_captcomm: dip_save_captcomm_chs(); break;
-#if !RELEASE
-		case INPTYPE_knightsh:
-#endif
 		case INPTYPE_knights:  dip_save_knights_chs(); break;
 		case INPTYPE_varth:    dip_save_varth_chs(); break;
 		case INPTYPE_cworld2j: dip_save_cworld2j_chs(); break;
@@ -11023,6 +11911,10 @@ void save_dipswitch(void)
 		case INPTYPE_megaman:  dip_save_megaman_chs(0); break;
 		case INPTYPE_rockmanj: dip_save_megaman_chs(1); break;
 		case INPTYPE_pnickj:   dip_save_pnickj_chs(); break;
+#if !RELEASE
+		case INPTYPE_wofhfh:   dip_save_wofhfh_chs(); break;
+		case INPTYPE_punisherbz:dip_save_punisherbz_chs(); break;
+#endif
 		}
 	}
 	else if (ui_text_get_language() == LANG_CHINESE_TRADITIONAL)
@@ -11051,9 +11943,6 @@ void save_dipswitch(void)
 		case INPTYPE_kod:      dip_save_kod_cht(0); break;
 		case INPTYPE_kodj:     dip_save_kod_cht(1); break;
 		case INPTYPE_captcomm: dip_save_captcomm_cht(); break;
-#if !RELEASE
-		case INPTYPE_knightsh:
-#endif
 		case INPTYPE_knights:  dip_save_knights_cht(); break;
 		case INPTYPE_varth:    dip_save_varth_cht(); break;
 		case INPTYPE_cworld2j: dip_save_cworld2j_cht(); break;
@@ -11063,6 +11952,10 @@ void save_dipswitch(void)
 		case INPTYPE_megaman:  dip_save_megaman_cht(0); break;
 		case INPTYPE_rockmanj: dip_save_megaman_cht(1); break;
 		case INPTYPE_pnickj:   dip_save_pnickj_cht(); break;
+#if !RELEASE
+		case INPTYPE_wofhfh:   dip_save_wofhfh_cht(); break;
+		case INPTYPE_punisherbz:dip_save_punisherbz_cht(); break;
+#endif
 		}
 	}
 	else
@@ -11091,9 +11984,6 @@ void save_dipswitch(void)
 		case INPTYPE_kod:      dip_save_kod(0); break;
 		case INPTYPE_kodj:     dip_save_kod(1); break;
 		case INPTYPE_captcomm: dip_save_captcomm(); break;
-#if !RELEASE
-		case INPTYPE_knightsh:
-#endif
 		case INPTYPE_knights:  dip_save_knights(); break;
 		case INPTYPE_varth:    dip_save_varth(); break;
 		case INPTYPE_cworld2j: dip_save_cworld2j(); break;
@@ -11103,6 +11993,10 @@ void save_dipswitch(void)
 		case INPTYPE_megaman:  dip_save_megaman(0); break;
 		case INPTYPE_rockmanj: dip_save_megaman(1); break;
 		case INPTYPE_pnickj:   dip_save_pnickj(); break;
+#if !RELEASE
+		case INPTYPE_wofhfh:   dip_save_wofhfh(); break;
+		case INPTYPE_punisherbz:dip_save_punisherbz(); break;
+#endif
 		}
 	}
 }

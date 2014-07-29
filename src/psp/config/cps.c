@@ -829,6 +829,7 @@ static cfg_type gamecfg_pzloop2[] =
 	case INPTYPE_wofsj:
 	case INPTYPE_dinoh:
 	case INPTYPE_punisherbz:
+	case INPTYPE_wofhfh:
 #endif
 		gamecfg = gamecfg_3buttons;
 		break;
@@ -928,6 +929,37 @@ static cfg_type gamecfg_pzloop2[] =
 		cps1_dipswitch[DIP_B] &= ~0x07;
 		cps1_dipswitch[DIP_B] |= 0x04;	// Difficulty
 		break;
+
+#if !RELEASE
+	case INPTYPE_wofhfh:
+		cps1_dipswitch[DIP_A] &= ~0x03;	// Coin A
+		cps1_dipswitch[DIP_A] |= 0x03;
+		cps1_dipswitch[DIP_B] &= ~0x07;	// Difficulty
+		cps1_dipswitch[DIP_B] |= 0x04;
+		cps1_dipswitch[DIP_B] &= ~0x70;	// Lives
+		cps1_dipswitch[DIP_B] |= 0x60;
+		cps1_dipswitch[DIP_C] &= ~0x03;	// Coin Slots
+		cps1_dipswitch[DIP_C] |= 0x03;
+		break;
+	case INPTYPE_punisherbz:
+		cps1_dipswitch[DIP_A] &= ~0x08;	// 2 Coins to Start, 1 to Continue
+		cps1_dipswitch[DIP_A] |= 0x08;
+		cps1_dipswitch[DIP_A] &= ~0x30;	// Lives
+		cps1_dipswitch[DIP_A] |= 0x20;
+		cps1_dipswitch[DIP_A] &= ~0x40;	// Sound
+		cps1_dipswitch[DIP_A] |= 0x40;
+		cps1_dipswitch[DIP_A] &= ~0x80;	// Flip Screen
+		cps1_dipswitch[DIP_A] |= 0x80;
+		cps1_dipswitch[DIP_B] &= ~0x07;	// Difficulty
+		cps1_dipswitch[DIP_B] |= 0x04;
+		cps1_dipswitch[DIP_B] &= ~0x18;	// Extend
+		cps1_dipswitch[DIP_B] |= 0x10;
+		cps1_dipswitch[DIP_B] &= ~0x20;	// Allow Continue
+		cps1_dipswitch[DIP_B] |= 0x00;
+		cps1_dipswitch[DIP_B] &= ~0x40;	// Demo Sounds
+		cps1_dipswitch[DIP_B] |= 0x00;
+		break;
+#endif
 
 	case INPTYPE_strider:
 	case INPTYPE_stridrua:

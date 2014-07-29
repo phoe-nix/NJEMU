@@ -85,6 +85,7 @@ enum
 	INPTYPE_kodh,		// 43
 	INPTYPE_punisherbz,	// 44
 	INPTYPE_wofch,		// 45
+	INPTYPE_wofhfh,		// 46
 #endif
 	INPTYPE_MAX			// MAX
 };
