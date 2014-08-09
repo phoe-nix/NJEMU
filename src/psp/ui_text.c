@@ -1308,7 +1308,7 @@ static const char *text_SPANISH[UI_TEXT_MAX] =
 #endif
 
 		"Menu de configuracion de botones",
-		"Not use",
+		"No usar",
 		FONT_UPARROW,
 		FONT_DOWNARROW,
 		FONT_LEFTARROW,
@@ -1645,12 +1645,12 @@ static const char *text_SPANISH[UI_TEXT_MAX] =
 		/* biosmenu.c */
 		"Menu de seleccion de BIOS",
 		"BIOS no encontrada.",
-		"Selecione la BIOS y pulse el boton " FONT_CIRCLE ,
 		"Todos los archivos NVRAM se borraron.\n",
 
 		/* memintrf.c */
 		"rominfo.mvs no encontrado.\n",
 		"Cargando \"%s (%s)\"\n",
+		"Des-encriptando ROM.\n",
 		"Cargando GFX2 ROM desencriptado...\n",
 		"Cargando SOUND1 ROM desencriptado...\n",
 		"No se pudo asignar memoria para desencriptar ROM.\n",
@@ -2819,35 +2819,37 @@ void ui_text_init(void)
 	int i;
 
 	sceUtilityGetSystemParamInt(PSP_SYSTEMPARAM_ID_INT_LANGUAGE, &lang);
-    if (lang == PSP_SYSTEMPARAM_LANGUAGE_CHINESE_SIMPLIFIED)
+    switch (lang)
 	{
+	case PSP_SYSTEMPARAM_LANGUAGE_CHINESE_SIMPLIFIED:
 		lang = LANG_CHINESE_SIMPLIFIED;
 		for (i = 0; i < UI_TEXT_MAX; i++)
 			ui_text[i] = text_CHINESE_SIMPLIFIED[i];
-	}
-	else if (lang == PSP_SYSTEMPARAM_LANGUAGE_CHINESE_TRADITIONAL)
-	{
+		break;
+
+	case PSP_SYSTEMPARAM_LANGUAGE_CHINESE_TRADITIONAL:
 		lang = LANG_CHINESE_TRADITIONAL;
 		for (i = 0; i < UI_TEXT_MAX; i++)
 			ui_text[i] = text_CHINESE_TRADITIONAL[i];
-	}
-	else if (lang == PSP_SYSTEMPARAM_LANGUAGE_JAPANESE)
-	{
+		break;
+
+	case PSP_SYSTEMPARAM_LANGUAGE_JAPANESE:
 		lang = LANG_JAPANESE;
 		for (i = 0; i < UI_TEXT_MAX; i++)
 			ui_text[i] = text_JAPANESE[i];
-	}
-	else if (lang == PSP_SYSTEMPARAM_LANGUAGE_SPANISH)
-	{
+		break;
+
+	case PSP_SYSTEMPARAM_LANGUAGE_SPANISH:
 		lang = LANG_SPANISH;
 		for (i = 0; i < UI_TEXT_MAX; i++)
 			ui_text[i] = text_SPANISH[i];
-	}
-	else
-	{
+		break;
+
+	default:
 		lang = LANG_ENGLISH;
 		for (i = 0; i < UI_TEXT_MAX; i++)
 			ui_text[i] = text_ENGLISH[i];
+		break;
 	}
 }
 
