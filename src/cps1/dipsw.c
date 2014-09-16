@@ -2,7 +2,7 @@
 
 	dipsw.c
 
-	CPS1 DIP¥¹¥¤¥Ã¥ÁÔO¶¨
+	CPS1 DIPã‚¹ã‚¤ãƒƒãƒè¨­å®š
 
 ******************************************************************************/
 
@@ -10,11 +10,11 @@
 
 #define MENU_BLANK		{ "\n", 0, 0x00, 0, 0, { NULL } }
 
-#define MENU_RETURN_CHS	{ "·µ»ØÖ÷²Ëµ¥", 1, 0x00, 0, 0, { NULL } }
+#define MENU_RETURN_CHS	{ "è¿”å›ä¸»èœå•", 1, 0x00, 0, 0, { NULL } }
 
-#define MENU_RETURN_CHT	{ "·µ»ØÖ÷²Ë†Î", 1, 0x00, 0, 0, { NULL } }
+#define MENU_RETURN_CHT	{ "è¿”å›ä¸»èœå–®", 1, 0x00, 0, 0, { NULL } }
 
-#define MENU_RETURN_JP	{ "¥á¥¤¥ó¥á¥Ë¥å©`¤Ë‘ø¤ë", 1, 0x00, 0, 0, { NULL } }
+#define MENU_RETURN_JP	{ "ãƒ¡ã‚¤ãƒ³ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«æˆ»ã‚‹", 1, 0x00, 0, 0, { NULL } }
 
 #define MENU_RETURN		{ "Return to main menu", 1, 0x00, 0, 0, { NULL } }
 
@@ -45,7 +45,7 @@
 
 
 /*--------------------------------------
-  ¹²Í¨ (bit)
+  å…±é€š (bit)
 --------------------------------------*/
 
 
@@ -57,13 +57,13 @@
 #define dip_yes_no_jp		{ "No","Yes" }
 #define dip_game_mode_jp	{ "Game","Test" }
 
-#define dip_on_off_chs		{ "¹Ø","¿ª"  }
-#define dip_yes_no_chs		{ "·ñ","ÊÇ" }
-#define dip_game_mode_chs	{ "ÓÎÏ·","²âÊÔ" }
+#define dip_on_off_chs		{ "å…³","å¼€"  }
+#define dip_yes_no_chs		{ "å¦","æ˜¯" }
+#define dip_game_mode_chs	{ "æ¸¸æˆ","æµ‹è¯•" }
 
-#define dip_on_off_cht		{ "êP","é_"  }
-#define dip_yes_no_cht		{ "·ñ","ÊÇ" }
-#define dip_game_mode_cht	{ "ß[‘ò","œyÔ‡" }
+#define dip_on_off_cht		{ "é—œ","é–‹"  }
+#define dip_yes_no_cht		{ "å¦","æ˜¯" }
+#define dip_game_mode_cht	{ "éŠæˆ²","æ¸¬è©¦" }
 
 
 static int dip_load_bit(int sw, int shift, int invert)
@@ -87,7 +87,7 @@ static void dip_save_bit(int sw, int value, int shift, int invert)
 
 
 /*--------------------------------------
-  ¹²Í¨ (¥³¥¤¥ó type1)
+  å…±é€š (ã‚³ã‚¤ãƒ³ type1)
 --------------------------------------*/
 
 
@@ -117,26 +117,26 @@ static void dip_save_bit(int sw, int value, int shift, int invert)
 
 #define dip_coin1_chs		\
 {							\
-	"4±ÒÍæ1´Î",				\
-	"3±ÒÍæ1´Î",				\
-	"2±ÒÍæ1´Î",				\
-	"1±ÒÍæ1´Î",				\
-	"1±ÒÍæ2´Î",				\
-	"1±ÒÍæ3´Î",				\
-	"1±ÒÍæ4´Î",				\
-	"1±ÒÍæ6´Î"				\
+	"4å¸ç©1æ¬¡",				\
+	"3å¸ç©1æ¬¡",				\
+	"2å¸ç©1æ¬¡",				\
+	"1å¸ç©1æ¬¡",				\
+	"1å¸ç©2æ¬¡",				\
+	"1å¸ç©3æ¬¡",				\
+	"1å¸ç©4æ¬¡",				\
+	"1å¸ç©6æ¬¡"				\
 }
 
 #define dip_coin1_cht		\
 {							\
-	"4ÅÍæ1´Î",				\
-	"3ÅÍæ1´Î",				\
-	"2ÅÍæ1´Î",				\
-	"1ÅÍæ1´Î",				\
-	"1ÅÍæ2´Î",				\
-	"1ÅÍæ3´Î",				\
-	"1ÅÍæ4´Î",				\
-	"1ÅÍæ6´Î"				\
+	"4å¹£ç©1æ¬¡",				\
+	"3å¹£ç©1æ¬¡",				\
+	"2å¹£ç©1æ¬¡",				\
+	"1å¹£ç©1æ¬¡",				\
+	"1å¹£ç©2æ¬¡",				\
+	"1å¹£ç©3æ¬¡",				\
+	"1å¹£ç©4æ¬¡",				\
+	"1å¹£ç©6æ¬¡"				\
 }
 
 
@@ -207,7 +207,7 @@ static void dip_save_coin1b(int value)
 }
 
 /*--------------------------------------
-  ¹²Í¨ (¥³¥¤¥ó type2)
+  å…±é€š (ã‚³ã‚¤ãƒ³ type2)
 --------------------------------------*/
 
 
@@ -236,25 +236,25 @@ static void dip_save_coin1b(int value)
 }
 
 #define dip_coin2_chs						\
-{	"4±ÒÍæ1´Î",								\
-	"3±ÒÍæ1´Î",								\
-	"2±ÒÍæ1´Î",								\
-	"2±ÒÍæ1´Î(1±ÒĞø¹Ø)",					\
-	"1±ÒÍæ1´Î",								\
-	"1±ÒÍæ2´Î",								\
-	"1±ÒÍæ3´Î",								\
-	"1±ÒÍæ4´Î"								\
+{	"4å¸ç©1æ¬¡",								\
+	"3å¸ç©1æ¬¡",								\
+	"2å¸ç©1æ¬¡",								\
+	"2å¸ç©1æ¬¡(1å¸ç»­å…³)",					\
+	"1å¸ç©1æ¬¡",								\
+	"1å¸ç©2æ¬¡",								\
+	"1å¸ç©3æ¬¡",								\
+	"1å¸ç©4æ¬¡"								\
 }
 
 #define dip_coin2_cht						\
-{	"4ÅÍæ1´Î",								\
-	"3ÅÍæ1´Î",								\
-	"2ÅÍæ1´Î",								\
-	"2ÅÍæ1´Î(1ÅÀmêP)",					\
-	"1ÅÍæ1´Î",								\
-	"1ÅÍæ2´Î",								\
-	"1ÅÍæ3´Î",								\
-	"1ÅÍæ4´Î"								\
+{	"4å¹£ç©1æ¬¡",								\
+	"3å¹£ç©1æ¬¡",								\
+	"2å¹£ç©1æ¬¡",								\
+	"2å¹£ç©1æ¬¡(1å¹£çºŒé—œ)",					\
+	"1å¹£ç©1æ¬¡",								\
+	"1å¹£ç©2æ¬¡",								\
+	"1å¹£ç©3æ¬¡",								\
+	"1å¹£ç©4æ¬¡"								\
 }
 
 
@@ -325,7 +325,7 @@ static void dip_save_coin2b(int value)
 }
 
 /*--------------------------------------
-  ¹²Í¨ (¿ğÌå)
+  å…±é€š (ç­ä½“)
 --------------------------------------*/
 
 #define dip_cabinet				\
@@ -344,16 +344,16 @@ static void dip_save_coin2b(int value)
 
 #define dip_cabinet_chs	\
 {						\
-	"1ÈË",				\
-	"2ÈË",				\
-	"ÂÖÁ÷µßµ¹ÆÁÄ»"		\
+	"1äºº",				\
+	"2äºº",				\
+	"è½®æµé¢ å€’å±å¹•"		\
 }
 
 #define dip_cabinet_cht	\
 {						\
-	"1ÈË",				\
-	"2ÈË",				\
-	"İ†Á÷îµ¹ÆÁÄ»"		\
+	"1äºº",				\
+	"2äºº",				\
+	"è¼ªæµé¡›å€’å±å¹•"		\
 }
 
 static int dip_load_cabinet(void)
@@ -380,7 +380,7 @@ static void dip_save_cabinet(int value)
 }
 
 /*--------------------------------------
-  ¹²Í¨ (ëyÒ×¶È)
+  å…±é€š (é›£æ˜“åº¦)
 --------------------------------------*/
 
 
@@ -410,26 +410,26 @@ static void dip_save_cabinet(int value)
 
 #define dip_difficulty_chs	\
 {							\
-	"1 (×îµÍÄÑ¶È)",			\
+	"1 (æœ€ä½éš¾åº¦)",			\
 	"2",					\
 	"3",					\
-	"4 (ÆÕÍ¨)",				\
+	"4 (æ™®é€š)",				\
 	"5",					\
 	"6",					\
 	"7",					\
-	"8 (×î¸ßÄÑ¶È)"			\
+	"8 (æœ€é«˜éš¾åº¦)"			\
 }
 
 #define dip_difficulty_cht	\
 {							\
-	"1 (×îµÍëy¶È)",			\
+	"1 (æœ€ä½é›£åº¦)",			\
 	"2",					\
 	"3",					\
-	"4 (ÆÕÍ¨)",				\
+	"4 (æ™®é€š)",				\
 	"5",					\
 	"6",					\
 	"7",					\
-	"8 (×î¸ßëy¶È)"			\
+	"8 (æœ€é«˜é›£åº¦)"			\
 }
 
 
@@ -544,15 +544,15 @@ static dipswitch_t dipswitch_forgottn_jp[] =
 static dipswitch_t dipswitch_forgottn_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",		1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",		1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "ÑİÊ¾ÉùÒô",	1, 0x40, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",	1, 0x80, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸A",		1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",		1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "æ¼”ç¤ºå£°éŸ³",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",	1, 0x80, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "µ÷ÊÔÄ£Ê½",	1, 0x40, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",		1, 0x80, 0, 1, dip_on_off_chs     },
+	{ "éš¾åº¦",		1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "è°ƒè¯•æ¨¡å¼",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",		1, 0x80, 0, 1, dip_on_off_chs     },
 
 	// DIP C
 
@@ -563,15 +563,15 @@ static dipswitch_t dipswitch_forgottn_chs[] =
 static dipswitch_t dipswitch_forgottn_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",		1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",		1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "ÑİÊ¾Â•Òô",	1, 0x40, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",	1, 0x80, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£A",		1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",		1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "æ¼”ç¤ºè²éŸ³",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",	1, 0x80, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",		1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "Õ{Ô‡Ä£Ê½",	1, 0x40, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",		1, 0x80, 0, 1, dip_on_off_cht     },
+	{ "é›£åº¦",		1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "èª¿è©¦æ¨¡å¼",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",		1, 0x80, 0, 1, dip_on_off_cht     },
 
 	// DIP C
 	MENU_BLANK,
@@ -672,20 +672,20 @@ static dipswitch_t dipswitch_ghouls_chs[] =
 {
 
 	// DIP A
-	{ "Í¶±ÒA",			1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",			1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "ÏÔÊ¾",			1, 0xc0, 0, 2, dip_cabinet_chs    },
+	{ "æŠ•å¸A",			1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",			1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "æ˜¾ç¤º",			1, 0xc0, 0, 2, dip_cabinet_chs    },
 
 	// DIP B
-	{ "ÄÑ¶È",			1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "½±ÀøÉúÃü",		1, 0x30, 0, 3, {"1Íò,3Íò,Ã¿3Íò","2Íò,5Íò,Ã¿7Íò","3Íò,6Íò,Ã¿7Íò","4Íò,7Íò,Ã¿8Íò"} },
+	{ "éš¾åº¦",			1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "å¥–åŠ±ç”Ÿå‘½",		1, 0x30, 0, 3, {"1ä¸‡,3ä¸‡,æ¯3ä¸‡","2ä¸‡,5ä¸‡,æ¯7ä¸‡","3ä¸‡,6ä¸‡,æ¯7ä¸‡","4ä¸‡,7ä¸‡,æ¯8ä¸‡"} },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"3","4","5","6"} },
-	{ "·­×ªÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",		1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",		1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",		1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"3","4","5","6"} },
+	{ "ç¿»è½¬å±å¹•",		1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",		1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",		1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -693,20 +693,20 @@ static dipswitch_t dipswitch_ghouls_chs[] =
 static dipswitch_t dipswitch_ghouls_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",			1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",			1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "ï@Ê¾",			1, 0xc0, 0, 2, dip_cabinet_cht    },
+	{ "æŠ•å¹£A",			1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",			1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "é¡¯ç¤º",			1, 0xc0, 0, 2, dip_cabinet_cht    },
 
 	// DIP B
-	{ "ëy¶È",			1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "ª„„îÉúÃü",		1, 0x30, 0, 3, {"1Èf,3Èf,Ã¿3Èf","2Èf,5Èf,Ã¿7Èf","3Èf,6Èf,Ã¿7Èf","4Èf,7Èf,Ã¿8Èf"} },
+	{ "é›£åº¦",			1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "çå‹µç”Ÿå‘½",		1, 0x30, 0, 3, {"1è¬,3è¬,æ¯3è¬","2è¬,5è¬,æ¯7è¬","3è¬,6è¬,æ¯7è¬","4è¬,7è¬,æ¯8è¬"} },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"3","4","5","6"} },
-	{ "·­ŞDÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",		1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",		1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",		1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"3","4","5","6"} },
+	{ "ç¿»è½‰å±å¹•",		1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",		1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",		1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -760,21 +760,21 @@ static dipswitch_t dipswitch_ghoulsu_jp[] =
 static dipswitch_t dipswitch_ghoulsu_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",			1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",			1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "ÏÔÊ¾",			1, 0xc0, 0, 2, dip_cabinet_chs    },
+	{ "æŠ•å¸A",			1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",			1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "æ˜¾ç¤º",			1, 0xc0, 0, 2, dip_cabinet_chs    },
 
 	// DIP B
-	{ "ÄÑ¶È",			1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "½±ÀøÉúÃü",		1, 0x30, 0, 3, {"1Íò,3Íò,Ã¿3Íò","2Íò,5Íò,Ã¿7Íò","3Íò,6Íò,Ã¿7Íò","4Íò,7Íò,Ã¿8Íò"} },
-	{ "Ëø¶¨",			1, 0x80, 0, 1, dip_on_off     },
+	{ "éš¾åº¦",			1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "å¥–åŠ±ç”Ÿå‘½",		1, 0x30, 0, 3, {"1ä¸‡,3ä¸‡,æ¯3ä¸‡","2ä¸‡,5ä¸‡,æ¯7ä¸‡","3ä¸‡,6ä¸‡,æ¯7ä¸‡","4ä¸‡,7ä¸‡,æ¯8ä¸‡"} },
+	{ "é”å®š",			1, 0x80, 0, 1, dip_on_off     },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"2","3","4","5"} },
-	{ "·­×ªÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",		1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",		1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",		1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"2","3","4","5"} },
+	{ "ç¿»è½¬å±å¹•",		1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",		1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",		1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -782,21 +782,21 @@ static dipswitch_t dipswitch_ghoulsu_chs[] =
 static dipswitch_t dipswitch_ghoulsu_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",			1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",			1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "ï@Ê¾",			1, 0xc0, 0, 2, dip_cabinet_cht    },
+	{ "æŠ•å¹£A",			1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",			1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "é¡¯ç¤º",			1, 0xc0, 0, 2, dip_cabinet_cht    },
 
 	// DIP B
-	{ "ëy¶È",			1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "ª„„îÉúÃü",		1, 0x30, 0, 3, {"1Èf,3Èf,Ã¿3Èf","2Èf,5Èf,Ã¿7Èf","3Èf,6Èf,Ã¿7Èf","4Èf,7Èf,Ã¿8Èf"} },
-	{ "æi¶¨",			1, 0x80, 0, 1, dip_on_off_cht     },
+	{ "é›£åº¦",			1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "çå‹µç”Ÿå‘½",		1, 0x30, 0, 3, {"1è¬,3è¬,æ¯3è¬","2è¬,5è¬,æ¯7è¬","3è¬,6è¬,æ¯7è¬","4è¬,7è¬,æ¯8è¬"} },
+	{ "é–å®š",			1, 0x80, 0, 1, dip_on_off_cht     },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"2","3","4","5"} },
-	{ "·­ŞDÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",		1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",		1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",		1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"2","3","4","5"} },
+	{ "ç¿»è½‰å±å¹•",		1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",		1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",		1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -849,21 +849,21 @@ static dipswitch_t dipswitch_daimakai_jp[] =
 static dipswitch_t dipswitch_daimakai_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",			1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",			1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "ÏÔÊ¾",			1, 0xc0, 0, 2, dip_cabinet_chs    },
+	{ "æŠ•å¸A",			1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",			1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "æ˜¾ç¤º",			1, 0xc0, 0, 2, dip_cabinet_chs    },
 
 	// DIP B
-	{ "ÄÑ¶È",			1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "½±ÀøÉúÃü",		1, 0x30, 0, 3, {"1Íò,3Íò,Ã¿3Íò","2Íò,5Íò,Ã¿7Íò","3Íò,6Íò,Ã¿7Íò","4Íò,7Íò,Ã¿8Íò"} },
-	{ "Ëø¶¨",			1, 0x80, 0, 1, dip_on_off_chs     },
+	{ "éš¾åº¦",			1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "å¥–åŠ±ç”Ÿå‘½",		1, 0x30, 0, 3, {"1ä¸‡,3ä¸‡,æ¯3ä¸‡","2ä¸‡,5ä¸‡,æ¯7ä¸‡","3ä¸‡,6ä¸‡,æ¯7ä¸‡","4ä¸‡,7ä¸‡,æ¯8ä¸‡"} },
+	{ "é”å®š",			1, 0x80, 0, 1, dip_on_off_chs     },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"3","4","5","6"} },
-	{ "·­×ªÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",		1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",		1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",		1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"3","4","5","6"} },
+	{ "ç¿»è½¬å±å¹•",		1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",		1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",		1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -871,21 +871,21 @@ static dipswitch_t dipswitch_daimakai_chs[] =
 static dipswitch_t dipswitch_daimakai_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",			1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",			1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "ï@Ê¾",			1, 0xc0, 0, 2, dip_cabinet_cht    },
+	{ "æŠ•å¹£A",			1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",			1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "é¡¯ç¤º",			1, 0xc0, 0, 2, dip_cabinet_cht    },
 
 	// DIP B
-	{ "ëy¶È",			1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "ª„„îÉúÃü",		1, 0x30, 0, 3, {"1Èf,3Èf,Ã¿3Èf","2Èf,5Èf,Ã¿7Èf","3Èf,6Èf,Ã¿7Èf","4Èf,7Èf,Ã¿8Èf"} },
-	{ "æi¶¨",			1, 0x80, 0, 1, dip_on_off_cht     },
+	{ "é›£åº¦",			1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "çå‹µç”Ÿå‘½",		1, 0x30, 0, 3, {"1è¬,3è¬,æ¯3è¬","2è¬,5è¬,æ¯7è¬","3è¬,6è¬,æ¯7è¬","4è¬,7è¬,æ¯8è¬"} },
+	{ "é–å®š",			1, 0x80, 0, 1, dip_on_off_cht     },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"3","4","5","6"} },
-	{ "·­ŞDÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",		1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",		1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",		1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"3","4","5","6"} },
+	{ "ç¿»è½‰å±å¹•",		1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",		1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",		1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -1119,23 +1119,23 @@ static dipswitch_t dipswitch_strider_jp[] =
 static dipswitch_t dipswitch_strider_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",			1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",			1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "ÏÔÊ¾",			1, 0xc0, 0, 2, dip_cabinet_chs    },
+	{ "æŠ•å¸A",			1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",			1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "æ˜¾ç¤º",			1, 0xc0, 0, 2, dip_cabinet_chs    },
 
 	// DIP B
-	{ "ÄÑ¶È",							1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "½±ÀøÉúÃü",						1, 0x30, 0, 3, {"2Íò,4Íò,Ã¿6Íò","3Íò,5Íò,Ã¿7Íò","2ÍòºÍ6Íò","3ÍòºÍ6Íò"} },
-	{ "Internal Diff. on Life Loss",	1, 0xc0, 0, 2, {"-3","-1","Ä¬ÈÏ"} },
+	{ "éš¾åº¦",							1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "å¥–åŠ±ç”Ÿå‘½",						1, 0x30, 0, 3, {"2ä¸‡,4ä¸‡,æ¯6ä¸‡","3ä¸‡,5ä¸‡,æ¯7ä¸‡","2ä¸‡å’Œ6ä¸‡","3ä¸‡å’Œ6ä¸‡"} },
+	{ "Internal Diff. on Life Loss",	1, 0xc0, 0, 2, {"-3","-1","é»˜è®¤"} },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"2","3","4","5"} },
-	{ "Ëø¶¨",			1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ãâ·ÑÓÎÍæ",		1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",		1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",		1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",		1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"2","3","4","5"} },
+	{ "é”å®š",			1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "å…è´¹æ¸¸ç©",		1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",		1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",		1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",		1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -1144,23 +1144,23 @@ static dipswitch_t dipswitch_strider_chs[] =
 static dipswitch_t dipswitch_strider_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",			1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",			1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "ï@Ê¾",			1, 0xc0, 0, 2, dip_cabinet_cht    },
+	{ "æŠ•å¹£A",			1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",			1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "é¡¯ç¤º",			1, 0xc0, 0, 2, dip_cabinet_cht    },
 
 	// DIP B
-	{ "ëy¶È",							1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "ª„„îÉúÃü",						1, 0x30, 0, 3, {"2Èf,4Èf,Ã¿6Èf","3Èf,5Èf,Ã¿7Èf","2ÈfºÍ6Èf","3ÈfºÍ6Èf"} },
-	{ "Internal Diff. on Life Loss",	1, 0xc0, 0, 2, {"-3","-1","Ä¬ÕJ"} },
+	{ "é›£åº¦",							1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "çå‹µç”Ÿå‘½",						1, 0x30, 0, 3, {"2è¬,4è¬,æ¯6è¬","3è¬,5è¬,æ¯7è¬","2è¬å’Œ6è¬","3è¬å’Œ6è¬"} },
+	{ "Internal Diff. on Life Loss",	1, 0xc0, 0, 2, {"-3","-1","é»˜èª"} },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"2","3","4","5"} },
-	{ "æi¶¨",			1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "ÃâÙMß[Íæ",		1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",		1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",		1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",		1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"2","3","4","5"} },
+	{ "é–å®š",			1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "å…è²»éŠç©",		1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",		1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",		1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",		1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -1219,24 +1219,24 @@ static dipswitch_t dipswitch_stridrua_jp[] =
 static dipswitch_t dipswitch_stridrua_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",			1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",			1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "ÏÔÊ¾",			1, 0xc0, 0, 2, dip_cabinet_chs    },
+	{ "æŠ•å¸A",			1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",			1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "æ˜¾ç¤º",			1, 0xc0, 0, 2, dip_cabinet_chs    },
 
 	// DIP B
-	{ "ÄÑ¶È",							1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",				1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "½±ÀøÉúÃü",						1, 0x30, 0, 3, {"2Íò,4Íò,Ã¿6Íò","3Íò,5Íò,Ã¿7Íò","2ÍòºÍ6Íò","3ÍòºÍ6Íò"} },
-	{ "Internal Diff. on Life Loss",	1, 0xc0, 0, 2, {"-3","-1","Ä¬ÈÏ"} },
+	{ "éš¾åº¦",							1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",				1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "å¥–åŠ±ç”Ÿå‘½",						1, 0x30, 0, 3, {"2ä¸‡,4ä¸‡,æ¯6ä¸‡","3ä¸‡,5ä¸‡,æ¯7ä¸‡","2ä¸‡å’Œ6ä¸‡","3ä¸‡å’Œ6ä¸‡"} },
+	{ "Internal Diff. on Life Loss",	1, 0xc0, 0, 2, {"-3","-1","é»˜è®¤"} },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"2","3","4","5"} },
-	{ "Ëø¶¨",			1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ãâ·ÑÓÎÍæ",		1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",		1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",		1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",		1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"2","3","4","5"} },
+	{ "é”å®š",			1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "å…è´¹æ¸¸ç©",		1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",		1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",		1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",		1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -1244,24 +1244,24 @@ static dipswitch_t dipswitch_stridrua_chs[] =
 static dipswitch_t dipswitch_stridrua_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",			1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",			1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "ï@Ê¾",			1, 0xc0, 0, 2, dip_cabinet_cht    },
+	{ "æŠ•å¹£A",			1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",			1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "é¡¯ç¤º",			1, 0xc0, 0, 2, dip_cabinet_cht    },
 
 	// DIP B
-	{ "ëy¶È",							1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "2Åé_Ê¼,1ÅÀmêP",				1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "ª„„îÉúÃü",						1, 0x30, 0, 3, {"2Èf,4Èf,Ã¿6Èf","3Èf,5Èf,Ã¿7Èf","2ÈfºÍ6Èf","3ÈfºÍ6Èf"} },
-	{ "Internal Diff. on Life Loss",	1, 0xc0, 0, 2, {"-3","-1","Ä¬ÕJ"} },
+	{ "é›£åº¦",							1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",				1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "çå‹µç”Ÿå‘½",						1, 0x30, 0, 3, {"2è¬,4è¬,æ¯6è¬","3è¬,5è¬,æ¯7è¬","2è¬å’Œ6è¬","3è¬å’Œ6è¬"} },
+	{ "Internal Diff. on Life Loss",	1, 0xc0, 0, 2, {"-3","-1","é»˜èª"} },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"2","3","4","5"} },
-	{ "æi¶¨",			1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "ÃâÙMß[Íæ",		1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",		1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",		1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",		1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"2","3","4","5"} },
+	{ "é–å®š",			1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "å…è²»éŠç©",		1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",		1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",		1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",		1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -1476,20 +1476,20 @@ static dipswitch_t dipswitch_dynwar_jp[] =
 static dipswitch_t dipswitch_dynwar_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",			1, 0x07, 0, 7, dip_coin2_chs      },
-	{ "Í¶±ÒB",			1, 0x38, 0, 7, dip_coin2_chs      },
-	{ "Ãâ·ÑÓÎÍæ",		1, 0x80, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸A",			1, 0x07, 0, 7, dip_coin2_chs      },
+	{ "æŠ•å¸B",			1, 0x38, 0, 7, dip_coin2_chs      },
+	{ "å…è´¹æ¸¸ç©",		1, 0x80, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",			1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "éš¾åº¦",			1, 0x07, 0, 7, dip_difficulty_chs },
 
 	// DIP C
-	{ "Ëø¶¨",			1, 0x01, 0, 1, dip_on_off_chs     },
-	{ "¼ÓËÙÄ£Ê½",		1, 0x02, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",		1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",		1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",		1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "é”å®š",			1, 0x01, 0, 1, dip_on_off_chs     },
+	{ "åŠ é€Ÿæ¨¡å¼",		1, 0x02, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",		1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",		1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",		1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -1497,20 +1497,20 @@ static dipswitch_t dipswitch_dynwar_chs[] =
 static dipswitch_t dipswitch_dynwar_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",			1, 0x07, 0, 7, dip_coin2_cht      },
-	{ "Í¶ÅB",			1, 0x38, 0, 7, dip_coin2_cht      },
-	{ "ÃâÙMß[Íæ",		1, 0x80, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£A",			1, 0x07, 0, 7, dip_coin2_cht      },
+	{ "æŠ•å¹£B",			1, 0x38, 0, 7, dip_coin2_cht      },
+	{ "å…è²»éŠç©",		1, 0x80, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",			1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "é›£åº¦",			1, 0x07, 0, 7, dip_difficulty_cht },
 
 	// DIP C
-	{ "æi¶¨",			1, 0x01, 0, 1, dip_on_off_cht     },
-	{ "¼ÓËÙÄ£Ê½",		1, 0x02, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",		1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",		1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",		1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "é–å®š",			1, 0x01, 0, 1, dip_on_off_cht     },
+	{ "åŠ é€Ÿæ¨¡å¼",		1, 0x02, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",		1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",		1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",		1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -1629,22 +1629,22 @@ static dipswitch_t dipswitch_willow_jp[] =
 static dipswitch_t dipswitch_willow_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",			1, 0x07, 0, 7, dip_coin2_chs      },
-	{ "Í¶±ÒB",			1, 0x38, 0, 7, dip_coin2_chs      },
-	{ "ÏÔÊ¾",			1, 0xc0, 0, 2, dip_cabinet_chs    },
+	{ "æŠ•å¸A",			1, 0x07, 0, 7, dip_coin2_chs      },
+	{ "æŠ•å¸B",			1, 0x38, 0, 7, dip_coin2_chs      },
+	{ "æ˜¾ç¤º",			1, 0xc0, 0, 2, dip_cabinet_chs    },
 
 	// DIP B
-	{ "ÄÑ¶È",					1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "Nando Speed",			1, 0x18, 0, 3, {"Âı","ÆÕÍ¨","¿ì","¼«¿ì"}},
+	{ "éš¾åº¦",					1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "Nando Speed",			1, 0x18, 0, 3, {"æ…¢","æ™®é€š","å¿«","æå¿«"}},
 	{ "Stage Magic Continue",	1, 0x80, 0, 1, dip_on_off_chs      },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "ÑªÁ¿",			1, 0x0c, 0, 3, {"2","3","4","5"} },
-	{ "·­×ªÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",		1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",		1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",		1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "è¡€é‡",			1, 0x0c, 0, 3, {"2","3","4","5"} },
+	{ "ç¿»è½¬å±å¹•",		1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",		1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",		1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -1653,22 +1653,22 @@ static dipswitch_t dipswitch_willow_chs[] =
 static dipswitch_t dipswitch_willow_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",			1, 0x07, 0, 7, dip_coin2_cht      },
-	{ "Í¶ÅB",			1, 0x38, 0, 7, dip_coin2_cht      },
-	{ "ï@Ê¾",			1, 0xc0, 0, 2, dip_cabinet_cht    },
+	{ "æŠ•å¹£A",			1, 0x07, 0, 7, dip_coin2_cht      },
+	{ "æŠ•å¹£B",			1, 0x38, 0, 7, dip_coin2_cht      },
+	{ "é¡¯ç¤º",			1, 0xc0, 0, 2, dip_cabinet_cht    },
 
 	// DIP B
-	{ "ëy¶È",					1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "Nando Speed",			1, 0x18, 0, 3, {"Âı","ÆÕÍ¨","¿ì","¼«¿ì"}},
+	{ "é›£åº¦",					1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "Nando Speed",			1, 0x18, 0, 3, {"æ…¢","æ™®é€š","å¿«","æå¿«"}},
 	{ "Stage Magic Continue",	1, 0x80, 0, 1, dip_on_off_cht      },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "ÑªÁ¿",			1, 0x0c, 0, 3, {"2","3","4","5"} },
-	{ "·­ŞDÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",		1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",		1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",		1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "è¡€é‡",			1, 0x0c, 0, 3, {"2","3","4","5"} },
+	{ "ç¿»è½‰å±å¹•",		1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",		1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",		1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -1821,20 +1821,20 @@ static dipswitch_t dipswitch_unsquad_jp[] =
 static dipswitch_t dipswitch_unsquad_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",			1, 0x07, 0, 7, dip_coin2_chs      },
-	{ "Í¶±ÒB",			1, 0x38, 0, 7, dip_coin2_chs      },
+	{ "æŠ•å¸A",			1, 0x07, 0, 7, dip_coin2_chs      },
+	{ "æŠ•å¸B",			1, 0x38, 0, 7, dip_coin2_chs      },
 
 	// DIP B
-	{ "ÄÑ¶È",			1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "ÉËº¦",			1, 0x18, 0, 3, {"Ğ¡","ÆÕÍ¨","´ó","×î´ó"}},
+	{ "éš¾åº¦",			1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "ä¼¤å®³",			1, 0x18, 0, 3, {"å°","æ™®é€š","å¤§","æœ€å¤§"}},
 
 	// DIP C
-	{ "Ãâ·ÑÓÎÍæ",		1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",			1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",		1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",		1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",		1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "å…è´¹æ¸¸ç©",		1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",			1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",		1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",		1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",		1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -1842,20 +1842,20 @@ static dipswitch_t dipswitch_unsquad_chs[] =
 static dipswitch_t dipswitch_unsquad_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",			1, 0x07, 0, 7, dip_coin2_cht      },
-	{ "Í¶ÅB",			1, 0x38, 0, 7, dip_coin2_cht      },
+	{ "æŠ•å¹£A",			1, 0x07, 0, 7, dip_coin2_cht      },
+	{ "æŠ•å¹£B",			1, 0x38, 0, 7, dip_coin2_cht      },
 
 	// DIP B
-	{ "ëy¶È",			1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "‚ûº¦",			1, 0x18, 0, 3, {"Ğ¡","ÆÕÍ¨","´ó","×î´ó"}},
+	{ "é›£åº¦",			1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "å‚·å®³",			1, 0x18, 0, 3, {"å°","æ™®é€š","å¤§","æœ€å¤§"}},
 
 	// DIP C
-	{ "ÃâÙMß[Íæ",		1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",			1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",		1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",		1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",		1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "å…è²»éŠç©",		1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",			1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",		1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",		1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",		1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -1986,23 +1986,23 @@ static dipswitch_t dipswitch_ffight_jp[] =
 static dipswitch_t dipswitch_ffight_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",				1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸A",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",				1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È¼¶±ğ1",		1, 0x07, 0, 7, {"×î¼òµ¥","ÉÔ¼òµ¥","¼òµ¥","ÆÕÍ¨","ÖĞµÈ","À§ÄÑ","ÉÔÄÑ","×îÄÑ"} },
-	{ "ÄÑ¶È¼¶±ğ2",		1, 0x18, 0, 3, {"¼òµ¥","ÆÕÍ¨","À§ÄÑ","×îÄÑ"} },
-	{ "½±ÀøÉúÃü",		1, 0x60, 0, 3, {"10Íò","20Íò","10Íò,Ã¿20Íò","ÎŞ"} },
+	{ "éš¾åº¦çº§åˆ«1",		1, 0x07, 0, 7, {"æœ€ç®€å•","ç¨ç®€å•","ç®€å•","æ™®é€š","ä¸­ç­‰","å›°éš¾","ç¨éš¾","æœ€éš¾"} },
+	{ "éš¾åº¦çº§åˆ«2",		1, 0x18, 0, 3, {"ç®€å•","æ™®é€š","å›°éš¾","æœ€éš¾"} },
+	{ "å¥–åŠ±ç”Ÿå‘½",		1, 0x60, 0, 3, {"10ä¸‡","20ä¸‡","10ä¸‡,æ¯20ä¸‡","æ— "} },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "Ãâ·ÑÓÎÍæ",		1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",			1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",		1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",		1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",		1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "å…è´¹æ¸¸ç©",		1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",			1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",		1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",		1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",		1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -2010,23 +2010,23 @@ static dipswitch_t dipswitch_ffight_chs[] =
 static dipswitch_t dipswitch_ffight_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",				1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£A",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",				1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È¼‰„e1",		1, 0x07, 0, 7, {"×îº††Î","ÉÔº††Î","º††Î","ÆÕÍ¨","ÖĞµÈ","À§ëy","ÉÔëy","×îëy"} },
-	{ "ëy¶È¼‰„e2",		1, 0x18, 0, 3, {"º††Î","ÆÕÍ¨","À§ëy","×îëy"} },
-	{ "ª„„îÉúÃü",		1, 0x60, 0, 3, {"10Èf","20Èf","10Èf,Ã¿20Èf","Ÿo"} },
+	{ "é›£åº¦ç´šåˆ¥1",		1, 0x07, 0, 7, {"æœ€ç°¡å–®","ç¨ç°¡å–®","ç°¡å–®","æ™®é€š","ä¸­ç­‰","å›°é›£","ç¨é›£","æœ€é›£"} },
+	{ "é›£åº¦ç´šåˆ¥2",		1, 0x18, 0, 3, {"ç°¡å–®","æ™®é€š","å›°é›£","æœ€é›£"} },
+	{ "çå‹µç”Ÿå‘½",		1, 0x60, 0, 3, {"10è¬","20è¬","10è¬,æ¯20è¬","ç„¡"} },
 
 	// DIP C
-	{ "ÉúÃü",			1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "ÃâÙMß[Íæ",		1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",			1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",		1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",		1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",		1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç”Ÿå‘½",			1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "å…è²»éŠç©",		1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",			1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",		1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",		1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",		1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -2189,24 +2189,24 @@ static dipswitch_t dipswitch_1941_jp[] =
 static dipswitch_t dipswitch_1941_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",				1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸A",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",				1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",				1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "Éı¼¶Ê±¼ä",			1, 0x18, 0, 3, {"¸üÂı","»ºÂı","¿ìËÙ","¸ü¿ì"} },
-	{ "×Óµ¯ËÙ¶È",			1, 0x60, 0, 3, {"·Ç³£Âı","Âı","¿ì","·Ç³£¿ì"} },
-	{ "¿ª³¡ÑªÁ¿",			1, 0x80, 0, 1, {"3¸ñ","4¸ñ"} },
+	{ "éš¾åº¦",				1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "å‡çº§æ—¶é—´",			1, 0x18, 0, 3, {"æ›´æ…¢","ç¼“æ…¢","å¿«é€Ÿ","æ›´å¿«"} },
+	{ "å­å¼¹é€Ÿåº¦",			1, 0x60, 0, 3, {"éå¸¸æ…¢","æ…¢","å¿«","éå¸¸å¿«"} },
+	{ "å¼€åœºè¡€é‡",			1, 0x80, 0, 1, {"3æ ¼","4æ ¼"} },
 
 	// DIP C
-	{ "ÏŞÖÆÓÎÏ·ËÙ¶È",		1, 0x01, 0, 1, dip_on_off_chs     },
-	{ "Ãâ·ÑÓÎÍæ",			1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",				1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",			1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",			1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",			1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "é™åˆ¶æ¸¸æˆé€Ÿåº¦",		1, 0x01, 0, 1, dip_on_off_chs     },
+	{ "å…è´¹æ¸¸ç©",			1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",				1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",			1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",			1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",			1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -2214,24 +2214,24 @@ static dipswitch_t dipswitch_1941_chs[] =
 static dipswitch_t dipswitch_1941_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",				1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£A",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",				1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",				1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "Éı¼‰•rég",			1, 0x18, 0, 3, {"¸üÂı","¾Âı","¿ìËÙ","¸ü¿ì"} },
-	{ "×Ó—ËÙ¶È",			1, 0x60, 0, 3, {"·Ç³£Âı","Âı","¿ì","·Ç³£¿ì"} },
-	{ "é_ˆöÑªÁ¿",			1, 0x80, 0, 1, {"3¸ñ","4¸ñ"} },
+	{ "é›£åº¦",				1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "å‡ç´šæ™‚é–“",			1, 0x18, 0, 3, {"æ›´æ…¢","ç·©æ…¢","å¿«é€Ÿ","æ›´å¿«"} },
+	{ "å­å½ˆé€Ÿåº¦",			1, 0x60, 0, 3, {"éå¸¸æ…¢","æ…¢","å¿«","éå¸¸å¿«"} },
+	{ "é–‹å ´è¡€é‡",			1, 0x80, 0, 1, {"3æ ¼","4æ ¼"} },
 
 	// DIP C
-	{ "ÏŞÖÆß[‘òËÙ¶È",		1, 0x01, 0, 1, dip_on_off_cht     },
-	{ "ÃâÙMß[Íæ",			1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",				1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",			1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",			1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",			1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "é™åˆ¶éŠæˆ²é€Ÿåº¦",		1, 0x01, 0, 1, dip_on_off_cht     },
+	{ "å…è²»éŠç©",			1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",				1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",			1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",			1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",			1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -2378,20 +2378,20 @@ static dipswitch_t dipswitch_mercs_jp[] =
 static dipswitch_t dipswitch_mercs_chs[] =
 {
 	// DIP A
-	{ "Í¶±Ò",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",				1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "Í¶±Ò²Û",				1, 0x08, 0, 1, {"1","3"} },
-	{ "ÓÎÏ·Ä£Ê½",			1, 0x10, 0, 1, {"2ÈË","3ÈË"} },
+	{ "éš¾åº¦",				1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "æŠ•å¸æ§½",				1, 0x08, 0, 1, {"1","3"} },
+	{ "æ¸¸æˆæ¨¡å¼",			1, 0x10, 0, 1, {"2äºº","3äºº"} },
 
 	// DIP C
-	{ "Ëø¶¨",				1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",			1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",			1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "µ÷ÊÔÄ£Ê½",			1, 0x80, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",				1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",			1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",			1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",			1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "è°ƒè¯•æ¨¡å¼",			1, 0x80, 0, 1, dip_on_off_chs     },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -2400,20 +2400,20 @@ static dipswitch_t dipswitch_mercs_chs[] =
 static dipswitch_t dipswitch_mercs_cht[] =
 {
 	// DIP A
-	{ "Í¶Å",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",				1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "Í¶Å²Û",				1, 0x08, 0, 1, {"1","3"} },
-	{ "ß[‘òÄ£Ê½",			1, 0x10, 0, 1, {"2ÈË","3ÈË"} },
+	{ "é›£åº¦",				1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "æŠ•å¹£æ§½",				1, 0x08, 0, 1, {"1","3"} },
+	{ "éŠæˆ²æ¨¡å¼",			1, 0x10, 0, 1, {"2äºº","3äºº"} },
 
 	// DIP C
-	{ "æi¶¨",				1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",			1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",			1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "Õ{Ô‡Ä£Ê½",			1, 0x80, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",				1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",			1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",			1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",			1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "èª¿è©¦æ¨¡å¼",			1, 0x80, 0, 1, dip_on_off_cht     },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -2526,20 +2526,20 @@ static dipswitch_t dipswitch_mtwins_jp[] =
 static dipswitch_t dipswitch_mtwins_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",		1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",		1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸A",		1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",		1, 0x38, 0, 7, dip_coin1_chs      },
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "ÉúÃü",		1, 0x38, 0, 3, {"1","2","3","4"} },
+	{ "éš¾åº¦",		1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "ç”Ÿå‘½",		1, 0x38, 0, 3, {"1","2","3","4"} },
 
 	// DIP C
-	{ "Ãâ·ÑÓÎÍæ",	1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",		1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",	1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",	1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",	1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "å…è´¹æ¸¸ç©",	1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",		1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",	1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",	1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",	1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -2547,20 +2547,20 @@ static dipswitch_t dipswitch_mtwins_chs[] =
 static dipswitch_t dipswitch_mtwins_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",		1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",		1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£A",		1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",		1, 0x38, 0, 7, dip_coin1_cht      },
 
 	// DIP B
-	{ "ëy¶È",		1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "ÉúÃü",		1, 0x38, 0, 3, {"1","2","3","4"} },
+	{ "é›£åº¦",		1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "ç”Ÿå‘½",		1, 0x38, 0, 3, {"1","2","3","4"} },
 
 	// DIP C
-	{ "ÃâÙMß[Íæ",	1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",		1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",	1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",	1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",	1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "å…è²»éŠç©",	1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",		1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",	1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",	1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",	1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -2691,23 +2691,23 @@ static dipswitch_t dipswitch_msword_jp[] =
 static dipswitch_t dipswitch_msword_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",				1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸A",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",				1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÉËº¦",				1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "µĞÈËÑªÁ¿ºÍ¹¥»÷Á¦",	1, 0x38, 0, 7, dip_difficulty_chs },
-	{ "¹Ø¿¨Ñ¡Ôñ",			1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "ä¼¤å®³",				1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "æ•Œäººè¡€é‡å’Œæ”»å‡»åŠ›",	1, 0x38, 0, 7, dip_difficulty_chs },
+	{ "å…³å¡é€‰æ‹©",			1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP C
-	{ "Ñª°ü",				1, 0x03, 0, 3, {"1","2","3(Ğø¹ØÊ±-1)","4(Ğø¹ØÊ±-1)"} },
-	{ "Ãâ·ÑÓÎÍæ",			1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",				1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",			1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",			1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",			1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "è¡€åŒ…",				1, 0x03, 0, 3, {"1","2","3(ç»­å…³æ—¶-1)","4(ç»­å…³æ—¶-1)"} },
+	{ "å…è´¹æ¸¸ç©",			1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",				1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",			1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",			1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",			1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -2715,23 +2715,23 @@ static dipswitch_t dipswitch_msword_chs[] =
 static dipswitch_t dipswitch_msword_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",				1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£A",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",				1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "‚ûº¦",				1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "”³ÈËÑªÁ¿ºÍ¹¥“ôÁ¦",	1, 0x38, 0, 7, dip_difficulty_cht },
-	{ "êP¿¨ßx“ñ",			1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "å‚·å®³",				1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "æ•µäººè¡€é‡å’Œæ”»æ“ŠåŠ›",	1, 0x38, 0, 7, dip_difficulty_cht },
+	{ "é—œå¡é¸æ“‡",			1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP C
-	{ "Ñª°ü",				1, 0x03, 0, 3, {"1","2","3(ÀmêP•r-1)","4(ÀmêP•r-1)"} },
-	{ "ÃâÙMß[Íæ",			1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",				1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",			1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",			1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",			1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "è¡€åŒ…",				1, 0x03, 0, 3, {"1","2","3(çºŒé—œæ™‚-1)","4(çºŒé—œæ™‚-1)"} },
+	{ "å…è²»éŠç©",			1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",				1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",			1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",			1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",			1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -2884,21 +2884,21 @@ static dipswitch_t dipswitch_cawing_jp[] =
 static dipswitch_t dipswitch_cawing_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",				1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸A",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",				1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È(µĞ·½»ğÁ¦)",		1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "ÄÑ¶È(Íæ¼Ò»ğÁ¦)",		1, 0x18, 0, 3, {"¼òµ¥","ÆÕÍ¨","À§ÄÑ","×îÄÑ"} },
+	{ "éš¾åº¦(æ•Œæ–¹ç«åŠ›)",		1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "éš¾åº¦(ç©å®¶ç«åŠ›)",		1, 0x18, 0, 3, {"ç®€å•","æ™®é€š","å›°éš¾","æœ€éš¾"} },
 
 	// DIP C
-	{ "Ãâ·ÑÓÎÍæ",			1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",				1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",			1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",			1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",			1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "å…è´¹æ¸¸ç©",			1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",				1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",			1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",			1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",			1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -2906,21 +2906,21 @@ static dipswitch_t dipswitch_cawing_chs[] =
 static dipswitch_t dipswitch_cawing_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",				1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£A",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",				1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È(”³·½»ğÁ¦)",		1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "ëy¶È(Íæ¼Ò»ğÁ¦)",		1, 0x18, 0, 3, {"º††Î","ÆÕÍ¨","À§ëy","×îëy"} },
+	{ "é›£åº¦(æ•µæ–¹ç«åŠ›)",		1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "é›£åº¦(ç©å®¶ç«åŠ›)",		1, 0x18, 0, 3, {"ç°¡å–®","æ™®é€š","å›°é›£","æœ€é›£"} },
 
 	// DIP C
-	{ "ÃâÙMß[Íæ",			1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",				1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",			1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",			1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",			1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "å…è²»éŠç©",			1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",				1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",			1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",			1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",			1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -3051,22 +3051,22 @@ static dipswitch_t dipswitch_nemo_jp[] =
 static dipswitch_t dipswitch_nemo_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",                          1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",                          1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸A",                          1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",                          1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "ÑªÁ¿",		1, 0x18, 0, 2, {"×îĞ¡","ÖĞµÈ","×î´ó"} },
+	{ "éš¾åº¦",		1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "è¡€é‡",		1, 0x18, 0, 2, {"æœ€å°","ä¸­ç­‰","æœ€å¤§"} },
 
 	// DIP C
-	{ "ÉúÃü",		1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "Ãâ·ÑÓÎÍæ",	1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",		1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",	1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",	1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",	1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç”Ÿå‘½",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "å…è´¹æ¸¸ç©",	1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",		1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",	1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",	1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",	1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -3074,22 +3074,22 @@ static dipswitch_t dipswitch_nemo_chs[] =
 static dipswitch_t dipswitch_nemo_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",                          1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",                          1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£A",                          1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",                          1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",		1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "ÑªÁ¿",		1, 0x18, 0, 2, {"×îĞ¡","ÖĞµÈ","×î´ó"} },
+	{ "é›£åº¦",		1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "è¡€é‡",		1, 0x18, 0, 2, {"æœ€å°","ä¸­ç­‰","æœ€å¤§"} },
 
 	// DIP C
-	{ "ÉúÃü",		1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "ÃâÙMß[Íæ",	1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",		1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",	1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",	1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",	1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç”Ÿå‘½",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "å…è²»éŠç©",	1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",		1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",	1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",	1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",	1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -3228,20 +3228,20 @@ static dipswitch_t dipswitch_sf2_jp[] =
 static dipswitch_t dipswitch_sf2_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",				1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø", 	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸A",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",				1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³", 	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",				1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "éš¾åº¦",				1, 0x07, 0, 7, dip_difficulty_chs },
 
 	// DIP C
-	{ "Ãâ·ÑÓÎÍæ",			1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",				1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",			1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",			1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",			1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "å…è´¹æ¸¸ç©",			1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",				1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",			1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",			1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",			1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -3249,20 +3249,20 @@ static dipswitch_t dipswitch_sf2_chs[] =
 static dipswitch_t dipswitch_sf2_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",				1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP", 	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£A",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",				1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ", 	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",				1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "é›£åº¦",				1, 0x07, 0, 7, dip_difficulty_cht },
 
 	// DIP C
-	{ "ÃâÙMß[Íæ",			1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",				1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",			1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",			1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",			1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "å…è²»éŠç©",			1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",				1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",			1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",			1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",			1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -3315,21 +3315,21 @@ static dipswitch_t dipswitch_sf2j_jp[] =
 static dipswitch_t dipswitch_sf2j_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",				1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø", 	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸A",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",				1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³", 	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",				1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "2ÈËÓÎÏ·",			1, 0x08, 0, 1, {"1±Ò/ÎŞ¼ÌĞø","2±Ò/Ê¤ÀûÕß¼ÌĞø"} },
+	{ "éš¾åº¦",				1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "2äººæ¸¸æˆ",			1, 0x08, 0, 1, {"1å¸/æ— ç»§ç»­","2å¸/èƒœåˆ©è€…ç»§ç»­"} },
 
 	// DIP C
-	{ "Ãâ·ÑÓÎÍæ",			1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",				1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",			1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",			1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",			1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "å…è´¹æ¸¸ç©",			1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",				1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",			1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",			1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",			1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -3337,21 +3337,21 @@ static dipswitch_t dipswitch_sf2j_chs[] =
 static dipswitch_t dipswitch_sf2j_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",				1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP", 	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£A",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",				1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ", 	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",				1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "2ÈËß[‘ò",			1, 0x08, 0, 1, {"1Å/ŸoÀ^Àm","2Å/„ÙÀûÕßÀ^Àm"} },
+	{ "é›£åº¦",				1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "2äººéŠæˆ²",			1, 0x08, 0, 1, {"1å¹£/ç„¡ç¹¼çºŒ","2å¹£/å‹åˆ©è€…ç¹¼çºŒ"} },
 
 	// DIP C
-	{ "ÃâÙMß[Íæ",			1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",				1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",			1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",			1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",			1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "å…è²»éŠç©",			1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",				1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",			1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",			1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",			1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -3363,41 +3363,10 @@ static void dip_load_sf2(int type, int language)
 
 	switch (language)
 	{
-	case 1:
-		{
-		dip = (type == 0) ? dipswitch_sf2 : dipswitch_sf2j;
-		dip = (type == 0) ? dipswitch_sf2_jp : dipswitch_sf2j_jp;
-		dip = (type == 0) ? dipswitch_sf2_chs : dipswitch_sf2j_chs;
-		dip = (type == 0) ? dipswitch_sf2_cht : dipswitch_sf2j_cht;
-		}
-	break;
-
-	case 2:
-		{
-		dip = (type == 0) ? dipswitch_sf2 : dipswitch_sf2j;
-		dip = (type == 0) ? dipswitch_sf2_jp : dipswitch_sf2j_jp;
-		dip = (type == 0) ? dipswitch_sf2_chs : dipswitch_sf2j_chs;
-		dip = (type == 0) ? dipswitch_sf2_cht : dipswitch_sf2j_cht;
-		}
-	break;
-
-	case 3:
-		{
-		dip = (type == 0) ? dipswitch_sf2 : dipswitch_sf2j;
-		dip = (type == 0) ? dipswitch_sf2_jp : dipswitch_sf2j_jp;
-		dip = (type == 0) ? dipswitch_sf2_chs : dipswitch_sf2j_chs;
-		dip = (type == 0) ? dipswitch_sf2_cht : dipswitch_sf2j_cht;
-		}
-	break;
-
-	default:
-		{
-		dip = (type == 0) ? dipswitch_sf2 : dipswitch_sf2j;
-		dip = (type == 0) ? dipswitch_sf2_jp : dipswitch_sf2j_jp;
-		dip = (type == 0) ? dipswitch_sf2_chs : dipswitch_sf2j_chs;
-		dip = (type == 0) ? dipswitch_sf2_cht : dipswitch_sf2j_cht;
-		}
-	break;
+	case 1:dip = (type == 0) ? dipswitch_sf2_jp : dipswitch_sf2j_jp;break;
+	case 2:dip = (type == 0) ? dipswitch_sf2_chs : dipswitch_sf2j_chs;break;
+	case 3:dip = (type == 0) ? dipswitch_sf2_cht : dipswitch_sf2j_cht;break;
+	default:dip = (type == 0) ? dipswitch_sf2 : dipswitch_sf2j;break;
 	}
 
 	// DIP A
@@ -3424,41 +3393,10 @@ static void dip_save_sf2(int type, int language)
 
 	switch (language)
 	{
-	case 1:
-		{
-		dip = (type == 0) ? dipswitch_sf2 : dipswitch_sf2j;
-		dip = (type == 0) ? dipswitch_sf2_jp : dipswitch_sf2j_jp;
-		dip = (type == 0) ? dipswitch_sf2_chs : dipswitch_sf2j_chs;
-		dip = (type == 0) ? dipswitch_sf2_cht : dipswitch_sf2j_cht;
-		}
-	break;
-
-	case 2:
-		{
-		dip = (type == 0) ? dipswitch_sf2 : dipswitch_sf2j;
-		dip = (type == 0) ? dipswitch_sf2_jp : dipswitch_sf2j_jp;
-		dip = (type == 0) ? dipswitch_sf2_chs : dipswitch_sf2j_chs;
-		dip = (type == 0) ? dipswitch_sf2_cht : dipswitch_sf2j_cht;
-		}
-	break;
-
-	case 3:
-		{
-		dip = (type == 0) ? dipswitch_sf2 : dipswitch_sf2j;
-		dip = (type == 0) ? dipswitch_sf2_jp : dipswitch_sf2j_jp;
-		dip = (type == 0) ? dipswitch_sf2_chs : dipswitch_sf2j_chs;
-		dip = (type == 0) ? dipswitch_sf2_cht : dipswitch_sf2j_cht;
-		}
-	break;
-
-	default:
-		{
-		dip = (type == 0) ? dipswitch_sf2 : dipswitch_sf2j;
-		dip = (type == 0) ? dipswitch_sf2_jp : dipswitch_sf2j_jp;
-		dip = (type == 0) ? dipswitch_sf2_chs : dipswitch_sf2j_chs;
-		dip = (type == 0) ? dipswitch_sf2_cht : dipswitch_sf2j_cht;
-		}
-	break;
+	case 1:dip = (type == 0) ? dipswitch_sf2_jp : dipswitch_sf2j_jp;break;
+	case 2:dip = (type == 0) ? dipswitch_sf2_chs : dipswitch_sf2j_chs;break;
+	case 3:dip = (type == 0) ? dipswitch_sf2_cht : dipswitch_sf2j_cht;break;
+	default:dip = (type == 0) ? dipswitch_sf2 : dipswitch_sf2j;break;
 	}
 
 	// DIP A
@@ -3536,24 +3474,24 @@ static dipswitch_t dipswitch_3wonders_jp[] =
 static dipswitch_t dipswitch_3wonders_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒAB",				1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",				1, 0x80, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸A",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸AB",				1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",				1, 0x80, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÉúÃü(Midnight Wanderers)", 1, 0x03, 0, 3, {"1","2","3","5"} },
-	{ "ÄÑ¶È(Midnight Wanderers)", 1, 0x0c, 0, 3, {"¼òµ¥","ÆÕÍ¨","À§ÄÑ","×îÄÑ"} },
-	{ "ÉúÃü(Chariot)",            1, 0x30, 0, 3, {"1","2","3","5"} },
-	{ "ÄÑ¶È(Chariot)",            1, 0xc0, 0, 3, {"¼òµ¥","ÆÕÍ¨","À§ÄÑ","×îÄÑ"} },
+	{ "ç”Ÿå‘½(Midnight Wanderers)", 1, 0x03, 0, 3, {"1","2","3","5"} },
+	{ "éš¾åº¦(Midnight Wanderers)", 1, 0x0c, 0, 3, {"ç®€å•","æ™®é€š","å›°éš¾","æœ€éš¾"} },
+	{ "ç”Ÿå‘½(Chariot)",            1, 0x30, 0, 3, {"1","2","3","5"} },
+	{ "éš¾åº¦(Chariot)",            1, 0xc0, 0, 3, {"ç®€å•","æ™®é€š","å›°éš¾","æœ€éš¾"} },
 
 	// DIP C
-	{ "ÉúÃü(Don't Pull)",	1, 0x03, 0, 3, {"1","2","3","5"} },
-	{ "ÄÑ¶È(Don't Pull)",	1, 0x08, 0, 3, {"¼òµ¥","ÆÕÍ¨","À§ÄÑ","×îÄÑ"} },
-	{ "·­×ªÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",			1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",			1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",			1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç”Ÿå‘½(Don't Pull)",	1, 0x03, 0, 3, {"1","2","3","5"} },
+	{ "éš¾åº¦(Don't Pull)",	1, 0x08, 0, 3, {"ç®€å•","æ™®é€š","å›°éš¾","æœ€éš¾"} },
+	{ "ç¿»è½¬å±å¹•",			1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",			1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",			1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -3561,24 +3499,24 @@ static dipswitch_t dipswitch_3wonders_chs[] =
 static dipswitch_t dipswitch_3wonders_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅAB",				1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",				1, 0x80, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£A",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£AB",				1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",				1, 0x80, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ÉúÃü(Midnight Wanderers)", 1, 0x03, 0, 3, {"1","2","3","5"} },
-	{ "ëy¶È(Midnight Wanderers)", 1, 0x0c, 0, 3, {"º††Î","ÆÕÍ¨","À§ëy","×îëy"} },
-	{ "ÉúÃü(Chariot)",            1, 0x30, 0, 3, {"1","2","3","5"} },
-	{ "ëy¶È(Chariot)",            1, 0xc0, 0, 3, {"º††Î","ÆÕÍ¨","À§ëy","×îëy"} },
+	{ "ç”Ÿå‘½(Midnight Wanderers)", 1, 0x03, 0, 3, {"1","2","3","5"} },
+	{ "é›£åº¦(Midnight Wanderers)", 1, 0x0c, 0, 3, {"ç°¡å–®","æ™®é€š","å›°é›£","æœ€é›£"} },
+	{ "ç”Ÿå‘½(Chariot)",            1, 0x30, 0, 3, {"1","2","3","5"} },
+	{ "é›£åº¦(Chariot)",            1, 0xc0, 0, 3, {"ç°¡å–®","æ™®é€š","å›°é›£","æœ€é›£"} },
 
 	// DIP C
-	{ "ÉúÃü(Don't Pull)",	1, 0x03, 0, 3, {"1","2","3","5"} },
-	{ "ëy¶È(Don't Pull)",	1, 0x08, 0, 3, {"º††Î","ÆÕÍ¨","À§ëy","×îëy"} },
-	{ "·­ŞDÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",			1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",			1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",			1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç”Ÿå‘½(Don't Pull)",	1, 0x03, 0, 3, {"1","2","3","5"} },
+	{ "é›£åº¦(Don't Pull)",	1, 0x08, 0, 3, {"ç°¡å–®","æ™®é€š","å›°é›£","æœ€é›£"} },
+	{ "ç¿»è½‰å±å¹•",			1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",			1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",			1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -3777,23 +3715,23 @@ static dipswitch_t dipswitch_kod_jp[] =
 static dipswitch_t dipswitch_kod_chs[] =
 {
 	// DIP A
-	{ "Í¶±Ò",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±Ò²Û",				1, 0x08, 0, 1, {"1","3"}      },
-	{ "ÓÎÍæÄ£Ê½",			1, 0x10, 0, 1, {"2ÈË","3ÈË"} },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸æ§½",				1, 0x08, 0, 1, {"1","3"}      },
+	{ "æ¸¸ç©æ¨¡å¼",			1, 0x10, 0, 1, {"2äºº","3äºº"} },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "ÉúÃü",		1, 0x38, 0, 7, {"1","2","3","4","5","6","7","8"} },
-	{ "½±ÀøÉúÃü",	1, 0xc0, 0, 3, {"8Íò,Ã¿´Î40Íò","10Íò,Ã¿45Íò","16Íò,Ã¿45Íò","ÎŞ"} },
+	{ "éš¾åº¦",		1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "ç”Ÿå‘½",		1, 0x38, 0, 7, {"1","2","3","4","5","6","7","8"} },
+	{ "å¥–åŠ±ç”Ÿå‘½",	1, 0xc0, 0, 3, {"8ä¸‡,æ¯æ¬¡40ä¸‡","10ä¸‡,æ¯45ä¸‡","16ä¸‡,æ¯45ä¸‡","æ— "} },
 
 	// DIP C
-	{ "Ãâ·ÑÓÎÍæ",		1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",			1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",		1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",		1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",		1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "å…è´¹æ¸¸ç©",		1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",			1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",		1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",		1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",		1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -3801,23 +3739,23 @@ static dipswitch_t dipswitch_kod_chs[] =
 static dipswitch_t dipswitch_kod_cht[] =
 {
 	// DIP A
-	{ "Í¶Å",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶Å²Û",				1, 0x08, 0, 1, {"1","3"}      },
-	{ "ß[ÍæÄ£Ê½",			1, 0x10, 0, 1, {"2ÈË","3ÈË"} },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£æ§½",				1, 0x08, 0, 1, {"1","3"}      },
+	{ "éŠç©æ¨¡å¼",			1, 0x10, 0, 1, {"2äºº","3äºº"} },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",		1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "ÉúÃü",		1, 0x38, 0, 7, {"1","2","3","4","5","6","7","8"} },
-	{ "ª„„îÉúÃü",	1, 0xc0, 0, 3, {"8Èf,Ã¿´Î40Èf","10Èf,Ã¿45Èf","16Èf,Ã¿45Èf","Ÿo"} },
+	{ "é›£åº¦",		1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "ç”Ÿå‘½",		1, 0x38, 0, 7, {"1","2","3","4","5","6","7","8"} },
+	{ "çå‹µç”Ÿå‘½",	1, 0xc0, 0, 3, {"8è¬,æ¯æ¬¡40è¬","10è¬,æ¯45è¬","16è¬,æ¯45è¬","ç„¡"} },
 
 	// DIP C
-	{ "ÃâÙMß[Íæ",		1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",			1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",		1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",		1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",		1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "å…è²»éŠç©",		1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",			1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",		1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",		1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",		1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -3874,23 +3812,23 @@ static dipswitch_t dipswitch_kodj_jp[] =
 static dipswitch_t dipswitch_kodj_chs[] =
 {
 	// DIP A
-	{ "Í¶±Ò",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±Ò²Û",				1, 0x08, 0, 1, {"1","3"}      },
-	{ "ÓÎÍæÄ£Ê½",			1, 0x10, 0, 1, {"2ÈË","3ÈË"} },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸æ§½",				1, 0x08, 0, 1, {"1","3"}      },
+	{ "æ¸¸ç©æ¨¡å¼",			1, 0x10, 0, 1, {"2äºº","3äºº"} },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "ÉúÃü",		1, 0x38, 0, 7, {"1","2","3","4","5","6","7","8"} },
-	{ "½±ÀøÉúÃü",	1, 0xc0, 0, 3, {"8Íò,Ã¿´Î40Íò","20Íò,Ã¿45Íò","16Íò,Ã¿45Íò","ÎŞ"} },
+	{ "éš¾åº¦",		1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "ç”Ÿå‘½",		1, 0x38, 0, 7, {"1","2","3","4","5","6","7","8"} },
+	{ "å¥–åŠ±ç”Ÿå‘½",	1, 0xc0, 0, 3, {"8ä¸‡,æ¯æ¬¡40ä¸‡","20ä¸‡,æ¯45ä¸‡","16ä¸‡,æ¯45ä¸‡","æ— "} },
 
 	// DIP C
-	{ "Ãâ·ÑÓÎÍæ",		1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",			1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",		1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",		1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",		1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "å…è´¹æ¸¸ç©",		1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",			1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",		1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",		1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",		1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -3898,23 +3836,23 @@ static dipswitch_t dipswitch_kodj_chs[] =
 static dipswitch_t dipswitch_kodj_cht[] =
 {
 	// DIP A
-	{ "Í¶Å",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶Å²Û",				1, 0x08, 0, 1, {"1","3"}      },
-	{ "ß[ÍæÄ£Ê½",			1, 0x10, 0, 1, {"2ÈË","3ÈË"} },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£æ§½",				1, 0x08, 0, 1, {"1","3"}      },
+	{ "éŠç©æ¨¡å¼",			1, 0x10, 0, 1, {"2äºº","3äºº"} },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",		1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "ÉúÃü",		1, 0x38, 0, 7, {"1","2","3","4","5","6","7","8"} },
-	{ "ª„„îÉúÃü",	1, 0xc0, 0, 3, {"8Èf,Ã¿´Î40Èf","20Èf,Ã¿45Èf","16Èf,Ã¿45Èf","Ÿo"} },
+	{ "é›£åº¦",		1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "ç”Ÿå‘½",		1, 0x38, 0, 7, {"1","2","3","4","5","6","7","8"} },
+	{ "çå‹µç”Ÿå‘½",	1, 0xc0, 0, 3, {"8è¬,æ¯æ¬¡40è¬","20è¬,æ¯45è¬","16è¬,æ¯45è¬","ç„¡"} },
 
 	// DIP C
-	{ "ÃâÙMß[Íæ",		1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",			1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",		1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",		1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",		1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",		1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "å…è²»éŠç©",		1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",			1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",		1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",		1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",		1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",		1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -4068,22 +4006,22 @@ static dipswitch_t dipswitch_captcomm_jp[] =
 static dipswitch_t dipswitch_captcomm_chs[] =
 {
 	// DIP A
-	{ "Í¶±Ò",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È1",		1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "ÄÑ¶È2",		1, 0x18, 0, 3, {"¼òµ¥","ÆÕÍ¨","À§ÄÑ","×îÄÑ"} },
-	{ "ÓÎÍæÄ£Ê½",	1, 0xc0, 0, 3, {"1ÈË","2ÈË","3ÈË","4ÈË"} },
+	{ "éš¾åº¦1",		1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "éš¾åº¦2",		1, 0x18, 0, 3, {"ç®€å•","æ™®é€š","å›°éš¾","æœ€éš¾"} },
+	{ "æ¸¸ç©æ¨¡å¼",	1, 0xc0, 0, 3, {"1äºº","2äºº","3äºº","4äºº"} },
 
 	// DIP C
-	{ "ÉúÃü",		1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "Ãâ·ÑÓÎÍæ",	1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",		1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",	1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",	1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",	1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç”Ÿå‘½",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "å…è´¹æ¸¸ç©",	1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",		1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",	1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",	1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",	1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -4091,22 +4029,22 @@ static dipswitch_t dipswitch_captcomm_chs[] =
 static dipswitch_t dipswitch_captcomm_cht[] =
 {
 	// DIP A
-	{ "Í¶Å",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È1",		1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "ëy¶È2",		1, 0x18, 0, 3, {"º††Î","ÆÕÍ¨","À§ëy","×îëy"} },
-	{ "ß[ÍæÄ£Ê½",	1, 0xc0, 0, 3, {"1ÈË","2ÈË","3ÈË","4ÈË"} },
+	{ "é›£åº¦1",		1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "é›£åº¦2",		1, 0x18, 0, 3, {"ç°¡å–®","æ™®é€š","å›°é›£","æœ€é›£"} },
+	{ "éŠç©æ¨¡å¼",	1, 0xc0, 0, 3, {"1äºº","2äºº","3äºº","4äºº"} },
 
 	// DIP C
-	{ "ÉúÃü",		1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "ÃâÙMß[Íæ",	1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",		1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",	1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",	1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",	1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç”Ÿå‘½",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "å…è²»éŠç©",	1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",		1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",	1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",	1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",	1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -4265,23 +4203,23 @@ static dipswitch_t dipswitch_knights_jp[] =
 static dipswitch_t dipswitch_knights_chs[] =
 {
 	// DIP A
-	{ "Í¶±Ò",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "µĞ·½¹¥»÷ÆµÂÊ",	1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "µĞ·½¹¥»÷Á¦Á¿",	1, 0x38, 0, 7, dip_difficulty_chs },
-	{ "Í¶±Ò²Û",			1, 0x40, 0, 1, {"1","3"}      },
-	{ "ÓÎÍæÄ£Ê½",		1, 0x80, 0, 1, {"2ÈË","3ÈË"} },
+	{ "æ•Œæ–¹æ”»å‡»é¢‘ç‡",	1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "æ•Œæ–¹æ”»å‡»åŠ›é‡",	1, 0x38, 0, 7, dip_difficulty_chs },
+	{ "æŠ•å¸æ§½",			1, 0x40, 0, 1, {"1","3"}      },
+	{ "æ¸¸ç©æ¨¡å¼",		1, 0x80, 0, 1, {"2äºº","3äºº"} },
 
 	// DIP C
-	{ "ÉúÃü",		1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "Ãâ·ÑÓÎÍæ",	1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",		1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",	1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",	1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",	1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç”Ÿå‘½",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "å…è´¹æ¸¸ç©",	1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",		1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",	1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",	1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",	1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -4289,23 +4227,23 @@ static dipswitch_t dipswitch_knights_chs[] =
 static dipswitch_t dipswitch_knights_cht[] =
 {
 	// DIP A
-	{ "Í¶Å",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "”³·½¹¥“ôîlÂÊ",	1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "”³·½¹¥“ôÁ¦Á¿",	1, 0x38, 0, 7, dip_difficulty_cht },
-	{ "Í¶Å²Û",			1, 0x40, 0, 1, {"1","3"}      },
-	{ "ß[ÍæÄ£Ê½",		1, 0x80, 0, 1, {"2ÈË","3ÈË"} },
+	{ "æ•µæ–¹æ”»æ“Šé »ç‡",	1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "æ•µæ–¹æ”»æ“ŠåŠ›é‡",	1, 0x38, 0, 7, dip_difficulty_cht },
+	{ "æŠ•å¹£æ§½",			1, 0x40, 0, 1, {"1","3"}      },
+	{ "éŠç©æ¨¡å¼",		1, 0x80, 0, 1, {"2äºº","3äºº"} },
 
 	// DIP C
-	{ "ÉúÃü",		1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "ÃâÙMß[Íæ",	1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",		1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",	1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",	1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",	1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç”Ÿå‘½",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "å…è²»éŠç©",	1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",		1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",	1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",	1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",	1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -4461,22 +4399,22 @@ static dipswitch_t dipswitch_varth_jp[] =
 static dipswitch_t dipswitch_varth_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±ÒB",				1, 0x38, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸A",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸B",				1, 0x38, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "½±ÀøÉúÃü",	1, 0x18, 0, 3, {"60Íò,Ã¿140Íò","60Íò,200Íò,450Íò","120Íò,350Íò","200Íò"} },
+	{ "éš¾åº¦",		1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "å¥–åŠ±ç”Ÿå‘½",	1, 0x18, 0, 3, {"60ä¸‡,æ¯140ä¸‡","60ä¸‡,200ä¸‡,450ä¸‡","120ä¸‡,350ä¸‡","200ä¸‡"} },
 
 	// DIP C
-	{ "ÉúÃü",		1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "Ãâ·ÑÓÎÍæ",	1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",		1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",	1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",	1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",	1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç”Ÿå‘½",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "å…è´¹æ¸¸ç©",	1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",		1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",	1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",	1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",	1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_chs  },
 
 	MENU_BLANK,
 	MENU_RETURN_CHS,
@@ -4485,22 +4423,22 @@ static dipswitch_t dipswitch_varth_chs[] =
 static dipswitch_t dipswitch_varth_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶ÅB",				1, 0x38, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£A",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£B",				1, 0x38, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",		1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "ª„„îÉúÃü",	1, 0x18, 0, 3, {"60Èf,Ã¿140Èf","60Èf,200Èf,450Èf","120Èf,350Èf","200Èf"} },
+	{ "é›£åº¦",		1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "çå‹µç”Ÿå‘½",	1, 0x18, 0, 3, {"60è¬,æ¯140è¬","60è¬,200è¬,450è¬","120è¬,350è¬","200è¬"} },
 
 	// DIP C
-	{ "ÉúÃü",		1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "ÃâÙMß[Íæ",	1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",		1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",	1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",	1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",	1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç”Ÿå‘½",		1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "å…è²»éŠç©",	1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",		1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",	1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",	1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",	1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -4645,22 +4583,22 @@ static dipswitch_t dipswitch_cworld2j_jp[] =
 static dipswitch_t dipswitch_cworld2j_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
-	{ "´ò¿ª²âÊÔÄ£Ê½",		1, 0x80, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸A",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æ‰“å¼€æµ‹è¯•æ¨¡å¼",		1, 0x80, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x07, 0, 4, {"×î¼òµ¥","¼òµ¥","ÆÕÍ¨","À§ÄÑ","×îÄÑ"} },
+	{ "éš¾åº¦",		1, 0x07, 0, 4, {"æœ€ç®€å•","ç®€å•","æ™®é€š","å›°éš¾","æœ€éš¾"} },
 	{ "Extend",		1, 0x18, 0, 2, {"N","E","D"} },
-	{ "ÉúÃü",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
+	{ "ç”Ÿå‘½",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
 
 	// DIP C
-	{ "Ãâ·ÑÓÎÍæ",	1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",		1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",	1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",	1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",	1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "å…è´¹æ¸¸ç©",	1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",		1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",	1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",	1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",	1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -4668,22 +4606,22 @@ static dipswitch_t dipswitch_cworld2j_chs[] =
 static dipswitch_t dipswitch_cworld2j_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
-	{ "´òé_œyÔ‡Ä£Ê½",		1, 0x80, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£A",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æ‰“é–‹æ¸¬è©¦æ¨¡å¼",		1, 0x80, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",		1, 0x07, 0, 4, {"×îº††Î","º††Î","ÆÕÍ¨","À§ëy","×îëy"} },
+	{ "é›£åº¦",		1, 0x07, 0, 4, {"æœ€ç°¡å–®","ç°¡å–®","æ™®é€š","å›°é›£","æœ€é›£"} },
 	{ "Extend",		1, 0x18, 0, 2, {"N","E","D"} },
-	{ "ÉúÃü",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
+	{ "ç”Ÿå‘½",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
 
 	// DIP C
-	{ "ÃâÙMß[Íæ",	1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",		1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",	1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",	1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",	1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "å…è²»éŠç©",	1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",		1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",	1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",	1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",	1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -4842,22 +4780,22 @@ static dipswitch_t dipswitch_qad_jp[] =
 static dipswitch_t dipswitch_qad_chs[] =
 {
 	// DIP A
-	{ "Í¶±Ò",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
-	{ "´ò¿ª²âÊÔÄ£Ê½",		1, 0x80, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æ‰“å¼€æµ‹è¯•æ¨¡å¼",		1, 0x80, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x07, 0, 4, {"×î¼òµ¥","¼òµ¥","ÆÕÍ¨","À§ÄÑ","×îÄÑ"} },
-	{ "ÖªÊ¶",		1, 0x18, 0, 3, {"¼òµ¥","ÆÕÍ¨","À§ÄÑ","×îÄÑ"} },
-	{ "ÉúÃü",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
+	{ "éš¾åº¦",		1, 0x07, 0, 4, {"æœ€ç®€å•","ç®€å•","æ™®é€š","å›°éš¾","æœ€éš¾"} },
+	{ "çŸ¥è¯†",		1, 0x18, 0, 3, {"ç®€å•","æ™®é€š","å›°éš¾","æœ€éš¾"} },
+	{ "ç”Ÿå‘½",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
 
 	// DIP C
-	{ "Ãâ·ÑÓÎÍæ",	1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",		1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",	1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",	1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",	1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "å…è´¹æ¸¸ç©",	1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",		1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",	1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",	1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",	1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -4865,22 +4803,22 @@ static dipswitch_t dipswitch_qad_chs[] =
 static dipswitch_t dipswitch_qad_cht[] =
 {
 	// DIP A
-	{ "Í¶Å",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
-	{ "´òé_œyÔ‡Ä£Ê½",		1, 0x80, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æ‰“é–‹æ¸¬è©¦æ¨¡å¼",		1, 0x80, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",		1, 0x07, 0, 4, {"×îº††Î","º††Î","ÆÕÍ¨","À§ëy","×îëy"} },
-	{ "Öª×R",		1, 0x18, 0, 3, {"º††Î","ÆÕÍ¨","À§ëy","×îëy"} },
-	{ "ÉúÃü",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
+	{ "é›£åº¦",		1, 0x07, 0, 4, {"æœ€ç°¡å–®","ç°¡å–®","æ™®é€š","å›°é›£","æœ€é›£"} },
+	{ "çŸ¥è­˜",		1, 0x18, 0, 3, {"ç°¡å–®","æ™®é€š","å›°é›£","æœ€é›£"} },
+	{ "ç”Ÿå‘½",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
 
 	// DIP C
-	{ "ÃâÙMß[Íæ",	1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",		1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",	1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",	1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",	1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "å…è²»éŠç©",	1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",		1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",	1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",	1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",	1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -4933,21 +4871,21 @@ static dipswitch_t dipswitch_qadj_jp[] =
 static dipswitch_t dipswitch_qadj_chs[] =
 {
 	// DIP A
-	{ "Í¶±Ò",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
-	{ "´ò¿ª²âÊÔÄ£Ê½",		1, 0x80, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æ‰“å¼€æµ‹è¯•æ¨¡å¼",		1, 0x80, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x07, 0, 4, {"×î¼òµ¥","¼òµ¥","ÆÕÍ¨","À§ÄÑ","×îÄÑ"} },
-	{ "ÉúÃü",		1, 0xe0, 0, 2, {"1","2","3"} },
+	{ "éš¾åº¦",		1, 0x07, 0, 4, {"æœ€ç®€å•","ç®€å•","æ™®é€š","å›°éš¾","æœ€éš¾"} },
+	{ "ç”Ÿå‘½",		1, 0xe0, 0, 2, {"1","2","3"} },
 
 	// DIP C
-	{ "Ãâ·ÑÓÎÍæ",	1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",		1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",	1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",	1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",	1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "å…è´¹æ¸¸ç©",	1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",		1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",	1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",	1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",	1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -4955,21 +4893,21 @@ static dipswitch_t dipswitch_qadj_chs[] =
 static dipswitch_t dipswitch_qadj_cht[] =
 {
 	// DIP A
-	{ "Í¶Å",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
-	{ "´òé_œyÔ‡Ä£Ê½",		1, 0x80, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æ‰“é–‹æ¸¬è©¦æ¨¡å¼",		1, 0x80, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",		1, 0x07, 0, 4, {"×îº††Î","º††Î","ÆÕÍ¨","À§ëy","×îëy"} },
-	{ "ÉúÃü",		1, 0xe0, 0, 2, {"1","2","3"} },
+	{ "é›£åº¦",		1, 0x07, 0, 4, {"æœ€ç°¡å–®","ç°¡å–®","æ™®é€š","å›°é›£","æœ€é›£"} },
+	{ "ç”Ÿå‘½",		1, 0xe0, 0, 2, {"1","2","3"} },
 
 	// DIP C
-	{ "ÃâÙMß[Íæ",	1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",		1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",	1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",	1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",	1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "å…è²»éŠç©",	1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",		1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",	1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",	1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",	1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -5244,21 +5182,21 @@ static dipswitch_t dipswitch_qtono2_jp[] =
 static dipswitch_t dipswitch_qtono2_chs[] =
 {
 	// DIP A
-	{ "Í¶±Ò",				1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸",				1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x40, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "ÉúÃü",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
+	{ "éš¾åº¦",		1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "ç”Ÿå‘½",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
 
 	// DIP C
-	{ "ÎŞÏŞÉúÃü(½ğÊÖÖ¸)",	1, 0x02, 0, 1, dip_on_off_chs     },
-	{ "Ãâ·ÑÓÎÍæ",			1, 0x04, 0, 1, dip_on_off_chs     },
-	{ "Ëø¶¨",				1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",			1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",			1, 0x40, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",			1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "æ— é™ç”Ÿå‘½(é‡‘æ‰‹æŒ‡)",	1, 0x02, 0, 1, dip_on_off_chs     },
+	{ "å…è´¹æ¸¸ç©",			1, 0x04, 0, 1, dip_on_off_chs     },
+	{ "é”å®š",				1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",			1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",			1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",			1, 0x40, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -5266,21 +5204,21 @@ static dipswitch_t dipswitch_qtono2_chs[] =
 static dipswitch_t dipswitch_qtono2_cht[] =
 {
 	// DIP A
-	{ "Í¶Å",				1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£",				1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x40, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",		1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "ÉúÃü",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
+	{ "é›£åº¦",		1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "ç”Ÿå‘½",		1, 0xe0, 0, 4, {"1","2","3","4","5"} },
 
 	// DIP C
-	{ "ŸoÏŞÉúÃü(½ğÊÖÖ¸)",	1, 0x02, 0, 1, dip_on_off_cht     },
-	{ "ÃâÙMß[Íæ",			1, 0x04, 0, 1, dip_on_off_cht     },
-	{ "æi¶¨",				1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",			1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",			1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",			1, 0x40, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",			1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç„¡é™ç”Ÿå‘½(é‡‘æ‰‹æŒ‡)",	1, 0x02, 0, 1, dip_on_off_cht     },
+	{ "å…è²»éŠç©",			1, 0x04, 0, 1, dip_on_off_cht     },
+	{ "é–å®š",				1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",			1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",			1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",			1, 0x40, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",			1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -5412,48 +5350,48 @@ static void dip_save_qtono2(int language)
 
 #define dip_coin_megaman_chs	\
 {								\
-	"9±ÒÍæ1´Î",					\
-	"8±ÒÍæ1´Î",					\
-	"7±ÒÍæ1´Î",					\
-	"6±ÒÍæ1´Î",					\
-	"5±ÒÍæ1´Î",					\
-	"4±ÒÍæ1´Î",					\
-	"3±ÒÍæ1´Î",					\
-	"2±ÒÍæ1´Î",					\
-	"2±Ò¿ªÊ¼,1±ÒĞø¹Ø",			\
-	"1±ÒÍæ1´Î",					\
-	"1±ÒÍæ2´Î",					\
-	"1±ÒÍæ3´Î",					\
-	"1±ÒÍæ4´Î",					\
-	"1±ÒÍæ5´Î",					\
-	"1±ÒÍæ6´Î",					\
-	"1±ÒÍæ7´Î",					\
-	"1±ÒÍæ8´Î",					\
-	"1±ÒÍæ9´Î",					\
-	"Ãâ·ÑÓÎÍæ"					\
+	"9å¸ç©1æ¬¡",					\
+	"8å¸ç©1æ¬¡",					\
+	"7å¸ç©1æ¬¡",					\
+	"6å¸ç©1æ¬¡",					\
+	"5å¸ç©1æ¬¡",					\
+	"4å¸ç©1æ¬¡",					\
+	"3å¸ç©1æ¬¡",					\
+	"2å¸ç©1æ¬¡",					\
+	"2å¸å¼€å§‹,1å¸ç»­å…³",			\
+	"1å¸ç©1æ¬¡",					\
+	"1å¸ç©2æ¬¡",					\
+	"1å¸ç©3æ¬¡",					\
+	"1å¸ç©4æ¬¡",					\
+	"1å¸ç©5æ¬¡",					\
+	"1å¸ç©6æ¬¡",					\
+	"1å¸ç©7æ¬¡",					\
+	"1å¸ç©8æ¬¡",					\
+	"1å¸ç©9æ¬¡",					\
+	"å…è´¹æ¸¸ç©"					\
 }
 
 #define dip_coin_megaman_cht	\
 {								\
-	"9ÅÍæ1´Î",					\
-	"8ÅÍæ1´Î",					\
-	"7ÅÍæ1´Î",					\
-	"6ÅÍæ1´Î",					\
-	"5ÅÍæ1´Î",					\
-	"4ÅÍæ1´Î",					\
-	"3ÅÍæ1´Î",					\
-	"2ÅÍæ1´Î",					\
-	"2Åé_Ê¼,1ÅÀmêP",			\
-	"1ÅÍæ1´Î",					\
-	"1ÅÍæ2´Î",					\
-	"1ÅÍæ3´Î",					\
-	"1ÅÍæ4´Î",					\
-	"1ÅÍæ5´Î",					\
-	"1ÅÍæ6´Î",					\
-	"1ÅÍæ7´Î",					\
-	"1ÅÍæ8´Î",					\
-	"1ÅÍæ9´Î",					\
-	"ÃâÙMß[Íæ"					\
+	"9å¹£ç©1æ¬¡",					\
+	"8å¹£ç©1æ¬¡",					\
+	"7å¹£ç©1æ¬¡",					\
+	"6å¹£ç©1æ¬¡",					\
+	"5å¹£ç©1æ¬¡",					\
+	"4å¹£ç©1æ¬¡",					\
+	"3å¹£ç©1æ¬¡",					\
+	"2å¹£ç©1æ¬¡",					\
+	"2å¹£é–‹å§‹,1å¹£çºŒé—œ",			\
+	"1å¹£ç©1æ¬¡",					\
+	"1å¹£ç©2æ¬¡",					\
+	"1å¹£ç©3æ¬¡",					\
+	"1å¹£ç©4æ¬¡",					\
+	"1å¹£ç©5æ¬¡",					\
+	"1å¹£ç©6æ¬¡",					\
+	"1å¹£ç©7æ¬¡",					\
+	"1å¹£ç©8æ¬¡",					\
+	"1å¹£ç©9æ¬¡",					\
+	"å…è²»éŠç©"					\
 }
 
 static dipswitch_t dipswitch_megaman[] =
@@ -5499,19 +5437,19 @@ static dipswitch_t dipswitch_megaman_jp[] =
 static dipswitch_t dipswitch_megaman_chs[] =
 {
 	// DIP A
-	{ "Í¶±Ò",		1, 0x1f, 0, 18, dip_coin_megaman_chs },
-	{ "Í¶±Ò²Û",		1, 0x60, 0, 2, {"1,·Ö¿ª","1,Áª»ú","2,Áª»ú"} },
+	{ "æŠ•å¸",		1, 0x1f, 0, 18, dip_coin_megaman_chs },
+	{ "æŠ•å¸æ§½",		1, 0x60, 0, 2, {"1,åˆ†å¼€","1,è”æœº","2,è”æœº"} },
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x03, 0, 3, {"¼òµ¥","ÆÕÍ¨","À§ÄÑ","×îÄÑ"} },
-	{ "Ê±¼ä",		1, 0x0c, 0, 3, {"100Ãë","90Ãë","70Ãë","60Ãë"} },
-	{ "ÉùÒô",		1, 0x40, 0, 1, dip_on_off_chs },
+	{ "éš¾åº¦",		1, 0x03, 0, 3, {"ç®€å•","æ™®é€š","å›°éš¾","æœ€éš¾"} },
+	{ "æ—¶é—´",		1, 0x0c, 0, 3, {"100ç§’","90ç§’","70ç§’","60ç§’"} },
+	{ "å£°éŸ³",		1, 0x40, 0, 1, dip_on_off_chs },
 
 	// DIP C
-	{ "·­×ªÆÁÄ»",	1, 0x01, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",	1, 0x02, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",	1, 0x04, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",	1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç¿»è½¬å±å¹•",	1, 0x01, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",	1, 0x02, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",	1, 0x04, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -5519,19 +5457,19 @@ static dipswitch_t dipswitch_megaman_chs[] =
 static dipswitch_t dipswitch_megaman_cht[] =
 {
 	// DIP A
-	{ "Í¶Å",		1, 0x1f, 0, 18, dip_coin_megaman_cht },
-	{ "Í¶Å²Û",		1, 0x60, 0, 2, {"1,·Öé_","1,Â“™C","2,Â“™C"} },
+	{ "æŠ•å¹£",		1, 0x1f, 0, 18, dip_coin_megaman_cht },
+	{ "æŠ•å¹£æ§½",		1, 0x60, 0, 2, {"1,åˆ†é–‹","1,è¯æ©Ÿ","2,è¯æ©Ÿ"} },
 
 	// DIP B
-	{ "ëy¶È",		1, 0x03, 0, 3, {"º††Î","ÆÕÍ¨","À§ëy","×îëy"} },
-	{ "•rég",		1, 0x0c, 0, 3, {"100Ãë","90Ãë","70Ãë","60Ãë"} },
-	{ "Â•Òô",		1, 0x40, 0, 1, dip_on_off_cht },
+	{ "é›£åº¦",		1, 0x03, 0, 3, {"ç°¡å–®","æ™®é€š","å›°é›£","æœ€é›£"} },
+	{ "æ™‚é–“",		1, 0x0c, 0, 3, {"100ç§’","90ç§’","70ç§’","60ç§’"} },
+	{ "è²éŸ³",		1, 0x40, 0, 1, dip_on_off_cht },
 
 	// DIP C
-	{ "·­ŞDÆÁÄ»",	1, 0x01, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",	1, 0x02, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",	1, 0x04, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",	1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç¿»è½‰å±å¹•",	1, 0x01, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",	1, 0x02, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",	1, 0x04, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -5578,18 +5516,18 @@ static dipswitch_t dipswitch_rockmanj_jp[] =
 static dipswitch_t dipswitch_rockmanj_chs[] =
 {
 	// DIP A
-	{ "Í¶±Ò",		1, 0x1f, 0, 18, dip_coin_megaman_chs },
-	{ "Í¶±Ò²Û",		1, 0x60, 0, 2, {"1,·Ö¿ª","1,Áª»ú","2,Áª»ú"} },
+	{ "æŠ•å¸",		1, 0x1f, 0, 18, dip_coin_megaman_chs },
+	{ "æŠ•å¸æ§½",		1, 0x60, 0, 2, {"1,åˆ†å¼€","1,è”æœº","2,è”æœº"} },
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x03, 0, 3, {"¼òµ¥","ÆÕÍ¨","À§ÄÑ","×îÄÑ"} },
-	{ "Ê±¼ä",		1, 0x0c, 0, 3, {"100Ãë","90Ãë","70Ãë","60Ãë"} },
+	{ "éš¾åº¦",		1, 0x03, 0, 3, {"ç®€å•","æ™®é€š","å›°éš¾","æœ€éš¾"} },
+	{ "æ—¶é—´",		1, 0x0c, 0, 3, {"100ç§’","90ç§’","70ç§’","60ç§’"} },
 
 	// DIP C
-	{ "·­×ªÆÁÄ»",	1, 0x01, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",	1, 0x02, 0, 1, dip_on_off_chs     },
-	{ "ÔÊĞíĞø¹Ø",	1, 0x04, 0, 1, dip_yes_no_chs     },
-	{ "ÓÎÏ·Ä£Ê½",	1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "ç¿»è½¬å±å¹•",	1, 0x01, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",	1, 0x02, 0, 1, dip_on_off_chs     },
+	{ "å…è®¸ç»­å…³",	1, 0x04, 0, 1, dip_yes_no_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -5597,18 +5535,18 @@ static dipswitch_t dipswitch_rockmanj_chs[] =
 static dipswitch_t dipswitch_rockmanj_cht[] =
 {
 	// DIP A
-	{ "Í¶Å",		1, 0x1f, 0, 18, dip_coin_megaman_cht },
-	{ "Í¶Å²Û",		1, 0x60, 0, 2, {"1,·Öé_","1,Â“™C","2,Â“™C"} },
+	{ "æŠ•å¹£",		1, 0x1f, 0, 18, dip_coin_megaman_cht },
+	{ "æŠ•å¹£æ§½",		1, 0x60, 0, 2, {"1,åˆ†é–‹","1,è¯æ©Ÿ","2,è¯æ©Ÿ"} },
 
 	// DIP B
-	{ "ëy¶È",		1, 0x03, 0, 3, {"º††Î","ÆÕÍ¨","À§ëy","×îëy"} },
-	{ "•rég",		1, 0x0c, 0, 3, {"100Ãë","90Ãë","70Ãë","60Ãë"} },
+	{ "é›£åº¦",		1, 0x03, 0, 3, {"ç°¡å–®","æ™®é€š","å›°é›£","æœ€é›£"} },
+	{ "æ™‚é–“",		1, 0x0c, 0, 3, {"100ç§’","90ç§’","70ç§’","60ç§’"} },
 
 	// DIP C
-	{ "·­ŞDÆÁÄ»",	1, 0x01, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",	1, 0x02, 0, 1, dip_on_off_cht     },
-	{ "ÔÊÔSÀmêP",	1, 0x04, 0, 1, dip_yes_no_cht     },
-	{ "ß[‘òÄ£Ê½",	1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "ç¿»è½‰å±å¹•",	1, 0x01, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",	1, 0x02, 0, 1, dip_on_off_cht     },
+	{ "å…è¨±çºŒé—œ",	1, 0x04, 0, 1, dip_yes_no_cht     },
+	{ "éŠæˆ²æ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -5853,18 +5791,18 @@ static dipswitch_t dipswitch_pnickj_jp[] =
 static dipswitch_t dipswitch_pnickj_chs[] =
 {
 	// DIP A
-	{ "Í¶±Ò",		1, 0x07, 0, 7, dip_coin1_chs      },
-	{ "Í¶±Ò²Û",		1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "æŠ•å¸",		1, 0x07, 0, 7, dip_coin1_chs      },
+	{ "æŠ•å¸æ§½",		1, 0x08, 0, 1, dip_on_off_chs     },
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x07, 0, 7, dip_difficulty_chs },
-	{ "¶ÔÕ½Ä£Ê½",	1, 0xc0, 0, 3, {"1¾Ö","3¾Ö","5¾Ö","7¾Ö"} },
+	{ "éš¾åº¦",		1, 0x07, 0, 7, dip_difficulty_chs },
+	{ "å¯¹æˆ˜æ¨¡å¼",	1, 0xc0, 0, 3, {"1å±€","3å±€","5å±€","7å±€"} },
 
 	// DIP C
-	{ "Ëø¶¨",		1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "·­×ªÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_chs     },
-	{ "ÑİÊ¾ÉùÒô",	1, 0x20, 0, 1, dip_on_off_chs     },
-	{ "ÓÎÏ·Ä£Ê½",	1, 0x80, 0, 1, dip_game_mode_chs  },
+	{ "é”å®š",		1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç¿»è½¬å±å¹•",	1, 0x10, 0, 1, dip_on_off_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",	1, 0x20, 0, 1, dip_on_off_chs     },
+	{ "æ¸¸æˆæ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_chs  },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -5872,18 +5810,18 @@ static dipswitch_t dipswitch_pnickj_chs[] =
 static dipswitch_t dipswitch_pnickj_cht[] =
 {
 	// DIP A
-	{ "Í¶Å",		1, 0x07, 0, 7, dip_coin1_cht      },
-	{ "Í¶Å²Û",		1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "æŠ•å¹£",		1, 0x07, 0, 7, dip_coin1_cht      },
+	{ "æŠ•å¹£æ§½",		1, 0x08, 0, 1, dip_on_off_cht     },
 
 	// DIP B
-	{ "ëy¶È",		1, 0x07, 0, 7, dip_difficulty_cht },
-	{ "Œ¦‘ğÄ£Ê½",	1, 0xc0, 0, 3, {"1¾Ö","3¾Ö","5¾Ö","7¾Ö"} },
+	{ "é›£åº¦",		1, 0x07, 0, 7, dip_difficulty_cht },
+	{ "å°æˆ°æ¨¡å¼",	1, 0xc0, 0, 3, {"1å±€","3å±€","5å±€","7å±€"} },
 
 	// DIP C
-	{ "æi¶¨",		1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "·­ŞDÆÁÄ»",	1, 0x10, 0, 1, dip_on_off_cht     },
-	{ "ÑİÊ¾Â•Òô",	1, 0x20, 0, 1, dip_on_off_cht     },
-	{ "ß[‘òÄ£Ê½",	1, 0x80, 0, 1, dip_game_mode_cht  },
+	{ "é–å®š",		1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç¿»è½‰å±å¹•",	1, 0x10, 0, 1, dip_on_off_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",	1, 0x20, 0, 1, dip_on_off_cht     },
+	{ "éŠæˆ²æ¨¡å¼",	1, 0x80, 0, 1, dip_game_mode_cht  },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -5976,17 +5914,17 @@ static void dip_save_pnickj(int language)
 }
 #define dip_coin_wofhfh_chs	\
 {							\
-	"1±ÒÍæ1´Î",	\
-	"1±ÒÍæ2´Î",	\
-	"1±ÒÍæ3´Î",	\
-	"1±ÒÍæ4´Î",	\
+	"1å¸ç©1æ¬¡",	\
+	"1å¸ç©2æ¬¡",	\
+	"1å¸ç©3æ¬¡",	\
+	"1å¸ç©4æ¬¡",	\
 }
 #define dip_coin_wofhfh_cht	\
 {							\
-	"1ÅÍæ1´Î",	\
-	"1ÅÍæ2´Î",	\
-	"1ÅÍæ3´Î",	\
-	"1ÅÍæ4´Î",	\
+	"1å¹£ç©1æ¬¡",	\
+	"1å¹£ç©2æ¬¡",	\
+	"1å¹£ç©3æ¬¡",	\
+	"1å¹£ç©4æ¬¡",	\
 }
 #define dip_Lives			\
 {							\
@@ -6012,25 +5950,25 @@ static void dip_save_pnickj(int language)
 }
 #define dip_Lives_chs		\
 {							\
-	"¿ªÊ¼4/Ğø¹Ø5",	\
-	"¿ªÊ¼3/Ğø¹Ø4",	\
-	"¿ªÊ¼2/Ğø¹Ø3",	\
-	"¿ªÊ¼1/Ğø¹Ø2",	\
-	"¿ªÊ¼4/Ğø¹Ø4",	\
-	"¿ªÊ¼3/Ğø¹Ø3",	\
-	"¿ªÊ¼2/Ğø¹Ø2",	\
-	"¿ªÊ¼1/Ğø¹Ø1"	\
+	"å¼€å§‹4/ç»­å…³5",	\
+	"å¼€å§‹3/ç»­å…³4",	\
+	"å¼€å§‹2/ç»­å…³3",	\
+	"å¼€å§‹1/ç»­å…³2",	\
+	"å¼€å§‹4/ç»­å…³4",	\
+	"å¼€å§‹3/ç»­å…³3",	\
+	"å¼€å§‹2/ç»­å…³2",	\
+	"å¼€å§‹1/ç»­å…³1"	\
 }
 #define dip_Lives_cht		\
 {							\
-	"é_Ê¼4/ÀmêP5",	\
-	"é_Ê¼3/ÀmêP4",	\
-	"é_Ê¼2/ÀmêP3",	\
-	"é_Ê¼1/ÀmêP2",	\
-	"é_Ê¼4/ÀmêP4",	\
-	"é_Ê¼3/ÀmêP3",	\
-	"é_Ê¼2/ÀmêP2",	\
-	"é_Ê¼1/ÀmêP1"	\
+	"é–‹å§‹4/çºŒé—œ5",	\
+	"é–‹å§‹3/çºŒé—œ4",	\
+	"é–‹å§‹2/çºŒé—œ3",	\
+	"é–‹å§‹1/çºŒé—œ2",	\
+	"é–‹å§‹4/çºŒé—œ4",	\
+	"é–‹å§‹3/çºŒé—œ3",	\
+	"é–‹å§‹2/çºŒé—œ2",	\
+	"é–‹å§‹1/çºŒé—œ1"	\
 }
 #define dip_coin_slots		\
 {							\
@@ -6046,15 +5984,15 @@ static void dip_save_pnickj(int language)
 }
 #define dip_coin_slots_chs	\
 {							\
-	"2Íæ¼Ò/1Í¶±Ò²Û",	\
-	"3Íæ¼Ò/1Í¶±Ò²Û",	\
-	"3Íæ¼Ò/3Í¶±Ò²Û",	\
+	"2ç©å®¶/1æŠ•å¸æ§½",	\
+	"3ç©å®¶/1æŠ•å¸æ§½",	\
+	"3ç©å®¶/3æŠ•å¸æ§½",	\
 }
 #define dip_coin_slots_cht	\
 {							\
-	"2Íæ¼Ò/1Í¶Å²Û",	\
-	"3Íæ¼Ò/1Í¶Å²Û",	\
-	"3Íæ¼Ò/3Í¶Å²Û",	\
+	"2ç©å®¶/1æŠ•å¹£æ§½",	\
+	"3ç©å®¶/1æŠ•å¹£æ§½",	\
+	"3ç©å®¶/3æŠ•å¹£æ§½",	\
 }
 static dipswitch_t dipswitch_wofhfh[] =
 {
@@ -6091,14 +6029,14 @@ static dipswitch_t dipswitch_wofhfh_jp[] =
 static dipswitch_t dipswitch_wofhfh_chs[] =
 {
 	// DIP A
-	{ "Í¶±ÒA",		1, 0x03, 0, 3, dip_coin_wofhfh_chs	},
+	{ "æŠ•å¸A",		1, 0x03, 0, 3, dip_coin_wofhfh_chs	},
 
 	// DIP B
-	{ "ÄÑ¶È",		1, 0x07, 0, 7, dip_difficulty_chs	},
-	{ "ÉúÃü",		1, 0x70, 0, 7, dip_Lives_chs		},
+	{ "éš¾åº¦",		1, 0x07, 0, 7, dip_difficulty_chs	},
+	{ "ç”Ÿå‘½",		1, 0x70, 0, 7, dip_Lives_chs		},
 
 	// DIP C
-	{ "Í¶±Ò²Û",		1, 0x03, 0, 2, dip_coin_slots_chs	},
+	{ "æŠ•å¸æ§½",		1, 0x03, 0, 2, dip_coin_slots_chs	},
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
@@ -6107,14 +6045,14 @@ static dipswitch_t dipswitch_wofhfh_chs[] =
 static dipswitch_t dipswitch_wofhfh_cht[] =
 {
 	// DIP A
-	{ "Í¶ÅA",		1, 0x03, 0, 3, dip_coin_wofhfh_cht	},
+	{ "æŠ•å¹£A",		1, 0x03, 0, 3, dip_coin_wofhfh_cht	},
 
 	// DIP B
-	{ "ëy¶È",		1, 0x07, 0, 7, dip_difficulty_cht	},
-	{ "ÉúÃü",		1, 0x70, 0, 7, dip_Lives_cht		},
+	{ "é›£åº¦",		1, 0x07, 0, 7, dip_difficulty_cht	},
+	{ "ç”Ÿå‘½",		1, 0x70, 0, 7, dip_Lives_cht		},
 
 	// DIP C
-	{ "Í¶Å²Û",		1, 0x03, 0, 2, dip_coin_slots_cht	},
+	{ "æŠ•å¹£æ§½",		1, 0x03, 0, 2, dip_coin_slots_cht	},
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
@@ -6244,30 +6182,30 @@ static dipswitch_t dipswitch_punisherbz_jp[] =
 };
 static dipswitch_t dipswitch_punisherbz_chs[] =
 {	// DIP A
-	{ "2±Ò¿ªÊ¼,1±ÒĞø¹Ø",	1, 0x08, 0, 1, dip_on_off_chs     },
-	{ "ÉúÃü",				1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "ÉùÒô",				1, 0x40, 0, 1, {"Q Sound","µ¥ÉùµÀ"} },
-	{ "·­×ªÆÁÄ»",			1, 0x80, 0, 1, dip_on_off_chs },
+	{ "2å¸å¼€å§‹,1å¸ç»­å…³",	1, 0x08, 0, 1, dip_on_off_chs     },
+	{ "ç”Ÿå‘½",				1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "å£°éŸ³",				1, 0x40, 0, 1, {"Q Sound","å•å£°é“"} },
+	{ "ç¿»è½¬å±å¹•",			1, 0x80, 0, 1, dip_on_off_chs },
 	// DIP B
-	{ "ÄÑ¶È",				1, 0x07, 0, 7, dip_difficulty_chs	},
-	{ "½±Ãü",				1, 0x18, 0, 3, {"800000","1800000","2800000","No Extend"} },
-	{ "ÔÊĞíĞø¹Ø",			1, 0x20, 0, 1, dip_yes_no_chs     },
-	{ "ÑİÊ¾ÉùÒô",			1, 0x40, 0, 1, dip_on_off_chs     },
+	{ "éš¾åº¦",				1, 0x07, 0, 7, dip_difficulty_chs	},
+	{ "å¥–å‘½",				1, 0x18, 0, 3, {"800000","1800000","2800000","No Extend"} },
+	{ "å…è®¸ç»­å…³",			1, 0x20, 0, 1, dip_yes_no_chs     },
+	{ "æ¼”ç¤ºå£°éŸ³",			1, 0x40, 0, 1, dip_on_off_chs     },
 	MENU_BLANK,
 	MENU_RETURN_CHS,
 	MENU_END,
 };
 static dipswitch_t dipswitch_punisherbz_cht[] =
 {	// DIP A
-	{ "2Åé_Ê¼,1ÅÀmêP",	1, 0x08, 0, 1, dip_on_off_cht     },
-	{ "ÉúÃü",				1, 0x03, 0, 3, {"1","2","3","4"} },
-	{ "Â•Òô",				1, 0x40, 0, 1, {"Q Sound","†ÎÂ•µÀ"} },
-	{ "·­ŞDÆÁÄ»",			1, 0x80, 0, 1, dip_on_off_cht },
+	{ "2å¹£é–‹å§‹,1å¹£çºŒé—œ",	1, 0x08, 0, 1, dip_on_off_cht     },
+	{ "ç”Ÿå‘½",				1, 0x03, 0, 3, {"1","2","3","4"} },
+	{ "è²éŸ³",				1, 0x40, 0, 1, {"Q Sound","å–®è²é“"} },
+	{ "ç¿»è½‰å±å¹•",			1, 0x80, 0, 1, dip_on_off_cht },
 	// DIP B
-	{ "ëy¶È",				1, 0x07, 0, 7, dip_difficulty_cht	},
-	{ "ª„Ãü",				1, 0x18, 0, 3, {"800000","1800000","2800000","No Extend"} },
-	{ "ÔÊÔSÀmêP",			1, 0x20, 0, 1, dip_yes_no_cht     },
-	{ "ÑİÊ¾Â•Òô",			1, 0x40, 0, 1, dip_on_off_cht     },
+	{ "é›£åº¦",				1, 0x07, 0, 7, dip_difficulty_cht	},
+	{ "çå‘½",				1, 0x18, 0, 3, {"800000","1800000","2800000","No Extend"} },
+	{ "å…è¨±çºŒé—œ",			1, 0x20, 0, 1, dip_yes_no_cht     },
+	{ "æ¼”ç¤ºè²éŸ³",			1, 0x40, 0, 1, dip_on_off_cht     },
 	MENU_BLANK,
 	MENU_RETURN_CHT,
 	MENU_END,
