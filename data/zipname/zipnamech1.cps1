@@ -1,239 +1,217 @@
-1941,1941 ·´»÷Õ½ (ÊÀ½ç°æ 900227)
-1941r1,1941 ·´»÷Õ½ (ÊÀ½ç°æ)
-1941u,1941 ·´»÷Õ½ (ÃÀ°æ 900227)
-1941j,1941 ·´»÷Õ½ (ÈÕ°æ)
-captcomm,Ãû½« (ÊÀ½ç°æ 911202)
-captcommr1,Ãû½« (ÊÀ½ç°æ 911014)
-captcommu,Ãû½« (ÃÀ°æ 910928)
-captcommj,Ãû½« (ÈÕ°æ 911202)
-captcommjr1,Ãû½« (ÈÕ°æ 910928)
-captcommb,Ãû½« (µÁ°æ),GAME_BOOTLEG
-captcommp,Ãû½« ¾­µä¼ÓÇ¿°æ (hack),GAME_HACK
-cawing,·É¿ÕÖ®Òí (ÊÀ½ç°æ 901012)
-cawingr1,·É¿ÕÖ®Òí (ÊÀ½ç°æ 901009)
-cawingu,·É¿ÕÖ®Òí (ÃÀ°æ 901012)
-cawingj,·É¿ÕÖ®Òí (ÈÕ°æ 901012)
-cworld2j,¿¨ÆÕ¿ÕÊÀ½ç2 (ÈÕ°æ 920611)
-dino,¿ÖÁúÊÀ¼Í (ÊÀ½ç°æ 930201)
-dinou,¿ÖÁúÊÀ¼Í (ÃÀ°æ 930201)
-dinoj,¿ÖÁúÊÀ¼Í (ÈÕ°æ 930201)
-dinob,¿ÖÁúÊÀ¼Í (µÁ°æ),GAME_BOOTLEG
-dinoh,¿ÖÁúÊÀ¼Í (µÁ°æ1),GAME_BOOTLEG
-dinoha,¿ÖÁúÊÀ¼Í (µÁ°æ2),GAME_BOOTLEG
-dinohb,¿ÖÁúÊÀ¼Í (µÁ°æ3),GAME_BOOTLEG
-dinohunt,¿ÖÁúÁÔÈË (ÖÐ¹úµÁ°æ),GAME_BOOTLEG
-dynwar,ÍÌÊ³ÌìµØ (ÊÀ½ç°æ)
-dynwara,ÍÌÊ³ÌìµØ (ÃÀ°æ)
-dynwarj,ÍÌÊ³ÌìµØ (ÈÕ°æ)
-dynwarjr,ÍÌÊ³ÌìµØ (ÈÕ°æ2)
-ffight,¿ì´òÐý·ç (ÊÀ½ç°æ1)
-ffighta,¿ì´òÐý·ç (ÊÀ½ç°æ2)
-ffightu,¿ì´òÐý·ç (ÃÀ°æ1)
-ffightu1,¿ì´òÐý·ç (ÃÀ°æ2)
-ffightua,¿ì´òÐý·ç (ÃÀ°æ 900112)
-ffightub,¿ì´òÐý·ç (ÃÀ°æ 900613)
-ffightj,¿ì´òÐý·ç (ÈÕ°æ)
-ffightj1,¿ì´òÐý·ç (ÈÕ°æ 900112)
-ffightj2,¿ì´òÐý·ç (ÈÕ°æ 900305)
-ffightj3,¿ì´òÐý·ç (ÈÕ°æ 900613)
-ffightjh,¿ì´òÐý·ç (ÈÕ°æ Hack),GAME_HACK
-ffightbl,¿ì´òÐý·ç (µÁ°æ),GAME_NOT_WORK|GAME_BOOTLEG
-fcrash,¿ì´òÐý·ç Final Crash (µÁ°æ),GAME_NOT_WORK|GAME_BOOTLEG
-forgottn,Ê§ÂäµÄÊÀ½ç (ÊÀ½ç°æ)
-forgottnu,Ê§ÂäµÄÊÀ½ç (ÃÀ°æ B-Board 88621B-2 Rev. C)
-forgottnu1,Ê§ÂäµÄÊÀ½ç (ÃÀ°æ B-Board 88618B-2 Rev. C)
-forgottnua,Ê§ÂäµÄÊÀ½ç (ÃÀ°æ B-Board 88618B-2 Rev. A)
-forgottnuaa,Ê§ÂäµÄÊÀ½ç (ÃÀ°æ B-Board 88618B-2 Rev. AA)
-lostwrld,Ê§ÂäµÄÊÀ½ç (ÈÕ°æ)
-lostwrldo,Ê§ÂäµÄÊÀ½ç (ÈÕ°æ Old Ver.)
-ghouls,Ä§½ç´å (ÊÀ½ç°æ)
-ghoulsu,Ä§½ç´å (ÃÀ°æ)
-daimakai,Ä§½ç´å (ÈÕ°æ)
-daimakair,Ä§½ç´å (ÈÕ°æ2)
+1941,1941 åå‡»æˆ˜ (ä¸–ç•Œç‰ˆ 900227)
+1941r1,1941 åå‡»æˆ˜ (ä¸–ç•Œç‰ˆ)
+1941u,1941 åå‡»æˆ˜ (ç¾Žç‰ˆ 900227)
+1941j,1941 åå‡»æˆ˜ (æ—¥ç‰ˆ)
+captcomm,åå°† (ä¸–ç•Œç‰ˆ 911202)
+captcommr1,åå°† (ä¸–ç•Œç‰ˆ 911014)
+captcommu,åå°† (ç¾Žç‰ˆ 910928)
+captcommj,åå°† (æ—¥ç‰ˆ 911202)
+captcommjr1,åå°† (æ—¥ç‰ˆ 910928)
+captcommb,åå°† (ç›—ç‰ˆ),GAME_BOOTLEG
+captcommp,åå°† ç»å…¸åŠ å¼ºç‰ˆ (hack),GAME_HACK
+cawing,é£žç©ºä¹‹ç¿¼ (ä¸–ç•Œç‰ˆ 901012)
+cawingr1,é£žç©ºä¹‹ç¿¼ (ä¸–ç•Œç‰ˆ 901009)
+cawingu,é£žç©ºä¹‹ç¿¼ (ç¾Žç‰ˆ 901012)
+cawingj,é£žç©ºä¹‹ç¿¼ (æ—¥ç‰ˆ 901012)
+cworld2j,å¡æ™®ç©ºä¸–ç•Œ2 (æ—¥ç‰ˆ 920611)
+dino,æé¾™ä¸–çºª (ä¸–ç•Œç‰ˆ 930201)
+dinou,æé¾™ä¸–çºª (ç¾Žç‰ˆ 930201)
+dinoj,æé¾™ä¸–çºª (æ—¥ç‰ˆ 930201)
+dinob,æé¾™ä¸–çºª (ç›—ç‰ˆ),GAME_BOOTLEG
+dinoh,æé¾™ä¸–çºª (ç›—ç‰ˆ1),GAME_BOOTLEG
+dinoha,æé¾™ä¸–çºª (ç›—ç‰ˆ2),GAME_BOOTLEG
+dinohb,æé¾™ä¸–çºª (ç›—ç‰ˆ3),GAME_BOOTLEG
+dinohunt,æé¾™çŒŽäºº (ä¸­å›½ç›—ç‰ˆ),GAME_BOOTLEG
+dynwar,åžé£Ÿå¤©åœ° (ä¸–ç•Œç‰ˆ)
+dynwara,åžé£Ÿå¤©åœ° (ç¾Žç‰ˆ)
+dynwarj,åžé£Ÿå¤©åœ° (æ—¥ç‰ˆ)
+dynwarjr,åžé£Ÿå¤©åœ° (æ—¥ç‰ˆ2)
+ffight,å¿«æ‰“æ—‹é£Ž (ä¸–ç•Œç‰ˆ1)
+ffighta,å¿«æ‰“æ—‹é£Ž (ä¸–ç•Œç‰ˆ2)
+ffightu,å¿«æ‰“æ—‹é£Ž (ç¾Žç‰ˆ1)
+ffightu1,å¿«æ‰“æ—‹é£Ž (ç¾Žç‰ˆ2)
+ffightua,å¿«æ‰“æ—‹é£Ž (ç¾Žç‰ˆ 900112)
+ffightub,å¿«æ‰“æ—‹é£Ž (ç¾Žç‰ˆ 900613)
+ffightj,å¿«æ‰“æ—‹é£Ž (æ—¥ç‰ˆ)
+ffightj1,å¿«æ‰“æ—‹é£Ž (æ—¥ç‰ˆ 900112)
+ffightj2,å¿«æ‰“æ—‹é£Ž (æ—¥ç‰ˆ 900305)
+ffightj3,å¿«æ‰“æ—‹é£Ž (æ—¥ç‰ˆ 900613)
+ffightjh,å¿«æ‰“æ—‹é£Ž (æ—¥ç‰ˆ Hack),GAME_HACK
+ffightbl,å¿«æ‰“æ—‹é£Ž (ç›—ç‰ˆ),GAME_NOT_WORK|GAME_BOOTLEG
+fcrash,å¿«æ‰“æ—‹é£Ž Final Crash (ç›—ç‰ˆ),GAME_NOT_WORK|GAME_BOOTLEG
+forgottn,å¤±è½çš„ä¸–ç•Œ (ä¸–ç•Œç‰ˆ)
+forgottnu,å¤±è½çš„ä¸–ç•Œ (ç¾Žç‰ˆ B-Board 88621B-2 Rev. C)
+forgottnu1,å¤±è½çš„ä¸–ç•Œ (ç¾Žç‰ˆ B-Board 88618B-2 Rev. C)
+forgottnua,å¤±è½çš„ä¸–ç•Œ (ç¾Žç‰ˆ B-Board 88618B-2 Rev. A)
+forgottnuaa,å¤±è½çš„ä¸–ç•Œ (ç¾Žç‰ˆ B-Board 88618B-2 Rev. AA)
+lostwrld,å¤±è½çš„ä¸–ç•Œ (æ—¥ç‰ˆ)
+lostwrldo,å¤±è½çš„ä¸–ç•Œ (æ—¥ç‰ˆ Old Ver.)
+ghouls,é­”ç•Œæ‘ (ä¸–ç•Œç‰ˆ)
+ghoulsu,é­”ç•Œæ‘ (ç¾Žç‰ˆ)
+daimakai,é­”ç•Œæ‘ (æ—¥ç‰ˆ)
+daimakair,é­”ç•Œæ‘ (æ—¥ç‰ˆ2)
 ganbare,Ganbare Marin-kun (Marine 2K0411 JPN),GAME_NOT_WORK|
-knights,Ô²×¿ÆïÊ¿ (ÊÀ½ç°æ 911127)
-knightsu,Ô²×¿ÆïÊ¿ (ÃÀ°æ 911127)
-knightsj,Ô²×¿ÆïÊ¿ (ÈÕ°æ2 911127)
-knightsja,Ô²×¿ÆïÊ¿ (ÈÕ°æ1 911127)
-knightsb,Ô²×¿ÆïÊ¿ (µÁ°æ1),GAME_BOOTLEG
-knightsb2,Ô²×¿ÆïÊ¿ (µÁ°æ2),GAME_BOOTLEG
-knightsh,Ô²×¿ÆïÊ¿ (hack°æ),GAME_BOOTLEG
-knightsi,Ô²×¿ÆïÊ¿ (ÏÔÊ¾Ëæ»úÖµ),GAME_HACK
-knightsr,Ô²×¿ÆïÊ¿ (Ëæ»ú°æ),GAME_HACK
-kod,ÁúÍõ (ÊÀ½ç°æ 910805)
-kodr1,ÁúÍõ (ÊÀ½ç°æ 910711)
-kodu,ÁúÍõ (ÃÀ°æ 910910)
-kodj,ÁúÍõ (ÈÕ°æ1 910805)
-kodja,ÁúÍõ (ÈÕ°æ2 910805)
-kodb,ÁúÍõ (µÁ°æ),GAME_BOOTLEG
-kodh,ÁúÍõ (hack),GAME_BOOTLEG
-megaman,Âå¿ËÈË Á¦Á¿Ö®Õ½ (CPS1 ÃÀ°æ 951006)
-megamana,Âå¿ËÈË Á¦Á¿Ö®Õ½ (CPS1 ÑÇÖÞ°æ 951006)
-rockmanj,Âå¿ËÈË Á¦Á¿Ö®Õ½ (CPS1 ÈÕ°æ 950922)
-mercs,Õ½³¡Ö®ÀÇ2 (ÊÀ½ç°æ 900302)
-mercsu,Õ½³¡Ö®ÀÇ2 (ÃÀ°æ 900608)
-mercsur1,Õ½³¡Ö®ÀÇ2 (ÃÀ°æ 900302)
-mercsj,Õ½³¡Ö®ÀÇ2 (ÈÕ°æ 900302)
-msword,Ä§·¨½£ ÓÂ¸ÒµÄ»ÃÏë (ÊÀ½ç°æ 900725)
-mswordr1,Ä§·¨½£ ÓÂ¸ÒµÄ»ÃÏë (ÊÀ½ç°æ 900623)
-mswordu,Ä§·¨½£ ÓÂ¸ÒµÄ»ÃÏë (ÃÀ°æ 900725)
-mswordj,Ä§·¨½£ (ÈÕ°æ 900623)
-mtwins,Ë«÷ë¶ù (ÊÀ½ç°æ 900619)
-chikij,Ë«÷ë¶ù (ÈÕ°æ 900619)
-nemo,ÃÎ»ÃÃ°ÏÕ (ÊÀ½ç°æ 901130)
-nemor1,ÃÎ»ÃÃ°ÏÕ (ÊÀ½ç°æ 901109)
-nemoj,ÃÎ»ÃÃ°ÏÕ (ÈÕ°æ 901120)
-pang3,Ä§·¨ÆøÅÝ3 (Å·°æ 950601)
-pang3r1,Ä§·¨ÆøÅÝ3 (Å·°æ 950511)
-pang3j,Ä§·¨ÆøÅÝ3 (ÈÕ°æ 950511)
-pang3b,Ä§·¨ÆøÅÝ3 (µÁ°æ),GAME_BOOTLEG
-pnickj,Ä§·¨·½¿é (ÈÕ°æ 940608)
-pnicku,Ä§·¨·½¿é (ÃÀ°æ 940608 Loca Test Version)
-punisher,³Í·£Õß (ÊÀ½ç°æ 930422)
-punisheru,³Í·£Õß (ÃÀ°æ 930422)
-punisherh,³Í·£Õß (Î÷°àÑÀ°æ 930422)
-punisherj,³Í·£Õß (ÈÕ°æ 930422)
-punisherbz,³Í·£Õß - ì­·çÕ½¾¯ (ÖÐ¹úµÁ°æ),GAME_BOOTLEG
-punisherjd,³Í·£Õß - ½Åµ¶ (hack),GAME_HACK
-punisherp,³Í·£Õß ¾­µä¼ÓÇ¿°æ (hack),GAME_HACK
-qad,ÁúÖ®ÃÕÌâ (ÃÀ°æ 920701)
-qadjr,ÁúÖ®ÃÕÌâ (ÈÕ°æ 940921)
-qtono2j,ÎÊ´ð µîÑùÖ®Ò°Íû2 È«¹ú°æ (ÈÕ°æ 950123)
-slammast,Ë¤½Ç°ÔÍõ (ÊÀ½ç°æ 930713)
-slammastu,Ë¤½Ç°ÔÍõ (ÃÀ°æ 930713)
-mbomberj,Ë¤½Ç°ÔÍõ ¼¡Èâ±¬µ¯ (ÈÕ°æ 930713)
-mbombrd,Ë¤½Ç°ÔÍõ ÈÈÁ¦Õ½Ê¿ (ÊÀ½ç°æ 931206)
-mbombrdj,Ë¤½Ç°ÔÍõ ÈÈÁ¦Õ½Ê¿ (ÈÕ°æ 931206)
-sf2,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÊÀ½ç°æ 910522)
-sf2eb,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÊÀ½ç°æ 910214)
-sf2ed,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÊÀ½ç°æ 910318)
-sf2ee,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÊÀ½ç°æ 910228)
-sf2ua,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÃÀ°æ 910206)
-sf2ub,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÃÀ°æ 910214)
-sf2uc,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÃÀ°æ 910306)
-sf2ud,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÃÀ°æ 910318)
-sf2ue,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÃÀ°æ 910228)
-sf2uf,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÃÀ°æ 910411)
-sf2ug,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÃÀ°æ 910522 Rev. G)
-sf2ui,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÃÀ°æ 910522 Rev. I)
-sf2uk,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÃÀ°æ 911101)
-sf2j,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÈÕ°æ 911210)
-sf2ja,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÈÕ°æ 910214)
-sf2jc,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÈÕ°æ 910306)
-sf2jf,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÈÕ°æ 910411)
-sf2jh,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÈÕ°æ 910522)
-sf2jl,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ (ÈÕ°æ 920312)
-sf2qp1,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ Ä§·¨ Delta ¼ÓËÙ°æ,GAME_BOOTLEG
-sf2ebbl,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ TAB Austria (µÁ°æ1),GAME_BOOTLEG
-sf2thndr,½ÖÍ·°ÔÍõ2 ÌìÏÂ¶·Ê¿ Thunder Edition,GAME_BOOTLEG
-sf2ce,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (ÊÀ½ç°æ 920513)
-sf2ceea,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (ÊÀ½ç°æ 920313)
-sf2ceua,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (ÃÀ°æ 920313)
-sf2ceub,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (ÃÀ°æ 920513)
-sf2ceuc,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (ÃÀ°æ 920803)
-sf2ceja,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (ÈÕ°æ 920322)
-sf2cejb,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (ÈÕ°æ 920513)
-sf2cejc,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (ÈÕ°æ 920803)
-sf2bhh,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (Hung Hsi),GAME_NOT_WORK|GAME_BOOTLEG
-sf2rb,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (²Êºç°æ1),GAME_BOOTLEG
-sf2rb2,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (²Êºç°æ2),GAME_BOOTLEG
-sf2rb3,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (²Êºç°æ3),GAME_BOOTLEG
-sf2red,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (³àÉ«²¨¶¯),GAME_BOOTLEG
-sf2v004,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (V004),GAME_NOT_WORK|GAME_BOOTLEG
-sf2acc,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (¼ÓËÙ°æ1),GAME_NOT_WORK|GAME_BOOTLEG
-sf2acca,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (¼ÓËÙ°æ2),GAME_NOT_WORK|GAME_BOOTLEG
-sf2accp2,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (¼ÓËÙ°æ3),GAME_BOOTLEG
-sf2amf,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ Alpha Magic-F (°æ±¾1),GAME_BOOTLEG
-sf2amf2,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ Alpha Magic-F (°æ±¾2),GAME_BOOTLEG
-sf2dkot2,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ Double K.O.¼ÓËÙ°æ¢ò,GAME_NOT_WORK|GAME_BOOTLEG
-sf2ceblp,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (protected bootleg on non-dash board),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m1,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M1),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m2,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M2),GAME_BOOTLEG
-sf2m3,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M3),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m4,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M4),GAME_BOOTLEG
-sf2m5,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M5),GAME_BOOTLEG
-sf2m6,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M6) ½µÁú,GAME_BOOTLEG
-sf2m7,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M7),GAME_BOOTLEG
-sf2m8,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M8),GAME_NOT_WORK|GAME_BOOTLEG
-sf2yyc,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ YYC,GAME_NOT_WORK|GAME_BOOTLEG
-sf2koryu,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (½µÁú),GAME_BOOTLEG
-sf2mdt,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ Magic Delta ¼ÓËÙ°æ1,GAME_BOOTLEG
-sf2mdta,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ Magic Delta ¼ÓËÙ°æ2,GAME_NOT_WORK|GAME_BOOTLEG
-sf2mdtb,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ Magic Delta ¼ÓËÙ°æ3,GAME_NOT_WORK|GAME_BOOTLEG
-sf2dongb,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (¶«·½²»°Ü),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m9,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M9),GAME_BOOTLEG
-sf2m10,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M10),GAME_BOOTLEG
-sf2m11,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M11),GAME_BOOTLEG
-sf2m12,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M12),GAME_BOOTLEG
-sf2m13,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M13),GAME_BOOTLEG
-sf2m14,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (M14),GAME_BOOTLEG
-sf2tlona,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (ÍÀÁú1),GAME_BOOTLEG
-sf2tlonb,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (ÍÀÁú2),GAME_BOOTLEG
-sf2hf,½ÖÍ·°ÔÍõ2 ¼ÓËÙ°æ ÖÕ¼«¸ñ¶· (ÊÀ½ç°æ 921209)
-sf2hfu,½ÖÍ·°ÔÍõ2 ¼ÓËÙ°æ ÖÕ¼«¸ñ¶· (ÃÀ°æ 921209)
-sf2hfj,½ÖÍ·°ÔÍõ2 ¼ÓËÙ°æ ÖÕ¼«¸ñ¶· (ÈÕ°æ 921209)
-sfzch,ÉÙÄê½Ö°Ô Zero (CPS ×ª»»°æ/ÈÕ°æ 951020)
-sfach,ÉÙÄê½Ö°Ô Alpha (CPS ×ª»»°æ/¹«¿ª°æ ÃÀ°æ 950727)
-sfzbch,ÉÙÄê½Ö°Ô Zero (CPS ×ª»»°æ/°ÍÎ÷°æ 950727)
-strider,³ö»÷·ÉÁú (ÃÀ°æ1)
-striderua,³ö»÷·ÉÁú (ÃÀ°æ2)
-striderj,³ö»÷·ÉÁú (ÈÕ°æ1)
-striderjr,³ö»÷·ÉÁú (ÈÕ°æ2)
-3wonders,Èý¸öÆæ¼£ (ÊÀ½ç°æ 910520)
-3wondersr1,Èý¸öÆæ¼£ (ÊÀ½ç°æ 910513)
-3wondersu,Èý¸öÆæ¼£ (ÃÀ°æ 910520)
-wonder3,Èý¸öÆæ¼£ (ÈÕ°æ 910520)
-3wondersb,Èý¸öÆæ¼£ (µÁ°æ),GAME_NOT_WORK|GAME_BOOTLEG
-3wondersh,Èý¸öÆæ¼£ (hack),GAME_BOOTLEG
-unsquad,Õ½Çø88 (ÃÀ°æ)
-area88,Õ½Çø88 (ÈÕ°æ)
-area88r,Õ½Çø88 (ÈÕ°æ2)
-varth,Íþ»¢Õ½»ú À×ÓêÐÐ¶¯ (ÊÀ½ç°æ 920714)
-varthr1,Íþ»¢Õ½»ú À×ÓêÐÐ¶¯ (ÊÀ½ç°æ 920612)
-varthu,Íþ»¢Õ½»ú À×ÓêÐÐ¶¯ (ÃÀ°æ 920612)
-varthj,Íþ»¢Õ½»ú À×ÓêÐÐ¶¯ (ÈÕ°æ 920714)
-willow,ÍþÂåÖ®ÂÃ (ÃÀ°æ)
-willowo,ÍþÂåÖ®ÂÃ (ÃÀ°æ2)
-willowj,ÍþÂåÖ®ÂÃ (ÈÕ°æ)
-wof,Èý¹úÖ¾¢ò ÌìÃüÓÂÊ¿ (ÊÀ½ç°æ 921031)
-wofr1,Èý¹úÖ¾¢ò ÌìÃüÓÂÊ¿ (ÊÀ½ç°æ 921002)
-wofa,Èý¹úÖ¾¢ò ÍÌÊ³ÌìµØ (ÑÇÖÞ°æ 921005)
-wofch,Èý¹úÖ¾¢ò ÍÌÊ³ÌìµØ (CPS ×ª»»°æ ÈÕ°æ 921031)
-wofchs,Èý¹úÖ¾¢ò ÍÌÊ³ÌìµØ (ÖÐÎÄ°æ 921005),GAME_HACK
-wofu,Èý¹úÖ¾¢ò ÌìÃüÓÂÊ¿ (ÃÀ°æ 921031)
-wofj,Èý¹úÖ¾¢ò ÍÌÊ³ÌìµØ (ÈÕ°æ 921031)
-wofb,Èý¹úÖ¾¢ò ÍÌÊ³ÌìµØ (µÁ°æ),GAME_NOT_WORKING|GAME_BOOTLEG
-wofh,Èý¹úÖ¾¢ò Èý¹úÓ¢ÐÛ´« (µÁ°æ1),GAME_BOOTLEG
-wofha,Èý¹úÖ¾¢ò Èý¹úÓ¢ÐÛ´« (µÁ°æ2),GAME_BOOTLEG
-wofhfh,Èý¹úÖ¾¢ò »ð·ï»Ë (ÖÐ¹úµÁ°æ),GAME_BOOTLEG
-wof3js,Èý¹úÖ¾¢ò Èý½£Ê¥ (µÁ°æ),GAME_BOOTLEG
-wof3sj,Èý¹úÖ¾¢ò ÈýÊ¥½£ (µÁ°æ1),GAME_BOOTLEG
-wof3sja,Èý¹úÖ¾¢ò ÈýÊ¥½£ (µÁ°æ2),GAME_BOOTLEG
-wofsj,Èý¹úÖ¾¢ò Ê¥½£Èý¹ú (µÁ°æ1),GAME_BOOTLEG
-wofsja,Èý¹úÖ¾¢ò Ê¥½£Èý¹ú (µÁ°æ2),GAME_BOOTLEG
-wofsjb,Èý¹úÖ¾¢ò Ê¥½£Èý¹ú (µÁ°æ3),GAME_BOOTLEG
-wofth,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ µÐÈËÌæ»»°æ,GAME_HACK
-wofjjq,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ÑªÐÈ¼ÓÇ¿°æ,GAME_HACK
-woffh,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ·Ûºì°æ,GAME_HACK
-wofzhs,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ÕÙ»½Ôø°æ,GAME_HACK
-wofbio,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ BOSS¼ÓÇ¿°æ,GAME_HACK
-wofctj,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ²ÝËS½£°æ,GAME_HACK
-wofctm,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ²ÝËSÂí°æ,GAME_HACK
-wofgyc,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ¹ØÓð³àÍÃÂí°æ,GAME_HACK
-wofgyq,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ¹ØÓðÇ¿»¯°æ,GAME_HACK
-wofhzj,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ »ÆÖÒ¼ÓÇ¿°æ,GAME_HACK
-wofjqz,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ½£Æø×Ýºá°æ,GAME_HACK
-wofsjj,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ Éñ¼ý£«½£Æø°æ,GAME_HACK
-wofyjs,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ Óù½£Êõ°æ,GAME_HACK
-wofzyq,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ÕÔÔÆÊÈÑª±©Á¦°æ,GAME_HACK
-wofzy2,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ÕÔÔÆÇ¿»¯Á¬õí°æ,GAME_HACK
-wofzy3,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ÕÔÔÆÇ¿»¯ÉýÁú°æ,GAME_HACK
-wofsbl,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ Éñ±øÀûÆ÷°æ,GAME_HACK
-wofsz,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ÉÕÖí°æ,GAME_HACK
-wofdy,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ µØÓü°æ,GAME_HACK
-wofbt,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ÕÅ·ÉÇ¿»¯±©Á¦°æ,GAME_HACK
-wofhgz,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ º®¹âÕ¶,GAME_HACK
-wofdyg,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ÌìÏÂµÚÒ»¹Ø,GAME_HACK
-wofyxg,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ Ó¢ÐÛ¹Ø,GAME_HACK
-wofmr,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ÃÀÈË¹Ø,GAME_HACK
-wofzhy,Èý¹úÖ¾¢ò ³à±ÚÖ®Õ½ ÕÙ»½Ôø£¦Óù½£Êõ°æ,GAME_HACK
+knights,åœ†å“éª‘å£« (ä¸–ç•Œç‰ˆ 911127)
+knightsu,åœ†å“éª‘å£« (ç¾Žç‰ˆ 911127)
+knightsj,åœ†å“éª‘å£« (æ—¥ç‰ˆ2 911127)
+knightsja,åœ†å“éª‘å£« (æ—¥ç‰ˆ1 911127)
+knightsb,åœ†å“éª‘å£« (ç›—ç‰ˆ1),GAME_BOOTLEG
+knightsb2,åœ†å“éª‘å£« (ç›—ç‰ˆ2),GAME_BOOTLEG
+knightsh,åœ†å“éª‘å£« (hackç‰ˆ),GAME_BOOTLEG
+knightsi,åœ†å“éª‘å£« (æ˜¾ç¤ºéšæœºå€¼),GAME_HACK
+knightsr,åœ†å“éª‘å£« (éšæœºç‰ˆ),GAME_HACK
+kod,é¾™çŽ‹ (ä¸–ç•Œç‰ˆ 910805)
+kodr1,é¾™çŽ‹ (ä¸–ç•Œç‰ˆ 910711)
+kodu,é¾™çŽ‹ (ç¾Žç‰ˆ 910910)
+kodj,é¾™çŽ‹ (æ—¥ç‰ˆ1 910805)
+kodja,é¾™çŽ‹ (æ—¥ç‰ˆ2 910805)
+kodb,é¾™çŽ‹ (ç›—ç‰ˆ),GAME_BOOTLEG
+kodh,é¾™çŽ‹ (hack),GAME_BOOTLEG
+megaman,æ´›å…‹äºº åŠ›é‡ä¹‹æˆ˜ (CPS1 ç¾Žç‰ˆ 951006)
+megamana,æ´›å…‹äºº åŠ›é‡ä¹‹æˆ˜ (CPS1 äºšæ´²ç‰ˆ 951006)
+rockmanj,æ´›å…‹äºº åŠ›é‡ä¹‹æˆ˜ (CPS1 æ—¥ç‰ˆ 950922)
+mercs,æˆ˜åœºä¹‹ç‹¼2 (ä¸–ç•Œç‰ˆ 900302)
+mercsu,æˆ˜åœºä¹‹ç‹¼2 (ç¾Žç‰ˆ 900608)
+mercsur1,æˆ˜åœºä¹‹ç‹¼2 (ç¾Žç‰ˆ 900302)
+mercsj,æˆ˜åœºä¹‹ç‹¼2 (æ—¥ç‰ˆ 900302)
+msword,é­”æ³•å‰‘ å‹‡æ•¢çš„å¹»æƒ³ (ä¸–ç•Œç‰ˆ 900725)
+mswordr1,é­”æ³•å‰‘ å‹‡æ•¢çš„å¹»æƒ³ (ä¸–ç•Œç‰ˆ 900623)
+mswordu,é­”æ³•å‰‘ å‹‡æ•¢çš„å¹»æƒ³ (ç¾Žç‰ˆ 900725)
+mswordj,é­”æ³•å‰‘ (æ—¥ç‰ˆ 900623)
+mtwins,åŒéºŸå„¿ (ä¸–ç•Œç‰ˆ 900619)
+chikij,åŒéºŸå„¿ (æ—¥ç‰ˆ 900619)
+nemo,æ¢¦å¹»å†’é™© (ä¸–ç•Œç‰ˆ 901130)
+nemor1,æ¢¦å¹»å†’é™© (ä¸–ç•Œç‰ˆ 901109)
+nemoj,æ¢¦å¹»å†’é™© (æ—¥ç‰ˆ 901120)
+pang3,é­”æ³•æ°”æ³¡3 (æ¬§ç‰ˆ 950601)
+pang3r1,é­”æ³•æ°”æ³¡3 (æ¬§ç‰ˆ 950511)
+pang3j,é­”æ³•æ°”æ³¡3 (æ—¥ç‰ˆ 950511)
+pang3b,é­”æ³•æ°”æ³¡3 (ç›—ç‰ˆ),GAME_BOOTLEG
+pnickj,é­”æ³•æ–¹å— (æ—¥ç‰ˆ 940608)
+pnicku,é­”æ³•æ–¹å— (ç¾Žç‰ˆ 940608 Loca Test Version)
+punisher,æƒ©ç½šè€… (ä¸–ç•Œç‰ˆ 930422)
+punisheru,æƒ©ç½šè€… (ç¾Žç‰ˆ 930422)
+punisherh,æƒ©ç½šè€… (è¥¿ç­ç‰™ç‰ˆ 930422)
+punisherj,æƒ©ç½šè€… (æ—¥ç‰ˆ 930422)
+punisherbz,æƒ©ç½šè€… - é£™é£Žæˆ˜è­¦ (ä¸­å›½ç›—ç‰ˆ),GAME_BOOTLEG
+punisherjd,æƒ©ç½šè€… - è„šåˆ€ (hack),GAME_HACK
+punisherp,æƒ©ç½šè€… ç»å…¸åŠ å¼ºç‰ˆ (hack),GAME_HACK
+qad,é¾™ä¹‹è°œé¢˜ (ç¾Žç‰ˆ 920701)
+qadjr,é¾™ä¹‹è°œé¢˜ (æ—¥ç‰ˆ 940921)
+qtono2j,é—®ç­” æ®¿æ ·ä¹‹é‡Žæœ›2 å…¨å›½ç‰ˆ (æ—¥ç‰ˆ 950123)
+slammast,æ‘”è§’éœ¸çŽ‹ (ä¸–ç•Œç‰ˆ 930713)
+slammastu,æ‘”è§’éœ¸çŽ‹ (ç¾Žç‰ˆ 930713)
+mbomberj,æ‘”è§’éœ¸çŽ‹ è‚Œè‚‰çˆ†å¼¹ (æ—¥ç‰ˆ 930713)
+mbombrd,æ‘”è§’éœ¸çŽ‹ çƒ­åŠ›æˆ˜å£« (ä¸–ç•Œç‰ˆ 931206)
+mbombrdj,æ‘”è§’éœ¸çŽ‹ çƒ­åŠ›æˆ˜å£« (æ—¥ç‰ˆ 931206)
+sf2,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (ä¸–ç•Œç‰ˆ 910522)
+sf2eb,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (ä¸–ç•Œç‰ˆ 910214)
+sf2ed,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (ä¸–ç•Œç‰ˆ 910318)
+sf2ee,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (ä¸–ç•Œç‰ˆ 910228)
+sf2ua,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (ç¾Žç‰ˆ 910206)
+sf2ub,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (ç¾Žç‰ˆ 910214)
+sf2uc,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (ç¾Žç‰ˆ 910306)
+sf2ud,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (ç¾Žç‰ˆ 910318)
+sf2ue,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (ç¾Žç‰ˆ 910228)
+sf2uf,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (ç¾Žç‰ˆ 910411)
+sf2ug,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (ç¾Žç‰ˆ 910522 Rev. G)
+sf2ui,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (ç¾Žç‰ˆ 910522 Rev. I)
+sf2uk,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (ç¾Žç‰ˆ 911101)
+sf2j,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (æ—¥ç‰ˆ 911210)
+sf2ja,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (æ—¥ç‰ˆ 910214)
+sf2jc,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (æ—¥ç‰ˆ 910306)
+sf2jf,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (æ—¥ç‰ˆ 910411)
+sf2jh,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (æ—¥ç‰ˆ 910522)
+sf2jl,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« (æ—¥ç‰ˆ 920312)
+sf2qp1,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« é­”æ³• Delta åŠ é€Ÿç‰ˆ,GAME_BOOTLEG
+sf2ebbl,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« TAB Austria (ç›—ç‰ˆ1),GAME_BOOTLEG
+sf2thndr,è¡—å¤´éœ¸çŽ‹2 å¤©ä¸‹æ–—å£« Thunder Edition,GAME_BOOTLEG
+sf2ce,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (ä¸–ç•Œç‰ˆ 920513)
+sf2ceea,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (ä¸–ç•Œç‰ˆ 920313)
+sf2ceua,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (ç¾Žç‰ˆ 920313)
+sf2ceub,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (ç¾Žç‰ˆ 920513)
+sf2ceuc,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (ç¾Žç‰ˆ 920803)
+sf2ceja,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (æ—¥ç‰ˆ 920322)
+sf2cejb,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (æ—¥ç‰ˆ 920513)
+sf2cejc,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (æ—¥ç‰ˆ 920803)
+sf2bhh,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (Hung Hsi),GAME_NOT_WORK|GAME_BOOTLEG
+sf2rb,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (å½©è™¹ç‰ˆ1),GAME_BOOTLEG
+sf2rb2,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (å½©è™¹ç‰ˆ2),GAME_BOOTLEG
+sf2rb3,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (å½©è™¹ç‰ˆ3),GAME_BOOTLEG
+sf2red,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (èµ¤è‰²æ³¢åŠ¨),GAME_BOOTLEG
+sf2v004,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (V004),GAME_NOT_WORK|GAME_BOOTLEG
+sf2acc,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (åŠ é€Ÿç‰ˆ1),GAME_NOT_WORK|GAME_BOOTLEG
+sf2acca,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (åŠ é€Ÿç‰ˆ2),GAME_NOT_WORK|GAME_BOOTLEG
+sf2accp2,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (åŠ é€Ÿç‰ˆ3),GAME_BOOTLEG
+sf2amf,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ Alpha Magic-F (ç‰ˆæœ¬1),GAME_BOOTLEG
+sf2amf2,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ Alpha Magic-F (ç‰ˆæœ¬2),GAME_BOOTLEG
+sf2dkot2,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ Double K.O.åŠ é€Ÿç‰ˆâ…¡,GAME_NOT_WORK|GAME_BOOTLEG
+sf2ceblp,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (protected bootleg on non-dash board),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m1,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M1),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m2,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M2),GAME_BOOTLEG
+sf2m3,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M3),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m4,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M4),GAME_BOOTLEG
+sf2m5,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M5),GAME_BOOTLEG
+sf2m6,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M6) é™é¾™,GAME_BOOTLEG
+sf2m7,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M7),GAME_BOOTLEG
+sf2m8,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M8),GAME_NOT_WORK|GAME_BOOTLEG
+sf2yyc,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ YYC,GAME_NOT_WORK|GAME_BOOTLEG
+sf2koryu,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (é™é¾™),GAME_BOOTLEG
+sf2mdt,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ Magic Delta åŠ é€Ÿç‰ˆ1,GAME_BOOTLEG
+sf2mdta,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ Magic Delta åŠ é€Ÿç‰ˆ2,GAME_NOT_WORK|GAME_BOOTLEG
+sf2mdtb,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ Magic Delta åŠ é€Ÿç‰ˆ3,GAME_NOT_WORK|GAME_BOOTLEG
+sf2dongb,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (ä¸œæ–¹ä¸è´¥),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m9,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M9),GAME_BOOTLEG
+sf2m10,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M10),GAME_BOOTLEG
+sf2m11,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M11),GAME_BOOTLEG
+sf2m12,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M12),GAME_BOOTLEG
+sf2m13,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M13),GAME_BOOTLEG
+sf2m14,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (M14),GAME_BOOTLEG
+sf2tlona,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (å± é¾™1),GAME_BOOTLEG
+sf2tlonb,è¡—å¤´éœ¸çŽ‹2 å››å¤§å¤©çŽ‹ (å± é¾™2),GAME_BOOTLEG
+sf2hf,è¡—å¤´éœ¸çŽ‹2 åŠ é€Ÿç‰ˆ ç»ˆæžæ ¼æ–— (ä¸–ç•Œç‰ˆ 921209)
+sf2hfu,è¡—å¤´éœ¸çŽ‹2 åŠ é€Ÿç‰ˆ ç»ˆæžæ ¼æ–— (ç¾Žç‰ˆ 921209)
+sf2hfj,è¡—å¤´éœ¸çŽ‹2 åŠ é€Ÿç‰ˆ ç»ˆæžæ ¼æ–— (æ—¥ç‰ˆ 921209)
+sfzch,å°‘å¹´è¡—éœ¸ Zero (CPS è½¬æ¢ç‰ˆ/æ—¥ç‰ˆ 951020)
+sfach,å°‘å¹´è¡—éœ¸ Alpha (CPS è½¬æ¢ç‰ˆ/å…¬å¼€ç‰ˆ ç¾Žç‰ˆ 950727)
+sfzbch,å°‘å¹´è¡—éœ¸ Zero (CPS è½¬æ¢ç‰ˆ/å·´è¥¿ç‰ˆ 950727)
+strider,å‡ºå‡»é£žé¾™ (ç¾Žç‰ˆ1)
+striderua,å‡ºå‡»é£žé¾™ (ç¾Žç‰ˆ2)
+striderj,å‡ºå‡»é£žé¾™ (æ—¥ç‰ˆ1)
+striderjr,å‡ºå‡»é£žé¾™ (æ—¥ç‰ˆ2)
+3wonders,ä¸‰ä¸ªå¥‡è¿¹ (ä¸–ç•Œç‰ˆ 910520)
+3wondersr1,ä¸‰ä¸ªå¥‡è¿¹ (ä¸–ç•Œç‰ˆ 910513)
+3wondersu,ä¸‰ä¸ªå¥‡è¿¹ (ç¾Žç‰ˆ 910520)
+wonder3,ä¸‰ä¸ªå¥‡è¿¹ (æ—¥ç‰ˆ 910520)
+3wondersb,ä¸‰ä¸ªå¥‡è¿¹ (ç›—ç‰ˆ),GAME_NOT_WORK|GAME_BOOTLEG
+3wondersh,ä¸‰ä¸ªå¥‡è¿¹ (hack),GAME_BOOTLEG
+unsquad,æˆ˜åŒº88 (ç¾Žç‰ˆ)
+area88,æˆ˜åŒº88 (æ—¥ç‰ˆ)
+area88r,æˆ˜åŒº88 (æ—¥ç‰ˆ2)
+varth,å¨è™Žæˆ˜æœº é›·é›¨è¡ŒåŠ¨ (ä¸–ç•Œç‰ˆ 920714)
+varthr1,å¨è™Žæˆ˜æœº é›·é›¨è¡ŒåŠ¨ (ä¸–ç•Œç‰ˆ 920612)
+varthu,å¨è™Žæˆ˜æœº é›·é›¨è¡ŒåŠ¨ (ç¾Žç‰ˆ 920612)
+varthj,å¨è™Žæˆ˜æœº é›·é›¨è¡ŒåŠ¨ (æ—¥ç‰ˆ 920714)
+willow,å¨æ´›ä¹‹æ—… (ç¾Žç‰ˆ)
+willowo,å¨æ´›ä¹‹æ—… (ç¾Žç‰ˆ2)
+willowj,å¨æ´›ä¹‹æ—… (æ—¥ç‰ˆ)
+wof,ä¸‰å›½å¿—â…¡ å¤©å‘½å‹‡å£« (ä¸–ç•Œç‰ˆ 921031)
+wofr1,ä¸‰å›½å¿—â…¡ å¤©å‘½å‹‡å£« (ä¸–ç•Œç‰ˆ 921002)
+wofa,ä¸‰å›½å¿—â…¡ åžé£Ÿå¤©åœ° (äºšæ´²ç‰ˆ 921005)
+wofch,ä¸‰å›½å¿—â…¡ åžé£Ÿå¤©åœ° (CPS è½¬æ¢ç‰ˆ æ—¥ç‰ˆ 921031)
+wofch3p,ä¸‰å›½å¿—â…¡ åžé£Ÿå¤©åœ° (CPS è½¬æ¢ç‰ˆ æ—¥ç‰ˆ 921031 3äººè”æœº)
+wofchdx,ä¸‰å›½å¿—â…¢ å¤ä¾¯æ©çš„å¤ä»‡DX (hack),GAME_HACK
+wofchs,ä¸‰å›½å¿—â…¡ åžé£Ÿå¤©åœ° (ä¸­æ–‡ç‰ˆ 921005),GAME_HACK
+wofu,ä¸‰å›½å¿—â…¡ å¤©å‘½å‹‡å£« (ç¾Žç‰ˆ 921031)
+wofj,ä¸‰å›½å¿—â…¡ åžé£Ÿå¤©åœ° (æ—¥ç‰ˆ 921031)
+wofjm,ä¸‰å›½å¿—â…¡ åžé£Ÿå¤©åœ° (ä¸‰ç¾Žèžºæ—‹çš„é€†è¢­),GAME_HACK
+wofb,ä¸‰å›½å¿—â…¡ åžé£Ÿå¤©åœ° (ç›—ç‰ˆ),GAME_BOOTLEG
+wofh,ä¸‰å›½å¿—â…¡ ä¸‰å›½è‹±é›„ä¼  (ç›—ç‰ˆ1),GAME_BOOTLEG
+wofha,ä¸‰å›½å¿—â…¡ ä¸‰å›½è‹±é›„ä¼  (ç›—ç‰ˆ2),GAME_BOOTLEG
+wofhfh,ä¸‰å›½å¿—â…¡ ç«å‡¤å‡° (ä¸­å›½ç›—ç‰ˆ),GAME_BOOTLEG
+wof3js,ä¸‰å›½å¿—â…¡ ä¸‰å‰‘åœ£ (ç›—ç‰ˆ),GAME_BOOTLEG
+wof3sj,ä¸‰å›½å¿—â…¡ ä¸‰åœ£å‰‘ (ç›—ç‰ˆ1),GAME_BOOTLEG
+wof3sja,ä¸‰å›½å¿—â…¡ ä¸‰åœ£å‰‘ (ç›—ç‰ˆ2),GAME_BOOTLEG
+wofsj,ä¸‰å›½å¿—â…¡ åœ£å‰‘ä¸‰å›½ (ç›—ç‰ˆ1),GAME_BOOTLEG
+wofsja,ä¸‰å›½å¿—â…¡ åœ£å‰‘ä¸‰å›½ (ç›—ç‰ˆ2),GAME_BOOTLEG
+wofsjb,ä¸‰å›½å¿—â…¡ åœ£å‰‘ä¸‰å›½ (ç›—ç‰ˆ3),GAME_BOOTLEG
