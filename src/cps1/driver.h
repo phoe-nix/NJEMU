@@ -2,7 +2,7 @@
 
 	driver.c
 
-	CPS1 driver/•…•È•§•–/«˝∂Ø
+	CPS1 driver/„Éâ„É©„Ç§„Éê/È©±Âä®
 
 ******************************************************************************/
 
@@ -86,6 +86,7 @@ enum
 	INPTYPE_punisherbz,	// 44
 	INPTYPE_wofch,		// 45
 	INPTYPE_wofhfh,		// 46
+	INPTYPE_wofch3p,	// 47
 #endif
 	INPTYPE_MAX			// MAX
 };
@@ -110,6 +111,7 @@ enum
 	INIT_dinohunt,		// 14
 	INIT_sf2m3,			// 15
 	INIT_wofb,			// 16
+	INIT_wofch3p,		// 17
 #endif
 	INIT_MAX
 };
@@ -201,6 +203,7 @@ void pang3_decode(void);
 void kodb_init(void);
 void sf2m13_init(void);
 void wofb_init(void);
+void wofch3p_init(void);
 void wofh_init(void);
 void wof3js_init(void);
 void wof3sj_init(void);
