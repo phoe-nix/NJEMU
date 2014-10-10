@@ -712,6 +712,7 @@ int memory_init(void)
 	case INIT_dinohunt: dinohunt_init();   break;
 	case INIT_sf2m3:    sf2m3_init();      break;
 	case INIT_wofb:     wofb_init();       break;
+	case INIT_wofch3p:  wofch3p_init();    break;
 #endif
 	}
 
