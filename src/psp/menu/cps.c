@@ -2,14 +2,14 @@
 
 	menu/cps.c
 
-	PSP •·•À•Â©` (CPS1/CPS2π≤Õ®)
+	PSP „É°„Éã„É•„Éº (CPS1/CPS2ÂÖ±ÈÄö)
 
 ******************************************************************************/
 
 #if defined(INCLUDE_GAMECFG_STRUCT)
 
 /*-----------------------------------------------------------------------------
-	gamecfg òã‘ÏÃÂ
+	gamecfg ÊßãÈÄ†‰Ωì
 -----------------------------------------------------------------------------*/
 
 static gamecfg2_t gamecfg_normal[] =
@@ -119,7 +119,7 @@ static gamecfg2_t gamecfg_qsound[] =
 #elif defined(INCLUDE_GAMECFG_MENU)
 
 /*-----------------------------------------------------------------------------
-	gamecfg menu ≥ı∆⁄ªØ
+	gamecfg menu ÂàùÊúüÂåñ
 -----------------------------------------------------------------------------*/
 #if (EMU_SYSTEM == CPS2)
 	if (machine_screen_type)
@@ -157,7 +157,7 @@ static gamecfg2_t gamecfg_qsound[] =
 #elif defined(INCLUDE_KEYCFG_STRUCT)
 
 /*-----------------------------------------------------------------------------
-	keycfg òã‘ÏÃÂ
+	keycfg ÊßãÈÄ†‰Ωì
 -----------------------------------------------------------------------------*/
 
 static keycfg2_t keycfg_2buttons[] =
@@ -412,6 +412,40 @@ static keycfg2_t keycfg_wofch[] =
 	MENU_END
 };
 
+static keycfg2_t keycfg_wofch3p[] =
+{
+	{ INPUT_UP,         KEYCFG_BUTTON, P1_UP       },
+	{ INPUT_DOWN,       KEYCFG_BUTTON, P1_DOWN     },
+	{ INPUT_LEFT,       KEYCFG_BUTTON, P1_LEFT     },
+	{ INPUT_RIGHT,      KEYCFG_BUTTON, P1_RIGHT    },
+	{ INPUT_BUTTON1,    KEYCFG_BUTTON, P1_BUTTON1  },
+	{ INPUT_BUTTON2,    KEYCFG_BUTTON, P1_BUTTON2  },
+	{ INPUT_BUTTON3,    KEYCFG_BUTTON, P1_BUTTON3  },
+	{ INPUT_BUTTON4,    KEYCFG_BUTTON, P1_BUTTON4  },
+	{ INPUT_BUTTON5,    KEYCFG_BUTTON, P1_BUTTON5  },
+	{ INPUT_BUTTON6,    KEYCFG_BUTTON, P1_BUTTON6  },
+	{ INPUT_START,      KEYCFG_BUTTON, P1_START    },
+	{ INPUT_COIN,       KEYCFG_BUTTON, P1_COIN     },
+	MENU_BLANK,
+	{ INPUT_SERVCOIN,   KEYCFG_BUTTON, SERV_COIN   },
+	{ INPUT_SERVSWITCH, KEYCFG_BUTTON, SERV_SWITCH },
+	MENU_BLANK,
+	{ AUTOFIRE1,        KEYCFG_BUTTON, P1_AF_1     },
+	{ AUTOFIRE2,        KEYCFG_BUTTON, P1_AF_2     },
+	{ AUTOFIRE3,        KEYCFG_BUTTON, P1_AF_3     },
+	{ AUTOFIRE4,        KEYCFG_BUTTON, P1_AF_4     },
+	{ AUTOFIRE5,        KEYCFG_BUTTON, P1_AF_5     },
+	{ AUTOFIRE6,        KEYCFG_BUTTON, P1_AF_6     },
+	{ AUTOFIRE_INV,     KEYCFG_NUMBER, 0           },
+	MENU_BLANK,
+	{ SAVE_SCREENSHOT,  KEYCFG_BUTTON, SNAPSHOT    },
+	{ SWITCH_PLAYER,    KEYCFG_BUTTON, SWPLAYER    },
+	{ _COMMAND_LIST,    KEYCFG_BUTTON, COMMANDLIST },
+	MENU_BLANK,
+	MENU_RETURN,
+	MENU_END
+};
+
 static keycfg2_t keycfg_forgottn[] =
 {
 	{ INPUT_UP,         KEYCFG_BUTTON, P1_UP       },
@@ -504,7 +538,7 @@ static keycfg2_t keycfg_pzloop2[] =
 #elif defined(INCLUDE_KEYCFG_MENU)
 
 /*-----------------------------------------------------------------------------
-	keycfg menu ≥ı∆⁄ªØ
+	keycfg menu ÂàùÊúüÂåñ
 -----------------------------------------------------------------------------*/
 
 #if (EMU_SYSTEM == CPS1)
@@ -547,6 +581,10 @@ static keycfg2_t keycfg_pzloop2[] =
 
 	case INPTYPE_wofch:
 		keycfg2 = keycfg_wofch;
+		break;
+
+	case INPTYPE_wofch3p:
+		keycfg2 = keycfg_wofch3p;
 		break;
 
 	case INPTYPE_cworld2j:
@@ -598,7 +636,7 @@ static keycfg2_t keycfg_pzloop2[] =
 #elif defined(INCLUDE_LOAD_DIPSWITCH)
 
 /*-----------------------------------------------------------------------------
-	dipswitch menu ≥ı∆⁄ªØ
+	dipswitch menu ÂàùÊúüÂåñ
 -----------------------------------------------------------------------------*/
 
 #if (EMU_SYSTEM == CPS1)
@@ -618,7 +656,7 @@ static keycfg2_t keycfg_pzloop2[] =
 #elif defined(INCLUDE_SAVE_DIPSWITCH)
 
 /*-----------------------------------------------------------------------------
-	dipswitch menu ΩK¡À
+	dipswitch menu ÁµÇ‰∫Ü
 -----------------------------------------------------------------------------*/
 
 #if (EMU_SYSTEM == CPS1)
