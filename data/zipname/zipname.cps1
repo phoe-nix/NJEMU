@@ -198,11 +198,14 @@ willowj,Willow (Japan)
 wof,Warriors of Fate (World 921031)
 wofr1,Warriors of Fate (World 921002)
 wofa,Sangokushi II (Asia 921005)
-wofch,Sangokushi II (CPS Changer Japan 921031)
+wofch,Sekiheki no Tatakai (CPS Changer Japan 921031)
+wofch3p,Sekiheki no Tatakai (CPS Changer Japan 921031 3 Players for kaillera)
+wofchdx,Sangokushi III Gaiden: Kakou-On's Revenge DX,GAME_HACK
 wofchs,Sangokushi II (Chinese 921005),GAME_HACK
 wofu,Warriors of Fate (USA 921031)
-wofj,Tenchi wo Kurau II - Sekiheki no Tatakai (Japan 921031)
-wofb,Warriors of Fate (bootleg),GAME_NOT_WORKING|GAME_BOOTLEG
+wofj,Tenchi wo Kurau II: Sekiheki no Tatakai (Japan 921031)
+wofjm,Tenchi wo Kurau II: Sekiheki no Tatakai (MEI's Counter Attack),GAME_HACK
+wofb,Warriors of Fate (bootleg),GAME_BOOTLEG
 wofh,Sangokushi II: Sanguo Yingxiong Zhuan (Chinese bootleg set 1),GAME_BOOTLEG
 wofha,Sangokushi II: Sanguo Yingxiong Zhuan (Chinese bootleg set 2),GAME_BOOTLEG
 wofhfh,Huo Feng Huang(Chinese bootleg of Sangokushi II),GAME_BOOTLEG
@@ -212,28 +215,3 @@ wof3sja,Sangokushi II: San Sheng Jian (Chinese bootleg set 2),GAME_BOOTLEG
 wofsj,Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 1),GAME_BOOTLEG
 wofsja,Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 2),GAME_BOOTLEG
 wofsjb,Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 3),GAME_BOOTLEG
-wofth,Warriors of Fate (Di ren ti huan Enhanced),GAME_HACK
-wofjjq,Warriors of Fate (Xue xing Enhanced),GAME_HACK
-woffh,Warriors of Fate (Fen hong Enhanced),GAME_HACK
-wofzhs,Warriors of Fate (Zhao huan shou Enhanced),GAME_HACK
-wofbio,Warriors of Fate (Boss Enhanced),GAME_HACK
-wofctj,Warriors of Fate (Cao zhi jian Enhanced),GAME_HACK
-wofctm,Warriors of Fate (Cao zhi ma Enhanced),GAME_HACK
-wofgyc,Warriors of Fate (Guan yu chi tu ma Enhanced),GAME_HACK
-wofgyq,Warriors of Fate (Guan yu Enhanced),GAME_HACK
-wofhzj,Warriors of Fate (Huang zhong Enhanced),GAME_HACK
-wofjqz,Warriors of Fate (Jian qi zong heng Enhanced),GAME_HACK
-wofsjj,Warriors of Fate (Shen jian + Jian qi Enhanced),GAME_HACK
-wofyjs,Warriors of Fate (Yu jian shu Enhanced),GAME_HACK
-wofzyq,Warriors of Fate (Zhao yun bao li Enhanced),GAME_HACK
-wofzy2,Warriors of Fate (Zhao yun lian ti Enhanced),GAME_HACK
-wofzy3,Warriors of Fate (Zhao yun sheng long Enhanced),GAME_HACK
-wofsbl,Warriors of Fate (Shen bing li qi Enhanced),GAME_HACK
-wofsz,Warriors of Fate (Shao zhu Enhanced),GAME_HACK
-wofdy,Warriors of Fate (Di yu Enhanced),GAME_HACK
-wofbt,Warriors of Fate (Zhang fei Enhanced),GAME_HACK
-wofhgz,Warriors of Fate (Han guang zhan Enhanced),GAME_HACK
-wofdyg,Warriors of Fate (Di yi guan Enhanced),GAME_HACK
-wofyxg,Warriors of Fate (Ying xiong guan Enhanced),GAME_HACK
-wofmr,Warriors of Fate (Mei ren guan Enhanced),GAME_HACK
-wofzhy,Warriors of Fate (Zhao huan shou & Yu jian shu Enhanced),GAME_HACK
