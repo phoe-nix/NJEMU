@@ -2,238 +2,216 @@
 1941r1,1941 - Counter Attack (World)
 1941u,1941 - Counter Attack (USA 900227)
 1941j,1941 - Counter Attack (Japan)
-captcomm,¥­¥ã¥×¥Æ¥ó¥³¥Ş¥ó¥É©` (World 911202)
-captcommr1,¥­¥ã¥×¥Æ¥ó¥³¥Ş¥ó¥É©` (World 911014)
-captcommu,¥­¥ã¥×¥Æ¥ó¥³¥Ş¥ó¥É©` (USA 910928)
-captcommj,¥­¥ã¥×¥Æ¥ó¥³¥Ş¥ó¥É©` (Japan 911202)
-captcommjr1,¥­¥ã¥×¥Æ¥ó¥³¥Ş¥ó¥É©` (Japan 910928)
-captcommb,¥­¥ã¥×¥Æ¥ó¥³¥Ş¥ó¥É©` (bootleg),GAME_BOOTLEG
-captcommp,¥­¥ã¥×¥Æ¥ó¥³¥Ş¥ó¥É©` Plus (hack),GAME_HACK
-cawing,U.S.¥Í¥¤¥Ó©` [Carrier Air Wing] (World 901012)
-cawingr1,U.S.¥Í¥¤¥Ó©` [Carrier Air Wing] (World 901009)
-cawingu,U.S.¥Í¥¤¥Ó©` [Carrier Air Wing] (USA 901012)
-cawingj,U.S.¥Í¥¤¥Ó©` (Japan 901012)
-cworld2j,¥«¥×¥³¥ó¥ï©`¥ë¥É2 (Japan 920611)
-dino,¥­¥ã¥Ç¥£¥é¥Ã¥¯¥¹ [Cadillacs and Dinosaurs] (World 930201)
-dinou,¥­¥ã¥Ç¥£¥é¥Ã¥¯¥¹ [Cadillacs and Dinosaurs] (USA 930201)
-dinoj,¥­¥ã¥Ç¥£¥é¥Ã¥¯¥¹ ¿Ö¸oĞÂÊÀ¼o (Japan 930201)
-dinob,¥­¥ã¥Ç¥£¥é¥Ã¥¯¥¹ ¿Ö¸oĞÂÊÀ¼o (bootleg),GAME_BOOTLEG
-dinoh,¥­¥ã¥Ç¥£¥é¥Ã¥¯¥¹ ¿Ö¸oĞÂÊÀ¼o (hack set 1),GAME_BOOTLEG
-dinoha,¥­¥ã¥Ç¥£¥é¥Ã¥¯¥¹ ¿Ö¸oĞÂÊÀ¼o (hack set 2),GAME_BOOTLEG
-dinohb,¥­¥ã¥Ç¥£¥é¥Ã¥¯¥¹ ¿Ö¸oĞÂÊÀ¼o (hack set 3),GAME_BOOTLEG
-dinohunt,¥­¥ã¥Ç¥£¥é¥Ã¥¯¥¹ ¿Ö¸oĞÂÊÀ¼o (Chinese bootleg),GAME_BOOTLEG
-dynwar,ÌìµØ¤ò†Ğ¤é¤¦ [Dynasty Wars] (World)
-dynwara,ÌìµØ¤ò†Ğ¤é¤¦ [Dynasty Wars] (USA)
-dynwarj,ÌìµØ¤ò†Ğ¤é¤¦ (Japan set 1)
-dynwarjr,ÌìµØ¤ò†Ğ¤é¤¦ (Japan set 2)
-ffight,¥Õ¥¡¥¤¥Ê¥ë¥Õ¥¡¥¤¥È (World set 1)
-ffighta,¥Õ¥¡¥¤¥Ê¥ë¥Õ¥¡¥¤¥È (World set 2)
-ffightu,¥Õ¥¡¥¤¥Ê¥ë¥Õ¥¡¥¤¥È (USA set 1)
-ffightu1,¥Õ¥¡¥¤¥Ê¥ë¥Õ¥¡¥¤¥È (USA set 2)
-ffightua,¥Õ¥¡¥¤¥Ê¥ë¥Õ¥¡¥¤¥È (USA 900112)
-ffightub,¥Õ¥¡¥¤¥Ê¥ë¥Õ¥¡¥¤¥È (USA 900613)
-ffightj,¥Õ¥¡¥¤¥Ê¥ë¥Õ¥¡¥¤¥È (Japan)
-ffightj1,¥Õ¥¡¥¤¥Ê¥ë¥Õ¥¡¥¤¥È (Japan 900112)
-ffightj2,¥Õ¥¡¥¤¥Ê¥ë¥Õ¥¡¥¤¥È (Japan 900305)
-ffightj3,¥Õ¥¡¥¤¥Ê¥ë¥Õ¥¡¥¤¥È (Japan 900613)
-ffightjh,¥Õ¥¡¥¤¥Ê¥ë¥Õ¥¡¥¤¥È Betlog Hack,GAME_HACK
-ffightbl,¥Õ¥¡¥¤¥Ê¥ë¥Õ¥¡¥¤¥È (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
-fcrash,¥Õ¥¡¥¤¥Ê¥ë¥Õ¥¡¥¤¥È Final Crash (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
-forgottn,¥í¥¹¥È¥ï©`¥ë¥É [Forgotton Worlds]
-forgottnu,¥í¥¹¥È¥ï©` (USA B-Board 88621B-2 Rev. C)
-forgottnu1,¥í¥¹¥È¥ï©` (USA B-Board 88618B-2 Rev. C)
-forgottnua,¥í¥¹¥È¥ï©` (USA B-Board 88618B-2 Rev. A)
-forgottnuaa,¥í¥¹¥È¥ï©` (USA B-Board 88618B-2 Rev. AA)
-lostwrld,¥í¥¹¥È¥ï©`¥ë¥É (Japan)
-lostwrldo,¥í¥¹¥È¥ï©`¥ë¥É (Japan Old Ver.)
-ghouls,´óÄ§½ç´å [Ghouls'n Ghosts] (World)
-ghoulsu,´óÄ§½ç´å [Ghouls'n Ghosts] (USA)
-daimakai,´óÄ§½ç´å (Japan set 1)
-daimakair,´óÄ§½ç´å (Japan set 2)
+captcomm,ã‚­ãƒ£ãƒ—ãƒ†ãƒ³ã‚³ãƒãƒ³ãƒ‰ãƒ¼ (World 911202)
+captcommr1,ã‚­ãƒ£ãƒ—ãƒ†ãƒ³ã‚³ãƒãƒ³ãƒ‰ãƒ¼ (World 911014)
+captcommu,ã‚­ãƒ£ãƒ—ãƒ†ãƒ³ã‚³ãƒãƒ³ãƒ‰ãƒ¼ (USA 910928)
+captcommj,ã‚­ãƒ£ãƒ—ãƒ†ãƒ³ã‚³ãƒãƒ³ãƒ‰ãƒ¼ (Japan 911202)
+captcommjr1,ã‚­ãƒ£ãƒ—ãƒ†ãƒ³ã‚³ãƒãƒ³ãƒ‰ãƒ¼ (Japan 910928)
+captcommb,ã‚­ãƒ£ãƒ—ãƒ†ãƒ³ã‚³ãƒãƒ³ãƒ‰ãƒ¼ (bootleg),GAME_BOOTLEG
+captcommp,ã‚­ãƒ£ãƒ—ãƒ†ãƒ³ã‚³ãƒãƒ³ãƒ‰ãƒ¼ Plus (hack),GAME_HACK
+cawing,U.S.ãƒã‚¤ãƒ“ãƒ¼ [Carrier Air Wing] (World 901012)
+cawingr1,U.S.ãƒã‚¤ãƒ“ãƒ¼ [Carrier Air Wing] (World 901009)
+cawingu,U.S.ãƒã‚¤ãƒ“ãƒ¼ [Carrier Air Wing] (USA 901012)
+cawingj,U.S.ãƒã‚¤ãƒ“ãƒ¼ (Japan 901012)
+cworld2j,ã‚«ãƒ—ã‚³ãƒ³ãƒ¯ãƒ¼ãƒ«ãƒ‰2 (Japan 920611)
+dino,ã‚­ãƒ£ãƒ‡ã‚£ãƒ©ãƒƒã‚¯ã‚¹ [Cadillacs and Dinosaurs] (World 930201)
+dinou,ã‚­ãƒ£ãƒ‡ã‚£ãƒ©ãƒƒã‚¯ã‚¹ [Cadillacs and Dinosaurs] (USA 930201)
+dinoj,ã‚­ãƒ£ãƒ‡ã‚£ãƒ©ãƒƒã‚¯ã‚¹ æç«œæ–°ä¸–ç´€ (Japan 930201)
+dinob,ã‚­ãƒ£ãƒ‡ã‚£ãƒ©ãƒƒã‚¯ã‚¹ æç«œæ–°ä¸–ç´€ (bootleg),GAME_BOOTLEG
+dinoh,ã‚­ãƒ£ãƒ‡ã‚£ãƒ©ãƒƒã‚¯ã‚¹ æç«œæ–°ä¸–ç´€ (hack set 1),GAME_BOOTLEG
+dinoha,ã‚­ãƒ£ãƒ‡ã‚£ãƒ©ãƒƒã‚¯ã‚¹ æç«œæ–°ä¸–ç´€ (hack set 2),GAME_BOOTLEG
+dinohb,ã‚­ãƒ£ãƒ‡ã‚£ãƒ©ãƒƒã‚¯ã‚¹ æç«œæ–°ä¸–ç´€ (hack set 3),GAME_BOOTLEG
+dinohunt,ã‚­ãƒ£ãƒ‡ã‚£ãƒ©ãƒƒã‚¯ã‚¹ æç«œæ–°ä¸–ç´€ (Chinese bootleg),GAME_BOOTLEG
+dynwar,å¤©åœ°ã‚’å–°ã‚‰ã† [Dynasty Wars] (World)
+dynwara,å¤©åœ°ã‚’å–°ã‚‰ã† [Dynasty Wars] (USA)
+dynwarj,å¤©åœ°ã‚’å–°ã‚‰ã† (Japan set 1)
+dynwarjr,å¤©åœ°ã‚’å–°ã‚‰ã† (Japan set 2)
+ffight,ãƒ•ã‚¡ã‚¤ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ãƒˆ (World set 1)
+ffighta,ãƒ•ã‚¡ã‚¤ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ãƒˆ (World set 2)
+ffightu,ãƒ•ã‚¡ã‚¤ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ãƒˆ (USA set 1)
+ffightu1,ãƒ•ã‚¡ã‚¤ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ãƒˆ (USA set 2)
+ffightua,ãƒ•ã‚¡ã‚¤ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ãƒˆ (USA 900112)
+ffightub,ãƒ•ã‚¡ã‚¤ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ãƒˆ (USA 900613)
+ffightj,ãƒ•ã‚¡ã‚¤ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ãƒˆ (Japan)
+ffightj1,ãƒ•ã‚¡ã‚¤ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ãƒˆ (Japan 900112)
+ffightj2,ãƒ•ã‚¡ã‚¤ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ãƒˆ (Japan 900305)
+ffightj3,ãƒ•ã‚¡ã‚¤ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ãƒˆ (Japan 900613)
+ffightjh,ãƒ•ã‚¡ã‚¤ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ãƒˆ Betlog Hack,GAME_HACK
+ffightbl,ãƒ•ã‚¡ã‚¤ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ãƒˆ (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+fcrash,ãƒ•ã‚¡ã‚¤ãƒŠãƒ«ãƒ•ã‚¡ã‚¤ãƒˆ Final Crash (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+forgottn,ãƒ­ã‚¹ãƒˆãƒ¯ãƒ¼ãƒ«ãƒ‰ [Forgotton Worlds]
+forgottnu,ãƒ­ã‚¹ãƒˆãƒ¯ãƒ¼ (USA B-Board 88621B-2 Rev. C)
+forgottnu1,ãƒ­ã‚¹ãƒˆãƒ¯ãƒ¼ (USA B-Board 88618B-2 Rev. C)
+forgottnua,ãƒ­ã‚¹ãƒˆãƒ¯ãƒ¼ (USA B-Board 88618B-2 Rev. A)
+forgottnuaa,ãƒ­ã‚¹ãƒˆãƒ¯ãƒ¼ (USA B-Board 88618B-2 Rev. AA)
+lostwrld,ãƒ­ã‚¹ãƒˆãƒ¯ãƒ¼ãƒ«ãƒ‰ (Japan)
+lostwrldo,ãƒ­ã‚¹ãƒˆãƒ¯ãƒ¼ãƒ«ãƒ‰ (Japan Old Ver.)
+ghouls,å¤§é­”ç•Œæ‘ [Ghouls'n Ghosts] (World)
+ghoulsu,å¤§é­”ç•Œæ‘ [Ghouls'n Ghosts] (USA)
+daimakai,å¤§é­”ç•Œæ‘ (Japan set 1)
+daimakair,å¤§é­”ç•Œæ‘ (Japan set 2)
 ganbare,Ganbare Marin-kun (Marine 2K0411 JPN),GAME_NOT_WORK|
-knights,¥Ê¥¤¥Ä¡¤¥ª¥Ö¡¤¥¶¡¤¥é¥¦¥ó¥É (World 911127)
-knightsu,¥Ê¥¤¥Ä¡¤¥ª¥Ö¡¤¥¶¡¤¥é¥¦¥ó¥É (USA 911127)
-knightsj,¥Ê¥¤¥Ä¡¤¥ª¥Ö¡¤¥¶¡¤¥é¥¦¥ó¥É (Japan 911127 set 2)
-knightsja,¥Ê¥¤¥Ä¡¤¥ª¥Ö¡¤¥¶¡¤¥é¥¦¥ó¥É (Japan 911127 set 1)
-knightsb,¥Ê¥¤¥Ä¡¤¥ª¥Ö¡¤¥¶¡¤¥é¥¦¥ó¥É (bootleg set 1),GAME_BOOTLEG
-knightsb2,¥Ê¥¤¥Ä¡¤¥ª¥Ö¡¤¥¶¡¤¥é¥¦¥ó¥É (bootleg set 2),GAME_BOOTLEG
-knightsh,¥Ê¥¤¥Ä¡¤¥ª¥Ö¡¤¥¶¡¤¥é¥¦¥ó¥É (hack),GAME_BOOTLEG
-knightsi,¥Ê¥¤¥Ä¡¤¥ª¥Ö¡¤¥¶¡¤¥é¥¦¥ó¥É (±íÊ¾ÂÒÊı),GAME_HACK
-knightsr,¥Ê¥¤¥Ä¡¤¥ª¥Ö¡¤¥¶¡¤¥é¥¦¥ó¥É (Ëæ»ú°æ),GAME_HACK
-kod,¥­¥ó¥°¡¤¥ª¥Ö¡¤¥É¥é¥´¥ó¥º [The King of Dragons] (World 910805)
-kodr1,¥­¥ó¥°¡¤¥ª¥Ö¡¤¥É¥é¥´¥ó¥º [The King of Dragons] (World 910711)
-kodu,¥­¥ó¥°¡¤¥ª¥Ö¡¤¥É¥é¥´¥ó¥º [The King of Dragons] (USA 910910)
-kodj,¥­¥ó¥°¡¤¥ª¥Ö¡¤¥É¥é¥´¥ó¥º (Japan 910805 set 1)
-kodja,¥­¥ó¥°¡¤¥ª¥Ö¡¤¥É¥é¥´¥ó¥º (Japan 910805 set 2)
-kodb,¥­¥ó¥°¡¤¥ª¥Ö¡¤¥É¥é¥´¥ó¥º (bootleg),GAME_BOOTLEG
-kodh,¥­¥ó¥°¡¤¥ª¥Ö¡¤¥É¥é¥´¥ó¥º (hack),GAME_BOOTLEG
-megaman,¥í¥Ã¥¯¥Ş¥ó ¥¶¡¤¥Ñ¥ï©`¡¤¥Ğ¥È¥ë (CPS1 USA 951006)
-megamana,¥í¥Ã¥¯¥Ş¥ó ¥¶¡¤¥Ñ¥ï©`¡¤¥Ğ¥È¥ë (CPS1 Asia 951006)
-rockmanj,¥í¥Ã¥¯¥Ş¥ó ¥¶¡¤¥Ñ¥ï©`¡¤¥Ğ¥È¥ë (CPS1Japan 950922)
-mercs,‘éˆö¤ÎÀÇ¢ò [Mercs] (World 900302)
-mercsu,‘éˆö¤ÎÀÇ¢ò [Mercs] (USA 900608)
-mercsur1,‘éˆö¤ÎÀÇ¢ò [Mercs] (USA 900302)
-mercsj,‘éˆö¤ÎÀÇ¢ò (Japan 900302)
-msword,¥Ş¥¸¥Ã¥¯¥½©`¥É - Heroic Fantasy (World 900725)
-mswordr1,¥Ş¥¸¥Ã¥¯¥½©`¥É - Heroic Fantasy (World 900623)
-mswordu,¥Ş¥¸¥Ã¥¯¥½©`¥É - Heroic Fantasy (USA 900725)
-mswordj,¥Ş¥¸¥Ã¥¯¥½©`¥É (Japan 900623)
-mtwins,¥Á¥­¥Á¥­¥Ü©`¥¤¥º [Mega Twins] (World 900619)
-chikij,¥Á¥­¥Á¥­¥Ü©`¥¤¥º (Japan 900619)
-nemo,¥Ë¥â (World 901130)
-nemor1,¥Ë¥â (World 901109)
-nemoj,¥Ë¥â (Japan 901120)
-pang3,¥Ñ¥ó! 3 (Euro 950601)
-pang3r1,¥Ñ¥ó! 3 (Euro 950511)
-pang3j,¥Ñ¥ó! 3 - ¹ÖµÁ¤¿¤Á¤ÎÈAû¤ÊÎçáá - (Japan 950511)
-pang3b,¥Ñ¥ó! 3 (bootleg),GAME_BOOTLEG
-pnickj,¤×¤Ë¤Ã¤­¤£¤º (Japan 940608)
-pnicku,¤×¤Ë¤Ã¤­¤£¤º (USA 940608 Loca Test Version)
-punisher,¥Ñ¥Ë¥Ã¥·¥ã©` [The Punisher] (World 930422)
-punisheru,¥Ñ¥Ë¥Ã¥·¥ã©` [The Punisher] (USA 930422)
-punisherh,¥Ñ¥Ë¥Ã¥·¥ã©` [The Punisher] (Hispanic 930422)
-punisherj,¥Ñ¥Ë¥Ã¥·¥ã©` (Japan 930422)
-punisherbz,¥Ñ¥Ë¥Ã¥·¥ã©` biao feng zhan jing (Chinese bootleg),GAME_BOOTLEG
-punisherjd,¥Ñ¥Ë¥Ã¥·¥ã©` - Jiao Dao (hack),GAME_HACK
-punisherp,The ¥Ñ¥Ë¥Ã¥·¥ã©` Plus,GAME_HACK
-qad,¥¯¥¤¥º£¦¥É¥é¥´¥ó¥º (US 920701)
-qadjr,¥¯¥¤¥º£¦¥É¥é¥´¥ó¥º (Japan 940921)
-qtono2j,¥¯¥¤¥ºµî˜”¤ÎÒ°Íû2 È«¹ú°æ (Japan 950123)
-slammast,¥Ş¥Ã¥¹¥ë¥Ü¥Ş©` [Saturday Night Slam Masters] (World 930713)
-slammastu,¥Ş¥Ã¥¹¥ë¥Ü¥Ş©` [Saturday Night Slam Masters] (USA 930713)
-mbomberj,¥Ş¥Ã¥¹¥ë¥Ü¥Ş©` - The Body Explosion (Japan 930713)
-mbombrd,¥Ş¥Ã¥¹¥ë¥Ü¥Ş©`Duo - Ultimate Team Battle (World 931206)
-mbombrdj,¥Ş¥Ã¥¹¥ë¥Ü¥Ş©`Duo - Heat Up Warriors (Japan 931206)
-sf2,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (World 910522)
-sf2eb,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (World 910214)
-sf2ed,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (World 910318)
-sf2ee,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (World 910228)
-sf2ua,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (USA 910206)
-sf2ub,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (USA 910214)
-sf2uc,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (USA 910306)
-sf2ud,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (USA 910318)
-sf2ue,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (USA 910228)
-sf2uf,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (USA 910411)
-sf2ug,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (USA 910522 Rev. G)
-sf2ui,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (USA 910522 Rev. I)
-sf2uk,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (USA 911101)
-sf2j,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (Japan 911210)
-sf2ja,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (Japan 910214)
-sf2jc,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (Japan 910306)
-sf2jf,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (Japan 910411)
-sf2jh,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (Japan 910522)
-sf2jl,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò - The World Warrior (Japan 920312)
-sf2qp1,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò- The World Warrior Magic Delta Turbo,GAME_BOOTLEG
-sf2ebbl,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò- The World Warrior TAB Austria (bootleg set 1),GAME_BOOTLEG
-sf2thndr,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò- The World Warrior Thunder Edition,GAME_BOOTLEG
-sf2ce,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (World 920513)
-sf2ceea,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (World 920313)
-sf2ceua,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (USA 920313)
-sf2ceub,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (USA 920513)
-sf2ceuc,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (USA 920803)
-sf2ceja,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (Japan 920322)
-sf2cejb,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (Japan 920513)
-sf2cejc,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (Japan 920803)
-sf2bhh,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (Hung Hsi),GAME_NOT_WORK|GAME_BOOTLEG
-sf2rb,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (Rainbow set 1),GAME_BOOTLEG
-sf2rb2,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (Rainbow set 2),GAME_BOOTLEG
-sf2rb3,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (Rainbow set 3),GAME_BOOTLEG
-sf2red,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (Red Wave),GAME_BOOTLEG
-sf2v004,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò! - Champion Edition (V004),GAME_NOT_WORK|GAME_BOOTLEG
-sf2acc,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (Turbo 1),GAME_NOT_WORK|GAME_BOOTLEG
-sf2acca,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (Turbo 2),GAME_NOT_WORK|GAME_BOOTLEG
-sf2accp2,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (Accelerator Pt.II),GAME_BOOTLEG
-sf2amf,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition Alpha Magic-F (set 1),GAME_BOOTLEG
-sf2amf2,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition Alpha Magic-F (set 2),GAME_BOOTLEG
-sf2dkot2,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition Double K.O.Turbo¢ò,GAME_NOT_WORK|GAME_BOOTLEG
-sf2ceblp,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (protected bootleg on non-dash board),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m1,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (M1),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m2,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (M2),GAME_BOOTLEG
-sf2m3,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (M3),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m4,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (M4),GAME_BOOTLEG
-sf2m5,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (M5),GAME_BOOTLEG
-sf2m6,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (½µıˆ set 2),GAME_BOOTLEG
-sf2m7,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (M7),GAME_BOOTLEG
-sf2m8,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (M8),GAME_NOT_WORK|GAME_BOOTLEG
-sf2yyc,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (YYC),GAME_BOOTLEG
-sf2koryu,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (½µıˆ set 1),GAME_BOOTLEG
-sf2mdt,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition Magic Delta Turbo 1,GAME_BOOTLEG
-sf2mdta,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition Magic Delta Turbo 2,GAME_NOT_WORK|GAME_BOOTLEG
-sf2mdtb,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition Magic Delta Turbo 3,GAME_NOT_WORK|GAME_BOOTLEG
-sf2dongb,½ÖÍ·°ÔÍõ2 ËÄ´óÌìÍõ (¶«·½²»°Ü),GAME_NOT_WORK|GAME_BOOTLEG
-sf2m9,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (M9),GAME_BOOTLEG
-sf2m10,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (M10),GAME_BOOTLEG
-sf2m11,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (M11),GAME_BOOTLEG
-sf2m12,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (M12),GAME_BOOTLEG
-sf2m13,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (M13),GAME_BOOTLEG
-sf2m14,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (M14),GAME_BOOTLEG
-sf2tlona,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (ÍÀıˆ set 1),GAME_BOOTLEG
-sf2tlonb,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Champion Edition (ÍÀıˆ set 2),GAME_BOOTLEG
-sf2hf,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Hyper Fighting (World 921209)
-sf2hfu,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' - Hyper Fighting (USA 921209)
-sf2hfj,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`¢ò' Turbo - Hyper Fighting (Japan 921209)
-sfzch,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`ZERO (Japan CPS Changer)
-sfach,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`ALPHA (USA 950727 Publicity)
-sfzbch,¥¹¥È¥ê©`¥È¥Õ¥¡¥¤¥¿©`ZERO (CPS Changer Brazil 950727)
-strider,¥¹¥È¥é¥¤¥À©`ïw¸o [Strider] (US set 1)
-striderua,¥¹¥È¥é¥¤¥À©`ïw¸o [Strider] (US set 2)
-striderj,¥¹¥È¥é¥¤¥À©`ïw¸o (Japan set 1)
-striderjr,¥¹¥È¥é¥¤¥À©`ïw¸o (Japan set 2)
-3wonders,¥ï¥ó¥À©`3 [Three Wonders] (World 910520)
-3wondersr1,¥ï¥ó¥À©`3 [Three Wonders] (World 910513)
-3wondersu,¥ï¥ó¥À©`3 [Three Wonders] (USA 910520)
-wonder3,¥ï¥ó¥À©`3 (Japan 910520)
-3wondersb,¥ï¥ó¥À©`3 (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
-3wondersh,¥ï¥ó¥À©`3 (hack),GAME_BOOTLEG
-unsquad,¥¨¥ê¥¢88 [U.N. Squadron] (USA)
-area88,¥¨¥ê¥¢88 (Japan set 1)
-area88r,¥¨¥ê¥¢88 (Japan set 2)
-varth,¥Ğ©`¥¹ - Operation Thunderstorm (World 920714)
-varthr1,¥Ğ©`¥¹ - Operation Thunderstorm (World 920612)
-varthu,¥Ğ©`¥¹ - Operation Thunderstorm (USA 920612)
-varthj,¥Ğ©`¥¹ - Operation Thunderstorm (Japan 920714)
-willow,¥¦¥£¥í©` (USA set 1)
-willowo,¥¦¥£¥í©` (USA set 2)
-willowj,¥¦¥£¥í©` (Japan)
-wof,ÌìµØ¤ò†Ğ¤é¤¦¢ò [Warriors of Fate] (World 921031)
-wofr1,ÌìµØ¤ò†Ğ¤é¤¦¢ò [Warriors of Fate] (World 921002)
-wofa,ÌìµØ¤ò†Ğ¤é¤¦¢ò [Èı‡øÕI¢ò] (Asia 921005)
-wofch,ÌìµØ¤ò†Ğ¤é¤¦¢ò [Èı‡øÕI¢ò] (CPS Changer Japan 921031)
-wofchs,ÌìµØ¤ò†Ğ¤é¤¦¢ò [Èı‡øÕI¢ò] (Chinese 921005),GAME_HACK
-wofu,ÌìµØ¤ò†Ğ¤é¤¦¢ò [Warriors of Fate] (USA 921031)
-wofj,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ (Japan 921031)
-wofb,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
-wofh,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ (Èı‡øÓ¢ĞÛ‚÷ set 1),GAME_BOOTLEG
-wofha,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ (Èı‡øÓ¢ĞÛ‚÷ set 2),GAME_BOOTLEG
-wofhfh,ÌìµØ¤ò†Ğ¤é¤¦¢ò - »ğ·ï»Ë (Chinese bootleg),GAME_BOOTLEG
-wof3js,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ (Èı„¦Â}),GAME_BOOTLEG
-wof3sj,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤  (ÈıÂ}„¦ set 1),GAME_BOOTLEG
-wof3sja,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤  (ÈıÂ}„¦ set 2),GAME_BOOTLEG
-wofsj,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ (Â}„¦Èı‡ø set 1),GAME_BOOTLEG
-wofsja,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ (Â}„¦Èı‡ø set 2),GAME_BOOTLEG
-wofsjb,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ (Â}„¦Èı‡ø set 3),GAME_BOOTLEG
-wofth,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ µĞÈËÌæ»»°æ,GAME_HACK
-wofjjq,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ÑªĞÈ¼ÓÇ¿°æ,GAME_HACK
-woffh,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ·Ûºì°æ,GAME_HACK
-wofzhs,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ÕÙ»½Ôø°æ,GAME_HACK
-wofbio,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ BOSS¼ÓÇ¿°æ,GAME_HACK
-wofctj,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ²İËS½£°æ,GAME_HACK
-wofctm,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ²İËSÂí°æ,GAME_HACK
-wofgyc,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ¹ØÓğ³àÍÃÂí°æ,GAME_HACK
-wofgyq,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ¹ØÓğÇ¿»¯°æ,GAME_HACK
-wofhzj,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ »ÆÖÒ¼ÓÇ¿°æ,GAME_HACK
-wofjqz,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ½£Æø×İºá°æ,GAME_HACK
-wofsjj,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ Éñ¼ı£«½£Æø°æ,GAME_HACK
-wofyjs,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ Óù½£Êõ°æ,GAME_HACK
-wofzyq,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ÕÔÔÆÊÈÑª±©Á¦°æ,GAME_HACK
-wofzy2,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ÕÔÔÆÇ¿»¯Á¬õí°æ,GAME_HACK
-wofzy3,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ÕÔÔÆÇ¿»¯ÉıÁú°æ,GAME_HACK
-wofsbl,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ Éñ±øÀûÆ÷°æ,GAME_HACK
-wofsz,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ÉÕÖí°æ,GAME_HACK
-wofdy,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ µØÓü°æ,GAME_HACK
-wofbt,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ÕÅ·ÉÇ¿»¯±©Á¦°æ,GAME_HACK
-wofhgz,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ º®¹âÕ¶,GAME_HACK
-wofdyg,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ÌìÏÂµÚÒ»¹Ø,GAME_HACK
-wofyxg,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ Ó¢ĞÛ¹Ø,GAME_HACK
-wofmr,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ÃÀÈË¹Ø,GAME_HACK
-wofzhy,ÌìµØ¤ò†Ğ¤é¤¦¢ò - ³à±Ú¤Î‘é¤¤ ÕÙ»½Ôø£¦Óù½£Êõ°æ,GAME_HACK
+knights,ãƒŠã‚¤ãƒ„Â·ã‚ªãƒ–Â·ã‚¶Â·ãƒ©ã‚¦ãƒ³ãƒ‰ (World 911127)
+knightsu,ãƒŠã‚¤ãƒ„Â·ã‚ªãƒ–Â·ã‚¶Â·ãƒ©ã‚¦ãƒ³ãƒ‰ (USA 911127)
+knightsj,ãƒŠã‚¤ãƒ„Â·ã‚ªãƒ–Â·ã‚¶Â·ãƒ©ã‚¦ãƒ³ãƒ‰ (Japan 911127 set 2)
+knightsja,ãƒŠã‚¤ãƒ„Â·ã‚ªãƒ–Â·ã‚¶Â·ãƒ©ã‚¦ãƒ³ãƒ‰ (Japan 911127 set 1)
+knightsb,ãƒŠã‚¤ãƒ„Â·ã‚ªãƒ–Â·ã‚¶Â·ãƒ©ã‚¦ãƒ³ãƒ‰ (bootleg set 1),GAME_BOOTLEG
+knightsb2,ãƒŠã‚¤ãƒ„Â·ã‚ªãƒ–Â·ã‚¶Â·ãƒ©ã‚¦ãƒ³ãƒ‰ (bootleg set 2),GAME_BOOTLEG
+knightsh,ãƒŠã‚¤ãƒ„Â·ã‚ªãƒ–Â·ã‚¶Â·ãƒ©ã‚¦ãƒ³ãƒ‰ (hack),GAME_BOOTLEG
+knightsi,ãƒŠã‚¤ãƒ„Â·ã‚ªãƒ–Â·ã‚¶Â·ãƒ©ã‚¦ãƒ³ãƒ‰ (è¡¨ç¤ºä¹±æ•°),GAME_HACK
+knightsr,ãƒŠã‚¤ãƒ„Â·ã‚ªãƒ–Â·ã‚¶Â·ãƒ©ã‚¦ãƒ³ãƒ‰ (éšæœºç‰ˆ),GAME_HACK
+kod,ã‚­ãƒ³ã‚°Â·ã‚ªãƒ–Â·ãƒ‰ãƒ©ã‚´ãƒ³ã‚º [The King of Dragons] (World 910805)
+kodr1,ã‚­ãƒ³ã‚°Â·ã‚ªãƒ–Â·ãƒ‰ãƒ©ã‚´ãƒ³ã‚º [The King of Dragons] (World 910711)
+kodu,ã‚­ãƒ³ã‚°Â·ã‚ªãƒ–Â·ãƒ‰ãƒ©ã‚´ãƒ³ã‚º [The King of Dragons] (USA 910910)
+kodj,ã‚­ãƒ³ã‚°Â·ã‚ªãƒ–Â·ãƒ‰ãƒ©ã‚´ãƒ³ã‚º (Japan 910805 set 1)
+kodja,ã‚­ãƒ³ã‚°Â·ã‚ªãƒ–Â·ãƒ‰ãƒ©ã‚´ãƒ³ã‚º (Japan 910805 set 2)
+kodb,ã‚­ãƒ³ã‚°Â·ã‚ªãƒ–Â·ãƒ‰ãƒ©ã‚´ãƒ³ã‚º (bootleg),GAME_BOOTLEG
+kodh,ã‚­ãƒ³ã‚°Â·ã‚ªãƒ–Â·ãƒ‰ãƒ©ã‚´ãƒ³ã‚º (hack),GAME_BOOTLEG
+megaman,ãƒ­ãƒƒã‚¯ãƒãƒ³ ã‚¶Â·ãƒ‘ãƒ¯ãƒ¼Â·ãƒãƒˆãƒ« (CPS1 USA 951006)
+megamana,ãƒ­ãƒƒã‚¯ãƒãƒ³ ã‚¶Â·ãƒ‘ãƒ¯ãƒ¼Â·ãƒãƒˆãƒ« (CPS1 Asia 951006)
+rockmanj,ãƒ­ãƒƒã‚¯ãƒãƒ³ ã‚¶Â·ãƒ‘ãƒ¯ãƒ¼Â·ãƒãƒˆãƒ« (CPS1Japan 950922)
+mercs,æˆ¦å ´ã®ç‹¼â…¡ [Mercs] (World 900302)
+mercsu,æˆ¦å ´ã®ç‹¼â…¡ [Mercs] (USA 900608)
+mercsur1,æˆ¦å ´ã®ç‹¼â…¡ [Mercs] (USA 900302)
+mercsj,æˆ¦å ´ã®ç‹¼â…¡ (Japan 900302)
+msword,ãƒã‚¸ãƒƒã‚¯ã‚½ãƒ¼ãƒ‰ - Heroic Fantasy (World 900725)
+mswordr1,ãƒã‚¸ãƒƒã‚¯ã‚½ãƒ¼ãƒ‰ - Heroic Fantasy (World 900623)
+mswordu,ãƒã‚¸ãƒƒã‚¯ã‚½ãƒ¼ãƒ‰ - Heroic Fantasy (USA 900725)
+mswordj,ãƒã‚¸ãƒƒã‚¯ã‚½ãƒ¼ãƒ‰ (Japan 900623)
+mtwins,ãƒã‚­ãƒã‚­ãƒœãƒ¼ã‚¤ã‚º [Mega Twins] (World 900619)
+chikij,ãƒã‚­ãƒã‚­ãƒœãƒ¼ã‚¤ã‚º (Japan 900619)
+nemo,ãƒ‹ãƒ¢ (World 901130)
+nemor1,ãƒ‹ãƒ¢ (World 901109)
+nemoj,ãƒ‹ãƒ¢ (Japan 901120)
+pang3,ãƒ‘ãƒ³! 3 (Euro 950601)
+pang3r1,ãƒ‘ãƒ³! 3 (Euro 950511)
+pang3j,ãƒ‘ãƒ³! 3 - æ€ªç›—ãŸã¡ã®è¯éº—ãªåˆå¾Œ - (Japan 950511)
+pang3b,ãƒ‘ãƒ³! 3 (bootleg),GAME_BOOTLEG
+pnickj,ã·ã«ã£ããƒãš (Japan 940608)
+pnicku,ã·ã«ã£ããƒãš (USA 940608 Loca Test Version)
+punisher,ãƒ‘ãƒ‹ãƒƒã‚·ãƒ£ãƒ¼ [The Punisher] (World 930422)
+punisheru,ãƒ‘ãƒ‹ãƒƒã‚·ãƒ£ãƒ¼ [The Punisher] (USA 930422)
+punisherh,ãƒ‘ãƒ‹ãƒƒã‚·ãƒ£ãƒ¼ [The Punisher] (Hispanic 930422)
+punisherj,ãƒ‘ãƒ‹ãƒƒã‚·ãƒ£ãƒ¼ (Japan 930422)
+punisherbz,ãƒ‘ãƒ‹ãƒƒã‚·ãƒ£ãƒ¼ biao feng zhan jing (Chinese bootleg),GAME_BOOTLEG
+punisherjd,ãƒ‘ãƒ‹ãƒƒã‚·ãƒ£ãƒ¼ - Jiao Dao (hack),GAME_HACK
+punisherp,The ãƒ‘ãƒ‹ãƒƒã‚·ãƒ£ãƒ¼ Plus,GAME_HACK
+qad,ã‚¯ã‚¤ã‚ºï¼†ãƒ‰ãƒ©ã‚´ãƒ³ã‚º (US 920701)
+qadjr,ã‚¯ã‚¤ã‚ºï¼†ãƒ‰ãƒ©ã‚´ãƒ³ã‚º (Japan 940921)
+qtono2j,ã‚¯ã‚¤ã‚ºæ®¿æ§˜ã®é‡æœ›2 å…¨å›½ç‰ˆ (Japan 950123)
+slammast,ãƒãƒƒã‚¹ãƒ«ãƒœãƒãƒ¼ [Saturday Night Slam Masters] (World 930713)
+slammastu,ãƒãƒƒã‚¹ãƒ«ãƒœãƒãƒ¼ [Saturday Night Slam Masters] (USA 930713)
+mbomberj,ãƒãƒƒã‚¹ãƒ«ãƒœãƒãƒ¼ - The Body Explosion (Japan 930713)
+mbombrd,ãƒãƒƒã‚¹ãƒ«ãƒœãƒãƒ¼Duo - Ultimate Team Battle (World 931206)
+mbombrdj,ãƒãƒƒã‚¹ãƒ«ãƒœãƒãƒ¼Duo - Heat Up Warriors (Japan 931206)
+sf2,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (World 910522)
+sf2eb,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (World 910214)
+sf2ed,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (World 910318)
+sf2ee,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (World 910228)
+sf2ua,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (USA 910206)
+sf2ub,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (USA 910214)
+sf2uc,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (USA 910306)
+sf2ud,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (USA 910318)
+sf2ue,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (USA 910228)
+sf2uf,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (USA 910411)
+sf2ug,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (USA 910522 Rev. G)
+sf2ui,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (USA 910522 Rev. I)
+sf2uk,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (USA 911101)
+sf2j,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (Japan 911210)
+sf2ja,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (Japan 910214)
+sf2jc,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (Japan 910306)
+sf2jf,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (Japan 910411)
+sf2jh,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (Japan 910522)
+sf2jl,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡ - The World Warrior (Japan 920312)
+sf2qp1,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡- The World Warrior Magic Delta Turbo,GAME_BOOTLEG
+sf2ebbl,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡- The World Warrior TAB Austria (bootleg set 1),GAME_BOOTLEG
+sf2thndr,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡- The World Warrior Thunder Edition,GAME_BOOTLEG
+sf2ce,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (World 920513)
+sf2ceea,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (World 920313)
+sf2ceua,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (USA 920313)
+sf2ceub,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (USA 920513)
+sf2ceuc,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (USA 920803)
+sf2ceja,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (Japan 920322)
+sf2cejb,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (Japan 920513)
+sf2cejc,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (Japan 920803)
+sf2bhh,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (Hung Hsi),GAME_NOT_WORK|GAME_BOOTLEG
+sf2rb,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (Rainbow set 1),GAME_BOOTLEG
+sf2rb2,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (Rainbow set 2),GAME_BOOTLEG
+sf2rb3,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (Rainbow set 3),GAME_BOOTLEG
+sf2red,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (Red Wave),GAME_BOOTLEG
+sf2v004,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡! - Champion Edition (V004),GAME_NOT_WORK|GAME_BOOTLEG
+sf2acc,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (Turbo 1),GAME_NOT_WORK|GAME_BOOTLEG
+sf2acca,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (Turbo 2),GAME_NOT_WORK|GAME_BOOTLEG
+sf2accp2,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (Accelerator Pt.II),GAME_BOOTLEG
+sf2amf,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition Alpha Magic-F (set 1),GAME_BOOTLEG
+sf2amf2,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition Alpha Magic-F (set 2),GAME_BOOTLEG
+sf2dkot2,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition Double K.O.Turboâ…¡,GAME_NOT_WORK|GAME_BOOTLEG
+sf2ceblp,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (protected bootleg on non-dash board),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m1,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (M1),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m2,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (M2),GAME_BOOTLEG
+sf2m3,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (M3),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m4,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (M4),GAME_BOOTLEG
+sf2m5,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (M5),GAME_BOOTLEG
+sf2m6,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (é™é¾ set 2),GAME_BOOTLEG
+sf2m7,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (M7),GAME_BOOTLEG
+sf2m8,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (M8),GAME_NOT_WORK|GAME_BOOTLEG
+sf2yyc,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (YYC),GAME_BOOTLEG
+sf2koryu,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (é™é¾ set 1),GAME_BOOTLEG
+sf2mdt,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition Magic Delta Turbo 1,GAME_BOOTLEG
+sf2mdta,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition Magic Delta Turbo 2,GAME_NOT_WORK|GAME_BOOTLEG
+sf2mdtb,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition Magic Delta Turbo 3,GAME_NOT_WORK|GAME_BOOTLEG
+sf2dongb,è¡—å¤´éœ¸ç‹2 å››å¤§å¤©ç‹ (ä¸œæ–¹ä¸è´¥),GAME_NOT_WORK|GAME_BOOTLEG
+sf2m9,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (M9),GAME_BOOTLEG
+sf2m10,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (M10),GAME_BOOTLEG
+sf2m11,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (M11),GAME_BOOTLEG
+sf2m12,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (M12),GAME_BOOTLEG
+sf2m13,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (M13),GAME_BOOTLEG
+sf2m14,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (M14),GAME_BOOTLEG
+sf2tlona,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (å± é¾ set 1),GAME_BOOTLEG
+sf2tlonb,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Champion Edition (å± é¾ set 2),GAME_BOOTLEG
+sf2hf,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Hyper Fighting (World 921209)
+sf2hfu,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' - Hyper Fighting (USA 921209)
+sf2hfj,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼â…¡' Turbo - Hyper Fighting (Japan 921209)
+sfzch,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼ZERO (Japan CPS Changer)
+sfach,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼ALPHA (USA 950727 Publicity)
+sfzbch,ã‚¹ãƒˆãƒªãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ã‚¿ãƒ¼ZERO (CPS Changer Brazil 950727)
+strider,ã‚¹ãƒˆãƒ©ã‚¤ãƒ€ãƒ¼é£›ç«œ [Strider] (US set 1)
+striderua,ã‚¹ãƒˆãƒ©ã‚¤ãƒ€ãƒ¼é£›ç«œ [Strider] (US set 2)
+striderj,ã‚¹ãƒˆãƒ©ã‚¤ãƒ€ãƒ¼é£›ç«œ (Japan set 1)
+striderjr,ã‚¹ãƒˆãƒ©ã‚¤ãƒ€ãƒ¼é£›ç«œ (Japan set 2)
+3wonders,ãƒ¯ãƒ³ãƒ€ãƒ¼3 [Three Wonders] (World 910520)
+3wondersr1,ãƒ¯ãƒ³ãƒ€ãƒ¼3 [Three Wonders] (World 910513)
+3wondersu,ãƒ¯ãƒ³ãƒ€ãƒ¼3 [Three Wonders] (USA 910520)
+wonder3,ãƒ¯ãƒ³ãƒ€ãƒ¼3 (Japan 910520)
+3wondersb,ãƒ¯ãƒ³ãƒ€ãƒ¼3 (bootleg),GAME_NOT_WORK|GAME_BOOTLEG
+3wondersh,ãƒ¯ãƒ³ãƒ€ãƒ¼3 (hack),GAME_BOOTLEG
+unsquad,ã‚¨ãƒªã‚¢88 [U.N. Squadron] (USA)
+area88,ã‚¨ãƒªã‚¢88 (Japan set 1)
+area88r,ã‚¨ãƒªã‚¢88 (Japan set 2)
+varth,ãƒãƒ¼ã‚¹ - Operation Thunderstorm (World 920714)
+varthr1,ãƒãƒ¼ã‚¹ - Operation Thunderstorm (World 920612)
+varthu,ãƒãƒ¼ã‚¹ - Operation Thunderstorm (USA 920612)
+varthj,ãƒãƒ¼ã‚¹ - Operation Thunderstorm (Japan 920714)
+willow,ã‚¦ã‚£ãƒ­ãƒ¼ (USA set 1)
+willowo,ã‚¦ã‚£ãƒ­ãƒ¼ (USA set 2)
+willowj,ã‚¦ã‚£ãƒ­ãƒ¼ (Japan)
+wof,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ [Warriors of Fate] (World 921031)
+wofr1,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ [Warriors of Fate] (World 921002)
+wofa,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ [ä¸‰åœ‹èªŒâ…¡] (Asia 921005)
+wofch,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ [ä¸‰åœ‹èªŒâ…¡] (CPS Changer Japan 921031)
+wofch3p,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ [ä¸‰åœ‹èªŒâ…¡] (CPS Changer Japan 921031 3 Players for kaillera)
+wofchdx,å¤©åœ°ã‚’å–°ã‚‰ã†â…¢ Gaiden: Kakou-On's Revenge DX (hack),GAME_HACK
+wofchs,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ [ä¸‰åœ‹èªŒâ…¡] (Chinese 921005),GAME_HACK
+wofu,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ [Warriors of Fate] (USA 921031)
+wofj,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ - èµ¤å£ã®æˆ¦ã„ (Japan 921031)
+wofjm,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ - èµ¤å£ã®æˆ¦ã„ (MEI's Counter Attack),GAME_HACK
+wofb,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ - èµ¤å£ã®æˆ¦ã„ (bootleg),GAME_BOOTLEG
+wofh,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ - èµ¤å£ã®æˆ¦ã„ (ä¸‰åœ‹è‹±é›„å‚³ set 1),GAME_BOOTLEG
+wofha,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ - èµ¤å£ã®æˆ¦ã„ (ä¸‰åœ‹è‹±é›„å‚³ set 2),GAME_BOOTLEG
+wofhfh,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ - ç«å‡¤å‡° (Chinese bootleg),GAME_BOOTLEG
+wof3js,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ - èµ¤å£ã®æˆ¦ã„ (ä¸‰åŠè–),GAME_BOOTLEG
+wof3sj,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ - èµ¤å£ã®æˆ¦ã„  (ä¸‰è–åŠ set 1),GAME_BOOTLEG
+wof3sja,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ - èµ¤å£ã®æˆ¦ã„  (ä¸‰è–åŠ set 2),GAME_BOOTLEG
+wofsj,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ - èµ¤å£ã®æˆ¦ã„ (è–åŠä¸‰åœ‹ set 1),GAME_BOOTLEG
+wofsja,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ - èµ¤å£ã®æˆ¦ã„ (è–åŠä¸‰åœ‹ set 2),GAME_BOOTLEG
+wofsjb,å¤©åœ°ã‚’å–°ã‚‰ã†â…¡ - èµ¤å£ã®æˆ¦ã„ (è–åŠä¸‰åœ‹ set 3),GAME_BOOTLEG
