@@ -2,7 +2,7 @@
 
 	inptport.c
 
-	CPS1 »Î¡¶•›©`•»•®•ﬂ•Â•Ï©`•∑•Á•Û
+	CPS1 ÂÖ•Âäõ„Éù„Éº„Éà„Ç®„Éü„É•„É¨„Éº„Ç∑„Éß„É≥
 
 ******************************************************************************/
 
@@ -10,7 +10,7 @@
 
 
 /******************************************************************************
-	•∞•Ì©`•–•Îâ‰ ˝
+	„Ç∞„É≠„Éº„Éê„É´Â§âÊï∞
 ******************************************************************************/
 
 int option_controller;
@@ -24,7 +24,7 @@ int af_interval = 1;
 
 
 /******************************************************************************
-	•Ì©`•´•Îâ‰ ˝
+	„É≠„Éº„Ç´„É´Â§âÊï∞
 ******************************************************************************/
 
 static UINT8 ALIGN_DATA input_flag[MAX_INPUTS];
@@ -37,11 +37,11 @@ static int service_switch;
 static int p12_start_pressed;
 
 /******************************************************************************
-	•Ì©`•´•ÎÈv ˝
+	„É≠„Éº„Ç´„É´Èñ¢Êï∞
 ******************************************************************************/
 
 /*------------------------------------------------------
-	ﬂB…‰•’•È•∞§Ú∏¸–¬
+	ÈÄ£Â∞Ñ„Éï„É©„Ç∞„ÇíÊõ¥Êñ∞
 ------------------------------------------------------*/
 
 static UINT32 update_autofire(UINT32 buttons)
@@ -76,7 +76,7 @@ static UINT32 update_autofire(UINT32 buttons)
 
 
 /*------------------------------------------------------
-	CPS1 •›©`•»0 (START / COIN)
+	CPS1 „Éù„Éº„Éà0 (START / COIN)
 ------------------------------------------------------*/
 
 static void update_inputport0(void)
@@ -118,6 +118,27 @@ static void update_inputport0(void)
 			if (input_flag[P1_COIN])    value &= ~0x0808;
 			if (input_flag[P1_START])   value &= ~0x2020;
 			if (input_flag[P1_BUTTON6]) value &= ~0x8080;
+		}
+		break;
+
+	case INPTYPE_wofch3p:
+		if (option_controller == INPUT_PLAYER1)
+		{
+			if (input_flag[P1_BUTTON5]) value &= ~0x0101;
+			if (input_flag[P1_COIN])    value &= ~0x0404;
+			if (input_flag[P1_START])   value &= ~0x1010;
+			if (input_flag[P1_BUTTON6]) value &= ~0x4040;
+		}
+		else if (option_controller == INPUT_PLAYER2)
+		{
+			if (input_flag[P1_BUTTON5]) value &= ~0x0202;
+			if (input_flag[P1_COIN])    value &= ~0x0808;
+			if (input_flag[P1_START])   value &= ~0x2020;
+			if (input_flag[P1_BUTTON6]) value &= ~0x8080;
+		}
+		else if (option_controller == INPUT_PLAYER3)
+		{
+			if (input_flag[P1_COIN])    value &= ~0x0404;
 		}
 		break;
 
@@ -243,7 +264,7 @@ static void update_inputport0(void)
 
 
 /*------------------------------------------------------
-	CPS1 •›©`•»1 (•≥•Û•»•Ì©`•È1/2)
+	CPS1 „Éù„Éº„Éà1 („Ç≥„É≥„Éà„É≠„Éº„É©1/2)
 ------------------------------------------------------*/
 
 static void update_inputport1(void)
@@ -428,8 +449,34 @@ static void update_inputport1(void)
 			if (input_flag[P1_123])	 value &= ~0x7000;
 			if (input_flag[P1_456])     value &= ~0x8000;
 		}
+		break;
 
 	case INPTYPE_wofch:
+		if (option_controller == INPUT_PLAYER1)
+		{
+			if (input_flag[P1_RIGHT])   value &= ~0x0001;
+			if (input_flag[P1_LEFT])    value &= ~0x0002;
+			if (input_flag[P1_DOWN])    value &= ~0x0004;
+			if (input_flag[P1_UP])      value &= ~0x0008;
+			if (input_flag[P1_BUTTON1]) value &= ~0x0010;
+			if (input_flag[P1_BUTTON2]) value &= ~0x0020;
+			if (input_flag[P1_BUTTON3]) value &= ~0x0040;
+			if (input_flag[P1_BUTTON4]) value &= ~0x0080;
+		}
+		else if (option_controller == INPUT_PLAYER2)
+		{
+			if (input_flag[P1_RIGHT])   value &= ~0x0100;
+			if (input_flag[P1_LEFT])    value &= ~0x0200;
+			if (input_flag[P1_DOWN])    value &= ~0x0400;
+			if (input_flag[P1_UP])      value &= ~0x0800;
+			if (input_flag[P1_BUTTON1]) value &= ~0x1000;
+			if (input_flag[P1_BUTTON2]) value &= ~0x2000;
+			if (input_flag[P1_BUTTON3]) value &= ~0x4000;
+			if (input_flag[P1_BUTTON4]) value &= ~0x8000;
+		}
+		break;
+
+	case INPTYPE_wofch3p:
 		if (option_controller == INPUT_PLAYER1)
 		{
 			if (input_flag[P1_RIGHT])   value &= ~0x0001;
@@ -488,7 +535,7 @@ static void update_inputport1(void)
 
 
 /*------------------------------------------------------
-	CPS1 •›©`•»2 (•≥•Û•»•Ì©`•È3 / ◊∑º”•‹•ø•Û)
+	CPS1 „Éù„Éº„Éà2 („Ç≥„É≥„Éà„É≠„Éº„É©3 / ËøΩÂä†„Éú„Çø„É≥)
 ------------------------------------------------------*/
 
 static void update_inputport2(void)
@@ -544,7 +591,22 @@ static void update_inputport2(void)
 			if (input_flag[P1_456])	 value &= ~0x7070;
 		}
 		break;
+
+	case INPTYPE_wofch3p:
+		if (option_controller == INPUT_PLAYER3)
+		{
+			if (input_flag[P1_RIGHT])   value &= ~0x0001;
+			if (input_flag[P1_LEFT])    value &= ~0x0002;
+			if (input_flag[P1_DOWN])    value &= ~0x0004;
+			if (input_flag[P1_UP])      value &= ~0x0008;
+			if (input_flag[P1_BUTTON1]) value &= ~0x0010;
+			if (input_flag[P1_BUTTON2]) value &= ~0x0020;
+			if (input_flag[P1_BUTTON3]) value &= ~0x0030;
+			if (input_flag[P1_START])   value &= ~0x0080;
+		}
+		break;
 	}
+
 
 #ifdef ADHOC
 	if (adhoc_enable)
@@ -556,7 +618,7 @@ static void update_inputport2(void)
 
 
 /*------------------------------------------------------
-	CPS1 •›©`•»3 (•≥•Û•»•Ì©`•È4)
+	CPS1 „Éù„Éº„Éà3 („Ç≥„É≥„Éà„É≠„Éº„É©4)
 ------------------------------------------------------*/
 
 static void update_inputport3(void)
@@ -592,7 +654,7 @@ static void update_inputport3(void)
 
 
 /*------------------------------------------------------
-	forgottn •¢• •Ì•∞»Î¡¶•›©`•»
+	forgottn „Ç¢„Éä„É≠„Ç∞ÂÖ•Âäõ„Éù„Éº„Éà
 ------------------------------------------------------*/
 
 static void forgottn_update_dial(void)
@@ -641,7 +703,7 @@ UINT16 forgottn_read_dial1(void)
 
 
 /*------------------------------------------------------
-	»Î¡¶•‹•ø•Û§Úª≠√Ê∑ΩœÚ§À∫œ§Ô§ª§∆’{’˚
+	ÂÖ•Âäõ„Éú„Çø„É≥„ÇíÁîªÈù¢ÊñπÂêë„Å´Âêà„Çè„Åõ„Å¶Ë™øÊï¥
 ------------------------------------------------------*/
 
 static UINT32 adjust_input(UINT32 buttons)
@@ -713,11 +775,11 @@ static UINT32 adjust_input(UINT32 buttons)
 
 
 /******************************************************************************
-	»Î¡¶•›©`•»•§•Û•ø•’•ß©`•πÈv ˝
+	ÂÖ•Âäõ„Éù„Éº„Éà„Ç§„É≥„Çø„Éï„Çß„Éº„ÇπÈñ¢Êï∞
 ******************************************************************************/
 
 /*------------------------------------------------------
-	»Î¡¶•›©`•»§Œ≥ı∆⁄ªØ
+	ÂÖ•Âäõ„Éù„Éº„Éà„ÅÆÂàùÊúüÂåñ
 ------------------------------------------------------*/
 
 int input_init(void)
@@ -740,6 +802,7 @@ int input_init(void)
 	case INPTYPE_kodj:
 	case INPTYPE_knights:
 	case INPTYPE_wof:
+	case INPTYPE_wofch3p:
 	case INPTYPE_dino:
 #if !RELEASE
 	case INPTYPE_kodh:
@@ -819,7 +882,7 @@ int input_init(void)
 
 
 /*------------------------------------------------------
-	»Î¡¶•›©`•»§ŒΩK¡À
+	ÂÖ•Âäõ„Éù„Éº„Éà„ÅÆÁµÇ‰∫Ü
 ------------------------------------------------------*/
 
 void input_shutdown(void)
@@ -832,7 +895,7 @@ void input_shutdown(void)
 
 
 /*------------------------------------------------------
-	»Î¡¶•›©`•»§Ú•Í•ª•√•»
+	ÂÖ•Âäõ„Éù„Éº„Éà„Çí„É™„Çª„ÉÉ„Éà
 ------------------------------------------------------*/
 
 void input_reset(void)
@@ -852,7 +915,7 @@ void input_reset(void)
 
 
 /*------------------------------------------------------
-	ﬂB…‰•’•È•∞§Ú‘O∂®
+	ÈÄ£Â∞Ñ„Éï„É©„Ç∞„ÇíË®≠ÂÆö
 ------------------------------------------------------*/
 
 void setup_autofire(void)
@@ -871,7 +934,7 @@ void setup_autofire(void)
 
 
 /*------------------------------------------------------
-	»Î¡¶•›©`•»§Ú∏¸–¬
+	ÂÖ•Âäõ„Éù„Éº„Éà„ÇíÊõ¥Êñ∞
 ------------------------------------------------------*/
 
 void update_inputport(void)
@@ -1032,7 +1095,7 @@ void update_inputport(void)
 				input_ui_wait = 30;
 			}
 		}
-		
+
 		if (input_flag[COMMANDLIST])
 		{
 			commandlist(1);
@@ -1045,7 +1108,7 @@ void update_inputport(void)
 
 
 /******************************************************************************
-	•ª©`•÷/•Ì©`•… •π•∆©`•»
+	„Çª„Éº„Éñ/„É≠„Éº„Éâ „Çπ„ÉÜ„Éº„Éà
 ******************************************************************************/
 
 #ifdef SAVE_STATE
