@@ -53,7 +53,7 @@ romset use MAME0.152
 
 font use simhei(CHARSET:GBK)
 
-Japan command list must use GBK charset,you can use notepad++ convert
+Japanese command list must use GBK charset,you can use notepad++ convert
 fix png format bug
 
 change help to select
@@ -70,7 +70,7 @@ support cheat
 
 added some romset(hack/bootleg)
 
-
+---------------------------------------------
 
 CPS1PSP
 
@@ -84,11 +84,11 @@ fix Warriors of Fate (bootleg)
 
 fix Huo Feng Huang(Chinese bootleg of Sangokushi II) sound
 
-
+---------------------------------------------
 
 CPS2PSP
 
-
+---------------------------------------------
 
 MVSPSP
 
@@ -106,11 +106,13 @@ support m1 decrypt
 
 fix 000-lo.lo length
 
-
+---------------------------------------------
 
 NCDZPSP
 
 fix 000-lo.lo length(fix sleep mode)
+
+---------------------------------------------
 
 Thanks to
 
