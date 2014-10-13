@@ -1,6 +1,10 @@
 NJEmu 2.3.5 is based on NJEmu 2.3.1.
 
+
+----------------------------------------------
+
 how to use:
+
 
 O: OK
 
@@ -14,25 +18,36 @@ On PSV or PPSSPP,HOME(PS) button can't use,you can delete "SystemButtons.prx"
 
 SELECT+START: emulator menu
 
+----------------------------------------------
+
+
 CPS1PSP
 
 Capcom System 1 Emulator
+
 
 
 CPS2PSP
 
 Capcom System 2 Emulator
 
+
+
 MVSPSP
 
 Neo-Geo MVS/AES Emulator
+
+
 
 NCDZPSP
 
 neogeo Emulator
 
 
+---------------------------------------------
+
 NJEmu 2.3.5 change log
+
 
 romset use MAME0.152
 
@@ -56,6 +71,7 @@ support cheat
 added some romset(hack/bootleg)
 
 
+
 CPS1PSP
 
 fix dipswitch
@@ -68,7 +84,10 @@ fix Warriors of Fate (bootleg)
 
 fix Huo Feng Huang(Chinese bootleg of Sangokushi II) sound
 
+
+
 CPS2PSP
+
 
 
 MVSPSP
