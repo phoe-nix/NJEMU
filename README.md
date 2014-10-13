@@ -54,6 +54,7 @@ romset use MAME0.152
 font use simhei(CHARSET:GBK)
 
 Japanese command list must use GBK charset,you can use notepad++ convert
+
 fix png format bug
 
 change help to select
