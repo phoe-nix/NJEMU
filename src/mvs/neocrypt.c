@@ -119,19 +119,23 @@ int neogeo_cmc50_m1_decrypt(void)
 		case INIT_mslug4:
 		case INIT_rotd:
 		case INIT_matrim:
+#if !RELEASE
 		case INIT_kf2k2pls:
 		case INIT_kf2k2mp:
 		case INIT_kf2k2mp2:
 		case INIT_ms4plus:
 		case INIT_kof2002b:
 		case INIT_kf2k2plc:
+#endif
 			romsize = 0x20000;
 			break;
 		case INIT_kof2000:
 		case INIT_kof2000n:
 		case INIT_kof2001:
+#if !RELEASE
 		case INIT_kf2k1pls:
 		case INIT_kf2k1pa:
+#endif
 			romsize = 0x40000;
 			break;
 		case INIT_mslug5:
@@ -145,8 +149,10 @@ int neogeo_cmc50_m1_decrypt(void)
 		case INIT_svcpcb:
 		case INIT_kf2k3pcb:
 		case INIT_jockeygp:
+#if !RELEASE
 		case INIT_ms5plus:
 		case INIT_mslug5b:
+#endif
 			romsize = 0x80000;
 			break;
 		}
@@ -1643,7 +1649,7 @@ int kf2k4pls_px_decrypt(void)
 
 
 /*-----------------------------------------------------
-	§¢§È§´§∏§·èÕ∫≈ÑI¿Ì§Ú––§¶±ÿ“™§¨üo§§§‚§Œ
+	„ÅÇ„Çâ„Åã„Åò„ÇÅÂæ©Âè∑Âá¶ÁêÜ„ÇíË°å„ÅÜÂøÖË¶Å„ÅåÁÑ°„ÅÑ„ÇÇ„ÅÆ
 -----------------------------------------------------*/
 
 void cthd2003_sx_decrypt(void)
@@ -1761,7 +1767,7 @@ void matrimbl_mx_decrypt(void)
 }
 
 /*-----------------------------------------------------
-	•—•√•¡
+	„Éë„ÉÉ„ÉÅ
 -----------------------------------------------------*/
 
 void patch_cthd2003(void)
@@ -1807,6 +1813,24 @@ void patch_kof97pla(void)
 	mem8[0x1394f] = 0x91;
 }
 
+#endif /* RELEASE */
+
+void patch_sbp(void)
+{
+	UINT16 *rom = (UINT16 *)memory_region_cpu1;
+	UINT32 i;
+	for (i = 0x200/2; i < 0x1080/2; i++)
+	{
+		rom[i] = BITSWAP16(rom[i], 11,10,9,8,15,14,13,12,3,2,1,0,7,6,5,4);
+	}
+
+	UINT16 *mem16 = (UINT16 *)memory_region_cpu1;
+	mem16[0x2a6f8/2] = 0x4e71;
+	mem16[0x2a6fa/2] = 0x4e71;
+	mem16[0x2a6fc/2] = 0x4e71;
+	mem16[0x3ff2c/2] = 0x7001;
+}
+
 void patch_kf2k3pcb(void)
 {
 	UINT8 *rom;
@@ -1817,5 +1841,3 @@ void patch_kf2k3pcb(void)
 		rom[i] = BITSWAP8(rom[i], 5, 6, 1, 4, 3, 0, 7, 2);
 	}
 }
-
-#endif /* RELEASE */
