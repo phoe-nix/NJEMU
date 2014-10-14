@@ -2,7 +2,7 @@
 
 	driver.c
 
-	MVS •…•È•§•–
+	MVS „Éâ„É©„Ç§„Éê
 
 ******************************************************************************/
 
@@ -207,7 +207,6 @@
 // sbp					// (c) 2004 Vektorlogic
 // The BrezzaSoft games don't have proper ID codes
 #define NGH_vliner		(0x0000 | FLAG_BRAZ)
-#define NGH_vlinero		(0x0000 | FLAG_BRAZ)
 #define NGH_jockeygp	(0x0001 | FLAG_BRAZ)
 
 // JAMMA PCB
@@ -243,7 +242,7 @@ enum
 	INIT_kof2003h,		// 20	cmc50	0x80000
 	INIT_samsh5sp,		// 21	cmc50	0x80000
 
-	// SNK“‘Õ‚
+	// SNK‰ª•Â§ñ
 	INIT_nitd,			// 22
 	INIT_s1945p,		// 23
 	INIT_pnyaa,			// 24	cmc50	0x80000
@@ -305,7 +304,7 @@ enum
 	// MAME 0.113 - 0.119
 	INIT_ct2k3sa,		// 70
 #endif
-//	INIT_sbp,			// 71	not work
+	INIT_sbp,			// 71	patch to work
 	MAX_INIT
 };
 
@@ -494,9 +493,10 @@ void cthd2003_AES_protection(void);
 
 void patch_cthd2003(void);
 void patch_kof97pla(void);
-void patch_kf2k3pcb(void);
 #endif /* RELEASE */
 
+void patch_sbp(void);
+void patch_kf2k3pcb(void);
 
 #ifdef SAVE_STATE
 STATE_SAVE( driver );
