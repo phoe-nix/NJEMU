@@ -94,6 +94,7 @@ kof98ka,The King of Fighters '98 - The Slugfest (Korean board 2)
 kof98ae,The King of Fighters '98 Anniversary Edition[EGCG],GAME_HACK
 kof98c,The King of Fighters '98 Combo[ivex],GAME_HACK
 kof98cn,The King of Fighters '98(Chinese),GAME_HACK
+kof98evo,The King of Fighters '98 The Evolution,GAME_HACK
 kof99,The King of Fighters '99 (NGM-2510)
 kof99h,The King of Fighters '99 (NGH-2510)
 kof99e,The King of Fighters '99 (earlier)
@@ -215,7 +216,8 @@ rbffspec,Real Bout Fatal Fury Special
 rbffspeck,Real Bout Fatal Fury Special (Korean release)
 ridhero,Riding Hero (set 1)
 ridheroh,Riding Hero (set 2)
-roboarmy,Robo Army
+roboarmy,Robo Army (set 1)
+roboarma,Robo Army (set 2)
 rotd,Rage of the Dragons
 s1945p,Strikers 1945 Plus
 samsh5sp,Samurai Shodown V Special
@@ -224,7 +226,8 @@ samsh5spho,Samurai Shodown V Special (1st release censored)
 samsho,Samurai Shodown (NGM-045)
 samshoh,Samurai Shodown (NGH-045)
 samsho2,Samurai Shodown II
-samsho2k,Samurai Shodown II - Jin Saulabi Tu Hon (Korean release)
+samsho2k,Samurai Shodown II - Jin Saulabi Tu Hon (Korean release 1)
+samsho2k2,Samurai Shodown II - Jin Saulabi Tu Hon (Korean release 2)
 samsho3,Samurai Shodown III (NGM-087)
 samsho3h,Samurai Shodown III (NGH-087)
 samsho4,Samurai Shodown IV
@@ -259,7 +262,7 @@ strhoop,Street Hoop / Street Slam
 superspy,The Super Spy
 svc,SvC Chaos - SNK vs Capcom
 svcps2,SvC Chaos - SNK vs Capcom[EGHT],GAME_HACK
-svcpcb,SvC Chaos - SNK vs Capcom (JAMMA PCB / set 1)
+svcpcb,SvC Chaos - SNK vs Capcom (JAMMA PCB / set 1),GAME_NOT_WORK
 svcpcba,SVC Chaos - SNK vs CAPCOM (JAMMA PCB / set 2)
 svcboot,SVC Chaos - SNK vs CAPCOM (bootleg),GAME_BOOTLEG
 svcplus,SvC Chaos - SNK vs Capcom Plus (set 1 / bootleg),GAME_BOOTLEG
@@ -296,6 +299,8 @@ poknight,Poker Night (PD),GAME_HACK
 neonopon,Neo No Panepon (beta / PD),GAME_HACK
 neopong,Neo Pong (v1.1 / PD),GAME_HACK
 neoponga,Neo Pong (v1.0 / PD),GAME_HACK
+neotet,Neo 2 Player Tetris,GAME_HACK
+neothndr,Neo Thunder,GAME_HACK
 frogfest,Frog Feast (PD),GAME_HACK
 ltorb1,Jonas Indiana and the Lost Temple of RA (20050717 / PD),GAME_HACK
 cnbe,Codename - Blut Engel (2006-01-19 / PD),GAME_HACK
