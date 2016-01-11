@@ -9,7 +9,7 @@
 
   Version 1.4 (final beta)
 
-  ※MAMEのfm.cを YM-2610 1チップ専用 にしています
+  莉ｸMAME蛛ｺfm.c蛯ｪ YM-2610 1蜒蜒｢蜒ｾ諢ｱ譴｡ 蛛ｵ蛛溷�ｰ蛛�蛯大■
 
 ***************************************************************************/
 
@@ -2449,12 +2449,26 @@ static void OPNB_ADPCMA_write(int r, int v)
 		case 0x110:
 		case 0x118:
 			adpcma[c].start = ((YM2610.regs[0x118 + c] << 8) | YM2610.regs[0x110 + c]) << ADPCMA_ADDRESS_SHIFT;
+			if ( pcmsizeA > 0x1000000 )	//謾ｯ謖∵黄螳ｹVROM
+			{
+				if ( YM2610.regs[0x108 + c] >= 0xf0 )
+				{
+					adpcma[c].start += 0x1000000;
+				}
+			}
 			break;
 
 		case 0x120:
 		case 0x128:
 			adpcma[c].end  = ((YM2610.regs[0x128 + c] << 8) | YM2610.regs[0x120 + c]) << ADPCMA_ADDRESS_SHIFT;
 			adpcma[c].end += (1 << ADPCMA_ADDRESS_SHIFT) - 1;
+			if ( pcmsizeA > 0x1000000 )	//謾ｯ謖∵黄螳ｹVROM
+			{
+				if ( YM2610.regs[0x108 + c] >= 0xf0 )
+				{
+					adpcma[c].end += 0x1000000;
+				}
+			}
 			break;
 		}
 	}
