@@ -13,8 +13,8 @@
 #define LANG_JAPANESE	            1
 #define LANG_CHINESE_SIMPLIFIED	    2
 #define LANG_CHINESE_TRADITIONAL    3
+#define LANG_SPANISH                4
 #define LANG_FRENCH                 0
-#define LANG_SPANISH                0
 #define LANG_GERMAN                 0
 #define LANG_ITALIAN                0
 #define LANG_DUTCH                  0

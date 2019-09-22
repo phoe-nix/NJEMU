@@ -49,8 +49,8 @@ enum
 	FONT_TYPE_GRAPHIC,
 //	FONT_TYPE_JPNHAN,
 	FONT_TYPE_GBKSIMHEI,
-#ifdef COMMAND_LIST
 	FONT_TYPE_LATIN1,
+#ifdef COMMAND_LIST
 	FONT_TYPE_COMMAND,
 #endif
 	FONT_TYPE_MAX
@@ -543,7 +543,12 @@ INLINE UINT16 uifont_get_code(const UINT8 *s, int *type)
 	UINT8 c1 = s[0];
 	UINT8 c2 = s[1];
 
-	if (isgbk1(c1) && isgbk2(c2))
+	if (islatin1(c1) && ui_text_get_language() == LANG_SPANISH)
+	{
+		*type = FONT_TYPE_LATIN1;
+		return c1 - 0x80;
+	}
+	else if (isgbk1(c1) && isgbk2(c2))
 	{
 		*type = FONT_TYPE_GBKSIMHEI;
 		return gbk_table[(c2 | (c1 << 8)) - 0x8140];
@@ -605,6 +610,11 @@ int uifont_get_string_width(const char *s)
 			{
 			case FONT_TYPE_ASCII:
 				width += ascii_14p_get_pitch(code);
+				p++;
+				break;
+
+			case FONT_TYPE_LATIN1:
+				width += ascii_14p_get_pitch(0);
 				p++;
 				break;
 
@@ -969,6 +979,15 @@ INLINE void uifont_draw(int sx, int sy, int r, int g, int b, const char *s)
 			p++;
 			break;
 
+		case FONT_TYPE_LATIN1:
+			if ((res = latin1_14_get_gryph(&font, code)) != 0)
+			{
+				res = internal_font_putc(&font, sx, sy, r, g, b);
+			}
+			sx += font.pitch;
+			p++;
+			break;
+
 		case FONT_TYPE_GRAPHIC:
 			if (graphic_font_get_gryph(&font, code))
 			{
@@ -1027,6 +1046,15 @@ INLINE void uifont_draw_shadow(int sx, int sy, const char *s)
 				res = internal_shadow_putc(&font, sx, sy);
 				sx += font.pitch;
 			}
+			p++;
+			break;
+
+		case FONT_TYPE_LATIN1:
+			if ((res = latin1_14_get_gryph(&font, code)) != 0)
+			{
+				res = internal_shadow_putc(&font, sx, sy);
+			}
+			sx += font.pitch;
 			p++;
 			break;
 
