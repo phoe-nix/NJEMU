@@ -120,11 +120,6 @@ INCDIR = \
 	src \
 	src/zip \
 	src/zlib \
-	src/libmad
-
-ifdef PSP_SLIM
-INCDIR += src/SDK/include
-endif
 
 
 #------------------------------------------------------------------------------
@@ -138,7 +133,6 @@ OBJDIRS = \
 	$(OBJ)/sound \
 	$(OBJ)/zip \
 	$(OBJ)/zlib \
-	$(OBJ)/libmad \
 	$(OBJ)/$(OS) \
 	$(OBJ)/$(OS)/font \
 	$(OBJ)/$(OS)/icon
@@ -301,19 +295,13 @@ endif
 # Linker Flags
 #------------------------------------------------------------------------------
 
-ifdef PSP_SLIM
-LIBDIR = src/SDK/lib
-else
 LIBDIR =
-endif
 LDFLAGS =
 
 
 #------------------------------------------------------------------------------
 # Library
 #------------------------------------------------------------------------------
-
-USE_PSPSDK_LIBC = 1
 
 LIBS = -lpspaudio -lpspgu -lpsppower
 
@@ -326,7 +314,7 @@ LIBS += -lpspwlan -lpspnet_adhoc -lpspnet_adhocctl -lpspnet_adhocmatching
 endif
 
 ifdef BUILD_NCDZPSP
-LIBS += src/libmad/libmad.a
+LIBS += -lmad
 endif
 
 #------------------------------------------------------------------------------

@@ -26,6 +26,12 @@
 #define FTYPE_ZIP		2
 #define FTYPE_FILE		3
 
+enum PspModel
+{
+	PSP_MODEL_STANDARD = 0,
+	PSP_MODEL_SLIM_AND_LITE = 1
+};
+
 
 /******************************************************************************
 	グローバル変数

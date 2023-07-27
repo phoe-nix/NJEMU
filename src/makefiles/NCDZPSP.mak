@@ -77,5 +77,3 @@ ICONOBJS = \
 
 OSOBJS += \
 	$(OBJ)/$(OS)/mp3.o
-
-LIBS += src/libmad/libmad.a
