@@ -15,7 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        docker_tag: [pspdev/pspdev]
+        psp_mode: [PSP_SLIM=0, PSP_SLIM=1]
+        emulator: [
+          BUILD_CPS1PSP=1 BUILD_CPS2PSP=0 BUILD_MVSPSP=0 BUILD_NCDZPSP=0,
+          BUILD_CPS1PSP=0 BUILD_CPS2PSP=1 BUILD_MVSPSP=0 BUILD_NCDZPSP=0,
+          BUILD_CPS1PSP=0 BUILD_CPS2PSP=0 BUILD_MVSPSP=1 BUILD_NCDZPSP=0,
+          BUILD_CPS1PSP=0 BUILD_CPS2PSP=0 BUILD_MVSPSP=0 BUILD_NCDZPSP=1,
+          ]
 
     container: pspdev/pspdev:latest
     steps:
@@ -29,7 +35,7 @@ jobs:
     - name: Compile project
       run: |
         make clean
-        make -j $(getconf _NPROCESSORS_ONLN)
+        make -j $(getconf _NPROCESSORS_ONLN) ${{ matrix.psp_mode }} ${{ matrix.emulator }}
 
     - name: Get short SHA
       id: slug
@@ -39,7 +45,7 @@ jobs:
       if: ${{ success() }}
       uses: actions/upload-artifact@v3
       with:
-        name: NJEMU-${{ steps.slug.outputs.sha8 }}
+        name: NJEMU-${{ steps.slug.outputs.sha8 }}-${{ matrix.psp_mode }}-${{ matrix.emulator }}
         path: |
           SLIM
           3XX
