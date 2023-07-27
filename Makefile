@@ -109,14 +109,8 @@ endif
 # Utilities
 #------------------------------------------------------------------------------
 
-ifeq ($(PSPDEV),)
 MD = -mkdir
 RM = -rm
-else
-MD = -mkdir.exe
-RM = -rm.exe
-endif
-
 
 #------------------------------------------------------------------------------
 # File include path
@@ -322,7 +316,7 @@ LDFLAGS =
 
 USE_PSPSDK_LIBC = 1
 
-LIBS = -lm -lc -lpspaudio -lpspgu -lpsppower -lpsprtc
+LIBS = -lpspaudio -lpspgu -lpsppower
 
 ifdef PSP_SLIM
 LIBS += -lpspkubridge
@@ -376,14 +370,14 @@ delelf:
 	@$(RM) -f $(TARGET).elf
 
 maketree:
-	@$(MD) 3xx
-	@$(MD) 3xx/cps1
-	@$(MD) 3xx/cps2
-	@$(MD) 3xx/mvs
-	@$(MD) 3xx/ncdz
-	@$(MD) slim
-	@$(MD) slim/cps1
-	@$(MD) slim/cps2
-	@$(MD) slim/mvs
-	@$(MD) slim/ncdz
+	@$(MD) 3XX
+	@$(MD) 3XX/CPS1
+	@$(MD) 3XX/CPS2
+	@$(MD) 3XX/MVS
+	@$(MD) 3XX/NCDZ
+	@$(MD) SLIM
+	@$(MD) SLIM/CPS1
+	@$(MD) SLIM/CPS2
+	@$(MD) SLIM/MVS
+	@$(MD) SLIM/NCDZ
 	@$(MD) -p $(subst //,\,$(sort $(OBJDIRS)))
