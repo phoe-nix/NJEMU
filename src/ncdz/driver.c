@@ -155,7 +155,7 @@ int neogeo_check_game(void)
 			sscanf(stroffs, "%x", &offs);
 			ext = strrchr(strfname, '.');
 
-			if (stricmp(ext, ".PRG") == 0 || stricmp(ext, ".ARG") == 0)
+			if (strcasecmp(ext, ".PRG") == 0 || strcasecmp(ext, ".ARG") == 0)
 			{
 				if (!bank && !offs)
 				{

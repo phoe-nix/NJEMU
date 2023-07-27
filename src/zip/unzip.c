@@ -536,7 +536,7 @@ int unzLocateFile(unzFile file, const char *szFileName)
 
 		unzGetCurrentFileInfo(file, NULL, szCurrentFileName, sizeof(szCurrentFileName) - 1);
 
-		if (stricmp(szCurrentFileName, szFileName) == 0)
+		if (strcasecmp(szCurrentFileName, szFileName) == 0)
 			return UNZ_OK;
 
 		err = unzGoToNextFile(file);

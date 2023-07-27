@@ -22,7 +22,7 @@
 #define WRITE_MIRROR_BYTE(mem, offset, data, amask)		mem[(offset & amask) ^ 1] = data
 #define WRITE_MIRROR_WORD(mem, offset, data, amask)		*(UINT16 *)&mem[offset & amask] = data
 
-#define str_cmp(s1, s2)		strnicmp(s1, s2, strlen(s2))
+#define str_cmp(s1, s2)		strncasecmp(s1, s2, strlen(s2))
 
 enum
 {

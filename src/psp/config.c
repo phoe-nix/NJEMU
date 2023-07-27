@@ -181,7 +181,7 @@ static const PADNAME pad_name[13] =
 
 static int get_config_bool(char *str)
 {
-	if (!stricmp(str, "yes"))
+	if (!strcasecmp(str, "yes"))
 		return 1;
 	else
 		return 0;

@@ -389,7 +389,7 @@ static char *get_zipname(const char *name, int *flag)
 
 	for (i = 0; i < zipname_num; i++)
 	{
-		if (stricmp(fname, zipname[i].zipname) == 0)
+		if (strcasecmp(fname, zipname[i].zipname) == 0)
 		{
 			*flag = zipname[i].flag;
 			return zipname[i].title;
@@ -425,7 +425,7 @@ static void checkDir(const char *name)
 		if (sceIoDread(fd, &dir) <= 0) break;
 
 		if (dir.d_stat.st_attr == FIO_SO_IFDIR)
-			if (stricmp(dir.d_name, name) == 0)
+			if (strcasecmp(dir.d_name, name) == 0)
 				found = 1;
 	}
 
@@ -584,12 +584,12 @@ static void getDir(const char *path)
 			continue;
 		}
 #if (EMU_SYSTEM == MVS)
-		if (stricmp(dir.d_name, "neogeo.zip") == 0)
+		if (strcasecmp(dir.d_name, "neogeo.zip") == 0)
 		{
 			continue;
 		}
 #elif (EMU_SYSTEM == NCDZ)
-		if (stricmp(dir.d_name, "ipl.txt") == 0)
+		if (strcasecmp(dir.d_name, "ipl.txt") == 0)
 		{
 			neocddir = 1;
 			continue;
@@ -598,7 +598,7 @@ static void getDir(const char *path)
 		if ((ext = strrchr(dir.d_name, '.')) != NULL)
 		{
 #ifdef COMMAND_LIST
-			if (stricmp(dir.d_name, "command.dat") == 0)
+			if (strcasecmp(dir.d_name, "command.dat") == 0)
 			{
 				strcpy(files[nfiles]->name, dir.d_name);
 				strcpy(files[nfiles]->title, dir.d_name);
@@ -608,7 +608,7 @@ static void getDir(const char *path)
 				continue;
 			}
 #endif
-			if (stricmp(ext, ".zip") == 0)
+			if (strcasecmp(ext, ".zip") == 0)
 			{
 				strcpy(files[nfiles]->name, dir.d_name);
 				files[nfiles]->type = FTYPE_ZIP;
@@ -622,23 +622,23 @@ static void getDir(const char *path)
 		if (dir.d_stat.st_attr == FIO_SO_IFDIR)
 		{
 #if USE_CACHE
-			if (stricmp(dir.d_name, "cache") == 0) continue;
+			if (strcasecmp(dir.d_name, "cache") == 0) continue;
 #endif
-			if (stricmp(dir.d_name, "config") == 0) continue;
-//			if (stricmp(dir.d_name, "snap") == 0) continue;
+			if (strcasecmp(dir.d_name, "config") == 0) continue;
+//			if (strcasecmp(dir.d_name, "snap") == 0) continue;
 #if (EMU_SYSTEM != NCDZ)
-			if (stricmp(dir.d_name, "nvram") == 0) continue;
+			if (strcasecmp(dir.d_name, "nvram") == 0) continue;
 #endif
 #ifdef SAVE_STATE
-			if (stricmp(dir.d_name, "state") == 0) continue;
+			if (strcasecmp(dir.d_name, "state") == 0) continue;
 #endif
 #if PSP_VIDEO_32BPP
-			if (stricmp(dir.d_name, "data") == 0) continue;
+			if (strcasecmp(dir.d_name, "data") == 0) continue;
 #endif
 #if (EMU_SYSTEM == MVS)
-			if (stricmp(dir.d_name, "memcard") == 0) continue;
+			if (strcasecmp(dir.d_name, "memcard") == 0) continue;
 #elif (EMU_SYSTEM == NCDZ)
-			if (stricmp(dir.d_name, "mp3") == 0)
+			if (strcasecmp(dir.d_name, "mp3") == 0)
 			{
 				has_mp3 = 1;
 				continue;
@@ -797,7 +797,7 @@ char *find_file(char *pattern, char *path)
 
 		for (i = 0; i < len2; i++)
 		{
-			if (strnicmp(&dir.d_name[i], pattern, len1) == 0)
+			if (strncasecmp(&dir.d_name[i], pattern, len1) == 0)
 			{
 				strcpy(file.name, dir.d_name);
 				found = 1;
@@ -836,7 +836,7 @@ void delete_files(const char *dirname, const char *pattern)
 
 		for (i = 0; i < len2; i++)
 		{
-			if (strnicmp(&dir.d_name[i], pattern, len1) == 0)
+			if (strncasecmp(&dir.d_name[i], pattern, len1) == 0)
 			{
 				char path2[MAX_PATH];
 
@@ -871,7 +871,7 @@ void find_state_file(UINT8 *slot)
 
 	while (sceIoDread(fd, &dir) > 0)
 	{
-		if (strnicmp(dir.d_name, pattern, len) == 0)
+		if (strncasecmp(dir.d_name, pattern, len) == 0)
 		{
 			int number = dir.d_name[len] - '0';
 

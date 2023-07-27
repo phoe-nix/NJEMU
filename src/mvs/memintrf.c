@@ -36,7 +36,7 @@
 #define READ_MIRROR_WORD(mem, offset, amask)			mem[offset & amask] | mem[(offset + 1) & amask ] << 8
 #define WRITE_MIRROR_WORD(mem, offset, data, amask)		mem[offset & amask] = data & 0xff; mem[(offset + 1) & amask] = (data >> 8) & 0xff
 
-#define str_cmp(s1, s2)		strnicmp(s1, s2, strlen(s2))
+#define str_cmp(s1, s2)		strncasecmp(s1, s2, strlen(s2))
 
 
 enum
@@ -1297,7 +1297,7 @@ static int load_rom_info(const char *game_name)
 					init    = strtok(NULL, " ,");
 					rotate  = strtok(NULL, " ");
 
-					if (stricmp(name, game_name) == 0)
+					if (strcasecmp(name, game_name) == 0)
 					{
 						if (str_cmp(parent, "neogeo") == 0)
 						{

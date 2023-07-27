@@ -82,7 +82,7 @@ static int cmdlist_get_tag(char *buf)
 	int i;
 
 	for (i = 0; i < TAG_MAX; i++)
-		if (strnicmp(&buf[1], tag_str[i], strlen(tag_str[i])) == 0)
+		if (strncasecmp(&buf[1], tag_str[i], strlen(tag_str[i])) == 0)
 			return i;
 
 	return -1;
@@ -253,7 +253,7 @@ retry:
 
 					do
 					{
-						if (stricmp(name2, name) == 0)
+						if (strcasecmp(name2, name) == 0)
 						{
 							found = 1;
 							break;
@@ -281,19 +281,19 @@ retry:
 			case TAG_CHARSET:
 				if ((p = cmdlist_get_value(linebuf)) != NULL)
 				{
-					if (stricmp(p, "GBK") == 0)
+					if (strcasecmp(p, "GBK") == 0)
 					{
 						charset = CHARSET_GBK;
 					}
-					else if (stricmp(p, "Shift_JIS") == 0)
+					else if (strcasecmp(p, "Shift_JIS") == 0)
 					{
 						charset = CHARSET_SHIFTJIS;
 					}
-					else if (stricmp(p, "ISO-8859-1") == 0)
+					else if (strcasecmp(p, "ISO-8859-1") == 0)
 					{
 						charset = CHARSET_ISO8859_1;
 					}
-					else if (stricmp(p, "Latin1") == 0)
+					else if (strcasecmp(p, "Latin1") == 0)
 					{
 						charset = CHARSET_ISO8859_1;
 					}
@@ -905,22 +905,22 @@ int commandlist_size_reduction(void)
 
 			if (p && linebuf[0] == '$')
 			{
-				if (!strnicmp(linebuf, "$charset", 8) && strchr(linebuf, '=') != NULL)
+				if (!strncasecmp(linebuf, "$charset", 8) && strchr(linebuf, '=') != NULL)
 				{
 					char *type;
 
 					strtok(linebuf, " =");
 					if ((type = strtok(NULL, " =")) != NULL)
 					{
-						if (!stricmp(type, "GBK"))
+						if (!strcasecmp(type, "GBK"))
 						{
 							charset = CHARSET_GBK;
 						}
-						else if (!stricmp(type, "Shift_JIS"))
+						else if (!strcasecmp(type, "Shift_JIS"))
 						{
 							charset = CHARSET_SHIFTJIS;
 						}
-						else if (!stricmp(type, "ISO-8859-1") || !stricmp(type, "Latin1"))
+						else if (!strcasecmp(type, "ISO-8859-1") || !strcasecmp(type, "Latin1"))
 						{
 							charset = CHARSET_LATIN1;
 						}
@@ -1052,7 +1052,7 @@ int commandlist_size_reduction(void)
 		{
 			strcpy(linebuf, line_ptr[l]);
 
-			if (strnicmp(linebuf, "$charset", 8) != 0)
+			if (strncasecmp(linebuf, "$charset", 8) != 0)
 			{
 				fprintf(fp, "%s\r\n", linebuf);
 				line2++;
@@ -1070,7 +1070,7 @@ int commandlist_size_reduction(void)
 			if (linebuf[0] == '$')
 			{
 				// コマンドリスト開始
-				if (!strnicmp(linebuf, "$info", 5) && strchr(linebuf, '=') != NULL)
+				if (!strncasecmp(linebuf, "$info", 5) && strchr(linebuf, '=') != NULL)
 				{
 					char *name;
 
@@ -1089,11 +1089,11 @@ int commandlist_size_reduction(void)
 							do
 							{
 #if (EMU_SYSTEM == NCDZ)
-								if (!stricmp(name2, "trally")) strcpy(name2, "rallych");
+								if (!strcasecmp(name2, "trally")) strcpy(name2, "rallych");
 #endif
 								for (i = 0; i < total_roms; i++)
 								{
-									if (!stricmp(name2, rom_name[i]))
+									if (!strcasecmp(name2, rom_name[i]))
 									{
 										found = 2;
 										break;
@@ -1106,11 +1106,11 @@ int commandlist_size_reduction(void)
 						else
 						{
 #if (EMU_SYSTEM == NCDZ)
-							if (!stricmp(name, "trally")) strcpy(name, "rallych");
+							if (!strcasecmp(name, "trally")) strcpy(name, "rallych");
 #endif
 							for (i = 0; i < total_roms; i++)
 							{
-								if (!stricmp(name, rom_name[i]))
+								if (!strcasecmp(name, rom_name[i]))
 								{
 									found = 1;
 									break;
@@ -1148,14 +1148,14 @@ int commandlist_size_reduction(void)
 			break;
 
 		case CMD_SEEK:
-			if (!strnicmp(linebuf, "$cmd", 4))
+			if (!strncasecmp(linebuf, "$cmd", 4))
 			{
 				// コマンド開始
 				progress = END_SEEK;
 				fprintf(fp, "$cmd\r\n");
 				line2++;
 			}
-			else if (!strnicmp(linebuf, "$info", 5))
+			else if (!strncasecmp(linebuf, "$info", 5))
 			{
 				// 次のコマンド - 1行戻す
 				fprintf(fp, "\r\n");
@@ -1165,7 +1165,7 @@ int commandlist_size_reduction(void)
 			break;
 
 		case END_SEEK:
-			if (!strnicmp(linebuf, "$end", 4))
+			if (!strncasecmp(linebuf, "$end", 4))
 			{
 				// コマンド終了
 				progress = CMD_SEEK;

@@ -17,7 +17,7 @@
 #define WRITE_BYTE(mem, offset, data)	mem[offset ^ 1] = data
 #define WRITE_WORD(mem, offset, data)	*(UINT16 *)&mem[offset] = data
 
-#define str_cmp(s1, s2)		strnicmp(s1, s2, strlen(s2))
+#define str_cmp(s1, s2)		strncasecmp(s1, s2, strlen(s2))
 
 enum
 {
@@ -365,7 +365,7 @@ static int load_rom_info(const char *game_name)
 					init    = strtok(NULL, " ,");
 					rotate  = strtok(NULL, " ");
 
-					if (stricmp(name, game_name) == 0)
+					if (strcasecmp(name, game_name) == 0)
 					{
 						if (str_cmp(parent, "cps1") == 0)
 							parent_name[0] = '\0';

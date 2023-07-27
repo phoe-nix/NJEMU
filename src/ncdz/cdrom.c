@@ -118,12 +118,12 @@ static int get_filetype(const char *ext)
 {
 	int type = UNKNOWN_TYPE;
 
-	if (stricmp(ext, "PRG") == 0) type = PRG_TYPE;
-	if (stricmp(ext, "FIX") == 0) type = FIX_TYPE;
-	if (stricmp(ext, "SPR") == 0) type = SPR_TYPE;
-	if (stricmp(ext, "Z80") == 0) type = Z80_TYPE;
-	if (stricmp(ext, "PCM") == 0) type = PCM_TYPE;
-	if (stricmp(ext, "PAT") == 0) type = PAT_TYPE;
+	if (strcasecmp(ext, "PRG") == 0) type = PRG_TYPE;
+	if (strcasecmp(ext, "FIX") == 0) type = FIX_TYPE;
+	if (strcasecmp(ext, "SPR") == 0) type = SPR_TYPE;
+	if (strcasecmp(ext, "Z80") == 0) type = Z80_TYPE;
+	if (strcasecmp(ext, "PCM") == 0) type = PCM_TYPE;
+	if (strcasecmp(ext, "PAT") == 0) type = PAT_TYPE;
 	if (ext[0] == 'A') type = AXX_TYPE;
 
 	return type;
