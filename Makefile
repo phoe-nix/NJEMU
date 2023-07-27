@@ -75,33 +75,33 @@ endif
 
 ifdef BUILD_CPS1PSP
 ifdef PSP_SLIM
-EXTRA_TARGETS = maketree SLIM/CPS1/EBOOT.PBP delelf
+EXTRA_TARGETS = maketree SLIM/CPS1/EBOOT.PBP
 else
-EXTRA_TARGETS = maketree 3XX/CPS1/EBOOT.PBP delelf
+EXTRA_TARGETS = maketree 3XX/CPS1/EBOOT.PBP
 endif
 endif
 
 ifdef BUILD_CPS2PSP
 ifdef PSP_SLIM
-EXTRA_TARGETS = maketree SLIM/CPS2/EBOOT.PBP delelf
+EXTRA_TARGETS = maketree SLIM/CPS2/EBOOT.PBP
 else
-EXTRA_TARGETS = maketree 3XX/CPS2/EBOOT.PBP delelf
+EXTRA_TARGETS = maketree 3XX/CPS2/EBOOT.PBP
 endif
 endif
 
 ifdef BUILD_MVSPSP
 ifdef PSP_SLIM
-EXTRA_TARGETS = maketree SLIM/MVS/EBOOT.PBP delelf
+EXTRA_TARGETS = maketree SLIM/MVS/EBOOT.PBP
 else
-EXTRA_TARGETS = maketree 3XX/MVS/EBOOT.PBP delelf
+EXTRA_TARGETS = maketree 3XX/MVS/EBOOT.PBP
 endif
 endif
 
 ifdef BUILD_NCDZPSP
 ifdef PSP_SLIM
-EXTRA_TARGETS = maketree SLIM/NCDZ/EBOOT.PBP delelf
+EXTRA_TARGETS = maketree SLIM/NCDZ/EBOOT.PBP
 else
-EXTRA_TARGETS = maketree 3XX/NCDZ/EBOOT.PBP delelf
+EXTRA_TARGETS = maketree 3XX/NCDZ/EBOOT.PBP
 endif
 endif
 
@@ -363,10 +363,6 @@ $(OBJ)/%.o: src/%.s
 $(OBJ)/%.a:
 	@echo Archiving $@...
 	@$(AR) -r $@ $^
-
-delelf:
-	@$(RM) -f $(PSP_EBOOT_SFO)
-	@$(RM) -f $(TARGET).elf
 
 maketree:
 	@$(MD) 3XX
