@@ -288,8 +288,8 @@ dipswitch_t *load_dipswitch(void)
 			dipswitch = dipswitch_kog_jp;
 			dipswitch[6].value = neogeo_hard_dipsw;
 		}
-	}
 #endif
+	}
 	else if (ui_text_get_language() == LANG_CHINESE_SIMPLIFIED)
 	{
 		switch (neogeo_ngh)
@@ -319,8 +319,8 @@ dipswitch_t *load_dipswitch(void)
 			dipswitch = dipswitch_kog_chs;
 			dipswitch[6].value = neogeo_hard_dipsw;
 		}
-	}
 #endif
+	}
 	else if (ui_text_get_language() == LANG_CHINESE_TRADITIONAL)
 	{
 		switch (neogeo_ngh)
@@ -350,8 +350,8 @@ dipswitch_t *load_dipswitch(void)
 			dipswitch = dipswitch_kog_cht;
 			dipswitch[6].value = neogeo_hard_dipsw;
 		}
-	}
 #endif
+	}
 	else
 	{
 		switch (neogeo_ngh)
