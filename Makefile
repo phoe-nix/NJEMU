@@ -246,7 +246,6 @@ CFLAGS = \
 	-Wwrite-strings \
 	-Wmissing-prototypes \
 	-Wsign-compare \
-	-Werror \
 	-DZLIB_CONST
 
 
