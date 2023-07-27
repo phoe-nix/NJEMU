@@ -69,7 +69,7 @@ UINT8 *qsound_sharedram2;
 char cache_parent_name[16];
 #endif
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 UINT32 psp2k_mem_offset = PSP2K_MEM_TOP;
 INT32 psp2k_mem_left = PSP2K_MEM_SIZE;
 #endif
@@ -643,7 +643,7 @@ int memory_init(void)
 	gfx_pen_usage[TILE16] = NULL;
 	gfx_pen_usage[TILE32] = NULL;
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	psp2k_mem_offset = PSP2K_MEM_TOP;
 	psp2k_mem_left   = PSP2K_MEM_SIZE;
 #endif
@@ -845,12 +845,12 @@ void memory_shutdown(void)
 	if (memory_region_sound1) free(memory_region_sound1);
 	if (memory_region_user1)  free(memory_region_user1);
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	psp2k_mem_offset = PSP2K_MEM_TOP;
 	psp2k_mem_left   = PSP2K_MEM_SIZE;
 #endif
 
-#if (USE_CACHE && PSP_VIDEO_32BPP)
+#if (USE_CACHE && VIDEO_32BPP)
 	GFX_MEMORY = NULL;
 #endif
 }

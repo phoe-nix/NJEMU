@@ -257,7 +257,7 @@ int state_save(int slot)
 #ifdef ADHOC
 		state_buffer = state_buffer_base;
 #else
-#if (EMU_SYSTEM == CPS1 || (EMU_SYSTEM == CPS2 && defined(PSP_SLIM)))
+#if (EMU_SYSTEM == CPS1 || (EMU_SYSTEM == CPS2 && defined(LARGE_MEMORY)))
 		state_buffer = state_buffer_base = memalign(MEM_ALIGN, STATE_BUFFER_SIZE);
 #else
 		state_buffer = state_buffer_base = cache_alloc_state_buffer(STATE_BUFFER_SIZE);
@@ -317,7 +317,7 @@ int state_save(int slot)
 		update_progress();
 
 #ifndef ADHOC
-#if (EMU_SYSTEM == CPS1 || (EMU_SYSTEM == CPS2 && defined(PSP_SLIM)))
+#if (EMU_SYSTEM == CPS1 || (EMU_SYSTEM == CPS2 && defined(LARGE_MEMORY)))
 		free(state_buffer_base);
 #else
 		cache_free_state_buffer(STATE_BUFFER_SIZE);

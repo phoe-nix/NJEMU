@@ -51,7 +51,7 @@ static const char *text_ENGLISH[UI_TEXT_MAX] =
 		"Don't bother.",
 #endif
 		"Do you make this directory the startup directory?",
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		"This program requires PSP-2000 + FW 3.71 M33 or later.",
 #endif
 #ifdef SAVE_STATE
@@ -356,7 +356,7 @@ static const char *text_ENGLISH[UI_TEXT_MAX] =
 		"Show command list. (MAME Plus! format \"command.dat\")",
 #endif
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 		"Color settings menu",
 		"Background image type",
 		"Background image blightness",
@@ -411,7 +411,7 @@ static const char *text_ENGLISH[UI_TEXT_MAX] =
 		/* psp/png.c */
 		"Could not allocate memory for PNG.",
 		"Could not enecode PNG image.",
-#if PSP_VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
+#if VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
 		"Could not decode PNG image.",
 #endif
 		"%d bit color PNG image not supported.",
@@ -521,7 +521,7 @@ static const char *text_ENGLISH[UI_TEXT_MAX] =
 		/* memintrf.c */
 		"rominfo.cps2 not found.\n",
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		/* vidhrdw.c */
 		"Decoding GFX...\n",
 #endif
@@ -609,7 +609,7 @@ static const char *text_JAPANESE[UI_TEXT_MAX] =
 		"気にしないでください。",
 #endif
 		"このディレクトリを初期ディレクトリに設定します。",
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		"このプログラムはPSP-2000 + FW 3.71 M33以降専用です。",
 #endif
 #ifdef SAVE_STATE
@@ -913,7 +913,7 @@ static const char *text_JAPANESE[UI_TEXT_MAX] =
 		"このゲームのコマンド一覧を表示します。",
 #endif
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 		"カラー設定メニュー",
 		"背景画像の種類",
 		"背景画像の明るさ",
@@ -968,7 +968,7 @@ static const char *text_JAPANESE[UI_TEXT_MAX] =
 		/* psp/png.c */
 		"PNG画像用のメモリを確保できません。",
 		"PNG画像を作成できません。",
-#if PSP_VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
+#if VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
 		"PNG画像を展開できません。",
 #endif
 		"%dbitカラーのPNG画像には対応していません。",
@@ -1078,7 +1078,7 @@ static const char *text_JAPANESE[UI_TEXT_MAX] =
 		/* memintrf.c */
 		"rominfo.cps2が見つかりません。\n",
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		/* vidhrdw.c */
 		"グラフィックデータを展開中...\n",
 #endif
@@ -1166,7 +1166,7 @@ static const char *text_SPANISH[UI_TEXT_MAX] =
 		"No se moleste.",
 #endif
 		"Convertir este directorio en el de inicio?",
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		"Este programa requiere PSP-2000 + FW 3.71 M33 o posterior.",
 #endif
 #ifdef SAVE_STATE
@@ -1470,7 +1470,7 @@ static const char *text_SPANISH[UI_TEXT_MAX] =
 		"Mostrar lista de comando. (MAME Plus! format \"command.dat\")",
 #endif
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 		"Menu de ajustes de color",
 		"Tipo de imagen de fondo",
 		"Brillo de imagen de fondo",
@@ -1525,7 +1525,7 @@ static const char *text_SPANISH[UI_TEXT_MAX] =
 		/* psp/png.c */
 		"No se pudo asignar memoria para PNG.",
 		"No se pudo codificar la imagen PNG.",
-#if PSP_VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
+#if VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
 		"No se pudo decodificar la imagen PNG.",
 #endif
 		"%d bit color imagen PNG no soportada.",
@@ -1635,7 +1635,7 @@ static const char *text_SPANISH[UI_TEXT_MAX] =
 		/* memintrf.c */
 		"rominfo.cps2 no encontrado.\n",
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		/* vidhrdw.c */
 		"Decodificando GFX...\n",
 #endif
@@ -1723,7 +1723,7 @@ static const char *text_CHINESE_SIMPLIFIED[UI_TEXT_MAX] =
 		"请勿烦躁",
 #endif
 		"是否将此文件夹设置为开始目录?",
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		"此软件需要PSP-2000或以上的机型+3.71 M33或更高系统",
 #endif
 #ifdef SAVE_STATE
@@ -2027,7 +2027,7 @@ static const char *text_CHINESE_SIMPLIFIED[UI_TEXT_MAX] =
 		"显示操作说明 (MAME Plus格式的\"command.dat\")",
 #endif
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 		"颜色管理菜单",
 		"背景图类型",
 		"背景图亮度",
@@ -2082,7 +2082,7 @@ static const char *text_CHINESE_SIMPLIFIED[UI_TEXT_MAX] =
 		/* psp/png.c */
 		"无法为PNG分配内存",
 		"无法圧缩PNG图像",
-#if PSP_VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
+#if VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
 		"无法解圧PNG图像",
 #endif
 		"不支持%d位颜色的PNG图",
@@ -2192,7 +2192,7 @@ static const char *text_CHINESE_SIMPLIFIED[UI_TEXT_MAX] =
 		/* memintrf.c */
 		"没有找到rominfo.cps2\n",
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		/* vidhrdw.c */
 		"正在展开图像数据\n",
 #endif
@@ -2280,7 +2280,7 @@ static const char *text_CHINESE_TRADITIONAL[UI_TEXT_MAX] =
 		"請勿煩躁",
 #endif
 		"是否將此文件夾設置為開始目錄?",
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		"此軟件需要PSP-2000或以上的機型+3.71 M33或更高系統",
 #endif
 #ifdef SAVE_STATE
@@ -2584,7 +2584,7 @@ static const char *text_CHINESE_TRADITIONAL[UI_TEXT_MAX] =
 		"顯示操作說明 (MAME Plus格式的\"command.dat\")",
 #endif
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 		"顏色管理菜單",
 		"背景圖類型",
 		"背景圖亮度",
@@ -2639,7 +2639,7 @@ static const char *text_CHINESE_TRADITIONAL[UI_TEXT_MAX] =
 		/* psp/png.c */
 		"無法為PNG分配內存",
 		"無法壓縮PNG圖像",
-#if PSP_VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
+#if VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
 		"無法解壓PNG圖像",
 #endif
 		"不支持%d位顏色的PNG圖",
@@ -2749,7 +2749,7 @@ static const char *text_CHINESE_TRADITIONAL[UI_TEXT_MAX] =
 		/* memintrf.c */
 		"沒有找到rominfo.cps2\n",
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		/* vidhrdw.c */
 		"正在展開圖像數據\n",
 #endif

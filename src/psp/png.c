@@ -47,7 +47,7 @@ struct png_info
 	UINT8  *zimage;
 	UINT32 zlength;
 
-#if PSP_VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
+#if VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
 	UINT32 xres;
 	UINT32 yres;
 	UINT32 resolution_unit;
@@ -82,7 +82,7 @@ static void errormsg(int number)
 	{
 	case 0: ui_popup(TEXT(COULD_NOT_ALLOCATE_MEMORY_FOR_PNG)); break;
 	case 1: ui_popup(TEXT(COULD_NOT_ENCODE_PNG_IMAGE)); break;
-#if PSP_VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
+#if VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
 	case 2: ui_popup(TEXT(COULD_NOT_DECODE_PNG_IMAGE)); break;
 #endif
 	}
@@ -176,7 +176,7 @@ static void png_zcfree(voidpf opaque, voidpf ptr)
 #endif
 
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 static const UINT8 *png_data;
 static UINT32 png_size;
 static UINT32 png_offset;
@@ -216,7 +216,7 @@ static size_t png_read(void *buf, size_t size, FILE *fp)
 
 ********************************************************************************/
 
-#if PSP_VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
+#if VIDEO_32BPP || (EMU_SYSTEM == NCDZ)
 
 /* convert_uint is here so we don't have to deal with byte-ordering issues */
 static UINT32 convert_from_network_order(UINT8 *v)
@@ -543,7 +543,7 @@ static int png_read_file(FILE *fp, struct png_info *p)
 	±³¾°»­Ïñ¤ÎÃ÷¶È¤ò‰ä¸ü
 --------------------------------------------------------*/
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 INLINE void adjust_blightness(UINT8 *r, UINT8 *g, UINT8 *b)
 {
 	switch (bgimage_blightness)
@@ -590,7 +590,7 @@ int load_png(const char *name, int number)
 
 	video_clear_frame(draw_frame);
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	if (name)
 	{
 		if ((fp = fopen(name, "rb")) == NULL)
@@ -618,7 +618,7 @@ int load_png(const char *name, int number)
 		sx = (SCR_WIDTH - p.width) >> 1;
 		sy = (SCR_HEIGHT - p.height) >> 1;
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 		if (video_mode == 32)
 		{
 			UINT32 *vptr, *dst;
@@ -920,7 +920,7 @@ static int png_create_datastream(SceUID fd)
 
 	dst = p.image;
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 #if 0
 	if (video_mode == 32)
 	{

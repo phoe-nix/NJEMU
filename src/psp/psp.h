@@ -26,7 +26,7 @@
 #include <psppower.h>
 #include <psprtc.h>
 #include <pspsdk.h>
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 #include <kubridge.h>
 #endif
 #include <stdio.h>
@@ -52,12 +52,12 @@
 #if (EMU_SYSTEM == NCDZ)
 #include "psp/mp3.h"
 #endif
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 #include "psp/wallpaper.h"
 #endif
 #include "SystemButtons.h"
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 #define PSP2K_MEM_TOP		0xa000000//0xa000000
 #define PSP2K_MEM_BOTTOM	0xbffffff//0xbffffff
 #define PSP2K_MEM_SIZE		0x2000000//0x2000000

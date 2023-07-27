@@ -110,7 +110,7 @@ int use_parent_crom;
 int use_parent_srom;
 int use_parent_vrom;
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 UINT32 psp2k_mem_offset = PSP2K_MEM_TOP;
 INT32 psp2k_mem_left = PSP2K_MEM_SIZE;
 #endif
@@ -454,7 +454,7 @@ static int build_zoom_tables(void)
 	PSP-2000用メモリ管理
 ******************************************************************************/
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 
 #define MEMORY_IS_PSP2K(mem)	((UINT32)mem >= PSP2K_MEM_TOP)
 
@@ -837,7 +837,7 @@ static int load_rom_gfx3(void)
 {
 	if (!encrypt_gfx3)
 	{
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		if ((memory_region_gfx3 = psp2k_mem_alloc(memory_length_gfx3)) == NULL)
 #endif
 		{
@@ -940,7 +940,7 @@ static int load_rom_sound1(void)
 		memory_length_sound1 = 0;
 		return 1;
 	}
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	if (disable_sound)
 	{
 		return 1;
@@ -1595,7 +1595,7 @@ int memory_init(void)
 	gfx_pen_usage[1] = NULL;
 	gfx_pen_usage[2] = NULL;
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	psp2k_mem_offset = PSP2K_MEM_TOP;
 	psp2k_mem_left   = PSP2K_MEM_SIZE;
 #endif
@@ -1752,7 +1752,7 @@ int memory_init(void)
 
 	if (load_rom_sound1() == 0) return 0;
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	if (psp2k_mem_left != PSP2K_MEM_SIZE)
 	{
 		// sound1で拡張メモリに確保した場合
@@ -2009,7 +2009,7 @@ void memory_shutdown(void)
 
 	cache_shutdown();
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	for (i = 0; i < 3; i++)
 		psp2k_mem_free(gfx_pen_usage[i]);
 
@@ -2051,7 +2051,7 @@ void memory_shutdown(void)
 	if (memory_region_user3)  free(memory_region_user3);
 #endif
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	GFX_MEMORY = NULL;
 #endif
 }

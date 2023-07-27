@@ -2,7 +2,7 @@
  *
  * CZ80 (Z80 CPU emulator) version 0.9
  * Compiled with Dev-C++
- * Copyright 2004-2005 Stéphane Dallongeville
+ * Copyright 2004-2005 Stï¿½phane Dallongeville
  *
  * (Modified by NJ)
  *
@@ -55,7 +55,7 @@ extern "C" {
 #define CZ80_LITTLE_ENDIAN		1
 #define CZ80_USE_JUMPTABLE		1
 #define CZ80_BIG_FLAGS_ARRAY	1
-#ifdef BUILD_CPS1PSP
+#ifdef BUILD_CPS1
 #define CZ80_ENCRYPTED_ROM		1
 #else
 #define CZ80_ENCRYPTED_ROM		0

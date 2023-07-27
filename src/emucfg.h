@@ -48,9 +48,9 @@
 	CPS1PSPの設定
 ******************************************************************************/
 
-#if defined(BUILD_CPS1PSP)
+#if defined(BUILD_CPS1)
 
-#define APPNAME_STR				"CAPCOM CPS1 Emulator for PSP"
+#define APPNAME_STR				"CAPCOM CPS1 Emulator"
 #define machine_main			cps1_main
 
 #define EMU_SYSTEM				CPS1
@@ -67,16 +67,16 @@
 	CPS2PSPの設定
 ******************************************************************************/
 
-#elif defined(BUILD_CPS2PSP)
+#elif defined(BUILD_CPS2)
 
-#define APPNAME_STR				"CAPCOM CPS2 Emulator for PSP"
+#define APPNAME_STR				"CAPCOM CPS2 Emulator"
 #define machine_main			cps2_main
 
 #define EMU_SYSTEM				CPS2
 #define SYSTEM_NAME				"CPS2"
 #define FPS						59.633333
 #define TICKS_PER_FRAME			16769.144773
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 #define USE_CACHE				0
 #else
 #define USE_CACHE				1
@@ -91,9 +91,9 @@
 	MVSPSPの設定
 ******************************************************************************/
 
-#elif defined(BUILD_MVSPSP)
+#elif defined(BUILD_MVS)
 
-#define APPNAME_STR				"NEOGEO Emulator for PSP"
+#define APPNAME_STR				"NEOGEO Emulator"
 #define machine_main			neogeo_main
 
 #define EMU_SYSTEM				MVS
@@ -109,9 +109,9 @@
 	NCDZPSPの設定
 ******************************************************************************/
 
-#elif defined(BUILD_NCDZPSP)
+#elif defined(BUILD_NCDZ)
 
-#define APPNAME_STR				"NEOGEO CDZ Emulator for PSP"
+#define APPNAME_STR				"NEOGEO CDZ Emulator"
 #define machine_main			neogeo_main
 
 #define EMU_SYSTEM				NCDZ

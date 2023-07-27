@@ -235,7 +235,7 @@ void draw_box_shadow(int sx, int sy, int ex, int ey);
 	¥æ©`¥¶¥¤¥ó¥¿¥Õ¥§©`¥¹É«ÔO¶¨
 ------------------------------------------------------*/
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 void get_ui_color(UI_PALETTE *pal, int *r, int *g, int *b);
 void set_ui_color(UI_PALETTE *pal, int r, int g, int b);
 #endif

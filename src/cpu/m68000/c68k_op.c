@@ -4588,7 +4588,7 @@ OP(1111)
 	RET(34)
 }
 
-#ifdef BUILD_NCDZPSP
+#ifdef BUILD_NCDZ
 
 OP(FAC0)
 {
@@ -4614,4 +4614,4 @@ OP(FAC2)
 	RET(200)
 }
 
-#endif /* BUILD_NCDZPSP */
+#endif /* BUILD_NCDZ */

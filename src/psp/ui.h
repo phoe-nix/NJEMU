@@ -16,7 +16,7 @@
 	±³¾°»­Ïñ±íÊ¾
 ------------------------------------------------------*/
 
-#if !PSP_VIDEO_32BPP
+#if !VIDEO_32BPP
 enum
 {
 	WP_LOGO = 0,
@@ -40,7 +40,7 @@ enum
 	BG_MAX
 };
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 extern int bgimage_type;
 extern int bgimage_blightness;
 #endif
@@ -124,7 +124,7 @@ enum
 	MB_GAMENOTWORK,
 #endif
 	MB_SETSTARTUPDIR,
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	MB_PSPVERSIONERROR,
 #endif
 #ifdef SAVE_STATE
@@ -165,7 +165,7 @@ enum
 #ifdef SAVE_STATE
 	HELP_STATE,
 #endif
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	HELP_COLORSETTINGS,
 #endif
 #ifdef COMMAND_LIST

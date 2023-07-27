@@ -9,7 +9,7 @@
 #include "emumain.h"
 
 #if USE_CACHE
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 #define MIN_CACHE_SIZE		0x40		// 下限  原始0x40,4MB
 #else
 #define MIN_CACHE_SIZE		0x20		// 下限  原始0x40,4MB
@@ -18,7 +18,7 @@
 32MB 0x200 660CFW exit pspfiler and tempgba,crash.
 26MB 0x1a0 620CFW push vol and screen button crash.
 */
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 #define MAX_CACHE_SIZE		0x200		// 上限 32MB 0x200  
 #else
 #define MAX_CACHE_SIZE		0x140		// 上限 20MB 0x140
@@ -71,7 +71,7 @@ static UINT16 ALIGN_DATA blocks[MAX_CACHE_BLOCKS];
 static int cache_fd;
 
 #if (EMU_SYSTEM == MVS)
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 int pcm_cache_enable;
 
 static cache_t ALIGN_DATA pcm_data[MAX_PCM_SIZE];
@@ -92,7 +92,7 @@ static char spr_cache_name[MAX_PATH];
 ******************************************************************************/
 
 #if (EMU_SYSTEM == MVS)
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 
 /*------------------------------------------------------
 	PCMキャッシュを読み込む
@@ -222,7 +222,7 @@ static int fill_cache(void)
 		if (++block >= MAX_CACHE_BLOCKS)
 			break;
 	}
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	if (pcm_cache_enable)
 	{
 		i = 0;
@@ -530,7 +530,7 @@ void cache_init(void)
 		blocks[i] = BLOCK_NOT_CACHED;
 
 #if (EMU_SYSTEM == MVS)
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	pcm_cache_enable = 0;
 	pcm_fd = -1;
 
@@ -586,7 +586,7 @@ int cache_start(void)
 		return 0;
 	}
 
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	if (option_sound_enable && disable_sound)
 	{
 		if ((pcm_fd = cachefile_open(CACHE_VROM)) >= 0)
@@ -728,7 +728,7 @@ int cache_start(void)
 
 		// 確保可能なサイズをチェック
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		if (psp2k_mem_left == PSP2K_MEM_SIZE)//ui32 bug
 		{
 			GFX_MEMORY = (UINT8 *)PSP2K_MEM_TOP;
@@ -786,7 +786,7 @@ int cache_start(void)
 	tail = &cache_data[num_cache - 1];
 
 #if (EMU_SYSTEM == MVS)
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	for (i = 0; i < MAX_PCM_SIZE; i++)
 		pcm_data[i].idx = i;
 
@@ -825,7 +825,7 @@ int cache_start(void)
 void cache_shutdown(void)
 {
 #if (EMU_SYSTEM == MVS)
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	if (pcm_cache_enable)
 	{
 		if (pcm_fd != -1)
@@ -870,7 +870,7 @@ void cache_sleep(int flag)
 		{
 #if (EMU_SYSTEM == MVS)
 			sceIoClose(cache_fd);
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 			if (pcm_cache_enable) sceIoClose(pcm_fd);
 #endif
 #else
@@ -884,7 +884,7 @@ void cache_sleep(int flag)
 		{
 #if (EMU_SYSTEM == MVS)
 			cache_fd = cachefile_open(CACHE_CROM);
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 			if (pcm_cache_enable)
 				pcm_fd = cachefile_open(CACHE_VROM);
 #endif
@@ -905,13 +905,13 @@ void cache_sleep(int flag)
 	ステートセーブ領域を一時的に確保する
 ------------------------------------------------------*/
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 static int cache_alloc_type = 0;
 #endif
 
 UINT8 *cache_alloc_state_buffer(INT32 size)
 {
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	if (size < psp2k_mem_left)
 	{
 		cache_alloc_type = 1;
@@ -923,7 +923,7 @@ UINT8 *cache_alloc_state_buffer(INT32 size)
 		SceUID fd;
 		char path[MAX_PATH];
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		cache_alloc_type = 0;
 #endif
 
@@ -945,7 +945,7 @@ UINT8 *cache_alloc_state_buffer(INT32 size)
 
 void cache_free_state_buffer(INT32 size)
 {
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	if (!cache_alloc_type)
 #endif
 	{
@@ -962,7 +962,7 @@ void cache_free_state_buffer(INT32 size)
 		sceIoRemove(path);
 	}
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	cache_alloc_type = 0;
 #endif
 }

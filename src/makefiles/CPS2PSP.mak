@@ -6,7 +6,7 @@
 
 PSP_EBOOT_ICON = data/cps2.png
 
-ifdef PSP_SLIM
+ifdef LARGE_MEMORY
 PSP_EBOOT_TITLE = $(PBPNAME_STR) $(VERSION_STR) for PSP slim
 else
 ifdef KERNEL_MODE
@@ -16,11 +16,6 @@ PSP_EBOOT_TITLE = $(PBPNAME_STR) $(VERSION_STR) for PSP
 endif
 endif
 
-#------------------------------------------------------------------------------
-# Object File Output Directtory
-#------------------------------------------------------------------------------
-
-OBJ = obj_cps2
 
 #------------------------------------------------------------------------------
 # File include path
@@ -33,25 +28,15 @@ INCDIR += \
 
 
 #------------------------------------------------------------------------------
-# Object Directory
-#------------------------------------------------------------------------------
-
-OBJDIRS += \
-	$(OBJ)/cpu/m68000 \
-	$(OBJ)/cpu/z80 \
-	$(OBJ)/cps2
-
-
-#------------------------------------------------------------------------------
 # Object Files (common)
 #------------------------------------------------------------------------------
 
 MAINOBJS += \
-	$(OBJ)/cpu/m68000/m68000.o \
-	$(OBJ)/cpu/m68000/c68k.o \
-	$(OBJ)/cpu/z80/z80.o \
-	$(OBJ)/cpu/z80/cz80.o \
-	$(OBJ)/common/coin.o
+	cpu/m68000/m68000.o \
+	cpu/m68000/c68k.o \
+	cpu/z80/z80.o \
+	cpu/z80/cz80.o \
+	common/coin.o
 
 
 #------------------------------------------------------------------------------
@@ -59,17 +44,17 @@ MAINOBJS += \
 #------------------------------------------------------------------------------
 
 COREOBJS = \
-	$(OBJ)/cps2/cps2.o \
-	$(OBJ)/cps2/cps2crpt.o \
-	$(OBJ)/cps2/driver.o \
-	$(OBJ)/cps2/memintrf.o \
-	$(OBJ)/cps2/inptport.o \
-	$(OBJ)/cps2/timer.o \
-	$(OBJ)/cps2/vidhrdw.o \
-	$(OBJ)/cps2/sprite.o \
-	$(OBJ)/cps2/eeprom.o \
-	$(OBJ)/sound/qsound.o
+	cps2/cps2.o \
+	cps2/cps2crpt.o \
+	cps2/driver.o \
+	cps2/memintrf.o \
+	cps2/inptport.o \
+	cps2/timer.o \
+	cps2/vidhrdw.o \
+	cps2/sprite.o \
+	cps2/eeprom.o \
+	sound/qsound.o
 
 ICONOBJS = \
-	$(OBJ)/$(OS)/icon/cps_s.o \
-	$(OBJ)/$(OS)/icon/cps_l.o
+	$(OS)/icon/cps_s.o \
+	$(OS)/icon/cps_l.o

@@ -14,7 +14,7 @@
 	¥°¥í©`¥Ð¥ë‰äÊý
 ******************************************************************************/
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 int bgimage_type;
 int bgimage_blightness;
 #endif
@@ -30,7 +30,7 @@ int bgimage_blightness;
 
 void load_background(int number)
 {
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	int found = 0;
 
 	if (bgimage_type == BG_DEFAULT || bgimage_type == BG_USER)
@@ -684,7 +684,7 @@ static UI_MESSAGEBOX *messagebox_init(int number)
 		MB_END
 		break;
 
-#if defined(PSP_SLIM) && ((EMU_SYSTEM == CPS2) || (EMU_SYSTEM == MVS))
+#if defined(LARGE_MEMORY) && ((EMU_SYSTEM == CPS2) || (EMU_SYSTEM == MVS))
 	case MB_PSPVERSIONERROR:
 		MB_SET_TYPE(MBT_OKONLY)
 		MB_SET_TEXT(WARNING, THIS_PROGRAM_REQUIRES_PSP2000)
@@ -949,7 +949,7 @@ static UI_HELP *help_init(int number)
 		HELP_DISABLE()
 #endif
 		HELP_ENABLE(EXIT_EMULATOR)
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 		HELP_ENABLE(OPEN_COLOR_SETTINGS_MENU)
 #else
 		HELP_DISABLE()
@@ -1060,7 +1060,7 @@ static UI_HELP *help_init(int number)
 		HELP_END
 		break;
 #endif
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	case HELP_COLORSETTINGS:
 		HELP_SET_NAME(COLOR_SETTINGS_MENU)
 		HELP_ENABLE(SELECT_ITEM)

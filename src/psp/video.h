@@ -102,7 +102,7 @@ extern void *work_frame;
 extern void *tex_frame;
 extern RECT full_rect;
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 void video_set_mode(int mode);
 #else
 #define video_set_mode(mode)

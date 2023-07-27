@@ -6,7 +6,7 @@
 
 PSP_EBOOT_ICON = data/ncdz.png
 
-ifdef PSP_SLIM
+ifdef LARGE_MEMORY
 PSP_EBOOT_TITLE = $(PBPNAME_STR) $(VERSION_STR) for PSP slim
 else
 ifdef KERNEL_MODE
@@ -38,9 +38,9 @@ INCDIR += \
 #------------------------------------------------------------------------------
 
 OBJDIRS += \
-	$(OBJ)/cpu/m68000 \
-	$(OBJ)/cpu/z80 \
-	$(OBJ)/ncdz
+	cpu/m68000 \
+	cpu/z80 \
+	ncdz
 
 
 #------------------------------------------------------------------------------
@@ -48,10 +48,10 @@ OBJDIRS += \
 #------------------------------------------------------------------------------
 
 MAINOBJS += \
-	$(OBJ)/cpu/m68000/m68000.o \
-	$(OBJ)/cpu/m68000/c68k.o \
-	$(OBJ)/cpu/z80/z80.o \
-	$(OBJ)/cpu/z80/cz80.o
+	cpu/m68000/m68000.o \
+	cpu/m68000/c68k.o \
+	cpu/z80/z80.o \
+	cpu/z80/cz80.o
 
 
 #------------------------------------------------------------------------------
@@ -59,21 +59,21 @@ MAINOBJS += \
 #------------------------------------------------------------------------------
 
 COREOBJS = \
-	$(OBJ)/ncdz/ncdz.o \
-	$(OBJ)/ncdz/cdda.o \
-	$(OBJ)/ncdz/cdrom.o \
-	$(OBJ)/ncdz/driver.o \
-	$(OBJ)/ncdz/memintrf.o \
-	$(OBJ)/ncdz/inptport.o \
-	$(OBJ)/ncdz/timer.o \
-	$(OBJ)/ncdz/vidhrdw.o \
-	$(OBJ)/ncdz/sprite.o \
-	$(OBJ)/sound/2610intf.o \
-	$(OBJ)/sound/ym2610.o \
+	ncdz/ncdz.o \
+	ncdz/cdda.o \
+	ncdz/cdrom.o \
+	ncdz/driver.o \
+	ncdz/memintrf.o \
+	ncdz/inptport.o \
+	ncdz/timer.o \
+	ncdz/vidhrdw.o \
+	ncdz/sprite.o \
+	sound/2610intf.o \
+	sound/ym2610.o \
 
 ICONOBJS = \
-	$(OBJ)/$(OS)/icon/ncdz_s.o \
-	$(OBJ)/$(OS)/icon/ncdz_l.o
+	$(OS)/icon/ncdz_s.o \
+	$(OS)/icon/ncdz_l.o
 
 OSOBJS += \
-	$(OBJ)/$(OS)/mp3.o
+	$(OS)/mp3.o

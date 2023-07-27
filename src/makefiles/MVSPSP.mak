@@ -6,7 +6,7 @@
 
 PSP_EBOOT_ICON = data/mvs.png
 
-ifdef PSP_SLIM
+ifdef LARGE_MEMORY
 PSP_EBOOT_TITLE = $(PBPNAME_STR) $(VERSION_STR) for PSP slim
 else
 ifdef KERNEL_MODE
@@ -15,13 +15,6 @@ else
 PSP_EBOOT_TITLE = $(PBPNAME_STR) $(VERSION_STR) for PSP
 endif
 endif
-
-
-#------------------------------------------------------------------------------
-# Object File Output Directtory
-#------------------------------------------------------------------------------
-
-OBJ = obj_mvs
 
 #------------------------------------------------------------------------------
 # File include path
@@ -38,9 +31,9 @@ INCDIR += \
 #------------------------------------------------------------------------------
 
 OBJDIRS += \
-	$(OBJ)/cpu/m68000 \
-	$(OBJ)/cpu/z80 \
-	$(OBJ)/mvs
+	cpu/m68000 \
+	cpu/z80 \
+	mvs
 
 
 #------------------------------------------------------------------------------
@@ -48,10 +41,10 @@ OBJDIRS += \
 #------------------------------------------------------------------------------
 
 MAINOBJS += \
-	$(OBJ)/cpu/m68000/m68000.o \
-	$(OBJ)/cpu/m68000/c68k.o \
-	$(OBJ)/cpu/z80/z80.o \
-	$(OBJ)/cpu/z80/cz80.o
+	cpu/m68000/m68000.o \
+	cpu/m68000/c68k.o \
+	cpu/z80/z80.o \
+	cpu/z80/cz80.o
 
 
 #------------------------------------------------------------------------------
@@ -59,20 +52,20 @@ MAINOBJS += \
 #------------------------------------------------------------------------------
 
 COREOBJS = \
-	$(OBJ)/mvs/mvs.o \
-	$(OBJ)/mvs/driver.o \
-	$(OBJ)/mvs/memintrf.o \
-	$(OBJ)/mvs/inptport.o \
-	$(OBJ)/mvs/dipsw.o \
-	$(OBJ)/mvs/timer.o \
-	$(OBJ)/mvs/vidhrdw.o \
-	$(OBJ)/mvs/sprite.o \
-	$(OBJ)/mvs/pd4990a.o \
-	$(OBJ)/mvs/neocrypt.o \
-	$(OBJ)/mvs/biosmenu.o \
-	$(OBJ)/sound/2610intf.o \
-	$(OBJ)/sound/ym2610.o
+	mvs/mvs.o \
+	mvs/driver.o \
+	mvs/memintrf.o \
+	mvs/inptport.o \
+	mvs/dipsw.o \
+	mvs/timer.o \
+	mvs/vidhrdw.o \
+	mvs/sprite.o \
+	mvs/pd4990a.o \
+	mvs/neocrypt.o \
+	mvs/biosmenu.o \
+	sound/2610intf.o \
+	sound/ym2610.o
 
 ICONOBJS = \
-	$(OBJ)/$(OS)/icon/mvs_s.o \
-	$(OBJ)/$(OS)/icon/mvs_l.o
+	$(OS)/icon/mvs_s.o \
+	$(OS)/icon/mvs_l.o

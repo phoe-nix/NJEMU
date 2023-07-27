@@ -8,12 +8,12 @@
 # Configuration
 #------------------------------------------------------------------------------
 
-#BUILD_CPS1PSP = 1
-BUILD_CPS2PSP = 1
-#BUILD_MVSPSP = 1
-#BUILD_NCDZPSP = 1
+#BUILD_CPS1 = 1
+BUILD_CPS2 = 1
+#BUILD_MVS = 1
+#BUILD_NCDZ = 1
 
-PSP_SLIM = 1
+LARGE_MEMORY = 1
 #KERNEL_MODE = 1
 COMMAND_LIST = 1
 ADHOC = 1
@@ -35,34 +35,28 @@ VERSION_BUILD = 0
 #------------------------------------------------------------------------------
 
 OS = psp
+SYSTEM_NAME = PSP
 
-ifdef PSP_SLIM
-PSP_FW_VERSION = 371
-KERNEL_MODE =
-else
-PSP_FW_VERSION = 150
+ifdef BUILD_CPS1
+BUILD_CPS2=
+BUILD_MVS=
+BUILD_NCDZ=
+TARGET = CPS1
 endif
 
-ifdef BUILD_CPS1PSP
-BUILD_CPS2PSP=
-BUILD_MVSPSP=
-BUILD_NCDZPSP=
-TARGET = CPS1PSP
+ifdef BUILD_CPS2
+BUILD_MVS=
+BUILD_NCDZ=
+TARGET = CPS2
 endif
 
-ifdef BUILD_CPS2PSP
-BUILD_MVSPSP=
-BUILD_NCDZPSP=
-TARGET = CPS2PSP
+ifdef BUILD_MVS
+BUILD_NCDZ=
+TARGET = MVS
 endif
 
-ifdef BUILD_MVSPSP
-BUILD_NCDZPSP=
-TARGET = MVSPSP
-endif
-
-ifdef BUILD_NCDZPSP
-TARGET = NCDZPSP
+ifdef BUILD_NCDZ
+TARGET = NCDZ
 ADHOC =
 endif
 
@@ -73,32 +67,32 @@ else
 VERSION_STR = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_BUILD)
 endif
 
-ifdef BUILD_CPS1PSP
-ifdef PSP_SLIM
+ifdef BUILD_CPS1
+ifdef LARGE_MEMORY
 EXTRA_TARGETS = maketree SLIM/CPS1/EBOOT.PBP
 else
 EXTRA_TARGETS = maketree 3XX/CPS1/EBOOT.PBP
 endif
 endif
 
-ifdef BUILD_CPS2PSP
-ifdef PSP_SLIM
+ifdef BUILD_CPS2
+ifdef LARGE_MEMORY
 EXTRA_TARGETS = maketree SLIM/CPS2/EBOOT.PBP
 else
 EXTRA_TARGETS = maketree 3XX/CPS2/EBOOT.PBP
 endif
 endif
 
-ifdef BUILD_MVSPSP
-ifdef PSP_SLIM
+ifdef BUILD_MVS
+ifdef LARGE_MEMORY
 EXTRA_TARGETS = maketree SLIM/MVS/EBOOT.PBP
 else
 EXTRA_TARGETS = maketree 3XX/MVS/EBOOT.PBP
 endif
 endif
 
-ifdef BUILD_NCDZPSP
-ifdef PSP_SLIM
+ifdef BUILD_NCDZ
+ifdef LARGE_MEMORY
 EXTRA_TARGETS = maketree SLIM/NCDZ/EBOOT.PBP
 else
 EXTRA_TARGETS = maketree 3XX/NCDZ/EBOOT.PBP
@@ -123,102 +117,86 @@ INCDIR = \
 
 
 #------------------------------------------------------------------------------
-# Object Directory
-#------------------------------------------------------------------------------
-
-OBJDIRS = \
-	$(OBJ) \
-	$(OBJ)/cpu \
-	$(OBJ)/common \
-	$(OBJ)/sound \
-	$(OBJ)/zip \
-	$(OBJ)/zlib \
-	$(OBJ)/$(OS) \
-	$(OBJ)/$(OS)/font \
-	$(OBJ)/$(OS)/icon
-
-
-#------------------------------------------------------------------------------
 # Object Files (common)
 #------------------------------------------------------------------------------
 
 MAINOBJS = \
-	$(OBJ)/emumain.o \
-	$(OBJ)/zip/zfile.o \
-	$(OBJ)/zip/unzip.o \
-	$(OBJ)/sound/sndintrf.o \
-	$(OBJ)/common/cache.o \
-	$(OBJ)/common/loadrom.o
+	emumain.o \
+	zip/zfile.o \
+	zip/unzip.o \
+	sound/sndintrf.o \
+	common/cache.o \
+	common/loadrom.o
 
 ifdef ADHOC
-MAINOBJS += $(OBJ)/common/adhoc.o
+MAINOBJS += common/adhoc.o
 endif
 
 ifdef COMMAND_LIST
-MAINOBJS += $(OBJ)/common/cmdlist.o
+MAINOBJS += common/cmdlist.o
 endif
 
 ifdef SAVE_STATE
-MAINOBJS += $(OBJ)/common/state.o
+MAINOBJS += common/state.o
 endif
 
 FONTOBJS = \
-	$(OBJ)/$(OS)/font/graphic.o \
-	$(OBJ)/$(OS)/font/ascii_14p.o \
-	$(OBJ)/$(OS)/font/font_s.o \
-	$(OBJ)/$(OS)/font/bshadow.o \
-	$(OBJ)/$(OS)/font/command.o \
-	$(OBJ)/$(OS)/font/ascii_14.o \
-	$(OBJ)/$(OS)/font/latin1_14.o \
-	$(OBJ)/$(OS)/font/gbk_s14.o \
-	$(OBJ)/$(OS)/font/gbk_tbl.o
+	$(OS)/font/graphic.o \
+	$(OS)/font/ascii_14p.o \
+	$(OS)/font/font_s.o \
+	$(OS)/font/bshadow.o \
+	$(OS)/font/command.o \
+	$(OS)/font/ascii_14.o \
+	$(OS)/font/latin1_14.o \
+	$(OS)/font/gbk_s14.o \
+	$(OS)/font/gbk_tbl.o
 
 OSOBJS = \
-	$(OBJ)/$(OS)/$(OS).o \
-	$(OBJ)/$(OS)/config.o \
-	$(OBJ)/$(OS)/filer.o \
-	$(OBJ)/$(OS)/input.o \
-	$(OBJ)/$(OS)/ticker.o \
-	$(OBJ)/$(OS)/ui.o \
-	$(OBJ)/$(OS)/ui_draw.o \
-	$(OBJ)/$(OS)/ui_menu.o \
-	$(OBJ)/$(OS)/ui_text.o \
-	$(OBJ)/$(OS)/video.o \
-	$(OBJ)/$(OS)/sound.o \
-	$(OBJ)/$(OS)/png.o \
+	$(OS)/$(OS).o \
+	$(OS)/config.o \
+	$(OS)/filer.o \
+	$(OS)/input.o \
+	$(OS)/ticker.o \
+	$(OS)/ui.o \
+	$(OS)/ui_draw.o \
+	$(OS)/ui_menu.o \
+	$(OS)/ui_text.o \
+	$(OS)/video.o \
+	$(OS)/sound.o \
+	$(OS)/png.o \
 
 ifdef ADHOC
-OSOBJS += $(OBJ)/$(OS)/adhoc.o
+OSOBJS += $(OS)/adhoc.o
 endif
 
-OSOBJS += $(OBJ)/$(OS)/SystemButtons.o
+OSOBJS += $(OS)/SystemButtons.o
 
 ifdef UI_32BPP
-OSOBJS += $(OBJ)/$(OS)/wallpaper.o
+OSOBJS += $(OS)/wallpaper.o
 endif
 
 ZLIB = \
-	$(OBJ)/zlib/adler32.o \
-	$(OBJ)/zlib/compress.o \
-	$(OBJ)/zlib/uncompr.o \
-	$(OBJ)/zlib/crc32.o \
-	$(OBJ)/zlib/deflate.o \
-	$(OBJ)/zlib/inflate.o \
-	$(OBJ)/zlib/inftrees.o \
-	$(OBJ)/zlib/inffast.o \
-	$(OBJ)/zlib/trees.o \
-	$(OBJ)/zlib/zutil.o
+	zlib/adler32.o \
+	zlib/compress.o \
+	zlib/uncompr.o \
+	zlib/crc32.o \
+	zlib/deflate.o \
+	zlib/inflate.o \
+	zlib/inftrees.o \
+	zlib/inffast.o \
+	zlib/trees.o \
+	zlib/zutil.o
 
-#	$(OBJ)/zlib/gzclose.o \
-#	$(OBJ)/zlib/gzlib.o \
-#	$(OBJ)/zlib/gzread.o \
-#	$(OBJ)/zlib/gzwrite.o \
-#	$(OBJ)/zlib/infback.o \
+#	zlib/gzclose.o \
+#	zlib/gzlib.o \
+#	zlib/gzread.o \
+#	zlib/gzwrite.o \
+#	zlib/infback.o \
 #------------------------------------------------------------------------------
 # Include makefiles
 #------------------------------------------------------------------------------
 
-include src/makefiles/$(TARGET).mak
+include src/makefiles/$(TARGET)$(SYSTEM_NAME).mak
 
 
 #------------------------------------------------------------------------------
@@ -226,7 +204,7 @@ include src/makefiles/$(TARGET).mak
 #------------------------------------------------------------------------------
 
 CFLAGS = \
-	-O2 \
+	-O3 \
 	-fomit-frame-pointer \
 	-fstrict-aliasing \
 	-falign-functions=32 \
@@ -258,8 +236,8 @@ CDEFS = -DINLINE='static __inline' \
 	-DVERSION_BUILD=$(VERSION_BUILD) \
 	-DPSP
 
-ifdef PSP_SLIM
-CDEFS += -DPSP_SLIM=1
+ifdef LARGE_MEMORY
+CDEFS += -DLARGE_MEMORY=1
 endif
 
 ifdef KERNEL_MODE
@@ -280,9 +258,9 @@ CFLAGS += -DCOMMAND_LIST=1
 endif
 
 ifdef UI_32BPP
-CFLAGS += -DPSP_VIDEO_32BPP=1
+CFLAGS += -DVIDEO_32BPP=1
 else
-CFLAGS += -DPSP_VIDEO_32BPP=0
+CFLAGS += -DVIDEO_32BPP=0
 endif
 
 ifdef RELEASE
@@ -291,12 +269,14 @@ else
 CDEFS += -DRELEASE=0
 endif
 
+CFLAGS += $(CDEFS)
+
 #------------------------------------------------------------------------------
 # Linker Flags
 #------------------------------------------------------------------------------
 
 LIBDIR =
-LDFLAGS =
+LDFLAGS = -L$(shell psp-config --psp-prefix)
 
 
 #------------------------------------------------------------------------------
@@ -305,7 +285,7 @@ LDFLAGS =
 
 LIBS = -lpspaudio -lpspgu -lpsppower
 
-ifdef PSP_SLIM
+ifdef LARGE_MEMORY
 LIBS += -lpspkubridge
 endif
 
@@ -313,7 +293,7 @@ ifdef ADHOC
 LIBS += -lpspwlan -lpspnet_adhoc -lpspnet_adhocctl -lpspnet_adhocmatching
 endif
 
-ifdef BUILD_NCDZPSP
+ifdef BUILD_NCDZ
 LIBS += -lmad
 endif
 
@@ -321,36 +301,48 @@ endif
 # Rules to make libraries
 #------------------------------------------------------------------------------
 
-OBJS = $(MAINOBJS) $(COREOBJS) $(OSOBJS) $(FONTOBJS) $(ICONOBJS) $(ZLIB)
+ALLOBJS = $(MAINOBJS) $(COREOBJS) $(OSOBJS) $(FONTOBJS) $(ICONOBJS) $(ZLIB)
+OBJS = $(ALLOBJS:%=src/%)
 
-include src/makefiles/build.mak
 
+ifdef BUILD_CPS1
+ifdef LARGE_MEMORY
+PSP_EBOOT = SLIM/CPS1/EBOOT.PBP
+else
+PSP_EBOOT = 3XX/CPS1/EBOOT.PBP
+endif
+endif
+
+ifdef BUILD_CPS2
+ifdef LARGE_MEMORY
+PSP_EBOOT = SLIM/CPS2/EBOOT.PBP
+else
+PSP_EBOOT = 3XX/CPS2/EBOOT.PBP
+endif
+endif
+
+ifdef BUILD_MVS
+ifdef LARGE_MEMORY
+PSP_EBOOT = SLIM/MVS/EBOOT.PBP
+else
+PSP_EBOOT = 3XX/MVS/EBOOT.PBP
+endif
+endif
+
+ifdef BUILD_NCDZ
+ifdef LARGE_MEMORY
+PSP_EBOOT = SLIM/NCDZ/EBOOT.PBP
+else
+PSP_EBOOT = 3XX/NCDZ/EBOOT.PBP
+endif
+endif
+
+PSPSDK=$(shell psp-config --pspsdk-path)
+include $(PSPSDK)/lib/build.mak
 
 #------------------------------------------------------------------------------
 # Rules to manage files
 #------------------------------------------------------------------------------
-
-$(OBJ)/%.o: src/%.c
-	@echo Compiling $<...
-	@$(CC) $(CDEFS) $(CFLAGS) -c $< -o$@
-
-ifdef KERNEL_MODE
-$(OBJ)/psp/adhoc.o: src/psp/adhoc.c
-	@echo Compiling [-G0] $<...
-	@$(CC) -G0 $(CDEFS) $(CFLAGS) -c $< -o$@
-endif
-
-$(OBJ)/%.o: src/%.S
-	@echo Assembling $<...
-	@$(CC) $(CDEFS) $(CFLAGS) -c $< -o$@
-
-$(OBJ)/%.o: src/%.s
-	@echo Assembling $<...
-	@$(AS) $(ASDEFS) $(ASFLAGS) -c $< -o$@
-
-$(OBJ)/%.a:
-	@echo Archiving $@...
-	@$(AR) -r $@ $^
 
 maketree:
 	@$(MD) 3XX
@@ -363,4 +355,3 @@ maketree:
 	@$(MD) SLIM/CPS2
 	@$(MD) SLIM/MVS
 	@$(MD) SLIM/NCDZ
-	@$(MD) -p $(subst //,\,$(sort $(OBJDIRS)))

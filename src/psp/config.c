@@ -89,7 +89,7 @@ static cfg_type default_options[] =
 	{ CFG_INT,	"NeogeoRegion",		&neogeo_region,	1,	2	},
 #endif
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	{ CFG_NONE,	"[Color Settings]", },
 	{ CFG_INT,	"BGImageType",			&bgimage_type,					  3,   3 },
 	{ CFG_INT,	"BGImageBlightness",	&bgimage_blightness,			 50, 100 },

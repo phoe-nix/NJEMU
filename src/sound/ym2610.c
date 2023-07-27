@@ -669,7 +669,7 @@ typedef struct
 	UINT8		vol_shift;		/* volume in "-6dB" steps	*/
 	INT32		*pan;			/* &out_adpcma[OPN_xxxx] 	*/
 
-#if (EMU_SYSTEM == MVS) && !defined(PSP_SLIM)
+#if (EMU_SYSTEM == MVS) && !defined(LARGE_MEMORY)
 	UINT16		block;
 	UINT8		*buf;
 #endif
@@ -700,7 +700,7 @@ typedef struct adpcmb_state
 	UINT8		CPU_data;		/* current data from reg 08 */
 	UINT8		portstate;		/* port status          */
 
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	UINT16		block;
 	UINT8		*buf;
 #endif
@@ -2166,7 +2166,7 @@ static void SSG_reset(void)
 
 /*********************************************************************************************/
 
-#if (EMU_SYSTEM == MVS) && !defined(PSP_SLIM)
+#if (EMU_SYSTEM == MVS) && !defined(LARGE_MEMORY)
 static void (*OPNB_ADPCMA_calc_chan)(int c, ADPCMA *ch);
 static void (*OPNB_ADPCMB_calc)(ADPCMB *adpcmb);
 #endif
@@ -2218,7 +2218,7 @@ static void OPNB_ADPCMA_init_table(void)
 }
 
 /* ADPCM A (Non control type) : calculate one channel output */
-#if (EMU_SYSTEM == MVS) && !defined(PSP_SLIM)
+#if (EMU_SYSTEM == MVS) && !defined(LARGE_MEMORY)
 static void OPNB_ADPCMA_calc_chan_static(int c, ADPCMA *ch)
 #else
 static void OPNB_ADPCMA_calc_chan(int c, ADPCMA *ch)
@@ -2277,7 +2277,7 @@ static void OPNB_ADPCMA_calc_chan(int c, ADPCMA *ch)
 	*ch->pan += ch->adpcma_out;
 }
 
-#if (EMU_SYSTEM == MVS) && !defined(PSP_SLIM)
+#if (EMU_SYSTEM == MVS) && !defined(LARGE_MEMORY)
 static void OPNB_ADPCMA_calc_chan_dynamic(int c, ADPCMA *ch)
 {
 	UINT32 step;
@@ -2372,7 +2372,7 @@ static void OPNB_ADPCMA_write(int r, int v)
 					adpcma[c].adpcma_step = 0;
 					adpcma[c].adpcma_out  = 0;
 					adpcma[c].flag        = 1;
-#if (EMU_SYSTEM == MVS) && !defined(PSP_SLIM)
+#if (EMU_SYSTEM == MVS) && !defined(LARGE_MEMORY)
 					adpcma[c].block       = 0xffff;
 
 					if ((!pcm_cache_enable && pcmbufA == NULL) || adpcma[c].start >= pcmsizeA)
@@ -2507,7 +2507,7 @@ static const INT32 adpcmb_decode_table2[16] =
 };
 
 
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 static void OPNB_ADPCMB_calc_static(ADPCMB *adpcmb)
 #else
 static void OPNB_ADPCMB_calc(ADPCMB *adpcmb)
@@ -2594,7 +2594,7 @@ static void OPNB_ADPCMB_calc(ADPCMB *adpcmb)
 }
 
 
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 static void OPNB_ADPCMB_calc_dynamic(ADPCMB *adpcmb)
 {
 	UINT32 step;
@@ -2712,7 +2712,7 @@ static void OPNB_ADPCMB_write(ADPCMB *adpcmb, int r, int v)
 			adpcmb->adpcml    = 0;
 			adpcmb->adpcmd    = ADPCMB_DELTA_DEF;
 			adpcmb->now_data  = 0;
-#if (EMU_SYSTEM == MVS) && !defined(PSP_SLIM)
+#if (EMU_SYSTEM == MVS) && !defined(LARGE_MEMORY)
 			adpcmb->block     = 0xffff;
 #endif
 		}
@@ -2720,7 +2720,7 @@ static void OPNB_ADPCMB_write(ADPCMB *adpcmb, int r, int v)
 		adpcmb->now_addr = adpcmb->start << 1;
 
 		/* if yes, then let's check if ADPCM memory is mapped and big enough */
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 		if (!pcm_cache_enable && !pcmbufB)
 #else
 		if (!pcmbufB)
@@ -2946,7 +2946,7 @@ void YM2610Init(int clock, void *pcmroma, int pcmsizea,
 	/* SSG */
 //	SSG.step = ((float)SSG_STEP * YM2610.OPN.ST.rate * 8) / clock;
 #if (EMU_SYSTEM == MVS)
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	if (pcm_cache_enable)
 	{
 		OPNB_ADPCMA_calc_chan = OPNB_ADPCMA_calc_chan_dynamic;
@@ -2962,7 +2962,7 @@ void YM2610Init(int clock, void *pcmroma, int pcmsizea,
 	else
 #endif
 	{
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 		OPNB_ADPCMA_calc_chan = OPNB_ADPCMA_calc_chan_static;
 		OPNB_ADPCMB_calc = OPNB_ADPCMB_calc_static;
 #endif
@@ -3035,7 +3035,7 @@ void YM2610Reset(void)
 		YM2610.adpcma[i].adpcma_acc  = 0;
 		YM2610.adpcma[i].adpcma_step = 0;
 		YM2610.adpcma[i].adpcma_out  = 0;
-#if (EMU_SYSTEM == MVS) && !defined(PSP_SLIM)
+#if (EMU_SYSTEM == MVS) && !defined(LARGE_MEMORY)
 		if (pcm_cache_enable)
 		{
 			YM2610.adpcma[i].buf   = NULL;
@@ -3065,7 +3065,7 @@ void YM2610Reset(void)
 	YM2610.adpcmb.adpcmd       = 127;
 	YM2610.adpcmb.adpcml       = 0;
 	YM2610.adpcmb.portstate    = 0x20;
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	if (pcm_cache_enable)
 	{
 		YM2610.adpcmb.buf   = NULL;
@@ -3427,7 +3427,7 @@ STATE_LOAD( ym2610 )
 	for (r = 1; r < 16; r++)
 		OPNB_ADPCMB_write(&YM2610.adpcmb, r + 0x10, YM2610.regs[r + 0x10]);
 
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	for (ch = 0; ch < 6; ch++)
 	{
 		YM2610.adpcma[ch].buf = NULL;

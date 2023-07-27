@@ -30,7 +30,7 @@ static int pixel_format;
 ******************************************************************************/
 
 UINT8 ALIGN_PSPDATA gulist[GULIST_SIZE];
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 int video_mode = 0;
 #endif
 void *show_frame;
@@ -49,7 +49,7 @@ RECT full_rect = { 0, 0, SCR_WIDTH, SCR_HEIGHT };
 	ビデオモード設定
 --------------------------------------------------------*/
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 void video_set_mode(int mode)
 {
 	if (video_mode != mode)
@@ -70,7 +70,7 @@ void video_set_mode(int mode)
 
 void video_init(void)
 {
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	if (video_mode == 32)
 	{
 		pixel_format = GU_PSM_8888;
@@ -181,7 +181,7 @@ void video_flip_screen(int vsync)
 
 void *video_frame_addr(void *frame, int x, int y)
 {
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	if (video_mode == 32)
 		return (void *)(((UINT32)frame | 0x44000000) + ((x + (y << 9)) << 2));
 	else

@@ -36,7 +36,7 @@ extern UINT16 cps2_output[0x10 >> 1];
 extern UINT8 *qsound_sharedram1;
 extern UINT8 *qsound_sharedram2;
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 extern UINT32 psp2k_mem_offset;
 extern INT32 psp2k_mem_left;
 #endif
