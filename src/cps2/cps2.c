@@ -190,7 +190,7 @@ static void cps2_run(void)
 
 				do
 				{
-					sceKernelDelayThread(5000000);
+					usleep(5000000);
 				} while (Sleep);
 
 #if USE_CACHE
