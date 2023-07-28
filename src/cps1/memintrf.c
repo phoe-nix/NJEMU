@@ -295,7 +295,7 @@ static int load_rom_user1(void)
 
 static int load_rom_info(const char *game_name)
 {
-	SceUID fd;
+	int32_t fd;
 	char path[MAX_PATH];
 	char *buf;
 	char linebuf[256];
@@ -315,19 +315,19 @@ static int load_rom_info(const char *game_name)
 
 	sprintf(path, "%srominfo.cps1", launchDir);
 
-	if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
+	if ((fd = open(path, O_RDONLY, 0777)) >= 0)
 	{
-		size = sceIoLseek(fd, 0, SEEK_END);
-		sceIoLseek(fd, 0, SEEK_SET);
+		size = lseek(fd, 0, SEEK_END);
+		lseek(fd, 0, SEEK_SET);
 
 		if ((buf = (char *)malloc(size)) == NULL)
 		{
-			sceIoClose(fd);
+			close(fd);
 			return 3;	// 手抜き
 		}
 
-		sceIoRead(fd, buf, size);
-		sceIoClose(fd);
+		read(fd, buf, size);
+		close(fd);
 
 		i = 0;
 		while (i < size)
