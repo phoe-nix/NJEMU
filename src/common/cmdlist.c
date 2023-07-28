@@ -762,7 +762,7 @@ void commandlist(int flag)
 	{
 		ui_popup_reset();
 
-		set_cpu_clock(psp_cpuclock);
+		set_cpu_clock(platform_cpuclock);
 
 		video_set_mode(16);
 		autoframeskip_reset();

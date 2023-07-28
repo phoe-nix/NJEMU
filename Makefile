@@ -96,7 +96,8 @@ MAINOBJS = \
 	zip/unzip.o \
 	sound/sndintrf.o \
 	common/cache.o \
-	common/loadrom.o
+	common/loadrom.o \
+	common/cpuclock.o
 
 ifeq ($(ADHOC), 1)
 MAINOBJS += common/adhoc.o

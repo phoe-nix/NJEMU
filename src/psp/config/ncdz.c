@@ -25,7 +25,7 @@ static const char *inifile_name = "ncdzpsp.ini";
 static cfg_type gamecfg_ncdz[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 	{ CFG_NONE,	"[Emulation Settings]", },
 	{ CFG_INT,	"RasterEnable",			&neogeo_raster_enable,	0,	1	},

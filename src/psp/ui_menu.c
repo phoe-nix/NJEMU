@@ -2168,7 +2168,7 @@ static int state_save_slot(void)
 		state_refresh_screen(0);
 		video_copy_rect(draw_frame, work_frame, &full_rect, &full_rect);
 
-		set_cpu_clock(psp_cpuclock);
+		set_cpu_clock(platform_cpuclock);
 		res = state_save(state_sel);
 		set_cpu_clock(PSPCLOCK_222);
 
@@ -2195,7 +2195,7 @@ static int state_load_slot(void)
 		state_refresh_screen(0);
 		video_copy_rect(draw_frame, work_frame, &full_rect, &full_rect);
 
-		set_cpu_clock(psp_cpuclock);
+		set_cpu_clock(platform_cpuclock);
 		res = state_load(state_sel);
 		set_cpu_clock(PSPCLOCK_222);
 
@@ -2634,7 +2634,7 @@ void showmenu(void)
 #if (EMU_SYSTEM != CPS2)
 	sound_set_samplerate();
 #endif
-	set_cpu_clock(psp_cpuclock);
+	set_cpu_clock(platform_cpuclock);
 
 #if USE_CACHE
 	cache_sleep(0);

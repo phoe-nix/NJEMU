@@ -32,7 +32,6 @@ volatile int Loop;
 volatile int Sleep;
 char launchDir[MAX_PATH];
 char screenshotDir[MAX_PATH];  // •π•Ø•Í©`•Û•∑•Á•»±£¥ÊPATH
-int psp_cpuclock = PSPCLOCK_333;
 int devkit_version;
 int systembuttons_available;
 int njemu_debug;

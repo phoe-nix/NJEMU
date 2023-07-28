@@ -34,7 +34,7 @@ static const char *inifile_name = "cps2psp.ini";
 static cfg_type gamecfg_2buttons[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -96,7 +96,7 @@ static cfg_type gamecfg_2buttons[] =
 static cfg_type gamecfg_2buttons_rot[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -159,7 +159,7 @@ static cfg_type gamecfg_2buttons_rot[] =
 static cfg_type gamecfg_3buttons[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -227,7 +227,7 @@ static cfg_type gamecfg_3buttons[] =
 static cfg_type gamecfg_3buttons_rot[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -287,7 +287,7 @@ static cfg_type gamecfg_3buttons_rot[] =
 static cfg_type gamecfg_4buttons[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -356,7 +356,7 @@ static cfg_type gamecfg_4buttons[] =
 static cfg_type gamecfg_6buttons[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -427,7 +427,7 @@ static cfg_type gamecfg_6buttons[] =
 static cfg_type gamecfg_quiz[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -500,7 +500,7 @@ static cfg_type gamecfg_quiz[] =
 static cfg_type gamecfg_forgottn[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -559,7 +559,7 @@ static cfg_type gamecfg_forgottn[] =
 static cfg_type gamecfg_sfzch[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -627,7 +627,7 @@ static cfg_type gamecfg_sfzch[] =
 static cfg_type gamecfg_wofch[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -691,7 +691,7 @@ static cfg_type gamecfg_wofch[] =
 static cfg_type gamecfg_wofch3p[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -755,7 +755,7 @@ static cfg_type gamecfg_wofch3p[] =
 static cfg_type gamecfg_progear[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -815,7 +815,7 @@ static cfg_type gamecfg_progear[] =
 static cfg_type gamecfg_pzloop2[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },

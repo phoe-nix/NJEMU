@@ -376,7 +376,7 @@ int memory_init(void)
 	load_commandlist(game_name, NULL);
 #endif
 
-	set_cpu_clock(psp_cpuclock);
+	set_cpu_clock(platform_cpuclock);
 
 	{
 		uint32_t fd;

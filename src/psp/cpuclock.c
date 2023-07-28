@@ -22,3 +22,8 @@ void set_lowest_cpu_clock(void)
 {
 	set_cpu_clock(PSPCLOCK_222);
 }
+
+int get_highest_cpu_clock(void)
+{
+    return PSPCLOCK_333;
+}

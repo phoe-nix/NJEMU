@@ -2,7 +2,7 @@
 
 	psp.c
 
-	PSP¥á¥¤¥ó
+	PSPï¿½á¥¤ï¿½ï¿½
 
 ******************************************************************************/
 
@@ -84,7 +84,6 @@ enum
 extern volatile int Loop;
 extern volatile int Sleep;
 extern char launchDir[MAX_PATH];
-extern int psp_cpuclock;
 extern int devkit_version;
 extern int systembuttons_available;
 extern int njemu_debug;

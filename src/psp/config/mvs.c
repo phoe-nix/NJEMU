@@ -25,7 +25,7 @@ static const char *inifile_name = "mvspsp.ini";
 static cfg_type gamecfg_mvs[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 	{ CFG_NONE,	"[Emulation Settings]", },
 	{ CFG_INT,	"NeogeoRegion",			&neogeo_region,			0,	3	},
@@ -97,7 +97,7 @@ static cfg_type gamecfg_mvs[] =
 static cfg_type gamecfg_irrmaze[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 	{ CFG_NONE,	"[Emulation Settings]", },
 	{ CFG_INT,	"NeogeoRegion",			&neogeo_region,			0,	3	},
@@ -170,7 +170,7 @@ static cfg_type gamecfg_irrmaze[] =
 static cfg_type gamecfg_popbounc[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 	{ CFG_NONE,	"[Emulation Settings]", },
 	{ CFG_INT,	"NeogeoRegion",			&neogeo_region,			0,	3	},
@@ -243,7 +243,7 @@ static cfg_type gamecfg_popbounc[] =
 static cfg_type gamecfg_vliner[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 	{ CFG_NONE,	"[Emulation Settings]", },
 	{ CFG_INT,	"NeogeoRegion",			&neogeo_region,			0,	3	},
@@ -318,7 +318,7 @@ static cfg_type gamecfg_vliner[] =
 static cfg_type gamecfg_jockeygp[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 	{ CFG_NONE,	"[Emulation Settings]", },
 	{ CFG_INT,	"NeogeoRegion",			&neogeo_region,			0,	3	},
