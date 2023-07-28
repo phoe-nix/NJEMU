@@ -6,9 +6,10 @@
 
 ***************************************************************************/
 
-#include "emumain.h"
+#include <fcntl.h>
 #include <math.h>
 #include <zlib.h>
+#include "emumain.h"
 
 
 #define PNG_Signature       "\x89\x50\x4E\x47\x0D\x0A\x1A\x0A"
@@ -787,24 +788,24 @@ static int write_chunk(SceUID fd, uint32_t chunk_type, uint8_t *chunk_data, uint
 
 	/* write length */
 	convert_to_network_order(chunk_length, v);
-	written = sceIoWrite(fd, v, 4);
+	written = write(fd, v, 4);
 
 	/* write type */
 	convert_to_network_order(chunk_type, v);
-	written += sceIoWrite(fd, v, 4);
+	written += write(fd, v, 4);
 
 	/* calculate crc */
 	crc = crc32(0, v, 4);
 	if (chunk_length > 0)
 	{
 		/* write data */
-		written += sceIoWrite(fd, chunk_data, chunk_length);
+		written += write(fd, chunk_data, chunk_length);
 		crc = crc32(crc, chunk_data, chunk_length);
 	}
 	convert_to_network_order(crc, v);
 
 	/* write crc */
-	written += sceIoWrite(fd, v, 4);
+	written += write(fd, v, 4);
 
 	if (written != 3 * 4 + chunk_length)
 	{
@@ -817,7 +818,7 @@ static int write_chunk(SceUID fd, uint32_t chunk_type, uint8_t *chunk_data, uint
 static int png_write_sig(SceUID fd)
 {
 	/* PNG Signature */
-	if (sceIoWrite(fd, PNG_Signature, 8) != 8)
+	if (write(fd, PNG_Signature, 8) != 8)
 	{
 		errormsg(1);
 		return 0;
@@ -988,7 +989,7 @@ int save_png(const char *path)
 
 	png_mem_init(0);
 
-	if ((fd = sceIoOpen(path, PSP_O_WRONLY|PSP_O_CREAT, 0777)) >= 0)
+	if ((fd = open(path, O_WRONLY|O_CREAT, 0777)) >= 0)
 	{
 		if ((res = png_add_text("Software", APPNAME_STR " " VERSION_STR)))
 		{
@@ -1001,7 +1002,7 @@ int save_png(const char *path)
 			}
 		}
 
-		sceIoClose(fd);
+		close(fd);
 	}
 
 	png_mem_exit();

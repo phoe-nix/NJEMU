@@ -485,7 +485,7 @@ void load_settings(void)
 
 		sprintf(startupDir, "%sroms", launchDir);
 
-		sceIoRemove(inifile_name);
+		remove(inifile_name);
 		delete_files("nvram", "nv");
 		delete_files("config", "ini");
 

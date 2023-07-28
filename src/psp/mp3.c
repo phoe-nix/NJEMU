@@ -6,16 +6,17 @@
 
 ******************************************************************************/
 
-#include "emumain.h"
+#include <fcntl.h>
 #include <mad.h>
+#include "emumain.h"
 
 #define MP3_SAMPLES			(736 * 2)
 #define MP3_BUFFER_SIZE		(MP3_SAMPLES * 4)
 
 
 #define MP3_get_filesize()								\
-	mp3_fsize = sceIoLseek(mp3_fd, 0, PSP_SEEK_END);	\
-	sceIoLseek(mp3_fd, 0, PSP_SEEK_SET);
+	mp3_fsize = lseek(mp3_fd, 0, SEEK_END);	\
+	lseek(mp3_fd, 0, SEEK_SET);
 
 
 /******************************************************************************
@@ -81,18 +82,18 @@ static int MP3SleepCheck(void)
 {
 	if (Sleep)
 	{
-		if (mp3_fd >= 0) sceIoClose(mp3_fd);
+		if (mp3_fd >= 0) close(mp3_fd);
 
 		mp3_sleep = 1;
 
 		do
 		{
-			sceKernelDelayThread(5000000);
+			usleep(5000000);
 		} while (Sleep);
 
 		mp3_sleep = 0;
 
-		if ((mp3_fd = sceIoOpen(MP3_file, PSP_O_RDONLY, 0777)) < 0)
+		if ((mp3_fd = open(MP3_file, O_RDONLY, 0777)) < 0)
 		{
 			mp3_fd = -1;
 			mp3_status = MP3_STOP;
@@ -100,7 +101,7 @@ static int MP3SleepCheck(void)
 			return 1;
 		}
 
-		sceIoLseek(mp3_fd, mp3_filepos, PSP_SEEK_SET);
+		lseek(mp3_fd, mp3_filepos, SEEK_SET);
 	}
 	else if (mp3_status == MP3_STOP)
 	{
@@ -162,14 +163,14 @@ static void MP3Update(void)
 
 			if (MP3SleepCheck()) break;
 
-			ReadSize = sceIoRead(mp3_fd, ReadStart, ReadSize);
+			ReadSize = read(mp3_fd, ReadStart, ReadSize);
 			mp3_filepos += ReadSize;
 			if (mp3_filepos == mp3_fsize)
 			{
 				if (cdda_autoloop)
 				{
 					mp3_filepos = 0;
-					sceIoLseek(mp3_fd, 0, PSP_SEEK_SET);
+					lseek(mp3_fd, 0, SEEK_SET);
 				}
 				else
 				{
@@ -258,7 +259,7 @@ static void MP3Update(void)
 
 	if (mp3_fd >= 0)
 	{
-		sceIoClose(mp3_fd);
+		close(mp3_fd);
 		mp3_fd = -1;
 	}
 }
@@ -379,7 +380,7 @@ int mp3_play(const char *name)
 
 		mp3_stop();
 
-		if ((mp3_fd = sceIoOpen(MP3_file, PSP_O_RDONLY, 0777)) >= 0)
+		if ((mp3_fd = open(MP3_file, O_RDONLY, 0777)) >= 0)
 		{
 			MP3_get_filesize();
 
@@ -410,7 +411,7 @@ void mp3_stop(void)
 			sceKernelResumeThread(mp3_thread);
 
 		mp3_status = MP3_STOP;
-		while (mp3_running) sceKernelDelayThread(1);
+		while (mp3_running) usleep(1);
 
 		memset(mp3_out[0], 0, MP3_BUFFER_SIZE);
 		memset(mp3_out[1], 0, MP3_BUFFER_SIZE);
@@ -469,7 +470,7 @@ void mp3_seek_set(const char *name, uint32_t frame)
 
 		mp3_stop();
 
-		if ((mp3_fd = sceIoOpen(MP3_file, PSP_O_RDONLY, 0777)) < 0)
+		if ((mp3_fd = open(MP3_file, O_RDONLY, 0777)) < 0)
 		{
 			mp3_fsize       = 0;
 			mp3_status      = MP3_STOP;
@@ -478,8 +479,8 @@ void mp3_seek_set(const char *name, uint32_t frame)
 		}
 		else
 		{
-			mp3_fsize = sceIoLseek(mp3_fd, 0, PSP_SEEK_END);
-			sceIoLseek(mp3_fd, 0, PSP_SEEK_SET);
+			mp3_fsize = lseek(mp3_fd, 0, SEEK_END);
+			lseek(mp3_fd, 0, SEEK_SET);
 
 			mp3_status      = MP3_SEEK;
 			mp3_start_frame = frame;

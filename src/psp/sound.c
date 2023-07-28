@@ -57,7 +57,7 @@ static int sound_update_thread(SceSize args, void *argp)
 		{
 			do
 			{
-				sceKernelDelayThread(5000000);
+				usleep(5000000);
 			} while (Sleep);
 		}
 

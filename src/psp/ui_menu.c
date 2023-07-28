@@ -2221,7 +2221,7 @@ static void state_delete_slot(void)
 		char path[MAX_PATH];
 
 		sprintf(path, "%sstate/%s.sv%d", launchDir, game_name, state_sel);
-		if (sceIoRemove(path) < 0)
+		if (remove(path) < 0)
 		{
 			ui_popup(TEXT(FAILD_TO_DELETE_FILEx), strrchr(path, '/') + 1);
 		}

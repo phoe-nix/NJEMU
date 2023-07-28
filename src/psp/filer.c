@@ -6,9 +6,10 @@
 
 ******************************************************************************/
 
+#include <fcntl.h>
+#include <zlib.h>
 #include <psptypes.h>
 #include <pspwlan.h>
-#include <zlib.h>
 #include "emumain.h"
 
 #define MAX_ENTRY 1024
@@ -423,7 +424,7 @@ static void checkDir(const char *name)
 
 	memset(&dir, 0, sizeof(dir));
 
-	fd = sceIoDopen(launchDir);
+	fd = open(launchDir, O_DIRECTORY);
 	found = 0;
 
 	while (!found)
@@ -435,12 +436,12 @@ static void checkDir(const char *name)
 				found = 1;
 	}
 
-	sceIoDclose(fd);
+	close(fd);
 
 	if (!found)
 	{
 		sprintf(path, "%s%s", launchDir, name);
-		sceIoMkdir(path, 0777);
+		mkdir(path, 0777);
 	}
 }
 
@@ -472,11 +473,11 @@ static void checkStartupDir(void)
 	checkDir("nvram");
 #endif
 
-	fd = sceIoDopen(startupDir);
+	fd = open(startupDir, O_DIRECTORY);
 	if (fd >= 0)
 	{
 		strcpy(curr_dir, startupDir);
-		sceIoDclose(fd);
+		close(fd);
 	}
 	else
 	{
@@ -575,7 +576,7 @@ static void getDir(const char *path)
 		nfiles++;
 	}
 
-	fd = sceIoDopen(path);
+	fd = open(path, O_DIRECTORY);
 
 	while (nfiles < MAX_ENTRY)
 	{
@@ -657,7 +658,7 @@ static void getDir(const char *path)
 		}
 	}
 
-	sceIoDclose(fd);
+	close(fd);
 
 	for (i = 0; i < nfiles - 1; i++)
 	{
@@ -770,10 +771,10 @@ static void modify_display_path(char *path, char *org_path, int max_width)
 
 int file_exist(const char *path)
 {
-	SceUID fd;
+	uint32_t fd;
 
-	fd = sceIoOpen(path, PSP_O_RDONLY, 0777);
-	sceIoClose(fd);
+	fd = open(path, O_RDONLY, 0777);
+	close(fd);
 
 	return ((fd >= 0) ? 1 : 0);
 }
@@ -790,7 +791,7 @@ char *find_file(char *pattern, char *path)
 
 	memset(&dir, 0, sizeof(dir));
 
-	fd = sceIoDopen(path);
+	fd = open(path, O_DIRECTORY);
 	found = 0;
 
 	len1 = strlen(pattern);
@@ -812,7 +813,7 @@ char *find_file(char *pattern, char *path)
 		}
 	}
 
-	sceIoDclose(fd);
+	close(fd);
 
 	return found ? file.name : NULL;
 }
@@ -831,7 +832,7 @@ void delete_files(const char *dirname, const char *pattern)
 
 	sprintf(path, "%s%s", launchDir, dirname);
 
-	fd = sceIoDopen(path);
+	fd = open(path, O_DIRECTORY);
 	len1 = strlen(pattern);
 
 	while (1)
@@ -847,12 +848,12 @@ void delete_files(const char *dirname, const char *pattern)
 				char path2[MAX_PATH];
 
 				sprintf(path2, "%s/%s", path, dir.d_name);
-				sceIoRemove(path2);
+				remove(path2);
 			}
 		}
 	}
 
-	sceIoDclose(fd);
+	close(fd);
 }
 
 
@@ -873,7 +874,7 @@ void find_state_file(uint8_t *slot)
 	sprintf(pattern, "%s.sv", game_name);
 
 	len = strlen(pattern);
-	fd = sceIoDopen(path);
+	fd = open(path, O_DIRECTORY);
 
 	while (sceIoDread(fd, &dir) > 0)
 	{
@@ -886,7 +887,7 @@ void find_state_file(uint8_t *slot)
 		}
 	}
 
-	sceIoDclose(fd);
+	close(fd);
 }
 
 #endif

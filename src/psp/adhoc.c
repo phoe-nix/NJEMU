@@ -469,7 +469,7 @@ int adhocInit(const char *matchingData)
 					do
 					{
 						if ((error = sceNetAdhocctlGetState(&state)) != 0) break;
-						sceKernelDelayThread(1000000/60);
+						usleep(1000000/60);
 
 					} while (state != 1);
 
@@ -493,7 +493,7 @@ int adhocInit(const char *matchingData)
 									{
 										update_progress();
 										show_progress(TEXT(CONNECTED));
-										sceKernelDelayThread(1000000);
+										usleep(1000000);
 										adhoc_initialized = 1;
 										return 0;
 									}
@@ -639,7 +639,7 @@ static int adhocStartP2P(void)
 	do
 	{
 		if ((error = sceNetAdhocctlGetState(&state)) != 0) break;
-			sceKernelDelayThread(1000000/60);
+			usleep(1000000/60);
 	} while (state == 1);
 
 	update_progress();
@@ -656,7 +656,7 @@ static int adhocStartP2P(void)
 		do
 		{
 			if ((error = sceNetAdhocctlGetState(&state)) != 0) break;
-			sceKernelDelayThread(1000000/60);
+			usleep(1000000/60);
 		} while (state != 1);
 
 		if (!error)
@@ -688,7 +688,7 @@ static int adhocStartP2P(void)
 			do
 			{
 				if ((error = sceNetAdhocctlGetState(&state)) != 0) break;
-				sceKernelDelayThread(1000000/60);
+				usleep(1000000/60);
 			} while (state == 1);
 		}
 	}
@@ -1070,7 +1070,7 @@ check_packet:
 
 		if (Loop != LOOP_EXEC) return 0;
 
-		sceKernelDelayThread(100);
+		usleep(100);
 	}
 
 	return 0;
@@ -1102,6 +1102,6 @@ void adhocWait(int data_size)
 
 		if (Loop != LOOP_EXEC) break;
 
-		sceKernelDelayThread(100);
+		usleep(100);
 	}
 }

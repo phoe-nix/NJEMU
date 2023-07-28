@@ -6,6 +6,7 @@
 
 ******************************************************************************/
 
+#include <fcntl.h>
 #include <pspsdk.h>
 #include <pspctrl.h>
 #include <pspimpose_driver.h>
@@ -66,10 +67,10 @@ static SceKernelCallbackFunction PowerCallback(int unknown, int pwrflags, void *
 
 			sprintf(path, "%sresume.bin", launchDir);
 
-			if ((fd = sceIoOpen(path, PSP_O_WRONLY|PSP_O_CREAT, 0777)) >= 0)
+			if ((fd = open(path, O_WRONLY|O_CREAT, 0777)) >= 0)
 			{
-				sceIoWrite(fd, (void *)(PSP2K_MEM_TOP + 0x1c00000), 0x400000);
-				sceIoClose(fd);
+				write(fd, (void *)(PSP2K_MEM_TOP + 0x1c00000), 0x400000);
+				close(fd);
 			}
 		}
 #endif
@@ -87,12 +88,12 @@ static SceKernelCallbackFunction PowerCallback(int unknown, int pwrflags, void *
 
 			sprintf(path, "%sresume.bin", launchDir);
 
-			if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
+			if ((fd = open(path, O_RDONLY, 0777)) >= 0)
 			{
-				sceIoRead(fd, (void *)(PSP2K_MEM_TOP + 0x1c00000), 0x400000);
-				sceIoClose(fd);
+				read(fd, (void *)(PSP2K_MEM_TOP + 0x1c00000), 0x400000);
+				close(fd);
 			}
-			sceIoRemove(path);
+			remove(path);
 		}
 #endif
 		Sleep = 0;
@@ -174,7 +175,7 @@ int main(int argc, char *argv[])
 	strcat(screenshotDir, "ms0:/PICTURE/NCDZ");
 #endif
 
-	sceIoMkdir(screenshotDir,0777); // スクショ用フォルダ作成
+	mkdir(screenshotDir,0777); // スクショ用フォルダ作成
 
 	devkit_version = sceKernelDevkitVersion();
 	njemu_debug = 0;
