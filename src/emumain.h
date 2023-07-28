@@ -9,6 +9,8 @@
 #ifndef EMUMAIN_H
 #define EMUMAIN_H
 
+#include <stdbool.h>
+
 #if defined(PSP)
 #include "psp/psp.h"
 #endif
@@ -86,5 +88,10 @@ void fatalerror(const char *text, ...);
 void show_fatal_error(void);
 
 void save_snapshot(void);
+
+void waitVBlank(void);
+
+bool powerIsBatteryCharging(void);
+int powerGetBatteryLifePercent(void);
 
 #endif /* EMUMAIN_H */

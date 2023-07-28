@@ -126,6 +126,7 @@ OSOBJS = \
 	$(OS)/$(OS).o \
 	$(OS)/cpuclock.o \
 	$(OS)/platformthread.o \
+	$(OS)/power.o \
 	$(OS)/config.o \
 	$(OS)/filer.o \
 	$(OS)/input.o \

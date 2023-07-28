@@ -115,9 +115,9 @@ static void show_fps(void)
 
 static void show_battery_warning(void)
 {
-	if (!scePowerIsBatteryCharging())
+	if (!powerIsBatteryCharging())
 	{
-		int bat = scePowerGetBatteryLifePercent();
+		int bat = powerGetBatteryLifePercent();
 
 		if (bat < 10)
 		{
@@ -178,7 +178,7 @@ void autoframeskip_reset(void)
 	frames_since_last_fps = 0;
 
 	game_speed_percent = 100;
-	frames_per_second = PSP_REFRESH_RATE;
+	frames_per_second = REFRESH_RATE;
 	frames_displayed = 0;
 
 	warming_up = 1;
@@ -218,13 +218,13 @@ void update_screen(void)
 
 	if (warming_up)
 	{
-		sceDisplayWaitVblankStart();
-		last_skipcount0_time = ticker() - (int)((float)FRAMESKIP_LEVELS * PSP_TICKS_PER_FRAME);
+		video_wait_vsync();
+		last_skipcount0_time = ticker() - (int)((float)FRAMESKIP_LEVELS * TICKS_PER_FRAME);
 		warming_up = 0;
 	}
 
 	if (frameskip_counter == 0)
-		this_frame_base = last_skipcount0_time + (int)((float)FRAMESKIP_LEVELS * PSP_TICKS_PER_FRAME);
+		this_frame_base = last_skipcount0_time + (int)((float)FRAMESKIP_LEVELS * TICKS_PER_FRAME);
 
 	frames_displayed++;
 	frames_since_last_fps++;
@@ -236,7 +236,7 @@ void update_screen(void)
 
 		if (option_speedlimit)
 		{
-			TICKER target = this_frame_base + (int)((float)frameskip_counter * PSP_TICKS_PER_FRAME);
+			TICKER target = this_frame_base + (int)((float)frameskip_counter * TICKS_PER_FRAME);
 
 			if (option_vsync)
 			{
@@ -259,7 +259,7 @@ void update_screen(void)
 			float seconds_elapsed = (float)(curr - last_skipcount0_time) * (1.0 / 1000000.0);
 			float frames_per_sec = (float)frames_since_last_fps / seconds_elapsed;
 
-			game_speed_percent = (int)(100.0 * frames_per_sec / PSP_REFRESH_RATE + 0.5);
+			game_speed_percent = (int)(100.0 * frames_per_sec / REFRESH_RATE + 0.5);
 			frames_per_second = (int)((float)rendered_frames_since_last_fps / seconds_elapsed + 0.5);
 
 			last_skipcount0_time = curr;
