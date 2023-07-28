@@ -4,7 +4,7 @@
    Read unzip.h for more info
 */
 
-#include "psp/psp.h"
+#include <stdio.h>
 #include <zlib.h>
 #include "unzip.h"
 

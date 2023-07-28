@@ -6,6 +6,7 @@
 
 ******************************************************************************/
 
+#include <fcntl.h>
 #include "emumain.h"
 #include "zip/unzip.h"
 
@@ -117,7 +118,7 @@ int zopen(const char *filename)
 		SceUID fd;
 
 		strcpy(basedirend, filename);
-		fd = sceIoOpen(basedir, PSP_O_RDONLY, 0777);
+		fd = open(basedir, O_RDONLY, 0777);
 		return (fd < 0) ? -1 : (int)fd;
 	}
 
@@ -139,7 +140,7 @@ int zclose(int fd)
 
 	if (unzfile == NULL)
 	{
-		if (fd != -1) sceIoClose((SceUID)fd);
+		if (fd != -1) close(fd);
 		return 0;
 	}
 	return unzCloseCurrentFile(unzfile);
@@ -153,7 +154,7 @@ int zclose(int fd)
 int zread(int fd, void *buf, unsigned size)
 {
 	if (unzfile == NULL)
-		return sceIoRead((SceUID)fd, buf, size);
+		return read(fd, buf, size);
 
 	return unzReadCurrentFile(unzfile, buf, size);
 }
@@ -168,7 +169,7 @@ int zgetc(int fd)
 	if (zip_cached_len == 0)
 	{
 		if (unzfile == NULL)
-			zip_cached_len = sceIoRead((SceUID)fd, zip_cache, 4096);
+			zip_cached_len = read(fd, zip_cache, 4096);
 		else
 			zip_cached_len = unzReadCurrentFile(unzfile, zip_cache, 4096);
 		if (zip_cached_len == 0) return EOF;
@@ -189,10 +190,10 @@ int zsize(int fd)
 
 	if (unzfile == NULL)
 	{
-		int len, pos = sceIoLseek(fd, 0, SEEK_CUR);
+		int len, pos = lseek(fd, 0, SEEK_CUR);
 
-		len = sceIoLseek(fd, 0, SEEK_END);
-		sceIoLseek(fd, pos, SEEK_CUR);
+		len = lseek(fd, 0, SEEK_END);
+		lseek(fd, pos, SEEK_CUR);
 
 		return len;
 	}
