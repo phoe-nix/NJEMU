@@ -15,9 +15,9 @@
 #else
 #include <psputility_netmodules.h>	// AHMAN
 #endif
-#include "adhoc_include/pspnet_adhoc.h"
-#include "adhoc_include/pspnet_adhocctl.h"
-#include "adhoc_include/pspnet_adhocmatching.h"
+#include <pspnet_adhoc.h>
+#include <pspnet_adhocctl.h>
+#include <pspnet_adhocmatching.h>
 
 
 #define NUM_ENTRIES			16
@@ -35,6 +35,14 @@
 #define PDP_BUFFER_SIZE		(ADHOC_BUFFER_SIZE * 2)
 #define PDP_PORT			(0x309)
 
+#define MATCHING_JOINED 	0x1	// Another PSP has joined
+#define MATCHING_SELECTED 	0x2	// Another PSP selected to match
+#define MATCHING_REJECTED	0x4   // The request has been rejected
+#define MATCHING_CANCELED	0x5   // The request has been cancelled
+#define MATCHING_ESTABLISHED	0x7	// Both PSP's have agreed to connect, at this point Lumines
+						// closes the connection and creates a new one with just the
+						// two PSP's in it.
+#define MATCHING_DISCONNECT   0xa	// A PSP has quit, this does not include when the PSP crashes
 
 /***************************************************************************
 	関数パラメータ (長いので・・・)
