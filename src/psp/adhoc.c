@@ -743,17 +743,17 @@ int adhocSelect(void)
 				DisplayPspList(top, rows);
 				update = 0;
 			}
-			if (pad_pressed(PSP_CTRL_UP))
+			if (pad_pressed(PLATFORM_PAD_UP))
 			{
 				if (pos > 0) pos--;
 				update = 1;
 			}
-			else if (pad_pressed(PSP_CTRL_DOWN))
+			else if (pad_pressed(PLATFORM_PAD_DOWN))
 			{
 				if (pos < max - 1) pos++;
 				update = 1;
 			}
-			else if (pad_pressed(PSP_CTRL_CIRCLE))
+			else if (pad_pressed(PLATFORM_PAD_B1))
 			{
 				if (GetPspEntry(mac, name) > 0)
 				{
@@ -765,7 +765,7 @@ int adhocSelect(void)
 					}
 				}
 			}
-			else if (pad_pressed(PSP_CTRL_TRIANGLE))
+			else if (pad_pressed(PLATFORM_PAD_B4))
 			{
 				msg_set_text_color(0xffffffff);
 				adhocDisconnect();
@@ -793,7 +793,7 @@ int adhocSelect(void)
 				msg_printf(TEXT(TO_CANCEL_PRESS_CROSS));
 				update = 0;
 			}
-			if (pad_pressed(PSP_CTRL_CROSS))
+			if (pad_pressed(PLATFORM_PAD_B2))
 			{
 				sceNetAdhocMatchingCancelTarget(matchingId, mac);
 				currentState = PSP_LISTING;
@@ -829,13 +829,13 @@ int adhocSelect(void)
 				msg_printf(TEXT(TO_ACCEPT_THE_CONNECTION_PRESS_CIRCLE_TO_CANCEL_PRESS_CIRCLE));
 				update = 0;
 			}
-			if (pad_pressed(PSP_CTRL_CROSS))
+			if (pad_pressed(PLATFORM_PAD_B2))
 			{
 				sceNetAdhocMatchingCancelTarget(matchingId, mac);
 				currentState = PSP_LISTING;
 				update = 1;
 			}
-			else if (pad_pressed(PSP_CTRL_CIRCLE))
+			else if (pad_pressed(PLATFORM_PAD_B1))
 			{
 				sceNetAdhocMatchingSelectTarget(matchingId, mac, 0, NULL);
 				currentState = PSP_WAIT_EST;

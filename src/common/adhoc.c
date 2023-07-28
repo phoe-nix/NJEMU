@@ -238,15 +238,15 @@ void adhoc_pause(void)
 				recv_data.buttons = 0;
 			}
 
-			if (buttons & PSP_CTRL_UP)
+			if (buttons & PLATFORM_PAD_UP)
 			{
 				sel = 0;
 			}
-			else if (buttons & PSP_CTRL_DOWN)
+			else if (buttons & PLATFORM_PAD_DOWN)
 			{
 				sel = 1;
 			}
-			else if (buttons & PSP_CTRL_CIRCLE)
+			else if (buttons & PLATFORM_PAD_B1)
 			{
 				adhoc_paused = 0;
 				if (sel == 1) Loop = LOOP_BROWSER;

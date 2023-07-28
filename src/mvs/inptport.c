@@ -726,16 +726,16 @@ void update_inputport(void)
 
 			buttons = (*poll_pad)();
 
-			if (systembuttons_available ? readHomeButton() : (buttons & PSP_CTRL_START) && (buttons & PSP_CTRL_SELECT))
+			if (systembuttons_available ? readHomeButton() : (buttons & PLATFORM_PAD_START) && (buttons & PLATFORM_PAD_SELECT))
 			{
 				buttons = 0;
 				adhoc_paused = adhoc_server + 1;
 			}
-			else if ((buttons & PSP_CTRL_LTRIGGER) && (buttons & PSP_CTRL_RTRIGGER))
+			else if ((buttons & PLATFORM_PAD_L) && (buttons & PLATFORM_PAD_R))
 			{
-				if (buttons & PSP_CTRL_SELECT)
+				if (buttons & PLATFORM_PAD_SELECT)
 				{
-					buttons &= ~(PSP_CTRL_SELECT | PSP_CTRL_LTRIGGER | PSP_CTRL_RTRIGGER);
+					buttons &= ~(PLATFORM_PAD_SELECT | PLATFORM_PAD_L | PLATFORM_PAD_R);
 					service_switch = 1;
 				}
 			}
@@ -768,7 +768,7 @@ void update_inputport(void)
 
 		buttons = (*poll_pad)();
 
-		if (systembuttons_available ? readHomeButton() : (buttons & PSP_CTRL_START) && (buttons & PSP_CTRL_SELECT))
+		if (systembuttons_available ? readHomeButton() : (buttons & PLATFORM_PAD_START) && (buttons & PLATFORM_PAD_SELECT))
 		{
 			showmenu();
 			setup_autofire();
@@ -780,11 +780,11 @@ void update_inputport(void)
 
 			buttons = (*poll_pad)();
 		}
-		else if ((buttons & PSP_CTRL_LTRIGGER) && (buttons & PSP_CTRL_RTRIGGER))
+		else if ((buttons & PLATFORM_PAD_L) && (buttons & PLATFORM_PAD_R))
 		{
-			if (buttons & PSP_CTRL_SELECT)
+			if (buttons & PLATFORM_PAD_SELECT)
 			{
-				buttons &= ~(PSP_CTRL_SELECT | PSP_CTRL_LTRIGGER | PSP_CTRL_RTRIGGER);
+				buttons &= ~(PLATFORM_PAD_SELECT | PLATFORM_PAD_L | PLATFORM_PAD_R);
 				service_switch = 1;
 			}
 		}

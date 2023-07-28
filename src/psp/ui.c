@@ -841,7 +841,7 @@ int messagebox(int number)
 			video_wait_vsync();
 			pad_update();
 
-			if (pad_pressed(PSP_CTRL_CIRCLE))
+			if (pad_pressed(PLATFORM_PAD_B1))
 			{
 				res = 1;
 				pad_wait_clear();
@@ -850,7 +850,7 @@ int messagebox(int number)
 
 			if (Loop == LOOP_EXIT) break;
 
-		} while (!pad_pressed(PSP_CTRL_CROSS));
+		} while (!pad_pressed(PLATFORM_PAD_B2));
 	}
 	else
 	{
@@ -859,7 +859,7 @@ int messagebox(int number)
 			video_wait_vsync();
 			pad_update();
 
-			if (pad_pressed(PSP_CTRL_ANY))
+			if (pad_pressed(PLATFORM_PAD_ANY))
 			{
 				res = 1;
 				pad_wait_clear();

@@ -572,18 +572,18 @@ static uint32_t adjust_input(uint32_t buttons)
 	{
 		if (cps_flip_screen)
 		{
-			buttons2 = buttons & (PSP_CTRL_START | PSP_CTRL_SELECT);
+			buttons2 = buttons & (PLATFORM_PAD_START | PLATFORM_PAD_SELECT);
 
-			if (buttons & PSP_CTRL_UP)       buttons2 |= PSP_CTRL_DOWN;
-			if (buttons & PSP_CTRL_DOWN)     buttons2 |= PSP_CTRL_UP;
-			if (buttons & PSP_CTRL_RIGHT)    buttons2 |= PSP_CTRL_LEFT;
-			if (buttons & PSP_CTRL_LEFT)     buttons2 |= PSP_CTRL_RIGHT;
-			if (buttons & PSP_CTRL_SQUARE)   buttons2 |= PSP_CTRL_CIRCLE;
-			if (buttons & PSP_CTRL_CIRCLE)   buttons2 |= PSP_CTRL_SQUARE;
-			if (buttons & PSP_CTRL_TRIANGLE) buttons2 |= PSP_CTRL_CROSS;
-			if (buttons & PSP_CTRL_CROSS)    buttons2 |= PSP_CTRL_TRIANGLE;
-			if (buttons & PSP_CTRL_RTRIGGER) buttons2 |= PSP_CTRL_LTRIGGER;
-			if (buttons & PSP_CTRL_LTRIGGER) buttons2 |= PSP_CTRL_RTRIGGER;
+			if (buttons & PLATFORM_PAD_UP)       buttons2 |= PLATFORM_PAD_DOWN;
+			if (buttons & PLATFORM_PAD_DOWN)     buttons2 |= PLATFORM_PAD_UP;
+			if (buttons & PLATFORM_PAD_RIGHT)    buttons2 |= PLATFORM_PAD_LEFT;
+			if (buttons & PLATFORM_PAD_LEFT)     buttons2 |= PLATFORM_PAD_RIGHT;
+			if (buttons & PLATFORM_PAD_B3)   buttons2 |= PLATFORM_PAD_B1;
+			if (buttons & PLATFORM_PAD_B1)   buttons2 |= PLATFORM_PAD_B3;
+			if (buttons & PLATFORM_PAD_B4) buttons2 |= PLATFORM_PAD_B2;
+			if (buttons & PLATFORM_PAD_B2)    buttons2 |= PLATFORM_PAD_B4;
+			if (buttons & PLATFORM_PAD_R) buttons2 |= PLATFORM_PAD_L;
+			if (buttons & PLATFORM_PAD_L) buttons2 |= PLATFORM_PAD_R;
 
 			buttons = buttons2;
 		}
@@ -592,34 +592,34 @@ static uint32_t adjust_input(uint32_t buttons)
 	{
 		if (!cps_rotate_screen)
 		{
-			buttons2 = buttons & (PSP_CTRL_START | PSP_CTRL_SELECT | PSP_CTRL_RTRIGGER | PSP_CTRL_LTRIGGER);
+			buttons2 = buttons & (PLATFORM_PAD_START | PLATFORM_PAD_SELECT | PLATFORM_PAD_R | PLATFORM_PAD_L);
 
-			if (buttons & PSP_CTRL_UP)       buttons2 |= PSP_CTRL_LEFT;
-			if (buttons & PSP_CTRL_DOWN)     buttons2 |= PSP_CTRL_RIGHT;
-			if (buttons & PSP_CTRL_RIGHT)    buttons2 |= PSP_CTRL_UP;
-			if (buttons & PSP_CTRL_LEFT)     buttons2 |= PSP_CTRL_DOWN;
-			if (buttons & PSP_CTRL_TRIANGLE) buttons2 |= PSP_CTRL_SQUARE;
-			if (buttons & PSP_CTRL_CIRCLE)   buttons2 |= PSP_CTRL_TRIANGLE;
-			if (buttons & PSP_CTRL_SQUARE)   buttons2 |= PSP_CTRL_CROSS;
-			if (buttons & PSP_CTRL_CROSS)    buttons2 |= PSP_CTRL_CIRCLE;
+			if (buttons & PLATFORM_PAD_UP)       buttons2 |= PLATFORM_PAD_LEFT;
+			if (buttons & PLATFORM_PAD_DOWN)     buttons2 |= PLATFORM_PAD_RIGHT;
+			if (buttons & PLATFORM_PAD_RIGHT)    buttons2 |= PLATFORM_PAD_UP;
+			if (buttons & PLATFORM_PAD_LEFT)     buttons2 |= PLATFORM_PAD_DOWN;
+			if (buttons & PLATFORM_PAD_B4) buttons2 |= PLATFORM_PAD_B3;
+			if (buttons & PLATFORM_PAD_B1)   buttons2 |= PLATFORM_PAD_B4;
+			if (buttons & PLATFORM_PAD_B3)   buttons2 |= PLATFORM_PAD_B2;
+			if (buttons & PLATFORM_PAD_B2)    buttons2 |= PLATFORM_PAD_B1;
 
 			buttons = buttons2;
 		}
 
 		if (cps_flip_screen)
 		{
-			buttons2 = buttons & (PSP_CTRL_START | PSP_CTRL_SELECT);
+			buttons2 = buttons & (PLATFORM_PAD_START | PLATFORM_PAD_SELECT);
 
-			if (buttons & PSP_CTRL_UP)       buttons2 |= PSP_CTRL_DOWN;
-			if (buttons & PSP_CTRL_DOWN)     buttons2 |= PSP_CTRL_UP;
-			if (buttons & PSP_CTRL_RIGHT)    buttons2 |= PSP_CTRL_LEFT;
-			if (buttons & PSP_CTRL_LEFT)     buttons2 |= PSP_CTRL_RIGHT;
-			if (buttons & PSP_CTRL_SQUARE)   buttons2 |= PSP_CTRL_CIRCLE;
-			if (buttons & PSP_CTRL_CIRCLE)   buttons2 |= PSP_CTRL_SQUARE;
-			if (buttons & PSP_CTRL_TRIANGLE) buttons2 |= PSP_CTRL_CROSS;
-			if (buttons & PSP_CTRL_CROSS)    buttons2 |= PSP_CTRL_TRIANGLE;
-			if (buttons & PSP_CTRL_RTRIGGER) buttons2 |= PSP_CTRL_LTRIGGER;
-			if (buttons & PSP_CTRL_LTRIGGER) buttons2 |= PSP_CTRL_RTRIGGER;
+			if (buttons & PLATFORM_PAD_UP)       buttons2 |= PLATFORM_PAD_DOWN;
+			if (buttons & PLATFORM_PAD_DOWN)     buttons2 |= PLATFORM_PAD_UP;
+			if (buttons & PLATFORM_PAD_RIGHT)    buttons2 |= PLATFORM_PAD_LEFT;
+			if (buttons & PLATFORM_PAD_LEFT)     buttons2 |= PLATFORM_PAD_RIGHT;
+			if (buttons & PLATFORM_PAD_B3)   buttons2 |= PLATFORM_PAD_B1;
+			if (buttons & PLATFORM_PAD_B1)   buttons2 |= PLATFORM_PAD_B3;
+			if (buttons & PLATFORM_PAD_B4) buttons2 |= PLATFORM_PAD_B2;
+			if (buttons & PLATFORM_PAD_B2)    buttons2 |= PLATFORM_PAD_B4;
+			if (buttons & PLATFORM_PAD_R) buttons2 |= PLATFORM_PAD_L;
+			if (buttons & PLATFORM_PAD_L) buttons2 |= PLATFORM_PAD_R;
 
 			buttons = buttons2;
 		}
@@ -801,21 +801,21 @@ void update_inputport(void)
 
 			buttons = poll_gamepad();
 
-			if (systembuttons_available ? readHomeButton() : (buttons & PSP_CTRL_START) && (buttons & PSP_CTRL_SELECT))
+			if (systembuttons_available ? readHomeButton() : (buttons & PLATFORM_PAD_START) && (buttons & PLATFORM_PAD_SELECT))
 			{
 				buttons = 0;
 				adhoc_paused = adhoc_server + 1;
 			}
-			else if ((buttons & PSP_CTRL_LTRIGGER) && (buttons & PSP_CTRL_RTRIGGER))
+			else if ((buttons & PLATFORM_PAD_L) && (buttons & PLATFORM_PAD_R))
 			{
-				if (buttons & PSP_CTRL_SELECT)
+				if (buttons & PLATFORM_PAD_SELECT)
 				{
-					buttons &= ~(PSP_CTRL_SELECT | PSP_CTRL_LTRIGGER | PSP_CTRL_RTRIGGER);
+					buttons &= ~(PLATFORM_PAD_SELECT | PLATFORM_PAD_L | PLATFORM_PAD_R);
 					service_switch = 1;
 				}
-				else if (buttons & PSP_CTRL_START)
+				else if (buttons & PLATFORM_PAD_START)
 				{
-					buttons &= ~(PSP_CTRL_START | PSP_CTRL_LTRIGGER | PSP_CTRL_RTRIGGER);
+					buttons &= ~(PLATFORM_PAD_START | PLATFORM_PAD_L | PLATFORM_PAD_R);
 					p12_start_pressed = 1;
 				}
 			}
@@ -851,23 +851,23 @@ void update_inputport(void)
 
 		buttons = poll_gamepad();
 
-		if (systembuttons_available ? readHomeButton() : (buttons & PSP_CTRL_START) && (buttons & PSP_CTRL_SELECT))
+		if (systembuttons_available ? readHomeButton() : (buttons & PLATFORM_PAD_START) && (buttons & PLATFORM_PAD_SELECT))
 		{
 			showmenu();
 			setup_autofire();
 			buttons = poll_gamepad();
 		}
 
-		if ((buttons & PSP_CTRL_LTRIGGER) && (buttons & PSP_CTRL_RTRIGGER))
+		if ((buttons & PLATFORM_PAD_L) && (buttons & PLATFORM_PAD_R))
 		{
-			if (buttons & PSP_CTRL_SELECT)
+			if (buttons & PLATFORM_PAD_SELECT)
 			{
-				buttons &= ~(PSP_CTRL_SELECT | PSP_CTRL_LTRIGGER | PSP_CTRL_RTRIGGER);
+				buttons &= ~(PLATFORM_PAD_SELECT | PLATFORM_PAD_L | PLATFORM_PAD_R);
 				service_switch = 1;
 			}
-			else if (buttons & PSP_CTRL_START)
+			else if (buttons & PLATFORM_PAD_START)
 			{
-				buttons &= ~(PSP_CTRL_START | PSP_CTRL_LTRIGGER | PSP_CTRL_RTRIGGER);
+				buttons &= ~(PLATFORM_PAD_START | PLATFORM_PAD_L | PLATFORM_PAD_R);
 				p12_start_pressed = 1;
 			}
 		}

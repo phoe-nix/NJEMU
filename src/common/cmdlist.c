@@ -618,7 +618,7 @@ void commandlist(int flag)
 		prev_line = sel_line;
 		pad_update();
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			if (menu_open)
 			{
@@ -637,7 +637,7 @@ void commandlist(int flag)
 				if (sel_line > 0) sel_line--;
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			if (menu_open)
 			{
@@ -656,7 +656,7 @@ void commandlist(int flag)
 				if (sel_line + show_lines < num_lines) sel_line++;
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_LTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_L))
 		{
 			if (menu_open)
 			{
@@ -683,7 +683,7 @@ void commandlist(int flag)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_R))
 		{
 			if (menu_open)
 			{
@@ -711,7 +711,7 @@ void commandlist(int flag)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_LEFT))
+		else if (pad_pressed(PLATFORM_PAD_LEFT))
 		{
 			if (sel_line > 0)
 			{
@@ -719,7 +719,7 @@ void commandlist(int flag)
 				if (sel_line < 0) sel_line = 0;
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_RIGHT))
+		else if (pad_pressed(PLATFORM_PAD_RIGHT))
 		{
 			if (sel_line + show_lines < num_lines)
 			{
@@ -728,14 +728,14 @@ void commandlist(int flag)
 					sel_line = num_lines - show_lines;
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			menu_open ^= 1;
 			update = 1;
 			if (menu_open == 0) menu_counter = 4;
 			pad_wait_clear();
 		}
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PLATFORM_PAD_SELECT))
 		{
 			help(HELP_COMMANDLIST);
 			update = 1;
@@ -754,7 +754,7 @@ void commandlist(int flag)
 		if ((sel_line != prev_line) || (sel_item != prev_item))
 			update = 1;
 
-	} while (!pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_B2));
 
 	pad_wait_clear();
 
@@ -862,7 +862,7 @@ int commandlist_size_reduction(void)
 		video_wait_vsync();
 		pad_update();
 
-		if (pad_pressed(PSP_CTRL_CIRCLE))
+		if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			i = 1;
 			break;
@@ -870,7 +870,7 @@ int commandlist_size_reduction(void)
 
 		if (Loop == LOOP_EXIT) break;
 
-	} while (!pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_B2));
 
 	pad_wait_clear();
 

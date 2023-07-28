@@ -309,7 +309,7 @@ void bios_select(int flag)
 
 		prev_sel = sel;
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			if (sel > 0)
 			{
@@ -326,7 +326,7 @@ void bios_select(int flag)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			if (sel < BIOS_MAX - 1)
 			{
@@ -343,12 +343,12 @@ void bios_select(int flag)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			neogeo_bios = sel;
 			break;
 		}
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PLATFORM_PAD_SELECT))
 		{
 			help(HELP_SELECTBIOS);
 			update = 1;
@@ -366,7 +366,7 @@ void bios_select(int flag)
 		pad_update();
 
 		if (Loop == LOOP_EXIT) break;
-	} while (!pad_pressed(PSP_CTRL_LTRIGGER) && !pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_L) && !pad_pressed(PLATFORM_PAD_B2));
 
 	pad_wait_clear();
 	ui_popup_reset();

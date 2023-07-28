@@ -368,7 +368,7 @@ void show_fatal_error(void)
 
 			pad_update();
 
-			if (pad_pressed(PSP_CTRL_ANY))
+			if (pad_pressed(PLATFORM_PAD_ANY))
 				break;
 		}
 

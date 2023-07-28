@@ -51,12 +51,12 @@ uint32_t poll_gamepad(void)
 
 	sceCtrlPeekBufferPositive(&paddata, 1);
 
-	paddata.Buttons &= PSP_CTRL_ANY;
+	paddata.Buttons &= PLATFORM_PAD_ANY;
 
-	if (paddata.Ly >= 0xd0) paddata.Buttons |= PSP_CTRL_DOWN;
-	if (paddata.Ly <= 0x30) paddata.Buttons |= PSP_CTRL_UP;
-	if (paddata.Lx <= 0x30) paddata.Buttons |= PSP_CTRL_LEFT;
-	if (paddata.Lx >= 0xd0) paddata.Buttons |= PSP_CTRL_RIGHT;
+	if (paddata.Ly >= 0xd0) paddata.Buttons |= PLATFORM_PAD_DOWN;
+	if (paddata.Ly <= 0x30) paddata.Buttons |= PLATFORM_PAD_UP;
+	if (paddata.Lx <= 0x30) paddata.Buttons |= PLATFORM_PAD_LEFT;
+	if (paddata.Lx >= 0xd0) paddata.Buttons |= PLATFORM_PAD_RIGHT;
 
 	return paddata.Buttons;
 }
@@ -73,12 +73,12 @@ uint32_t poll_gamepad_fatfursp(void)
 
 	sceCtrlPeekBufferPositive(&paddata, 1);
 
-	paddata.Buttons &= PSP_CTRL_ANY;
+	paddata.Buttons &= PLATFORM_PAD_ANY;
 
-	if (!(paddata.Buttons & PSP_CTRL_UP)    && paddata.Ly >= 0xd0) paddata.Buttons |= PSP_CTRL_DOWN;
-	if (!(paddata.Buttons & PSP_CTRL_DOWN)  && paddata.Ly <= 0x30) paddata.Buttons |= PSP_CTRL_UP;
-	if (!(paddata.Buttons & PSP_CTRL_RIGHT) && paddata.Lx <= 0x30) paddata.Buttons |= PSP_CTRL_LEFT;
-	if (!(paddata.Buttons & PSP_CTRL_LEFT)  && paddata.Lx >= 0xd0) paddata.Buttons |= PSP_CTRL_RIGHT;
+	if (!(paddata.Buttons & PLATFORM_PAD_UP)    && paddata.Ly >= 0xd0) paddata.Buttons |= PLATFORM_PAD_DOWN;
+	if (!(paddata.Buttons & PLATFORM_PAD_DOWN)  && paddata.Ly <= 0x30) paddata.Buttons |= PLATFORM_PAD_UP;
+	if (!(paddata.Buttons & PLATFORM_PAD_RIGHT) && paddata.Lx <= 0x30) paddata.Buttons |= PLATFORM_PAD_LEFT;
+	if (!(paddata.Buttons & PLATFORM_PAD_LEFT)  && paddata.Lx >= 0xd0) paddata.Buttons |= PLATFORM_PAD_RIGHT;
 
 	return paddata.Buttons;
 }
@@ -97,12 +97,12 @@ uint32_t poll_gamepad_analog(void)
 
 	sceCtrlPeekBufferPositive(&paddata, 1);
 
-	paddata.Buttons &= PSP_CTRL_ANY;
+	paddata.Buttons &= PLATFORM_PAD_ANY;
 
-	if (paddata.Ly >= 0xd0) paddata.Buttons |= PSP_CTRL_DOWN;
-	if (paddata.Ly <= 0x30) paddata.Buttons |= PSP_CTRL_UP;
-	if (paddata.Lx <= 0x30) paddata.Buttons |= PSP_CTRL_LEFT;
-	if (paddata.Lx >= 0xd0) paddata.Buttons |= PSP_CTRL_RIGHT;
+	if (paddata.Ly >= 0xd0) paddata.Buttons |= PLATFORM_PAD_DOWN;
+	if (paddata.Ly <= 0x30) paddata.Buttons |= PLATFORM_PAD_UP;
+	if (paddata.Lx <= 0x30) paddata.Buttons |= PLATFORM_PAD_LEFT;
+	if (paddata.Lx >= 0xd0) paddata.Buttons |= PLATFORM_PAD_RIGHT;
 
 	data  = paddata.Buttons & 0xffff;
 	data |= paddata.Lx << 16;
@@ -172,7 +172,7 @@ int pad_pressed(uint32_t code)
 
 int pad_pressed_any(uint32_t disable_code)
 {
-	return (pad & (PSP_CTRL_ANY ^ disable_code)) != 0;
+	return (pad & (PLATFORM_PAD_ANY ^ disable_code)) != 0;
 }
 
 

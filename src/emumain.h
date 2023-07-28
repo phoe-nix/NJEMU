@@ -9,7 +9,10 @@
 #ifndef EMUMAIN_H
 #define EMUMAIN_H
 
+#if defined(PSP)
 #include "psp/psp.h"
+#endif
+
 #include "include/cpuintrf.h"
 #include "include/memory.h"
 #include "zip/zfile.h"

@@ -1233,28 +1233,28 @@ void file_browser(void)
 		update |= ui_light_update();
 		prev_sel = sel;
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			sel--;
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			sel++;
 		}
-		else if (pad_pressed(PSP_CTRL_LEFT))
+		else if (pad_pressed(PLATFORM_PAD_LEFT))
 		{
 			sel -= rows;
 			if (sel < 0) sel = 0;
 		}
-		else if (pad_pressed(PSP_CTRL_RIGHT))
+		else if (pad_pressed(PLATFORM_PAD_RIGHT))
 		{
 			sel += rows;
 			if (sel >= nfiles) sel = nfiles - 1;
 		}
 #ifdef ADHOC
-		else if (pad_pressed(PSP_CTRL_CIRCLE) || (adhoc_enable = pad_pressed(PSP_CTRL_SQUARE)))
+		else if (pad_pressed(PLATFORM_PAD_B1) || (adhoc_enable = pad_pressed(PLATFORM_PAD_B3)))
 #else
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 #endif
 		{
 #ifdef ADHOC
@@ -1380,8 +1380,8 @@ void file_browser(void)
 			pad_wait_clear();
 		}
 /*PRESS TRIANGLE OR HOME TO EXIT IN FILEBROWSER */
-//		else if (pad_pressed(PSP_CTRL_TRIANGLE))
-		else if (pad_pressed(PSP_CTRL_TRIANGLE) || (readHomeButton()))
+//		else if (pad_pressed(PLATFORM_PAD_B4))
+		else if (pad_pressed(PLATFORM_PAD_B4) || (readHomeButton()))
 		{
 			if (messagebox(MB_EXITEMULATION))
 			{
@@ -1393,14 +1393,14 @@ void file_browser(void)
 			pad_wait_clear();
 		}
 #if (EMU_SYSTEM == MVS)
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_R))
 		{
 			strcpy(game_dir, curr_dir);
 			bios_select(0);
 			update = 1;
 		}
 #elif (EMU_SYSTEM == NCDZ)
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_R))
 		{
 			if (!bios_error)
 			{
@@ -1416,7 +1416,7 @@ void file_browser(void)
 			pad_wait_clear();
 		}
 #endif
-		else if (pad_pressed(PSP_CTRL_START))
+		else if (pad_pressed(PLATFORM_PAD_START))
 		{
 			if (files[sel]->type == FTYPE_DIR)
 			{
@@ -1425,13 +1425,13 @@ void file_browser(void)
 			}
 		}
 #if VIDEO_32BPP
-		else if (pad_pressed(PSP_CTRL_LTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_L))
 		{
 			show_color_menu();
 			update = 1;
 		}
 #endif
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PLATFORM_PAD_SELECT))
 		{
 			help(HELP_FILEBROWSER);
 			update = 1;

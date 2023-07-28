@@ -611,12 +611,12 @@ int neogeo_loading_screenrefresh(int flag, int draw)
 
 	pad_update();
 
-	if (limit && pad_pressed(PSP_CTRL_LTRIGGER))
+	if (limit && pad_pressed(PLATFORM_PAD_L))
 	{
 		limit = 0;
 		ui_popup(TEXT(CDROM_SPEED_LIMIT_OFF));
 	}
-	else if (!limit && pad_pressed(PSP_CTRL_RTRIGGER))
+	else if (!limit && pad_pressed(PLATFORM_PAD_R))
 	{
 		limit = 1;
 		ui_popup(TEXT(CDROM_SPEED_LIMIT_ON));
