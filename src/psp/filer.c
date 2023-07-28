@@ -8,8 +8,8 @@
 
 #include <psptypes.h>
 #include <pspwlan.h>
+#include <zlib.h>
 #include "emumain.h"
-#include "zlib/zlib.h"
 
 #define MAX_ENTRY 1024
 #define MAX_GAMES 512

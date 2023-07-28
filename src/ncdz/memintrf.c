@@ -7,7 +7,7 @@
 ******************************************************************************/
 
 #include "ncdz.h"
-#include "zlib/zlib.h"
+#include <zlib.h>
 
 #define M68K_AMASK 0x00ffffff
 #define Z80_AMASK 0x0000ffff

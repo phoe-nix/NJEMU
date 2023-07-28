@@ -5,7 +5,7 @@
 */
 
 #include "psp/psp.h"
-#include "zlib.h"
+#include <zlib.h>
 #include "unzip.h"
 
 #ifndef UNZ_BUFSIZE

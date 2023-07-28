@@ -9,7 +9,7 @@
 #ifdef SAVE_STATE
 
 #include "emumain.h"
-#include "zlib/zlib.h"
+#include <zlib.h>
 #include <time.h>
 
 

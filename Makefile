@@ -113,7 +113,6 @@ RM = -rm
 INCDIR = \
 	src \
 	src/zip \
-	src/zlib \
 
 
 #------------------------------------------------------------------------------
@@ -175,23 +174,6 @@ ifdef UI_32BPP
 OSOBJS += $(OS)/wallpaper.o
 endif
 
-ZLIB = \
-	zlib/adler32.o \
-	zlib/compress.o \
-	zlib/uncompr.o \
-	zlib/crc32.o \
-	zlib/deflate.o \
-	zlib/inflate.o \
-	zlib/inftrees.o \
-	zlib/inffast.o \
-	zlib/trees.o \
-	zlib/zutil.o
-
-#	zlib/gzclose.o \
-#	zlib/gzlib.o \
-#	zlib/gzread.o \
-#	zlib/gzwrite.o \
-#	zlib/infback.o \
 #------------------------------------------------------------------------------
 # Include makefiles
 #------------------------------------------------------------------------------
@@ -217,8 +199,7 @@ CFLAGS = \
 	-Wbad-function-cast \
 	-Wwrite-strings \
 	-Wmissing-prototypes \
-	-Wsign-compare \
-	-DZLIB_CONST
+	-Wsign-compare
 
 
 #------------------------------------------------------------------------------
@@ -283,7 +264,7 @@ LDFLAGS = -L$(shell psp-config --psp-prefix)
 # Library
 #------------------------------------------------------------------------------
 
-LIBS = -lpspaudio -lpspgu -lpsppower
+LIBS = -lpspaudio -lpspgu -lpsppower -lz
 
 ifdef LARGE_MEMORY
 LIBS += -lpspkubridge
@@ -301,7 +282,7 @@ endif
 # Rules to make libraries
 #------------------------------------------------------------------------------
 
-ALLOBJS = $(MAINOBJS) $(COREOBJS) $(OSOBJS) $(FONTOBJS) $(ICONOBJS) $(ZLIB)
+ALLOBJS = $(MAINOBJS) $(COREOBJS) $(OSOBJS) $(FONTOBJS) $(ICONOBJS)
 OBJS = $(ALLOBJS:%=src/%)
 
 

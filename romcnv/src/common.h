@@ -26,7 +26,7 @@ __extension__ typedef signed long long		INT64;
 #include <string.h>
 #include <dirent.h>
 #include <malloc.h>
-#include "zlib/zlib.h"
+#include <zlib.h>
 #include "zfile.h"
 
 #ifndef MAX_PATH
