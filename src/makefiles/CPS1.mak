@@ -1,21 +1,8 @@
 #------------------------------------------------------------------------------
 #
-#                             CPS2PSP Makefile
+#                             CPS1PSP Makefile
 #
 #------------------------------------------------------------------------------
-
-PSP_EBOOT_ICON = data/cps2.png
-
-ifdef LARGE_MEMORY
-PSP_EBOOT_TITLE = $(PBPNAME_STR) $(VERSION_STR) for PSP slim
-else
-ifdef KERNEL_MODE
-PSP_EBOOT_TITLE = $(PBPNAME_STR) $(VERSION_STR)
-else
-PSP_EBOOT_TITLE = $(PBPNAME_STR) $(VERSION_STR) for PSP
-endif
-endif
-
 
 #------------------------------------------------------------------------------
 # File include path
@@ -24,7 +11,17 @@ endif
 INCDIR += \
 	src/cpu/m68000 \
 	src/cpu/z80 \
-	src/cps2
+	src/cps1
+
+
+#------------------------------------------------------------------------------
+# Object Directory
+#------------------------------------------------------------------------------
+
+OBJDIRS += \
+	cpu/m68000 \
+	cpu/z80 \
+	cps1
 
 
 #------------------------------------------------------------------------------
@@ -40,19 +37,22 @@ MAINOBJS += \
 
 
 #------------------------------------------------------------------------------
-# Object Files
+# Object Files (CPS1PSP)
 #------------------------------------------------------------------------------
 
 COREOBJS = \
-	cps2/cps2.o \
-	cps2/cps2crpt.o \
-	cps2/driver.o \
-	cps2/memintrf.o \
-	cps2/inptport.o \
-	cps2/timer.o \
-	cps2/vidhrdw.o \
-	cps2/sprite.o \
-	cps2/eeprom.o \
+	cps1/cps1.o \
+	cps1/driver.o \
+	cps1/memintrf.o \
+	cps1/inptport.o \
+	cps1/dipsw.o \
+	cps1/timer.o \
+	cps1/vidhrdw.o \
+	cps1/sprite.o \
+	cps1/eeprom.o \
+	cps1/kabuki.o \
+	sound/2151intf.o \
+	sound/ym2151.o \
 	sound/qsound.o
 
 ICONOBJS = \

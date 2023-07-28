@@ -8,18 +8,18 @@
 # Configuration
 #------------------------------------------------------------------------------
 
-#BUILD_CPS1 = 1
+BUILD_CPS1 = 0
 BUILD_CPS2 = 1
-#BUILD_MVS = 1
-#BUILD_NCDZ = 1
+BUILD_MVS = 0
+BUILD_NCDZ = 0
 
 LARGE_MEMORY = 1
-#KERNEL_MODE = 1
+KERNEL_MODE = 1
 COMMAND_LIST = 1
 ADHOC = 1
 SAVE_STATE = 1
 UI_32BPP = 1
-#RELEASE = 1
+RELEASE = 0
 
 #------------------------------------------------------------------------------
 # Version
@@ -35,68 +35,39 @@ VERSION_BUILD = 0
 #------------------------------------------------------------------------------
 
 OS = psp
-SYSTEM_NAME = PSP
 
-ifdef BUILD_CPS1
-BUILD_CPS2=
-BUILD_MVS=
-BUILD_NCDZ=
+ifeq ($(BUILD_CPS1), 1)
 TARGET = CPS1
+PSP_EBOOT_ICON = data/cps1.png
 endif
 
-ifdef BUILD_CPS2
-BUILD_MVS=
-BUILD_NCDZ=
+ifeq ($(BUILD_CPS2), 1) 
 TARGET = CPS2
+PSP_EBOOT_ICON = data/cps2.png
 endif
 
-ifdef BUILD_MVS
-BUILD_NCDZ=
+ifeq ($(BUILD_MVS), 1)
 TARGET = MVS
+PSP_EBOOT_ICON = data/mvs.png
 endif
 
-ifdef BUILD_NCDZ
+ifeq ($(BUILD_NCDZ), 1)
 TARGET = NCDZ
-ADHOC =
+ADHOC = 0
+PSP_EBOOT_ICON = data/ncdz.png
 endif
 
-PBPNAME_STR = $(TARGET)
 ifeq ($(VERSION_BUILD), 0)
 VERSION_STR = $(VERSION_MAJOR).$(VERSION_MINOR)
 else
 VERSION_STR = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_BUILD)
 endif
 
-ifdef BUILD_CPS1
-ifdef LARGE_MEMORY
-EXTRA_TARGETS = maketree SLIM/CPS1/EBOOT.PBP
+EXTRA_TARGETS = EBOOT.PBP
+ifeq ($(LARGE_MEMORY), 1)
+PSP_EBOOT_TITLE = $(TARGET) $(VERSION_STR) for PSP slim
 else
-EXTRA_TARGETS = maketree 3XX/CPS1/EBOOT.PBP
-endif
-endif
-
-ifdef BUILD_CPS2
-ifdef LARGE_MEMORY
-EXTRA_TARGETS = maketree SLIM/CPS2/EBOOT.PBP
-else
-EXTRA_TARGETS = maketree 3XX/CPS2/EBOOT.PBP
-endif
-endif
-
-ifdef BUILD_MVS
-ifdef LARGE_MEMORY
-EXTRA_TARGETS = maketree SLIM/MVS/EBOOT.PBP
-else
-EXTRA_TARGETS = maketree 3XX/MVS/EBOOT.PBP
-endif
-endif
-
-ifdef BUILD_NCDZ
-ifdef LARGE_MEMORY
-EXTRA_TARGETS = maketree SLIM/NCDZ/EBOOT.PBP
-else
-EXTRA_TARGETS = maketree 3XX/NCDZ/EBOOT.PBP
-endif
+PSP_EBOOT_TITLE = $(TARGET) $(VERSION_STR) for PSP
 endif
 
 #------------------------------------------------------------------------------
@@ -127,15 +98,15 @@ MAINOBJS = \
 	common/cache.o \
 	common/loadrom.o
 
-ifdef ADHOC
+ifeq ($(ADHOC), 1)
 MAINOBJS += common/adhoc.o
 endif
 
-ifdef COMMAND_LIST
+ifeq ($(COMMAND_LIST), 1)
 MAINOBJS += common/cmdlist.o
 endif
 
-ifdef SAVE_STATE
+ifeq ($(SAVE_STATE), 1)
 MAINOBJS += common/state.o
 endif
 
@@ -165,13 +136,13 @@ OSOBJS = \
 	$(OS)/sound.o \
 	$(OS)/png.o \
 
-ifdef ADHOC
+ifeq ($(ADHOC), 1)
 OSOBJS += $(OS)/adhoc.o
 endif
 
 OSOBJS += $(OS)/SystemButtons.o
 
-ifdef UI_32BPP
+ifeq ($(UI_32BPP), 1)
 OSOBJS += $(OS)/wallpaper.o
 endif
 
@@ -179,7 +150,7 @@ endif
 # Include makefiles
 #------------------------------------------------------------------------------
 
-include src/makefiles/$(TARGET)$(SYSTEM_NAME).mak
+include src/makefiles/$(TARGET).mak
 
 
 #------------------------------------------------------------------------------
@@ -211,41 +182,41 @@ CDEFS = -DINLINE='static __inline' \
 	-Dinline=__inline \
 	-D__inline__=__inline \
 	-DBUILD_$(TARGET)=1 \
-	-DPBPNAME_STR='"$(PBPNAME_STR)"' \
+	-DTARGET_STR='"$(TARGET)"' \
 	-DVERSION_STR='"$(VERSION_STR)"' \
 	-DVERSION_MAJOR=$(VERSION_MAJOR) \
 	-DVERSION_MINOR=$(VERSION_MINOR) \
 	-DVERSION_BUILD=$(VERSION_BUILD) \
 	-DPSP
 
-ifdef LARGE_MEMORY
+ifeq ($(LARGE_MEMORY), 1)
 CDEFS += -DLARGE_MEMORY=1
 endif
 
-ifdef KERNEL_MODE
+ifeq ($(KERNEL_MODE), 1)
 CDEFS += -DKERNEL_MODE=1
 endif
 
-ifdef ADHOC
+ifeq ($(ADHOC), 1)
 CDEFS += -DADHOC=1
 SAVE_STATE = 1
 endif
 
-ifdef SAVE_STATE
+ifeq ($(SAVE_STATE), 1)
 CDEFS += -DSAVE_STATE=1
 endif
 
-ifdef COMMAND_LIST
+ifeq ($(COMMAND_LIST), 1)
 CFLAGS += -DCOMMAND_LIST=1
 endif
 
-ifdef UI_32BPP
+ifeq ($(UI_32BPP), 1)
 CFLAGS += -DVIDEO_32BPP=1
 else
 CFLAGS += -DVIDEO_32BPP=0
 endif
 
-ifdef RELEASE
+ifeq ($(RELEASE), 1)
 CDEFS += -DRELEASE=1
 else
 CDEFS += -DRELEASE=0
@@ -267,15 +238,15 @@ LDFLAGS = -L$(shell psp-config --psp-prefix)
 
 LIBS = -lpspaudio -lpspgu -lpsppower -lz
 
-ifdef LARGE_MEMORY
+ifeq ($(LARGE_MEMORY), 1)
 LIBS += -lpspkubridge
 endif
 
-ifdef ADHOC
+ifeq ($(ADHOC), 1)
 LIBS += -lpspwlan -lpspnet_adhoc -lpspnet_adhocctl -lpspnet_adhocmatching
 endif
 
-ifdef BUILD_NCDZ
+ifeq ($(BUILD_NCDZ), 1)
 LIBS += -lmad
 endif
 
@@ -286,54 +257,5 @@ endif
 ALLOBJS = $(MAINOBJS) $(COREOBJS) $(OSOBJS) $(FONTOBJS) $(ICONOBJS)
 OBJS = $(ALLOBJS:%=src/%)
 
-
-ifdef BUILD_CPS1
-ifdef LARGE_MEMORY
-PSP_EBOOT = SLIM/CPS1/EBOOT.PBP
-else
-PSP_EBOOT = 3XX/CPS1/EBOOT.PBP
-endif
-endif
-
-ifdef BUILD_CPS2
-ifdef LARGE_MEMORY
-PSP_EBOOT = SLIM/CPS2/EBOOT.PBP
-else
-PSP_EBOOT = 3XX/CPS2/EBOOT.PBP
-endif
-endif
-
-ifdef BUILD_MVS
-ifdef LARGE_MEMORY
-PSP_EBOOT = SLIM/MVS/EBOOT.PBP
-else
-PSP_EBOOT = 3XX/MVS/EBOOT.PBP
-endif
-endif
-
-ifdef BUILD_NCDZ
-ifdef LARGE_MEMORY
-PSP_EBOOT = SLIM/NCDZ/EBOOT.PBP
-else
-PSP_EBOOT = 3XX/NCDZ/EBOOT.PBP
-endif
-endif
-
 PSPSDK=$(shell psp-config --pspsdk-path)
 include $(PSPSDK)/lib/build.mak
-
-#------------------------------------------------------------------------------
-# Rules to manage files
-#------------------------------------------------------------------------------
-
-maketree:
-	@$(MD) 3XX
-	@$(MD) 3XX/CPS1
-	@$(MD) 3XX/CPS2
-	@$(MD) 3XX/MVS
-	@$(MD) 3XX/NCDZ
-	@$(MD) SLIM
-	@$(MD) SLIM/CPS1
-	@$(MD) SLIM/CPS2
-	@$(MD) SLIM/MVS
-	@$(MD) SLIM/NCDZ

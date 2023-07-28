@@ -4,19 +4,6 @@
 #
 #------------------------------------------------------------------------------
 
-PSP_EBOOT_ICON = data/ncdz.png
-
-ifdef LARGE_MEMORY
-PSP_EBOOT_TITLE = $(PBPNAME_STR) $(VERSION_STR) for PSP slim
-else
-ifdef KERNEL_MODE
-PSP_EBOOT_TITLE = $(PBPNAME_STR) $(VERSION_STR)
-else
-PSP_EBOOT_TITLE = $(PBPNAME_STR) $(VERSION_STR) for PSP
-endif
-endif
-
-
 #------------------------------------------------------------------------------
 # Object File Output Directtory
 #------------------------------------------------------------------------------

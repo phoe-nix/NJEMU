@@ -87,7 +87,7 @@ static int neogeo_init(void)
 #ifdef ADHOC
 	if (adhoc_enable)
 	{
-		sprintf(adhoc_matching, "%s_%s_%s", PBPNAME_STR, game_name, bios[neogeo_bios]);
+		sprintf(adhoc_matching, "%s_%s_%s", TARGET_STR, game_name, bios[neogeo_bios]);
 
 		if (adhocInit(adhoc_matching) == 0)
 		{

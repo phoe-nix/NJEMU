@@ -33,7 +33,7 @@ static int cps1_init(void)
 
 	if (adhoc_enable)
 	{
-		sprintf(adhoc_matching, "%s_%s", PBPNAME_STR, game_name);
+		sprintf(adhoc_matching, "%s_%s", TARGET_STR, game_name);
 
 		Loop = LOOP_EXEC;//
 

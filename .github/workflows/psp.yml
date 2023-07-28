@@ -47,5 +47,4 @@ jobs:
       with:
         name: NJEMU-${{ steps.slug.outputs.sha8 }}-${{ matrix.psp_mode }}-${{ matrix.emulator }}
         path: |
-          SLIM
-          3XX
+          *.PBP
