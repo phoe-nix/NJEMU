@@ -702,7 +702,7 @@ void update_inputport(void)
 		{
 			while (adhoc_update && Loop == LOOP_EXEC)
 			{
-				sceKernelDelayThread(1);
+				usleep(1);
 			}
 
 			neogeo_port_value[0] = send_data.port_value[0] & recv_data.port_value[0];
@@ -756,7 +756,7 @@ void update_inputport(void)
 			send_data.loop_flag = Loop;
 			send_data.frame     = adhoc_frame++;
 
-			sceKernelDelayThread(100);
+			usleep(100);
 
 			adhoc_update = 1;
 		}

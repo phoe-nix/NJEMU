@@ -52,7 +52,7 @@ static const char *bios[] =
 
 static int neogeo_init(void)
 {
-	SceUID fd;
+	int32_t fd;
 	char path[MAX_PATH];
 
 #ifdef ADHOC
@@ -60,17 +60,17 @@ static int neogeo_init(void)
 #endif
 	{
 		sprintf(path, "%smemcard/%s.bin", launchDir, game_name);
-		if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
+		if ((fd = open(path, O_RDONLY, 0777)) >= 0)
 		{
-			sceIoRead(fd, neogeo_memcard, 0x800);
-			sceIoClose(fd);
+			read(fd, neogeo_memcard, 0x800);
+			close(fd);
 		}
 
 		sprintf(path, "%snvram/%s.nv", launchDir, game_name);
-		if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
+		if ((fd = open(path, O_RDONLY, 0777)) >= 0)
 		{
-			sceIoRead(fd, neogeo_sram16, 0x2000);
-			sceIoClose(fd);
+			read(fd, neogeo_sram16, 0x2000);
+			close(fd);
 			swab(neogeo_sram16, neogeo_sram16, 0x2000);
 		}
 	}
@@ -148,7 +148,7 @@ static void neogeo_reset(void)
 
 static void neogeo_exit(void)
 {
-	SceUID fd;
+	int32_t fd;
 	char path[MAX_PATH];
 
 	video_set_mode(32);
@@ -166,18 +166,18 @@ static void neogeo_exit(void)
 #endif
 	{
 		sprintf(path, "%smemcard/%s.bin", launchDir, game_name);
-		if ((fd = sceIoOpen(path, PSP_O_WRONLY|PSP_O_CREAT, 0777)) >= 0)
+		if ((fd = open(path, O_WRONLY|O_CREAT, 0777)) >= 0)
 		{
-			sceIoWrite(fd, neogeo_memcard, 0x800);
-			sceIoClose(fd);
+			write(fd, neogeo_memcard, 0x800);
+			close(fd);
 		}
 
 		sprintf(path, "%snvram/%s.nv", launchDir, game_name);
-		if ((fd = sceIoOpen(path, PSP_O_WRONLY|PSP_O_CREAT, 0777)) >= 0)
+		if ((fd = open(path, O_WRONLY|O_CREAT, 0777)) >= 0)
 		{
 			swab(neogeo_sram16, neogeo_sram16, 0x2000);
-			sceIoWrite(fd, neogeo_sram16, 0x2000);
-			sceIoClose(fd);
+			write(fd, neogeo_sram16, 0x2000);
+			close(fd);
 		}
 
 
@@ -256,7 +256,7 @@ static void neogeo_run(void)
 
 				do
 				{
-					sceKernelDelayThread(5000000);
+					usleep(5000000);
 				} while (Sleep);
 
 				cache_sleep(0);

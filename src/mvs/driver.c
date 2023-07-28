@@ -272,17 +272,18 @@ void neogeo_driver_reset(void)
 	else
 #endif
 	{
-		pspTime today;
 		int y, m, d;
 
-		sceRtcGetCurrentClockLocalTime(&today);
+		time_t now = time(NULL);
+   		struct tm *today = localtime(&now);
 
-		pd4990a.seconds = ((today.seconds / 10) << 4) + (today.seconds % 10);
-		pd4990a.minutes = ((today.minutes / 10) << 4) + (today.minutes % 10);
-		pd4990a.hours   = ((today.hour    / 10) << 4) + (today.hour    % 10);
-		pd4990a.days    = ((today.day     / 10) << 4) + (today.day     % 10);
-		pd4990a.month   = today.month;
-		pd4990a.year    = (((today.year % 100) / 10) << 4) + (today.year % 10);
+
+		pd4990a.seconds = today->tm_sec;
+		pd4990a.minutes = today->tm_min;
+		pd4990a.hours   = today->tm_hour;
+		pd4990a.days    = today->tm_mday;
+		pd4990a.month   = today->tm_mon;
+		pd4990a.year    = today->year % 100;
 
 		y = today.year;
 		m = today.month;
