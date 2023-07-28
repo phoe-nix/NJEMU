@@ -17,8 +17,8 @@ int adhoc_enable;
 int adhoc_server;
 char adhoc_matching[32];
 
-ADHOC_DATA ALIGN_PSPDATA send_data;
-ADHOC_DATA ALIGN_PSPDATA recv_data;
+ADHOC_DATA ALIGN16_DATA send_data;
+ADHOC_DATA ALIGN16_DATA recv_data;
 UINT32 adhoc_frame;
 UINT8 adhoc_paused;
 volatile int adhoc_update;

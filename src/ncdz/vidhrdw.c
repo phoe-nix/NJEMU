@@ -22,7 +22,7 @@ UINT16 ALIGN_DATA palettes[2][0x2000 / 2];
 UINT32 palette_bank;
 
 UINT16 *video_palette;
-UINT16 ALIGN_PSPDATA video_palettebank[2][0x2000 / 2];
+UINT16 ALIGN16_DATA video_palettebank[2][0x2000 / 2];
 UINT16 ALIGN_DATA video_clut16[0x8000];
 
 UINT8 fix_pen_usage[0x20000 / 32];

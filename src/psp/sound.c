@@ -27,7 +27,7 @@ static volatile int sound_active;
 static SceUID sound_thread;
 static int sound_volume;
 static int sound_enable;
-static INT16 ALIGN_PSPDATA sound_buffer[2][SOUND_BUFFER_SIZE];
+static INT16 ALIGN16_DATA sound_buffer[2][SOUND_BUFFER_SIZE];
 
 static struct sound_t sound_info;
 

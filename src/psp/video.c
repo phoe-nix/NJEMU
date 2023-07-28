@@ -29,7 +29,7 @@ static int pixel_format;
 	グローバル変数/構造体
 ******************************************************************************/
 
-UINT8 ALIGN_PSPDATA gulist[GULIST_SIZE];
+UINT8 ALIGN16_DATA gulist[GULIST_SIZE];
 #if VIDEO_32BPP
 int video_mode = 0;
 #endif

@@ -17,7 +17,7 @@
 #define NCDZ	3
 #endif
 
-#define ALIGN_PSPDATA			__attribute__((aligned(16)))
+#define ALIGN16_DATA			__attribute__((aligned(16)))
 #define ALIGN_DATA				__attribute__((aligned(4)))
 #define MEM_ALIGN				4
 
