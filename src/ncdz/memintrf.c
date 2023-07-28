@@ -6,8 +6,9 @@
 
 ******************************************************************************/
 
-#include "ncdz.h"
+#include <fcntl.h>
 #include <zlib.h>
+#include "ncdz.h"
 
 #define M68K_AMASK 0x00ffffff
 #define Z80_AMASK 0x0000ffff
@@ -247,18 +248,18 @@ static int build_zoom_tables(void)
 
 static int load_bios(void)
 {
-	SceUID fd;
+	int32_t fd;
 	const char *bios_name = "neocd.bin";
 	const char *lorom_name = "000-lo.lo";
 	char path[MAX_PATH];
 
 	sprintf(path, "%s%s", launchDir, bios_name);
 
-	if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
+	if ((fd = open(path, O_RDONLY, 0777)) >= 0)
 	{
 		msg_printf(TEXT(LOADING), bios_name);
-		sceIoRead(fd, memory_region_user1, 0x80000);
-		sceIoClose(fd);
+		read(fd, memory_region_user1, 0x80000);
+		close(fd);
 
 		if (crc32(0, memory_region_user1, 0x80000) == 0xdf9de490)
 		{
@@ -287,11 +288,11 @@ static int load_bios(void)
 
 			sprintf(path, "%s%s", launchDir, lorom_name);
 
-			if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
+			if ((fd = open(path, O_RDONLY, 0777)) >= 0)
 			{
 				msg_printf(TEXT(LOADING), lorom_name);
-				sceIoRead(fd, memory_region_gfx3, 0x20000);
-				sceIoClose(fd);
+				read(fd, memory_region_gfx3, 0x20000);
+				close(fd);
 
 				if (crc32(0, memory_region_gfx3, 0x20000) == 0x5a86cff2)
 				{
@@ -378,15 +379,15 @@ int memory_init(void)
 	set_cpu_clock(psp_cpuclock);
 
 	{
-		SceUID fd;
+		uint32_t fd;
 		char path[MAX_PATH];
 
 		sprintf(path, "%s%s", launchDir, "backup.bin");
 
-		if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
+		if ((fd = open(path, O_RDONLY, 0777)) >= 0)
 		{
-			sceIoRead(fd, neogeo_memcard, 0x2000);
-			sceIoClose(fd);
+			read(fd, neogeo_memcard, 0x2000);
+			close(fd);
 		}
 	}
 
@@ -400,15 +401,15 @@ int memory_init(void)
 
 void memory_shutdown(void)
 {
-	SceUID fd;
+	int32_t fd;
 	char path[MAX_PATH];
 
 	sprintf(path, "%s%s", launchDir, "backup.bin");
 
-	if ((fd = sceIoOpen(path, PSP_O_WRONLY|PSP_O_CREAT, 0777)) >= 0)
+	if ((fd = open(path, O_WRONLY|O_CREAT, 0777)) >= 0)
 	{
-		sceIoWrite(fd, neogeo_memcard, 0x2000);
-		sceIoClose(fd);
+		write(fd, neogeo_memcard, 0x2000);
+		close(fd);
 	}
 
 	if (memory_region_user2)  free(memory_region_user2);

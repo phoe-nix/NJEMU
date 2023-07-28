@@ -233,7 +233,7 @@ static void neogeo_cdda_command(int command, int track)
 				{
 					do
 					{
-						sceKernelDelayThread(10);
+						usleep(10);
 					} while (!cdda_command_ack);
 				}
 			}

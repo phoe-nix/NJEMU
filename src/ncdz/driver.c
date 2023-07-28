@@ -136,7 +136,7 @@ int neogeo_check_game(void)
 
 		if ((fp = fopen(path, "r")) == NULL)
 		{
-			sceIoRemove(path);
+			remove(path);
 			return 0;
 		}
 
@@ -167,7 +167,7 @@ int neogeo_check_game(void)
 		}
 		fclose(fp);
 
-		sceIoRemove(path);
+		remove(path);
 
 		if (!found) return 0;
 

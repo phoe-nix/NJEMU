@@ -225,7 +225,7 @@ static void neogeo_run(void)
 			{
 				do
 				{
-					sceKernelDelayThread(5000000);
+					usleep(5000000);
 				} while (Sleep);
 
 				autoframeskip_reset();
