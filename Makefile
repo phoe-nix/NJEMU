@@ -152,6 +152,7 @@ FONTOBJS = \
 
 OSOBJS = \
 	$(OS)/$(OS).o \
+	$(OS)/cpuclock.o \
 	$(OS)/config.o \
 	$(OS)/filer.o \
 	$(OS)/input.o \

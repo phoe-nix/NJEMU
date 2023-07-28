@@ -50,7 +50,7 @@ static int adhoc_update_inputport(SceSize args, void *argp)
 	{
 		while (!adhoc_update && adhoc_active)
 		{
-			sceKernelDelayThread(1);
+			usleep(1);
 		}
 
 		if (adhoc_server)
@@ -113,7 +113,7 @@ static int adhoc_update_inputport(SceSize args, void *argp)
 
 		adhoc_update = 0;
 
-		sceKernelDelayThread(100);
+		usleep(100);
 	}
 
 	sceKernelExitThread(0);
@@ -224,7 +224,7 @@ void adhoc_pause(void)
 		{
 			while (adhoc_update)
 			{
-				sceKernelDelayThread(1);
+				usleep(1);
 			}
 
 			if (control)
@@ -284,7 +284,7 @@ void adhoc_pause(void)
 			frame++;
 #endif
 
-			sceKernelDelayThread(100);
+			usleep(100);
 
 			adhoc_update = 1;
 		}

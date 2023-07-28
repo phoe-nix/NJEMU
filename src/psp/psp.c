@@ -12,6 +12,7 @@
 
 #include "SystemButtons.h"
 #include "psp.h"
+#include "common/cpuclock.h"
 
 
 #ifdef KERNEL_MODE
@@ -40,21 +41,6 @@ int njemu_debug;
 /******************************************************************************
 	¥°¥í©`¥Ð¥ëévÊý
 ******************************************************************************/
-
-/*------------------------------------------------------
-	CPU¥¯¥í¥Ã¥¯ÔO¶¨
-------------------------------------------------------*/
-
-void set_cpu_clock(int value)
-{
-	switch (value)
-	{
-	case PSPCLOCK_266: scePowerSetClockFrequency(266, 266, 133); break;
-	case PSPCLOCK_300: scePowerSetClockFrequency(300, 300, 150); break;
-	case PSPCLOCK_333: scePowerSetClockFrequency(333, 333, 166); break;
-	default: scePowerSetClockFrequency(222, 222, 111); break;
-	}
-}
 
 
 /******************************************************************************

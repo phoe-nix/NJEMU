@@ -89,6 +89,4 @@ extern int devkit_version;
 extern int systembuttons_available;
 extern int njemu_debug;
 
-void set_cpu_clock(int value);
-
 #endif /* PSP_MAIN_H */

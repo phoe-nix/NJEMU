@@ -529,7 +529,7 @@ void commandlist(int flag)
 #endif
 		sound_thread_enable(0);
 		video_set_mode(32);
-		set_cpu_clock(PSPCLOCK_222);
+		set_lowest_cpu_clock();
 	}
 
 	pad_wait_clear();
@@ -1008,10 +1008,10 @@ int commandlist_size_reduction(void)
 	// 退避ファイル名を作成
 	sprintf(path2, "%scommand.org", launchDir);
 
-	sceIoRemove(path2);
+	remove(path2);
 
 	// リネームして退避 (退避ファイル名: command.org)
-	if (sceIoRename(path, path2) < 0)
+	if (rename(path, path2) < 0)
 	{
 		msg_printf(TEXT(COULD_NOT_RENAME_FILE));
 		goto error;

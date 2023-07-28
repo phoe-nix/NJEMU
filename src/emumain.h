@@ -15,6 +15,7 @@
 #include "zip/zfile.h"
 #include "common/loadrom.h"
 #include "common/state.h"
+#include "common/cpuclock.h"
 #ifdef ADHOC
 #include "common/adhoc.h"
 #endif

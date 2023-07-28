@@ -79,7 +79,7 @@ static cache_t *pcm_head;
 static cache_t *pcm_tail;
 
 static UINT16 ALIGN_DATA pcm_blocks[MAX_PCM_BLOCKS];
-static SceUID pcm_fd;
+static int32_t pcm_fd;
 #endif
 #else
 static int cache_type;
@@ -111,8 +111,8 @@ UINT8 *pcm_cache_read(UINT16 new_block)
 		p->block = new_block;
 		pcm_blocks[new_block] = p->idx;
 
-		sceIoLseek(pcm_fd, new_block << BLOCK_SHIFT, PSP_SEEK_SET);
-		sceIoRead(pcm_fd, &memory_region_sound1[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
+		lseek(pcm_fd, new_block << BLOCK_SHIFT, SEEK_SET);
+		read(pcm_fd, &memory_region_sound1[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
 	}
 	else p = &pcm_data[idx];
 
@@ -206,8 +206,8 @@ static int fill_cache(void)
 		p->block = block;
 		blocks[block] = p->idx;
 
-		sceIoLseek(cache_fd, block << BLOCK_SHIFT, PSP_SEEK_SET);
-		sceIoRead(cache_fd, &GFX_MEMORY[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
+		lseek(cache_fd, block << BLOCK_SHIFT, SEEK_SET);
+		read(cache_fd, &GFX_MEMORY[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
 
 		head = p->next;
 		head->prev = NULL;
@@ -234,8 +234,8 @@ static int fill_cache(void)
 			p->block = block;
 			pcm_blocks[block] = p->idx;
 
-			sceIoLseek(pcm_fd, block << BLOCK_SHIFT, PSP_SEEK_SET);
-			sceIoRead(pcm_fd, &memory_region_sound1[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
+			lseek(pcm_fd, block << BLOCK_SHIFT, SEEK_SET);
+			read(pcm_fd, &memory_region_sound1[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
 
 			pcm_head = p->next;
 			pcm_head->prev = NULL;
@@ -260,8 +260,8 @@ static int fill_cache(void)
 				p->block = block;
 				blocks[block] = p->idx;
 
-				sceIoLseek(cache_fd, block_offset[block], PSP_SEEK_SET);
-				sceIoRead(cache_fd, &GFX_MEMORY[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
+				lseek(cache_fd, block_offset[block], SEEK_SET);
+				read(cache_fd, &GFX_MEMORY[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
 
 				head = p->next;
 				head->prev = NULL;
@@ -368,11 +368,11 @@ static UINT32 read_cache_rawfile(UINT32 offset)
 		blocks[new_block] = p->idx;
 
 #if (EMU_SYSTEM == MVS)
-		sceIoLseek(cache_fd, new_block << BLOCK_SHIFT, PSP_SEEK_SET);
+		lseek(cache_fd, new_block << BLOCK_SHIFT, SEEK_SET);
 #else
-		sceIoLseek(cache_fd, block_offset[new_block], PSP_SEEK_SET);
+		lseek(cache_fd, block_offset[new_block], SEEK_SET);
 #endif
-		sceIoRead(cache_fd, &GFX_MEMORY[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
+		read(cache_fd, &GFX_MEMORY[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
 	}
 	else p = &cache_data[idx];
 
@@ -551,7 +551,7 @@ int cache_start(void)
 	UINT32 size = 0;
 	char version_str[8];
 #if (EMU_SYSTEM == MVS)
-	SceUID fd;
+	int32_t fd;
 #endif
 
 	zip_close();
@@ -563,14 +563,14 @@ int cache_start(void)
 	found = 0;
 	if ((fd = cachefile_open(CACHE_INFO)) >= 0)
 	{
-		sceIoRead(fd, version_str, 8);
+		read(fd, version_str, 8);
 
 		if (strcmp(version_str, "MVS_" CACHE_VERSION) == 0)
 		{
-			sceIoRead(fd, gfx_pen_usage[2], memory_length_gfx3 / 128);
+			read(fd, gfx_pen_usage[2], memory_length_gfx3 / 128);
 			found = 1;
 		}
-		sceIoClose(fd);
+		close(fd);
 
 		if (!found)
 		{
@@ -602,7 +602,7 @@ int cache_start(void)
 		{
 			if (pcm_fd >= 0)
 			{
-				sceIoClose(pcm_fd);
+				close(pcm_fd);
 				pcm_fd = -1;
 			}
 			memory_length_sound1 = 0;
@@ -621,10 +621,10 @@ int cache_start(void)
 	cache_type = CACHE_RAWFILE;
 
 	sprintf(spr_cache_name, "%s/%s.cache", cache_dir, game_name);
-	if ((cache_fd = sceIoOpen(spr_cache_name, PSP_O_RDONLY, 0777)) < 0)
+	if ((cache_fd = open(spr_cache_name, O_RDONLY, 0777)) < 0)
 	{
 		sprintf(spr_cache_name, "%s/%s.cache", cache_dir, cache_parent_name);
-		if ((cache_fd = sceIoOpen(spr_cache_name, PSP_O_RDONLY, 0777)) < 0)
+		if ((cache_fd = open(spr_cache_name, O_RDONLY, 0777)) < 0)
 		{
 			found = 0;
 		}
@@ -656,18 +656,18 @@ int cache_start(void)
 
 	if (cache_type == CACHE_RAWFILE)
 	{
-		sceIoRead(cache_fd, version_str, 8);
+		read(cache_fd, version_str, 8);
 
 		if (strcmp(version_str, "CPS2" CACHE_VERSION) == 0)
 		{
-			sceIoRead(cache_fd, gfx_pen_usage[TILE08], gfx_total_elements[TILE08]);
-			sceIoRead(cache_fd, gfx_pen_usage[TILE16], gfx_total_elements[TILE16]);
-			sceIoRead(cache_fd, gfx_pen_usage[TILE32], gfx_total_elements[TILE32]);
-			sceIoRead(cache_fd, block_offset, MAX_CACHE_BLOCKS * sizeof(UINT32));
+			read(cache_fd, gfx_pen_usage[TILE08], gfx_total_elements[TILE08]);
+			read(cache_fd, gfx_pen_usage[TILE16], gfx_total_elements[TILE16]);
+			read(cache_fd, gfx_pen_usage[TILE32], gfx_total_elements[TILE32]);
+			read(cache_fd, block_offset, MAX_CACHE_BLOCKS * sizeof(UINT32));
 		}
 		else
 		{
-			sceIoClose(cache_fd);
+			close(cache_fd);
 			found = 0;
 		}
 	}
@@ -830,14 +830,14 @@ void cache_shutdown(void)
 	{
 		if (pcm_fd != -1)
 		{
-			sceIoClose(pcm_fd);
+			close(pcm_fd);
 		}
 		pcm_cache_enable = 0;
 	}
 #endif
 	if (cache_fd != -1)
 	{
-		sceIoClose(cache_fd);
+		close(cache_fd);
 		cache_fd = -1;
 	}
 #else
@@ -845,7 +845,7 @@ void cache_shutdown(void)
 	{
 		if (cache_fd != -1)
 		{
-			sceIoClose(cache_fd);
+			close(cache_fd);
 			cache_fd = -1;
 		}
 	}
@@ -869,13 +869,13 @@ void cache_sleep(int flag)
 		if (flag)
 		{
 #if (EMU_SYSTEM == MVS)
-			sceIoClose(cache_fd);
+			close(cache_fd);
 #ifndef LARGE_MEMORY
-			if (pcm_cache_enable) sceIoClose(pcm_fd);
+			if (pcm_cache_enable) close(pcm_fd);
 #endif
 #else
 			if (cache_type == CACHE_RAWFILE)
-				sceIoClose(cache_fd);
+				close(cache_fd);
 			else
 				zip_close();
 #endif
@@ -890,7 +890,7 @@ void cache_sleep(int flag)
 #endif
 #else
 			if (cache_type == CACHE_RAWFILE)
-				cache_fd = sceIoOpen(spr_cache_name, PSP_O_RDONLY, 0777);
+				cache_fd = open(spr_cache_name, O_RDONLY, 0777);
 			else
 				zip_open(spr_cache_name);
 #endif
@@ -920,7 +920,7 @@ UINT8 *cache_alloc_state_buffer(INT32 size)
 	else
 #endif
 	{
-		SceUID fd;
+		int32_t fd;
 		char path[MAX_PATH];
 
 #ifdef LARGE_MEMORY
@@ -929,10 +929,10 @@ UINT8 *cache_alloc_state_buffer(INT32 size)
 
 		sprintf(path, "%sstate/cache.tmp", launchDir);
 
-		if ((fd = sceIoOpen(path, PSP_O_WRONLY|PSP_O_CREAT, 0777)) >= 0)
+		if ((fd = open(path, O_WRONLY|O_CREAT, 0777)) >= 0)
 		{
-			sceIoWrite(fd, GFX_MEMORY, size);
-			sceIoClose(fd);
+			write(fd, GFX_MEMORY, size);
+			close(fd);
 			return GFX_MEMORY;
 		}
 		return NULL;
@@ -949,17 +949,17 @@ void cache_free_state_buffer(INT32 size)
 	if (!cache_alloc_type)
 #endif
 	{
-		SceUID fd;
+		uint32_t fd;
 		char path[MAX_PATH];
 
 		sprintf(path, "%sstate/cache.tmp", launchDir);
 
-		if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
+		if ((fd = open(path, O_RDONLY, 0777)) >= 0)
 		{
-			sceIoRead(fd, GFX_MEMORY, size);
-			sceIoClose(fd);
+			read(fd, GFX_MEMORY, size);
+			close(fd);
 		}
-		sceIoRemove(path);
+		remove(path);
 	}
 
 #ifdef LARGE_MEMORY
