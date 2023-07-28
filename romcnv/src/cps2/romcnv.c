@@ -34,18 +34,18 @@ enum
 	¥í©`¥«¥ë‰äÊý
 ******************************************************************************/
 
-static UINT8  *memory_region_gfx1;
-static UINT32 memory_length_gfx1;
+static uint8_t  *memory_region_gfx1;
+static uint32_t memory_length_gfx1;
 
-static UINT32 gfx_total_elements[TILE_TYPE_MAX];
-static UINT8  *gfx_pen_usage[TILE_TYPE_MAX];
+static uint32_t gfx_total_elements[TILE_TYPE_MAX];
+static uint8_t  *gfx_pen_usage[TILE_TYPE_MAX];
 
 static struct rom_t gfx1rom[MAX_GFX1ROM];
 static int num_gfx1rom;
 
-static UINT8 block_empty[0x200];
+static uint8_t block_empty[0x200];
 
-static UINT8 null_tile[128] =
+static uint8_t null_tile[128] =
 {
 	0x67,0x66,0x66,0x66,0x66,0x66,0x66,0x56,
 	0x56,0x55,0x55,0x55,0x55,0x55,0x55,0x45,
@@ -65,7 +65,7 @@ static UINT8 null_tile[128] =
 	0x45,0x44,0x44,0x44,0x44,0x44,0x44,0x34
 };
 
-static UINT8 blank_tile[128] =
+static uint8_t blank_tile[128] =
 {
 	0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,
 	0xff,0x11,0x11,0x11,0x11,0x11,0x11,0xff,
@@ -89,17 +89,17 @@ static UINT8 blank_tile[128] =
 struct cacheinfo_t
 {
 	const char *name;
-	UINT32  zip;
-	UINT32  object_start;
-	UINT32  object_end;
-	UINT32  scroll1_start;
-	UINT32  scroll1_end;
-	UINT32  scroll2_start;
-	UINT32  scroll2_end;
-	UINT32  scroll3_start;
-	UINT32  scroll3_end;
-	UINT32  object2_start;
-	UINT32  object2_end;
+	uint32_t  zip;
+	uint32_t  object_start;
+	uint32_t  object_end;
+	uint32_t  scroll1_start;
+	uint32_t  scroll1_end;
+	uint32_t  scroll2_start;
+	uint32_t  scroll2_end;
+	uint32_t  scroll3_start;
+	uint32_t  scroll3_end;
+	uint32_t  object2_start;
+	uint32_t  object2_end;
 };
 
 struct cacheinfo_t *cacheinfo;
@@ -156,10 +156,10 @@ struct cacheinfo_t CPS2_cacheinfo[] =
 	CPS2ÓÃévÊý
 ******************************************************************************/
 
-static void unshuffle(UINT64 *buf, int len)
+static void unshuffle(uint64_t *buf, int len)
 {
 	int i;
-	UINT64 t;
+	uint64_t t;
 
 	if (len == 2) return;
 
@@ -180,20 +180,20 @@ static void unshuffle(UINT64 *buf, int len)
 static void cps2_gfx_decode(void)
 {
 	int i, j;
-	UINT8 *gfx = memory_region_gfx1;
+	uint8_t *gfx = memory_region_gfx1;
 
 	for (i = 0; i < memory_length_gfx1; i += 0x200000)
-		unshuffle((UINT64 *)&memory_region_gfx1[i], 0x200000 / 8);
+		unshuffle((uint64_t *)&memory_region_gfx1[i], 0x200000 / 8);
 
 	for (i = 0; i < memory_length_gfx1 / 4; i++)
 	{
-		UINT32 src = gfx[4 * i] + (gfx[4 * i + 1] << 8) + (gfx[4 * i + 2] << 16) + (gfx[4 * i + 3] << 24);
-		UINT32 dw = 0, data;
+		uint32_t src = gfx[4 * i] + (gfx[4 * i + 1] << 8) + (gfx[4 * i + 2] << 16) + (gfx[4 * i + 3] << 24);
+		uint32_t dw = 0, data;
 
 		for (j = 0; j < 8; j++)
 		{
 			int n = 0;
-			UINT32 mask = (0x80808080 >> j) & src;
+			uint32_t mask = (0x80808080 >> j) & src;
 
 			if (mask & 0x000000ff) n |= 1;
 			if (mask & 0x0000ff00) n |= 2;
@@ -219,7 +219,7 @@ static void cps2_gfx_decode(void)
 static void clear_empty_blocks(void)
 {
 	int i, j, size;
-	UINT8 temp[512];
+	uint8_t temp[512];
 	int blocks_available = 0;
 
 	memset(block_empty, 0, 0x200);
@@ -476,7 +476,7 @@ static void clear_empty_blocks(void)
 	for (i = 0; i < memory_length_gfx1 >> 16; i++)
 	{
 		int empty = 1;
-		UINT32 offset = i << 16;
+		uint32_t offset = i << 16;
 
 		for (j = 0; j < 0x10000; j++)
 		{
@@ -515,17 +515,17 @@ static void clear_empty_blocks(void)
 static int calc_pen_usage(void)
 {
 	int i, j, k, size;
-	UINT32 *tile, data;
-	UINT32 s0 = cacheinfo->object_start;
-	UINT32 e0 = cacheinfo->object_end;
-	UINT32 s1 = cacheinfo->scroll1_start;
-	UINT32 e1 = cacheinfo->scroll1_end;
-	UINT32 s2 = cacheinfo->scroll2_start;
-	UINT32 e2 = cacheinfo->scroll2_end;
-	UINT32 s3 = cacheinfo->scroll3_start;
-	UINT32 e3 = cacheinfo->scroll3_end;
-	UINT32 s4 = cacheinfo->object2_start;
-	UINT32 e4 = cacheinfo->object2_end;
+	uint32_t *tile, data;
+	uint32_t s0 = cacheinfo->object_start;
+	uint32_t e0 = cacheinfo->object_end;
+	uint32_t s1 = cacheinfo->scroll1_start;
+	uint32_t e1 = cacheinfo->scroll1_end;
+	uint32_t s2 = cacheinfo->scroll2_start;
+	uint32_t e2 = cacheinfo->scroll2_end;
+	uint32_t s3 = cacheinfo->scroll3_start;
+	uint32_t e3 = cacheinfo->scroll3_end;
+	uint32_t s4 = cacheinfo->object2_start;
+	uint32_t e4 = cacheinfo->object2_end;
 
 	gfx_total_elements[TILE08] = (memory_length_gfx1 - 0x800000) >> 6;
 	gfx_total_elements[TILE16] = memory_length_gfx1 >> 7;
@@ -555,7 +555,7 @@ static int calc_pen_usage(void)
 	for (i = 0; i < gfx_total_elements[TILE08]; i++)
 	{
 		int count = 0;
-		UINT32 offset = (0x20000 + i) << 6;
+		uint32_t offset = (0x20000 + i) << 6;
 		int s5 = 0x000000;
 		int e5 = 0x000000;
 
@@ -567,7 +567,7 @@ static int calc_pen_usage(void)
 
 		if ((offset >= s1 && offset <= e1) && !(offset >= s5 && offset <= e5))
 		{
-			tile = (UINT32 *)&memory_region_gfx1[offset];
+			tile = (uint32_t *)&memory_region_gfx1[offset];
 
 			for (j = 0; j < 8; j++)
 			{
@@ -589,9 +589,9 @@ static int calc_pen_usage(void)
 
 	for (i = 0; i < gfx_total_elements[TILE16]; i++)
 	{
-		UINT32 s5 = 0;
-		UINT32 e5 = 0;
-		UINT32 offset = i << 7;
+		uint32_t s5 = 0;
+		uint32_t e5 = 0;
+		uint32_t offset = i << 7;
 
 		if (!strcmp(cacheinfo->name, "ssf2t"))
 		{
@@ -616,7 +616,7 @@ static int calc_pen_usage(void)
 		{
 			int count = 0;
 
-			tile = (UINT32 *)&memory_region_gfx1[offset];
+			tile = (uint32_t *)&memory_region_gfx1[offset];
 
 			for (j = 0; j < 2*16; j++)
 			{
@@ -638,7 +638,7 @@ static int calc_pen_usage(void)
 	for (i = 0; i < gfx_total_elements[TILE32]; i++)
 	{
 		int count  = 0;
-		UINT32 offset = (0x4000 + i) << 9;
+		uint32_t offset = (0x4000 + i) << 9;
 
 		if (!strcmp(cacheinfo->name, "ssf2t"))
 		{
@@ -658,7 +658,7 @@ static int calc_pen_usage(void)
 
 		if (offset >= s3 && offset <= e3)
 		{
-			tile = (UINT32 *)&memory_region_gfx1[offset];
+			tile = (uint32_t *)&memory_region_gfx1[offset];
 
 			for (j = 0; j < 4*32; j++)
 			{
@@ -970,7 +970,7 @@ static int create_raw_cache(char *game_name)
 	FILE *fp;
 	int i, offset;
 	char version[8];
-	UINT32 header_size, aligned_size, block[0x200];
+	uint32_t header_size, aligned_size, block[0x200];
 	char fname[MAX_PATH];
 
 	sprintf(version, "CPS2V%d%d\0", VERSION_MAJOR, VERSION_MINOR);
@@ -981,7 +981,7 @@ static int create_raw_cache(char *game_name)
 	header_size += gfx_total_elements[TILE08];
 	header_size += gfx_total_elements[TILE16];
 	header_size += gfx_total_elements[TILE32];
-	header_size += 0x200 * sizeof(UINT32);
+	header_size += 0x200 * sizeof(uint32_t);
 
 	aligned_size = (header_size + 0xffff) & ~0xffff;
 
@@ -1033,7 +1033,7 @@ static int create_raw_cache(char *game_name)
 	fwrite(gfx_pen_usage[TILE08], 1, gfx_total_elements[TILE08], fp);
 	fwrite(gfx_pen_usage[TILE16], 1, gfx_total_elements[TILE16], fp);
 	fwrite(gfx_pen_usage[TILE32], 1, gfx_total_elements[TILE32], fp);
-	fwrite(block, 1, 0x200 * sizeof(UINT32), fp);
+	fwrite(block, 1, 0x200 * sizeof(uint32_t), fp);
 
 	for (i = header_size; i < aligned_size; i++)
 		fputc(0, fp);
@@ -1067,7 +1067,7 @@ static void print_progress(int count, int total)
 static int create_zip_cache(char *game_name)
 {
 	int fd;
-	UINT32 block, res = 0, total = 0, count = 0;
+	uint32_t block, res = 0, total = 0, count = 0;
 	char version[8], fname[MAX_PATH], zipname[MAX_PATH];
 
 	sprintf(version, "CPS2V%d%d\0", VERSION_MAJOR, VERSION_MINOR);

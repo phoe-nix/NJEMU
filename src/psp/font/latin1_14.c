@@ -18,7 +18,7 @@
 	gryph data
 ------------------------------------------------------*/
 
-static const UINT8 ALIGN_DATA latin1_14[] = {
+static const uint8_t ALIGN_DATA latin1_14[] = {
 	0xc6,0x02,0xf8,0x02,0xc0,0x00,0x62,0x00,0x00,0x00,0x32,0x00,0x00,0x50,0xdb,0x05,
 	0x00,0xb0,0x14,0x07,0x00,0xe0,0x03,0x00,0x00,0xf0,0x03,0x00,0x20,0xf3,0x25,0x00,
 	0x50,0xfb,0x5b,0x00,0x00,0xf0,0x00,0x00,0x00,0xf1,0x00,0x00,0x00,0xc3,0x00,0x00,
@@ -301,7 +301,7 @@ static const int ALIGN_DATA latin1_14_pos[NUM_FONTS] = {
 
 };
 
-static const INT8 ALIGN_DATA latin1_14_width[NUM_FONTS] = {
+static const int8_t ALIGN_DATA latin1_14_width[NUM_FONTS] = {
 	-6,-6, 4, 8, 6, 6, 8, 8, 6, 8, 8, 6, 8,-6, 8,-6,
 	-6, 4, 2, 6, 6,-6, 6, 8, 8, 6, 6, 6, 8,-6, 6, 8,
 	-6, 4, 8, 8, 8, 6, 4, 6, 6, 8, 4, 8, 8, 8, 8, 8,
@@ -313,7 +313,7 @@ static const INT8 ALIGN_DATA latin1_14_width[NUM_FONTS] = {
 
 };
 
-static const INT8 ALIGN_DATA latin1_14_height[NUM_FONTS] = {
+static const int8_t ALIGN_DATA latin1_14_height[NUM_FONTS] = {
 	-13,-13, 4,14, 5, 2,13,13, 2,12,13,10,11,-13,13,-13,
 	-13, 5, 5, 5, 5,-13, 2, 2, 2, 4,11,10, 8,-13,11,14,
 	-13,11, 9,11, 6,12,14,10, 3, 8, 5,11, 4, 2, 8, 1,
@@ -325,7 +325,7 @@ static const INT8 ALIGN_DATA latin1_14_height[NUM_FONTS] = {
 
 };
 
-static const INT8 ALIGN_DATA latin1_14_skipx[NUM_FONTS] = {
+static const int8_t ALIGN_DATA latin1_14_skipx[NUM_FONTS] = {
 	 6, 6, 2, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 6, 0, 6,
 	 6, 2, 2, 1, 1, 6, 1, 0, 0, 0, 0, 0, 0, 6, 0, 0,
 	 6, 2, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0,
@@ -337,7 +337,7 @@ static const INT8 ALIGN_DATA latin1_14_skipx[NUM_FONTS] = {
 
 };
 
-static const INT8 ALIGN_DATA latin1_14_skipy[NUM_FONTS] = {
+static const int8_t ALIGN_DATA latin1_14_skipy[NUM_FONTS] = {
 	14,14,10, 0, 9, 6, 1, 1, 0, 1, 0, 2, 1,14, 0,14,
 	14, 0, 1, 0, 0,14, 6, 6, 0, 1, 2, 2, 4,14, 2, 0,
 	14, 2, 3, 1, 4, 1, 0, 2, 0, 3, 1, 1, 5, 6, 3, 0,
@@ -354,7 +354,7 @@ static const INT8 ALIGN_DATA latin1_14_skipy[NUM_FONTS] = {
 	functions
 ------------------------------------------------------*/
 
-int latin1_14_get_gryph(struct font_t *font, UINT16 code)
+int latin1_14_get_gryph(struct font_t *font, uint16_t code)
 {
 	if (code < NUM_FONTS)
 	{

@@ -19,8 +19,8 @@ char adhoc_matching[32];
 
 ADHOC_DATA ALIGN16_DATA send_data;
 ADHOC_DATA ALIGN16_DATA recv_data;
-UINT32 adhoc_frame;
-UINT8 adhoc_paused;
+uint32_t adhoc_frame;
+uint8_t adhoc_paused;
 volatile int adhoc_update;
 
 
@@ -196,7 +196,7 @@ void adhoc_reset_thread(void)
 void adhoc_pause(void)
 {
 	int control, sel = 0;
-	UINT32 buttons;
+	uint32_t buttons;
 	char buf[64];
 	RECT rect = { 140-8, 96-8, 340+8, 176+8 };
 #if !ADHOC_UPDATE_EVERY_FRAME

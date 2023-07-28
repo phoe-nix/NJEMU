@@ -166,7 +166,7 @@ static signed int ALIGN_DATA tl_tab[TL_TAB_LEN];
 #define ENV_QUIET		(TL_TAB_LEN>>3)
 
 /* sin waveform table in 'decibel' scale */
-static UINT32 ALIGN_DATA sin_tab[SIN_LEN];
+static uint32_t ALIGN_DATA sin_tab[SIN_LEN];
 
 /* sustain level table (3dB per step) */
 /* bit0, bit1, bit2, bit3, bit4, bit5, bit6 */
@@ -174,8 +174,8 @@ static UINT32 ALIGN_DATA sin_tab[SIN_LEN];
 /* 0.75, 1.5,  3,    6,    12,   24,   48   (dB)*/
 
 /* 0 - 15: 0, 3, 6, 9,12,15,18,21,24,27,30,33,36,39,42,93 (dB)*/
-#define SC(db) (UINT32) ( db * (4.0/ENV_STEP) )
-static const UINT32 ALIGN_DATA sl_table[16]={
+#define SC(db) (uint32_t) ( db * (4.0/ENV_STEP) )
+static const uint32_t ALIGN_DATA sl_table[16]={
  SC( 0),SC( 1),SC( 2),SC(3 ),SC(4 ),SC(5 ),SC(6 ),SC( 7),
  SC( 8),SC( 9),SC(10),SC(11),SC(12),SC(13),SC(14),SC(31)
 };
@@ -183,7 +183,7 @@ static const UINT32 ALIGN_DATA sl_table[16]={
 
 
 #define RATE_STEPS (8)
-static const UINT8 ALIGN_DATA eg_inc[19*RATE_STEPS]={
+static const uint8_t ALIGN_DATA eg_inc[19*RATE_STEPS]={
 
 /*cycle:0 1  2 3  4 5  6 7*/
 
@@ -216,7 +216,7 @@ static const UINT8 ALIGN_DATA eg_inc[19*RATE_STEPS]={
 #define O(a) (a*RATE_STEPS)
 
 /*note that there is no O(17) in this table - it's directly in the code */
-static const UINT8 ALIGN_DATA eg_rate_select[32+64+32]={	/* Envelope Generator rates (32 + 64 rates + 32 RKS) */
+static const uint8_t ALIGN_DATA eg_rate_select[32+64+32]={	/* Envelope Generator rates (32 + 64 rates + 32 RKS) */
 /* 32 infinite time rates */
 O(18),O(18),O(18),O(18),O(18),O(18),O(18),O(18),
 O(18),O(18),O(18),O(18),O(18),O(18),O(18),O(18),
@@ -263,7 +263,7 @@ O(16),O(16),O(16),O(16),O(16),O(16),O(16),O(16)
 /*mask  2047, 1023, 511, 255, 127, 63, 31, 15, 7,  3, 1,  0,  0,  0,  0,  0 */
 
 #define O(a) (a*1)
-static const UINT8 ALIGN_DATA eg_rate_shift[32+64+32]={	/* Envelope Generator counter shifts (32 + 64 rates + 32 RKS) */
+static const uint8_t ALIGN_DATA eg_rate_shift[32+64+32]={	/* Envelope Generator counter shifts (32 + 64 rates + 32 RKS) */
 /* 32 infinite time rates */
 O(0),O(0),O(0),O(0),O(0),O(0),O(0),O(0),
 O(0),O(0),O(0),O(0),O(0),O(0),O(0),O(0),
@@ -305,7 +305,7 @@ O( 0),O( 0),O( 0),O( 0),O( 0),O( 0),O( 0),O( 0)
 };
 #undef O
 
-static const UINT8 ALIGN_DATA dt_tab[4 * 32]={
+static const uint8_t ALIGN_DATA dt_tab[4 * 32]={
 /* this is YM2151 and YM2612 phase increment data (in 10.10 fixed point format)*/
 /* FD=0 */
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -324,12 +324,12 @@ static const UINT8 ALIGN_DATA dt_tab[4 * 32]={
 
 /* OPN key frequency number -> key code follow table */
 /* fnum higher 4bit -> keycode lower 2bit */
-static const UINT8 ALIGN_DATA opn_fktable[16] = {0,0,0,0,0,0,0,1,2,3,3,3,3,3,3,3};
+static const uint8_t ALIGN_DATA opn_fktable[16] = {0,0,0,0,0,0,0,1,2,3,3,3,3,3,3,3};
 
 
 /* 8 LFO speed parameters */
 /* each value represents number of samples that one LFO level will last for */
-static const UINT32 ALIGN_DATA lfo_samples_per_step[8] = {108, 77, 71, 67, 62, 44, 8, 5};
+static const uint32_t ALIGN_DATA lfo_samples_per_step[8] = {108, 77, 71, 67, 62, 44, 8, 5};
 
 
 
@@ -350,7 +350,7 @@ static const UINT32 ALIGN_DATA lfo_samples_per_step[8] = {108, 77, 71, 67, 62, 4
     1 for 5.9 dB
     0 for 11.8 dB
 */
-static const UINT8 lfo_ams_depth_shift[4] = {8, 3, 1, 0};
+static const uint8_t lfo_ams_depth_shift[4] = {8, 3, 1, 0};
 
 
 
@@ -374,7 +374,7 @@ static const UINT8 lfo_ams_depth_shift[4] = {8, 3, 1, 0};
    samples (32*432=13824; 32 because we store only a quarter of whole
             waveform in the table below)
 */
-static const UINT8 ALIGN_DATA lfo_pm_output[7*8][8]={ /* 7 bits meaningful (of F-NUMBER), 8 LFO output levels per one depth (out of 32), 8 LFO depths */
+static const uint8_t ALIGN_DATA lfo_pm_output[7*8][8]={ /* 7 bits meaningful (of F-NUMBER), 8 LFO output levels per one depth (out of 32), 8 LFO depths */
 /* FNUM BIT 4: 000 0001xxxx */
 /* DEPTH 0 */ {0,   0,   0,   0,   0,   0,   0,   0},
 /* DEPTH 1 */ {0,   0,   0,   0,   0,   0,   0,   0},
@@ -448,7 +448,7 @@ static const UINT8 ALIGN_DATA lfo_pm_output[7*8][8]={ /* 7 bits meaningful (of F
 };
 
 /* all 128 LFO PM waveforms */
-static INT32 ALIGN_DATA lfo_pm_table[128*8*32]; /* 128 combinations of 7 bits meaningful (of F-NUMBER), 8 LFO depths, 32 LFO output levels per one depth */
+static int32_t ALIGN_DATA lfo_pm_table[128*8*32]; /* 128 combinations of 7 bits meaningful (of F-NUMBER), 8 LFO depths, 32 LFO output levels per one depth */
 
 
 /*----------------------------------
@@ -497,42 +497,42 @@ static INT32 ALIGN_DATA lfo_pm_table[128*8*32]; /* 128 combinations of 7 bits me
 /* struct describing a single operator (SLOT) */
 typedef struct
 {
-	INT32 *DT;		/* detune          :dt_tab[DT] */
-	UINT8  KSR;		/* key scale rate  :3-KSR */
-	UINT32 ar;			/* attack rate  */
-	UINT32 d1r;		/* decay rate   */
-	UINT32 d2r;		/* sustain rate */
-	UINT32 rr;			/* release rate */
-	UINT8  ksr;		/* key scale rate  :kcode>>(3-KSR) */
-	UINT32 mul;		/* multiple        :ML_TABLE[ML] */
+	int32_t *DT;		/* detune          :dt_tab[DT] */
+	uint8_t  KSR;		/* key scale rate  :3-KSR */
+	uint32_t ar;			/* attack rate  */
+	uint32_t d1r;		/* decay rate   */
+	uint32_t d2r;		/* sustain rate */
+	uint32_t rr;			/* release rate */
+	uint8_t  ksr;		/* key scale rate  :kcode>>(3-KSR) */
+	uint32_t mul;		/* multiple        :ML_TABLE[ML] */
 
 	/* Phase Generator */
-	UINT32 phase;		/* phase counter */
-	UINT32 Incr;		/* phase step */
+	uint32_t phase;		/* phase counter */
+	uint32_t Incr;		/* phase step */
 
 	/* Envelope Generator */
-	UINT8  state;		/* phase type */
-	UINT32 tl;			/* total level: TL << 3 */
-	INT32 volume;		/* envelope counter */
-	UINT32 sl;			/* sustain level:sl_table[SL] */
-	UINT32 vol_out;	/* current output from EG circuit (without AM from LFO) */
+	uint8_t  state;		/* phase type */
+	uint32_t tl;			/* total level: TL << 3 */
+	int32_t volume;		/* envelope counter */
+	uint32_t sl;			/* sustain level:sl_table[SL] */
+	uint32_t vol_out;	/* current output from EG circuit (without AM from LFO) */
 
-	UINT8  eg_sh_ar;	/*  (attack state) */
-	UINT8  eg_sel_ar;	/*  (attack state) */
-	UINT8  eg_sh_d1r;	/*  (decay state) */
-	UINT8  eg_sel_d1r;	/*  (decay state) */
-	UINT8  eg_sh_d2r;	/*  (sustain state) */
-	UINT8  eg_sel_d2r;	/*  (sustain state) */
-	UINT8  eg_sh_rr;	/*  (release state) */
-	UINT8  eg_sel_rr;	/*  (release state) */
+	uint8_t  eg_sh_ar;	/*  (attack state) */
+	uint8_t  eg_sel_ar;	/*  (attack state) */
+	uint8_t  eg_sh_d1r;	/*  (decay state) */
+	uint8_t  eg_sel_d1r;	/*  (decay state) */
+	uint8_t  eg_sh_d2r;	/*  (sustain state) */
+	uint8_t  eg_sel_d2r;	/*  (sustain state) */
+	uint8_t  eg_sh_rr;	/*  (release state) */
+	uint8_t  eg_sel_rr;	/*  (release state) */
 
-	UINT8  ssg;		/* SSG-EG waveform */
-	UINT8  ssgn;		/* SSG-EG negated output */
+	uint8_t  ssg;		/* SSG-EG waveform */
+	uint8_t  ssgn;		/* SSG-EG negated output */
 
-	UINT32 key;		/* 0=last key was KEY OFF, 1=KEY ON */
+	uint32_t key;		/* 0=last key was KEY OFF, 1=KEY ON */
 
 	/* LFO */
-	UINT32 AMmask;		/* AM enable flag */
+	uint32_t AMmask;		/* AM enable flag */
 
 } FM_SLOT;
 
@@ -540,24 +540,24 @@ typedef struct
 {
 	FM_SLOT SLOT[4];	/* four SLOTs (operators) */
 
-	UINT8  ALGO;			/* algorithm */
-	UINT8  FB;				/* feedback shift */
-	INT32 op1_out[2];		/* op1 output for feedback */
+	uint8_t  ALGO;			/* algorithm */
+	uint8_t  FB;				/* feedback shift */
+	int32_t op1_out[2];		/* op1 output for feedback */
 
-	INT32 *connect1;		/* SLOT1 output pointer */
-	INT32 *connect3;		/* SLOT3 output pointer */
-	INT32 *connect2;		/* SLOT2 output pointer */
-	INT32 *connect4;		/* SLOT4 output pointer */
+	int32_t *connect1;		/* SLOT1 output pointer */
+	int32_t *connect3;		/* SLOT3 output pointer */
+	int32_t *connect2;		/* SLOT2 output pointer */
+	int32_t *connect4;		/* SLOT4 output pointer */
 
-	INT32 *mem_connect;	/* where to put the delayed sample (MEM) */
-	INT32 mem_value;		/* delayed sample (MEM) value */
+	int32_t *mem_connect;	/* where to put the delayed sample (MEM) */
+	int32_t mem_value;		/* delayed sample (MEM) value */
 
-	INT32 pms;			/* channel PMS */
-	UINT8  ams;			/* channel AMS */
+	int32_t pms;			/* channel PMS */
+	uint8_t  ams;			/* channel AMS */
 
-	UINT32 fc;				/* fnum,blk:adjusted to sample rate */
-	UINT8  kcode;			/* key code:                        */
-	UINT32 block_fnum;		/* current blk/fnum value for this slot (can be different betweeen slots of one channel in 3slot mode) */
+	uint32_t fc;				/* fnum,blk:adjusted to sample rate */
+	uint8_t  kcode;			/* key code:                        */
+	uint32_t block_fnum;		/* current blk/fnum value for this slot (can be different betweeen slots of one channel in 3slot mode) */
 } FM_CH;
 
 
@@ -570,19 +570,19 @@ typedef struct
 #if FM_BUSY_FLAG_SUPPORT
 	float BusyExpire;	/* ExpireTime of Busy clear */
 #endif
-	UINT8  address;		/* address register     */
-	UINT8  irq;			/* interrupt level      */
-	UINT8  irqmask;		/* irq mask             */
-	UINT8  status;			/* status flag          */
-	UINT32 mode;			/* mode  CSM / 3SLOT    */
-	UINT8  prescaler_sel;	/* prescaler selector */
-	UINT8  fn_h;			/* freq latch           */
-	INT32 TA;				/* timer a              */
-	INT32 TAC;			/* timer a counter      */
-	UINT8  TB;				/* timer b              */
-	INT32 TBC;			/* timer b counter      */
+	uint8_t  address;		/* address register     */
+	uint8_t  irq;			/* interrupt level      */
+	uint8_t  irqmask;		/* irq mask             */
+	uint8_t  status;			/* status flag          */
+	uint32_t mode;			/* mode  CSM / 3SLOT    */
+	uint8_t  prescaler_sel;	/* prescaler selector */
+	uint8_t  fn_h;			/* freq latch           */
+	int32_t TA;				/* timer a              */
+	int32_t TAC;			/* timer a counter      */
+	uint8_t  TB;				/* timer b              */
+	int32_t TBC;			/* timer b counter      */
 	/* local time tables */
-	INT32 dt_tab[8][32];	/* DeTune table       */
+	int32_t dt_tab[8][32];	/* DeTune table       */
 	/* Extention Timer and IRQ handler */
 	FM_TIMERHANDLER Timer_Handler;
 	FM_IRQHANDLER   IRQ_Handler;
@@ -592,10 +592,10 @@ typedef struct
 /* OPN 3slot struct */
 typedef struct
 {
-	UINT32 fc[3];			/* fnum3,blk3: calculated */
-	UINT8  fn_h;			/* freq3 latch */
-	UINT8  kcode[3];		/* key code */
-	UINT32 block_fnum[3];	/* current fnum value for this slot (can be different betweeen slots of one channel in 3slot mode) */
+	uint32_t fc[3];			/* fnum3,blk3: calculated */
+	uint8_t  fn_h;			/* freq3 latch */
+	uint8_t  kcode[3];		/* key code */
+	uint32_t block_fnum[3];	/* current fnum value for this slot (can be different betweeen slots of one channel in 3slot mode) */
 } FM_3SLOT;
 
 /* OPN/A/B common state */
@@ -604,23 +604,23 @@ typedef struct
 	FM_ST ST;				/* general state */
 	FM_3SLOT SL3;			/* 3 slot mode state */
 	FM_CH *P_CH;			/* pointer of CH */
-	UINT32 pan[6*2];			/* fm channels output masks (0xffffffff = enable) */
+	uint32_t pan[6*2];			/* fm channels output masks (0xffffffff = enable) */
 
-	UINT32 eg_cnt;				/* global envelope generator counter */
-	UINT32 eg_timer;			/* global envelope generator counter works at frequency = chipclock/64/3 */
-	UINT32 eg_timer_add;		/* step of eg_timer */
-	UINT32 eg_timer_overflow;	/* envelope generator timer overlfows every 3 samples (on real chip) */
+	uint32_t eg_cnt;				/* global envelope generator counter */
+	uint32_t eg_timer;			/* global envelope generator counter works at frequency = chipclock/64/3 */
+	uint32_t eg_timer_add;		/* step of eg_timer */
+	uint32_t eg_timer_overflow;	/* envelope generator timer overlfows every 3 samples (on real chip) */
 
 	/* there are 2048 FNUMs that can be generated using FNUM/BLK registers
         but LFO works with one more bit of a precision so we really need 4096 elements */
 
-	UINT32 fn_table[4096];		/* fnumber->increment counter */
+	uint32_t fn_table[4096];		/* fnumber->increment counter */
 
 	/* LFO */
-	UINT32 lfo_cnt;
-	UINT32 lfo_inc;
+	uint32_t lfo_cnt;
+	uint32_t lfo_inc;
 
-	UINT32 lfo_freq[8];		/* LFO FREQ table */
+	uint32_t lfo_freq[8];		/* LFO FREQ table */
 } FM_OPN;
 
 
@@ -628,50 +628,50 @@ typedef struct
 static struct SSG_t
 {
 	int		lastEnable;
-	UINT32		step;
+	uint32_t		step;
 	int		period[3];
 	int		PeriodN;
 	int		PeriodE;
 	int		count[3];
 	int		CountN;
 	int		CountE;
-	UINT32		vol[3];
-	UINT32		VolE;
-	UINT8		envelope[3];
-	UINT8		output[3];
-	UINT8		OutputN;
-	INT8		count_env;
-	UINT8		hold;
-	UINT8		alternate;
-	UINT8		attack;
-	UINT8		holding;
+	uint32_t		vol[3];
+	uint32_t		VolE;
+	uint8_t		envelope[3];
+	uint8_t		output[3];
+	uint8_t		OutputN;
+	int8_t		count_env;
+	uint8_t		hold;
+	uint8_t		alternate;
+	uint8_t		attack;
+	uint8_t		holding;
 	int		RNG;
-	UINT32		vol_table[32];
+	uint32_t		vol_table[32];
 } SSG;
 
 
 /* ADPCM type A channel struct */
 typedef struct
 {
-	UINT8		flag;			/* port state				*/
-	UINT8		flagMask;		/* arrived flag mask		*/
-	UINT8		now_data;		/* current ROM data			*/
-	UINT32		now_addr;		/* current ROM address		*/
-	UINT32		now_step;
-	UINT32		step;
-	UINT32		start;			/* sample data start address*/
-	UINT32		end;			/* sample data end address	*/
-	UINT8		IL;				/* Instrument Level			*/
-	INT32		adpcma_acc;		/* accumulator				*/
-	INT32		adpcma_step;	/* step						*/
-	INT32		adpcma_out;		/* (speedup) hiro-shi!!		*/
-	INT8		vol_mul;		/* volume in "0.75dB" steps	*/
-	UINT8		vol_shift;		/* volume in "-6dB" steps	*/
-	INT32		*pan;			/* &out_adpcma[OPN_xxxx] 	*/
+	uint8_t		flag;			/* port state				*/
+	uint8_t		flagMask;		/* arrived flag mask		*/
+	uint8_t		now_data;		/* current ROM data			*/
+	uint32_t		now_addr;		/* current ROM address		*/
+	uint32_t		now_step;
+	uint32_t		step;
+	uint32_t		start;			/* sample data start address*/
+	uint32_t		end;			/* sample data end address	*/
+	uint8_t		IL;				/* Instrument Level			*/
+	int32_t		adpcma_acc;		/* accumulator				*/
+	int32_t		adpcma_step;	/* step						*/
+	int32_t		adpcma_out;		/* (speedup) hiro-shi!!		*/
+	int8_t		vol_mul;		/* volume in "0.75dB" steps	*/
+	uint8_t		vol_shift;		/* volume in "-6dB" steps	*/
+	int32_t		*pan;			/* &out_adpcma[OPN_xxxx] 	*/
 
 #if (EMU_SYSTEM == MVS) && !defined(LARGE_MEMORY)
-	UINT16		block;
-	UINT8		*buf;
+	uint16_t		block;
+	uint8_t		*buf;
 #endif
 
 } ADPCMA;
@@ -681,55 +681,55 @@ typedef struct
 /* ADPCM type B struct */
 typedef struct adpcmb_state
 {
-	INT32		*pan;			/* pan : &output_pointer[pan]   */
+	int32_t		*pan;			/* pan : &output_pointer[pan]   */
 	float	freqbase;
 	int		output_range;
-	UINT32		now_addr;		/* current address      */
-	UINT32		now_step;		/* currect step         */
-	UINT32		step;			/* step                 */
-	UINT32		start;			/* start address        */
-	UINT32		limit;			/* limit address        */
-	UINT32		end;			/* end address          */
-	UINT32		delta;			/* delta scale          */
-	INT32		volume;			/* current volume       */
-	INT32		acc;			/* shift Measurement value*/
-	INT32		adpcmd;			/* next Forecast        */
-	INT32		adpcml;			/* current value        */
-	INT32		prev_acc;		/* leveling value       */
-	UINT8		now_data;		/* current rom data     */
-	UINT8		CPU_data;		/* current data from reg 08 */
-	UINT8		portstate;		/* port status          */
+	uint32_t		now_addr;		/* current address      */
+	uint32_t		now_step;		/* currect step         */
+	uint32_t		step;			/* step                 */
+	uint32_t		start;			/* start address        */
+	uint32_t		limit;			/* limit address        */
+	uint32_t		end;			/* end address          */
+	uint32_t		delta;			/* delta scale          */
+	int32_t		volume;			/* current volume       */
+	int32_t		acc;			/* shift Measurement value*/
+	int32_t		adpcmd;			/* next Forecast        */
+	int32_t		adpcml;			/* current value        */
+	int32_t		prev_acc;		/* leveling value       */
+	uint8_t		now_data;		/* current rom data     */
+	uint8_t		CPU_data;		/* current data from reg 08 */
+	uint8_t		portstate;		/* port status          */
 
 #ifndef LARGE_MEMORY
-	UINT16		block;
-	UINT8		*buf;
+	uint16_t		block;
+	uint8_t		*buf;
 #endif
 
 	/* note that different chips have these flags on different
     ** bits of the status register
     */
-	UINT8		status_change_EOS_bit;		/* 1 on End Of Sample (record/playback/cycle time of AD/DA converting has passed)*/
-	UINT8		status_change_BRDY_bit;		/* 1 after recording 2 datas (2x4bits) or after reading/writing 1 data */
+	uint8_t		status_change_EOS_bit;		/* 1 on End Of Sample (record/playback/cycle time of AD/DA converting has passed)*/
+	uint8_t		status_change_BRDY_bit;		/* 1 after recording 2 datas (2x4bits) or after reading/writing 1 data */
 
 	/* neither Y8950 nor YM2608 can generate IRQ when PCMBSY bit changes, so instead of above,
     ** the statusflag gets ORed with PCM_BSY (below) (on each read of statusflag of Y8950 and YM2608)
     */
-	UINT8		PCM_BSY;		/* 1 when ADPCM is playing; Y8950/YM2608 only */
+	uint8_t		PCM_BSY;		/* 1 when ADPCM is playing; Y8950/YM2608 only */
 } ADPCMB;
 #endif
 
 /* here's the virtual YM2610 */
 static struct ym2610_t
 {
-	UINT8		regs[512];			/* registers            */
+	uint8_t		regs[512];			/* registers            */
 	FM_OPN	OPN;				/* OPN state            */
 	FM_CH	CH[6];				/* channel state        */
-	UINT8		addr_A1;			/* address line A1      */
+	uint8_t		addr_A1;			/* address line A1      */
 
 	/* ADPCM-A unit */
-	UINT8		adpcmaTL;			/* adpcmA total level   */
+	uint8_t		adpcmaTL;			/* adpcmA total level   */
 	ADPCMA	adpcma[6];			/* adpcm channels       */
-	UINT8		adpcm_arrivedEndAddress;
+	uint8_t		adpcm_arrivedEndAddress;
 
 #if (EMU_SYSTEM == MVS)
 	/* ADPCM-B unit */
@@ -740,18 +740,18 @@ static struct ym2610_t
 
 
 /* current chip state */
-static INT32	m2,c1,c2;		/* Phase Modulation input for operators 2,3,4 */
-static INT32	mem;			/* one sample delay memory */
+static int32_t	m2,c1,c2;		/* Phase Modulation input for operators 2,3,4 */
+static int32_t	mem;			/* one sample delay memory */
 
-static INT32	ALIGN_DATA out_fm[8];		/* outputs of working channels */
-static INT32	out_ssg;					/* channel output CHENTER only for SSG */
-static INT32	ALIGN_DATA out_adpcma[4];	/* channel output NONE,LEFT,RIGHT or CENTER for YM2608/YM2610 ADPCM */
+static int32_t	ALIGN_DATA out_fm[8];		/* outputs of working channels */
+static int32_t	out_ssg;					/* channel output CHENTER only for SSG */
+static int32_t	ALIGN_DATA out_adpcma[4];	/* channel output NONE,LEFT,RIGHT or CENTER for YM2608/YM2610 ADPCM */
 #if (EMU_SYSTEM == MVS)
-static INT32	ALIGN_DATA out_delta[4];	/* channel output NONE,LEFT,RIGHT or CENTER for YM2608/YM2610 DELTAT*/
+static int32_t	ALIGN_DATA out_delta[4];	/* channel output NONE,LEFT,RIGHT or CENTER for YM2608/YM2610 DELTAT*/
 #endif
 
-static UINT32	LFO_AM;			/* runtime LFO calculations helper */
-static INT32	LFO_PM;			/* runtime LFO calculations helper */
+static uint32_t	LFO_AM;			/* runtime LFO calculations helper */
+static int32_t	LFO_PM;			/* runtime LFO calculations helper */
 
 
 /* log output level */
@@ -879,7 +879,7 @@ INLINE void TimerBOver(FM_ST *ST)
 
 
 #if FM_BUSY_FLAG_SUPPORT
-INLINE UINT8 FM_STATUS_FLAG(FM_ST *ST)
+INLINE uint8_t FM_STATUS_FLAG(FM_ST *ST)
 {
 	if( ST->BusyExpire )
 	{
@@ -929,13 +929,13 @@ INLINE void FM_KEYOFF(FM_CH *CH , int s )
 /* set algorithm connection */
 static void setup_connection( FM_CH *CH, int ch )
 {
-	INT32 *carrier = &out_fm[ch];
+	int32_t *carrier = &out_fm[ch];
 
-	INT32 **om1 = &CH->connect1;
-	INT32 **om2 = &CH->connect3;
-	INT32 **oc1 = &CH->connect2;
+	int32_t **om1 = &CH->connect1;
+	int32_t **om2 = &CH->connect3;
+	int32_t **oc1 = &CH->connect2;
 
-	INT32 **memc = &CH->mem_connect;
+	int32_t **memc = &CH->mem_connect;
 
 	switch( CH->ALGO ){
 	case 0:
@@ -1030,7 +1030,7 @@ INLINE void set_tl(FM_CH *CH,FM_SLOT *SLOT , int v)
 /* set attack rate & key scale  */
 INLINE void set_ar_ksr(FM_CH *CH,FM_SLOT *SLOT,int v)
 {
-	UINT8 old_KSR = SLOT->KSR;
+	uint8_t old_KSR = SLOT->KSR;
 
 	SLOT->ar = (v&0x1f) ? 32 + ((v&0x1f)<<1) : 0;
 
@@ -1089,8 +1089,8 @@ INLINE void set_sl_rr(FM_SLOT *SLOT,int v)
 /* advance LFO to next sample */
 INLINE void advance_lfo(FM_OPN *OPN)
 {
-	UINT8 pos;
-	UINT8 prev_pos;
+	uint8_t pos;
+	uint8_t prev_pos;
 
 	if (OPN->lfo_inc)	/* LFO enabled ? */
 	{
@@ -1133,9 +1133,9 @@ INLINE void advance_lfo(FM_OPN *OPN)
 
 INLINE void advance_eg_channel(FM_OPN *OPN, FM_SLOT *SLOT)
 {
-	UINT32 out;
-	UINT32 swap_flag = 0;
-	UINT32 i;
+	uint32_t out;
+	uint32_t swap_flag = 0;
+	uint32_t i;
 
 	i = 4; /* four operators per channel */
 	do
@@ -1162,7 +1162,7 @@ INLINE void advance_eg_channel(FM_OPN *OPN, FM_SLOT *SLOT)
 				{
 					SLOT->volume += eg_inc[SLOT->eg_sel_d1r + ((OPN->eg_cnt >> SLOT->eg_sh_d1r) & 7)] << 2;
 
-					if ((UINT32)SLOT->volume >= SLOT->sl)
+					if ((uint32_t)SLOT->volume >= SLOT->sl)
 						SLOT->state = EG_SUS;
 				}
 			}
@@ -1172,7 +1172,7 @@ INLINE void advance_eg_channel(FM_OPN *OPN, FM_SLOT *SLOT)
 				{
 					SLOT->volume += eg_inc[SLOT->eg_sel_d1r + ((OPN->eg_cnt >> SLOT->eg_sh_d1r) & 7)];
 
-					if ((UINT32)SLOT->volume >= SLOT->sl)
+					if ((uint32_t)SLOT->volume >= SLOT->sl)
 						SLOT->state = EG_SUS;
 				}
 			}
@@ -1242,7 +1242,7 @@ INLINE void advance_eg_channel(FM_OPN *OPN, FM_SLOT *SLOT)
 
 		}
 
-		out = SLOT->tl + ((UINT32)SLOT->volume);
+		out = SLOT->tl + ((uint32_t)SLOT->volume);
 
 		if ((SLOT->ssg & 0x08) && (SLOT->ssgn & 2))	/* negate output (changes come from alternate bit, init comes from attack bit) */
 			out ^= ((1 << ENV_BITS) - 1); /* 1023 */
@@ -1261,17 +1261,17 @@ INLINE void advance_eg_channel(FM_OPN *OPN, FM_SLOT *SLOT)
 
 #define volume_calc(OP) ((OP)->vol_out + (AM & (OP)->AMmask))
 
-INLINE INT32 op_calc(UINT32 phase, UINT32 env, INT32 pm)
+INLINE int32_t op_calc(uint32_t phase, uint32_t env, int32_t pm)
 {
-	env = (env << 3) + sin_tab[(((INT32)((phase & ~FREQ_MASK) + (pm))) >> FREQ_SH) & SIN_MASK];
+	env = (env << 3) + sin_tab[(((int32_t)((phase & ~FREQ_MASK) + (pm))) >> FREQ_SH) & SIN_MASK];
 
 	return ((env < TL_TAB_LEN) ? tl_tab[env] : 0);
 }
 
 INLINE void chan_calc(FM_OPN *OPN, FM_CH *CH)
 {
-	UINT32 AM = LFO_AM >> CH->ams;
-	UINT32 env;
+	uint32_t AM = LFO_AM >> CH->ams;
+	uint32_t env;
 
 	m2 = c1 = c2 = mem = 0;
 
@@ -1287,7 +1287,7 @@ INLINE void chan_calc(FM_OPN *OPN, FM_CH *CH)
 	env = volume_calc(&CH->SLOT[SLOT1]);	/* SLOT 1 */
 	if (env < ENV_QUIET)
 	{
-		INT32 out = ((CH->FB) ? (CH->op1_out[0] + CH->op1_out[1]) << CH->FB : 0);
+		int32_t out = ((CH->FB) ? (CH->op1_out[0] + CH->op1_out[1]) << CH->FB : 0);
 
 		CH->op1_out[0] = CH->op1_out[1];
 		CH->op1_out[1] = op_calc(CH->SLOT[SLOT1].phase, env, out);
@@ -1323,15 +1323,15 @@ INLINE void chan_calc(FM_OPN *OPN, FM_CH *CH)
 	if (CH->pms)
 	{
 		/* add support for 3 slot mode */
-		UINT32 block_fnum = CH->block_fnum;
+		uint32_t block_fnum = CH->block_fnum;
 
-		UINT32 fnum_lfo = ((block_fnum & 0x7f0) >> 4) * 32 * 8;
-		INT32 lfo_fn_table_index_offset = lfo_pm_table[fnum_lfo + CH->pms + LFO_PM];
+		uint32_t fnum_lfo = ((block_fnum & 0x7f0) >> 4) * 32 * 8;
+		int32_t lfo_fn_table_index_offset = lfo_pm_table[fnum_lfo + CH->pms + LFO_PM];
 
 		if (lfo_fn_table_index_offset)	/* LFO phase modulation active */
 		{
-			UINT8  blk;
-			UINT32 fn;
+			uint8_t  blk;
+			uint32_t fn;
 			int kc, fc;
 
 			block_fnum = block_fnum*2 + lfo_fn_table_index_offset;
@@ -1405,7 +1405,7 @@ INLINE void refresh_fc_eg_slot(FM_SLOT *SLOT , int fc , int kc )
 /* update phase increment counters */
 INLINE void refresh_fc_eg_chan(FM_CH *CH)
 {
-	if ((INT32)CH->SLOT[SLOT1].Incr == -1)
+	if ((int32_t)CH->SLOT[SLOT1].Incr == -1)
 	{
 		int fc = CH->fc;
 		int kc = CH->kcode;
@@ -1417,7 +1417,7 @@ INLINE void refresh_fc_eg_chan(FM_CH *CH)
 }
 
 /* initialize time tables */
-static void init_timetables( FM_ST *ST , const UINT8 *dttable )
+static void init_timetables( FM_ST *ST , const uint8_t *dttable )
 {
 	int i,d;
 	float rate;
@@ -1431,7 +1431,7 @@ static void init_timetables( FM_ST *ST , const UINT8 *dttable )
 	for (d = 0;d <= 3;d++){
 		for (i = 0;i <= 31;i++){
 			rate = ((float)dttable[d*32 + i]) * SIN_LEN  * ST->freqbase  * (1<<FREQ_SH) / ((float)(1<<20));
-			ST->dt_tab[d][i]   = (INT32) rate;
+			ST->dt_tab[d][i]   = (int32_t) rate;
 			ST->dt_tab[d+4][i] = -ST->dt_tab[d][i];
 #if 0
 			logerror("FM.C: DT [%2i %2i] = %8x  \n", d, i, ST->dt_tab[d][i] );
@@ -1538,14 +1538,14 @@ static void OPNInitTable(void)
 	/* build LFO PM modulation table */
 	for(i = 0; i < 8; i++) /* 8 PM depths */
 	{
-		UINT8 fnum;
+		uint8_t fnum;
 		for (fnum=0; fnum<128; fnum++) /* 7 bits meaningful of F-NUMBER */
 		{
-			UINT8 value;
-			UINT8 step;
-			UINT32 offset_depth = i;
-			UINT32 offset_fnum_bit;
-			UINT32 bit_tmp;
+			uint8_t value;
+			uint8_t step;
+			uint32_t offset_depth = i;
+			uint32_t offset_fnum_bit;
+			uint32_t bit_tmp;
 
 			for (step=0; step<8; step++)
 			{
@@ -1624,7 +1624,7 @@ static void OPNSetPres(FM_OPN *OPN , int pres , int TimerPres, int SSGpres)
 	{
 		/* freq table for octave 7 */
 		/* OPN phase increment counter = 20bit */
-		OPN->fn_table[i] = (UINT32)( (float)i * 32 * OPN->ST.freqbase * (1<<(FREQ_SH-10)) ); /* -10 because chip works with 10.10 fixed point, while we use 16.16 */
+		OPN->fn_table[i] = (uint32_t)( (float)i * 32 * OPN->ST.freqbase * (1<<(FREQ_SH-10)) ); /* -10 because chip works with 10.10 fixed point, while we use 16.16 */
 #if 0
 		logerror("FM.C: fn_table[%4i] = %08x (dec=%8i)\n",
 				 i, OPN->fn_table[i]>>6,OPN->fn_table[i]>>6 );
@@ -1649,7 +1649,7 @@ static void OPNSetPres(FM_OPN *OPN , int pres , int TimerPres, int SSGpres)
 /* write a OPN mode register 0x20-0x2f */
 static void OPNWriteMode(FM_OPN *OPN, int r, int v)
 {
-	UINT8 c;
+	uint8_t c;
 	FM_CH *CH;
 
 	switch(r){
@@ -1697,7 +1697,7 @@ static void OPNWriteReg(FM_OPN *OPN, int r, int v)
 	FM_CH *CH;
 	FM_SLOT *SLOT;
 
-	UINT8 c = OPN_CHAN(r);
+	uint8_t c = OPN_CHAN(r);
 
 	if (c == 3) return; /* 0xX3,0xX7,0xXB,0xXF */
 
@@ -1820,8 +1820,8 @@ static void OPNWriteReg(FM_OPN *OPN, int r, int v)
 		switch( OPN_SLOT(r) ){
 		case 0:		/* 0xa0-0xa2 : FNUM1 */
 			{
-				UINT32 fn = (((UINT32)( (OPN->ST.fn_h)&7))<<8) + v;
-				UINT8 blk = OPN->ST.fn_h>>3;
+				uint32_t fn = (((uint32_t)( (OPN->ST.fn_h)&7))<<8) + v;
+				uint8_t blk = OPN->ST.fn_h>>3;
 				/* keyscale code */
 				CH->kcode = (blk<<2) | opn_fktable[fn >> 7];
 				/* phase increment counter */
@@ -1839,8 +1839,8 @@ static void OPNWriteReg(FM_OPN *OPN, int r, int v)
 		case 2:		/* 0xa8-0xaa : 3CH FNUM1 */
 			if(r < 0x100)
 			{
-				UINT32 fn = (((UINT32)(OPN->SL3.fn_h&7))<<8) + v;
-				UINT8 blk = OPN->SL3.fn_h>>3;
+				uint32_t fn = (((uint32_t)(OPN->SL3.fn_h&7))<<8) + v;
+				uint8_t blk = OPN->SL3.fn_h>>3;
 				/* keyscale code */
 				OPN->SL3.kcode[c]= (blk<<2) | opn_fktable[fn >> 7];
 				/* phase increment counter */
@@ -2177,8 +2177,8 @@ static void (*OPNB_ADPCMB_calc)(ADPCMB *adpcmb);
 #define ADPCM_SHIFT    (16)      /* frequency step rate   */
 #define ADPCMA_ADDRESS_SHIFT 8   /* adpcm A address shift */
 
-static UINT8 *pcmbufA;
-static UINT32 pcmsizeA;
+static uint8_t *pcmbufA;
+static uint32_t pcmsizeA;
 
 
 /* Algorithm and tables verified on real YM2610 */
@@ -2224,8 +2224,8 @@ static void OPNB_ADPCMA_calc_chan_static(int c, ADPCMA *ch)
 static void OPNB_ADPCMA_calc_chan(int c, ADPCMA *ch)
 #endif
 {
-	UINT32 step;
-	UINT8  data;
+	uint32_t step;
+	uint8_t  data;
 
 	ch->now_step += ch->step;
 	if (ch->now_step >= (1 << ADPCM_SHIFT))
@@ -2280,8 +2280,8 @@ static void OPNB_ADPCMA_calc_chan(int c, ADPCMA *ch)
 #if (EMU_SYSTEM == MVS) && !defined(LARGE_MEMORY)
 static void OPNB_ADPCMA_calc_chan_dynamic(int c, ADPCMA *ch)
 {
-	UINT32 step;
-	UINT8  data;
+	uint32_t step;
+	uint8_t  data;
 
 	ch->now_step += ch->step;
 	if (ch->now_step >= (1 << ADPCM_SHIFT))
@@ -2310,8 +2310,8 @@ static void OPNB_ADPCMA_calc_chan_dynamic(int c, ADPCMA *ch)
 			}
 			else
 			{
-				UINT16 block = ch->now_addr >> 17;
-				UINT16 offset = (ch->now_addr >> 1) & 0xffff;
+				uint16_t block = ch->now_addr >> 17;
+				uint16_t offset = (ch->now_addr >> 1) & 0xffff;
 
 				if (ch->block != block)
 				{
@@ -2350,7 +2350,7 @@ static void OPNB_ADPCMA_calc_chan_dynamic(int c, ADPCMA *ch)
 static void OPNB_ADPCMA_write(int r, int v)
 {
 	ADPCMA *adpcma = YM2610.adpcma;
-	UINT8 c = r & 0x07;
+	uint8_t c = r & 0x07;
 
 	YM2610.regs[r] = v & 0xff; /* stock data */
 
@@ -2365,7 +2365,7 @@ static void OPNB_ADPCMA_write(int r, int v)
 				if ((v >> c) & 1)
 				{
 					/**** start adpcm ****/
-					adpcma[c].step        = (UINT32)((float)(1 << ADPCM_SHIFT) * ((float)YM2610.OPN.ST.freqbase) / 3.0);
+					adpcma[c].step        = (uint32_t)((float)(1 << ADPCM_SHIFT) * ((float)YM2610.OPN.ST.freqbase) / 3.0);
 					adpcma[c].now_addr    = adpcma[c].start << 1;
 					adpcma[c].now_step    = 0;
 					adpcma[c].adpcma_acc  = 0;
@@ -2488,19 +2488,19 @@ static void OPNB_ADPCMA_write(int r, int v)
 #define ADPCMB_DECODE_MIN (-(ADPCMB_DECODE_RANGE))
 #define ADPCMB_DECODE_MAX ((ADPCMB_DECODE_RANGE)-1)
 
-static UINT8 *pcmbufB;
-static UINT32 pcmsizeB;
+static uint8_t *pcmbufB;
+static uint32_t pcmsizeB;
 
 /* Forecast to next Forecast (rate = *8) */
 /* 1/8 , 3/8 , 5/8 , 7/8 , 9/8 , 11/8 , 13/8 , 15/8 */
-static const INT32 adpcmb_decode_table1[16] =
+static const int32_t adpcmb_decode_table1[16] =
 {
   1,   3,   5,   7,   9,  11,  13,  15,
   -1,  -3,  -5,  -7,  -9, -11, -13, -15,
 };
 /* delta to next delta (rate= *64) */
 /* 0.9 , 0.9 , 0.9 , 0.9 , 1.2 , 1.6 , 2.0 , 2.4 */
-static const INT32 adpcmb_decode_table2[16] =
+static const int32_t adpcmb_decode_table2[16] =
 {
   57,  57,  57,  57, 77, 102, 128, 153,
   57,  57,  57,  57, 77, 102, 128, 153
@@ -2513,7 +2513,7 @@ static void OPNB_ADPCMB_calc_static(ADPCMB *adpcmb)
 static void OPNB_ADPCMB_calc(ADPCMB *adpcmb)
 #endif
 {
-	UINT32 step;
+	uint32_t step;
 	int data;
 
 	adpcmb->now_step += adpcmb->step;
@@ -2597,7 +2597,7 @@ static void OPNB_ADPCMB_calc(ADPCMB *adpcmb)
 #ifndef LARGE_MEMORY
 static void OPNB_ADPCMB_calc_dynamic(ADPCMB *adpcmb)
 {
-	UINT32 step;
+	uint32_t step;
 	int data;
 
 	adpcmb->now_step += adpcmb->step;
@@ -2642,8 +2642,8 @@ static void OPNB_ADPCMB_calc_dynamic(ADPCMB *adpcmb)
 			}
 			else
 			{
-				UINT16 block  = adpcmb->now_addr >> 17;
-				UINT16 offset = (adpcmb->now_addr >> 1) & 0xffff;
+				uint16_t block  = adpcmb->now_addr >> 17;
+				uint16_t offset = (adpcmb->now_addr >> 1) & 0xffff;
 
 				if (adpcmb->block != block)
 				{
@@ -2773,12 +2773,12 @@ static void OPNB_ADPCMB_write(ADPCMB *adpcmb, int r, int v)
 	case 0x19:	/* DELTA-N L (ADPCM Playback Prescaler) */
 	case 0x1a:	/* DELTA-N H */
 		adpcmb->delta = (YM2610.regs[0x1a] << 8) | YM2610.regs[0x19];
-		adpcmb->step  = (UINT32)((float)adpcmb->delta * adpcmb->freqbase);
+		adpcmb->step  = (uint32_t)((float)adpcmb->delta * adpcmb->freqbase);
 		break;
 
 	case 0x1b:	/* Output level control (volume, linear) */
 		{
-			INT32 oldvol = adpcmb->volume;
+			int32_t oldvol = adpcmb->volume;
 			adpcmb->volume = (v & 0xff) * (adpcmb->output_range >> 8) / ADPCMB_DECODE_RANGE;
 
 			if (oldvol) adpcmb->adpcml = (int)((float)adpcmb->adpcml / (float)oldvol * (float)adpcmb->volume);
@@ -2795,11 +2795,11 @@ static void OPNB_ADPCMB_write(ADPCMB *adpcmb, int r, int v)
 /* YM2610(OPNB) */
 
 /* Generate samples for one of the YM2610s */
-static void YM2610Update(INT32 **buffer, int length)
+static void YM2610Update(int32_t **buffer, int length)
 {
 	FM_OPN *OPN = &YM2610.OPN;
 	int i, j, outn;
-	INT32 *bufL, *bufR;
+	int32_t *bufL, *bufR;
 	FMSAMPLE_MIX lt, rt;
 	FM_CH *cch[6];
 
@@ -2816,7 +2816,7 @@ static void YM2610Update(INT32 **buffer, int length)
 	if (OPN->ST.mode & 0xc0)
 	{
 		/* 3SLOT MODE */
-		if ((INT32)cch[1]->SLOT[SLOT1].Incr == -1)
+		if ((int32_t)cch[1]->SLOT[SLOT1].Incr == -1)
 		{
 			/* 3 slot mode */
 			refresh_fc_eg_slot(&cch[1]->SLOT[SLOT1], OPN->SL3.fc[1], OPN->SL3.kcode[1]);
@@ -2968,16 +2968,16 @@ void YM2610Init(int clock, void *pcmroma, int pcmsizea,
 #endif
 
 		/* ADPCM-A */
-		pcmbufA = (UINT8 *)pcmroma;
+		pcmbufA = (uint8_t *)pcmroma;
 		pcmsizeA = pcmsizea;
 		/* ADPCM-B */
-		pcmbufB = (UINT8 *)pcmromb;
+		pcmbufB = (uint8_t *)pcmromb;
 		pcmsizeB = pcmsizeb;
 	}
 	YM2610.adpcmb.status_change_EOS_bit = 0x80;	/* status flag: set bit7 on End Of Sample */
 #else
 	/* ADPCM-A */
-	pcmbufA = (UINT8 *)pcmroma;
+	pcmbufA = (uint8_t *)pcmroma;
 	pcmsizeA = pcmsizea;
 #endif
 
@@ -3023,7 +3023,7 @@ void YM2610Reset(void)
 	/**** ADPCM work initial ****/
 	for (i = 0; i < 6; i++)
 	{
-		YM2610.adpcma[i].step        = (UINT32)((float)(1 << ADPCM_SHIFT) * ((float)YM2610.OPN.ST.freqbase) / 3.0);
+		YM2610.adpcma[i].step        = (uint32_t)((float)(1 << ADPCM_SHIFT) * ((float)YM2610.OPN.ST.freqbase) / 3.0);
 		YM2610.adpcma[i].now_addr    = 0;
 		YM2610.adpcma[i].now_step    = 0;
 		YM2610.adpcma[i].start       = 0;
@@ -3092,12 +3092,12 @@ void YM2610_set_samplerate(void)
 
 	for (i = 0; i < 6; i++)
 	{
-		YM2610.adpcma[i].step = (UINT32)((float)(1 << ADPCM_SHIFT) * ((float)YM2610.OPN.ST.freqbase) / 3.0);
+		YM2610.adpcma[i].step = (uint32_t)((float)(1 << ADPCM_SHIFT) * ((float)YM2610.OPN.ST.freqbase) / 3.0);
 	}
 
 #if (EMU_SYSTEM == MVS)
 	YM2610.adpcmb.freqbase = YM2610.OPN.ST.freqbase;
-	YM2610.adpcmb.step = (UINT32)((float)YM2610.adpcmb.delta * YM2610.adpcmb.freqbase);
+	YM2610.adpcmb.step = (uint32_t)((float)YM2610.adpcmb.delta * YM2610.adpcmb.freqbase);
 #endif
 }
 
@@ -3105,7 +3105,7 @@ void YM2610_set_samplerate(void)
 /* YM2610 write */
 /* a = address */
 /* v = value   */
-int YM2610Write(int a, UINT8 v)
+int YM2610Write(int a, uint8_t v)
 {
 	FM_OPN *OPN = &YM2610.OPN;
 	int addr;
@@ -3154,7 +3154,7 @@ int YM2610Write(int a, UINT8 v)
 
 			case 0x1c: /*  FLAG CONTROL : Extend Status Clear/Mask */
 				{
-					UINT8 statusmask = ~v;
+					uint8_t statusmask = ~v;
 					/* set arrived flag mask */
 					for (ch = 0; ch < 6; ch++)
 						YM2610.adpcma[ch].flagMask = statusmask & (1 << ch);
@@ -3205,7 +3205,7 @@ int YM2610Write(int a, UINT8 v)
 }
 
 
-UINT8 YM2610Read(int a)
+uint8_t YM2610Read(int a)
 {
 	int addr = YM2610.OPN.ST.address;
 

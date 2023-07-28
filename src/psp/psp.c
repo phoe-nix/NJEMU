@@ -58,7 +58,7 @@ static SceKernelCallbackFunction PowerCallback(int unknown, int pwrflags, void *
 	if (pwrflags & PSP_POWER_CB_POWER_SWITCH)
 	{
 #if defined(LARGE_MEMORY) && ((EMU_SYSTEM == CPS2) || (EMU_SYSTEM == MVS))
-		extern INT32 psp2k_mem_left;
+		extern int32_t psp2k_mem_left;
 
 		if (psp2k_mem_left < 0x400000)
 		{
@@ -79,7 +79,7 @@ static SceKernelCallbackFunction PowerCallback(int unknown, int pwrflags, void *
 	else if (pwrflags & PSP_POWER_CB_RESUME_COMPLETE)
 	{
 #if defined(LARGE_MEMORY) && ((EMU_SYSTEM == CPS2) || (EMU_SYSTEM == MVS))
-		extern INT32 psp2k_mem_left;
+		extern int32_t psp2k_mem_left;
 
 		if (psp2k_mem_left < 0x400000)
 		{

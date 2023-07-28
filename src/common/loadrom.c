@@ -28,7 +28,7 @@ static int rom_fd = -1;
 	ZIPファイルからファイルを検索し開く
 --------------------------------------------------------*/
 
-int file_open(const char *fname1, const char *fname2, const UINT32 crc, char *fname)
+int file_open(const char *fname1, const char *fname2, const uint32_t crc, char *fname)
 {
 	int i, found = 0;
 	struct zip_find_t file;
@@ -214,9 +214,9 @@ int cachefile_open(int type)
 	ROMをロードする
 --------------------------------------------------------*/
 
-int rom_load(struct rom_t *rom, UINT8 *mem, int idx, int max)
+int rom_load(struct rom_t *rom, uint8_t *mem, int idx, int max)
 {
-	UINT32 offset, length;
+	uint32_t offset, length;
 
 _continue:
 	offset = rom[idx].offset;

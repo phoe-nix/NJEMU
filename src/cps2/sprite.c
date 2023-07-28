@@ -16,7 +16,7 @@
 #define TEXTURE_HEIGHT	512
 
 #define MAKE_KEY(code, attr)	(code | ((attr & 0x0f) << 28))
-#define PSP_UNCACHE_PTR(p)		(((UINT32)(p)) | 0x40000000)
+#define PSP_UNCACHE_PTR(p)		(((uint32_t)(p)) | 0x40000000)
 
 
 /******************************************************************************
@@ -27,9 +27,9 @@ void (*blit_finish_object)(int start_pri, int end_pri);
 static void blit_render_object(int start_pri, int end_pri);
 static void blit_render_object_zb(int start_pri, int end_pri);
 
-void (*blit_draw_scroll2)(INT16 x, INT16 y, UINT32 code, UINT16 attr);
-static void blit_draw_scroll2_software(INT16 x, INT16 y, UINT32 code, UINT16 attr);
-static void blit_draw_scroll2_hardware(INT16 x, INT16 y, UINT32 code, UINT16 attr);
+void (*blit_draw_scroll2)(int16_t x, int16_t y, uint32_t code, uint16_t attr);
+static void blit_draw_scroll2_software(int16_t x, int16_t y, uint32_t code, uint16_t attr);
+static void blit_draw_scroll2_hardware(int16_t x, int16_t y, uint32_t code, uint16_t attr);
 
 
 /******************************************************************************
@@ -41,15 +41,15 @@ typedef struct object_t OBJECT;
 
 struct sprite_t
 {
-	UINT32 key;
-	UINT32 used;
-	INT32 index;
+	uint32_t key;
+	uint32_t used;
+	int32_t index;
 	SPRITE *next;
 };
 
 struct object_t
 {
-	UINT32 clut;
+	uint32_t clut;
 	struct Vertex vertices[2];
 	OBJECT *next;
 };
@@ -66,17 +66,17 @@ static RECT cps_clip[6] =
 	{ 138, 0, 138 + 204,     272 }	    // option_stretch = 5  (204x272 3:4 vertical)
 };
 
-static INT16 clip_min_y;
-static INT16 clip_max_y;
+static int16_t clip_min_y;
+static int16_t clip_max_y;
 
-static INT16 object_min_y;
-static INT16 scroll2_min_y;
-static INT16 scroll2_max_y;
-static INT16 scroll2_sy;
-static INT16 scroll2_ey;
+static int16_t object_min_y;
+static int16_t scroll2_min_y;
+static int16_t scroll2_max_y;
+static int16_t scroll2_sy;
+static int16_t scroll2_ey;
 
-static UINT8 *pen_usage;
-static UINT16 *scrbitmap;
+static uint8_t *pen_usage;
+static uint16_t *scrbitmap;
 
 
 /*------------------------------------------------------------------------
@@ -92,8 +92,8 @@ static SPRITE ALIGN_DATA *object_head[OBJECT_HASH_SIZE];
 static SPRITE ALIGN_DATA object_data[OBJECT_TEXTURE_SIZE];
 static SPRITE ALIGN_DATA *object_free_head;
 
-static UINT8 *tex_object;
-static UINT16 object_texture_num;
+static uint8_t *tex_object;
+static uint16_t object_texture_num;
 
 
 /*------------------------------------------------------------------------
@@ -109,8 +109,8 @@ static SPRITE ALIGN_DATA *scroll1_head[SCROLL1_HASH_SIZE];
 static SPRITE ALIGN_DATA scroll1_data[SCROLL1_TEXTURE_SIZE];
 static SPRITE ALIGN_DATA *scroll1_free_head;
 
-static UINT8 *tex_scroll1;
-static UINT16 scroll1_texture_num;
+static uint8_t *tex_scroll1;
+static uint16_t scroll1_texture_num;
 
 
 /*------------------------------------------------------------------------
@@ -126,8 +126,8 @@ static SPRITE ALIGN_DATA *scroll2_head[SCROLL2_HASH_SIZE];
 static SPRITE ALIGN_DATA scroll2_data[SCROLL2_TEXTURE_SIZE];
 static SPRITE ALIGN_DATA *scroll2_free_head;
 
-static UINT8 *tex_scroll2;
-static UINT16 scroll2_texture_num;
+static uint8_t *tex_scroll2;
+static uint16_t scroll2_texture_num;
 
 
 /*------------------------------------------------------------------------
@@ -143,8 +143,8 @@ static SPRITE ALIGN_DATA *scroll3_head[SCROLL3_HASH_SIZE];
 static SPRITE ALIGN_DATA scroll3_data[SCROLL3_TEXTURE_SIZE];
 static SPRITE ALIGN_DATA *scroll3_free_head;
 
-static UINT8 *tex_scroll3;
-static UINT16 scroll3_texture_num;
+static uint8_t *tex_scroll3;
+static uint16_t scroll3_texture_num;
 
 
 /*------------------------------------------------------------------------
@@ -155,8 +155,8 @@ static OBJECT *vertices_object_head[8];
 static OBJECT *vertices_object_tail[8];
 static OBJECT ALIGN_DATA vertices_object[OBJECT_MAX_SPRITES];
 
-static UINT16 object_num[8];
-static UINT16 object_index;
+static uint16_t object_num[8];
+static uint16_t object_index;
 
 static struct Vertex ALIGN_DATA vertices_scroll[2][SCROLL1_MAX_SPRITES * 2];
 
@@ -165,11 +165,11 @@ static struct Vertex ALIGN_DATA vertices_scroll[2][SCROLL1_MAX_SPRITES * 2];
 	カラールックアップテーブル
 ------------------------------------------------------------------------*/
 
-static UINT16 *clut;
-static UINT16 clut0_num;
-static UINT16 clut1_num;
+static uint16_t *clut;
+static uint16_t clut0_num;
+static uint16_t clut1_num;
 
-static const UINT32 ALIGN_DATA color_table[16] =
+static const uint32_t ALIGN_DATA color_table[16] =
 {
 	0x00000000, 0x10101010, 0x20202020, 0x30303030,
 	0x40404040, 0x50505050, 0x60606060, 0x70707070,
@@ -195,17 +195,17 @@ static const int ALIGN_DATA swizzle_table_8bit[32] =
 	SCROLL2 ソフトウェア描画
 ******************************************************************************/
 
-static void drawgfx16_16x16(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines);
-static void drawgfx16_16x16_flipx(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines);
-static void drawgfx16_16x16_flipy(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines);
-static void drawgfx16_16x16_flipxy(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines);
+static void drawgfx16_16x16(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines);
+static void drawgfx16_16x16_flipx(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines);
+static void drawgfx16_16x16_flipy(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines);
+static void drawgfx16_16x16_flipxy(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines);
 
-static void drawgfx16_16x16_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines);
-static void drawgfx16_16x16_flipx_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines);
-static void drawgfx16_16x16_flipy_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines);
-static void drawgfx16_16x16_flipxy_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines);
+static void drawgfx16_16x16_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines);
+static void drawgfx16_16x16_flipx_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines);
+static void drawgfx16_16x16_flipy_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines);
+static void drawgfx16_16x16_flipxy_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines);
 
-static void ALIGN_DATA (*drawgfx16[8])(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines) =
+static void ALIGN_DATA (*drawgfx16[8])(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines) =
 {
 	drawgfx16_16x16,
 	drawgfx16_16x16_opaque,
@@ -222,9 +222,9 @@ static void ALIGN_DATA (*drawgfx16[8])(UINT32 *src, UINT16 *dst, UINT16 *pal, in
 	16bpp 16x16
 ------------------------------------------------------------------------*/
 
-static void drawgfx16_16x16(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines)
+static void drawgfx16_16x16(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines)
 {
-	UINT32 tile, mask;
+	uint32_t tile, mask;
 
 	while (lines--)
 	{
@@ -261,9 +261,9 @@ static void drawgfx16_16x16(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines)
 	}
 }
 
-static void drawgfx16_16x16_flipx(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines)
+static void drawgfx16_16x16_flipx(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines)
 {
-	UINT32 tile, mask;
+	uint32_t tile, mask;
 
 	while (lines--)
 	{
@@ -300,9 +300,9 @@ static void drawgfx16_16x16_flipx(UINT32 *src, UINT16 *dst, UINT16 *pal, int lin
 	}
 }
 
-static void drawgfx16_16x16_flipy(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines)
+static void drawgfx16_16x16_flipy(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines)
 {
-	UINT32 tile, mask;
+	uint32_t tile, mask;
 
 	while (lines--)
 	{
@@ -339,9 +339,9 @@ static void drawgfx16_16x16_flipy(UINT32 *src, UINT16 *dst, UINT16 *pal, int lin
 	}
 }
 
-static void drawgfx16_16x16_flipxy(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines)
+static void drawgfx16_16x16_flipxy(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines)
 {
-	UINT32 tile, mask;
+	uint32_t tile, mask;
 
 	while (lines--)
 	{
@@ -383,9 +383,9 @@ static void drawgfx16_16x16_flipxy(UINT32 *src, UINT16 *dst, UINT16 *pal, int li
 	16bpp 16x16 (透過なし)
 ------------------------------------------------------------------------*/
 
-static void drawgfx16_16x16_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines)
+static void drawgfx16_16x16_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines)
 {
-	UINT32 tile;
+	uint32_t tile;
 
 	while (lines--)
 	{
@@ -412,9 +412,9 @@ static void drawgfx16_16x16_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int li
 	}
 }
 
-static void drawgfx16_16x16_flipx_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines)
+static void drawgfx16_16x16_flipx_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines)
 {
-	UINT32 tile;
+	uint32_t tile;
 
 	while (lines--)
 	{
@@ -441,9 +441,9 @@ static void drawgfx16_16x16_flipx_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, 
 	}
 }
 
-static void drawgfx16_16x16_flipy_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines)
+static void drawgfx16_16x16_flipy_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines)
 {
-	UINT32 tile;
+	uint32_t tile;
 
 	while (lines--)
 	{
@@ -470,9 +470,9 @@ static void drawgfx16_16x16_flipy_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, 
 	}
 }
 
-static void drawgfx16_16x16_flipxy_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int lines)
+static void drawgfx16_16x16_flipxy_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int lines)
 {
-	UINT32 tile;
+	uint32_t tile;
 
 	while (lines--)
 	{
@@ -508,7 +508,7 @@ static void drawgfx16_16x16_flipxy_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal,
 	OBJECTテクスチャからスプライト番号を取得
 ------------------------------------------------------------------------*/
 
-static INT32 object_get_sprite(UINT32 key)
+static int32_t object_get_sprite(uint32_t key)
 {
 	SPRITE *p = object_head[key & OBJECT_HASH_MASK];
 
@@ -535,9 +535,9 @@ static INT32 object_get_sprite(UINT32 key)
 	OBJECTテクスチャにスプライトを登録
 ------------------------------------------------------------------------*/
 
-static INT32 object_insert_sprite(UINT32 key)
+static int32_t object_insert_sprite(uint32_t key)
 {
-	UINT16 hash = key & OBJECT_HASH_MASK;
+	uint16_t hash = key & OBJECT_HASH_MASK;
 	SPRITE *p = object_head[hash];
 	SPRITE *q = object_free_head;
 
@@ -618,7 +618,7 @@ static void object_delete_sprite(void)
 	SCROLL1テクスチャからスプライト番号を取得
 ------------------------------------------------------------------------*/
 
-static INT32 scroll1_get_sprite(UINT32 key)
+static int32_t scroll1_get_sprite(uint32_t key)
 {
 	SPRITE *p = scroll1_head[key & SCROLL1_HASH_MASK];
 
@@ -645,9 +645,9 @@ static INT32 scroll1_get_sprite(UINT32 key)
 	SCROLL1テクスチャにスプライトを登録
 ------------------------------------------------------------------------*/
 
-static INT32 scroll1_insert_sprite(UINT32 key)
+static int32_t scroll1_insert_sprite(uint32_t key)
 {
-	UINT16 hash = key & SCROLL1_HASH_MASK;
+	uint16_t hash = key & SCROLL1_HASH_MASK;
 	SPRITE *p = scroll1_head[hash];
 	SPRITE *q = scroll1_free_head;
 
@@ -728,7 +728,7 @@ static void scroll1_delete_sprite(void)
 	SCROLL2テクスチャからスプライト番号を取得
 ------------------------------------------------------------------------*/
 
-static INT32 scroll2_get_sprite(UINT32 key)
+static int32_t scroll2_get_sprite(uint32_t key)
 {
 	SPRITE *p = scroll2_head[key & SCROLL2_HASH_MASK];
 
@@ -755,9 +755,9 @@ static INT32 scroll2_get_sprite(UINT32 key)
 	SCROLL2テクスチャにスプライトを登録
 ------------------------------------------------------------------------*/
 
-static INT32 scroll2_insert_sprite(UINT32 key)
+static int32_t scroll2_insert_sprite(uint32_t key)
 {
-	UINT16 hash = key & SCROLL2_HASH_MASK;
+	uint16_t hash = key & SCROLL2_HASH_MASK;
 	SPRITE *p = scroll2_head[hash];
 	SPRITE *q = scroll2_free_head;
 
@@ -838,7 +838,7 @@ static void scroll2_delete_sprite(void)
 	SCROLL3テクスチャからスプライト番号を取得
 ------------------------------------------------------------------------*/
 
-static INT32 scroll3_get_sprite(UINT32 key)
+static int32_t scroll3_get_sprite(uint32_t key)
 {
 	SPRITE *p = scroll3_head[key & SCROLL3_HASH_MASK];
 
@@ -865,9 +865,9 @@ static INT32 scroll3_get_sprite(UINT32 key)
 	SCROLL3テクスチャにスプライトを登録
 ------------------------------------------------------------------------*/
 
-static INT32 scroll3_insert_sprite(UINT32 key)
+static int32_t scroll3_insert_sprite(uint32_t key)
 {
-	UINT16 hash = key & SCROLL3_HASH_MASK;
+	uint16_t hash = key & SCROLL3_HASH_MASK;
 	SPRITE *p = scroll3_head[hash];
 	SPRITE *q = scroll3_free_head;
 
@@ -996,8 +996,8 @@ void blit_reset(void)
 {
 	int i;
 
-	scrbitmap   = (UINT16 *)video_frame_addr(work_frame, 0, 0);
-	tex_object  = (UINT8 *)(scrbitmap + BUF_WIDTH * SCR_HEIGHT);
+	scrbitmap   = (uint16_t *)video_frame_addr(work_frame, 0, 0);
+	tex_object  = (uint8_t *)(scrbitmap + BUF_WIDTH * SCR_HEIGHT);
 	tex_scroll1 = tex_object  + BUF_WIDTH * TEXTURE_HEIGHT;
 	tex_scroll2 = tex_scroll1 + BUF_WIDTH * TEXTURE_HEIGHT;
 	tex_scroll3 = tex_scroll2 + BUF_WIDTH * TEXTURE_HEIGHT;
@@ -1011,7 +1011,7 @@ void blit_reset(void)
 	clip_max_y = LAST_VISIBLE_LINE;
 
 	pen_usage = gfx_pen_usage[TILE16];
-	clut = (UINT16 *)PSP_UNCACHE_PTR(&video_palette);
+	clut = (uint16_t *)PSP_UNCACHE_PTR(&video_palette);
 
 	blit_finish_object = blit_render_object;
 
@@ -1095,11 +1095,11 @@ void blit_finish(void)
 	OBJECTテクスチャとキャッシュを更新
 ------------------------------------------------------------------------*/
 
-void blit_update_object(INT16 x, INT16 y, UINT32 code, UINT16 attr)
+void blit_update_object(int16_t x, int16_t y, uint32_t code, uint16_t attr)
 {
 	if ((x > 48 && x < 448) && (y > object_min_y && y < clip_max_y))
 	{
-		UINT32 key = MAKE_KEY(code, attr);
+		uint32_t key = MAKE_KEY(code, attr);
 		SPRITE *p = object_head[key & OBJECT_HASH_MASK];
 
 		while (p)
@@ -1125,19 +1125,19 @@ void blit_update_object(INT16 x, INT16 y, UINT32 code, UINT16 attr)
 	OBJECTを描画リストに登録
 ------------------------------------------------------------------------*/
 
-void blit_draw_object(INT16 x, INT16 y, UINT16 z, INT16 pri, UINT32 code, UINT16 attr)
+void blit_draw_object(int16_t x, int16_t y, uint16_t z, int16_t pri, uint32_t code, uint16_t attr)
 {
 	if ((x > 48 && x < 448) && (y > object_min_y && y < clip_max_y))
 	{
-		INT16 idx;
+		int16_t idx;
 		OBJECT *object;
 		struct Vertex *vertices;
-		UINT32 key = MAKE_KEY(code, attr);
+		uint32_t key = MAKE_KEY(code, attr);
 
 		if ((idx = object_get_sprite(key)) < 0)
 		{
-			UINT32 col, tile;
-			UINT8 *src, *dst, lines = 16;
+			uint32_t col, tile;
+			uint8_t *src, *dst, lines = 16;
 
 			if (object_texture_num == OBJECT_TEXTURE_SIZE - 1)
 			{
@@ -1156,12 +1156,12 @@ void blit_draw_object(INT16 x, INT16 y, UINT16 z, INT16 pri, UINT32 code, UINT16
 
 			while (lines--)
 			{
-				tile = *(UINT32 *)(src + 0);
-				*(UINT32 *)(dst +  0) = ((tile >> 0) & 0x0f0f0f0f) | col;
-				*(UINT32 *)(dst +  4) = ((tile >> 4) & 0x0f0f0f0f) | col;
-				tile = *(UINT32 *)(src + 4);
-				*(UINT32 *)(dst +  8) = ((tile >> 0) & 0x0f0f0f0f) | col;
-				*(UINT32 *)(dst + 12) = ((tile >> 4) & 0x0f0f0f0f) | col;
+				tile = *(uint32_t *)(src + 0);
+				*(uint32_t *)(dst +  0) = ((tile >> 0) & 0x0f0f0f0f) | col;
+				*(uint32_t *)(dst +  4) = ((tile >> 4) & 0x0f0f0f0f) | col;
+				tile = *(uint32_t *)(src + 4);
+				*(uint32_t *)(dst +  8) = ((tile >> 0) & 0x0f0f0f0f) | col;
+				*(uint32_t *)(dst + 12) = ((tile >> 4) & 0x0f0f0f0f) | col;
 				src += 8;
 				dst += swizzle_table_8bit[lines];
 			}
@@ -1205,7 +1205,7 @@ void blit_draw_object(INT16 x, INT16 y, UINT16 z, INT16 pri, UINT32 code, UINT16
 static void blit_render_object(int start_pri, int end_pri)
 {
 	int i, size = 0, total_sprites = 0;
-	UINT8 color = 0;
+	uint8_t color = 0;
 	struct Vertex *vertices, *vertices_tmp;
 	OBJECT *object;
 
@@ -1308,7 +1308,7 @@ static void blit_render_object_zb0(void)
 static void blit_render_object_zb(int start_pri, int end_pri)
 {
 	int i, size = 0, total_sprites = 0;
-	UINT8 color = 0;
+	uint8_t color = 0;
 	struct Vertex *vertices, *vertices_tmp;
 	OBJECT *object;
 
@@ -1376,9 +1376,9 @@ static void blit_render_object_zb(int start_pri, int end_pri)
 	SCROLL1テクスチャを更新
 ------------------------------------------------------------------------*/
 
-void blit_update_scroll1(INT16 x, INT16 y, UINT32 code, UINT16 attr)
+void blit_update_scroll1(int16_t x, int16_t y, uint32_t code, uint16_t attr)
 {
-	UINT32 key = MAKE_KEY(code, attr);
+	uint32_t key = MAKE_KEY(code, attr);
 	SPRITE *p = scroll1_head[key & SCROLL1_HASH_MASK];
 
 	while (p)
@@ -1403,16 +1403,16 @@ void blit_update_scroll1(INT16 x, INT16 y, UINT32 code, UINT16 attr)
 	SCROLL1を描画リストに登録
 ------------------------------------------------------------------------*/
 
-void blit_draw_scroll1(INT16 x, INT16 y, UINT32 code, UINT16 attr)
+void blit_draw_scroll1(int16_t x, int16_t y, uint32_t code, uint16_t attr)
 {
-	INT16 idx;
+	int16_t idx;
 	struct Vertex *vertices;
-	UINT32 key = MAKE_KEY(code, attr);
+	uint32_t key = MAKE_KEY(code, attr);
 
 	if ((idx = scroll1_get_sprite(key)) < 0)
 	{
-		UINT32 col, tile;
-		UINT8 *src, *dst, lines = 8;
+		uint32_t col, tile;
+		uint8_t *src, *dst, lines = 8;
 
 		if (scroll1_texture_num == SCROLL1_TEXTURE_SIZE - 1)
 		{
@@ -1431,9 +1431,9 @@ void blit_draw_scroll1(INT16 x, INT16 y, UINT32 code, UINT16 attr)
 
 		while (lines--)
 		{
-			tile = *(UINT32 *)(src + 4);
-			*(UINT32 *)(dst +  0) = ((tile >> 0) & 0x0f0f0f0f) | col;
-			*(UINT32 *)(dst +  4) = ((tile >> 4) & 0x0f0f0f0f) | col;
+			tile = *(uint32_t *)(src + 4);
+			*(uint32_t *)(dst +  0) = ((tile >> 0) & 0x0f0f0f0f) | col;
+			*(uint32_t *)(dst +  4) = ((tile >> 4) & 0x0f0f0f0f) | col;
 			src += 8;
 			dst += 16;
 		}
@@ -1510,7 +1510,7 @@ void blit_finish_scroll1(void)
 	SCROLL2クリップ範囲を設定
 ------------------------------------------------------------------------*/
 
-void blit_set_clip_scroll2(INT16 min_y, INT16 max_y)
+void blit_set_clip_scroll2(int16_t min_y, int16_t max_y)
 {
 	scroll2_min_y = min_y;
 	scroll2_max_y = max_y + 1;
@@ -1526,7 +1526,7 @@ void blit_set_clip_scroll2(INT16 min_y, INT16 max_y)
 	SCROLL2の描画範囲チェック
 ------------------------------------------------------------------------*/
 
-int blit_check_clip_scroll2(INT16 sy)
+int blit_check_clip_scroll2(int16_t sy)
 {
 	scroll2_sy = sy;
 	scroll2_ey = sy + 16;
@@ -1542,11 +1542,11 @@ int blit_check_clip_scroll2(INT16 sy)
 	SCROLL2テクスチャを更新
 ------------------------------------------------------------------------*/
 
-void blit_update_scroll2(INT16 x, INT16 y, UINT32 code, UINT16 attr)
+void blit_update_scroll2(int16_t x, int16_t y, uint32_t code, uint16_t attr)
 {
 	if (y > clip_min_y - 16 && y < clip_max_y)
 	{
-		UINT32 key = MAKE_KEY(code, attr);
+		uint32_t key = MAKE_KEY(code, attr);
 		SPRITE *p = scroll2_head[key & SCROLL2_HASH_MASK];
 
 		while (p)
@@ -1572,10 +1572,10 @@ void blit_update_scroll2(INT16 x, INT16 y, UINT32 code, UINT16 attr)
 	SCROLL2(ラインスクロール)を直接VRAMに描画
 ------------------------------------------------------------------------*/
 
-static void blit_draw_scroll2_software(INT16 x, INT16 y, UINT32 code, UINT16 attr)
+static void blit_draw_scroll2_software(int16_t x, int16_t y, uint32_t code, uint16_t attr)
 {
-	UINT32 src, dst;
-	UINT8 func;
+	uint32_t src, dst;
+	uint8_t func;
 
 #if USE_CACHE
 	src = (*read_cache)(code << 7);
@@ -1596,7 +1596,7 @@ static void blit_draw_scroll2_software(INT16 x, INT16 y, UINT32 code, UINT16 att
 
 	func = (pen_usage[code] & 1) | ((attr & 0x60) >> 4);
 
-	(*drawgfx16[func])((UINT32 *)&memory_region_gfx1[src],
+	(*drawgfx16[func])((uint32_t *)&memory_region_gfx1[src],
 					&scrbitmap[dst],
 					&video_palette[((attr & 0x1f) + 64) << 4],
 					scroll2_ey - scroll2_sy);
@@ -1607,16 +1607,16 @@ static void blit_draw_scroll2_software(INT16 x, INT16 y, UINT32 code, UINT16 att
 	SCROLL2を描画リストに登録
 ------------------------------------------------------------------------*/
 
-static void blit_draw_scroll2_hardware(INT16 x, INT16 y, UINT32 code, UINT16 attr)
+static void blit_draw_scroll2_hardware(int16_t x, int16_t y, uint32_t code, uint16_t attr)
 {
-	INT16 idx;
+	int16_t idx;
 	struct Vertex *vertices;
-	UINT32 key = MAKE_KEY(code, attr);
+	uint32_t key = MAKE_KEY(code, attr);
 
 	if ((idx = scroll2_get_sprite(key)) < 0)
 	{
-		UINT32 col, tile;
-		UINT8 *src, *dst, lines = 16;
+		uint32_t col, tile;
+		uint8_t *src, *dst, lines = 16;
 
 		if (scroll2_texture_num == SCROLL2_TEXTURE_SIZE - 1)
 		{
@@ -1635,12 +1635,12 @@ static void blit_draw_scroll2_hardware(INT16 x, INT16 y, UINT32 code, UINT16 att
 
 		while (lines--)
 		{
-			tile = *(UINT32 *)(src + 0);
-			*(UINT32 *)(dst +  0) = ((tile >> 0) & 0x0f0f0f0f) | col;
-			*(UINT32 *)(dst +  4) = ((tile >> 4) & 0x0f0f0f0f) | col;
-			tile = *(UINT32 *)(src + 4);
-			*(UINT32 *)(dst +  8) = ((tile >> 0) & 0x0f0f0f0f) | col;
-			*(UINT32 *)(dst + 12) = ((tile >> 4) & 0x0f0f0f0f) | col;
+			tile = *(uint32_t *)(src + 0);
+			*(uint32_t *)(dst +  0) = ((tile >> 0) & 0x0f0f0f0f) | col;
+			*(uint32_t *)(dst +  4) = ((tile >> 4) & 0x0f0f0f0f) | col;
+			tile = *(uint32_t *)(src + 4);
+			*(uint32_t *)(dst +  8) = ((tile >> 0) & 0x0f0f0f0f) | col;
+			*(uint32_t *)(dst + 12) = ((tile >> 4) & 0x0f0f0f0f) | col;
 			src += 8;
 			dst += swizzle_table_8bit[lines];
 		}
@@ -1717,9 +1717,9 @@ void blit_finish_scroll2(void)
 	SCROLL3テクスチャを更新
 ------------------------------------------------------------------------*/
 
-void blit_update_scroll3(INT16 x, INT16 y, UINT32 code, UINT16 attr)
+void blit_update_scroll3(int16_t x, int16_t y, uint32_t code, uint16_t attr)
 {
-	UINT32 key = MAKE_KEY(code, attr);
+	uint32_t key = MAKE_KEY(code, attr);
 	SPRITE *p = scroll3_head[key & SCROLL3_HASH_MASK];
 
 	while (p)
@@ -1744,16 +1744,16 @@ void blit_update_scroll3(INT16 x, INT16 y, UINT32 code, UINT16 attr)
 	SCROLL3を描画リストに登録
 ------------------------------------------------------------------------*/
 
-void blit_draw_scroll3(INT16 x, INT16 y, UINT32 code, UINT16 attr)
+void blit_draw_scroll3(int16_t x, int16_t y, uint32_t code, uint16_t attr)
 {
-	INT16 idx;
+	int16_t idx;
 	struct Vertex *vertices;
-	UINT32 key = MAKE_KEY(code, attr);
+	uint32_t key = MAKE_KEY(code, attr);
 
 	if ((idx = scroll3_get_sprite(key)) < 0)
 	{
-		UINT32 col, tile;
-		UINT8 *src, *dst, lines = 32;
+		uint32_t col, tile;
+		uint8_t *src, *dst, lines = 32;
 
 		if (scroll3_texture_num == SCROLL3_TEXTURE_SIZE - 1)
 		{
@@ -1772,18 +1772,18 @@ void blit_draw_scroll3(INT16 x, INT16 y, UINT32 code, UINT16 attr)
 
 		while (lines--)
 		{
-			tile = *(UINT32 *)(src + 0);
-			*(UINT32 *)(dst +  0) = ((tile >> 0) & 0x0f0f0f0f) | col;
-			*(UINT32 *)(dst +  4) = ((tile >> 4) & 0x0f0f0f0f) | col;
-			tile = *(UINT32 *)(src + 4);
-			*(UINT32 *)(dst +  8) = ((tile >> 0) & 0x0f0f0f0f) | col;
-			*(UINT32 *)(dst + 12) = ((tile >> 4) & 0x0f0f0f0f) | col;
-			tile = *(UINT32 *)(src + 8);
-			*(UINT32 *)(dst + 128) = ((tile >> 0) & 0x0f0f0f0f) | col;
-			*(UINT32 *)(dst + 132) = ((tile >> 4) & 0x0f0f0f0f) | col;
-			tile = *(UINT32 *)(src + 12);
-			*(UINT32 *)(dst + 136) = ((tile >> 0) & 0x0f0f0f0f) | col;
-			*(UINT32 *)(dst + 140) = ((tile >> 4) & 0x0f0f0f0f) | col;
+			tile = *(uint32_t *)(src + 0);
+			*(uint32_t *)(dst +  0) = ((tile >> 0) & 0x0f0f0f0f) | col;
+			*(uint32_t *)(dst +  4) = ((tile >> 4) & 0x0f0f0f0f) | col;
+			tile = *(uint32_t *)(src + 4);
+			*(uint32_t *)(dst +  8) = ((tile >> 0) & 0x0f0f0f0f) | col;
+			*(uint32_t *)(dst + 12) = ((tile >> 4) & 0x0f0f0f0f) | col;
+			tile = *(uint32_t *)(src + 8);
+			*(uint32_t *)(dst + 128) = ((tile >> 0) & 0x0f0f0f0f) | col;
+			*(uint32_t *)(dst + 132) = ((tile >> 4) & 0x0f0f0f0f) | col;
+			tile = *(uint32_t *)(src + 12);
+			*(uint32_t *)(dst + 136) = ((tile >> 0) & 0x0f0f0f0f) | col;
+			*(uint32_t *)(dst + 140) = ((tile >> 4) & 0x0f0f0f0f) | col;
 			src += 16;
 			dst += swizzle_table_8bit[lines];
 		}

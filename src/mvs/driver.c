@@ -21,11 +21,11 @@
 
 int neogeo_driver_type;
 int neogeo_raster_enable;
-UINT16 neogeo_ngh;
+uint16_t neogeo_ngh;
 
-UINT8 auto_animation_speed;
-UINT8 auto_animation_disabled;
-UINT8 auto_animation_counter;
+uint8_t auto_animation_speed;
+uint8_t auto_animation_disabled;
+uint8_t auto_animation_counter;
 
 struct cacheinfo_t MVS_cacheinfo[] =
 {
@@ -145,36 +145,36 @@ struct cacheinfo_t MVS_cacheinfo[] =
 
 static int raster_enable;
 
-static UINT16 raster_counter;
+static uint16_t raster_counter;
 static int scanline_read;
 static int busy;
 
 static int display_position_interrupt_counter;
 static int display_position_interrupt_control;
-static UINT32 display_counter;
+static uint32_t display_counter;
 
 static int display_position_interrupt_pending;
 static int vblank_interrupt_pending;
 
-static UINT8 auto_animation_frame_counter;
+static uint8_t auto_animation_frame_counter;
 
 static int sound_code;
 static int result_code;
 static int pending_command;
 
-static UINT8 main_cpu_vector_table_source;
-static UINT8 controller_select;
-static UINT8 save_ram_unlocked;
+static uint8_t main_cpu_vector_table_source;
+static uint8_t controller_select;
+static uint8_t save_ram_unlocked;
 
-static UINT32 m68k_second_bank;
-static UINT32 z80_bank[4];
+static uint32_t m68k_second_bank;
+static uint32_t z80_bank[4];
 
-static UINT16 *neogeo_cpu1_second_bank;
+static uint16_t *neogeo_cpu1_second_bank;
 
-static UINT8 ALIGN_DATA neogeo_game_vectors[0x80];
-static UINT8 *neogeo_vectors[2];
+static uint8_t ALIGN_DATA neogeo_game_vectors[0x80];
+static uint8_t *neogeo_vectors[2];
 
-static UINT16 neogeo_rng = 0x2345;
+static uint16_t neogeo_rng = 0x2345;
 
 
 /******************************************************************************
@@ -188,13 +188,13 @@ static void update_interrupts(void);
 	Set CPU1 second ROM bank
 ------------------------------------------------------*/
 
-static void neogeo_set_cpu1_second_bank(UINT32 offset)
+static void neogeo_set_cpu1_second_bank(uint32_t offset)
 {
 	if (m68k_second_bank != offset)
 	{
 		m68k_second_bank = offset;
-		neogeo_cpu1_second_bank = (UINT16 *)((UINT32)memory_region_cpu1 + offset - 0x200000);
-		C68k_Set_Fetch(&C68K, 0x200000, 0x2fffff, (UINT32)&memory_region_cpu1[offset]);
+		neogeo_cpu1_second_bank = (uint16_t *)((uint32_t)memory_region_cpu1 + offset - 0x200000);
+		C68k_Set_Fetch(&C68K, 0x200000, 0x2fffff, (uint32_t)&memory_region_cpu1[offset]);
 	}
 }
 
@@ -203,7 +203,7 @@ static void neogeo_set_cpu1_second_bank(UINT32 offset)
 	Set CPU2 ROM bank
 ------------------------------------------------------*/
 
-static void neogeo_set_cpu2_bank(int bank, UINT32 offset)
+static void neogeo_set_cpu2_bank(int bank, uint32_t offset)
 {
 	if (z80_bank[bank] != offset)
 	{
@@ -441,7 +441,7 @@ void neogeo_vblank_interrupt(void)
 void neogeo_raster_interrupt(int line)
 {
 	int do_refresh = 0;
-	UINT16 raster_line = line;
+	uint16_t raster_line = line;
 
 	if (raster_line == RASTER_LINES) raster_line = 0;
 
@@ -512,7 +512,7 @@ void neogeo_raster_interrupt(int line)
 	Select BIOS vector (0x3a0003 / 0x3a0013)
 ------------------------------------------------------*/
 
-INLINE void set_main_cpu_vector_table_source(UINT8 data)
+INLINE void set_main_cpu_vector_table_source(uint8_t data)
 {
 	memcpy(memory_region_cpu1, neogeo_vectors[data], 0x80);
 	main_cpu_vector_table_source = data;
@@ -544,7 +544,7 @@ INLINE void set_main_cpu_vector_table_source(UINT8 data)
 	Select palette RAM bank  (0x3a000f / 0x3a001f)
 ------------------------------------------------------*/
 
-INLINE void neogeo_set_palette_bank(UINT8 data)
+INLINE void neogeo_set_palette_bank(uint8_t data)
 {
 	if (palette_bank != data)
 	{
@@ -559,7 +559,7 @@ INLINE void neogeo_set_palette_bank(UINT8 data)
 	Write VRAM offset ($3c0001)
 ------------------------------------------------------*/
 
-INLINE void set_videoram_offset(UINT16 data)
+INLINE void set_videoram_offset(uint16_t data)
 {
 	videoram_offset = data;
 
@@ -572,7 +572,7 @@ INLINE void set_videoram_offset(UINT16 data)
 	Read data from VRAM ($3c0001 / $3c0003)
 ------------------------------------------------------*/
 
-INLINE UINT16 get_videoram_data(void)
+INLINE uint16_t get_videoram_data(void)
 {
 	return videoram_read_buffer;
 }
@@ -582,7 +582,7 @@ INLINE UINT16 get_videoram_data(void)
 	Write data to VRAM ($3c0003)
 ------------------------------------------------------*/
 
-INLINE void set_videoram_data(UINT16 data)
+INLINE void set_videoram_data(uint16_t data)
 {
 	neogeo_videoram[videoram_offset] = data;
 
@@ -598,7 +598,7 @@ INLINE void set_videoram_data(UINT16 data)
 	Read VRAM modulo ($3c0005)
 ------------------------------------------------------*/
 
-INLINE UINT16 get_videoram_modulo(void)
+INLINE uint16_t get_videoram_modulo(void)
 {
 	return videoram_modulo;
 }
@@ -608,7 +608,7 @@ INLINE UINT16 get_videoram_modulo(void)
 	Write VRAM modulo ($3c0005)
 ------------------------------------------------------*/
 
-INLINE void set_videoram_modulo(UINT16 data)
+INLINE void set_videoram_modulo(uint16_t data)
 {
 	videoram_modulo = data;
 }
@@ -618,13 +618,13 @@ INLINE void set_videoram_modulo(UINT16 data)
 	Read video control data ($3c0007)
 ---------------------------------------------------------*/
 
-INLINE UINT16 get_video_control(void)
+INLINE uint16_t get_video_control(void)
 {
 	scanline_read = 1;
 
 	if (neogeo_driver_type == NORMAL)
 	{
-		UINT16 raster_line = timer_getscanline();
+		uint16_t raster_line = timer_getscanline();
 
 		if (raster_line == RASTER_LINES) raster_line = 0;
 
@@ -642,7 +642,7 @@ INLINE UINT16 get_video_control(void)
 	Write video control data ($3c0007)
 ---------------------------------------------------------*/
 
-INLINE void set_video_control(UINT16 data)
+INLINE void set_video_control(uint16_t data)
 {
 	auto_animation_speed = data >> 8;
 	auto_animation_disabled = data & 0x0008;
@@ -655,11 +655,11 @@ INLINE void set_video_control(UINT16 data)
 	Set display counter (MSB) (0x3c0008)
 ------------------------------------------------------*/
 
-INLINE void neogeo_set_display_counter_msb(UINT16 data)
+INLINE void neogeo_set_display_counter_msb(uint16_t data)
 {
 	if (neogeo_driver_type == NORMAL) return;
 
-	display_counter = (display_counter & 0x0000ffff) | ((UINT32)data << 16);
+	display_counter = (display_counter & 0x0000ffff) | ((uint32_t)data << 16);
 }
 
 
@@ -667,7 +667,7 @@ INLINE void neogeo_set_display_counter_msb(UINT16 data)
 	Set display counter (LSB) (0x3c000a)
 ------------------------------------------------------*/
 
-INLINE void neogeo_set_display_counter_lsb(UINT16 data)
+INLINE void neogeo_set_display_counter_lsb(uint16_t data)
 {
 	if (neogeo_driver_type == NORMAL) return;
 
@@ -682,7 +682,7 @@ INLINE void neogeo_set_display_counter_lsb(UINT16 data)
 	Write IRQ acknowledge ($3c000c)
 ------------------------------------------------------*/
 
-INLINE void neogeo_acknowledge_interrupt(UINT16 data)
+INLINE void neogeo_acknowledge_interrupt(uint16_t data)
 {
 	if (data & 0x02) display_position_interrupt_pending = 0;
 	if (data & 0x04) vblank_interrupt_pending = 0;
@@ -703,7 +703,7 @@ WRITE16_HANDLER( neogeo_bankswitch_w )
 {
 	if ((offset & (0x2ffff0/2)) == (0x2ffff0/2))
 	{
-		UINT32 bankaddress;
+		uint32_t bankaddress;
 
 		if (memory_length_cpu1 <= 0x100000)
 			return;
@@ -802,7 +802,7 @@ READ16_HANDLER( neogeo_controller1and4_r )
 
 READ16_HANDLER( neogeo_timer_r )
 {
-	UINT16 res;
+	uint16_t res;
 	int coinflip = pd4990a_testbit_r(0);
 	int databit = pd4990a_databit_r(0);
 
@@ -858,7 +858,7 @@ WRITE16_HANDLER( system_control_w )
 {
 	if ((mem_mask & 0x00ff) != 0x00ff)
 	{
-		UINT8 bit = (offset >> 3) & 1;
+		uint8_t bit = (offset >> 3) & 1;
 
 		switch (offset & 7)
 		{
@@ -937,7 +937,7 @@ READ16_HANDLER( neogeo_paletteram_r )
 
 WRITE16_HANDLER( neogeo_paletteram_w )
 {
-	UINT16 color;
+	uint16_t color;
 
 	offset &= 0xfff;
 	color = COMBINE_DATA(&palettes[palette_bank][offset]);
@@ -999,7 +999,7 @@ WRITE16_HANDLER( neogeo_sram16_w )
 	Read Z80 port
 ------------------------------------------------------*/
 
-UINT8 neogeo_z80_port_r(UINT16 port)
+uint8_t neogeo_z80_port_r(uint16_t port)
 {
 	switch (port & 0xff)
 	{
@@ -1041,7 +1041,7 @@ UINT8 neogeo_z80_port_r(UINT16 port)
 	Write Z80 port
 ------------------------------------------------------*/
 
-void neogeo_z80_port_w(UINT16 port, UINT8 data)
+void neogeo_z80_port_w(uint16_t port, uint8_t data)
 {
 	switch (port & 0xff)
 	{
@@ -1091,7 +1091,7 @@ void neogeo_sound_irq(int irq)
 void mslugx_install_protection(void)
 {
 	int i;
-	UINT16 *mem16 = (UINT16 *)memory_region_cpu1;
+	uint16_t *mem16 = (uint16_t *)memory_region_cpu1;
 
 	for (i = 0;i < (0x100000/2) - 4;i++)
 	{
@@ -1135,11 +1135,11 @@ WRITE16_HANDLER( neogeo_secondbank_w )
 	Fatal Fury 2
 ------------------------------------------------------*/
 
-static UINT32 neogeo_prot_data;
+static uint32_t neogeo_prot_data;
 
 READ16_HANDLER( fatfury2_protection_r )
 {
-	UINT16 res = (neogeo_prot_data >> 24);
+	uint16_t res = (neogeo_prot_data >> 24);
 
 	switch (offset & (0xfffff/2))
 	{
@@ -1211,7 +1211,7 @@ WRITE16_HANDLER( kof98_protection_w )
 	if (offset == 0x20aaaa/2)
 	{
 		/* info from razoola */
-		UINT16 *mem16 = (UINT16 *)memory_region_cpu1;
+		uint16_t *mem16 = (uint16_t *)memory_region_cpu1;
 
 		switch (data)
 		{
@@ -1242,11 +1242,11 @@ WRITE16_HANDLER( kof98_protection_w )
 /* information about the sma random number generator provided by razoola */
 /* this RNG is correct for KOF99, other games might be different */
 
-static UINT16 sma_random_r(void)
+static uint16_t sma_random_r(void)
 {
-	UINT16 old = neogeo_rng;
+	uint16_t old = neogeo_rng;
 
-	UINT16 newbit = (
+	uint16_t newbit = (
 			(neogeo_rng >>  2) ^
 			(neogeo_rng >>  3) ^
 			(neogeo_rng >>  5) ^
@@ -1499,26 +1499,26 @@ WRITE16_HANDLER( kof2000_protection_w )
   mslug5, svcchaos, kof2003
 ------------------------------------------------------*/
 
-static UINT16 CartRAM[0x1000];
+static uint16_t CartRAM[0x1000];
 /*
-static void pvc_w8(UINT32 offset, UINT8 data)
+static void pvc_w8(uint32_t offset, uint8_t data)
 {
-	*(((UINT8 *)CartRAM) + offset) = data;
+	*(((uint8_t *)CartRAM) + offset) = data;
 }
 
-static UINT8 pvc_r8(UINT32 offset)
+static uint8_t pvc_r8(uint32_t offset)
 {
-	return *(((UINT8 *)CartRAM) + offset);
+	return *(((uint8_t *)CartRAM) + offset);
 }
 */
 static void pvc_write_unpack_color(void)
 {
-	UINT16 pen = CartRAM[0xff0];
+	uint16_t pen = CartRAM[0xff0];
 
-	UINT8 b = ((pen & 0x000f) << 1) | ((pen & 0x1000) >> 12);
-	UINT8 g = ((pen & 0x00f0) >> 3) | ((pen & 0x2000) >> 13);
-	UINT8 r = ((pen & 0x0f00) >> 7) | ((pen & 0x4000) >> 14);
-	UINT8 s = (pen & 0x8000) >> 15;
+	uint8_t b = ((pen & 0x000f) << 1) | ((pen & 0x1000) >> 12);
+	uint8_t g = ((pen & 0x00f0) >> 3) | ((pen & 0x2000) >> 13);
+	uint8_t r = ((pen & 0x0f00) >> 7) | ((pen & 0x4000) >> 14);
+	uint8_t s = (pen & 0x8000) >> 15;
 
 	CartRAM[0xff1] = (g << 8) | b;
 	CartRAM[0xff2] = (s << 8) | r;
@@ -1527,7 +1527,7 @@ static void pvc_write_unpack_color(void)
 // on writes to e8/e9/ea/eb
 static void pvc_write_pack_color(void)
 {
-	UINT8 b1, b2, b3, b4;
+	uint8_t b1, b2, b3, b4;
 
 	b1 = pvc_r8(0x1fe9);
 	b2 = pvc_r8(0x1fe8);
@@ -1540,8 +1540,8 @@ static void pvc_write_pack_color(void)
 */
 static void pvc_write_pack_color(void)
 {
-	UINT16 gb = CartRAM[0xff4];
-	UINT16 sr = CartRAM[0xff5];
+	uint16_t gb = CartRAM[0xff4];
+	uint16_t sr = CartRAM[0xff5];
 
 	CartRAM[0xff6] = 	((gb & 0x001e) >>  1) |
 						((gb & 0x1e00) >>  5) |
@@ -1554,14 +1554,14 @@ static void pvc_write_pack_color(void)
 
 static void pvc_write_bankswitch(void)
 {
-	UINT32 bankaddress;
+	uint32_t bankaddress;
 
 	bankaddress = ((CartRAM[0xff8] >> 8) | (CartRAM[0xff9] << 8));
 	CartRAM[0xff8] = (CartRAM[0xff8] & 0xfe00) | 0x00a0;//
 	CartRAM[0xff9] &= 0x7fff;//
-//	*(((UINT8 *)CartRAM) + 0x1ff0)  = 0xa0;
-//	*(((UINT8 *)CartRAM) + 0x1ff1) &= 0xfe;
-//	*(((UINT8 *)CartRAM) + 0x1ff3) &= 0x7f;
+//	*(((uint8_t *)CartRAM) + 0x1ff0)  = 0xa0;
+//	*(((uint8_t *)CartRAM) + 0x1ff1) &= 0xfe;
+//	*(((uint8_t *)CartRAM) + 0x1ff3) &= 0x7f;
 
 	neogeo_set_cpu1_second_bank(bankaddress + 0x100000);
 }
@@ -1637,51 +1637,51 @@ READ16_HANDLER( vliner_r )
 void kof2000_AES_protection(void)
 {
 	/* Patch out loop to disable console mode */
-	UINT16 *mem16 = (UINT16 *)memory_region_cpu1;
+	uint16_t *mem16 = (uint16_t *)memory_region_cpu1;
 	mem16[0xa226e >> 1] = 0x4e75;
-//	UINT8 *mem8 = (UINT8 *)memory_region_cpu1;
+//	uint8_t *mem8 = (uint8_t *)memory_region_cpu1;
 //	mem8[0x109 >> 1] = 0x01;
 }
 
 void mslug5_AES_protection(void)
 {
 	/* Patch out loop to disable console mode */
-	UINT16 *mem16 = (UINT16 *)memory_region_cpu1;
+	uint16_t *mem16 = (uint16_t *)memory_region_cpu1;
 	mem16[0x122a >> 1] = 0x4e75;
 }
 
 void nitd_AES_protection(void)
 {
 	/* Patch out loop to disable console mode */
-	UINT16 *mem16 = (UINT16 *)memory_region_cpu1;
+	uint16_t *mem16 = (uint16_t *)memory_region_cpu1;
 	mem16[0x19978 >> 1] = 0x4e75;
 }
 
 void zupapa_AES_protection(void)
 {
 	/* Patch out loop to disable console mode */
-	UINT16 *mem16 = (UINT16 *)memory_region_cpu1;
+	uint16_t *mem16 = (uint16_t *)memory_region_cpu1;
 	mem16[0x80290 >> 1] = 0x4e71;
 }
 
 void sengoku3_AES_protection(void)
 {
 	/* Patch out loop to disable console mode */
-	UINT16 *mem16 = (UINT16 *)memory_region_cpu1;
+	uint16_t *mem16 = (uint16_t *)memory_region_cpu1;
 	mem16[0x00d04 >> 1] = 0x4e71;
 }
 
 void mslug4_AES_protection(void)
 {
 	/* Patch out loop to disable console mode */
-	UINT16 *mem16 = (UINT16 *)memory_region_cpu1;
+	uint16_t *mem16 = (uint16_t *)memory_region_cpu1;
 	mem16[0xad8c >> 1] = 0x4e75;
 }
 
 void rotd_AES_protection(void)
 {
 	/* Patch out loop to disable console mode */
-	UINT16 *mem16 = (UINT16 *)memory_region_cpu1;
+	uint16_t *mem16 = (uint16_t *)memory_region_cpu1;
 	mem16[0x1020 >> 1] = 0x4e71;
 	mem16[0x2400 >> 1] = 0x4e71;
 }
@@ -1689,7 +1689,7 @@ void rotd_AES_protection(void)
 void matrim_AES_protection(void)
 {
 	/* Patch out loop to disable console mode */
-	UINT16 *mem16 = (UINT16 *)memory_region_cpu1;
+	uint16_t *mem16 = (uint16_t *)memory_region_cpu1;
 	mem16[0x1050 >> 1] = 0x4e75;
 }
 
@@ -1707,14 +1707,14 @@ WRITE16_HANDLER( kof10th_protection_w )
 
 		if (!CartRAM[0xffe])
 		{
-			UINT16 *prom = (UINT16 *)memory_region_cpu1;
+			uint16_t *prom = (uint16_t *)memory_region_cpu1;
 			COMBINE_DATA(&prom[(0xe0000/2) + (offset & 0xffff)]);
 		}
 		else
 		{
-			UINT8 *srom1 = memory_region_user2;
-			UINT8 *srom2 = memory_region_gfx2;
-			UINT32 tile = offset & ~31;
+			uint8_t *srom1 = memory_region_user2;
+			uint8_t *srom2 = memory_region_gfx2;
+			uint32_t tile = offset & ~31;
 
 			srom1[offset] = BITSWAP8(data,7,6,0,4,3,2,1,5);
 			memcpy(&srom2[tile], &srom1[tile], 32);
@@ -1730,7 +1730,7 @@ WRITE16_HANDLER( kof10th_protection_w )
 		{
 			if (offset == 0x5fff8)
 			{
-				UINT32 bankaddress = 0x100000 + ((data & 7) << 20);
+				uint32_t bankaddress = 0x100000 + ((data & 7) << 20);
 
 				if (bankaddress >= 0x700000)
 					bankaddress = 0x100000;
@@ -1739,7 +1739,7 @@ WRITE16_HANDLER( kof10th_protection_w )
 			}
 			else if (offset == 0x5fffc && CartRAM[0xffc] != data)
 			{
-				UINT8 *src = memory_region_cpu1;
+				uint8_t *src = memory_region_cpu1;
 
 				memcpy(src + 0x10000, src + ((data & 1) ? 0x810000 : 0x710000), 0xcffff);
 			}
@@ -1752,7 +1752,7 @@ WRITE16_HANDLER( cthd2003_protection_w )
 {
 	if (offset >= 0x2ffff0/2)
 	{
-		UINT8 cthd2003_banks[8] = { 1,0,1,0,1,0,3,2 };
+		uint8_t cthd2003_banks[8] = { 1,0,1,0,1,0,3,2 };
 
 		offset -= 0x2ffff0/2;
 
@@ -1795,9 +1795,9 @@ WRITE16_HANDLER( kf2k3bl_protection_w)
 
 		if (offset == 0x1ff0/2 || offset == 0x1ff2/2)
 		{
-			UINT8 *cr = (UINT8 *)CartRAM;
-			UINT32 address = (cr[0x1ff3] << 16) | (cr[0x1ff2] << 8) | cr[0x1ff1];
-			UINT8 prt = cr[0x1ff2];
+			uint8_t *cr = (uint8_t *)CartRAM;
+			uint32_t address = (cr[0x1ff3] << 16) | (cr[0x1ff2] << 8) | cr[0x1ff1];
+			uint8_t prt = cr[0x1ff2];
 
 			cr[0x1ff0] =  0xa0;
 			cr[0x1ff1] &= 0xfe;
@@ -1819,9 +1819,9 @@ WRITE16_HANDLER( kf2k3pl_protection_w)
 
 		if (offset == 0x1ff0/2 || offset == 0x1ff2/2)
 		{
-			UINT8 *cr = (UINT8 *)CartRAM;
-			UINT32 address = (cr[0x1ff3] << 16) | (cr[0x1ff2] << 8) | cr[0x1ff0];
-			UINT8 prt = cr[0x1ff2];
+			uint8_t *cr = (uint8_t *)CartRAM;
+			uint32_t address = (cr[0x1ff3] << 16) | (cr[0x1ff2] << 8) | cr[0x1ff0];
+			uint8_t prt = cr[0x1ff2];
 
 			cr[0x1ff0] &= 0xfe;
 			cr[0x1ff3] &= 0x7f;
@@ -1834,7 +1834,7 @@ WRITE16_HANDLER( kf2k3pl_protection_w)
 
 void cthd2003_AES_protection(void)
 {
-	UINT16 *mem16 = (UINT16 *)memory_region_cpu1;
+	uint16_t *mem16 = (uint16_t *)memory_region_cpu1;
 
 	// Game sets itself to MVS & English mode, patch this out
 	mem16[0xed00e/2] = 0x4e71;
@@ -1889,8 +1889,8 @@ STATE_SAVE( driver )
 
 STATE_LOAD( driver )
 {
-	UINT32 _m68k_second_bank;
-	UINT32 _z80_bank[4];
+	uint32_t _m68k_second_bank;
+	uint32_t _z80_bank[4];
 
 	state_load_long(&neogeo_driver_type, 1);
 	state_load_long(&raster_enable, 1);

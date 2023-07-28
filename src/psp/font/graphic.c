@@ -16,7 +16,7 @@
 	gryph data
 ------------------------------------------------------*/
 
-static const UINT8 ALIGN_DATA graphic_font[] = {
+static const uint8_t ALIGN_DATA graphic_font[] = {
 	0x10,0x0c,0x00,0xd0,0x9f,0x00,0xe9,0xef,0x06,0x68,0x1f,0x07,0x60,0x0f,0x00,0x60,
 	0x0f,0x00,0x60,0x0f,0x00,0x60,0x0f,0x00,0x60,0x0f,0x00,0x60,0x0f,0x00,0x60,0x0f,
 	0x00,0x60,0x0f,0x00,0x30,0x09,0x00,0x00,0xd9,0x00,0x00,0xd9,0x00,0x00,0xd9,0x00,
@@ -73,19 +73,19 @@ static const int ALIGN_DATA graphic_font_pos[NUM_FONTS] = {
 	0x000000,0x000027,0x00004e,0x000078,0x00009c,0x0000e4,0x000111,0x000153,0x000195,0x0001f0,0x00024b,0x000263,0x00027b,0x0002c9
 };
 
-static const INT8 ALIGN_DATA graphic_font_width[NUM_FONTS] = {
+static const int8_t ALIGN_DATA graphic_font_width[NUM_FONTS] = {
 	 6, 6,14,12,12,10,12,12,14,14, 8, 8,12,12
 };
 
-static const INT8 ALIGN_DATA graphic_font_height[NUM_FONTS] = {
+static const int8_t ALIGN_DATA graphic_font_height[NUM_FONTS] = {
 	13,13, 6, 6,12, 9,11,11,13,13, 6, 6,13,13
 };
 
-static const INT8 ALIGN_DATA graphic_font_skipx[NUM_FONTS] = {
+static const int8_t ALIGN_DATA graphic_font_skipx[NUM_FONTS] = {
 	 5, 4, 0, 1, 2, 3, 2, 2, 1, 1, 4, 4, 2, 3
 };
 
-static const INT8 ALIGN_DATA graphic_font_skipy[NUM_FONTS] = {
+static const int8_t ALIGN_DATA graphic_font_skipy[NUM_FONTS] = {
 	 1, 1, 4, 4, 1, 3, 2, 1, 1, 1, 4, 4, 0, 0
 };
 
@@ -94,7 +94,7 @@ static const INT8 ALIGN_DATA graphic_font_skipy[NUM_FONTS] = {
 	functions
 ------------------------------------------------------*/
 
-int graphic_font_get_gryph(struct font_t *font, UINT16 code)
+int graphic_font_get_gryph(struct font_t *font, uint16_t code)
 {
 	if (code < NUM_FONTS)
 	{
@@ -109,7 +109,7 @@ int graphic_font_get_gryph(struct font_t *font, UINT16 code)
 	return 0;
 }
 
-int graphic_font_get_pitch(UINT16 code)
+int graphic_font_get_pitch(uint16_t code)
 {
 	return 14;
 }

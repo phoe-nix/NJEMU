@@ -81,7 +81,7 @@ void show_background(void)
 
 int draw_battery_status(int draw)
 {
-	static UINT32 counter = 0;
+	static uint32_t counter = 0;
 	static int prev_bat = 0, prev_charging = 0;
 	int width, icon, update = 0;
 	int bat = scePowerGetBatteryLifePercent();
@@ -485,7 +485,7 @@ void msg_screen_clear(void)
 	¥Æ¥­¥¹¥È¥«¥é©`ÔO¶¨
 --------------------------------------------------------*/
 
-void msg_set_text_color(UINT32 color)
+void msg_set_text_color(uint32_t color)
 {
 	text_r = (color >>  0) & 0xff;
 	text_g = (color >>  8) & 0xff;

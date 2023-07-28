@@ -89,7 +89,7 @@ static int pixel_format;
 #endif
 
 #ifdef COMMAND_LIST
-static UINT16 command_font_color[11] =
+static uint16_t command_font_color[11] =
 {
 	MAKECOL16(255,255,255),
 	MAKECOL16(255, 32,  0),
@@ -106,10 +106,10 @@ static UINT16 command_font_color[11] =
 #endif
 
 
-static UINT16 *tex_font;
-static UINT16 *tex_volicon;
-static UINT16 *tex_smallfont;
-static UINT16 *tex_boxshadow;
+static uint16_t *tex_font;
+static uint16_t *tex_volicon;
+static uint16_t *tex_smallfont;
+static uint16_t *tex_boxshadow;
 
 #define GAUSS_WIDTH	4
 
@@ -133,9 +133,9 @@ static const int gauss_fact[12][12] = {
 	ユーザインタフェース初期化
 ******************************************************************************/
 
-static UINT16 *texture16_addr(int x, int y)
+static uint16_t *texture16_addr(int x, int y)
 {
-	return (UINT16 *)(0x44000000 + ((x + (y << 9)) << 1));
+	return (uint16_t *)(0x44000000 + ((x + (y << 9)) << 1));
 }
 
 
@@ -144,8 +144,8 @@ static UINT16 *texture16_addr(int x, int y)
 void ui_init(void)
 {
 	int code, x, y, alpha;
-	UINT16 *dst;
-	UINT16 color[8] = {
+	uint16_t *dst;
+	uint16_t color[8] = {
 		MAKECOL15(248,248,248),
 		MAKECOL15(240,240,240),
 		MAKECOL15(232,232,232),
@@ -276,8 +276,8 @@ void ui_init(void)
 	{
 		for (y = 0; y < 8; y++)
 		{
-			UINT8 data = font_s[(code << 3) + y];
-			UINT8 mask = 0x80;
+			uint8_t data = font_s[(code << 3) + y];
+			uint8_t mask = 0x80;
 
 			for (x = 0; x < 8; x++)
 			{
@@ -328,10 +328,10 @@ void ui_init(void)
 	フォントコード取得 (コマンドリスト用)
 ------------------------------------------------------*/
 
-static UINT16 command_font_get_code(const UINT8 *s)
+static uint16_t command_font_get_code(const uint8_t *s)
 {
-	UINT8 c1 = s[0];
-	UINT8 c2 = s[1];
+	uint8_t c1 = s[0];
+	uint8_t c2 = s[1];
 
 	if (c1 == '_')
 	{
@@ -467,9 +467,9 @@ static UINT16 command_font_get_code(const UINT8 *s)
 	フォントコード取得 (Latin-1デコード)
 ------------------------------------------------------*/
 
-static UINT16 latin1_get_code(const UINT8 *s, int *type)
+static uint16_t latin1_get_code(const uint8_t *s, int *type)
 {
-	UINT16 code;
+	uint16_t code;
 
 	if ((code = command_font_get_code(s)) != CODE_NOTFOUND)
 	{
@@ -494,11 +494,11 @@ static UINT16 latin1_get_code(const UINT8 *s, int *type)
 	フォントコード取得 (GBKデコード)
 ------------------------------------------------------*/
 
-static UINT16 gbk_get_code(const UINT8 *s, int *type)
+static uint16_t gbk_get_code(const uint8_t *s, int *type)
 {
-	UINT8 c1 = s[0];
-	UINT8 c2 = s[1];
-	UINT16 code;
+	uint8_t c1 = s[0];
+	uint8_t c2 = s[1];
+	uint16_t code;
 
 	if ((code = command_font_get_code(s)) != CODE_NOTFOUND)
 	{
@@ -539,10 +539,10 @@ static UINT16 gbk_get_code(const UINT8 *s, int *type)
 	フォントコード取得 (ユーザインタフェース)
 ------------------------------------------------------*/
 
-INLINE UINT16 uifont_get_code(const UINT8 *s, int *type)
+INLINE uint16_t uifont_get_code(const uint8_t *s, int *type)
 {
-	UINT8 c1 = s[0];
-	UINT8 c2 = s[1];
+	uint8_t c1 = s[0];
+	uint8_t c2 = s[1];
 
 	if (isgbk1(c1) && isgbk2(c2))
 	{
@@ -593,8 +593,8 @@ INLINE UINT16 uifont_get_code(const UINT8 *s, int *type)
 int uifont_get_string_width(const char *s)
 {
 	int width, type;
-	UINT16 code;
-	const UINT8 *p = (const UINT8 *)s;
+	uint16_t code;
+	const uint8_t *p = (const uint8_t *)s;
 
 	width = 0;
 
@@ -648,8 +648,8 @@ int uifont_get_string_width(const char *s)
 static void make_font_texture(struct font_t *font, int r, int g, int b)
 {
 	int x, y, p;
-	UINT16 *dst, color, alpha;
-	UINT8 data;
+	uint16_t *dst, color, alpha;
+	uint8_t data;
 
 	color = (b << 8) | (g << 4) | r;
 
@@ -682,9 +682,9 @@ static void make_font_texture(struct font_t *font, int r, int g, int b)
 static void make_shadow_texture(struct font_t *font)
 {
 	int x, y, i, sum, alpha;
-	UINT16 *dst = tex_font;
-	UINT8 data;
-	UINT8 temp1[32][40], temp2[32][40];
+	uint16_t *dst = tex_font;
+	uint8_t data;
+	uint8_t temp1[32][40], temp2[32][40];
 
 	memset(temp1, 0, sizeof(temp1));
 	memset(temp2, 0, sizeof(temp2));
@@ -758,8 +758,8 @@ static void make_shadow_texture(struct font_t *font)
 static void make_light_texture(struct font_t *font)
 {
 	int x, y, p, alpha, level;
-	UINT16 *dst;
-	UINT8 data;
+	uint16_t *dst;
+	uint8_t data;
 
 	dst = tex_font;
 	level = light_level >> 1;
@@ -947,8 +947,8 @@ static int internal_light_putc(struct font_t *font, int sx, int sy)
 INLINE void uifont_draw(int sx, int sy, int r, int g, int b, const char *s)
 {
 	int type, res = 1;
-	UINT16 code;
-	const UINT8 *p = (const UINT8 *)s;
+	uint16_t code;
+	const uint8_t *p = (const uint8_t *)s;
 	struct font_t font;
 
 	r >>= 4;
@@ -1012,8 +1012,8 @@ INLINE void uifont_draw(int sx, int sy, int r, int g, int b, const char *s)
 INLINE void uifont_draw_shadow(int sx, int sy, const char *s)
 {
 	int type, res = 1;
-	UINT16 code;
-	const UINT8 *p = (const UINT8 *)s;
+	uint16_t code;
+	const uint8_t *p = (const uint8_t *)s;
 	struct font_t font;
 
 	while (*p && res)
@@ -1126,8 +1126,8 @@ void uifont_print_shadow_center(int sy, int r, int g, int b, const char *s)
 INLINE void latin1_draw(int sx, int sy, int r, int g, int b, const char *s)
 {
 	int type, res = 1;
-	UINT16 code;
-	const UINT8 *p = (const UINT8 *)s;
+	uint16_t code;
+	const uint8_t *p = (const uint8_t *)s;
 	struct font_t font;
 
 	r >>= 4;
@@ -1174,7 +1174,7 @@ INLINE void latin1_draw(int sx, int sy, int r, int g, int b, const char *s)
 
 				if (CODE_HASCOLOR(code))
 				{
-					UINT32 color = command_font_color[code >> 8];
+					uint32_t color = command_font_color[code >> 8];
 
 					r2 = GETR16(color);
 					g2 = GETG16(color);
@@ -1212,8 +1212,8 @@ INLINE void latin1_draw(int sx, int sy, int r, int g, int b, const char *s)
 INLINE void gbk_draw(int sx, int sy, int r, int g, int b, const char *s)
 {
 	int type, res = 1;
-	UINT16 code;
-	const UINT8 *p = (const UINT8 *)s;
+	uint16_t code;
+	const uint8_t *p = (const uint8_t *)s;
 	struct font_t font;
 
 	r >>= 4;
@@ -1269,7 +1269,7 @@ INLINE void gbk_draw(int sx, int sy, int r, int g, int b, const char *s)
 
 				if (CODE_HASCOLOR(code))
 				{
-					UINT32 color = command_font_color[code >> 8];
+					uint32_t color = command_font_color[code >> 8];
 
 					r2 = GETR16(color);
 					g2 = GETG16(color);
@@ -1623,7 +1623,7 @@ void small_font_print(int sx, int sy, const char *s, int bg)
 
 		for (i = 0; i < len; i++)
 		{
-			UINT8 code = isascii((UINT8)s[i]) ? s[i] - 0x20 : 0x20;
+			uint8_t code = isascii((uint8_t)s[i]) ? s[i] - 0x20 : 0x20;
 			int u = (code & 63) << 3;
 			int v = (code >> 6) << 3;
 
@@ -1695,7 +1695,7 @@ static void debug_font_print(void *frame, int sx, int sy, const char *s, int bg)
 
 		for (i = 0; i < len; i++)
 		{
-			UINT8 code = isascii((UINT8)s[i]) ? s[i] - 0x20 : 0x20;
+			uint8_t code = isascii((uint8_t)s[i]) ? s[i] - 0x20 : 0x20;
 			int u = (code & 63) << 3;
 			int v = (code >> 6) << 3;
 
@@ -1749,7 +1749,7 @@ void debug_font_printf(void *frame, int x, int y, const char *text, ...)
 void hline(int sx, int ex, int y, int r, int g, int b)
 {
 	Vertex16 *vertices;
-	UINT32 color = MAKECOL32(r, g, b);
+	uint32_t color = MAKECOL32(r, g, b);
 
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, draw_frame, BUF_WIDTH);
@@ -1784,7 +1784,7 @@ void hline(int sx, int ex, int y, int r, int g, int b)
 void hline_alpha(int sx, int ex, int y, int r, int g, int b, int alpha)
 {
 	Vertex16 *vertices;
-	UINT32 color = MAKECOL32A(r, g, b, ((alpha << 4) - 1));
+	uint32_t color = MAKECOL32A(r, g, b, ((alpha << 4) - 1));
 
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, draw_frame, BUF_WIDTH);
@@ -1821,8 +1821,8 @@ void hline_alpha(int sx, int ex, int y, int r, int g, int b, int alpha)
 void hline_gradation(int sx, int ex, int y, int r1, int g1, int b1, int r2, int g2, int b2, int alpha)
 {
 	Vertex16 *vertices;
-	UINT32 color1 = MAKECOL32A(r1, g1, b1, ((alpha << 4) - 1));
-	UINT32 color2 = MAKECOL32A(r2, g2, b2, ((alpha << 4) - 1));
+	uint32_t color1 = MAKECOL32A(r1, g1, b1, ((alpha << 4) - 1));
+	uint32_t color2 = MAKECOL32A(r2, g2, b2, ((alpha << 4) - 1));
 
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, draw_frame, BUF_WIDTH);
@@ -1871,7 +1871,7 @@ void hline_gradation(int sx, int ex, int y, int r1, int g1, int b1, int r2, int 
 void vline(int x, int sy, int ey, int r, int g, int b)
 {
 	Vertex16 *vertices;
-	UINT32 color = MAKECOL32(r, g, b);
+	uint32_t color = MAKECOL32(r, g, b);
 
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, draw_frame, BUF_WIDTH);
@@ -1906,7 +1906,7 @@ void vline(int x, int sy, int ey, int r, int g, int b)
 void vline_alpha(int x, int sy, int ey, int r, int g, int b, int alpha)
 {
 	Vertex16 *vertices;
-	UINT32 color = MAKECOL32A(r, g, b, ((alpha << 4) - 1));
+	uint32_t color = MAKECOL32A(r, g, b, ((alpha << 4) - 1));
 
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, draw_frame, BUF_WIDTH);
@@ -1943,8 +1943,8 @@ void vline_alpha(int x, int sy, int ey, int r, int g, int b, int alpha)
 void vline_gradation(int x, int sy, int ey, int r1, int g1, int b1, int r2, int g2, int b2, int alpha)
 {
 	Vertex16 *vertices;
-	UINT32 color1 = MAKECOL32A(r1, g1, b1, ((alpha << 4) - 1));
-	UINT32 color2 = MAKECOL32A(r2, g2, b2, ((alpha << 4) - 1));
+	uint32_t color1 = MAKECOL32A(r1, g1, b1, ((alpha << 4) - 1));
+	uint32_t color2 = MAKECOL32A(r2, g2, b2, ((alpha << 4) - 1));
 
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, draw_frame, BUF_WIDTH);
@@ -1993,7 +1993,7 @@ void vline_gradation(int x, int sy, int ey, int r1, int g1, int b1, int r2, int 
 void box(int sx, int sy, int ex, int ey, int r, int g, int b)
 {
 	Vertex16 *vertices;
-	UINT32 color = MAKECOL32(r, g, b);
+	uint32_t color = MAKECOL32(r, g, b);
 
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, draw_frame, BUF_WIDTH);
@@ -2045,7 +2045,7 @@ void box(int sx, int sy, int ex, int ey, int r, int g, int b)
 void boxfill(int sx, int sy, int ex, int ey, int r, int g, int b)
 {
 	Vertex16 *vertices;
-	UINT32 color = MAKECOL32(r, g, b);
+	uint32_t color = MAKECOL32(r, g, b);
 
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, draw_frame, BUF_WIDTH);
@@ -2092,7 +2092,7 @@ void boxfill(int sx, int sy, int ex, int ey, int r, int g, int b)
 void boxfill_alpha(int sx, int sy, int ex, int ey, int r, int g, int b, int alpha)
 {
 	Vertex16 *vertices;
-	UINT32 color = MAKECOL32A(r, g, b, ((alpha << 4) - 1));
+	uint32_t color = MAKECOL32A(r, g, b, ((alpha << 4) - 1));
 
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, draw_frame, BUF_WIDTH);
@@ -2141,8 +2141,8 @@ void boxfill_alpha(int sx, int sy, int ex, int ey, int r, int g, int b, int alph
 void boxfill_gradation(int sx, int sy, int ex, int ey, int r1, int g1, int b1, int r2, int g2, int b2, int alpha, int dir)
 {
 	Vertex16 *vertices;
-	UINT32 color1 = MAKECOL32A(r1, g1, b1, ((alpha << 4) - 1));
-	UINT32 color2 = MAKECOL32A(r2, g2, b2, ((alpha << 4) - 1));
+	uint32_t color1 = MAKECOL32A(r1, g1, b1, ((alpha << 4) - 1));
+	uint32_t color2 = MAKECOL32A(r2, g2, b2, ((alpha << 4) - 1));
 
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, draw_frame, BUF_WIDTH);
@@ -2426,7 +2426,7 @@ void logo(int sx, int sy, int r, int g, int b)
 {
 	struct Vertex *vertices;
 	int x, y, alpha;
-	UINT16 color, *dst;
+	uint16_t color, *dst;
 
 	r >>= 4;
 	g >>= 4;

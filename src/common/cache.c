@@ -40,11 +40,11 @@
 	グローバル構造体/変数
 ******************************************************************************/
 
-UINT32 (*read_cache)(UINT32 offset);
-void (*update_cache)(UINT32 offset);
+uint32_t (*read_cache)(uint32_t offset);
+void (*update_cache)(uint32_t offset);
 #if (EMU_SYSTEM == CPS2)
-UINT32 block_offset[MAX_CACHE_BLOCKS];
-UINT8  *block_empty = (UINT8 *)block_offset;
+uint32_t block_offset[MAX_CACHE_BLOCKS];
+uint8_t  *block_empty = (uint8_t *)block_offset;
 #endif
 
 
@@ -56,7 +56,7 @@ typedef struct cache_s
 {
 	int idx;
 	int block;
-	UINT32 frame;
+	uint32_t frame;
 	struct cache_s *prev;
 	struct cache_s *next;
 } cache_t;
@@ -67,7 +67,7 @@ static cache_t *head;
 static cache_t *tail;
 
 static int num_cache;
-static UINT16 ALIGN_DATA blocks[MAX_CACHE_BLOCKS];
+static uint16_t ALIGN_DATA blocks[MAX_CACHE_BLOCKS];
 static int cache_fd;
 
 #if (EMU_SYSTEM == MVS)
@@ -78,7 +78,7 @@ static cache_t ALIGN_DATA pcm_data[MAX_PCM_SIZE];
 static cache_t *pcm_head;
 static cache_t *pcm_tail;
 
-static UINT16 ALIGN_DATA pcm_blocks[MAX_PCM_BLOCKS];
+static uint16_t ALIGN_DATA pcm_blocks[MAX_PCM_BLOCKS];
 static int32_t pcm_fd;
 #endif
 #else
@@ -98,9 +98,9 @@ static char spr_cache_name[MAX_PATH];
 	PCMキャッシュを読み込む
 ------------------------------------------------------*/
 
-UINT8 *pcm_cache_read(UINT16 new_block)
+uint8_t *pcm_cache_read(uint16_t new_block)
 {
-	UINT32 idx = pcm_blocks[new_block];
+	uint32_t idx = pcm_blocks[new_block];
 	cache_t *p;
 
 	if (idx == BLOCK_NOT_CACHED)
@@ -323,7 +323,7 @@ static int fill_cache(void)
 ------------------------------------------------------*/
 
 #if (EMU_SYSTEM == MVS)
-static UINT32 read_cache_disable(UINT32 offset)
+static uint32_t read_cache_disable(uint32_t offset)
 {
 	return offset;
 }
@@ -338,7 +338,7 @@ static UINT32 read_cache_disable(UINT32 offset)
 ------------------------------------------------------*/
 
 #if (EMU_SYSTEM == CPS2)
-static UINT32 read_cache_static(UINT32 offset)
+static uint32_t read_cache_static(uint32_t offset)
 {
 	int idx = blocks[offset >> BLOCK_SHIFT];
 
@@ -353,10 +353,10 @@ static UINT32 read_cache_static(UINT32 offset)
 	無圧縮のキャッシュファイルからデータを読み込む
 ------------------------------------------------------*/
 
-static UINT32 read_cache_rawfile(UINT32 offset)
+static uint32_t read_cache_rawfile(uint32_t offset)
 {
-	INT16 new_block = offset >> BLOCK_SHIFT;
-	UINT32 idx = blocks[new_block];
+	int16_t new_block = offset >> BLOCK_SHIFT;
+	uint32_t idx = blocks[new_block];
 	cache_t *p;
 
 	if (idx == BLOCK_NOT_CACHED)
@@ -407,10 +407,10 @@ static UINT32 read_cache_rawfile(UINT32 offset)
 ------------------------------------------------------*/
 
 #if (EMU_SYSTEM == CPS2)
-static UINT32 read_cache_zipfile(UINT32 offset)
+static uint32_t read_cache_zipfile(uint32_t offset)
 {
-	INT16 new_block = offset >> BLOCK_SHIFT;
-	UINT32 idx = blocks[new_block];
+	int16_t new_block = offset >> BLOCK_SHIFT;
+	uint32_t idx = blocks[new_block];
 	cache_t *p;
 
 	if (idx == BLOCK_NOT_CACHED)
@@ -459,7 +459,7 @@ static UINT32 read_cache_zipfile(UINT32 offset)
 	キャッシュを使用しない、または全て読み込んだ場合。
 ------------------------------------------------------*/
 
-static void update_cache_disable(UINT32 offset)
+static void update_cache_disable(uint32_t offset)
 {
 }
 
@@ -471,9 +471,9 @@ static void update_cache_disable(UINT32 offset)
 	キャッシュを管理しない場合は不要。
 ------------------------------------------------------*/
 
-static void update_cache_dynamic(UINT32 offset)
+static void update_cache_dynamic(uint32_t offset)
 {
-	INT16 new_block = offset >> BLOCK_SHIFT;
+	int16_t new_block = offset >> BLOCK_SHIFT;
 	int idx = blocks[new_block];
 
 	if (idx != BLOCK_NOT_CACHED)
@@ -548,7 +548,7 @@ void cache_init(void)
 int cache_start(void)
 {
 	int i, found;
-	UINT32 size = 0;
+	uint32_t size = 0;
 	char version_str[8];
 #if (EMU_SYSTEM == MVS)
 	int32_t fd;
@@ -663,7 +663,7 @@ int cache_start(void)
 			read(cache_fd, gfx_pen_usage[TILE08], gfx_total_elements[TILE08]);
 			read(cache_fd, gfx_pen_usage[TILE16], gfx_total_elements[TILE16]);
 			read(cache_fd, gfx_pen_usage[TILE32], gfx_total_elements[TILE32]);
-			read(cache_fd, block_offset, MAX_CACHE_BLOCKS * sizeof(UINT32));
+			read(cache_fd, block_offset, MAX_CACHE_BLOCKS * sizeof(uint32_t));
 		}
 		else
 		{
@@ -705,10 +705,10 @@ int cache_start(void)
 		return 0;
 	}
 
-	if ((GFX_MEMORY = (UINT8 *)memalign(MEM_ALIGN, GFX_SIZE + CACHE_SAFETY)) != NULL)
+	if ((GFX_MEMORY = (uint8_t *)memalign(MEM_ALIGN, GFX_SIZE + CACHE_SAFETY)) != NULL)
 	{
 		free(GFX_MEMORY);
-		GFX_MEMORY = (UINT8 *)memalign(MEM_ALIGN, GFX_SIZE);
+		GFX_MEMORY = (uint8_t *)memalign(MEM_ALIGN, GFX_SIZE);
 		memset(GFX_MEMORY, 0, GFX_SIZE);
 
 		num_cache = GFX_SIZE >> 16;
@@ -731,7 +731,7 @@ int cache_start(void)
 #ifdef LARGE_MEMORY
 		if (psp2k_mem_left == PSP2K_MEM_SIZE)//ui32 bug
 		{
-			GFX_MEMORY = (UINT8 *)PSP2K_MEM_TOP;
+			GFX_MEMORY = (uint8_t *)PSP2K_MEM_TOP;
 			i = MAX_CACHE_SIZE;
 			size = i << BLOCK_SHIFT;
 		}
@@ -741,7 +741,7 @@ int cache_start(void)
 		{
 			for (i = GFX_SIZE >> BLOCK_SHIFT; i >= MIN_CACHE_SIZE; i--)
 			{
-				if ((GFX_MEMORY = (UINT8 *)memalign(MEM_ALIGN, (i << BLOCK_SHIFT) + CACHE_SAFETY)) != NULL)
+				if ((GFX_MEMORY = (uint8_t *)memalign(MEM_ALIGN, (i << BLOCK_SHIFT) + CACHE_SAFETY)) != NULL)
 				{
 					size = i << BLOCK_SHIFT;
 					free(GFX_MEMORY);
@@ -756,7 +756,7 @@ int cache_start(void)
 				return 0;
 			}
 
-			if ((GFX_MEMORY = (UINT8 *)memalign(MEM_ALIGN, size)) == NULL)
+			if ((GFX_MEMORY = (uint8_t *)memalign(MEM_ALIGN, size)) == NULL)
 			{
 				msg_printf(TEXT(COULD_NOT_ALLOCATE_CACHE_MEMORY));
 				return 0;
@@ -909,13 +909,13 @@ void cache_sleep(int flag)
 static int cache_alloc_type = 0;
 #endif
 
-UINT8 *cache_alloc_state_buffer(INT32 size)
+uint8_t *cache_alloc_state_buffer(int32_t size)
 {
 #ifdef LARGE_MEMORY
 	if (size < psp2k_mem_left)
 	{
 		cache_alloc_type = 1;
-		return (UINT8 *)psp2k_mem_offset;
+		return (uint8_t *)psp2k_mem_offset;
 	}
 	else
 #endif
@@ -943,7 +943,7 @@ UINT8 *cache_alloc_state_buffer(INT32 size)
 	セーブ領域を解放し、退避したキャッシュを戻す
 ------------------------------------------------------*/
 
-void cache_free_state_buffer(INT32 size)
+void cache_free_state_buffer(int32_t size)
 {
 #ifdef LARGE_MEMORY
 	if (!cache_alloc_type)

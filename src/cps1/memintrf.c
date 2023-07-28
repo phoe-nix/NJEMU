@@ -13,9 +13,9 @@
 #define Z80_AMASK 0x0000ffff
 
 #define READ_BYTE(mem, offset)			mem[offset ^ 1]
-#define READ_WORD(mem, offset)			*(UINT16 *)&mem[offset]
+#define READ_WORD(mem, offset)			*(uint16_t *)&mem[offset]
 #define WRITE_BYTE(mem, offset, data)	mem[offset ^ 1] = data
-#define WRITE_WORD(mem, offset, data)	*(UINT16 *)&mem[offset] = data
+#define WRITE_WORD(mem, offset, data)	*(uint16_t *)&mem[offset] = data
 
 #define str_cmp(s1, s2)		strncasecmp(s1, s2, strlen(s2))
 
@@ -39,26 +39,26 @@ enum
 	グローバル構造体/変数
 ******************************************************************************/
 
-UINT8 *memory_region_cpu1;
-UINT8 *memory_region_cpu2;
-UINT8 *memory_region_gfx1;
-UINT8 *memory_region_sound1;
-UINT8 *memory_region_user1;
-UINT8 *memory_region_user2;
+uint8_t *memory_region_cpu1;
+uint8_t *memory_region_cpu2;
+uint8_t *memory_region_gfx1;
+uint8_t *memory_region_sound1;
+uint8_t *memory_region_user1;
+uint8_t *memory_region_user2;
 
-UINT32 memory_length_cpu1;
-UINT32 memory_length_cpu2;
-UINT32 memory_length_gfx1;
-UINT32 memory_length_sound1;
-UINT32 memory_length_user1;
-UINT32 memory_length_user2;
+uint32_t memory_length_cpu1;
+uint32_t memory_length_cpu2;
+uint32_t memory_length_gfx1;
+uint32_t memory_length_sound1;
+uint32_t memory_length_user1;
+uint32_t memory_length_user2;
 
-UINT8  ALIGN_DATA cps1_ram[0x10000];
-UINT16 ALIGN_DATA cps1_gfxram[0x30000 >> 1];
-UINT16 ALIGN_DATA cps1_output[0x100 >> 1];
+uint8_t  ALIGN_DATA cps1_ram[0x10000];
+uint16_t ALIGN_DATA cps1_gfxram[0x30000 >> 1];
+uint16_t ALIGN_DATA cps1_output[0x100 >> 1];
 
-UINT8 *qsound_sharedram1;
-UINT8 *qsound_sharedram2;
+uint8_t *qsound_sharedram1;
+uint8_t *qsound_sharedram2;
 
 
 /******************************************************************************
@@ -75,26 +75,26 @@ static int num_cpu2rom;
 static int num_gfx1rom;
 static int num_snd1rom;
 
-static UINT8 *static_ram1;
-static UINT8 *static_ram2;
+static uint8_t *static_ram1;
+static uint8_t *static_ram2;
 
 
 /******************************************************************************
 	プロトタイプ
 ******************************************************************************/
 
-UINT8 (*z80_read_memory_8)(UINT32 offset);
-void (*z80_write_memory_8)(UINT32 offset, UINT8 data);
+uint8_t (*z80_read_memory_8)(uint32_t offset);
+void (*z80_write_memory_8)(uint32_t offset, uint8_t data);
 
-static UINT8 cps1_sound_readmem(UINT32 offset);
-static void cps1_sound_writemem(UINT32 offset, UINT8 data);
+static uint8_t cps1_sound_readmem(uint32_t offset);
+static void cps1_sound_writemem(uint32_t offset, uint8_t data);
 
-static UINT8 cps1_qsound_readmem(UINT32 offset);
-static void cps1_qsound_writemem(UINT32 offset, UINT8 data);
+static uint8_t cps1_qsound_readmem(uint32_t offset);
+static void cps1_qsound_writemem(uint32_t offset, uint8_t data);
 
 #if !RELEASE
-static UINT8 cps1_kodb_readmem(UINT32 offset);
-static void cps1_kodb_writemem(UINT32 offset, UINT8 data);
+static uint8_t cps1_kodb_readmem(uint32_t offset);
+static void cps1_kodb_writemem(uint32_t offset, uint8_t data);
 #endif
 
 
@@ -643,8 +643,8 @@ int memory_init(void)
 	if (load_rom_sound1() == 0) return 0;
 	if (load_rom_user1() == 0) return 0;
 
-	static_ram1 = (UINT8 *)cps1_ram - 0xff0000;
-	static_ram2 = (UINT8 *)cps1_gfxram - 0x900000;
+	static_ram1 = (uint8_t *)cps1_ram - 0xff0000;
+	static_ram2 = (uint8_t *)cps1_gfxram - 0x900000;
 
 	qsound_sharedram1 = &memory_region_cpu2[0xc000];
 	qsound_sharedram2 = &memory_region_cpu2[0xf000];
@@ -660,7 +660,7 @@ int memory_init(void)
 		z80_write_memory_8 = cps1_qsound_writemem;
 		memory_length_user2 = 0x8000;
 
-		if ((memory_region_user2 = (UINT8 *)memalign(MEM_ALIGN, 0x8000)) == NULL)
+		if ((memory_region_user2 = (uint8_t *)memalign(MEM_ALIGN, 0x8000)) == NULL)
 		{
 			fatalerror(TEXT(COULD_NOT_ALLOCATE_MEMORY_0x8000BYTE));
 			return 0;
@@ -743,10 +743,10 @@ void memory_shutdown(void)
 	M68000メモリリード (byte)
 ------------------------------------------------------*/
 
-UINT8 m68000_read_memory_8(UINT32 offset)
+uint8_t m68000_read_memory_8(uint32_t offset)
 {
 	int shift;
-	UINT16 mem_mask;
+	uint16_t mem_mask;
 
 	offset &= M68K_AMASK;
 
@@ -839,7 +839,7 @@ UINT8 m68000_read_memory_8(UINT32 offset)
 	M68000リードメモリ (word)
 ------------------------------------------------------*/
 
-UINT16 m68000_read_memory_16(UINT32 offset)
+uint16_t m68000_read_memory_16(uint32_t offset)
 {
 	offset &= M68K_AMASK;
 
@@ -929,10 +929,10 @@ UINT16 m68000_read_memory_16(UINT32 offset)
 	M68000ライトメモリ (byte)
 ------------------------------------------------------*/
 
-void m68000_write_memory_8(UINT32 offset, UINT8 data)
+void m68000_write_memory_8(uint32_t offset, uint8_t data)
 {
 	int shift = (~offset & 1) << 3;
-	UINT16 mem_mask = ~(0xff << shift);
+	uint16_t mem_mask = ~(0xff << shift);
 
 	offset &= M68K_AMASK;
 
@@ -1006,7 +1006,7 @@ void m68000_write_memory_8(UINT32 offset, UINT8 data)
 	M68000ライトメモリ (word)
 ------------------------------------------------------*/
 
-void m68000_write_memory_16(UINT32 offset, UINT16 data)
+void m68000_write_memory_16(uint32_t offset, uint16_t data)
 {
 	offset &= M68K_AMASK;
 
@@ -1084,7 +1084,7 @@ void m68000_write_memory_16(UINT32 offset, UINT16 data)
 	Z80リードメモリ (byte - YM2151 + OKIM6295)
 ------------------------------------------------------*/
 
-static UINT8 cps1_sound_readmem(UINT32 offset)
+static uint8_t cps1_sound_readmem(uint32_t offset)
 {
 	offset &= Z80_AMASK;
 
@@ -1108,7 +1108,7 @@ static UINT8 cps1_sound_readmem(UINT32 offset)
 	Z80ライトメモリ (byte - YM2151 + OKIM6295)
 ------------------------------------------------------*/
 
-static void cps1_sound_writemem(UINT32 offset, UINT8 data)
+static void cps1_sound_writemem(uint32_t offset, uint8_t data)
 {
 	offset &= Z80_AMASK;
 
@@ -1132,7 +1132,7 @@ static void cps1_sound_writemem(UINT32 offset, UINT8 data)
 	Z80リードメモリ (byte - QSOUND)
 ------------------------------------------------------*/
 
-static UINT8 cps1_qsound_readmem(UINT32 offset)
+static uint8_t cps1_qsound_readmem(uint32_t offset)
 {
 	offset &= Z80_AMASK;
 
@@ -1158,7 +1158,7 @@ static UINT8 cps1_qsound_readmem(UINT32 offset)
 	Z80ライトメモリ (byte - QSOUND)
 ------------------------------------------------------*/
 
-static void cps1_qsound_writemem(UINT32 offset, UINT8 data)
+static void cps1_qsound_writemem(uint32_t offset, uint8_t data)
 {
 	offset &= Z80_AMASK;
 
@@ -1188,7 +1188,7 @@ static void cps1_qsound_writemem(UINT32 offset, UINT8 data)
 	Z80リードメモリ (byte - kodb)
 ------------------------------------------------------*/
 
-static UINT8 cps1_kodb_readmem(UINT32 offset)
+static uint8_t cps1_kodb_readmem(uint32_t offset)
 {
 	offset &= Z80_AMASK;
 
@@ -1211,7 +1211,7 @@ static UINT8 cps1_kodb_readmem(UINT32 offset)
 	Z80ライトメモリ (byte - kodb)
 ------------------------------------------------------*/
 
-static void cps1_kodb_writemem(UINT32 offset, UINT8 data)
+static void cps1_kodb_writemem(uint32_t offset, uint8_t data)
 {
 	offset &= Z80_AMASK;
 

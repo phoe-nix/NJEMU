@@ -345,14 +345,14 @@ OP_ADD_R:
 OP_ADD:
 #if CZ80_BIG_FLAGS_ARRAY
 		{
-			UINT16 A = zA;
-			res = (UINT8)(A + val);
+			uint16_t A = zA;
+			res = (uint8_t)(A + val);
 			zF = SZHVC_add[(A << 8) | res];
 			zA = res;
 		}
 #else
 		res = zA + val;
-		zF = SZ[(UINT8)res] | ((res >> 8) & CF) |
+		zF = SZ[(uint8_t)res] | ((res >> 8) & CF) |
 			((zA ^ res ^ val) & HF) |
 			(((val ^ zA ^ 0x80) & (val ^ res) & 0x80) >> 5);
 		zA = res;
@@ -387,9 +387,9 @@ OP_ADC_R:
 OP_ADC:
 #if CZ80_BIG_FLAGS_ARRAY
 		{
-			UINT8 A = zA;
-			UINT8 c = zF & CF;
-			res = (UINT8)(A + val + c);
+			uint8_t A = zA;
+			uint8_t c = zF & CF;
+			res = (uint8_t)(A + val + c);
 			zF = SZHVC_add[(c << 16) | (A << 8) | res];
 			zA = res;
 		}
@@ -430,8 +430,8 @@ OP_SUB_R:
 OP_SUB:
 #if CZ80_BIG_FLAGS_ARRAY
 		{
-			UINT8 A = zA;
-			res = (UINT8)(A - val);
+			uint8_t A = zA;
+			res = (uint8_t)(A - val);
 			zF = SZHVC_sub[(A << 8) | res];
 			zA = res;
 		}
@@ -472,9 +472,9 @@ OP_SBC_R:
 OP_SBC:
 #if CZ80_BIG_FLAGS_ARRAY
 		{
-			UINT8 A = zA;
-			UINT8 c = zF & CF;
-			res = (UINT8)(A - val - c);
+			uint8_t A = zA;
+			uint8_t c = zF & CF;
+			res = (uint8_t)(A - val - c);
 			zF = SZHVC_sub[(c << 16) | (A << 8) | res];
 			zA = res;
 		}
@@ -515,8 +515,8 @@ OP_CP_R:
 OP_CP:
 #if CZ80_BIG_FLAGS_ARRAY
 		{
-			UINT8 A = zA;
-			res = (UINT8)(A - val);
+			uint8_t A = zA;
+			res = (uint8_t)(A - val);
 			zF = (SZHVC_sub[(A << 8) | res] & ~(YF | XF)) |
 				 (val & (YF | XF));
 		}
@@ -626,8 +626,8 @@ OP_OR:
 	OP(0x27):   // DAA
 OP_DAA:
 	{
-		UINT8 F;
-		UINT8 cf, nf, hf, lo, hi, diff;
+		uint8_t F;
+		uint8_t cf, nf, hf, lo, hi, diff;
 
 		F = zF;
 		cf = F & CF;
@@ -797,7 +797,7 @@ OP_ADD16:
 		zF = (zF & (SF | ZF | VF)) |
 			(((data->W ^ res ^ val) >> 8) & HF) |
 			((res >> 16) & CF) | ((res >> 8) & (YF | XF));
-		data->W = (UINT16)res;
+		data->W = (uint16_t)res;
 		RET(11)
 
 /*-----------------------------------------
@@ -805,8 +805,8 @@ OP_ADD16:
 -----------------------------------------*/
 
 	{
-		UINT8 A;
-		UINT8 F;
+		uint8_t A;
+		uint8_t F;
 
 	OP(0x07):   // RLCA
 OP_RLCA:
@@ -918,7 +918,7 @@ OP_DJNZ:
 
 	OP(0x18):   // JR   n
 OP_JR:
-		adr = (INT8)READ_ARG();
+		adr = (int8_t)READ_ARG();
 		PC += adr;
 		RET(12)
 
@@ -1104,8 +1104,8 @@ OP_IN_A_mN:
 
 	OP(0xcb):   // CB prefix (BIT & SHIFT INSTRUCTIONS)
 	{
-		UINT8 src;
-		UINT8 res;
+		uint8_t src;
+		uint8_t res;
 
 		Opcode = READ_OP();
 #if CZ80_EMULATE_R_EXACTLY

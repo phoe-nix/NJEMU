@@ -334,10 +334,10 @@ struct driver_t *driver;
 	ローカル変数
 ******************************************************************************/
 
-static UINT32 z80_bank;
+static uint32_t z80_bank;
 
 static int cps1_sound_fade_timer;
-static UINT8 sound_data;
+static uint8_t sound_data;
 
 
 /******************************************************************************
@@ -348,7 +348,7 @@ static UINT8 sound_data;
 	Z80 ROMバンク切り替え
 --------------------------------------------------------*/
 
-static void z80_set_bank(UINT32 offset)
+static void z80_set_bank(uint32_t offset)
 {
 	if (offset != z80_bank)
 	{
@@ -595,7 +595,7 @@ WRITE8_HANDLER( qsound_banksw_w )
 		Z80 bank register for music note data. It's odd that it isn't encrypted
 		though.
 	*/
-	UINT32 bankaddress = 0x10000 + ((data & 0x0f) << 14);
+	uint32_t bankaddress = 0x10000 + ((data & 0x0f) << 14);
 
 	if (bankaddress >= memory_length_cpu2)
 		bankaddress = 0x10000;
@@ -678,7 +678,7 @@ WRITE16_HANDLER( cps1_eeprom_port_w )
 
 void pang3_decode(void)
 {
-	UINT16 *rom = (UINT16 *)memory_region_cpu1;
+	uint16_t *rom = (uint16_t *)memory_region_cpu1;
 	int addr, src, dst;
 
 	for (addr = 0x80000; addr < 0x100000; addr += 2)
@@ -706,7 +706,7 @@ void pang3_decode(void)
 #if !RELEASE
 void kodb_init(void)
 {
-	UINT8 *mem8 = memory_region_cpu1;
+	uint8_t *mem8 = memory_region_cpu1;
 
 	// Patch protection? check
 	mem8[0x00412] = 0x06;
@@ -919,7 +919,7 @@ void kodb_init(void)
 
 void sf2m3_init(void)
 {
-	UINT8 *mem8 = (UINT8 *)memory_region_cpu1;
+	uint8_t *mem8 = (uint8_t *)memory_region_cpu1;
 
 	mem8[0x5E8] = 0x8;
 	mem8[0x608] = 0x14;
@@ -933,7 +933,7 @@ void sf2m3_init(void)
 
 void sf2m13_init(void)
 {
-	UINT16 *rom = (UINT16 *)memory_region_cpu1;
+	uint16_t *rom = (uint16_t *)memory_region_cpu1;
 
 	// Fix scroll
 	rom[0x1d22a/2] = 0x0120;
@@ -960,7 +960,7 @@ void sf2m13_init(void)
 
 void wofb_init(void)
 {
-	UINT8 *mem8 = memory_region_cpu1;
+	uint8_t *mem8 = memory_region_cpu1;
 	// Fix gfx
 	mem8[0x506] = 0xE7;
 	mem8[0x507] = 0x48;
@@ -985,7 +985,7 @@ void wofb_init(void)
 
 void wofsjb_init(void)
 {
-	UINT8 *mem8 = memory_region_cpu1;
+	uint8_t *mem8 = memory_region_cpu1;
 	
 	// Fix sprites update
 	mem8[0x532] = 0xED;
@@ -1064,7 +1064,7 @@ void wofsjb_init(void)
 
 void wof3js_init(void)
 {
-	UINT8 *mem8 = memory_region_cpu1;
+	uint8_t *mem8 = memory_region_cpu1;
 
 	// Patch Q sound protection? check
 	mem8[0x0554] = 0xb4;
@@ -1086,7 +1086,7 @@ void wof3js_init(void)
 
 void wof3sj_init(void)
 {
-	UINT8 *mem8 = memory_region_cpu1;
+	uint8_t *mem8 = memory_region_cpu1;
 
 	// Disable Sprite Recoding
 	mem8[0x5de96] = 0x00;
@@ -1205,7 +1205,7 @@ void wof3sj_init(void)
 
 void wofh_init(void)
 {
-	UINT8 *mem8 = memory_region_cpu1;
+	uint8_t *mem8 = memory_region_cpu1;
 
 	// Stage Order
 	mem8[0x072a6] = 0x00;
@@ -1331,7 +1331,7 @@ void wofh_init(void)
 
 void dinob_init(void)
 {
-	UINT8 *mem8 = memory_region_cpu1;
+	uint8_t *mem8 = memory_region_cpu1;
 
 	// Fix draw scroll
 	mem8[0x006c2] = 0xc0;
@@ -1442,7 +1442,7 @@ void dinob_init(void)
 
 void dinohunt_init(void)
 {
-	UINT8 *mem8 = memory_region_cpu1;
+	uint8_t *mem8 = memory_region_cpu1;
 
     mem8[0xaacf4] = 0x71;
     mem8[0xaacf5] = 0x4e;
@@ -1504,7 +1504,7 @@ void dinohunt_init(void)
 
 void wofch3p_init(void)
 {
-	UINT8 *mem8 = memory_region_cpu1;
+	uint8_t *mem8 = memory_region_cpu1;
 	// patch to 3 players
 	mem8[0x7715] = 0x60;
 	mem8[0xed928] = 0x01;

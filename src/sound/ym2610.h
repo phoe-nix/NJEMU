@@ -14,8 +14,8 @@
 /* in timer.c */
 #define FM_GET_TIME_NOW() timer_get_time()
 
-typedef INT16 FMSAMPLE;
-typedef INT32 FMSAMPLE_MIX;
+typedef int16_t FMSAMPLE;
+typedef int32_t FMSAMPLE_MIX;
 
 typedef void (*FM_TIMERHANDLER)(int channel, int count, double stepTime);
 typedef void (*FM_IRQHANDLER)(int irq);
@@ -28,8 +28,8 @@ void YM2610Init(int baseclock, void *pcmroma, int pcmsizea,
 				FM_IRQHANDLER IRQHandler);
 
 void YM2610Reset(void);
-int YM2610Write(int addr, UINT8 value);
-UINT8 YM2610Read(int addr);
+int YM2610Write(int addr, uint8_t value);
+uint8_t YM2610Read(int addr);
 int YM2610TimerOver(int channel);
 void YM2610_set_samplerate(void);
 

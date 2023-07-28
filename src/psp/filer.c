@@ -90,19 +90,19 @@ static int zipname_num;
 --------------------------------------------------------*/
 
 #if VIDEO_32BPP
-static void title_draw_spr(int sx, int sy, UINT8 *spr, UINT32 *palette, int tileno)
+static void title_draw_spr(int sx, int sy, uint8_t *spr, uint32_t *palette, int tileno)
 #else
-static void title_draw_spr(int sx, int sy, UINT8 *spr, UINT16 *palette, int tileno)
+static void title_draw_spr(int sx, int sy, uint8_t *spr, uint16_t *palette, int tileno)
 #endif
 {
-	UINT32 tile, lines = 16;
-	UINT32 *src = (UINT32 *)(spr + tileno * 128);
+	uint32_t tile, lines = 16;
+	uint32_t *src = (uint32_t *)(spr + tileno * 128);
 #if VIDEO_32BPP
-	UINT32 *dst = (UINT32 *)video_frame_addr(tex_frame, sx, sy);
-	UINT32 *pal = &palette[tileno << 4];
+	uint32_t *dst = (uint32_t *)video_frame_addr(tex_frame, sx, sy);
+	uint32_t *pal = &palette[tileno << 4];
 #else
-	UINT16 *dst = (UINT16 *)video_frame_addr(tex_frame, sx, sy);
-	UINT16 *pal = &palette[tileno << 4];
+	uint16_t *dst = (uint16_t *)video_frame_addr(tex_frame, sx, sy);
+	uint16_t *pal = &palette[tileno << 4];
 #endif
 
 	while (lines--)
@@ -138,10 +138,10 @@ static void title_draw_spr(int sx, int sy, UINT8 *spr, UINT16 *palette, int tile
 static int load_title(const char *path, int number)
 {
 	int i, fd, region, tileno, x, y, found = 0;
-	UINT8  title_spr[0x1680];
-	UINT16 palette[0x5a0 >> 1];
+	uint8_t  title_spr[0x1680];
+	uint16_t palette[0x5a0 >> 1];
 #if VIDEO_32BPP
-	UINT32 palette32[0x5a0 >> 1];
+	uint32_t palette32[0x5a0 >> 1];
 #endif
 	char title_path[MAX_PATH], region_chr[3] = {'j','u','e'};
 
@@ -171,7 +171,7 @@ static int load_title(const char *path, int number)
 
 	zip_close();
 
-	swab((UINT8 *)palette, (UINT8 *)palette, 0x5a0);
+	swab((uint8_t *)palette, (uint8_t *)palette, 0x5a0);
 
 	for (i = 0; i < 0x5a0 >> 1; i++)
 	{
@@ -237,11 +237,11 @@ static void check_neocd_bios(void)
 {
 	FILE *fp;
 	char path[MAX_PATH];
-	UINT8 *temp_mem;
+	uint8_t *temp_mem;
 
 	bios_error = 0;
 
-	if ((temp_mem = (UINT8 *)malloc(0x80000)) == NULL)
+	if ((temp_mem = (uint8_t *)malloc(0x80000)) == NULL)
 	{
 		bios_error = 1;
 		return;
@@ -862,7 +862,7 @@ void delete_files(const char *dirname, const char *pattern)
 
 #ifdef SAVE_STATE
 
-void find_state_file(UINT8 *slot)
+void find_state_file(uint8_t *slot)
 {
 	int fd, len;
 	char path[MAX_PATH], pattern[16];

@@ -44,16 +44,16 @@ cz80_struc ALIGN_DATA CZ80;
 	ローカル変数
 ******************************************************************************/
 
-static UINT8 ALIGN_DATA cz80_bad_address[1 << CZ80_FETCH_SFT];
+static uint8_t ALIGN_DATA cz80_bad_address[1 << CZ80_FETCH_SFT];
 
-static UINT8 ALIGN_DATA SZ[256];
-static UINT8 ALIGN_DATA SZP[256];
-static UINT8 ALIGN_DATA SZ_BIT[256];
-static UINT8 ALIGN_DATA SZHV_inc[256];
-static UINT8 ALIGN_DATA SZHV_dec[256];
+static uint8_t ALIGN_DATA SZ[256];
+static uint8_t ALIGN_DATA SZP[256];
+static uint8_t ALIGN_DATA SZ_BIT[256];
+static uint8_t ALIGN_DATA SZHV_inc[256];
+static uint8_t ALIGN_DATA SZHV_dec[256];
 #if CZ80_BIG_FLAGS_ARRAY
-static UINT8 ALIGN_DATA SZHVC_add[2*256*256];
-static UINT8 ALIGN_DATA SZHVC_sub[2*256*256];
+static uint8_t ALIGN_DATA SZHVC_add[2*256*256];
+static uint8_t ALIGN_DATA SZHVC_sub[2*256*256];
 #endif
 
 
@@ -65,7 +65,7 @@ static UINT8 ALIGN_DATA SZHVC_sub[2*256*256];
 	割り込みコールバック
 --------------------------------------------------------*/
 
-static INT32 Cz80_Interrupt_Callback(INT32 line)
+static int32_t Cz80_Interrupt_Callback(int32_t line)
 {
 	return 0xff;
 }
@@ -81,10 +81,10 @@ static INT32 Cz80_Interrupt_Callback(INT32 line)
 
 void Cz80_Init(cz80_struc *CPU)
 {
-	UINT32 i, j, p;
+	uint32_t i, j, p;
 #if CZ80_BIG_FLAGS_ARRAY
 	int oldval, newval, val;
-	UINT8 *padd, *padc, *psub, *psbc;
+	uint8_t *padd, *padc, *psub, *psbc;
 #endif
 
 	memset(CPU, 0, sizeof(cz80_struc));
@@ -93,7 +93,7 @@ void Cz80_Init(cz80_struc *CPU)
 
 	for (i = 0; i < CZ80_FETCH_BANK; i++)
 	{
-		CPU->Fetch[i] = (UINT32)cz80_bad_address;
+		CPU->Fetch[i] = (uint32_t)cz80_bad_address;
 #if CZ80_ENCRYPTED_ROM
 		CPU->OPFetch[i] = 0;
 #endif
@@ -197,7 +197,7 @@ void Cz80_Init(cz80_struc *CPU)
 
 void Cz80_Reset(cz80_struc *CPU)
 {
-	memset(CPU, 0, (INT32)&CPU->BasePC - (INT32)CPU);
+	memset(CPU, 0, (int32_t)&CPU->BasePC - (int32_t)CPU);
 	Cz80_Set_Reg(CPU, CZ80_PC, 0);
 }
 
@@ -206,20 +206,20 @@ void Cz80_Reset(cz80_struc *CPU)
 	CPU実行
 --------------------------------------------------------*/
 
-INT32 Cz80_Exec(cz80_struc *CPU, INT32 cycles)
+int32_t Cz80_Exec(cz80_struc *CPU, int32_t cycles)
 {
 #if CZ80_USE_JUMPTABLE
 #include "cz80jmp.c"
 #endif
 
-	UINT32 PC;
+	uint32_t PC;
 #if CZ80_ENCRYPTED_ROM
-	INT32 OPBase;
+	int32_t OPBase;
 #endif
-	UINT32 Opcode;
-	UINT32 adr = 0;
-	UINT32 res;
-	UINT32 val;
+	uint32_t Opcode;
+	uint32_t adr = 0;
+	uint32_t res;
+	uint32_t val;
 	int afterEI = 0;
 
 	PC = CPU->PC;
@@ -270,7 +270,7 @@ Cz80_Exec_End:
 	割り込み処理
 --------------------------------------------------------*/
 
-void Cz80_Set_IRQ(cz80_struc *CPU, INT32 line, INT32 state)
+void Cz80_Set_IRQ(cz80_struc *CPU, int32_t line, int32_t state)
 {
 	if (line == IRQ_LINE_NMI)
 	{
@@ -286,9 +286,9 @@ void Cz80_Set_IRQ(cz80_struc *CPU, INT32 line, INT32 state)
 
 		if (state != CLEAR_LINE)
 		{
-			UINT32 PC = CPU->PC;
+			uint32_t PC = CPU->PC;
 #if CZ80_ENCRYPTED_ROM
-			INT32 OPBase = CPU->OPBase;
+			int32_t OPBase = CPU->OPBase;
 #endif
 
 			CPU->IRQLine = line;
@@ -306,7 +306,7 @@ void Cz80_Set_IRQ(cz80_struc *CPU, INT32 line, INT32 state)
 	レジスタ取得
 --------------------------------------------------------*/
 
-UINT32 Cz80_Get_Reg(cz80_struc *CPU, INT32 regnum)
+uint32_t Cz80_Get_Reg(cz80_struc *CPU, int32_t regnum)
 {
 	switch (regnum)
 	{
@@ -338,7 +338,7 @@ UINT32 Cz80_Get_Reg(cz80_struc *CPU, INT32 regnum)
 	レジスタ設定
 --------------------------------------------------------*/
 
-void Cz80_Set_Reg(cz80_struc *CPU, INT32 regnum, UINT32 val)
+void Cz80_Set_Reg(cz80_struc *CPU, int32_t regnum, uint32_t val)
 {
 	switch (regnum)
 	{
@@ -377,7 +377,7 @@ void Cz80_Set_Reg(cz80_struc *CPU, INT32 regnum, UINT32 val)
 	フェッチアドレス設定
 --------------------------------------------------------*/
 
-void Cz80_Set_Fetch(cz80_struc *CPU, UINT32 low_adr, UINT32 high_adr, UINT32 fetch_adr)
+void Cz80_Set_Fetch(cz80_struc *CPU, uint32_t low_adr, uint32_t high_adr, uint32_t fetch_adr)
 {
 	int i, j;
 
@@ -401,7 +401,7 @@ void Cz80_Set_Fetch(cz80_struc *CPU, UINT32 low_adr, UINT32 high_adr, UINT32 fet
 --------------------------------------------------------*/
 
 #if CZ80_ENCRYPTED_ROM
-void Cz80_Set_Encrypt_Range(cz80_struc *CPU, UINT32 low_adr, UINT32 high_adr, UINT32 decrypted_rom)
+void Cz80_Set_Encrypt_Range(cz80_struc *CPU, uint32_t low_adr, uint32_t high_adr, uint32_t decrypted_rom)
 {
 	int i, j;
 
@@ -411,7 +411,7 @@ void Cz80_Set_Encrypt_Range(cz80_struc *CPU, UINT32 low_adr, UINT32 high_adr, UI
 
 	while (i <= j)
 	{
-		CPU->OPFetch[i] = (INT32)decrypted_rom - (INT32)CPU->Fetch[i];
+		CPU->OPFetch[i] = (int32_t)decrypted_rom - (int32_t)CPU->Fetch[i];
 		i++;
 	}
 }
@@ -422,12 +422,12 @@ void Cz80_Set_Encrypt_Range(cz80_struc *CPU, UINT32 low_adr, UINT32 high_adr, UI
 	メモリリード/ライト関数設定
 --------------------------------------------------------*/
 
-void Cz80_Set_ReadB(cz80_struc *CPU, UINT8 (*Func)(UINT32 address))
+void Cz80_Set_ReadB(cz80_struc *CPU, uint8_t (*Func)(uint32_t address))
 {
 	CPU->Read_Byte = Func;
 }
 
-void Cz80_Set_WriteB(cz80_struc *CPU, void (*Func)(UINT32 address, UINT8 data))
+void Cz80_Set_WriteB(cz80_struc *CPU, void (*Func)(uint32_t address, uint8_t data))
 {
 	CPU->Write_Byte = Func;
 }
@@ -437,12 +437,12 @@ void Cz80_Set_WriteB(cz80_struc *CPU, void (*Func)(UINT32 address, UINT8 data))
 	ポートリード/ライト関数設定
 --------------------------------------------------------*/
 
-void Cz80_Set_INPort(cz80_struc *CPU, UINT8 (*Func)(UINT16 port))
+void Cz80_Set_INPort(cz80_struc *CPU, uint8_t (*Func)(uint16_t port))
 {
 	CPU->IN_Port = Func;
 }
 
-void Cz80_Set_OUTPort(cz80_struc *CPU, void (*Func)(UINT16 port, UINT8 value))
+void Cz80_Set_OUTPort(cz80_struc *CPU, void (*Func)(uint16_t port, uint8_t value))
 {
 	CPU->OUT_Port = Func;
 }
@@ -452,7 +452,7 @@ void Cz80_Set_OUTPort(cz80_struc *CPU, void (*Func)(UINT16 port, UINT8 value))
 	コールバック関数設定
 --------------------------------------------------------*/
 
-void Cz80_Set_IRQ_Callback(cz80_struc *CPU, INT32 (*Func)(INT32 irqline))
+void Cz80_Set_IRQ_Callback(cz80_struc *CPU, int32_t (*Func)(int32_t irqline))
 {
 	CPU->Interrupt_Callback = Func;
 }

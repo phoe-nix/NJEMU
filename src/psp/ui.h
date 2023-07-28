@@ -92,7 +92,7 @@ int ui_show_popup(int draw);
 
 void msg_screen_init(int wallpaper, int icon, const char *title);
 void msg_screen_clear(void);
-void msg_set_text_color(UINT32 color);
+void msg_set_text_color(uint32_t color);
 void msg_printf(const char *text, ...);
 
 

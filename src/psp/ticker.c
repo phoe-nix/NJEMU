@@ -27,7 +27,7 @@
 #if 0
 void ticker_init(void)
 {
-	TICKS_PER_SEC = (UINT64)sceRtcGetTickResolution();		// 1000000
+	TICKS_PER_SEC = (uint64_t)sceRtcGetTickResolution();		// 1000000
 }
 #endif
 
@@ -38,7 +38,7 @@ void ticker_init(void)
 
 TICKER ticker(void)
 {
-	UINT64 current_ticks;
+	uint64_t current_ticks;
 
 	sceRtcGetCurrentTick(&current_ticks);
 	return current_ticks;

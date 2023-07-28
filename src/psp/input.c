@@ -13,10 +13,10 @@
 	ローカル変数
 ******************************************************************************/
 
-static UINT32 pad;
-static UINT8 pressed_check;
-static UINT8 pressed_count;
-static UINT8 pressed_delay;
+static uint32_t pad;
+static uint8_t pressed_check;
+static uint8_t pressed_count;
+static uint8_t pressed_delay;
 static TICKER curr_time;
 static TICKER prev_time;
 
@@ -45,7 +45,7 @@ void pad_init(void)
 	パッドの押下状態取得
 --------------------------------------------------------*/
 
-UINT32 poll_gamepad(void)
+uint32_t poll_gamepad(void)
 {
 	SceCtrlData paddata;
 
@@ -67,7 +67,7 @@ UINT32 poll_gamepad(void)
 --------------------------------------------------------*/
 
 #if (EMU_SYSTEM == MVS)
-UINT32 poll_gamepad_fatfursp(void)
+uint32_t poll_gamepad_fatfursp(void)
 {
 	SceCtrlData paddata;
 
@@ -90,9 +90,9 @@ UINT32 poll_gamepad_fatfursp(void)
 --------------------------------------------------------*/
 
 #if (EMU_SYSTEM == MVS)
-UINT32 poll_gamepad_analog(void)
+uint32_t poll_gamepad_analog(void)
 {
-	UINT32 data;
+	uint32_t data;
 	SceCtrlData paddata;
 
 	sceCtrlPeekBufferPositive(&paddata, 1);
@@ -119,7 +119,7 @@ UINT32 poll_gamepad_analog(void)
 
 void pad_update(void)
 {
-	UINT32 data;
+	uint32_t data;
 
 	data = poll_gamepad();
 
@@ -160,7 +160,7 @@ void pad_update(void)
 	ボタン押下状態の取得
 --------------------------------------------------------*/
 
-int pad_pressed(UINT32 code)
+int pad_pressed(uint32_t code)
 {
 	return (pad & code) != 0;
 }
@@ -170,7 +170,7 @@ int pad_pressed(UINT32 code)
 	指定コード以外の全ボタンの押下状態取得
 --------------------------------------------------------*/
 
-int pad_pressed_any(UINT32 disable_code)
+int pad_pressed_any(uint32_t disable_code)
 {
 	return (pad & (PSP_CTRL_ANY ^ disable_code)) != 0;
 }

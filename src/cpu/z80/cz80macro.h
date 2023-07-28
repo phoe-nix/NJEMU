@@ -33,7 +33,7 @@
 	OPBase = CPU->OPFetch[(A) >> CZ80_FETCH_SFT];			\
 	PC = (A) + CPU->BasePC;
 
-#define GET_OP()			(*(UINT8 *)(OPBase + PC))
+#define GET_OP()			(*(uint8_t *)(OPBase + PC))
 
 #else
 
@@ -41,17 +41,17 @@
 	CPU->BasePC = CPU->Fetch[(A) >> CZ80_FETCH_SFT];		\
 	PC = (A) + CPU->BasePC;
 
-#define GET_OP()			(*(UINT8 *)PC)
+#define GET_OP()			(*(uint8_t *)PC)
 
 #endif
 
 #define READ_OP()			GET_OP(); PC++
 
-#define READ_ARG()			(*(UINT8 *)PC++)
+#define READ_ARG()			(*(uint8_t *)PC++)
 #if CZ80_LITTLE_ENDIAN
-#define READ_ARG16()		(*(UINT8 *)PC | (*(UINT8 *)(PC + 1) << 8)); PC += 2
+#define READ_ARG16()		(*(uint8_t *)PC | (*(uint8_t *)(PC + 1) << 8)); PC += 2
 #else
-#define READ_ARG16()		(*(UINT8 *)(PC + 1) | (*(UINT8 *)PC << 8)); PC += 2
+#define READ_ARG16()		(*(uint8_t *)(PC + 1) | (*(uint8_t *)PC << 8)); PC += 2
 #endif
 
 #ifndef BUILD_CPS1
@@ -72,8 +72,8 @@
 #define WRITE_MEM16(A, D)	{ WRITE_MEM8((A) + 1, D); WRITE_MEM8(A, (D) >> 8); }
 #endif
 
-#define PUSH_16(A)			{ UINT32 sp; zSP -= 2; sp = zSP; WRITE_MEM16(sp, A); }
-#define POP_16(A)			{ UINT32 sp; sp = zSP; A = READ_MEM16(sp); zSP = sp + 2; }
+#define PUSH_16(A)			{ uint32_t sp; zSP -= 2; sp = zSP; WRITE_MEM16(sp, A); }
+#define POP_16(A)			{ uint32_t sp; sp = zSP; A = READ_MEM16(sp); zSP = sp + 2; }
 
 #define IN(A)				CPU->IN_Port(A)
 #define OUT(A, D)			CPU->OUT_Port(A, D)
@@ -81,7 +81,7 @@
 #define CHECK_INT													\
 	if (zIFF1)														\
 	{																\
-		UINT32 IntVect;												\
+		uint32_t IntVect;												\
 																	\
 		if (CPU->IRQState == HOLD_LINE)								\
 			CPU->IRQState = CLEAR_LINE;								\

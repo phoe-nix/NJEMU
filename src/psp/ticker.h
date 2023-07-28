@@ -9,7 +9,7 @@
 #ifndef TICKER_H
 #define TICKER_H
 
-typedef UINT64 TICKER;
+typedef uint64_t TICKER;
 
 //TICKER TICKS_PER_SEC;
 #define TICKS_PER_SEC	1000000

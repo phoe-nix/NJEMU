@@ -91,7 +91,7 @@ enum
 
 
 extern int option_controller;
-extern UINT16 cps1_port_value[CPS1_PORT_MAX];
+extern uint16_t cps1_port_value[CPS1_PORT_MAX];
 extern int cps1_dipswitch[3];
 
 extern int input_map[MAX_INPUTS];
@@ -107,8 +107,8 @@ void update_inputport(void);
 
 void setup_autofire(void);
 
-UINT16 forgottn_read_dial0(void);
-UINT16 forgottn_read_dial1(void);
+uint16_t forgottn_read_dial0(void);
+uint16_t forgottn_read_dial1(void);
 
 #ifdef SAVE_STATE
 STATE_SAVE( input );

@@ -177,7 +177,7 @@ enum
 typedef struct game_t
 {
 	const char name[12];
-	const UINT16  ngh_number;
+	const uint16_t  ngh_number;
 } GAMES;
 
 
@@ -187,14 +187,14 @@ extern const char default_name[16];
 
 extern int neogeo_driver_type;
 extern int neogeo_raster_enable;
-extern UINT16 neogeo_ngh;
+extern uint16_t neogeo_ngh;
 
-extern UINT8 auto_animation_speed;
-extern UINT8 auto_animation_disabled;
-extern UINT8 auto_animation_counter;
+extern uint8_t auto_animation_speed;
+extern uint8_t auto_animation_disabled;
+extern uint8_t auto_animation_counter;
 
-extern UINT16 raster_line;
-extern UINT16 raster_counter;
+extern uint16_t raster_line;
+extern uint16_t raster_counter;
 
 extern int watchdog_counter;
 
@@ -233,8 +233,8 @@ WRITE16_HANDLER( neogeo_externalmem_w );
 READ16_HANDLER( neogeo_hardcontrol_r );
 WRITE16_HANDLER( neogeo_hardcontrol_w );
 
-UINT8 neogeo_z80_port_r(UINT16 port);
-void neogeo_z80_port_w(UINT16 port, UINT8 value);
+uint8_t neogeo_z80_port_r(uint16_t port);
+void neogeo_z80_port_w(uint16_t port, uint8_t value);
 
 void neogeo_sound_write(int data);
 void neogeo_sound_irq(int irq);

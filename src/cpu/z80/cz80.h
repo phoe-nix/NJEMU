@@ -15,34 +15,6 @@
 extern "C" {
 #endif
 
-/******************************/
-/* Compiler dependant defines */
-/******************************/
-
-#ifndef UINT8
-#define UINT8	unsigned char
-#endif
-
-#ifndef INT8
-#define INT8	char
-#endif
-
-#ifndef UINT16
-#define UINT16	unsigned short
-#endif
-
-#ifndef INT16
-#define INT16	short
-#endif
-
-#ifndef UINT32
-#define UINT32	unsigned int
-#endif
-
-#ifndef INT32
-#define INT32	int
-#endif
-
 /*************************************/
 /* Z80 core Structures & definitions */
 /*************************************/
@@ -193,21 +165,21 @@ typedef union
 	struct
 	{
 #if CZ80_LITTLE_ENDIAN
-		UINT8 L;
-		UINT8 H;
+		uint8_t L;
+		uint8_t H;
 #else
-		UINT8 H;
-		UINT8 L;
+		uint8_t H;
+		uint8_t L;
 #endif
 	} B;
-	UINT16 W;
+	uint16_t W;
 } union16;
 
 typedef struct cz80_t
 {
 	union
 	{
-		UINT8 r8[8];
+		uint8_t r8[8];
 		union16 r16[4];
 		struct
 		{
@@ -221,7 +193,7 @@ typedef struct cz80_t
 	union16 IX;
 	union16 IY;
 	union16 SP;
-	UINT32 PC;
+	uint32_t PC;
 
 	union16 BC2;
 	union16 DE2;
@@ -231,33 +203,33 @@ typedef struct cz80_t
 	union16 R;
 	union16 IFF;
 
-	UINT8 I;
-	UINT8 IM;
-	UINT8 HaltState;
-	UINT8 dummy;
+	uint8_t I;
+	uint8_t IM;
+	uint8_t HaltState;
+	uint8_t dummy;
 
-	INT32 IRQLine;
-	INT32 IRQState;
-	INT32 ICount;
-	INT32 ExtraCycles;
+	int32_t IRQLine;
+	int32_t IRQState;
+	int32_t ICount;
+	int32_t ExtraCycles;
 
-	UINT32 BasePC;
-	UINT32 Fetch[CZ80_FETCH_BANK];
+	uint32_t BasePC;
+	uint32_t Fetch[CZ80_FETCH_BANK];
 #if CZ80_ENCRYPTED_ROM
-	INT32 OPBase;
-	INT32 OPFetch[CZ80_FETCH_BANK];
+	int32_t OPBase;
+	int32_t OPFetch[CZ80_FETCH_BANK];
 #endif
 
-	UINT8 *pzR8[8];
+	uint8_t *pzR8[8];
 	union16 *pzR16[4];
 
-	UINT8   (*Read_Byte)(UINT32 address);
-	void (*Write_Byte)(UINT32 address, UINT8 data);
+	uint8_t   (*Read_Byte)(uint32_t address);
+	void (*Write_Byte)(uint32_t address, uint8_t data);
 
-	UINT8   (*IN_Port)(UINT16 port);
-	void (*OUT_Port)(UINT16 port, UINT8 value);
+	uint8_t   (*IN_Port)(uint16_t port);
+	void (*OUT_Port)(uint16_t port, uint8_t value);
 
-	INT32  (*Interrupt_Callback)(INT32 irqline);
+	int32_t  (*Interrupt_Callback)(int32_t irqline);
 
 } cz80_struc;
 
@@ -276,25 +248,25 @@ void Cz80_Init(cz80_struc *CPU);
 
 void Cz80_Reset(cz80_struc *CPU);
 
-INT32  Cz80_Exec(cz80_struc *CPU, INT32 cycles);
+int32_t  Cz80_Exec(cz80_struc *CPU, int32_t cycles);
 
-void Cz80_Set_IRQ(cz80_struc *CPU, INT32 line, INT32 state);
+void Cz80_Set_IRQ(cz80_struc *CPU, int32_t line, int32_t state);
 
-UINT32  Cz80_Get_Reg(cz80_struc *CPU, INT32 regnum);
-void Cz80_Set_Reg(cz80_struc *CPU, INT32 regnum, UINT32 value);
+uint32_t  Cz80_Get_Reg(cz80_struc *CPU, int32_t regnum);
+void Cz80_Set_Reg(cz80_struc *CPU, int32_t regnum, uint32_t value);
 
-void Cz80_Set_Fetch(cz80_struc *CPU, UINT32 low_adr, UINT32 high_adr, UINT32 fetch_adr);
+void Cz80_Set_Fetch(cz80_struc *CPU, uint32_t low_adr, uint32_t high_adr, uint32_t fetch_adr);
 #if CZ80_ENCRYPTED_ROM
-void Cz80_Set_Encrypt_Range(cz80_struc *CPU, UINT32 low_adr, UINT32 high_adr, UINT32 decrypted_rom);
+void Cz80_Set_Encrypt_Range(cz80_struc *CPU, uint32_t low_adr, uint32_t high_adr, uint32_t decrypted_rom);
 #endif
 
-void Cz80_Set_ReadB(cz80_struc *CPU, UINT8 (*Func)(UINT32 address));
-void Cz80_Set_WriteB(cz80_struc *CPU, void (*Func)(UINT32 address, UINT8 data));
+void Cz80_Set_ReadB(cz80_struc *CPU, uint8_t (*Func)(uint32_t address));
+void Cz80_Set_WriteB(cz80_struc *CPU, void (*Func)(uint32_t address, uint8_t data));
 
-void Cz80_Set_INPort(cz80_struc *CPU, UINT8 (*Func)(UINT16 port));
-void Cz80_Set_OUTPort(cz80_struc *CPU, void (*Func)(UINT16 port, UINT8 value));
+void Cz80_Set_INPort(cz80_struc *CPU, uint8_t (*Func)(uint16_t port));
+void Cz80_Set_OUTPort(cz80_struc *CPU, void (*Func)(uint16_t port, uint8_t value));
 
-void Cz80_Set_IRQ_Callback(cz80_struc *CPU, INT32 (*Func)(INT32 irqline));
+void Cz80_Set_IRQ_Callback(cz80_struc *CPU, int32_t (*Func)(int32_t irqline));
 
 #ifdef __cplusplus
 };

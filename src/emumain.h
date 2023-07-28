@@ -69,14 +69,14 @@ extern int machine_init_type;
 extern int machine_screen_type;
 extern int machine_sound_type;
 
-extern UINT32 frames_displayed;
+extern uint32_t frames_displayed;
 extern int fatal_error;
 
 void emu_main(void);
 
 void autoframeskip_reset(void);
 
-UINT8 skip_this_frame(void);
+uint8_t skip_this_frame(void);
 void update_screen(void);
 
 void fatalerror(const char *text, ...);

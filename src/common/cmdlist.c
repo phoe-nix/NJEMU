@@ -132,7 +132,7 @@ static int check_text_encode(char *buf, int size)
 {
 	int i;
 	int count1, count2, per;
-	UINT8 *p = (UINT8 *)buf;
+	uint8_t *p = (uint8_t *)buf;
 
 	count1 = 0;
 	count2 = 0;

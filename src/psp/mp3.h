@@ -29,10 +29,10 @@ void mp3_set_volume(void);
 int mp3_play(const char *name);
 void mp3_stop(void);
 void mp3_pause(int pause);
-void mp3_seek_set(const char *fname, UINT32 frame);
+void mp3_seek_set(const char *fname, uint32_t frame);
 void mp3_seek_start(void);
 
-UINT32 mp3_get_current_frame(void);
+uint32_t mp3_get_current_frame(void);
 int mp3_get_status(void);
 
 #endif /* PSP_MP3_H */

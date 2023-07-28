@@ -136,7 +136,7 @@ static int bytedecode(int src, int swap_key1, int swap_key2, int xor_key, int se
 	return src;
 }
 
-static void kabuki_decode(UINT8 *src, UINT8 *dest_op, UINT8 *dest_data,
+static void kabuki_decode(uint8_t *src, uint8_t *dest_op, uint8_t *dest_data,
 		int base_addr, int length, int swap_key1, int swap_key2, int addr_key, int xor_key)
 {
 	int addr;
@@ -157,8 +157,8 @@ static void kabuki_decode(UINT8 *src, UINT8 *dest_op, UINT8 *dest_data,
 
 static void cps1_decode(int swap_key1, int swap_key2, int addr_key, int xor_key)
 {
-	UINT8 *rom = memory_region_cpu2;
-	UINT8 *decrypt = memory_region_user2;
+	uint8_t *rom = memory_region_cpu2;
+	uint8_t *decrypt = memory_region_user2;
 
 	memset(memory_region_user2, 0, 0x8000);
 	kabuki_decode(rom, decrypt, rom, 0x0000, 0x8000, swap_key1, swap_key2, addr_key, xor_key);

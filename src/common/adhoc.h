@@ -13,18 +13,18 @@
 
 typedef struct
 {
-	UINT32 frame;
-	UINT32 buttons;
-	UINT8 error;
-	UINT8 paused;
-	UINT8 loop_flag;
-	UINT8 padding;
+	uint32_t frame;
+	uint32_t buttons;
+	uint8_t error;
+	uint8_t paused;
+	uint8_t loop_flag;
+	uint8_t padding;
 #if (EMU_SYSTEM == CPS1)
-	UINT16 port_value[6];
+	uint16_t port_value[6];
 #elif (EMU_SYSTEM == CPS2)
-	UINT16 port_value[4];
+	uint16_t port_value[4];
 #elif (EMU_SYSTEM == MVS)
-	UINT16 port_value[6];
+	uint16_t port_value[6];
 #endif
 } ADHOC_DATA;
 
@@ -35,8 +35,8 @@ extern char adhoc_matching[32];
 
 extern ADHOC_DATA send_data;
 extern ADHOC_DATA recv_data;
-extern UINT32 adhoc_frame;
-extern UINT8 adhoc_paused;
+extern uint32_t adhoc_frame;
+extern uint8_t adhoc_paused;
 extern volatile int adhoc_update;
 
 

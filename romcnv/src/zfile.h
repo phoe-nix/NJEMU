@@ -8,8 +8,8 @@
 struct zip_find_t
 {
 	char name[MAX_PATH];
-	UINT32 length;
-	UINT32 crc32;
+	uint32_t length;
+	uint32_t crc32;
 };
 
 int zip_open(const char *path, const char *mode);

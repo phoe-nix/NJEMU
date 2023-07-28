@@ -15,7 +15,7 @@
 
 int option_controller;
 int cps1_dipswitch[3];
-UINT16 ALIGN_DATA cps1_port_value[CPS1_PORT_MAX];
+uint16_t ALIGN_DATA cps1_port_value[CPS1_PORT_MAX];
 int ALIGN_DATA input_map[MAX_INPUTS];
 int input_max_players;
 int input_max_buttons;
@@ -27,7 +27,7 @@ int af_interval = 1;
 	ローカル変数
 ******************************************************************************/
 
-static UINT8 ALIGN_DATA input_flag[MAX_INPUTS];
+static uint8_t ALIGN_DATA input_flag[MAX_INPUTS];
 static int ALIGN_DATA af_map1[CPS1_BUTTON_MAX];
 static int ALIGN_DATA af_map2[CPS1_BUTTON_MAX];
 static int ALIGN_DATA af_counter[CPS1_BUTTON_MAX];
@@ -44,7 +44,7 @@ static int p12_start_pressed;
 	連射フラグを更新
 ------------------------------------------------------*/
 
-static UINT32 update_autofire(UINT32 buttons)
+static uint32_t update_autofire(uint32_t buttons)
 {
 	int i;
 
@@ -81,7 +81,7 @@ static UINT32 update_autofire(UINT32 buttons)
 
 static void update_inputport0(void)
 {
-	UINT16 value = 0xffff;
+	uint16_t value = 0xffff;
 
 	switch (machine_input_type)
 	{
@@ -269,7 +269,7 @@ static void update_inputport0(void)
 
 static void update_inputport1(void)
 {
-	UINT16 value = 0xffff;
+	uint16_t value = 0xffff;
 
 	switch (machine_input_type)
 	{
@@ -540,7 +540,7 @@ static void update_inputport1(void)
 
 static void update_inputport2(void)
 {
-	UINT16 value = 0xffff;
+	uint16_t value = 0xffff;
 
 	switch (machine_input_type)
 	{
@@ -623,7 +623,7 @@ static void update_inputport2(void)
 
 static void update_inputport3(void)
 {
-	UINT16 value = 0xffff;
+	uint16_t value = 0xffff;
 
 	switch (machine_input_type)
 	{
@@ -691,12 +691,12 @@ static void forgottn_update_dial(void)
 }
 
 
-UINT16 forgottn_read_dial0(void)
+uint16_t forgottn_read_dial0(void)
 {
 	return input_analog_value[0];
 }
 
-UINT16 forgottn_read_dial1(void)
+uint16_t forgottn_read_dial1(void)
 {
 	return input_analog_value[1];
 }
@@ -706,9 +706,9 @@ UINT16 forgottn_read_dial1(void)
 	入力ボタンを画面方向に合わせて調整
 ------------------------------------------------------*/
 
-static UINT32 adjust_input(UINT32 buttons)
+static uint32_t adjust_input(uint32_t buttons)
 {
-	UINT32 buttons2;
+	uint32_t buttons2;
 
 	if (!cps_flip_screen && machine_screen_type != SCREEN_VERTICAL)
 		return buttons;
@@ -940,7 +940,7 @@ void setup_autofire(void)
 void update_inputport(void)
 {
 	int i, serv_switch = 0;
-	UINT32 buttons;
+	uint32_t buttons;
 
 #ifdef ADHOC
 	if (adhoc_enable)

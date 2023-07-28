@@ -93,7 +93,7 @@ void file_close(void)
 	ROM•’•°•§•Î§ÚÈ_§Ø
 --------------------------------------------------------*/
 
-int file_open(const char *fname1, const char *fname2, const UINT32 crc, char *fname)
+int file_open(const char *fname1, const char *fname2, const uint32_t crc, char *fname)
 {
 	int found = 0, res = -1;
 	struct zip_find_t file;
@@ -209,7 +209,7 @@ int file_getc(void)
 	ROM§Ú÷∏∂®•·•‚•Í•®•Í•¢§À’i§ﬂﬁz§‡
 --------------------------------------------------------*/
 
-int rom_load(struct rom_t *rom, UINT8 *mem, int idx, int max)
+int rom_load(struct rom_t *rom, uint8_t *mem, int idx, int max)
 {
 	int offset, length;
 
@@ -289,7 +289,7 @@ int str_cmp(const char *s1, const char *s2)
 
 void check_byte_order(void)
 {
-	INT32 temp = 0x12345678;
+	int32_t temp = 0x12345678;
 	char *p = (char *)&temp;
 
 	if (*p == 0x78)
@@ -330,7 +330,7 @@ void check_windows_version(void)
 	•’•°•§•Î•¿•§•¢•Ì•∞ÑI¿Ì
 --------------------------------------------------------*/
 
-int file_dialog(HWND hwnd, LPCSTR filter, char *fname, UINT32 flags)
+int file_dialog(HWND hwnd, LPCSTR filter, char *fname, uint32_t flags)
 {
 	OPENFILENAME OFN;
 
@@ -401,7 +401,7 @@ void convert_delimiter(char *path)
 		{
 			if (*p == '\\')
 			{
-				if (i == 0 || !isgbk1(*(UINT8 *)(p - 0)))
+				if (i == 0 || !isgbk1(*(uint8_t *)(p - 0)))
 					*p = '/';
 			}
 			p++;
@@ -422,7 +422,7 @@ void convert_delimiter(char *path)
 		{
 			if (*p == '\\')
 			{
-				if (i == 0 || !issjis1(*(UINT8 *)(p - 1)))
+				if (i == 0 || !issjis1(*(uint8_t *)(p - 1)))
 					*p = '/';
 			}
 			p++;

@@ -55,7 +55,7 @@ extern char time_str[16];
 extern char stver_str[16];
 extern int  current_state_version;
 extern int  state_version;
-extern UINT8 *state_buffer;
+extern uint8_t *state_buffer;
 #if (EMU_SYSTEM == MVS)
 extern int  state_reload_bios;
 #endif
@@ -68,8 +68,8 @@ int state_load_thumbnail(int slot);
 void state_clear_thumbnail(void);
 
 #ifdef ADHOC
-int adhoc_send_state(UINT32 *frame);
-int adhoc_recv_state(UINT32 *frame);
+int adhoc_send_state(uint32_t *frame);
+int adhoc_recv_state(uint32_t *frame);
 #endif
 
 #endif /* SAVE_STATE */

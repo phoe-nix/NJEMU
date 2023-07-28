@@ -43,7 +43,7 @@ int machine_input_type;
 int machine_screen_type;
 int machine_sound_type;
 
-UINT32 frames_displayed;
+uint32_t frames_displayed;
 int fatal_error;
 
 
@@ -68,7 +68,7 @@ static int snap_no = -1;
 
 static char fatal_error_message[256];
 
-static const UINT8 skiptable[FRAMESKIP_LEVELS][FRAMESKIP_LEVELS] =
+static const uint8_t skiptable[FRAMESKIP_LEVELS][FRAMESKIP_LEVELS] =
 {
 	{ 0,0,0,0,0,0,0,0,0,0,0,0 },
 	{ 0,0,0,0,0,0,0,0,0,0,0,1 },
@@ -121,7 +121,7 @@ static void show_battery_warning(void)
 
 		if (bat < 10)
 		{
-			static UINT32 counter = 0;
+			static uint32_t counter = 0;
 
 			counter++;
 			if ((counter % 120) < 80)
@@ -189,7 +189,7 @@ void autoframeskip_reset(void)
 	フレームスキップテーブル
 --------------------------------------------------------*/
 
-UINT8 skip_this_frame(void)
+uint8_t skip_this_frame(void)
 {
 	return skiptable[frameskip][frameskip_counter];
 }
@@ -201,7 +201,7 @@ UINT8 skip_this_frame(void)
 
 void update_screen(void)
 {
-	UINT8 skipped_it = skiptable[frameskip][frameskip_counter];
+	uint8_t skipped_it = skiptable[frameskip][frameskip_counter];
 
 	if (!skipped_it)
 	{

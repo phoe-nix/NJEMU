@@ -1990,7 +1990,7 @@ static int menu_dipswitch(void)
 #define STATE_FUNC_DEL		2
 
 
-static UINT8 slot[10];
+static uint8_t slot[10];
 static int state_func;
 static int state_sel;
 

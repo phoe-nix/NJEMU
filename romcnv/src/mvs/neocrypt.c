@@ -172,18 +172,18 @@ analyzed, quickly leading to the algorithm.
 
 ***************************************************************************/
 
-static const UINT8 *type0_t03;
-static const UINT8 *type0_t12;
-static const UINT8 *type1_t03;
-static const UINT8 *type1_t12;
-static const UINT8 *address_8_15_xor1;
-static const UINT8 *address_8_15_xor2;
-static const UINT8 *address_16_23_xor1;
-static const UINT8 *address_16_23_xor2;
-static const UINT8 *address_0_7_xor;
+static const uint8_t *type0_t03;
+static const uint8_t *type0_t12;
+static const uint8_t *type1_t03;
+static const uint8_t *type1_t12;
+static const uint8_t *address_8_15_xor1;
+static const uint8_t *address_8_15_xor2;
+static const uint8_t *address_16_23_xor1;
+static const uint8_t *address_16_23_xor2;
+static const uint8_t *address_0_7_xor;
 
 
-static const UINT8 kof99_type0_t03[256] =
+static const uint8_t kof99_type0_t03[256] =
 {
 	0xfb, 0x86, 0x9d, 0xf1, 0xbf, 0x80, 0xd5, 0x43, 0xab, 0xb3, 0x9f, 0x6a, 0x33, 0xd9, 0xdb, 0xb6,
 	0x66, 0x08, 0x69, 0x88, 0xcc, 0xb7, 0xde, 0x49, 0x97, 0x64, 0x1f, 0xa6, 0xc0, 0x2f, 0x52, 0x42,
@@ -203,7 +203,7 @@ static const UINT8 kof99_type0_t03[256] =
 	0xc6, 0xce, 0x18, 0x36, 0xdf, 0xa9, 0x8c, 0xd8, 0xa4, 0xf0, 0x3b, 0x51, 0x4a, 0x02, 0x3e, 0x53,
 };
 
-static const UINT8 kof99_type0_t12[256] =
+static const uint8_t kof99_type0_t12[256] =
 {
 	0x1f, 0xac, 0x4d, 0xcd, 0xca, 0x70, 0x02, 0x6b, 0x18, 0x40, 0x62, 0xb2, 0x3f, 0x9b, 0x5b, 0xef,
 	0x69, 0x68, 0x71, 0x3b, 0xcb, 0xd4, 0x30, 0xbc, 0x47, 0x72, 0x74, 0x5e, 0x84, 0x4c, 0x1b, 0xdb,
@@ -223,7 +223,7 @@ static const UINT8 kof99_type0_t12[256] =
 	0x67, 0xae, 0x09, 0x89, 0xdc, 0x4e, 0xc6, 0xc0, 0x8a, 0xb1, 0x59, 0x8b, 0x41, 0x56, 0x8d, 0xba,
 };
 
-static const UINT8 kof99_type1_t03[256] =
+static const uint8_t kof99_type1_t03[256] =
 {
 	0xa9, 0x17, 0xaf, 0x0d, 0x34, 0x6e, 0x53, 0xb6, 0x7f, 0x58, 0xe9, 0x14, 0x5f, 0x55, 0xdb, 0xd4,
 	0x42, 0x80, 0x99, 0x59, 0xa8, 0x3a, 0x57, 0x5d, 0xd5, 0x6f, 0x4c, 0x68, 0x35, 0x46, 0xa6, 0xe7,
@@ -243,7 +243,7 @@ static const UINT8 kof99_type1_t03[256] =
 	0x63, 0x40, 0x2d, 0xe8, 0xb2, 0xe6, 0x39, 0x03, 0xeb, 0x8e, 0xe1, 0x0c, 0xe4, 0xe2, 0xf8, 0xac,
 };
 
-static const UINT8 kof99_type1_t12[256] =
+static const uint8_t kof99_type1_t12[256] =
 {
 	0xea, 0xe6, 0x5e, 0xa7, 0x8e, 0xac, 0x34, 0x03, 0x30, 0x97, 0x52, 0x53, 0x76, 0xf2, 0x62, 0x0b,
 	0x0a, 0xfc, 0x94, 0xb8, 0x67, 0x36, 0x11, 0xbc, 0xae, 0xca, 0xfa, 0x15, 0x04, 0x2b, 0x17, 0xc4,
@@ -267,7 +267,7 @@ static const UINT8 kof99_type1_t12[256] =
 
 /* underlined values are wrong (not enough evidence, FF fill in kof99 and garou) */
 /* they correspond to tiles 7d000-7efff */
-static const UINT8 kof99_address_8_15_xor1[256] =
+static const uint8_t kof99_address_8_15_xor1[256] =
 {
 	0x00, 0xb1, 0x1e, 0xc5, 0x3d, 0x40, 0x45, 0x5e, 0xf2, 0xf8, 0x04, 0x63, 0x36, 0x87, 0x88, 0xbf,
 	0xab, 0xcc, 0x78, 0x08, 0xdd, 0x20, 0xd4, 0x35, 0x09, 0x8e, 0x44, 0xae, 0x33, 0xa9, 0x9e, 0xcd,
@@ -288,7 +288,7 @@ static const UINT8 kof99_address_8_15_xor1[256] =
 //                                                              ^^^^  ^^^^  ^^^^  ^^^^
 };
 
-static const UINT8 kof99_address_8_15_xor2[256] =
+static const uint8_t kof99_address_8_15_xor2[256] =
 {
 	0x9b, 0x9d, 0xc1, 0x3d, 0xa9, 0xb8, 0xf4, 0x6f, 0xf6, 0x25, 0xc7, 0x47, 0xd5, 0x97, 0xdf, 0x6b,
 	0xeb, 0x90, 0xa4, 0xb2, 0x5d, 0xf5, 0x66, 0xb0, 0xb9, 0x8b, 0x93, 0x64, 0xec, 0x7b, 0x65, 0x8c,
@@ -308,7 +308,7 @@ static const UINT8 kof99_address_8_15_xor2[256] =
 	0x87, 0x07, 0x10, 0x60, 0x14, 0x73, 0x3c, 0x51, 0x19, 0xa3, 0xb5, 0xcf, 0x13, 0xf0, 0x15, 0x4e,
 };
 
-static const UINT8 kof99_address_16_23_xor1[256] =
+static const uint8_t kof99_address_16_23_xor1[256] =
 {
 	0x00, 0x5f, 0x03, 0x52, 0xce, 0xe3, 0x7d, 0x8f, 0x6b, 0xf8, 0x20, 0xde, 0x7b, 0x7e, 0x39, 0xbe,
 	0xf5, 0x94, 0x18, 0x78, 0x80, 0xc9, 0x7f, 0x7a, 0x3e, 0x63, 0xf2, 0xe0, 0x4e, 0xf7, 0x87, 0x27,
@@ -328,7 +328,7 @@ static const UINT8 kof99_address_16_23_xor1[256] =
 	0x65, 0xf4, 0x42, 0xa0, 0x8d, 0xa7, 0x48, 0x55, 0x21, 0x93, 0x24, 0xd2, 0xa6, 0xa5, 0xa8, 0x82,
 };
 
-static const UINT8 kof99_address_16_23_xor2[256] =
+static const uint8_t kof99_address_16_23_xor2[256] =
 {
 	0x29, 0x97, 0x1a, 0x2c, 0x0b, 0x94, 0x3e, 0x75, 0x01, 0x0d, 0x1b, 0xe1, 0x4d, 0x38, 0x39, 0x8f,
 	0xe7, 0xd0, 0x60, 0x90, 0xb2, 0x0f, 0xbb, 0x70, 0x1f, 0xe6, 0x5b, 0x87, 0xb4, 0x43, 0xfd, 0xf5,
@@ -348,7 +348,7 @@ static const UINT8 kof99_address_16_23_xor2[256] =
 	0xb7, 0xb3, 0xd8, 0xcf, 0x3b, 0x00, 0x92, 0xb8, 0x86, 0xac, 0x49, 0x7c, 0xf1, 0xd5, 0xcb, 0x7d,
 };
 
-static const UINT8 kof99_address_0_7_xor[256] =
+static const uint8_t kof99_address_0_7_xor[256] =
 {
 	0x74, 0xad, 0x5d, 0x1d, 0x9e, 0xc3, 0xfa, 0x4e, 0xf7, 0xdb, 0xca, 0xa2, 0x64, 0x36, 0x56, 0x0c,
 	0x4f, 0xcf, 0x43, 0x66, 0x1e, 0x91, 0xe3, 0xa5, 0x58, 0xc2, 0xc1, 0xd4, 0xb9, 0xdd, 0x76, 0x16,
@@ -373,7 +373,7 @@ static const UINT8 kof99_address_0_7_xor[256] =
 
 
 
-static const UINT8 kof2000_type0_t03[256] =
+static const uint8_t kof2000_type0_t03[256] =
 {
 	0x10, 0x61, 0xf1, 0x78, 0x85, 0x52, 0x68, 0xe3, 0x12, 0x0d, 0xfa, 0xf0, 0xc9, 0x36, 0x5e, 0x3d,
 	0xf9, 0xa6, 0x01, 0x2e, 0xc7, 0x84, 0xea, 0x2b, 0x6d, 0x14, 0x38, 0x4f, 0x55, 0x1c, 0x9d, 0xa7,
@@ -393,7 +393,7 @@ static const UINT8 kof2000_type0_t03[256] =
 	0x6e, 0x7f, 0x54, 0x3f, 0x02, 0xd1, 0x5b, 0x50, 0x56, 0x48, 0xf4, 0xbd, 0x62, 0x47, 0x04, 0xcd,
 };
 
-static const UINT8 kof2000_type0_t12[256] =
+static const uint8_t kof2000_type0_t12[256] =
 {
 	0xf4, 0x28, 0xb4, 0x8f, 0xfa, 0xeb, 0x8e, 0x54, 0x2b, 0x49, 0xd1, 0x76, 0x71, 0x47, 0x8b, 0x57,
 	0x92, 0x85, 0x7c, 0xb8, 0x5c, 0x22, 0xf9, 0x26, 0xbc, 0x5b, 0x6d, 0x67, 0xae, 0x5f, 0x6f, 0xf5,
@@ -413,7 +413,7 @@ static const UINT8 kof2000_type0_t12[256] =
 	0xdc, 0xc4, 0x32, 0xe7, 0x84, 0x3e, 0x30, 0xa1, 0x1e, 0xb5, 0x6e, 0x65, 0xe9, 0xad, 0xa7, 0x96,
 };
 
-static const UINT8 kof2000_type1_t03[256] =
+static const uint8_t kof2000_type1_t03[256] =
 {
 	0x9a, 0x2f, 0xcc, 0x4e, 0x40, 0x69, 0xac, 0xca, 0xa5, 0x7b, 0x0a, 0x61, 0x91, 0x0d, 0x55, 0x74,
 	0xcd, 0x8b, 0x0b, 0x80, 0x09, 0x5e, 0x38, 0xc7, 0xda, 0xbf, 0xf5, 0x37, 0x23, 0x31, 0x33, 0xe9,
@@ -433,7 +433,7 @@ static const UINT8 kof2000_type1_t03[256] =
 	0xaf, 0x17, 0xf8, 0xfb, 0x60, 0x50, 0xeb, 0x4b, 0x99, 0x63, 0xba, 0xb2, 0x71, 0xcf, 0x10, 0xbe,
 };
 
-static const UINT8 kof2000_type1_t12[256] =
+static const uint8_t kof2000_type1_t12[256] =
 {
 	0xda, 0xa7, 0xd6, 0x6e, 0x2f, 0x5e, 0xf0, 0x3f, 0xa4, 0xce, 0xd3, 0xfd, 0x46, 0x2a, 0xac, 0xc9,
 	0xbe, 0xeb, 0x9f, 0xd5, 0x3c, 0x61, 0x96, 0x11, 0xd0, 0x38, 0xca, 0x06, 0xed, 0x1b, 0x65, 0xe7,
@@ -455,7 +455,7 @@ static const UINT8 kof2000_type1_t12[256] =
 
 
 
-static const UINT8 kof2000_address_8_15_xor1[256] =
+static const uint8_t kof2000_address_8_15_xor1[256] =
 {
 	0xfc, 0x9b, 0x1c, 0x35, 0x72, 0x53, 0xd6, 0x7d, 0x84, 0xa4, 0xc5, 0x93, 0x7b, 0xe7, 0x47, 0xd5,
 	0x24, 0xa2, 0xfa, 0x19, 0x0c, 0xb1, 0x8c, 0xb9, 0x9d, 0xd8, 0x59, 0x4f, 0x3c, 0xb2, 0x78, 0x4a,
@@ -475,7 +475,7 @@ static const UINT8 kof2000_address_8_15_xor1[256] =
 	0x2e, 0x08, 0x1d, 0xf9, 0xb6, 0xa6, 0x64, 0x07, 0x82, 0x38, 0x98, 0x3a, 0x9f, 0xde, 0xbc, 0xd9,
 };
 
-static const UINT8 kof2000_address_8_15_xor2[256] =
+static const uint8_t kof2000_address_8_15_xor2[256] =
 {
 	0x00, 0xbe, 0x06, 0x5a, 0xfa, 0x42, 0x15, 0xf2, 0x3f, 0x0a, 0x84, 0x93, 0x4e, 0x78, 0x3b, 0x89,
 	0x32, 0x98, 0xa2, 0x87, 0x73, 0xdd, 0x26, 0xe5, 0x05, 0x71, 0x08, 0x6e, 0x9b, 0xe0, 0xdf, 0x9e,
@@ -495,7 +495,7 @@ static const UINT8 kof2000_address_8_15_xor2[256] =
 	0xe2, 0xc9, 0xaa, 0x4b, 0x8d, 0x4f, 0xe6, 0x64, 0xda, 0x74, 0xb6, 0x72, 0x57, 0x62, 0xfd, 0x58,
 };
 
-static const UINT8 kof2000_address_16_23_xor1[256] =
+static const uint8_t kof2000_address_16_23_xor1[256] =
 {
 	0x45, 0x9f, 0x6e, 0x2f, 0x28, 0xbc, 0x5e, 0x6d, 0xda, 0xb5, 0x0d, 0xb8, 0xc0, 0x8e, 0xa2, 0x32,
 	0xee, 0xcd, 0x8d, 0x48, 0x8c, 0x27, 0x14, 0xeb, 0x65, 0xd7, 0xf2, 0x93, 0x99, 0x90, 0x91, 0xfc,
@@ -515,7 +515,7 @@ static const UINT8 kof2000_address_16_23_xor1[256] =
 	0xdf, 0x83, 0x74, 0xf5, 0x38, 0x20, 0xfd, 0xad, 0xc4, 0xb9, 0x55, 0x51, 0xb0, 0xef, 0x00, 0x57,
 };
 
-static const UINT8 kof2000_address_16_23_xor2[256] =
+static const uint8_t kof2000_address_16_23_xor2[256] =
 {
 	0x00, 0xb8, 0xf0, 0x34, 0xca, 0x21, 0x3c, 0xf9, 0x01, 0x8e, 0x75, 0x70, 0xec, 0x13, 0x27, 0x96,
 	0xf4, 0x5b, 0x88, 0x1f, 0xeb, 0x4a, 0x7d, 0x9d, 0xbe, 0x02, 0x14, 0xaf, 0xa2, 0x06, 0xc6, 0xdb,
@@ -535,7 +535,7 @@ static const UINT8 kof2000_address_16_23_xor2[256] =
 	0x3f, 0xb7, 0x22, 0x97, 0x09, 0xe0, 0xa5, 0x20, 0x23, 0x2c, 0x72, 0xd6, 0x39, 0xab, 0x0a, 0xee,
 };
 
-static const UINT8 kof2000_address_0_7_xor[256] =
+static const uint8_t kof2000_address_0_7_xor[256] =
 {
 	0x26, 0x48, 0x06, 0x9b, 0x21, 0xa9, 0x1b, 0x76, 0xc9, 0xf8, 0xb4, 0x67, 0xe4, 0xff, 0x99, 0xf7,
 	0x15, 0x9e, 0x62, 0x00, 0x72, 0x4d, 0xa0, 0x4f, 0x02, 0xf1, 0xea, 0xef, 0x0b, 0xf3, 0xeb, 0xa6,
@@ -556,16 +556,16 @@ static const UINT8 kof2000_address_0_7_xor[256] =
 };
 
 
-static void decrypt(UINT8 *r0, UINT8 *r1,
-		    UINT8 c0,  UINT8 c1,
-		    const UINT8 *table0hi,
-		    const UINT8 *table0lo,
-		    const UINT8 *table1,
+static void decrypt(uint8_t *r0, uint8_t *r1,
+		    uint8_t c0,  uint8_t c1,
+		    const uint8_t *table0hi,
+		    const uint8_t *table0lo,
+		    const uint8_t *table1,
 		    int base,
 		    int invert)
 
 {
-	UINT8 tmp,xor0,xor1;
+	uint8_t tmp,xor0,xor1;
 
 	tmp = table1[(base & 0xff) ^ address_0_7_xor[(base >> 8) & 0xff]];
 	xor0 = (table0hi[(base >> 8) & 0xff] & 0xfe) | (tmp & 0x01);
@@ -586,13 +586,13 @@ static void decrypt(UINT8 *r0, UINT8 *r1,
 static void neogeo_gfx_decrypt(int extra_xor)
 {
 	int rom_size;
-	UINT8 *buf;
-	UINT8 *rom;
+	uint8_t *buf;
+	uint8_t *rom;
 	int rpos;
 
 	rom_size = memory_length_gfx3;
 
-	buf = (UINT8 *)malloc(rom_size);
+	buf = (uint8_t *)malloc(rom_size);
 
 	if (!buf)
 	{
@@ -657,8 +657,8 @@ void neogeo_sfix_decrypt(void)
 	int i;
 	int rom_size = memory_length_gfx3;
 	int tx_size = memory_length_gfx2;
-	UINT8 *src = memory_region_gfx3+rom_size-tx_size;
-	UINT8 *dst = memory_region_gfx2;
+	uint8_t *src = memory_region_gfx3+rom_size-tx_size;
+	uint8_t *dst = memory_region_gfx2;
 
 	for (i = 0;i < tx_size;i++)
 		dst[i] = src[(i & ~0x1f) + ((i & 7) << 2) + ((~i & 8) >> 2) + ((i & 0x10) >> 4)];
@@ -747,10 +747,10 @@ void cmc50_neogeo_gfx_decrypt(int extra_xor)
 /* ms5pcb and svcpcb have an additional scramble on top of the standard CMC scrambling */
 void svcpcb_gfx_decrypt(void)
 {
-	const UINT8 xor[4] = { 0x34, 0x21, 0xc4, 0xe9 };
-	UINT32 i, offset;
-	UINT8 *rom = memory_region_gfx3;
-	UINT8 *buf = (UINT8 *)malloc(memory_length_gfx3);
+	const uint8_t xor[4] = { 0x34, 0x21, 0xc4, 0xe9 };
+	uint32_t i, offset;
+	uint8_t *rom = memory_region_gfx3;
+	uint8_t *buf = (uint8_t *)malloc(memory_length_gfx3);
 
 	for (i = 0; i < memory_length_gfx3; i++)
 	{
@@ -758,7 +758,7 @@ void svcpcb_gfx_decrypt(void)
 	}
 	for (i = 0; i < memory_length_gfx3; i += 4)
 	{
-		UINT32 rom32 = rom[i] | (rom[i + 1] << 8) | (rom[i + 2] << 16) | (rom[i + 3] << 24);
+		uint32_t rom32 = rom[i] | (rom[i + 1] << 8) | (rom[i + 2] << 16) | (rom[i + 3] << 24);
 
 		rom32 = BITSWAP32(rom32, 0x09, 0x0d, 0x13, 0x00, 0x17, 0x0f, 0x03, 0x05,
 								 0x04, 0x0c, 0x11, 0x1e, 0x12, 0x15, 0x0b, 0x06,
@@ -788,8 +788,8 @@ void svcpcb_gfx_decrypt(void)
 /* and a further swap on the s1 data */
 void svcpcb_s1data_decrypt(void)
 {
-	UINT32 i;
-	UINT8 *rom = memory_region_gfx2;
+	uint32_t i;
+	uint8_t *rom = memory_region_gfx2;
 
 	for (i = 0; i < memory_length_gfx2; i++)
 	{
@@ -802,10 +802,10 @@ void svcpcb_s1data_decrypt(void)
 /* Thanks to Razoola & Halrin for the info */
 void kf2k3pcb_gfx_decrypt(void)
 {
-	const UINT8 xor[4] = { 0x34, 0x21, 0xc4, 0xe9 };
-	UINT32 i, offset;
-	UINT8 *rom = memory_region_gfx3;
-	UINT8 *buf = (UINT8 *)malloc(memory_length_gfx3);
+	const uint8_t xor[4] = { 0x34, 0x21, 0xc4, 0xe9 };
+	uint32_t i, offset;
+	uint8_t *rom = memory_region_gfx3;
+	uint8_t *buf = (uint8_t *)malloc(memory_length_gfx3);
 
 	for (i = 0; i < memory_length_gfx3; i++)
 	{
@@ -813,7 +813,7 @@ void kf2k3pcb_gfx_decrypt(void)
 	}
 	for (i = 0; i < memory_length_gfx3; i += 4)
 	{
-		UINT32 rom32 = rom[i] | (rom[i + 1] << 8) | (rom[i + 2] << 16) | (rom[i + 3] << 24);
+		uint32_t rom32 = rom[i] | (rom[i + 1] << 8) | (rom[i + 2] << 16) | (rom[i + 3] << 24);
 
 		rom32 = BITSWAP32(rom32, 0x09, 0x0d, 0x13, 0x00, 0x17, 0x0f, 0x03, 0x05,
 								 0x04, 0x0c, 0x11, 0x1e, 0x12, 0x15, 0x0b, 0x06,
@@ -842,8 +842,8 @@ void kf2k3pcb_gfx_decrypt(void)
 /* and a further swap on the s1 data */
 void kf2k3pcb_decrypt_s1data(void)
 {
-	UINT32 i;
-	UINT8 *src, *dst;
+	uint32_t i;
+	uint8_t *src, *dst;
 
 	src = memory_region_gfx3 + memory_length_gfx3 - 0x1080000;
 	dst = memory_region_gfx2;
@@ -880,13 +880,13 @@ NeoGeo 'V' (PCM) ROM encryption
 /* Neo-Pcm2 Drivers for Encrypted V Roms */
 void neo_pcm2_snk_1999(int value)
 {	/* thanks to Elsemi for the NEO-PCM2 info */
-	UINT16 *rom = (UINT16 *)memory_region_sound1;
+	uint16_t *rom = (uint16_t *)memory_region_sound1;
 	int size = memory_length_sound1;
 	int i, j;
 
 	if( rom != NULL)
 	{	/* swap address lines on the whole ROMs */
-		UINT16 *buffer = (UINT16 *)malloc((value / 2) * sizeof(UINT16));
+		uint16_t *buffer = (uint16_t *)malloc((value / 2) * sizeof(uint16_t));
 		if (!buffer)
 			return;
 
@@ -913,7 +913,7 @@ void neo_pcm2_swap(int value)
 		{0xFEB2C0,0x0A000},
 		{0xFF14EA,0xA7001},
 		{0xFFB440,0x02000}};
-	static const UINT8 xordata[7][8]={
+	static const uint8_t xordata[7][8]={
 		{0xF9,0xE0,0x5D,0xF3,0xEA,0x92,0xBE,0xEF},
 		{0xC4,0x83,0xA8,0x5F,0x21,0x27,0x64,0xAF},
 		{0xC3,0xFD,0x81,0xAC,0x6D,0xE7,0xBF,0x9E},
@@ -921,8 +921,8 @@ void neo_pcm2_swap(int value)
 		{0xCB,0x29,0x7D,0x43,0xD2,0x3A,0xC2,0xB4},
 		{0x4B,0xA4,0x63,0x46,0xF0,0x91,0xEA,0x62},
 		{0x4B,0xA4,0x63,0x46,0xF0,0x91,0xEA,0x62}};
-	UINT8 *src = memory_region_sound1;
-	UINT8 *buf = (UINT8 *)malloc(0x1000000);
+	uint8_t *src = memory_region_sound1;
+	uint8_t *buf = (uint8_t *)malloc(0x1000000);
 	int i, j, d;
 
 	memcpy(buf,src,0x1000000);
@@ -939,9 +939,9 @@ void neo_pcm2_swap(int value)
 
 int neogeo_bootleg_cx_decrypt(void)
 {
-	UINT32 i;
-	UINT8 *rom = memory_region_gfx3;
-	UINT8 *buf = (UINT8 *)malloc(memory_length_gfx3);
+	uint32_t i;
+	uint8_t *rom = memory_region_gfx3;
+	uint8_t *buf = (uint8_t *)malloc(memory_length_gfx3);
 
 	if (buf)
 	{
@@ -959,12 +959,12 @@ int neogeo_bootleg_cx_decrypt(void)
 
 int neogeo_bootleg_sx_decrypt(int value)
 {
-	UINT32 i;
-	UINT8 *rom = memory_region_gfx2;
+	uint32_t i;
+	uint8_t *rom = memory_region_gfx2;
 
 	if (value == 1)
 	{
-		UINT8 *buf = (UINT8 *)malloc(memory_length_gfx2);
+		uint8_t *buf = (uint8_t *)malloc(memory_length_gfx2);
 
 		if (buf)
 		{
@@ -988,12 +988,12 @@ int neogeo_bootleg_sx_decrypt(int value)
 	return 1;
 }
 
-static int cthd2003_neogeo_gfx_address_fix_do(UINT32 start, UINT32 end, int bit3shift, int bit2shift, int bit1shift, int bit0shift)
+static int cthd2003_neogeo_gfx_address_fix_do(uint32_t start, uint32_t end, int bit3shift, int bit2shift, int bit1shift, int bit0shift)
 {
-	UINT32 i, j;
-	UINT32 tilesize = 128;
-	UINT8 *buf = (UINT8 *)malloc(16 * tilesize);
-	UINT8 *rom = &memory_region_gfx3[start * tilesize];
+	uint32_t i, j;
+	uint32_t tilesize = 128;
+	uint8_t *buf = (uint8_t *)malloc(16 * tilesize);
+	uint8_t *rom = &memory_region_gfx3[start * tilesize];
 
 	if (rom)
 	{
@@ -1001,7 +1001,7 @@ static int cthd2003_neogeo_gfx_address_fix_do(UINT32 start, UINT32 end, int bit3
 		{
 			for (j = 0; j < 16; j++)
 			{
-				UINT32 offset = (((j & 1) >> 0) << bit0shift)
+				uint32_t offset = (((j & 1) >> 0) << bit0shift)
 						   + (((j & 2) >> 1) << bit1shift)
 						   + (((j & 4) >> 2) << bit2shift)
 						   + (((j & 8) >> 3) << bit3shift);
@@ -1017,7 +1017,7 @@ static int cthd2003_neogeo_gfx_address_fix_do(UINT32 start, UINT32 end, int bit3
 	return 0;
 }
 
-static int cthd2003_neogeo_gfx_address_fix(UINT32 start, UINT32 end)
+static int cthd2003_neogeo_gfx_address_fix(uint32_t start, uint32_t end)
 {
 	if (!cthd2003_neogeo_gfx_address_fix_do(start + 512 * 0, end + 512 * 0, 0,3,2,1)) return 0;
 	if (!cthd2003_neogeo_gfx_address_fix_do(start + 512 * 1, end + 512 * 1, 1,0,3,2)) return 0;
@@ -1032,7 +1032,7 @@ static int cthd2003_neogeo_gfx_address_fix(UINT32 start, UINT32 end)
 
 int cthd2003_cx_decrypt(void)
 {
-	UINT32 i;
+	uint32_t i;
 
 	for (i = 0; i <= 192; i += 8)
 	{
@@ -1063,9 +1063,9 @@ int cthd2003_cx_decrypt(void)
 
 int ct2k3sp_sx_decrypt(void)
 {
-	UINT32 i, offset;
-	UINT8 *rom = memory_region_gfx2;
-	UINT8 *buf = (UINT8 *)malloc(memory_length_gfx2);
+	uint32_t i, offset;
+	uint8_t *rom = memory_region_gfx2;
+	uint8_t *buf = (uint8_t *)malloc(memory_length_gfx2);
 
 	if (buf)
 	{
@@ -1093,8 +1093,8 @@ int ct2k3sp_sx_decrypt(void)
 
 int svcboot_cx_decrypt(void)
 {
-	const UINT8 idx_tbl[0x10] = { 0, 1, 0, 1, 2, 3, 2, 3, 3, 4, 3, 4, 4, 5, 4, 5 };
-	const UINT8 bitswap4_tbl[6][4] =
+	const uint8_t idx_tbl[0x10] = { 0, 1, 0, 1, 2, 3, 2, 3, 3, 4, 3, 4, 4, 5, 4, 5 };
+	const uint8_t bitswap4_tbl[6][4] =
 	{
 		{ 3, 0, 1, 2 },
 		{ 2, 3, 0, 1 },
@@ -1103,9 +1103,9 @@ int svcboot_cx_decrypt(void)
 		{ 3, 2, 1, 0 },
 		{ 3, 0, 2, 1 },
 	};
-	UINT32 i, offset;
-	UINT8 *src = memory_region_gfx3;
-	UINT8 *dst = (UINT8 *)malloc(memory_length_gfx3);
+	uint32_t i, offset;
+	uint8_t *src = memory_region_gfx3;
+	uint8_t *dst = (uint8_t *)malloc(memory_length_gfx3);
 
 	if (dst)
 	{
@@ -1131,10 +1131,10 @@ int svcboot_cx_decrypt(void)
 
 int samsho5b_cx_decrypt(void)
 {
-	UINT32 i;
-	UINT32 size = memory_length_gfx3;
-	UINT8 *rom = memory_region_gfx3;
-	UINT8 *buf = malloc(size);
+	uint32_t i;
+	uint32_t size = memory_length_gfx3;
+	uint8_t *rom = memory_region_gfx3;
+	uint8_t *buf = malloc(size);
 
 	if (buf)
 	{
@@ -1148,10 +1148,10 @@ int samsho5b_cx_decrypt(void)
 	return 0;
 }
 
-static int kof2002b_gfx_decrypt(UINT8 *src, UINT32 size)
+static int kof2002b_gfx_decrypt(uint8_t *src, uint32_t size)
 {
-	UINT32 i, j;
-	UINT8 t[8][10] =
+	uint32_t i, j;
+	uint8_t t[8][10] =
 	{
 		{ 0, 8, 7, 3, 4, 5, 6, 2, 1 },
 		{ 1, 0, 8, 4, 5, 3, 7, 6, 2 },
@@ -1162,7 +1162,7 @@ static int kof2002b_gfx_decrypt(UINT8 *src, UINT32 size)
 		{ 2, 1, 0, 4, 5, 3, 6, 7, 8 },
 		{ 8, 0, 7, 3, 4, 5, 6, 2, 1 },
 	};
-	UINT8 *dst = (UINT8 *)malloc(0x10000);
+	uint8_t *dst = (uint8_t *)malloc(0x10000);
 
 	if (dst)
 	{
@@ -1172,8 +1172,8 @@ static int kof2002b_gfx_decrypt(UINT8 *src, UINT32 size)
 
 			for (j = 0; j < 0x200; j++)
 			{
-				UINT32 n = ((j % 0x40) / 8);
-				UINT32 offset = BITSWAP16(j,15,14,13,12,11,10,9,t[n][0],t[n][1],t[n][2],t[n][3],t[n][4],t[n][5],t[n][6],t[n][7],t[n][8]);
+				uint32_t n = ((j % 0x40) / 8);
+				uint32_t offset = BITSWAP16(j,15,14,13,12,11,10,9,t[n][0],t[n][1],t[n][2],t[n][3],t[n][4],t[n][5],t[n][6],t[n][7],t[n][8]);
 				memcpy(src + i + offset * 128, dst + j * 128, 128);
 			}
 		}
@@ -1195,8 +1195,8 @@ int kof2002b_sx_decrypt(void)
 
 void lans2004_vx_decrypt(void)
 {
-	UINT32 i;
-	UINT8 *rom = memory_region_sound1;
+	uint32_t i;
+	uint8_t *rom = memory_region_sound1;
 
 	for (i = 0; i < 0xa00000; i++)
 		rom[i] = BITSWAP8(rom[i],0,1,5,4,3,2,6,7);
@@ -1204,9 +1204,9 @@ void lans2004_vx_decrypt(void)
 
 void samsho5b_vx_decrypt(void)
 {
-	UINT32 i;
-	UINT32 size = memory_length_sound1;
-	UINT8 *rom = memory_region_sound1;
+	uint32_t i;
+	uint32_t size = memory_length_sound1;
+	uint8_t *rom = memory_region_sound1;
 
 	for (i = 0; i < size; i++)
 		rom[i] = BITSWAP8(rom[i], 0, 1, 5, 4, 3, 2, 6, 7);

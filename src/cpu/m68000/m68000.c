@@ -14,19 +14,19 @@
 ******************************************************************************/
 
 #if (EMU_SYSTEM == CPS2)
-static UINT32 m68k_encrypt_start;
-static UINT32 m68k_encrypt_end;
-static UINT8  *m68k_decrypted_rom;
+static uint32_t m68k_encrypt_start;
+static uint32_t m68k_encrypt_end;
+static uint8_t  *m68k_decrypted_rom;
 
 /*--------------------------------------------------------
 	暗号化ROM範囲設定
 --------------------------------------------------------*/
 
-void m68000_set_encrypted_range(UINT32 start, UINT32 end, void *decrypted_rom)
+void m68000_set_encrypted_range(uint32_t start, uint32_t end, void *decrypted_rom)
 {
 	m68k_encrypt_start = start;
 	m68k_encrypt_end   = end;
-	m68k_decrypted_rom = (UINT8 *)decrypted_rom;
+	m68k_decrypted_rom = (uint8_t *)decrypted_rom;
 }
 
 
@@ -34,7 +34,7 @@ void m68000_set_encrypted_range(UINT32 start, UINT32 end, void *decrypted_rom)
 	PC依存メモリリード (byte)
 --------------------------------------------------------*/
 
-static UINT8 m68000_read_pcrelative_8(UINT32 offset)
+static uint8_t m68000_read_pcrelative_8(uint32_t offset)
 {
 	if (offset >= m68k_encrypt_start && offset <= m68k_encrypt_end)
 		return m68k_decrypted_rom[offset ^ 1];
@@ -47,10 +47,10 @@ static UINT8 m68000_read_pcrelative_8(UINT32 offset)
 	PC依存メモリリード (word)
 --------------------------------------------------------*/
 
-static UINT16 m68000_read_pcrelative_16(UINT32 offset)
+static uint16_t m68000_read_pcrelative_16(uint32_t offset)
 {
 	if (offset >= m68k_encrypt_start && offset <= m68k_encrypt_end)
-		return *(UINT16 *)&m68k_decrypted_rom[offset];
+		return *(uint16_t *)&m68k_decrypted_rom[offset];
 	else
 		return m68000_read_memory_16(offset);
 }
@@ -73,33 +73,33 @@ void m68000_init(void)
 	C68k_Set_WriteB(&C68K, m68000_write_memory_8);
 	C68k_Set_WriteW(&C68K, m68000_write_memory_16);
 #if (EMU_SYSTEM == CPS1)
-	C68k_Set_Fetch(&C68K, 0x000000, 0x1fffff, (UINT32)memory_region_cpu1);
-	C68k_Set_Fetch(&C68K, 0x900000, 0x92ffff, (UINT32)cps1_gfxram);
-	C68k_Set_Fetch(&C68K, 0xff0000, 0xffffff, (UINT32)cps1_ram);
+	C68k_Set_Fetch(&C68K, 0x000000, 0x1fffff, (uint32_t)memory_region_cpu1);
+	C68k_Set_Fetch(&C68K, 0x900000, 0x92ffff, (uint32_t)cps1_gfxram);
+	C68k_Set_Fetch(&C68K, 0xff0000, 0xffffff, (uint32_t)cps1_ram);
 #elif (EMU_SYSTEM == CPS2)
 	if (memory_length_user1)
-		C68k_Set_Fetch(&C68K, 0x000000, 0x3fffff, (UINT32)memory_region_user1);
+		C68k_Set_Fetch(&C68K, 0x000000, 0x3fffff, (uint32_t)memory_region_user1);
 	else
-		C68k_Set_Fetch(&C68K, 0x000000, 0x3fffff, (UINT32)memory_region_cpu1);
-	C68k_Set_Fetch(&C68K, 0x660000, 0x663fff, (UINT32)cps2_ram);
-	C68k_Set_Fetch(&C68K, 0x900000, 0x92ffff, (UINT32)cps1_gfxram);
-	C68k_Set_Fetch(&C68K, 0xff0000, 0xffffff, (UINT32)cps1_ram);
+		C68k_Set_Fetch(&C68K, 0x000000, 0x3fffff, (uint32_t)memory_region_cpu1);
+	C68k_Set_Fetch(&C68K, 0x660000, 0x663fff, (uint32_t)cps2_ram);
+	C68k_Set_Fetch(&C68K, 0x900000, 0x92ffff, (uint32_t)cps1_gfxram);
+	C68k_Set_Fetch(&C68K, 0xff0000, 0xffffff, (uint32_t)cps1_ram);
 	if (memory_length_user1)
 	{
 		C68k_Set_ReadB_PC_Relative(&C68K, m68000_read_pcrelative_8);
 		C68k_Set_ReadW_PC_Relative(&C68K, m68000_read_pcrelative_16);
 	}
 #elif (EMU_SYSTEM == MVS)
-	C68k_Set_Fetch(&C68K, 0x000000, 0x0fffff, (UINT32)memory_region_cpu1);
-	C68k_Set_Fetch(&C68K, 0x100000, 0x10ffff, (UINT32)neogeo_ram);
+	C68k_Set_Fetch(&C68K, 0x000000, 0x0fffff, (uint32_t)memory_region_cpu1);
+	C68k_Set_Fetch(&C68K, 0x100000, 0x10ffff, (uint32_t)neogeo_ram);
 	if (memory_length_cpu1 > 0x100000)
-		C68k_Set_Fetch(&C68K, 0x200000, 0x2fffff, (UINT32)&memory_region_cpu1[0x100000]);
+		C68k_Set_Fetch(&C68K, 0x200000, 0x2fffff, (uint32_t)&memory_region_cpu1[0x100000]);
 	else
-		C68k_Set_Fetch(&C68K, 0x200000, 0x2fffff, (UINT32)memory_region_cpu1);
-	C68k_Set_Fetch(&C68K, 0xc00000, 0xc00000 + (memory_length_user1 - 1), (UINT32)memory_region_user1);
+		C68k_Set_Fetch(&C68K, 0x200000, 0x2fffff, (uint32_t)memory_region_cpu1);
+	C68k_Set_Fetch(&C68K, 0xc00000, 0xc00000 + (memory_length_user1 - 1), (uint32_t)memory_region_user1);
 #elif (EMU_SYSTEM == NCDZ)
-	C68k_Set_Fetch(&C68K, 0x000000, 0x1fffff, (UINT32)memory_region_cpu1);
-	C68k_Set_Fetch(&C68K, 0xc00000, 0xc7ffff, (UINT32)memory_region_user1);
+	C68k_Set_Fetch(&C68K, 0x000000, 0x1fffff, (uint32_t)memory_region_cpu1);
+	C68k_Set_Fetch(&C68K, 0xc00000, 0xc7ffff, (uint32_t)memory_region_user1);
 	C68k_Reset(&C68K);
 #endif
 }
@@ -139,10 +139,10 @@ int m68000_execute(int cycles)
 --------------------------------------------------------*/
 
 #if (EMU_SYSTEM == NCDZ)
-void m68000_execute2(UINT32 start, UINT32 break_point)
+void m68000_execute2(uint32_t start, uint32_t break_point)
 {
 	int nest_counter = 0;
-	UINT32 pc, old_pc, opcode;
+	uint32_t pc, old_pc, opcode;
 	c68k_struc C68K_temp;
 
 	old_pc = C68k_Get_Reg(&C68K, M68K_PC);
@@ -213,7 +213,7 @@ void m68000_set_irq_callback(int (*callback)(int line))
 	レジスタ取得
 --------------------------------------------------------*/
 
-UINT32 m68000_get_reg(int regnum)
+uint32_t m68000_get_reg(int regnum)
 {
 	switch (regnum)
 	{
@@ -246,7 +246,7 @@ UINT32 m68000_get_reg(int regnum)
 	レジスタ設定
 --------------------------------------------------------*/
 
-void m68000_set_reg(int regnum, UINT32 val)
+void m68000_set_reg(int regnum, uint32_t val)
 {
 	switch (regnum)
 	{
@@ -284,7 +284,7 @@ void m68000_set_reg(int regnum, UINT32 val)
 STATE_SAVE( m68000 )
 {
 	int i;
-	UINT32 pc = C68k_Get_Reg(&C68K, C68K_PC);
+	uint32_t pc = C68k_Get_Reg(&C68K, C68K_PC);
 
 	for (i = 0; i < 8; i++)
 		state_save_long(&C68K.D[i], 1);
@@ -308,7 +308,7 @@ STATE_SAVE( m68000 )
 STATE_LOAD( m68000 )
 {
 	int i;
-	UINT32 pc;
+	uint32_t pc;
 
 	for (i = 0; i < 8; i++)
 		state_load_long(&C68K.D[i], 1);

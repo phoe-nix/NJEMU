@@ -29,7 +29,7 @@ static int pixel_format;
 	グローバル変数/構造体
 ******************************************************************************/
 
-UINT8 ALIGN16_DATA gulist[GULIST_SIZE];
+uint8_t ALIGN16_DATA gulist[GULIST_SIZE];
 #if VIDEO_32BPP
 int video_mode = 0;
 #endif
@@ -183,10 +183,10 @@ void *video_frame_addr(void *frame, int x, int y)
 {
 #if VIDEO_32BPP
 	if (video_mode == 32)
-		return (void *)(((UINT32)frame | 0x44000000) + ((x + (y << 9)) << 2));
+		return (void *)(((uint32_t)frame | 0x44000000) + ((x + (y << 9)) << 2));
 	else
 #endif
-		return (void *)(((UINT32)frame | 0x44000000) + ((x + (y << 9)) << 1));
+		return (void *)(((uint32_t)frame | 0x44000000) + ((x + (y << 9)) << 1));
 }
 
 
@@ -237,7 +237,7 @@ void video_clear_rect(void *frame, RECT *rect)
 	指定したフレームを塗りつぶし
 --------------------------------------------------------*/
 
-void video_fill_frame(void *frame, UINT32 color)
+void video_fill_frame(void *frame, uint32_t color)
 {
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, frame, BUF_WIDTH);
@@ -253,7 +253,7 @@ void video_fill_frame(void *frame, UINT32 color)
 	指定した矩形範囲を塗りつぶし
 --------------------------------------------------------*/
 
-void video_fill_rect(void *frame, UINT32 color, RECT *rect)
+void video_fill_rect(void *frame, uint32_t color, RECT *rect)
 {
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, frame, BUF_WIDTH);
@@ -337,7 +337,7 @@ void video_copy_rect(void *src, void *dst, RECT *src_rect, RECT *dst_rect)
 
 void video_copy_rect_flip(void *src, void *dst, RECT *src_rect, RECT *dst_rect)
 {
-	INT16 j, sw, dw, sh, dh;
+	int16_t j, sw, dw, sh, dh;
 	struct Vertex *vertices;
 
 	sw = src_rect->right - src_rect->left;
@@ -403,7 +403,7 @@ void video_copy_rect_flip(void *src, void *dst, RECT *src_rect, RECT *dst_rect)
 
 void video_copy_rect_rotate(void *src, void *dst, RECT *src_rect, RECT *dst_rect)
 {
-	INT16 j, sw, dw, sh, dh;
+	int16_t j, sw, dw, sh, dh;
 	struct Vertex *vertices;
 
 	sw = src_rect->right - src_rect->left;
@@ -469,7 +469,7 @@ void video_copy_rect_rotate(void *src, void *dst, RECT *src_rect, RECT *dst_rect
 	テクスチャを矩形範囲を指定して描画
 --------------------------------------------------------*/
 
-void video_draw_texture(UINT32 src_fmt, UINT32 dst_fmt, void *src, void *dst, RECT *src_rect, RECT *dst_rect)
+void video_draw_texture(uint32_t src_fmt, uint32_t dst_fmt, void *src, void *dst, RECT *src_rect, RECT *dst_rect)
 {
 	int j, sw, dw, sh, dh;
 	struct Vertex *vertices;

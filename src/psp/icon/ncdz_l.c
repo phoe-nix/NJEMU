@@ -19,7 +19,7 @@
 	gryph data
 ------------------------------------------------------*/
 
-static const UINT8 ALIGN_DATA icon_l[] = {
+static const uint8_t ALIGN_DATA icon_l[] = {
 	0x00,0x00,0x21,0x12,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 	0x00,0x71,0xcb,0xbc,0x06,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 	0x30,0xec,0xdd,0xed,0xae,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
@@ -182,19 +182,19 @@ static const int ALIGN_DATA icon_l_pos[NUM_FONTS] = {
 	0x000000,0x000180,0x0002ca,0x0003e2,0x000542,0x00066e,0x00076d,0x000885
 };
 
-static const INT8 ALIGN_DATA icon_l_width[NUM_FONTS] = {
+static const int8_t ALIGN_DATA icon_l_width[NUM_FONTS] = {
 	32,30,28,32,30,30,28,28
 };
 
-static const INT8 ALIGN_DATA icon_l_height[NUM_FONTS] = {
+static const int8_t ALIGN_DATA icon_l_height[NUM_FONTS] = {
 	24,22,20,22,20,17,20,22
 };
 
-static const INT8 ALIGN_DATA icon_l_skipx[NUM_FONTS] = {
+static const int8_t ALIGN_DATA icon_l_skipx[NUM_FONTS] = {
 	 1, 1, 2, 0, 2, 1, 2, 2
 };
 
-static const INT8 ALIGN_DATA icon_l_skipy[NUM_FONTS] = {
+static const int8_t ALIGN_DATA icon_l_skipy[NUM_FONTS] = {
 	 0, 1, 2, 1, 2, 4, 2, 1
 };
 
@@ -203,7 +203,7 @@ static const INT8 ALIGN_DATA icon_l_skipy[NUM_FONTS] = {
 	light data
 ------------------------------------------------------*/
 
-static const UINT8 ALIGN_DATA icon_l_light[] = {
+static const uint8_t ALIGN_DATA icon_l_light[] = {
 	0x00,0x00,0x10,0x21,0x12,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 	0x00,0x00,0x00,0x10,0x32,0x54,0x45,0x23,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 	0x00,0x00,0x00,0x00,0x00,0x21,0x64,0x98,0x89,0x46,0x13,0x00,0x00,0x00,0x00,0x00,
@@ -422,19 +422,19 @@ static const int ALIGN_DATA icon_l_light_pos[NUM_FONTS] = {
 	0x000000,0x0001f8,0x0003b2,0x000552,0x000726,0x0008be,0x000a23,0x000b93
 };
 
-static const INT8 ALIGN_DATA icon_l_light_width[NUM_FONTS] = {
+static const int8_t ALIGN_DATA icon_l_light_width[NUM_FONTS] = {
 	36,34,32,36,34,34,32,32
 };
 
-static const INT8 ALIGN_DATA icon_l_light_height[NUM_FONTS] = {
+static const int8_t ALIGN_DATA icon_l_light_height[NUM_FONTS] = {
 	28,26,26,26,24,21,23,26
 };
 
-static const INT8 ALIGN_DATA icon_l_light_skipx[NUM_FONTS] = {
+static const int8_t ALIGN_DATA icon_l_light_skipx[NUM_FONTS] = {
 	 3, 3, 4, 2, 4, 3, 5, 3
 };
 
-static const INT8 ALIGN_DATA icon_l_light_skipy[NUM_FONTS] = {
+static const int8_t ALIGN_DATA icon_l_light_skipy[NUM_FONTS] = {
 	 2, 3, 3, 3, 4, 6, 5, 3
 };
 
@@ -443,7 +443,7 @@ static const INT8 ALIGN_DATA icon_l_light_skipy[NUM_FONTS] = {
 	functions
 ------------------------------------------------------*/
 
-int icon_l_get_gryph(struct font_t *font, UINT16 code)
+int icon_l_get_gryph(struct font_t *font, uint16_t code)
 {
 	if (code < NUM_FONTS)
 	{
@@ -458,7 +458,7 @@ int icon_l_get_gryph(struct font_t *font, UINT16 code)
 	return 0;
 }
 
-int icon_l_get_light(struct font_t *font, UINT16 code)
+int icon_l_get_light(struct font_t *font, uint16_t code)
 {
 	if (code < NUM_FONTS)
 	{

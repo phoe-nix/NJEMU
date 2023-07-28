@@ -7,15 +7,6 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-typedef unsigned char	UINT8;
-typedef unsigned short	UINT16;
-typedef unsigned int	UINT32;
-//typedef char			INT8;
-typedef short			INT16;
-typedef int				INT32;
-__extension__ typedef unsigned long long	UINT64;
-__extension__ typedef signed long long		INT64;
-
 #ifdef WIN32
 #define COBJMACROS
 #include <windows.h>
@@ -41,10 +32,10 @@ __extension__ typedef signed long long		INT64;
 
 struct rom_t
 {
-	UINT32 type;
-	UINT32 offset;
-	UINT32 length;
-	UINT32 crc;
+	uint32_t type;
+	uint32_t offset;
+	uint32_t length;
+	uint32_t crc;
 	int group;
 	int skip;
 	char name[32];
@@ -67,26 +58,26 @@ void error_memory(const char *mem_name);
 void error_file(const char *rom_name);
 void error_rom(const char *rom_name);
 
-int file_open(const char *fname1, const char *fname2, const UINT32 crc, char *fname);
+int file_open(const char *fname1, const char *fname2, const uint32_t crc, char *fname);
 void file_close(void);
 int file_read(void *buf, size_t length);
 int file_getc(void);
 
-int rom_load(struct rom_t *rom, UINT8 *mem, int idx, int max);
+int rom_load(struct rom_t *rom, uint8_t *mem, int idx, int max);
 
 int str_cmp(const char *s1, const char *s2);
 void check_byte_order(void);
 
 
 /*--------------------------------------------------------
-	Windows—p
+	Windowsï¿½p
 --------------------------------------------------------*/
 
 #ifdef WIN32
 extern int is_win9x;
 
 void check_windows_version(void);
-int file_dialog(HWND hwnd, LPCSTR filter, char *fname, UINT32 flags);
+int file_dialog(HWND hwnd, LPCSTR filter, char *fname, uint32_t flags);
 int folder_dialog(HWND hwnd, char *path);
 void convert_delimiter(char *path);
 #endif

@@ -257,7 +257,7 @@ static dipswitch_t dipswitch_kog_cht[] =
 
 dipswitch_t *load_dipswitch(void)
 {
-	UINT8 value = ~neogeo_dipswitch;
+	uint8_t value = ~neogeo_dipswitch;
 	dipswitch_t *dipswitch = NULL;
 	if (ui_text_get_language() == LANG_JAPANESE)
 	{
@@ -405,7 +405,7 @@ dipswitch_t *load_dipswitch(void)
 
 void save_dipswitch(void)
 {
-	UINT8 value;
+	uint8_t value;
 	dipswitch_t *dipswitch = NULL;
 	if (ui_text_get_language() == LANG_JAPANESE)
 	{

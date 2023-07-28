@@ -340,7 +340,7 @@ OP_ADC16:
 			((res >> 8) & (SF | YF | XF)) |
 			((res & 0xffff) ? 0 : ZF) |
 			(((val ^ zHL ^ 0x8000) & (val ^ res) & 0x8000) >> 13);
-		zHL = (UINT16)res;
+		zHL = (uint16_t)res;
 		RET(11)
 
 /*-----------------------------------------
@@ -363,7 +363,7 @@ OP_SBC16:
 			((res >> 8) & (SF | YF | XF)) |
 			((res & 0xffff) ? 0 : ZF) |
 			(((val ^ zHL) & (zHL ^ res) & 0x8000) >> 13);
-		zHL = (UINT16)res;
+		zHL = (uint16_t)res;
 		RET(11)
 
 /*-----------------------------------------
@@ -462,9 +462,9 @@ OP_SBC16:
 		RET(4)
 
 	{
-		UINT8 val;
-		UINT8 res;
-		UINT8 F;
+		uint8_t val;
+		uint8_t res;
+		uint8_t F;
 
 /*-----------------------------------------
  LDI/LDD
@@ -612,10 +612,10 @@ OP_CPXR:
 
 OP_INX:
 		F = SZ[zB];
-		res = ((UINT32)(zC - 1) & 0xff) + (UINT32)val;
+		res = ((uint32_t)(zC - 1) & 0xff) + (uint32_t)val;
 		if (val & SF) F |= NF;
 		if (res & 0x100) F |= HF | CF;
-		F |= SZP[(UINT8)(res & 0x07) ^ zB] & PF;
+		F |= SZP[(uint8_t)(res & 0x07) ^ zB] & PF;
 		zF = F;
 		RET(12)
 
@@ -644,10 +644,10 @@ OP_INX:
 
 OP_INXR:
 		F = SZ[zB];
-		res = ((UINT32)(zC - 1) & 0xff) + (UINT32)val;
+		res = ((uint32_t)(zC - 1) & 0xff) + (uint32_t)val;
 		if (val & SF) F |= NF;
 		if (res & 0x100) F |= HF | CF;
-		F |= SZP[(UINT8)(res & 0x07) ^ zB] & PF;
+		F |= SZP[(uint8_t)(res & 0x07) ^ zB] & PF;
 		zF = F;
 		if (zB)
 		{
@@ -677,10 +677,10 @@ OP_INXR:
 
 OP_OUTX:
 		F = SZ[zB];
-		res = (UINT32)zL + (UINT32)val;
+		res = (uint32_t)zL + (uint32_t)val;
 		if (val & SF) F |= NF;
 		if (res & 0x100) F |= HF | CF;
-		F |= SZP[(UINT8)(res & 0x07) - zB] & PF;
+		F |= SZP[(uint8_t)(res & 0x07) - zB] & PF;
 		zF = F;
 		RET(12)
 
@@ -709,10 +709,10 @@ OP_OUTX:
 
 OP_OTXR:
 		F = SZ[zB];
-		res = (UINT32)zL + (UINT32)val;
+		res = (uint32_t)zL + (uint32_t)val;
 		if (val & SF) F |= NF;
 		if (res & 0x100) F |= HF | CF;
-		F |= SZP[(UINT8)(res & 0x07) - zB] & PF;
+		F |= SZP[(uint8_t)(res & 0x07) - zB] & PF;
 		zF = F;
 		if (zB)
 		{

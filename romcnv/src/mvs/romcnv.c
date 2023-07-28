@@ -43,21 +43,21 @@ enum
 	グローバル変数
 ******************************************************************************/
 
-UINT8 *memory_region_gfx2;
-UINT8 *memory_region_gfx3;
-UINT8 *memory_region_sound1;
+uint8_t *memory_region_gfx2;
+uint8_t *memory_region_gfx3;
+uint8_t *memory_region_sound1;
 
-UINT32 memory_length_gfx2;
-UINT32 memory_length_gfx3;
-UINT32 memory_length_sound1;
+uint32_t memory_length_gfx2;
+uint32_t memory_length_gfx3;
+uint32_t memory_length_sound1;
 
 
 /******************************************************************************
 	ローカル変数
 ******************************************************************************/
 
-static UINT32 gfx_total_elements[TILE_TYPE_MAX];
-static UINT8  *gfx_pen_usage[TILE_TYPE_MAX];
+static uint32_t gfx_total_elements[TILE_TYPE_MAX];
+static uint8_t  *gfx_pen_usage[TILE_TYPE_MAX];
 
 static int disable_sound;
 static int machine_driver_type;
@@ -208,14 +208,14 @@ struct cacheinfo_t MVS_cacheinfo[] =
 	MVS用関数
 ******************************************************************************/
 
-static void neogeo_decode_spr(UINT8 *mem, UINT32 length, UINT8 *usage)
+static void neogeo_decode_spr(uint8_t *mem, uint32_t length, uint8_t *usage)
 {
-	UINT32 i;
+	uint32_t i;
 
 	for (i = 0; i < gfx_total_elements[TILE_SPR]; i++)
 	{
-		UINT8 swap[128], *gfxdata;
-		UINT32 x, y, pen, opaque = 0;
+		uint8_t swap[128], *gfxdata;
+		uint32_t x, y, pen, opaque = 0;
 
 		gfxdata = &mem[128 * i];
 
@@ -223,7 +223,7 @@ static void neogeo_decode_spr(UINT8 *mem, UINT32 length, UINT8 *usage)
 
 		for (y = 0; y < 16; y++)
 		{
-			UINT32 dw, data;
+			uint32_t dw, data;
 
 			dw = 0;
 			for (x = 0; x < 8; x++)

@@ -26,8 +26,8 @@ struct sound_t
 	int channels;
 	int frequency;
 	int samples;
-	void (*update)(INT16 *buffer);
-	void (*callback)(INT32 **buffer, int length);
+	void (*update)(int16_t *buffer);
+	void (*callback)(int32_t **buffer, int length);
 };
 
 #define MAXOUT		(+32767)

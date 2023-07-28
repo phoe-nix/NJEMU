@@ -30,7 +30,7 @@
 #define SUSPEND_REASON_SPIN		0x0004
 #define SUSPEND_REASON_TRIGGER	0x0008
 #define SUSPEND_REASON_DISABLE	0x0010
-#define SUSPEND_ANY_REASON		((UINT32)-1)
+#define SUSPEND_ANY_REASON		((uint32_t)-1)
 
 #define TIMER_CALLBACK(name)	void name(int param)
 

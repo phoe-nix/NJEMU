@@ -45,7 +45,7 @@ const char *bios_name[BIOS_MAX] =
 	"Debug MVS (Hack?)"
 };
 
-const UINT32 bios_crc[BIOS_MAX] =
+const uint32_t bios_crc[BIOS_MAX] =
 {
 	0x9036d879,	// Europe Ver.2
 	0xc7f2fa45,	// Europe Ver.1
@@ -77,7 +77,7 @@ const UINT32 bios_crc[BIOS_MAX] =
 	0x698ebb7d	// Debug BIOS
 };
 
-const UINT32 bios_patch_address[BIOS_MAX] =
+const uint32_t bios_patch_address[BIOS_MAX] =
 {
 	0x011c62,	// Europe Ver.2
 	0x011c62,	// Europe Ver.1
@@ -110,8 +110,8 @@ const UINT32 bios_patch_address[BIOS_MAX] =
 };
 
 
-const UINT32 sfix_crc  = 0xc2ea0cfd;//old 0x354029fc
-const UINT32 lorom_crc = 0x5a86cff2;//old 0xe09e253c
+const uint32_t sfix_crc  = 0xc2ea0cfd;//old 0x354029fc
+const uint32_t lorom_crc = 0x5a86cff2;//old 0xe09e253c
 
 const char *bios_zip   = "neogeo";
 const char *sfix_name  = "sfix.sfx";
@@ -122,7 +122,7 @@ const char *lorom_name = "000-lo.lo";
 	ローカル変数
 ******************************************************************************/
 
-static UINT8 bios_exist[BIOS_MAX];
+static uint8_t bios_exist[BIOS_MAX];
 
 
 /******************************************************************************

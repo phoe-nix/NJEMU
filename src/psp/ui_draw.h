@@ -11,7 +11,7 @@
 
 struct font_t
 {
-	const UINT8 *data;
+	const uint8_t *data;
 	int width;
 	int height;
 	int pitch;
@@ -101,13 +101,13 @@ enum
 extern UI_PALETTE ui_palette[UI_PAL_MAX];
 
 // ゲーム画面用スモールフォント
-extern const UINT8 font_s[];
+extern const uint8_t font_s[];
 
 // ダイアログ等の影データ
-extern const UINT8 shadow[9][8][4];
+extern const uint8_t shadow[9][8][4];
 
 // GBK フォントテーブル
-extern const UINT16 gbk_table[];
+extern const uint16_t gbk_table[];
 
 
 /*------------------------------------------------------
@@ -122,33 +122,33 @@ void ui_init(void);
 ------------------------------------------------------*/
 
 // プロポーショナルフォント
-int graphic_font_get_gryph(struct font_t *font, UINT16 code);
-int graphic_font_get_pitch(UINT16 code);
+int graphic_font_get_gryph(struct font_t *font, uint16_t code);
+int graphic_font_get_pitch(uint16_t code);
 
-int ascii_14p_get_gryph(struct font_t *font, UINT16 code);
-int ascii_14p_get_pitch(UINT16 code);
+int ascii_14p_get_gryph(struct font_t *font, uint16_t code);
+int ascii_14p_get_pitch(uint16_t code);
 
-//int jpn_h14p_get_gryph(struct font_t *font, UINT16 code);
-//int jpn_h14p_get_pitch(UINT16 code);
+//int jpn_h14p_get_gryph(struct font_t *font, uint16_t code);
+//int jpn_h14p_get_pitch(uint16_t code);
 
-int gbk_s14p_get_gryph(struct font_t *font, UINT16 code);
-int gbk_s14p_get_pitch(UINT16 code);
+int gbk_s14p_get_gryph(struct font_t *font, uint16_t code);
+int gbk_s14p_get_pitch(uint16_t code);
 
 // アイコン(小)
-int icon_s_get_gryph(struct font_t *font, UINT16 code);
-int icon_s_get_light(struct font_t *font, UINT16 code);
+int icon_s_get_gryph(struct font_t *font, uint16_t code);
+int icon_s_get_light(struct font_t *font, uint16_t code);
 
 // アイコン(大)
-int icon_l_get_gryph(struct font_t *font, UINT16 code);
-int icon_l_get_light(struct font_t *font, UINT16 code);
+int icon_l_get_gryph(struct font_t *font, uint16_t code);
+int icon_l_get_light(struct font_t *font, uint16_t code);
 
 // 等幅フォント
 #ifdef COMMAND_LIST
-int command_font_get_gryph(struct font_t *font, UINT16 code);
-int ascii_14_get_gryph(struct font_t *font, UINT16 code);
-int latin1_14_get_gryph(struct font_t *font, UINT16 code);
-//int jpn_h14_get_gryph(struct font_t *font, UINT16 code);
-int gbk_s14_get_gryph(struct font_t *font, UINT16 code);
+int command_font_get_gryph(struct font_t *font, uint16_t code);
+int ascii_14_get_gryph(struct font_t *font, uint16_t code);
+int latin1_14_get_gryph(struct font_t *font, uint16_t code);
+//int jpn_h14_get_gryph(struct font_t *font, uint16_t code);
+int gbk_s14_get_gryph(struct font_t *font, uint16_t code);
 #endif
 
 
