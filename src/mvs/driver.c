@@ -283,11 +283,11 @@ void neogeo_driver_reset(void)
 		pd4990a.hours   = today->tm_hour;
 		pd4990a.days    = today->tm_mday;
 		pd4990a.month   = today->tm_mon;
-		pd4990a.year    = today->year % 100;
+		pd4990a.year    = today->tm_year % 100;
 
-		y = today.year;
-		m = today.month;
-		d = today.day;
+		y = today->tm_year;
+		m = today->tm_mon;
+		d = today->tm_mday;
 		if (m == 1 || m == 2) { y--; m += 12; }
 		pd4990a.weekday = (y + (y / 4) - (y / 100) + (y / 400) + ((13 * m + 8) / 5) + d) % 7;
 	}
