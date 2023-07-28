@@ -7,6 +7,7 @@
 ******************************************************************************/
 
 #include "emumain.h"
+#include "threadwrapper.h"
 
 
 /******************************************************************************
@@ -28,7 +29,7 @@ volatile int adhoc_update;
 	ローカル変数
 ******************************************************************************/
 
-static SceUID adhoc_thread;
+static platformThread_t adhoc_thread;
 static volatile int adhoc_active;
 
 
@@ -40,7 +41,7 @@ static volatile int adhoc_active;
 	入力ポート送受信スレッド
 ------------------------------------------------------*/
 
-static int adhoc_update_inputport(SceSize args, void *argp)
+static int adhoc_update_inputport(int32_t args, void *argp)
 {
 	int error = 0;
 
@@ -116,7 +117,7 @@ static int adhoc_update_inputport(SceSize args, void *argp)
 		usleep(100);
 	}
 
-	sceKernelExitThread(0);
+	platformExitThread(0);
 
 	return 0;
 }
@@ -135,7 +136,7 @@ int adhoc_start_thread(void)
 	adhoc_update = 0;
 	adhoc_active = 0;
 	adhoc_paused = 0;
-	adhoc_thread = sceKernelCreateThread("Input thread", adhoc_update_inputport, 0x10, 0x1000, 0, NULL);
+	adhoc_thread = platformCreateThread("Input thread", adhoc_update_inputport, 0x10, 0x1000);
 
 	return (adhoc_thread >= 0) ? 1 : 0;
 }
@@ -150,9 +151,9 @@ void adhoc_stop_thread(void)
 	if (adhoc_thread >= 0)
 	{
 		adhoc_active = 0;
-		sceKernelWaitThreadEnd(adhoc_thread, NULL);
+		platformWaitThreadEnd(adhoc_thread);
 
-		sceKernelDeleteThread(adhoc_thread);
+		platformDeleteThread(adhoc_thread);
 		adhoc_thread = -1;
 	}
 }
@@ -169,7 +170,7 @@ void adhoc_reset_thread(void)
 		if (adhoc_active)
 		{
 			adhoc_active = 0;
-			sceKernelWaitThreadEnd(adhoc_thread, NULL);
+			platformWaitThreadEnd(adhoc_thread);
 		}
 
 		memset(&send_data, 0, sizeof(send_data));
@@ -184,7 +185,7 @@ void adhoc_reset_thread(void)
 		adhoc_frame = 0;
 
 		adhoc_active = 1;
-		sceKernelStartThread(adhoc_thread, 0, 0);
+		platformThread_t(adhoc_thread);
 	}
 }
 
