@@ -6,9 +6,10 @@
 
 ******************************************************************************/
 
+#include <pspaudio.h>
 #include "psp.h"
 #include "emumain.h"
-#include <pspaudio.h>
+#include "common/thread_driver.h"
 
 /******************************************************************************
 	プロトタイプ
@@ -24,7 +25,7 @@
 ******************************************************************************/
 
 static volatile int sound_active;
-static SceUID sound_thread;
+static void *sound_thread;
 static int sound_volume;
 static int sound_enable;
 static int16_t ALIGN16_DATA sound_buffer[2][SOUND_BUFFER_SIZE];
@@ -47,7 +48,7 @@ struct sound_t *sound = &sound_info;
 	サウンド厚仟スレッド
 --------------------------------------------------------*/
 
-static int sound_update_thread(SceSize args, void *argp)
+static int sound_update_thread(int32_t args, void *argp)
 {
 	int flip = 0;
 
@@ -70,7 +71,7 @@ static int sound_update_thread(SceSize args, void *argp)
 		flip ^= 1;
 	}
 
-	sceKernelExitThread(0);
+	thread_driver->exitThread(sound_thread, 0);
 
 	return 0;
 }
@@ -87,7 +88,7 @@ static int sound_update_thread(SceSize args, void *argp)
 void sound_thread_init(void)
 {
 	sound_active = 0;
-	sound_thread = -1;
+	sound_thread = NULL;
 	sound_volume = 0;
 	sound_enable = 0;
 }
@@ -138,7 +139,7 @@ void sound_thread_set_volume(void)
 int sound_thread_start(void)
 {
 	sound_active = 0;
-	sound_thread = -1;
+	sound_thread = NULL;
 	sound_volume = 0;
 	sound_enable = 0;
 
@@ -153,16 +154,18 @@ int sound_thread_start(void)
 		return 0;
 	}
 
-	sound_thread = sceKernelCreateThread("Sound thread", sound_update_thread, 0x08, sound->stack, 0, NULL);
-	if (sound_thread < 0)
+	sound_thread = thread_driver->init();
+	if (!thread_driver->createThread(sound_thread, "Sound thread", sound_update_thread, 0x08, sound->stack))
 	{
 		fatalerror(TEXT(COULD_NOT_START_SOUND_THREAD));
 		sceAudioSRCChRelease();
+		thread_driver->free(sound_thread);
+		sound_thread = NULL;
 		return 0;
 	}
 
 	sound_active = 1;
-	sceKernelStartThread(sound_thread, 0, 0);
+	thread_driver->startThread(sound_thread);
 
 	sound_thread_set_volume();
 
@@ -176,16 +179,16 @@ int sound_thread_start(void)
 
 void sound_thread_stop(void)
 {
-	if (sound_thread >= 0)
+	if (sound_thread)
 	{
 		sound_volume = 0;
 		sound_enable = 0;
 
 		sound_active = 0;
-		sceKernelWaitThreadEnd(sound_thread, NULL);
-
-		sceKernelDeleteThread(sound_thread);
-		sound_thread = -1;
+		thread_driver->waitThreadEnd(sound_thread);
+		thread_driver->deleteThread(sound_thread);
+		thread_driver->free(sound_thread);
+		sound_thread = NULL;
 
 		sceAudioSRCChRelease();
 	}
