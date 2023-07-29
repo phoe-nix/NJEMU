@@ -6,18 +6,10 @@
 
 ******************************************************************************/
 
-#include <pspaudio.h>
 #include "psp.h"
 #include "emumain.h"
 #include "common/thread_driver.h"
-
-/******************************************************************************
-	プロトタイプ
-******************************************************************************/
-
-//int sceAudio_38553111(unsigned short samples, unsigned short freq, char unknown);
-//int sceAudio_5C37C0AE(void);
-//int sceAudio_E0727056(int volume, void *buffer);
+#include "common/audio_driver.h"
 
 
 /******************************************************************************
@@ -31,6 +23,7 @@ static int sound_enable;
 static int16_t ALIGN16_DATA sound_buffer[2][SOUND_BUFFER_SIZE];
 
 static struct sound_t sound_info;
+static void *game_audio;
 
 
 /******************************************************************************
@@ -67,7 +60,7 @@ static int sound_update_thread(int32_t args, void *argp)
 		else
 			memset(sound_buffer[flip], 0, SOUND_BUFFER_SIZE * 2);
 
-		sceAudioSRCOutputBlocking(sound_volume, sound_buffer[flip]);
+		audio_driver->srcOutputBlocking(game_audio, sound_volume, sound_buffer[flip]);
 		flip ^= 1;
 	}
 
@@ -128,7 +121,7 @@ void sound_thread_enable(int enable)
 
 void sound_thread_set_volume(void)
 {
-	sound_volume = PSP_AUDIO_VOLUME_MAX * (option_sound_volume * 10) / 100;
+	sound_volume = audio_driver->volumeMax(game_audio) * (option_sound_volume * 10) / 100;
 }
 
 
@@ -142,15 +135,19 @@ int sound_thread_start(void)
 	sound_thread = NULL;
 	sound_volume = 0;
 	sound_enable = 0;
+	game_audio = NULL;
 
 	memset(sound_buffer[0], 0, sizeof(sound_buffer[0]));
 	memset(sound_buffer[1], 0, sizeof(sound_buffer[1]));
 
-	sceAudioSRCChRelease();
+	game_audio = audio_driver->init();
+	audio_driver->release(game_audio);
 
-	if (sceAudioSRCChReserve(sound->samples, sound->frequency, 2) < 0)
+	if (!audio_driver->chReserve(game_audio, sound->samples, sound->frequency, 2))
 	{
 		fatalerror(TEXT(COULD_NOT_RESERVE_AUDIO_CHANNEL_FOR_SOUND));
+		audio_driver->free(game_audio);
+		game_audio = NULL;
 		return 0;
 	}
 
@@ -158,9 +155,11 @@ int sound_thread_start(void)
 	if (!thread_driver->createThread(sound_thread, "Sound thread", sound_update_thread, 0x08, sound->stack))
 	{
 		fatalerror(TEXT(COULD_NOT_START_SOUND_THREAD));
-		sceAudioSRCChRelease();
+		audio_driver->release(game_audio);
+		audio_driver->free(game_audio);
 		thread_driver->free(sound_thread);
 		sound_thread = NULL;
+		game_audio = NULL;
 		return 0;
 	}
 
@@ -190,6 +189,8 @@ void sound_thread_stop(void)
 		thread_driver->free(sound_thread);
 		sound_thread = NULL;
 
-		sceAudioSRCChRelease();
+		audio_driver->release(game_audio);
+		audio_driver->free(game_audio);
+		game_audio = NULL;
 	}
 }

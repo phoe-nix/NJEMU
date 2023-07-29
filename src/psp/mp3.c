@@ -12,6 +12,7 @@
 #include <string.h>
 #include <mad.h>
 #include "common/thread_driver.h"
+#include "common/audio_driver.h"
 
 // TODO: remove this import
 #include "emumain.h"
@@ -36,7 +37,7 @@ static volatile int mp3_running;
 static volatile int mp3_status;
 static volatile int mp3_sleep;
 
-static int mp3_handle;
+static void *mp3_handle;
 static void *mp3_thread;
 
 static uint8_t mp3_out[2][MP3_BUFFER_SIZE];
@@ -241,7 +242,7 @@ static void MP3Update(void)
 
 				if (OutputPtr == OutputEnd)
 				{
-					sceAudioOutputPannedBlocking(mp3_handle, mp3_volume, mp3_volume, mp3_out[flip]);
+					audio_driver->outputPannedBlocking(mp3_handle, mp3_volume, mp3_volume, mp3_out[flip]);
 					flip ^= 1;
 					OutputPtr = (int16_t *)mp3_out[flip];
 					OutputEnd = (int16_t *)(mp3_out[flip] + MP3_BUFFER_SIZE);
@@ -305,7 +306,7 @@ static int MP3Thread(int32_t args, void *argp)
 
 int mp3_thread_start(void)
 {
-	mp3_handle  = -1;
+	mp3_handle  = NULL;
 	mp3_thread  = NULL;
 	mp3_active  = 0;
 	mp3_status  = MP3_STOP;
@@ -318,10 +319,13 @@ int mp3_thread_start(void)
 	memset(mp3_out[0], 0, MP3_BUFFER_SIZE);
 	memset(mp3_out[1], 0, MP3_BUFFER_SIZE);
 
-	mp3_handle = sceAudioChReserve(PSP_AUDIO_NEXT_CHANNEL, MP3_SAMPLES, PSP_AUDIO_FORMAT_STEREO);
-	if (mp3_handle < 0)
+	mp3_handle = audio_driver->init();
+
+	if (!audio_driver->chReserve(mp3_handle, PSP_AUDIO_NEXT_CHANNEL, MP3_SAMPLES, PSP_AUDIO_FORMAT_STEREO))
 	{
 		fatalerror(TEXT(COULD_NOT_RESERVE_AUDIO_CHANNEL_FOR_MP3));
+		audio_driver->free(mp3_handle);
+		mp3_handle = NULL;
 		return 0;
 	}
 
@@ -330,8 +334,10 @@ int mp3_thread_start(void)
 	if (!thread_driver->createThread(mp3_thread, "MP3 thread", MP3Thread, 0x8, 0x40000))
 	{
 		fatalerror(TEXT(COULD_NOT_START_MP3_THREAD));
-		sceAudioChRelease(mp3_handle);
+		audio_driver->release(mp3_handle);
+		audio_driver->free(mp3_handle);
 		thread_driver->free(mp3_thread);
+		mp3_handle = NULL;
 		mp3_thread = NULL;
 		return 0;
 	}
@@ -359,8 +365,9 @@ void mp3_thread_stop(void)
 		thread_driver->free(mp3_thread);
 		mp3_thread = NULL;
 
-		sceAudioChRelease(mp3_handle);
-		mp3_handle = -1;
+		audio_driver->release(mp3_handle);
+		audio_driver->free(mp3_handle);
+		mp3_handle = NULL;
 	}
 }
 
@@ -444,7 +451,7 @@ void mp3_pause(int pause)
 					thread_driver->suspendThread(mp3_thread);
 					memset(mp3_out[0], 0, MP3_BUFFER_SIZE);
 					memset(mp3_out[1], 0, MP3_BUFFER_SIZE);
-					sceAudioOutputPannedBlocking(mp3_handle, 0, 0, mp3_out[0]);
+					audio_driver->outputPannedBlocking(mp3_handle, 0, 0, mp3_out[0]);
 				}
 			}
 			else

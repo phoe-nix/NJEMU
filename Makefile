@@ -98,7 +98,8 @@ MAINOBJS = \
 	common/cache.o \
 	common/loadrom.o \
 	common/cpuclock.o \
-	common/thread_driver.o
+	common/thread_driver.o \
+	common/audio_driver.o
 
 ifeq ($(ADHOC), 1)
 MAINOBJS += common/adhoc.o
@@ -127,6 +128,7 @@ OSOBJS = \
 	$(OS)/$(OS).o \
 	$(OS)/cpuclock.o \
 	$(OS)/$(OS)_thread.o \
+	$(OS)/$(OS)_audio.o \
 	$(OS)/power.o \
 	$(OS)/config.o \
 	$(OS)/filer.o \
