@@ -63,4 +63,4 @@ ICONOBJS = \
 	$(OS)/icon/ncdz_l.o
 
 OSOBJS += \
-	$(OS)/mp3.o
+	common/mp3.o

@@ -27,9 +27,10 @@ static bool psp_chSRCReserve(void *data, int32_t samples, int32_t freqency, int3
 	return psp->channel >= 0;
 }
 
-static bool psp_chReserve(void *data, int32_t channel, int32_t samplecount, int32_t format) {
+static bool psp_chReserve(void *data, int32_t samplecount, int32_t channels) {
 	psp_audio_t *psp = (psp_audio_t*)data;
-	psp->channel = sceAudioChReserve(channel, samplecount, format);
+	int32_t format = channels == 1 ? PSP_AUDIO_FORMAT_MONO : PSP_AUDIO_FORMAT_STEREO;
+	psp->channel = sceAudioChReserve(PSP_AUDIO_NEXT_CHANNEL, samplecount, format);
 	return psp->channel >= 0;
 }
 

@@ -2,12 +2,12 @@
 
 	mp3.c
 
-	PSP MP3ƒXƒŒƒbƒh
+	COMMON MP3ï¿½Xï¿½ï¿½ï¿½bï¿½h
 
 ******************************************************************************/
 
-#ifndef PSP_MP3_H
-#define PSP_MP3_H
+#ifndef COMMON_MP3_H
+#define COMMON_MP3_H
 
 enum
 {
@@ -35,4 +35,4 @@ void mp3_seek_start(void);
 uint32_t mp3_get_current_frame(void);
 int mp3_get_status(void);
 
-#endif /* PSP_MP3_H */
+#endif /* COMMON_MP3_H */

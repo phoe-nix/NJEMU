@@ -142,7 +142,7 @@ int sound_thread_start(void)
 	game_audio = audio_driver->init();
 	audio_driver->release(game_audio);
 
-	if (!audio_driver->chReserve(game_audio, sound->samples, sound->frequency, 2))
+	if (!audio_driver->chSRCReserve(game_audio, sound->samples, sound->frequency, 2))
 	{
 		fatalerror(TEXT(COULD_NOT_RESERVE_AUDIO_CHANNEL_FOR_SOUND));
 		audio_driver->free(game_audio);

@@ -2,7 +2,7 @@
 
 	mp3.c
 
-	PSP MP3スレッド
+	MP3スレッド
 
 ******************************************************************************/
 
@@ -11,8 +11,8 @@
 #include <unistd.h>
 #include <string.h>
 #include <mad.h>
-#include "common/thread_driver.h"
-#include "common/audio_driver.h"
+#include "thread_driver.h"
+#include "audio_driver.h"
 
 // TODO: remove this import
 #include "emumain.h"
@@ -321,7 +321,7 @@ int mp3_thread_start(void)
 
 	mp3_handle = audio_driver->init();
 
-	if (!audio_driver->chReserve(mp3_handle, PSP_AUDIO_NEXT_CHANNEL, MP3_SAMPLES, PSP_AUDIO_FORMAT_STEREO))
+	if (!audio_driver->chReserve(mp3_handle, MP3_SAMPLES, 2))
 	{
 		fatalerror(TEXT(COULD_NOT_RESERVE_AUDIO_CHANNEL_FOR_MP3));
 		audio_driver->free(mp3_handle);
@@ -378,7 +378,7 @@ void mp3_thread_stop(void)
 
 void mp3_set_volume(void)
 {
-	mp3_volume = PSP_AUDIO_VOLUME_MAX * (option_mp3_volume * 10) / 100;
+	mp3_volume = audio_driver->volumeMax(mp3_handle) * (option_mp3_volume * 10) / 100;
 }
 
 

@@ -48,9 +48,6 @@
 #ifdef ADHOC
 #include "psp/adhoc.h"
 #endif
-#if (EMU_SYSTEM == NCDZ)
-#include "psp/mp3.h"
-#endif
 #if VIDEO_32BPP
 #include "psp/wallpaper.h"
 #endif

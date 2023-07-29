@@ -37,6 +37,9 @@
 #if (EMU_SYSTEM == CPS1 || EMU_SYSTEM == CPS2)
 #include "common/coin.h"
 #endif
+#if (EMU_SYSTEM == NCDZ)
+#include "common/mp3.h"
+#endif
 
 #if (EMU_SYSTEM == CPS1)
 #include "cps1/cps1.h"
