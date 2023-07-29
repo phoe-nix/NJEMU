@@ -44,7 +44,6 @@
 #include "psp/ui_draw.h"
 #include "psp/ui_menu.h"
 #include "psp/video.h"
-#include "psp/sound.h"
 #include "psp/png.h"
 #ifdef ADHOC
 #include "psp/adhoc.h"

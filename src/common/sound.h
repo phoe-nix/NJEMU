@@ -2,19 +2,19 @@
 
 	sound.c
 
-	PSP ƒTƒEƒ“ƒhƒXƒŒƒbƒh
+	ï¿½Tï¿½Eï¿½ï¿½ï¿½hï¿½Xï¿½ï¿½ï¿½bï¿½h
 
 ******************************************************************************/
 
-#ifndef PSP_SOUND_THREAD_H
-#define PSP_SOUND_THREAD_H
+#ifndef COMMON_SOUND_H
+#define COMMON_SOUND_H
 
 #define SOUND_SAMPLES_24000	(400*2)
 #define SOUND_SAMPLES_44100	(736*2)
 #define SOUND_SAMPLES_48000	(800)
 
 #if (EMU_SYSTEM == CPS2)
-#define SOUND_BUFFER_SIZE	((400*2)*2)	// 24KHzŒÅ’è
+#define SOUND_BUFFER_SIZE	((400*2)*2)	// 24KHzï¿½Å’ï¿½
 #else
 #define SOUND_BUFFER_SIZE	((736*2)*2)
 #endif
@@ -48,4 +48,4 @@ void sound_thread_set_volume(void);
 int sound_thread_start(void);
 void sound_thread_stop(void);
 
-#endif /* PSP_SOUND_THREAD_H */
+#endif /* COMMON_SOUND_H */

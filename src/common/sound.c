@@ -2,14 +2,13 @@
 
 	sound.c
 
-	PSP サウンドスレッド
+	サウンドスレッド
 
 ******************************************************************************/
 
-#include "psp.h"
 #include "emumain.h"
-#include "common/thread_driver.h"
-#include "common/audio_driver.h"
+#include "thread_driver.h"
+#include "audio_driver.h"
 
 
 /******************************************************************************

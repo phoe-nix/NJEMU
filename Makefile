@@ -99,7 +99,8 @@ MAINOBJS = \
 	common/loadrom.o \
 	common/cpuclock.o \
 	common/thread_driver.o \
-	common/audio_driver.o
+	common/audio_driver.o \
+	common/sound.o \
 
 ifeq ($(ADHOC), 1)
 MAINOBJS += common/adhoc.o
@@ -139,7 +140,6 @@ OSOBJS = \
 	$(OS)/ui_menu.o \
 	$(OS)/ui_text.o \
 	$(OS)/video.o \
-	$(OS)/sound.o \
 	$(OS)/png.o \
 
 ifeq ($(ADHOC), 1)

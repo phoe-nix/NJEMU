@@ -21,6 +21,7 @@
 #include "common/loadrom.h"
 #include "common/state.h"
 #include "common/cpuclock.h"
+#include "common/sound.h"
 #ifdef ADHOC
 #include "common/adhoc.h"
 #endif
