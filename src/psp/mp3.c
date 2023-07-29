@@ -7,7 +7,13 @@
 ******************************************************************************/
 
 #include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
 #include <mad.h>
+#include "common/thread_driver.h"
+
+// TODO: remove this import
 #include "emumain.h"
 
 #define MP3_SAMPLES			(736 * 2)
@@ -31,7 +37,7 @@ static volatile int mp3_status;
 static volatile int mp3_sleep;
 
 static int mp3_handle;
-static platformThread_t mp3_thread;
+static void *mp3_thread;
 
 static uint8_t mp3_out[2][MP3_BUFFER_SIZE];
 static uint8_t mp3_in[(2 * MP3_BUFFER_SIZE) + MAD_BUFFER_GUARD];
@@ -248,7 +254,7 @@ static void MP3Update(void)
 			{
 				mp3_start_frame = 0;
 				mp3_status = MP3_SLEEP;
-				platformSleepThread();
+				thread_driver->sleepThread(mp3_thread);
 			}
 		}
 	}
@@ -273,7 +279,7 @@ static int MP3Thread(int32_t args, void *argp)
 {
 	while (mp3_active)
 	{
-		platformSleepThread();
+		thread_driver->sleepThread(mp3_thread);
 
 		if (mp3_newfile)
 		{
@@ -300,7 +306,7 @@ static int MP3Thread(int32_t args, void *argp)
 int mp3_thread_start(void)
 {
 	mp3_handle  = -1;
-	mp3_thread  = -1;
+	mp3_thread  = NULL;
 	mp3_active  = 0;
 	mp3_status  = MP3_STOP;
 	mp3_running = 0;
@@ -320,16 +326,17 @@ int mp3_thread_start(void)
 	}
 
 	mp3_active = 1;
-
-	mp3_thread = platformCreateThread("MP3 thread", MP3Thread, 0x8, 0x40000);
-	if (mp3_thread < 0)
+	mp3_thread = thread_driver->init();
+	if (!thread_driver->createThread(mp3_thread, "MP3 thread", MP3Thread, 0x8, 0x40000))
 	{
 		fatalerror(TEXT(COULD_NOT_START_MP3_THREAD));
 		sceAudioChRelease(mp3_handle);
+		thread_driver->free(mp3_thread);
+		mp3_thread = NULL;
 		return 0;
 	}
 
-	platformStartThread(mp3_thread, 0, 0);
+	thread_driver->startThread(mp3_thread);
 
 	return 1;
 }
@@ -341,16 +348,16 @@ int mp3_thread_start(void)
 
 void mp3_thread_stop(void)
 {
-	if (mp3_thread >= 0)
+	if (mp3_thread)
 	{
 		mp3_active = 0;
 		mp3_stop();
 
-		platformWakeupThread(mp3_thread);
-		platformWaitThreadEnd(mp3_thread, NULL);
-
-		platformDeleteThread(mp3_thread);
-		mp3_thread = -1;
+		thread_driver->wakeupThread(mp3_thread);
+		thread_driver->waitThreadEnd(mp3_thread);
+		thread_driver->deleteThread(mp3_thread);
+		thread_driver->free(mp3_thread);
+		mp3_thread = NULL;
 
 		sceAudioChRelease(mp3_handle);
 		mp3_handle = -1;
@@ -374,7 +381,7 @@ void mp3_set_volume(void)
 
 int mp3_play(const char *name)
 {
-	if (mp3_thread >= 0)
+	if (mp3_thread)
 	{
 		strcpy(MP3_file, name);
 
@@ -389,7 +396,7 @@ int mp3_play(const char *name)
 
 			mp3_set_volume();
 
-			platformWakeupThread(mp3_thread);
+			thread_driver->wakeupThread(mp3_thread);
 			return 0;
 		}
 	}
@@ -403,12 +410,12 @@ int mp3_play(const char *name)
 
 void mp3_stop(void)
 {
-	if (mp3_thread >= 0)
+	if (mp3_thread)
 	{
 		mp3_volume = 0;
 
 		if (mp3_status == MP3_PAUSE)
-			platformResumeThread(mp3_thread);
+			thread_driver->resumeThread(mp3_thread);
 
 		mp3_status = MP3_STOP;
 		while (mp3_running) usleep(1);
@@ -425,7 +432,7 @@ void mp3_stop(void)
 
 void mp3_pause(int pause)
 {
-	if (mp3_thread >= 0)
+	if (mp3_thread)
 	{
 		if (mp3_running)
 		{
@@ -434,7 +441,7 @@ void mp3_pause(int pause)
 				if (mp3_status == MP3_PLAY)
 				{
 					mp3_status = MP3_PAUSE;
-					platformSuspendThread(mp3_thread);
+					thread_driver->suspendThread(mp3_thread);
 					memset(mp3_out[0], 0, MP3_BUFFER_SIZE);
 					memset(mp3_out[1], 0, MP3_BUFFER_SIZE);
 					sceAudioOutputPannedBlocking(mp3_handle, 0, 0, mp3_out[0]);
@@ -445,12 +452,12 @@ void mp3_pause(int pause)
 				if (mp3_status == MP3_PAUSE)
 				{
 					mp3_status = MP3_PLAY;
-					platformResumeThread(mp3_thread);
+					thread_driver->resumeThread(mp3_thread);
 				}
 				else if (mp3_status == MP3_SLEEP)
 				{
 					mp3_status = MP3_PLAY;
-					platformWakeupThread(mp3_thread);
+					thread_driver->wakeupThread(mp3_thread);
 				}
 			}
 		}
@@ -464,7 +471,7 @@ void mp3_pause(int pause)
 
 void mp3_seek_set(const char *name, uint32_t frame)
 {
-	if (mp3_thread >= 0)
+	if (mp3_thread)
 	{
 		strcpy(MP3_file, name);
 
@@ -496,10 +503,10 @@ void mp3_seek_set(const char *name, uint32_t frame)
 
 void mp3_seek_start(void)
 {
-	if (mp3_thread >= 0)
+	if (mp3_thread)
 	{
 		mp3_set_volume();
-		platformWakeupThread(mp3_thread)
+		thread_driver->wakeupThread(mp3_thread);
 	}
 }
 

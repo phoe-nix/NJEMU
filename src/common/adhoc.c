@@ -7,7 +7,7 @@
 ******************************************************************************/
 
 #include "emumain.h"
-#include "threadwrapper.h"
+#include "thread_driver.h"
 
 
 /******************************************************************************
@@ -29,7 +29,7 @@ volatile int adhoc_update;
 	ローカル変数
 ******************************************************************************/
 
-static platformThread_t adhoc_thread;
+static void *adhoc_thread;
 static volatile int adhoc_active;
 
 
@@ -117,7 +117,7 @@ static int adhoc_update_inputport(int32_t args, void *argp)
 		usleep(100);
 	}
 
-	platformExitThread(0);
+	thread_driver->exitThread(adhoc_thread, 0);
 
 	return 0;
 }
@@ -133,14 +133,22 @@ static int adhoc_update_inputport(int32_t args, void *argp)
 
 int adhoc_start_thread(void)
 {
+	bool created = false;
 	adhoc_update = 0;
 	adhoc_active = 0;
 	adhoc_paused = 0;
-	adhoc_thread = platformCreateThread("Input thread", adhoc_update_inputport, 0x10, 0x1000);
+	adhoc_thread = thread_driver->init();
+	created = thread_driver->createThread(adhoc_thread, "Input thread", adhoc_update_inputport, 0x10, 0x1000);
 
-	return (adhoc_thread >= 0) ? 1 : 0;
+	if (!created)
+	{
+		thread_driver->free(adhoc_thread);
+		adhoc_thread = NULL;
+		return 0;
+	}
+
+	return 1;
 }
-
 
 /*------------------------------------------------------
 	スレッド終了
@@ -148,13 +156,13 @@ int adhoc_start_thread(void)
 
 void adhoc_stop_thread(void)
 {
-	if (adhoc_thread >= 0)
+	if (adhoc_thread)
 	{
 		adhoc_active = 0;
-		platformWaitThreadEnd(adhoc_thread);
-
-		platformDeleteThread(adhoc_thread);
-		adhoc_thread = -1;
+		thread_driver->waitThreadEnd(adhoc_thread);
+		thread_driver->deleteThread(adhoc_thread);
+		thread_driver->free(adhoc_thread);
+		adhoc_thread = NULL;
 	}
 }
 
@@ -165,12 +173,12 @@ void adhoc_stop_thread(void)
 
 void adhoc_reset_thread(void)
 {
-	if (adhoc_thread >= 0)
+	if (adhoc_thread)
 	{
 		if (adhoc_active)
 		{
 			adhoc_active = 0;
-			platformWaitThreadEnd(adhoc_thread);
+			thread_driver->waitThreadEnd(adhoc_thread);
 		}
 
 		memset(&send_data, 0, sizeof(send_data));
@@ -185,7 +193,7 @@ void adhoc_reset_thread(void)
 		adhoc_frame = 0;
 
 		adhoc_active = 1;
-		platformThread_t(adhoc_thread);
+		thread_driver->startThread(adhoc_thread);
 	}
 }
 

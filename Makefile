@@ -97,7 +97,8 @@ MAINOBJS = \
 	sound/sndintrf.o \
 	common/cache.o \
 	common/loadrom.o \
-	common/cpuclock.o
+	common/cpuclock.o \
+	common/thread_driver.o
 
 ifeq ($(ADHOC), 1)
 MAINOBJS += common/adhoc.o
@@ -125,7 +126,7 @@ FONTOBJS = \
 OSOBJS = \
 	$(OS)/$(OS).o \
 	$(OS)/cpuclock.o \
-	$(OS)/platformthread.o \
+	$(OS)/$(OS)_thread.o \
 	$(OS)/power.o \
 	$(OS)/config.o \
 	$(OS)/filer.o \

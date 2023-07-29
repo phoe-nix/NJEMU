@@ -46,7 +46,6 @@
 #include "psp/video.h"
 #include "psp/sound.h"
 #include "psp/png.h"
-#include "psp/platformthread.h"
 #ifdef ADHOC
 #include "psp/adhoc.h"
 #endif
