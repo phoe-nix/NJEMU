@@ -31,7 +31,7 @@ static volatile int mp3_status;
 static volatile int mp3_sleep;
 
 static int mp3_handle;
-static SceUID mp3_thread;
+static platformThread_t mp3_thread;
 
 static uint8_t mp3_out[2][MP3_BUFFER_SIZE];
 static uint8_t mp3_in[(2 * MP3_BUFFER_SIZE) + MAD_BUFFER_GUARD];
@@ -44,7 +44,7 @@ static int mp3_volume;
 static uint32_t mp3_frame;
 static uint32_t mp3_start_frame;
 
-static SceUID mp3_fd = -1;
+static int32_t mp3_fd = -1;
 
 
 /******************************************************************************
@@ -248,7 +248,7 @@ static void MP3Update(void)
 			{
 				mp3_start_frame = 0;
 				mp3_status = MP3_SLEEP;
-				sceKernelSleepThread();
+				platformSleepThread();
 			}
 		}
 	}
@@ -269,11 +269,11 @@ static void MP3Update(void)
 	MP3ƒXƒŒƒbƒh
 --------------------------------------------------------*/
 
-static int MP3Thread(SceSize args, void *argp)
+static int MP3Thread(int32_t args, void *argp)
 {
 	while (mp3_active)
 	{
-		sceKernelSleepThread();
+		platformSleepThread();
 
 		if (mp3_newfile)
 		{
@@ -321,7 +321,7 @@ int mp3_thread_start(void)
 
 	mp3_active = 1;
 
-	mp3_thread = sceKernelCreateThread("MP3 thread", MP3Thread, 0x8, 0x40000, 0, NULL);
+	mp3_thread = platformCreateThread("MP3 thread", MP3Thread, 0x8, 0x40000);
 	if (mp3_thread < 0)
 	{
 		fatalerror(TEXT(COULD_NOT_START_MP3_THREAD));
@@ -329,7 +329,7 @@ int mp3_thread_start(void)
 		return 0;
 	}
 
-	sceKernelStartThread(mp3_thread, 0, 0);
+	platformStartThread(mp3_thread, 0, 0);
 
 	return 1;
 }
@@ -346,10 +346,10 @@ void mp3_thread_stop(void)
 		mp3_active = 0;
 		mp3_stop();
 
-		sceKernelWakeupThread(mp3_thread);
-		sceKernelWaitThreadEnd(mp3_thread, NULL);
+		platformWakeupThread(mp3_thread);
+		platformWaitThreadEnd(mp3_thread, NULL);
 
-		sceKernelDeleteThread(mp3_thread);
+		platformDeleteThread(mp3_thread);
 		mp3_thread = -1;
 
 		sceAudioChRelease(mp3_handle);
@@ -389,7 +389,7 @@ int mp3_play(const char *name)
 
 			mp3_set_volume();
 
-			sceKernelWakeupThread(mp3_thread);
+			platformWakeupThread(mp3_thread);
 			return 0;
 		}
 	}
@@ -408,7 +408,7 @@ void mp3_stop(void)
 		mp3_volume = 0;
 
 		if (mp3_status == MP3_PAUSE)
-			sceKernelResumeThread(mp3_thread);
+			platformResumeThread(mp3_thread);
 
 		mp3_status = MP3_STOP;
 		while (mp3_running) usleep(1);
@@ -434,7 +434,7 @@ void mp3_pause(int pause)
 				if (mp3_status == MP3_PLAY)
 				{
 					mp3_status = MP3_PAUSE;
-					sceKernelSuspendThread(mp3_thread);
+					platformSuspendThread(mp3_thread);
 					memset(mp3_out[0], 0, MP3_BUFFER_SIZE);
 					memset(mp3_out[1], 0, MP3_BUFFER_SIZE);
 					sceAudioOutputPannedBlocking(mp3_handle, 0, 0, mp3_out[0]);
@@ -445,12 +445,12 @@ void mp3_pause(int pause)
 				if (mp3_status == MP3_PAUSE)
 				{
 					mp3_status = MP3_PLAY;
-					sceKernelResumeThread(mp3_thread);
+					platformResumeThread(mp3_thread);
 				}
 				else if (mp3_status == MP3_SLEEP)
 				{
 					mp3_status = MP3_PLAY;
-					sceKernelWakeupThread(mp3_thread);
+					platformWakeupThread(mp3_thread);
 				}
 			}
 		}
@@ -499,7 +499,7 @@ void mp3_seek_start(void)
 	if (mp3_thread >= 0)
 	{
 		mp3_set_volume();
-		sceKernelWakeupThread(mp3_thread);
+		platformWakeupThread(mp3_thread)
 	}
 }
 

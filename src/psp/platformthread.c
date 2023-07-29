@@ -19,6 +19,18 @@ void platformDeleteThread(platformThread_t thread) {
 	sceKernelDeleteThread(thread);
 }
 
+void platformResumeThread(platformThread_t thread) {
+	sceKernelResumeThread(thread);
+}
+
+void platformSuspendThread(platformThread_t thread) {
+	sceKernelSuspendThread(thread);
+}
+
+void platformSleepThread(void) {
+	sceKernelSleepThread();
+}
+
 void platformExitThread(uint32_t exitCode) {
 	sceKernelExitThread(exitCode);
 }
