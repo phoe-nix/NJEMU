@@ -7,8 +7,13 @@
 #include <stddef.h>
 #include "power_driver.h"
 
+int platform_cpuclock;
+
 power_driver_t power_null = {
 	"null",
+	NULL,
+	NULL,
+	NULL,
 	NULL,
 	NULL,
 	NULL,

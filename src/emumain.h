@@ -20,7 +20,6 @@
 #include "zip/zfile.h"
 #include "common/loadrom.h"
 #include "common/state.h"
-#include "common/cpuclock.h"
 #include "common/sound.h"
 #include "common/power_driver.h"
 #include "common/ticker_driver.h"

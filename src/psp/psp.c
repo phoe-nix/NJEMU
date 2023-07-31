@@ -13,7 +13,7 @@
 
 #include "SystemButtons.h"
 #include "psp.h"
-#include "common/cpuclock.h"
+#include "common/power_driver.h"
 
 
 #ifdef KERNEL_MODE
@@ -182,7 +182,7 @@ int main(int argc, char *argv[])
 
 	SetupCallbacks();
 
-	set_cpu_clock(PSPCLOCK_222);
+	power_driver->setLowestCpuClock(NULL);
 
 	ui_text_init();
 	pad_init();

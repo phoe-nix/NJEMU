@@ -46,6 +46,7 @@
 #include "psp/ui_menu.h"
 #include "psp/video.h"
 #include "psp/png.h"
+#include "psp/psp_power.h"
 #ifdef ADHOC
 #include "psp/adhoc.h"
 #endif
@@ -74,15 +75,6 @@ enum
 	LOOP_RESTART,
 	LOOP_RESET,
 	LOOP_EXEC
-};
-
-enum
-{
-	PSPCLOCK_222 = 0,
-	PSPCLOCK_266,
-	PSPCLOCK_300,
-	PSPCLOCK_333,
-	PSPCLOCK_MAX
 };
 
 extern volatile int Loop;

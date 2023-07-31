@@ -2168,9 +2168,9 @@ static int state_save_slot(void)
 		state_refresh_screen(0);
 		video_copy_rect(draw_frame, work_frame, &full_rect, &full_rect);
 
-		set_cpu_clock(platform_cpuclock);
+		power_driver->setCpuClock(NULL, platform_cpuclock);
 		res = state_save(state_sel);
-		set_cpu_clock(PSPCLOCK_222);
+		power_driver->setLowestCpuClock(NULL);
 
 		load_background(WP_STATE);
 
@@ -2195,9 +2195,9 @@ static int state_load_slot(void)
 		state_refresh_screen(0);
 		video_copy_rect(draw_frame, work_frame, &full_rect, &full_rect);
 
-		set_cpu_clock(platform_cpuclock);
+		power_driver->setCpuClock(NULL, platform_cpuclock);
 		res = state_load(state_sel);
-		set_cpu_clock(PSPCLOCK_222);
+		power_driver->setLowestCpuClock(NULL);
 
 		if (res)
 		{
@@ -2466,7 +2466,7 @@ void showmenu(void)
 	}
 	mainmenu_num = i;
 
-	set_cpu_clock(PSPCLOCK_222);
+	power_driver->setLowestCpuClock(NULL);
 	video_clear_screen();
 	load_background(WP_LOGO);
 	ui_popup_reset();
@@ -2634,7 +2634,7 @@ void showmenu(void)
 #if (EMU_SYSTEM != CPS2)
 	sound_set_samplerate();
 #endif
-	set_cpu_clock(platform_cpuclock);
+	power_driver->setCpuClock(NULL, platform_cpuclock);
 
 #if USE_CACHE
 	cache_sleep(0);

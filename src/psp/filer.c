@@ -1051,7 +1051,7 @@ void file_browser(void)
 			}
 
 			emu_main();
-			set_cpu_clock(PSPCLOCK_222);
+			power_driver->setLowestCpuClock(NULL);
 
 #ifdef ADHOC
 			if (adhoc_enable)

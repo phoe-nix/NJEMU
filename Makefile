@@ -97,7 +97,6 @@ MAINOBJS = \
 	sound/sndintrf.o \
 	common/cache.o \
 	common/loadrom.o \
-	common/cpuclock.o \
 	common/thread_driver.o \
 	common/audio_driver.o \
 	common/power_driver.o \
@@ -129,11 +128,6 @@ FONTOBJS = \
 
 OSOBJS = \
 	$(OS)/$(OS).o \
-	$(OS)/cpuclock.o \
-	$(OS)/$(OS)_thread.o \
-	$(OS)/$(OS)_audio.o \
-	$(OS)/$(OS)_power.o \
-	$(OS)/$(OS)_ticker.o \
 	$(OS)/config.o \
 	$(OS)/filer.o \
 	$(OS)/input.o \
@@ -143,6 +137,12 @@ OSOBJS = \
 	$(OS)/ui_text.o \
 	$(OS)/video.o \
 	$(OS)/png.o \
+
+OSOBJS += \
+	$(OS)/$(OS)_thread.o \
+	$(OS)/$(OS)_audio.o \
+	$(OS)/$(OS)_power.o \
+	$(OS)/$(OS)_ticker.o \
 
 ifeq ($(ADHOC), 1)
 OSOBJS += $(OS)/adhoc.o
