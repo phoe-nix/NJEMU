@@ -13,7 +13,6 @@
 
 #include "SystemButtons.h"
 #include "psp.h"
-#include "common/power_driver.h"
 
 
 #ifdef KERNEL_MODE
@@ -205,6 +204,7 @@ int main(int argc, char *argv[])
 
 	file_browser();
 	video_exit();
+	pad_exit();
 
 #ifdef KERNEL_MODE
 	sceKernelExitThread(0);

@@ -6,8 +6,13 @@
 
 ******************************************************************************/
 
-#include "psp.h"
+#include <stddef.h>
+#include "input.h"
+#include "input_driver.h"
+#include "ticker_driver.h"
 
+// TODO: Use video driver function instead
+void video_wait_vsync(void);
 
 /******************************************************************************
 	ローカル変数
@@ -20,6 +25,8 @@ static uint8_t pressed_delay;
 static TICKER curr_time;
 static TICKER prev_time;
 
+void *input_info;
+
 
 /******************************************************************************
 	グローバル関数
@@ -31,15 +38,18 @@ static TICKER prev_time;
 
 void pad_init(void)
 {
-	sceCtrlSetSamplingCycle(0);
-	sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
-
 	pad = 0;
 	pressed_check = 0;
 	pressed_count = 0;
 	pressed_delay = 0;
+	input_info = input_driver->init();
 }
 
+void pad_exit(void)
+{
+	input_driver->free(input_info);
+	input_info = NULL;
+}
 
 /*--------------------------------------------------------
 	パッドの押下状態取得
@@ -47,18 +57,7 @@ void pad_init(void)
 
 uint32_t poll_gamepad(void)
 {
-	SceCtrlData paddata;
-
-	sceCtrlPeekBufferPositive(&paddata, 1);
-
-	paddata.Buttons &= PLATFORM_PAD_ANY;
-
-	if (paddata.Ly >= 0xd0) paddata.Buttons |= PLATFORM_PAD_DOWN;
-	if (paddata.Ly <= 0x30) paddata.Buttons |= PLATFORM_PAD_UP;
-	if (paddata.Lx <= 0x30) paddata.Buttons |= PLATFORM_PAD_LEFT;
-	if (paddata.Lx >= 0xd0) paddata.Buttons |= PLATFORM_PAD_RIGHT;
-
-	return paddata.Buttons;
+	return input_driver->poll(input_info);
 }
 
 
@@ -69,18 +68,7 @@ uint32_t poll_gamepad(void)
 #if (EMU_SYSTEM == MVS)
 uint32_t poll_gamepad_fatfursp(void)
 {
-	SceCtrlData paddata;
-
-	sceCtrlPeekBufferPositive(&paddata, 1);
-
-	paddata.Buttons &= PLATFORM_PAD_ANY;
-
-	if (!(paddata.Buttons & PLATFORM_PAD_UP)    && paddata.Ly >= 0xd0) paddata.Buttons |= PLATFORM_PAD_DOWN;
-	if (!(paddata.Buttons & PLATFORM_PAD_DOWN)  && paddata.Ly <= 0x30) paddata.Buttons |= PLATFORM_PAD_UP;
-	if (!(paddata.Buttons & PLATFORM_PAD_RIGHT) && paddata.Lx <= 0x30) paddata.Buttons |= PLATFORM_PAD_LEFT;
-	if (!(paddata.Buttons & PLATFORM_PAD_LEFT)  && paddata.Lx >= 0xd0) paddata.Buttons |= PLATFORM_PAD_RIGHT;
-
-	return paddata.Buttons;
+	return input_driver->pollFatfursp(input_info);
 }
 #endif
 
@@ -92,23 +80,7 @@ uint32_t poll_gamepad_fatfursp(void)
 #if (EMU_SYSTEM == MVS)
 uint32_t poll_gamepad_analog(void)
 {
-	uint32_t data;
-	SceCtrlData paddata;
-
-	sceCtrlPeekBufferPositive(&paddata, 1);
-
-	paddata.Buttons &= PLATFORM_PAD_ANY;
-
-	if (paddata.Ly >= 0xd0) paddata.Buttons |= PLATFORM_PAD_DOWN;
-	if (paddata.Ly <= 0x30) paddata.Buttons |= PLATFORM_PAD_UP;
-	if (paddata.Lx <= 0x30) paddata.Buttons |= PLATFORM_PAD_LEFT;
-	if (paddata.Lx >= 0xd0) paddata.Buttons |= PLATFORM_PAD_RIGHT;
-
-	data  = paddata.Buttons & 0xffff;
-	data |= paddata.Lx << 16;
-	data |= paddata.Ly << 24;
-
-	return data;
+	return input_driver->pollAnalog(input_info);
 }
 #endif
 
@@ -160,7 +132,7 @@ void pad_update(void)
 	ボタン押下状態の取得
 --------------------------------------------------------*/
 
-int pad_pressed(uint32_t code)
+bool pad_pressed(uint32_t code)
 {
 	return (pad & code) != 0;
 }
@@ -170,7 +142,7 @@ int pad_pressed(uint32_t code)
 	指定コード以外の全ボタンの押下状態取得
 --------------------------------------------------------*/
 
-int pad_pressed_any(uint32_t disable_code)
+bool pad_pressed_any(uint32_t disable_code)
 {
 	return (pad & (PLATFORM_PAD_ANY ^ disable_code)) != 0;
 }

@@ -2,26 +2,29 @@
 
 	input.c
 
-    PSP¥³¥ó¥È¥í©`¥éÈëÁ¦ÖÆÓù
+    COMMON¥³¥ó¥È¥í©`¥éÈëÁ¦ÖÆÓù
 
 ******************************************************************************/
 
-#ifndef PSP_INPUT_H
-#define PSP_INPUT_H
+#ifndef COMMON_INPUT_H
+#define COMMON_INPUT_H
+
+#include <stdint.h>
+#include <stdbool.h>
 
 // Platform Controls
-#define PLATFORM_PAD_UP PSP_CTRL_UP
-#define PLATFORM_PAD_DOWN PSP_CTRL_DOWN
-#define PLATFORM_PAD_LEFT PSP_CTRL_LEFT
-#define PLATFORM_PAD_RIGHT PSP_CTRL_RIGHT
-#define PLATFORM_PAD_B1 PSP_CTRL_CIRCLE
-#define PLATFORM_PAD_B2 PSP_CTRL_CROSS
-#define PLATFORM_PAD_B3 PSP_CTRL_CIRCLE
-#define PLATFORM_PAD_B4 PSP_CTRL_TRIANGLE
-#define PLATFORM_PAD_L PSP_CTRL_LTRIGGER
-#define PLATFORM_PAD_R PSP_CTRL_RTRIGGER
-#define PLATFORM_PAD_SELECT PSP_CTRL_SELECT
-#define PLATFORM_PAD_START PSP_CTRL_START
+#define PLATFORM_PAD_UP 0
+#define PLATFORM_PAD_DOWN 1
+#define PLATFORM_PAD_LEFT 2
+#define PLATFORM_PAD_RIGHT 3
+#define PLATFORM_PAD_B1 4
+#define PLATFORM_PAD_B2 5
+#define PLATFORM_PAD_B3 6
+#define PLATFORM_PAD_B4 7
+#define PLATFORM_PAD_L 8
+#define PLATFORM_PAD_R 9
+#define PLATFORM_PAD_SELECT 10
+#define PLATFORM_PAD_START 11
 
 #define PLATFORM_PAD_ANY	\
 	(PLATFORM_PAD_SELECT |		\
@@ -40,15 +43,19 @@
 #define PAD_WAIT_INFINITY	-1
 
 void pad_init(void);
+void pad_exit(void);
 uint32_t poll_gamepad(void);
 #if (EMU_SYSTEM == MVS)
 uint32_t poll_gamepad_fatfursp(void);
 uint32_t poll_gamepad_analog(void);
 #endif
 void pad_update(void);
-int pad_pressed(uint32_t code);
-int pad_pressed_any(uint32_t disable_code);
+bool pad_pressed(uint32_t code);
+bool pad_pressed_any(uint32_t disable_code);
 void pad_wait_clear(void);
 void pad_wait_press(int msec);
 
-#endif /* PSP_INPUT_H */
+extern volatile int Loop;
+extern volatile int Sleep;
+
+#endif /* COMMON_INPUT_H */

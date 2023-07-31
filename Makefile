@@ -101,7 +101,9 @@ MAINOBJS = \
 	common/audio_driver.o \
 	common/power_driver.o \
 	common/ticker_driver.o \
+	common/input_driver.o \
 	common/sound.o \
+	common/input.o \
 
 ifeq ($(ADHOC), 1)
 MAINOBJS += common/adhoc.o
@@ -127,10 +129,8 @@ FONTOBJS = \
 	$(OS)/font/gbk_tbl.o
 
 OSOBJS = \
-	$(OS)/$(OS).o \
 	$(OS)/config.o \
 	$(OS)/filer.o \
-	$(OS)/input.o \
 	$(OS)/ui.o \
 	$(OS)/ui_draw.o \
 	$(OS)/ui_menu.o \
@@ -139,10 +139,12 @@ OSOBJS = \
 	$(OS)/png.o \
 
 OSOBJS += \
+	$(OS)/$(OS).o \
 	$(OS)/$(OS)_thread.o \
 	$(OS)/$(OS)_audio.o \
 	$(OS)/$(OS)_power.o \
 	$(OS)/$(OS)_ticker.o \
+	$(OS)/$(OS)_input.o \
 
 ifeq ($(ADHOC), 1)
 OSOBJS += $(OS)/adhoc.o

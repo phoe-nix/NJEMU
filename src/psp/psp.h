@@ -36,11 +36,12 @@
 #include <sys/unistd.h>
 
 #include "common/ticker_driver.h"
+#include "common/input.h"
+#include "common/power_driver.h"
 
 #include "psp/ui_text.h"
 #include "psp/config.h"
 #include "psp/filer.h"
-#include "psp/input.h"
 #include "psp/ui.h"
 #include "psp/ui_draw.h"
 #include "psp/ui_menu.h"
