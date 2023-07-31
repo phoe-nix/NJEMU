@@ -130,13 +130,13 @@ void pad_update(void)
 			pressed_check = 1;
 			pressed_count = 0;
 			pressed_delay = 8;
-			prev_time = ticker();
+			prev_time = ticker_driver->ticker(NULL);
 		}
 		else
 		{
 			int count;
 
-			curr_time = ticker();
+			curr_time = ticker_driver->ticker(NULL);
 			count = (int)((curr_time - prev_time) / (TICKS_PER_SEC / 60));
 			prev_time = curr_time;
 
@@ -211,9 +211,9 @@ void pad_wait_press(int msec)
 	}
 	else
 	{
-		TICKER target = ticker() + msec * (TICKS_PER_SEC / 1000);
+		TICKER target = ticker_driver->ticker(NULL) + msec * (TICKS_PER_SEC / 1000);
 
-		while (ticker() < target)
+		while (ticker_driver->ticker(NULL) < target)
 		{
 			video_wait_vsync();
 			if (poll_gamepad()) break;

@@ -23,6 +23,7 @@
 #include "common/cpuclock.h"
 #include "common/sound.h"
 #include "common/power_driver.h"
+#include "common/ticker_driver.h"
 #ifdef ADHOC
 #include "common/adhoc.h"
 #endif

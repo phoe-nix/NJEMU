@@ -101,6 +101,7 @@ MAINOBJS = \
 	common/thread_driver.o \
 	common/audio_driver.o \
 	common/power_driver.o \
+	common/ticker_driver.o \
 	common/sound.o \
 
 ifeq ($(ADHOC), 1)
@@ -132,11 +133,10 @@ OSOBJS = \
 	$(OS)/$(OS)_thread.o \
 	$(OS)/$(OS)_audio.o \
 	$(OS)/$(OS)_power.o \
-	$(OS)/power.o \
+	$(OS)/$(OS)_ticker.o \
 	$(OS)/config.o \
 	$(OS)/filer.o \
 	$(OS)/input.o \
-	$(OS)/ticker.o \
 	$(OS)/ui.o \
 	$(OS)/ui_draw.o \
 	$(OS)/ui_menu.o \

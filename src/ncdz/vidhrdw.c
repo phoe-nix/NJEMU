@@ -595,16 +595,16 @@ int neogeo_loading_screenrefresh(int flag, int draw)
 
 	if (flag)
 	{
-		prev = ticker() - TICKS_PER_SEC / FPS;
+		prev = ticker_driver->ticker(NULL) - TICKS_PER_SEC / FPS;
 		limit = neogeo_cdspeed_limit;
 	}
 
 	if (limit)
 	{
 		TICKER target = prev + TICKS_PER_SEC / FPS;
-		TICKER curr = ticker();
+		TICKER curr = ticker_driver->ticker(NULL);
 
-		while (curr < target) curr = ticker();
+		while (curr < target) curr = ticker_driver->ticker(NULL);
 
 		prev = curr;
 	}

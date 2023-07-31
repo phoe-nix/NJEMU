@@ -219,7 +219,7 @@ void update_screen(void)
 	if (warming_up)
 	{
 		video_wait_vsync();
-		last_skipcount0_time = ticker() - (int)((float)FRAMESKIP_LEVELS * TICKS_PER_FRAME);
+		last_skipcount0_time = ticker_driver->ticker(NULL) - (int)((float)FRAMESKIP_LEVELS * TICKS_PER_FRAME);
 		warming_up = 0;
 	}
 
@@ -231,7 +231,7 @@ void update_screen(void)
 
 	if (!skipped_it)
 	{
-		TICKER curr = ticker();
+		TICKER curr = ticker_driver->ticker(NULL);
 		int flip = 0;
 
 		if (option_speedlimit)
@@ -248,7 +248,7 @@ void update_screen(void)
 			}
 
 			while (curr < target)
-				curr = ticker();
+				curr = ticker_driver->ticker(NULL);
 		}
 		if (!flip) video_flip_screen(0);
 
