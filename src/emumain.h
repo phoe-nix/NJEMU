@@ -22,6 +22,7 @@
 #include "common/state.h"
 #include "common/cpuclock.h"
 #include "common/sound.h"
+#include "common/power_driver.h"
 #ifdef ADHOC
 #include "common/adhoc.h"
 #endif
@@ -94,8 +95,5 @@ void show_fatal_error(void);
 void save_snapshot(void);
 
 void waitVBlank(void);
-
-bool powerIsBatteryCharging(void);
-int powerGetBatteryLifePercent(void);
 
 #endif /* EMUMAIN_H */

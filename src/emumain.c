@@ -115,9 +115,9 @@ static void show_fps(void)
 
 static void show_battery_warning(void)
 {
-	if (!powerIsBatteryCharging())
+	if (!power_driver->isBatteryCharging(0))
 	{
-		int bat = powerGetBatteryLifePercent();
+		int bat = power_driver->batteryLifePercent(0);
 
 		if (bat < 10)
 		{

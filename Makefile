@@ -100,6 +100,7 @@ MAINOBJS = \
 	common/cpuclock.o \
 	common/thread_driver.o \
 	common/audio_driver.o \
+	common/power_driver.o \
 	common/sound.o \
 
 ifeq ($(ADHOC), 1)
@@ -130,6 +131,7 @@ OSOBJS = \
 	$(OS)/cpuclock.o \
 	$(OS)/$(OS)_thread.o \
 	$(OS)/$(OS)_audio.o \
+	$(OS)/$(OS)_power.o \
 	$(OS)/power.o \
 	$(OS)/config.o \
 	$(OS)/filer.o \

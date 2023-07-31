@@ -29,7 +29,7 @@ typedef struct thread_driver
 	void (*resumeThread)(void *data);
 	void (*suspendThread)(void *data);
 	void (*sleepThread)(void *data);
-	void (*exitThread)(void *data, int exit_code);
+	void (*exitThread)(void *data, int32_t exit_code);
 } thread_driver_t;
 
 
