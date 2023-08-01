@@ -99,10 +99,10 @@ static void title_draw_spr(int sx, int sy, uint8_t *spr, uint16_t *palette, int 
 	uint32_t tile, lines = 16;
 	uint32_t *src = (uint32_t *)(spr + tileno * 128);
 #if VIDEO_32BPP
-	uint32_t *dst = (uint32_t *)video_driver->frameAddr(NULL, tex_frame, sx, sy);
+	uint32_t *dst = (uint32_t *)video_driver->frameAddr(video_data, tex_frame, sx, sy);
 	uint32_t *pal = &palette[tileno << 4];
 #else
-	uint16_t *dst = (uint16_t *)video_driver->frameAddr(NULL, tex_frame, sx, sy);
+	uint16_t *dst = (uint16_t *)video_driver->frameAddr(video_data, tex_frame, sx, sy);
 	uint16_t *pal = &palette[tileno << 4];
 #endif
 
@@ -226,7 +226,7 @@ static void show_title(int sx, int sy)
 	RECT clip2 = { sx, sy, sx + 144, sy + 80 };
 
 	draw_box_shadow(sx, sy, sx + 144, sy + 80);
-	video_driver->copyRect(NULL, tex_frame, draw_frame, &clip1, &clip2);
+	video_driver->copyRect(video_data, tex_frame, draw_frame, &clip1, &clip2);
 }
 
 
@@ -901,11 +901,11 @@ void show_exit_screen(void)
 {
 	if (Loop == LOOP_EXIT)
 	{
-		video_driver->setMode(NULL, 32);
-		video_driver->clearScreen(NULL);
+		video_driver->setMode(video_data, 32);
+		video_driver->clearScreen(video_data);
 		boxfill(0, 0, SCR_WIDTH - 1, SCR_HEIGHT - 1, COLOR_DARKGRAY);
 		uifont_print_shadow_center(129, COLOR_WHITE, TEXT(PLEASE_WAIT));
-		video_driver->flipScreen(NULL, 1);
+		video_driver->flipScreen(video_data, 1);
 	}
 }
 
@@ -967,7 +967,7 @@ void file_browser(void)
 	uifont_print_shadow_center(136+ 6, 200,200,200, "NJ (http://nj-emu.tfact.net)");
 	uifont_print_shadow_center(136+20, 200,200,200, "2011-2016 (https://github.com/phoe-nix/NJEMU)");
 #endif
-	video_driver->flipScreen(NULL, 1);
+	video_driver->flipScreen(video_data, 1);
 
 #if (EMU_SYSTEM != NCDZ)
 	if (!load_zipname())
@@ -1006,7 +1006,7 @@ void file_browser(void)
 		show_background();
 		small_icon_shadow(6, 3, UI_COLOR(UI_PAL_TITLE), ICON_SYSTEM);
 		logo(32, 5, UI_COLOR(UI_PAL_TITLE));
-		video_driver->flipScreen(NULL, 1);
+		video_driver->flipScreen(video_data, 1);
 
 		switch (bios_error)
 		{
@@ -1184,7 +1184,7 @@ void file_browser(void)
 			update  = draw_battery_status(1);
 			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
-			video_driver->flipScreen(NULL, 1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else if (update & UI_PARTIAL_REFRESH)
 		{
@@ -1214,21 +1214,21 @@ void file_browser(void)
 			clip2.right  = clip2.left + w;
 			clip2.bottom = clip2.top  + h;
 
-			video_driver->copyRect(NULL, draw_frame, tex_frame, &clip1, &clip2);
-			video_driver->copyRect(NULL, show_frame, draw_frame, &full_rect, &full_rect);
-			video_driver->copyRect(NULL, tex_frame, draw_frame, &clip2, &clip1);
+			video_driver->copyRect(video_data, draw_frame, tex_frame, &clip1, &clip2);
+			video_driver->copyRect(video_data, show_frame, draw_frame, &full_rect, &full_rect);
+			video_driver->copyRect(video_data, tex_frame, draw_frame, &clip2, &clip1);
 
 			update = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_driver->flipScreen(NULL, 1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else
 		{
 			update = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_driver->waitVsync(NULL);
+			video_driver->waitVsync(video_data);
 		}
 
 		update |= ui_light_update();

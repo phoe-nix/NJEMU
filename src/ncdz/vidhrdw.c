@@ -531,7 +531,7 @@ void neogeo_screenrefresh(void)
 	}
 	else
 	{
-		video_driver->clearFrame(NULL, draw_frame);
+		video_driver->clearFrame(video_data, draw_frame);
 	}
 
 	next_update_first_line = FIRST_VISIBLE_LINE;
@@ -628,7 +628,7 @@ int neogeo_loading_screenrefresh(int flag, int draw)
 		if (video_enable && !fix_disable) draw_fix();
 		blit_finish();
 		draw = ui_show_popup(1);
-		video_driver->flipScreen(NULL, 0);
+		video_driver->flipScreen(video_data, 0);
 	}
 	else draw = ui_show_popup(0);
 

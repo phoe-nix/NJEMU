@@ -126,4 +126,6 @@ extern void *work_frame;
 extern void *tex_frame;
 extern RECT full_rect;
 
+extern void *video_data;
+
 #endif /* VIDEO_DRIVER_H */

@@ -43,7 +43,7 @@ typedef struct psp_video {
 /*--------------------------------------------------------
 	ƒrƒfƒIˆ—‰Šú‰»
 --------------------------------------------------------*/
-static void psp_start(void) {
+static void psp_start(void *data) {
 	#if VIDEO_32BPP
 	if (video_mode == 32)
 	{
@@ -105,9 +105,9 @@ static void psp_start(void) {
 	sceGuFinish();
 	sceGuSync(0, GU_SYNC_FINISH);
 
-	video_driver->clearFrame(NULL, show_frame);
-	video_driver->clearFrame(NULL, draw_frame);
-	video_driver->clearFrame(NULL, work_frame);
+	video_driver->clearFrame(data, show_frame);
+	video_driver->clearFrame(data, draw_frame);
+	video_driver->clearFrame(data, work_frame);
 
 	sceDisplayWaitVblankStart();
 	sceGuDisplay(GU_TRUE);
@@ -115,11 +115,11 @@ static void psp_start(void) {
 	ui_init();
 }
 
-static void psp_init(void)
+static void *psp_init(void)
 {
 	psp_video_t *psp = (psp_video_t*)calloc(1, sizeof(psp_video_t));
 
-	psp_start();
+	psp_start(psp);
 	return psp;
 }
 
@@ -146,7 +146,7 @@ static void psp_free(void *data)
 --------------------------------------------------------*/
 
 
-static void psp_setMode(int mode)
+static void psp_setMode(void *data, int mode)
 {
 #if VIDEO_32BPP
 	if (video_mode != mode)
@@ -155,7 +155,7 @@ static void psp_setMode(int mode)
 
 		video_mode = mode;
 
-		psp_start();
+		psp_start(data);
 	}
 #endif
 }
@@ -203,8 +203,8 @@ static void *psp_frameAddr(void *data, void *frame, int x, int y)
 
 static void psp_clearScreen(void *data)
 {
-	video_driver->clearFrame(NULL, show_frame);
-	video_driver->clearFrame(NULL, draw_frame);
+	video_driver->clearFrame(data, show_frame);
+	video_driver->clearFrame(data, draw_frame);
 }
 
 /*--------------------------------------------------------

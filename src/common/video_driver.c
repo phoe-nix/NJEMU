@@ -15,6 +15,8 @@ void *draw_frame;
 void *work_frame;
 void *tex_frame;
 
+void *video_data;
+
 video_driver_t video_null = {
 	"null",
 	NULL,

@@ -332,7 +332,7 @@ static int load_bios(void)
 
 int memory_init(void)
 {
-	video_driver->clearScreen(NULL);
+	video_driver->clearScreen(video_data);
 	msg_screen_init(WP_LOGO, ICON_SYSTEM, TEXT(LOAD_ROM));
 
 	memory_region_cpu1   = NULL;

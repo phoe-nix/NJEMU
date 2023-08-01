@@ -119,13 +119,13 @@ static void adhoc_init_progress(int total, const char *text)
 	char buf[32];
 
 	load_background(WP_LOGO);
-	video_driver->copyRect(NULL, work_frame, draw_frame, &full_rect, &full_rect);
+	video_driver->copyRect(video_data, work_frame, draw_frame, &full_rect, &full_rect);
 
 	small_icon(6, 3, UI_COLOR(UI_PAL_TITLE), ICON_SYSTEM);
 	sprintf(buf, "AdHoc - %s", game_name);
 	uifont_print(32, 5, UI_COLOR(UI_PAL_TITLE), buf);
 
-	video_driver->copyRect(NULL, draw_frame, work_frame, &full_rect, &full_rect);
+	video_driver->copyRect(video_data, draw_frame, work_frame, &full_rect, &full_rect);
 
 	init_progress(total, text);
 }
@@ -226,7 +226,7 @@ static void DisplayPspList(int top, int rows)
 		int i;
 		char temp[20];
 
-		video_driver->copyRect(NULL, show_frame, draw_frame, &full_rect, &full_rect);
+		video_driver->copyRect(video_data, show_frame, draw_frame, &full_rect, &full_rect);
 
 		draw_scrollbar(470, 26, 479, 270, rows, max, pos);
 
@@ -248,7 +248,7 @@ static void DisplayPspList(int top, int rows)
 			}
 		}
 
-		video_driver->flipScreen(NULL, 1);
+		video_driver->flipScreen(video_data, 1);
 	}
 }
 
@@ -428,7 +428,7 @@ int adhocInit(const char *matchingData)
 	const char *unknown = "";
 	char message[256];
 
-	video_driver->setMode(NULL, 32);
+	video_driver->setMode(video_data, 32);
 
 	mode = MODE_LOBBY;
 	Server = 0;

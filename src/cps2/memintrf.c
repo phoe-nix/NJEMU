@@ -653,7 +653,7 @@ int memory_init(void)
 	cache_init();
 #endif
 	pad_wait_clear();
-	video_driver->clearScreen(NULL);
+	video_driver->clearScreen(video_data);
 	msg_screen_init(WP_LOGO, ICON_SYSTEM, TEXT(LOAD_ROM));
 
 	msg_printf(TEXT(CHECKING_ROM_INFO));

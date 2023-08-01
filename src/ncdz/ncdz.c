@@ -36,7 +36,7 @@ static int cpu_reset_flag;
 
 static int neogeo_init(void)
 {
-	video_driver->setMode(NULL, 16);
+	video_driver->setMode(video_data, 16);
 
 	memset(memory_region_cpu1, 0, 0x200000);
 	memset(memory_region_cpu2, 0, 0x10000);
@@ -91,8 +91,8 @@ static int neogeo_init(void)
 
 static void neogeo_reset(void)
 {
-	video_driver->setMode(NULL, 16);
-	video_driver->clearScreen(NULL);
+	video_driver->setMode(video_data, 16);
+	video_driver->clearScreen(video_data);
 
 	autoframeskip_reset();
 
@@ -149,8 +149,8 @@ static void neogeo_reset(void)
 
 static void neogeo_exit(void)
 {
-	video_driver->setMode(NULL, 32);
-	video_driver->clearScreen(NULL);
+	video_driver->setMode(video_data, 32);
+	video_driver->clearScreen(video_data);
 
 	ui_popup_reset();
 
@@ -297,7 +297,7 @@ void neogeo_main(void)
 
 		fatal_error = 0;
 
-		video_driver->clearScreen(NULL);
+		video_driver->clearScreen(video_data);
 
 		if (memory_init())
 		{

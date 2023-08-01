@@ -167,7 +167,7 @@ void pad_wait_clear(void)
 {
 	while (poll_gamepad())
 	{
-		video_driver->waitVsync(NULL);
+		video_driver->waitVsync(video_data);
 		if (!Loop) break;
 	}
 
@@ -188,7 +188,7 @@ void pad_wait_press(int msec)
 	{
 		while (!poll_gamepad())
 		{
-			video_driver->waitVsync(NULL);
+			video_driver->waitVsync(video_data);
 			if (!Loop) break;
 		}
 	}
@@ -198,7 +198,7 @@ void pad_wait_press(int msec)
 
 		while (ticker_driver->ticker(NULL) < target)
 		{
-			video_driver->waitVsync(NULL);
+			video_driver->waitVsync(video_data);
 			if (poll_gamepad()) break;
 			if (!Loop) break;
 		}

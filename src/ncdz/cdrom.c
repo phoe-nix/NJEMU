@@ -138,14 +138,14 @@ static void show_loading_image(void)
 {
 	char path[MAX_PATH];
 
-	video_driver->clearScreen(NULL);
+	video_driver->clearScreen(video_data);
 
 	sprintf(path, "%sdata/%s", launchDir, "loading.png");
 
 	if (load_png(path, -1) == 0)
 		uifont_print_shadow_center(129, COLOR_WHITE, "Now Loading...");
 
-	video_driver->flipScreen(NULL, 1);
+	video_driver->flipScreen(video_data, 1);
 }
 
 
@@ -501,7 +501,7 @@ static void loading_screen_start(void)
 			int i;
 			uint32_t offset;
 
-			video_driver->clearScreen(NULL);
+			video_driver->clearScreen(video_data);
 
 			// Save FIX plane
 			for (i = 0; i < 0x500; i++)
@@ -562,7 +562,7 @@ static void loading_screen_start(void)
 		{
 			uint8_t *src, *dst;
 
-			video_driver->clearScreen(NULL);
+			video_driver->clearScreen(video_data);
 
 			src = memory_region_cpu1 + 0xe0000;
 			dst = memory_region_gfx1;
@@ -681,7 +681,7 @@ int cdrom_process_ipl(void)
 
 	zip_open(game_dir);
 
-	video_driver->clearScreen(NULL);
+	video_driver->clearScreen(video_data);
 	neogeo_loadfinished = 0;
 
 	if (neogeo_loadscreen)
@@ -796,7 +796,7 @@ int cdrom_process_ipl(void)
 	m68000_write_memory_8(0x108000 + 0x7ddc, 0x00);
 	m68000_write_memory_32(0x108000 + 0x7690, 0);
 
-	video_driver->clearScreen(NULL);
+	video_driver->clearScreen(video_data);
 
 	if (!neogeo_loadscreen) neogeo_loadfinished = 1;
 
@@ -920,7 +920,7 @@ void cdrom_load_files(void)
 	loading_screen_stop();
 
 	if (with_image() && !neogeo_loadscreen)
-		video_driver->clearScreen(NULL);
+		video_driver->clearScreen(video_data);
 
 	m68000_write_memory_8(0x108000 + 0x7e88, 0x00);	// unknown, need to clear by '0'
 	m68000_write_memory_8(0x108000 + 0x7ddd, 0x00);	// unknown, need to clear by '0'

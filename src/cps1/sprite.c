@@ -1441,7 +1441,7 @@ void blit_reset(int bank_scroll1, int bank_scroll2, int bank_scroll3, uint8_t *p
 {
 	int i;
 
-	scrbitmap   = (uint16_t *)video_driver->frameAddr(NULL, work_frame, 0, 0);
+	scrbitmap   = (uint16_t *)video_driver->frameAddr(video_data, work_frame, 0, 0);
 	tex_scrollh = scrbitmap + BUF_WIDTH * SCR_HEIGHT;
 	tex_object  = (uint8_t *)(tex_scrollh + BUF_WIDTH * SCROLLH_MAX_HEIGHT);
 	tex_scroll1 = tex_object  + BUF_WIDTH * TEXTURE_HEIGHT;
@@ -1514,18 +1514,18 @@ void blit_finish(void)
 	{
 		if (cps_flip_screen)
 		{
-			video_driver->copyRectFlip(NULL, work_frame, draw_frame, &cps_src_clip, &cps_src_clip);
-			video_driver->copyRect(NULL, draw_frame, work_frame, &cps_src_clip, &cps_src_clip);
-			video_driver->clearFrame(NULL, draw_frame);
+			video_driver->copyRectFlip(video_data, work_frame, draw_frame, &cps_src_clip, &cps_src_clip);
+			video_driver->copyRect(video_data, draw_frame, work_frame, &cps_src_clip, &cps_src_clip);
+			video_driver->clearFrame(video_data, draw_frame);
 		}
-		video_driver->copyRectRotate(NULL, work_frame, draw_frame, &cps_src_clip, &cps_clip[5]);
+		video_driver->copyRectRotate(video_data, work_frame, draw_frame, &cps_src_clip, &cps_clip[5]);
 	}
 	else
 	{
 		if (cps_flip_screen)
-			video_driver->copyRectFlip(NULL, work_frame, draw_frame, &cps_src_clip, &cps_clip[option_stretch]);
+			video_driver->copyRectFlip(video_data, work_frame, draw_frame, &cps_src_clip, &cps_clip[option_stretch]);
 		else
-			video_driver->copyRect(NULL, work_frame, draw_frame, &cps_src_clip, &cps_clip[option_stretch]);
+			video_driver->copyRect(video_data, work_frame, draw_frame, &cps_src_clip, &cps_clip[option_stretch]);
 	}
 }
 

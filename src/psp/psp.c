@@ -41,8 +41,6 @@ int njemu_debug;
 	¥°¥í©`¥Ð¥ëévÊý
 ******************************************************************************/
 
-void *video_data;
-
 /******************************************************************************
 	¥í©`¥«¥ëévÊý
 ******************************************************************************/
@@ -188,7 +186,7 @@ int main(int argc, char *argv[])
 	pad_init();
 
 #if VIDEO_32BPP
-	video_driver->setMode(NULL, 32);
+	video_driver->setMode(video_data, 32);
 #else
 	video_data = video_driver->init();
 #endif
