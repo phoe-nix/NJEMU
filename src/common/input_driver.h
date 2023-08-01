@@ -24,19 +24,6 @@
 #define PLATFORM_PAD_SELECT 10
 #define PLATFORM_PAD_START 11
 
-#define PLATFORM_PAD_ANY	\
-	(PLATFORM_PAD_SELECT |		\
-	 PLATFORM_PAD_START |		\
-	 PLATFORM_PAD_UP |			\
-	 PLATFORM_PAD_RIGHT |		\
-	 PLATFORM_PAD_DOWN |		\
-	 PLATFORM_PAD_LEFT |		\
-	 PLATFORM_PAD_L |	\
-	 PLATFORM_PAD_R |	\
-	 PLATFORM_PAD_B4 |	\
-	 PLATFORM_PAD_B1 |		\
-	 PLATFORM_PAD_B2 |		\
-	 PLATFORM_PAD_B3)
 
 #define PAD_WAIT_INFINITY	-1
 
@@ -49,6 +36,7 @@ uint32_t poll_gamepad_analog(void);
 #endif
 void pad_update(void);
 bool pad_pressed(uint32_t code);
+bool pad_pressed_any(void);
 void pad_wait_clear(void);
 void pad_wait_press(int msec);
 

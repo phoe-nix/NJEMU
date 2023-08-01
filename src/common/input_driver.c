@@ -137,6 +137,27 @@ bool pad_pressed(uint32_t code)
 }
 
 
+#define PLATFORM_PAD_ANY			\
+	(								\
+		1 << PLATFORM_PAD_SELECT |	\
+	 	1 << PLATFORM_PAD_START |	\
+	 	1 << PLATFORM_PAD_UP |		\
+	 	1 << PLATFORM_PAD_RIGHT |	\
+	 	1 << PLATFORM_PAD_DOWN |	\
+	 	1 << PLATFORM_PAD_LEFT |	\
+	 	1 << PLATFORM_PAD_L |		\
+	 	1 << PLATFORM_PAD_R |		\
+	 	1 << PLATFORM_PAD_B4 |		\
+	 	1 << PLATFORM_PAD_B1 |		\
+	 	1 << PLATFORM_PAD_B2 |		\
+	 	1 << PLATFORM_PAD_B3 		\
+	)
+
+bool pad_pressed_any(void)
+{
+	return (pad & PLATFORM_PAD_ANY) != 0;
+}
+
 /*--------------------------------------------------------
 	ボタンの押下状態がクリアされるまで待つ
 --------------------------------------------------------*/

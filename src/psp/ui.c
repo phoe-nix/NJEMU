@@ -859,7 +859,7 @@ int messagebox(int number)
 			video_wait_vsync();
 			pad_update();
 
-			if (pad_pressed(PLATFORM_PAD_ANY))
+			if (pad_pressed_any())
 			{
 				res = 1;
 				pad_wait_clear();
