@@ -21,19 +21,19 @@ void z80_init(void)
 {
 	Cz80_Init(&CZ80);
 #if (EMU_SYSTEM == CPS1)
-	Cz80_Set_Fetch(&CZ80, 0x0000, 0xffff, (UINT32)memory_region_cpu2);
+	Cz80_Set_Fetch(&CZ80, 0x0000, 0xffff, (uint32_t)memory_region_cpu2);
 	if (memory_region_user2)
 	{
-		Cz80_Set_Encrypt_Range(&CZ80, 0x0000, 0x8000, (UINT32)memory_region_user2);
+		Cz80_Set_Encrypt_Range(&CZ80, 0x0000, 0x8000, (uint32_t)memory_region_user2);
 	}
 	Cz80_Set_ReadB(&CZ80, z80_read_memory_8);
 	Cz80_Set_WriteB(&CZ80, z80_write_memory_8);
 #elif (EMU_SYSTEM == CPS2)
-	Cz80_Set_Fetch(&CZ80, 0x0000, 0xffff, (UINT32)memory_region_cpu2);
+	Cz80_Set_Fetch(&CZ80, 0x0000, 0xffff, (uint32_t)memory_region_cpu2);
 	Cz80_Set_ReadB(&CZ80, &z80_read_memory_8);
 	Cz80_Set_WriteB(&CZ80, &z80_write_memory_8);
 #elif (EMU_SYSTEM == MVS || EMU_SYSTEM == NCDZ)
-	Cz80_Set_Fetch(&CZ80, 0x0000, 0xffff, (UINT32)memory_region_cpu2);
+	Cz80_Set_Fetch(&CZ80, 0x0000, 0xffff, (uint32_t)memory_region_cpu2);
 	Cz80_Set_ReadB(&CZ80, &z80_read_memory_8);
 	Cz80_Set_WriteB(&CZ80, &z80_write_memory_8);
 	Cz80_Set_INPort(&CZ80, &neogeo_z80_port_r);
@@ -95,7 +95,7 @@ void z80_set_irq_callback(int (*callback)(int line))
 	レジスタ取得
 --------------------------------------------------------*/
 
-UINT32 z80_get_reg(int regnum)
+uint32_t z80_get_reg(int regnum)
 {
 	switch (regnum)
 	{
@@ -127,7 +127,7 @@ UINT32 z80_get_reg(int regnum)
 	レジスタ設定
 --------------------------------------------------------*/
 
-void z80_set_reg(int regnum, UINT32 val)
+void z80_set_reg(int regnum, uint32_t val)
 {
 	switch (regnum)
 	{
@@ -163,7 +163,7 @@ void z80_set_reg(int regnum, UINT32 val)
 
 STATE_SAVE( z80 )
 {
-	UINT32 pc = Cz80_Get_Reg(&CZ80, CZ80_PC);
+	uint32_t pc = Cz80_Get_Reg(&CZ80, CZ80_PC);
 
 	state_save_word(&CZ80.BC.W, 1);
 	state_save_word(&CZ80.DE.W, 1);
@@ -188,7 +188,7 @@ STATE_SAVE( z80 )
 
 STATE_LOAD( z80 )
 {
-	UINT32 pc;
+	uint32_t pc;
 
 	state_load_word(&CZ80.BC.W, 1);
 	state_load_word(&CZ80.DE.W, 1);

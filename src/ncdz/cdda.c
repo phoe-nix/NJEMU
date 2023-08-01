@@ -23,7 +23,7 @@ volatile int cdda_command_ack = 0;
 	ƒ[ƒJƒ‹•Ï”
 ******************************************************************************/
 
-static UINT32 cdda_play_start = 0;
+static uint32_t cdda_play_start = 0;
 
 
 /******************************************************************************
@@ -137,7 +137,7 @@ void cdda_resume(void)
 void neogeo_cdda_control(void)
 {
 	int command, track;
-	UINT32 offset;
+	uint32_t offset;
 
 	command = m68000_get_reg(M68K_D0);
 	track   = command & 0xff;
@@ -179,11 +179,11 @@ void neogeo_cdda_control(void)
 
 void neogeo_cdda_check(void)
 {
-	UINT32 offset = m68000_read_memory_32(0x108000 + 0x76ea);
+	uint32_t offset = m68000_read_memory_32(0x108000 + 0x76ea);
 
 	if (offset)
 	{
-		UINT8 command, track;
+		uint8_t command, track;
 
 		offset  = (offset - 0xe00000) >> 1;
 
@@ -233,7 +233,7 @@ static void neogeo_cdda_command(int command, int track)
 				{
 					do
 					{
-						sceKernelDelayThread(10);
+						usleep(10);
 					} while (!cdda_command_ack);
 				}
 			}
@@ -269,7 +269,7 @@ STATE_SAVE( cdda )
 {
 	int playing = cdda_playing;
 	int autoloop = cdda_autoloop;
-	UINT32 frame = mp3_get_current_frame();
+	uint32_t frame = mp3_get_current_frame();
 
 	state_save_long(&cdda_current_track, 1);
 	state_save_long(&playing,  1);
@@ -283,7 +283,7 @@ STATE_LOAD( cdda )
 	{
 		int playing;
 		int autoloop;
-		UINT32 frame;
+		uint32_t frame;
 
 		state_load_long(&cdda_current_track, 1);
 		state_load_long(&playing, 1);

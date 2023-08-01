@@ -16,7 +16,7 @@
 	gryph data
 ------------------------------------------------------*/
 
-static const UINT8 ALIGN_DATA command_font[] = {
+static const uint8_t ALIGN_DATA command_font[] = {
 	0x00,0x00,0x62,0x67,0x02,0x00,0x00,0x00,0xb1,0xff,0xff,0xbf,0x01,0x00,0x10,0xfe,
 	0xef,0xe4,0xff,0x1e,0x00,0xb0,0xff,0x9f,0x90,0xff,0xbf,0x00,0xf2,0xff,0x2f,0x28,
 	0xff,0xff,0x02,0xf6,0xff,0x0f,0x0e,0xff,0xff,0x06,0xf7,0xff,0x37,0x3c,0xf7,0xff,
@@ -484,7 +484,7 @@ static const int ALIGN_DATA command_font_pos[NUM_FONTS] = {
 	0x001a7b,0x001ac3,0x001b0b,0x001b5f,0x001bb3,0x001c0e
 };
 
-static const INT8 ALIGN_DATA command_font_width[NUM_FONTS] = {
+static const int8_t ALIGN_DATA command_font_width[NUM_FONTS] = {
 	14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,
 	14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,
 	10,10,10,12,12,12,10,10,10,10, 8,12,10,12,12,12,
@@ -494,7 +494,7 @@ static const INT8 ALIGN_DATA command_font_width[NUM_FONTS] = {
 	12,12,14,14,14,14
 };
 
-static const INT8 ALIGN_DATA command_font_height[NUM_FONTS] = {
+static const int8_t ALIGN_DATA command_font_height[NUM_FONTS] = {
 	13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,
 	13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,
 	10,12,10, 9,12, 9,10,12,10, 9, 8, 3,12,12,12,11,
@@ -504,7 +504,7 @@ static const INT8 ALIGN_DATA command_font_height[NUM_FONTS] = {
 	12,12,12,12,13,13
 };
 
-static const INT8 ALIGN_DATA command_font_skipx[NUM_FONTS] = {
+static const int8_t ALIGN_DATA command_font_skipx[NUM_FONTS] = {
 	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	 2, 2, 1, 1, 1, 0, 2, 2, 1, 2, 3, 1, 3, 2, 1, 1,
@@ -514,7 +514,7 @@ static const INT8 ALIGN_DATA command_font_skipx[NUM_FONTS] = {
 	 1, 1, 1, 1, 0, 0
 };
 
-static const INT8 ALIGN_DATA command_font_skipy[NUM_FONTS] = {
+static const int8_t ALIGN_DATA command_font_skipy[NUM_FONTS] = {
 	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	 2, 1, 2, 2, 1, 2, 2, 1, 2, 3, 3, 9, 1, 1, 1, 2,
@@ -529,7 +529,7 @@ static const INT8 ALIGN_DATA command_font_skipy[NUM_FONTS] = {
 	functions
 ------------------------------------------------------*/
 
-int command_font_get_gryph(struct font_t *font, UINT16 code)
+int command_font_get_gryph(struct font_t *font, uint16_t code)
 {
 	if (code < NUM_FONTS)
 	{

@@ -15,9 +15,9 @@
 #else
 #include <psputility_netmodules.h>	// AHMAN
 #endif
-#include "adhoc_include/pspnet_adhoc.h"
-#include "adhoc_include/pspnet_adhocctl.h"
-#include "adhoc_include/pspnet_adhocmatching.h"
+#include <pspnet_adhoc.h>
+#include <pspnet_adhocctl.h>
+#include <pspnet_adhocmatching.h>
 
 
 #define NUM_ENTRIES			16
@@ -35,6 +35,14 @@
 #define PDP_BUFFER_SIZE		(ADHOC_BUFFER_SIZE * 2)
 #define PDP_PORT			(0x309)
 
+#define MATCHING_JOINED 	0x1	// Another PSP has joined
+#define MATCHING_SELECTED 	0x2	// Another PSP selected to match
+#define MATCHING_REJECTED	0x4   // The request has been rejected
+#define MATCHING_CANCELED	0x5   // The request has been cancelled
+#define MATCHING_ESTABLISHED	0x7	// Both PSP's have agreed to connect, at this point Lumines
+						// closes the connection and creates a new one with just the
+						// two PSP's in it.
+#define MATCHING_DISCONNECT   0xa	// A PSP has quit, this does not include when the PSP crashes
 
 /***************************************************************************
 	関数パラメータ (長いので・・・)
@@ -111,13 +119,13 @@ static void adhoc_init_progress(int total, const char *text)
 	char buf[32];
 
 	load_background(WP_LOGO);
-	video_copy_rect(work_frame, draw_frame, &full_rect, &full_rect);
+	video_driver->copyRect(video_data, work_frame, draw_frame, &full_rect, &full_rect);
 
 	small_icon(6, 3, UI_COLOR(UI_PAL_TITLE), ICON_SYSTEM);
 	sprintf(buf, "AdHoc - %s", game_name);
 	uifont_print(32, 5, UI_COLOR(UI_PAL_TITLE), buf);
 
-	video_copy_rect(draw_frame, work_frame, &full_rect, &full_rect);
+	video_driver->copyRect(video_data, draw_frame, work_frame, &full_rect, &full_rect);
 
 	init_progress(total, text);
 }
@@ -218,7 +226,7 @@ static void DisplayPspList(int top, int rows)
 		int i;
 		char temp[20];
 
-		video_copy_rect(show_frame, draw_frame, &full_rect, &full_rect);
+		video_driver->copyRect(video_data, show_frame, draw_frame, &full_rect, &full_rect);
 
 		draw_scrollbar(470, 26, 479, 270, rows, max, pos);
 
@@ -240,7 +248,7 @@ static void DisplayPspList(int top, int rows)
 			}
 		}
 
-		video_flip_screen(1);
+		video_driver->flipScreen(video_data, 1);
 	}
 }
 
@@ -420,7 +428,7 @@ int adhocInit(const char *matchingData)
 	const char *unknown = "";
 	char message[256];
 
-	video_set_mode(32);
+	video_driver->setMode(video_data, 32);
 
 	mode = MODE_LOBBY;
 	Server = 0;
@@ -461,7 +469,7 @@ int adhocInit(const char *matchingData)
 					do
 					{
 						if ((error = sceNetAdhocctlGetState(&state)) != 0) break;
-						sceKernelDelayThread(1000000/60);
+						usleep(1000000/60);
 
 					} while (state != 1);
 
@@ -485,7 +493,7 @@ int adhocInit(const char *matchingData)
 									{
 										update_progress();
 										show_progress(TEXT(CONNECTED));
-										sceKernelDelayThread(1000000);
+										usleep(1000000);
 										adhoc_initialized = 1;
 										return 0;
 									}
@@ -631,7 +639,7 @@ static int adhocStartP2P(void)
 	do
 	{
 		if ((error = sceNetAdhocctlGetState(&state)) != 0) break;
-			sceKernelDelayThread(1000000/60);
+			usleep(1000000/60);
 	} while (state == 1);
 
 	update_progress();
@@ -648,7 +656,7 @@ static int adhocStartP2P(void)
 		do
 		{
 			if ((error = sceNetAdhocctlGetState(&state)) != 0) break;
-			sceKernelDelayThread(1000000/60);
+			usleep(1000000/60);
 		} while (state != 1);
 
 		if (!error)
@@ -680,7 +688,7 @@ static int adhocStartP2P(void)
 			do
 			{
 				if ((error = sceNetAdhocctlGetState(&state)) != 0) break;
-				sceKernelDelayThread(1000000/60);
+				usleep(1000000/60);
 			} while (state == 1);
 		}
 	}
@@ -743,17 +751,17 @@ int adhocSelect(void)
 				DisplayPspList(top, rows);
 				update = 0;
 			}
-			if (pad_pressed(PSP_CTRL_UP))
+			if (pad_pressed(PLATFORM_PAD_UP))
 			{
 				if (pos > 0) pos--;
 				update = 1;
 			}
-			else if (pad_pressed(PSP_CTRL_DOWN))
+			else if (pad_pressed(PLATFORM_PAD_DOWN))
 			{
 				if (pos < max - 1) pos++;
 				update = 1;
 			}
-			else if (pad_pressed(PSP_CTRL_CIRCLE))
+			else if (pad_pressed(PLATFORM_PAD_B1))
 			{
 				if (GetPspEntry(mac, name) > 0)
 				{
@@ -765,7 +773,7 @@ int adhocSelect(void)
 					}
 				}
 			}
-			else if (pad_pressed(PSP_CTRL_TRIANGLE))
+			else if (pad_pressed(PLATFORM_PAD_B4))
 			{
 				msg_set_text_color(0xffffffff);
 				adhocDisconnect();
@@ -793,7 +801,7 @@ int adhocSelect(void)
 				msg_printf(TEXT(TO_CANCEL_PRESS_CROSS));
 				update = 0;
 			}
-			if (pad_pressed(PSP_CTRL_CROSS))
+			if (pad_pressed(PLATFORM_PAD_B2))
 			{
 				sceNetAdhocMatchingCancelTarget(matchingId, mac);
 				currentState = PSP_LISTING;
@@ -829,13 +837,13 @@ int adhocSelect(void)
 				msg_printf(TEXT(TO_ACCEPT_THE_CONNECTION_PRESS_CIRCLE_TO_CANCEL_PRESS_CIRCLE));
 				update = 0;
 			}
-			if (pad_pressed(PSP_CTRL_CROSS))
+			if (pad_pressed(PLATFORM_PAD_B2))
 			{
 				sceNetAdhocMatchingCancelTarget(matchingId, mac);
 				currentState = PSP_LISTING;
 				update = 1;
 			}
-			else if (pad_pressed(PSP_CTRL_CIRCLE))
+			else if (pad_pressed(PLATFORM_PAD_B1))
 			{
 				sceNetAdhocMatchingSelectTarget(matchingId, mac, 0, NULL);
 				currentState = PSP_WAIT_EST;
@@ -1062,7 +1070,7 @@ check_packet:
 
 		if (Loop != LOOP_EXEC) return 0;
 
-		sceKernelDelayThread(100);
+		usleep(100);
 	}
 
 	return 0;
@@ -1094,6 +1102,6 @@ void adhocWait(int data_size)
 
 		if (Loop != LOOP_EXEC) break;
 
-		sceKernelDelayThread(100);
+		usleep(100);
 	}
 }

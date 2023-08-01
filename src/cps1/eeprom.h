@@ -34,8 +34,8 @@ void EEPROM_set_clock_line(int state);
 void EEPROM_load(FILE *file);
 void EEPROM_save(FILE *file);
 
-UINT8 EEPROM_read_data(UINT32 address);
-void EEPROM_write_data(UINT32 address, UINT8 data);
+uint8_t EEPROM_read_data(uint32_t address);
+void EEPROM_write_data(uint32_t address, uint8_t data);
 
 #ifdef SAVE_STATE
 STATE_SAVE( eeprom );

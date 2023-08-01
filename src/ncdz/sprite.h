@@ -23,12 +23,12 @@ void blit_reset(void);
 void blit_start(int start, int end);
 void blit_finish(void);
 
-void blit_draw_fix(int x, int y, UINT32 code, UINT32 attr);
+void blit_draw_fix(int x, int y, uint32_t code, uint32_t attr);
 void blit_finish_fix(void);
 
-void blit_draw_spr(int x, int y, int w, int h, UINT32 code, UINT32 attr);
+void blit_draw_spr(int x, int y, int w, int h, uint32_t code, uint32_t attr);
 void blit_finish_spr(void);
 
-void blit_draw_spr_line(int x, int y, int zoom_x, int sprite_y, UINT32 code, UINT16 attr, UINT8 opaque);
+void blit_draw_spr_line(int x, int y, int zoom_x, int sprite_y, uint32_t code, uint16_t attr, uint8_t opaque);
 
 #endif /* NCDZ_SPRITE_H */

@@ -61,7 +61,7 @@ static float frame_base;
 static float timer_ticks;
 static float timer_left;
 static int active_cpu;
-static UINT32 current_frame;
+static uint32_t current_frame;
 
 
 /******************************************************************************
@@ -277,7 +277,7 @@ void timer_set(int which, float duration, int param, void (*callback)(int param)
 	Œ»İ‚ÌƒtƒŒ[ƒ€‚ğæ“¾
 ------------------------------------------------------*/
 
-UINT32 timer_get_currentframe(void)
+uint32_t timer_get_currentframe(void)
 {
 	return current_frame;
 }

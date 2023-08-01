@@ -19,10 +19,10 @@ int cdrom_process_ipl(void);
 void cdrom_loadfiles(void);
 void cdrom_load_files(void);
 
-void neogeo_decode_spr(UINT8 *mem, UINT32 offset, UINT32 length);
-void neogeo_decode_fix(UINT8 *mem, UINT32 offset, UINT32 length);
-void neogeo_undecode_fix(UINT8 *mem, UINT32 offset, UINT32 length);
-void neogeo_apply_patch(UINT16 *src, int bank, UINT32 offset);
+void neogeo_decode_spr(uint8_t *mem, uint32_t offset, uint32_t length);
+void neogeo_decode_fix(uint8_t *mem, uint32_t offset, uint32_t length);
+void neogeo_undecode_fix(uint8_t *mem, uint32_t offset, uint32_t length);
+void neogeo_apply_patch(uint16_t *src, int bank, uint32_t offset);
 
 #ifdef SAVE_STATE
 #define MAX_CDROM_STATE		0x100

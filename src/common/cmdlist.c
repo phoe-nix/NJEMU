@@ -132,7 +132,7 @@ static int check_text_encode(char *buf, int size)
 {
 	int i;
 	int count1, count2, per;
-	UINT8 *p = (UINT8 *)buf;
+	uint8_t *p = (uint8_t *)buf;
 
 	count1 = 0;
 	count2 = 0;
@@ -528,8 +528,8 @@ void commandlist(int flag)
 		}
 #endif
 		sound_thread_enable(0);
-		video_set_mode(32);
-		set_cpu_clock(PSPCLOCK_222);
+		video_driver->setMode(video_data, 32);
+		power_driver->setLowestCpuClock(NULL);
 	}
 
 	pad_wait_clear();
@@ -600,12 +600,12 @@ void commandlist(int flag)
 			}
 
 			update |= ui_show_popup(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else
 		{
 			update = ui_show_popup(0);
-			video_wait_vsync();
+			video_driver->waitVsync(video_data);
 		}
 
 		if (menu_counter)
@@ -618,7 +618,7 @@ void commandlist(int flag)
 		prev_line = sel_line;
 		pad_update();
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			if (menu_open)
 			{
@@ -637,7 +637,7 @@ void commandlist(int flag)
 				if (sel_line > 0) sel_line--;
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			if (menu_open)
 			{
@@ -656,7 +656,7 @@ void commandlist(int flag)
 				if (sel_line + show_lines < num_lines) sel_line++;
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_LTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_L))
 		{
 			if (menu_open)
 			{
@@ -683,7 +683,7 @@ void commandlist(int flag)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_R))
 		{
 			if (menu_open)
 			{
@@ -711,7 +711,7 @@ void commandlist(int flag)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_LEFT))
+		else if (pad_pressed(PLATFORM_PAD_LEFT))
 		{
 			if (sel_line > 0)
 			{
@@ -719,7 +719,7 @@ void commandlist(int flag)
 				if (sel_line < 0) sel_line = 0;
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_RIGHT))
+		else if (pad_pressed(PLATFORM_PAD_RIGHT))
 		{
 			if (sel_line + show_lines < num_lines)
 			{
@@ -728,14 +728,14 @@ void commandlist(int flag)
 					sel_line = num_lines - show_lines;
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			menu_open ^= 1;
 			update = 1;
 			if (menu_open == 0) menu_counter = 4;
 			pad_wait_clear();
 		}
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PLATFORM_PAD_SELECT))
 		{
 			help(HELP_COMMANDLIST);
 			update = 1;
@@ -754,7 +754,7 @@ void commandlist(int flag)
 		if ((sel_line != prev_line) || (sel_item != prev_item))
 			update = 1;
 
-	} while (!pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_B2));
 
 	pad_wait_clear();
 
@@ -762,9 +762,9 @@ void commandlist(int flag)
 	{
 		ui_popup_reset();
 
-		set_cpu_clock(psp_cpuclock);
+		power_driver->setCpuClock(NULL, platform_cpuclock);
 
-		video_set_mode(16);
+		video_driver->setMode(video_data, 16);
 		autoframeskip_reset();
 		blit_clear_all_sprite();
 
@@ -859,10 +859,10 @@ int commandlist_size_reduction(void)
 	i = 0;
 	do
 	{
-		video_wait_vsync();
+		video_driver->waitVsync(video_data);
 		pad_update();
 
-		if (pad_pressed(PSP_CTRL_CIRCLE))
+		if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			i = 1;
 			break;
@@ -870,7 +870,7 @@ int commandlist_size_reduction(void)
 
 		if (Loop == LOOP_EXIT) break;
 
-	} while (!pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_B2));
 
 	pad_wait_clear();
 
@@ -1008,10 +1008,10 @@ int commandlist_size_reduction(void)
 	// 退避ファイル名を作成
 	sprintf(path2, "%scommand.org", launchDir);
 
-	sceIoRemove(path2);
+	remove(path2);
 
 	// リネームして退避 (退避ファイル名: command.org)
-	if (sceIoRename(path, path2) < 0)
+	if (rename(path, path2) < 0)
 	{
 		msg_printf(TEXT(COULD_NOT_RENAME_FILE));
 		goto error;

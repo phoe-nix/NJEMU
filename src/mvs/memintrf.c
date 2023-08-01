@@ -6,6 +6,7 @@
 
 ******************************************************************************/
 
+#include <fcntl.h>
 #include "mvs.h"
 
 #define M68K_AMASK 0x00ffffff
@@ -18,10 +19,10 @@
 #define WRITE_MIRROR_BYTE(mem, offset, data, amask)		mem[(offset & amask) ^ 1] = data
 
 /*
-#define READ_WORD(mem, offset)							*(UINT16 *)&mem[offset]
-#define WRITE_WORD(mem, offset, data)					*(UINT16 *)&mem[offset] = data
-#define READ_MIRROR_WORD(mem, offset, amask)			*(UINT16 *)&mem[offset & amask]
-#define WRITE_MIRROR_WORD(mem, offset, data, amask)		*(UINT16 *)&mem[offset & amask] = data
+#define READ_WORD(mem, offset)							*(uint16_t *)&mem[offset]
+#define WRITE_WORD(mem, offset, data)					*(uint16_t *)&mem[offset] = data
+#define READ_MIRROR_WORD(mem, offset, amask)			*(uint16_t *)&mem[offset & amask]
+#define WRITE_MIRROR_WORD(mem, offset, data, amask)		*(uint16_t *)&mem[offset & amask] = data
 */
 
 /* thanks OrochiZ
@@ -71,37 +72,37 @@ enum
 	グローバル変数
 ******************************************************************************/
 
-UINT8 *memory_region_cpu1;
-UINT8 *memory_region_cpu2;
-UINT8 *memory_region_gfx1;
-UINT8 *memory_region_gfx2;
-UINT8 *memory_region_gfx3;
-UINT8 *memory_region_gfx4;
-UINT8 *memory_region_sound1;
-UINT8 *memory_region_sound2;
-UINT8 *memory_region_user1;
+uint8_t *memory_region_cpu1;
+uint8_t *memory_region_cpu2;
+uint8_t *memory_region_gfx1;
+uint8_t *memory_region_gfx2;
+uint8_t *memory_region_gfx3;
+uint8_t *memory_region_gfx4;
+uint8_t *memory_region_sound1;
+uint8_t *memory_region_sound2;
+uint8_t *memory_region_user1;
 #if !RELEASE
-UINT8 *memory_region_user2;
+uint8_t *memory_region_user2;
 #endif
-UINT8 *memory_region_user3;
+uint8_t *memory_region_user3;
 
-UINT32 memory_length_cpu1;
-UINT32 memory_length_cpu2;
-UINT32 memory_length_gfx1;
-UINT32 memory_length_gfx2;
-UINT32 memory_length_gfx3;
-UINT32 memory_length_gfx4;
-UINT32 memory_length_sound1;
-UINT32 memory_length_sound2;
-UINT32 memory_length_user1;
+uint32_t memory_length_cpu1;
+uint32_t memory_length_cpu2;
+uint32_t memory_length_gfx1;
+uint32_t memory_length_gfx2;
+uint32_t memory_length_gfx3;
+uint32_t memory_length_gfx4;
+uint32_t memory_length_sound1;
+uint32_t memory_length_sound2;
+uint32_t memory_length_user1;
 #if !RELEASE
-UINT32 memory_length_user2;
+uint32_t memory_length_user2;
 #endif
-UINT32 memory_length_user3;
+uint32_t memory_length_user3;
 
-UINT8 ALIGN_DATA neogeo_memcard[0x800];
-UINT8 ALIGN_DATA neogeo_ram[0x10000];
-UINT16 ALIGN_DATA neogeo_sram16[0x8000];
+uint8_t ALIGN_DATA neogeo_memcard[0x800];
+uint8_t ALIGN_DATA neogeo_ram[0x10000];
+uint16_t ALIGN_DATA neogeo_sram16[0x8000];
 
 int neogeo_machine_mode;
 
@@ -110,9 +111,9 @@ int use_parent_crom;
 int use_parent_srom;
 int use_parent_vrom;
 
-#ifdef PSP_SLIM
-UINT32 psp2k_mem_offset = PSP2K_MEM_TOP;
-INT32 psp2k_mem_left = PSP2K_MEM_SIZE;
+#ifdef LARGE_MEMORY
+uint32_t psp2k_mem_offset = PSP2K_MEM_TOP;
+int32_t psp2k_mem_left = PSP2K_MEM_SIZE;
 #endif
 
 
@@ -149,17 +150,17 @@ static int encrypt_gfx2;
 static int encrypt_gfx3;
 static int encrypt_usr1;
 
-static UINT32 bios_amask;
+static uint32_t bios_amask;
 
-static UINT8 *neogeo_sram;
+static uint8_t *neogeo_sram;
 
 
 /******************************************************************************
 	プロトタイプ
 ******************************************************************************/
 
-static UINT16 (*neogeo_protection_r)(UINT32 offset, UINT16 mem_mask);
-static void (*neogeo_protection_w)(UINT32 offset, UINT16 data, UINT16 mem_mask);
+static uint16_t (*neogeo_protection_r)(uint32_t offset, uint16_t mem_mask);
+static void (*neogeo_protection_w)(uint32_t offset, uint16_t data, uint16_t mem_mask);
 
 
 /****************************************************************************
@@ -170,16 +171,16 @@ static void (*neogeo_protection_w)(UINT32 offset, UINT16 data, UINT16 mem_mask);
 	Decode sprite (SPR)
 ------------------------------------------------------*/
 
-static void neogeo_decode_spr(UINT8 *mem, UINT32 length, UINT8 *usage)
+static void neogeo_decode_spr(uint8_t *mem, uint32_t length, uint8_t *usage)
 {
-	UINT32 tileno, numtiles = length / 128;
+	uint32_t tileno, numtiles = length / 128;
 
 	for (tileno = 0; tileno < numtiles; tileno++)
 	{
-		UINT8 swap[128];
-		UINT8 *gfxdata;
+		uint8_t swap[128];
+		uint8_t *gfxdata;
 		int x,y;
-		UINT32 pen;
+		uint32_t pen;
 		int opaque = 0;
 
 		gfxdata = &mem[128 * tileno];
@@ -188,7 +189,7 @@ static void neogeo_decode_spr(UINT8 *mem, UINT32 length, UINT8 *usage)
 
 		for (y = 0;y < 16;y++)
 		{
-			UINT32 dw, data;
+			uint32_t dw, data;
 
 			dw = 0;
 			for (x = 0; x < 8; x++)
@@ -254,15 +255,15 @@ static void neogeo_decode_spr(UINT8 *mem, UINT32 length, UINT8 *usage)
 }
 
 #if !RELEASE
-void neogeo_decode_fix(UINT8 *mem, UINT32 length, UINT8 *usage)
+void neogeo_decode_fix(uint8_t *mem, uint32_t length, uint8_t *usage)
 #else
-static void neogeo_decode_fix(UINT8 *mem, UINT32 length, UINT8 *usage)
+static void neogeo_decode_fix(uint8_t *mem, uint32_t length, uint8_t *usage)
 #endif
 {
-	UINT32 i, j;
-	UINT8 tile, opaque;
-	UINT8 *p, buf[32];
-	UINT32 *gfx = (UINT32 *)mem;
+	uint32_t i, j;
+	uint8_t tile, opaque;
+	uint8_t *p, buf[32];
+	uint32_t *gfx = (uint32_t *)mem;
 
 	for (i = 0; i < length; i += 32)
 	{
@@ -288,8 +289,8 @@ static void neogeo_decode_fix(UINT8 *mem, UINT32 length, UINT8 *usage)
 
 	for (i = 0; i < length/4; i++)
 	{
-		UINT32 dw = gfx[i];
-		UINT32 data = ((dw & 0x0000000f) >>  0) | ((dw & 0x000000f0) <<  4)
+		uint32_t dw = gfx[i];
+		uint32_t data = ((dw & 0x0000000f) >>  0) | ((dw & 0x000000f0) <<  4)
 				 | ((dw & 0x00000f00) <<  8) | ((dw & 0x0000f000) << 12)
 				 | ((dw & 0x000f0000) >> 12) | ((dw & 0x00f00000) >>  8)
 				 | ((dw & 0x0f000000) >>  4) | ((dw & 0xf0000000) >>  0);
@@ -304,13 +305,13 @@ static void neogeo_decode_fix(UINT8 *mem, UINT32 length, UINT8 *usage)
 
 static int build_zoom_tables(void)
 {
-	UINT8 *zoomy_rom;
-	UINT8 *skip_table;
-	UINT8 *tile_table;
-	UINT8 *skip_fullmode0;
-	UINT8 *tile_fullmode0;
-	UINT8 *skip_fullmode1;
-	UINT8 *tile_fullmode1;
+	uint8_t *zoomy_rom;
+	uint8_t *skip_table;
+	uint8_t *tile_table;
+	uint8_t *skip_fullmode0;
+	uint8_t *tile_fullmode0;
+	uint8_t *skip_fullmode1;
+	uint8_t *tile_fullmode1;
 	int zoom_y;
 
 	if ((memory_region_user3 = memalign(MEM_ALIGN, 0x10000)) == NULL)
@@ -454,21 +455,21 @@ static int build_zoom_tables(void)
 	PSP-2000用メモリ管理
 ******************************************************************************/
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 
-#define MEMORY_IS_PSP2K(mem)	((UINT32)mem >= PSP2K_MEM_TOP)
+#define MEMORY_IS_PSP2K(mem)	((uint32_t)mem >= PSP2K_MEM_TOP)
 
 /*--------------------------------------------------------
 	拡張された領域からメモリを確保
 --------------------------------------------------------*/
 
-static void *psp2k_mem_alloc(INT32 size)
+static void *psp2k_mem_alloc(int32_t size)
 {
-	UINT8 *mem = NULL;
+	uint8_t *mem = NULL;
 
 	if (size <= psp2k_mem_left)
 	{
-		mem = (UINT8 *)psp2k_mem_offset;
+		mem = (uint8_t *)psp2k_mem_offset;
 		psp2k_mem_offset += size;
 		psp2k_mem_left -= size;
 	}
@@ -480,16 +481,16 @@ static void *psp2k_mem_alloc(INT32 size)
 	拡張された領域へメモリを移動
 --------------------------------------------------------*/
 
-static void *psp2k_mem_move(void *mem, INT32 size)
+static void *psp2k_mem_move(void *mem, int32_t size)
 {
 	if (!mem) return NULL;
 
 	if (size <= psp2k_mem_left)
 	{
-		memcpy((UINT8 *)psp2k_mem_offset, mem, size);
+		memcpy((uint8_t *)psp2k_mem_offset, mem, size);
 		free(mem);
 
-		mem = (UINT8 *)psp2k_mem_offset;
+		mem = (uint8_t *)psp2k_mem_offset;
 		psp2k_mem_offset += size;
 		psp2k_mem_left   -= size;
 	}
@@ -773,7 +774,7 @@ static int load_rom_gfx2(void)
 
 	if (encrypt_gfx2)
 	{
-		SceUID fd;
+		int32_t fd;
 
 		if ((fd = cachefile_open(CACHE_SROM)) < 0)
 		{
@@ -782,8 +783,8 @@ static int load_rom_gfx2(void)
 		}
 
 		msg_printf(TEXT(LOADING_DECRYPTED_GFX2_ROM));
-		sceIoRead(fd, memory_region_gfx2, memory_length_gfx2);
-		sceIoClose(fd);
+		read(fd, memory_region_gfx2, memory_length_gfx2);
+		close(fd);
 	}
 	else
 	{
@@ -837,7 +838,7 @@ static int load_rom_gfx3(void)
 {
 	if (!encrypt_gfx3)
 	{
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		if ((memory_region_gfx3 = psp2k_mem_alloc(memory_length_gfx3)) == NULL)
 #endif
 		{
@@ -940,7 +941,7 @@ static int load_rom_sound1(void)
 		memory_length_sound1 = 0;
 		return 1;
 	}
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	if (disable_sound)
 	{
 		return 1;
@@ -975,7 +976,7 @@ static int load_rom_sound1(void)
 
 	if (encrypt_snd1)
 	{
-		SceUID fd;
+		int32_t fd;
 
 		if ((fd = cachefile_open(CACHE_VROM)) < 0)
 		{
@@ -984,8 +985,8 @@ static int load_rom_sound1(void)
 		}
 
 		msg_printf(TEXT(LOADING_DECRYPTED_SOUND1_ROM));
-		sceIoRead(fd, memory_region_sound1, memory_length_sound1);
-		sceIoClose(fd);
+		read(fd, memory_region_sound1, memory_length_sound1);
+		close(fd);
 	}
 	else
 	{
@@ -1072,7 +1073,7 @@ static int load_rom_user1(int reload)
 	int res;
 	char fname[32];
 	char *parent;
-	UINT32 patch = 0;
+	uint32_t patch = 0;
 
 	if (!reload)
 	{
@@ -1143,8 +1144,8 @@ static int load_rom_user1(int reload)
 
 	if (patch)
 	{
-		UINT16 *mem16 = (UINT16 *)memory_region_user1;
-		UINT16 value;
+		uint16_t *mem16 = (uint16_t *)memory_region_user1;
+		uint16_t value;
 
 		if (!neogeo_region)
 			value = mem16[0x00400 >> 1] & 0x03;
@@ -1217,7 +1218,7 @@ static int load_rom_user2(void)
 
 static int load_rom_info(const char *game_name)
 {
-	SceUID fd;
+	int32_t fd;
 	char path[MAX_PATH];
 	char *buf;
 	char linebuf[256];
@@ -1247,19 +1248,19 @@ static int load_rom_info(const char *game_name)
 
 	sprintf(path, "%srominfo.mvs", launchDir);
 
-	if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
+	if ((fd = open(path, O_RDONLY, 0777)) >= 0)
 	{
-		size = sceIoLseek(fd, 0, SEEK_END);
-		sceIoLseek(fd, 0, SEEK_SET);
+		size = lseek(fd, 0, SEEK_END);
+		lseek(fd, 0, SEEK_SET);
 
 		if ((buf = (char *)malloc(size)) == NULL)
 		{
-			sceIoClose(fd);
+			close(fd);
 			return 3;	// 手抜き
 		}
 
-		sceIoRead(fd, buf, size);
-		sceIoClose(fd);
+		read(fd, buf, size);
+		close(fd);
 
 		i = 0;
 		while (i < size)
@@ -1595,7 +1596,7 @@ int memory_init(void)
 	gfx_pen_usage[1] = NULL;
 	gfx_pen_usage[2] = NULL;
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	psp2k_mem_offset = PSP2K_MEM_TOP;
 	psp2k_mem_left   = PSP2K_MEM_SIZE;
 #endif
@@ -1612,7 +1613,7 @@ int memory_init(void)
 
 	cache_init();
 	pad_wait_clear();
-	video_clear_screen();
+	video_driver->clearScreen(video_data);
 	msg_screen_init(WP_LOGO, ICON_SYSTEM, TEXT(LOAD_ROM));
 
 	load_gamecfg(game_name);
@@ -1626,7 +1627,7 @@ int memory_init(void)
 	{
 		/* AdHoc通信時は一部オプションで固定の設定を使用 */
 		neogeo_raster_enable = 0;
-		psp_cpuclock         = PSPCLOCK_333;
+		platform_cpuclock    = power_driver->getHighestCpuClock(NULL);
 		option_vsync         = 0;
 		option_autoframeskip = 0;
 		option_frameskip     = 0;
@@ -1638,7 +1639,7 @@ int memory_init(void)
 	}
 #endif
 
-	set_cpu_clock(psp_cpuclock);
+	power_driver->setCpuClock(NULL, platform_cpuclock);
 
 	msg_printf(TEXT(CHECKING_BIOS));
 
@@ -1650,7 +1651,7 @@ int memory_init(void)
 	if (res < 0)
 	{
 		pad_wait_clear();
-		video_clear_screen();
+		video_driver->clearScreen(video_data);
 		bios_select(1);
 		if (neogeo_bios == -1)
 		{
@@ -1659,7 +1660,7 @@ int memory_init(void)
 		}
 
 		pad_wait_clear();
-		video_clear_screen();
+		video_driver->clearScreen(video_data);
 		msg_screen_init(WP_LOGO, ICON_SYSTEM, TEXT(LOAD_ROM));
 		msg_printf(TEXT(CHECKING_BIOS));
 		msg_printf(TEXT(ALL_NVRAM_FILES_ARE_REMOVED));
@@ -1752,7 +1753,7 @@ int memory_init(void)
 
 	if (load_rom_sound1() == 0) return 0;
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	if (psp2k_mem_left != PSP2K_MEM_SIZE)
 	{
 		// sound1で拡張メモリに確保した場合
@@ -1993,7 +1994,7 @@ int memory_init(void)
 #endif
 	}
 
-	neogeo_sram = (UINT8 *)neogeo_sram16;
+	neogeo_sram = (uint8_t *)neogeo_sram16;
 
 	return 1;
 }
@@ -2009,7 +2010,7 @@ void memory_shutdown(void)
 
 	cache_shutdown();
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	for (i = 0; i < 3; i++)
 		psp2k_mem_free(gfx_pen_usage[i]);
 
@@ -2051,7 +2052,7 @@ void memory_shutdown(void)
 	if (memory_region_user3)  free(memory_region_user3);
 #endif
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	GFX_MEMORY = NULL;
 #endif
 }
@@ -2065,10 +2066,10 @@ void memory_shutdown(void)
 	M68000メモリリード (byte)
 ------------------------------------------------------*/
 
-UINT8 m68000_read_memory_8(UINT32 offset)
+uint8_t m68000_read_memory_8(uint32_t offset)
 {
 	int shift = (~offset & 1) << 3;
-	UINT16 mem_mask = ~(0xff << shift);
+	uint16_t mem_mask = ~(0xff << shift);
 
 	offset &= M68K_AMASK;
 
@@ -2102,7 +2103,7 @@ UINT8 m68000_read_memory_8(UINT32 offset)
 	M68000リードメモリ (word)
 ------------------------------------------------------*/
 
-UINT16 m68000_read_memory_16(UINT32 offset)
+uint16_t m68000_read_memory_16(uint32_t offset)
 {
 	offset &= M68K_AMASK;
 
@@ -2136,10 +2137,10 @@ UINT16 m68000_read_memory_16(UINT32 offset)
 	M68000ライトメモリ (byte)
 ------------------------------------------------------*/
 
-void m68000_write_memory_8(UINT32 offset, UINT8 data)
+void m68000_write_memory_8(uint32_t offset, uint8_t data)
 {
 	int shift = (~offset & 1) << 3;
-	UINT16 mem_mask = ~(0xff << shift);
+	uint16_t mem_mask = ~(0xff << shift);
 
 	offset &= M68K_AMASK;
 
@@ -2170,7 +2171,7 @@ void m68000_write_memory_8(UINT32 offset, UINT8 data)
 	M68000ライトメモリ (word)
 ------------------------------------------------------*/
 
-void m68000_write_memory_16(UINT32 offset, UINT16 data)
+void m68000_write_memory_16(uint32_t offset, uint16_t data)
 {
 	offset &= M68K_AMASK;
 
@@ -2205,7 +2206,7 @@ void m68000_write_memory_16(UINT32 offset, UINT16 data)
 	Z80リードメモリ (byte)
 ------------------------------------------------------*/
 
-UINT8 z80_read_memory_8(UINT32 offset)
+uint8_t z80_read_memory_8(uint32_t offset)
 {
 	return memory_region_cpu2[offset & Z80_AMASK];
 }
@@ -2215,7 +2216,7 @@ UINT8 z80_read_memory_8(UINT32 offset)
 	Z80ライトメモリ (byte)
 ------------------------------------------------------*/
 
-void z80_write_memory_8(UINT32 offset, UINT8 data)
+void z80_write_memory_8(uint32_t offset, uint8_t data)
 {
 	offset &= Z80_AMASK;
 

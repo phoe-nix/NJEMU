@@ -64,7 +64,7 @@ extern int input_map[MAX_INPUTS];
 extern int af_interval;
 extern int analog_sensitivity;
 
-extern UINT8 neogeo_port_value[NCDZ_PORT_MAX];
+extern uint8_t neogeo_port_value[NCDZ_PORT_MAX];
 
 int input_init(void);
 void input_shutdown(void);

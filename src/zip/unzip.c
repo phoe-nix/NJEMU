@@ -4,8 +4,9 @@
    Read unzip.h for more info
 */
 
-#include "psp/psp.h"
-#include "zlib.h"
+#include <stdio.h>
+#include <zlib.h>
+#include <string.h>
 #include "unzip.h"
 
 #ifndef UNZ_BUFSIZE

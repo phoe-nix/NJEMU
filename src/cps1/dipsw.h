@@ -14,10 +14,10 @@
 typedef struct
 {
 	const char *label;
-	UINT8 enable;
-	UINT8 mask;
-	UINT8 value;
-	UINT8 value_max;
+	uint8_t enable;
+	uint8_t mask;
+	uint8_t value;
+	uint8_t value_max;
 	const char *values_label[MAX_DIPSWITCHS + 1];
 } dipswitch_t;
 

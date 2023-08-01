@@ -89,7 +89,7 @@ static cfg_type default_options[] =
 	{ CFG_INT,	"NeogeoRegion",		&neogeo_region,	1,	2	},
 #endif
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	{ CFG_NONE,	"[Color Settings]", },
 	{ CFG_INT,	"BGImageType",			&bgimage_type,					  3,   3 },
 	{ CFG_INT,	"BGImageBlightness",	&bgimage_blightness,			 50, 100 },
@@ -156,18 +156,18 @@ typedef struct padname_t
 static const PADNAME pad_name[13] =
 {
 	{ 0,					"PAD_NONE"		},
-	{ PSP_CTRL_UP,			"PAD_UP"		},
-	{ PSP_CTRL_DOWN,		"PAD_DOWN"		},
-	{ PSP_CTRL_LEFT,		"PAD_LEFT"		},
-	{ PSP_CTRL_RIGHT,		"PAD_RIGHT"		},
-	{ PSP_CTRL_CROSS,		"PAD_CROSS"		},
-	{ PSP_CTRL_CIRCLE,		"PAD_CIRCLE"	},
-	{ PSP_CTRL_SQUARE,		"PAD_SQUARE"	},
-	{ PSP_CTRL_TRIANGLE,	"PAD_TRIANGLE"	},
-	{ PSP_CTRL_START,		"PAD_START"		},
-	{ PSP_CTRL_SELECT,		"PAD_SELECT"	},
-	{ PSP_CTRL_LTRIGGER,	"PAD_LTRIGGER"	},
-	{ PSP_CTRL_RTRIGGER,	"PAD_RTRIGGER"	}
+	{ PLATFORM_PAD_UP,			"PAD_UP"		},
+	{ PLATFORM_PAD_DOWN,		"PAD_DOWN"		},
+	{ PLATFORM_PAD_LEFT,		"PAD_LEFT"		},
+	{ PLATFORM_PAD_RIGHT,		"PAD_RIGHT"		},
+	{ PLATFORM_PAD_B2,		"PAD_CROSS"		},
+	{ PLATFORM_PAD_B1,		"PAD_CIRCLE"	},
+	{ PLATFORM_PAD_B3,		"PAD_SQUARE"	},
+	{ PLATFORM_PAD_B4,	"PAD_TRIANGLE"	},
+	{ PLATFORM_PAD_START,		"PAD_START"		},
+	{ PLATFORM_PAD_SELECT,		"PAD_SELECT"	},
+	{ PLATFORM_PAD_L,	"PAD_LTRIGGER"	},
+	{ PLATFORM_PAD_R,	"PAD_RTRIGGER"	}
 };
 
 
@@ -443,7 +443,7 @@ void load_settings(void)
 			*default_options[i].value = default_options[i].def;
 	}
 #if (EMU_SYSTEM == NCDZ)
-	if (ui_text_get_language() == LANG_JAPANESE)
+	if (ui_text_driver->getLanguage(ui_text_data) == LANG_JAPANESE)
 	{
 		for (i = 0; default_options[i].name; i++)
 		{
@@ -470,7 +470,7 @@ void load_settings(void)
 				*default_options[i].value = default_options[i].def;
 		}
 #if (EMU_SYSTEM == NCDZ)
-		if (ui_text_get_language() == LANG_JAPANESE)
+		if (ui_text_driver->getLanguage(ui_text_data) == LANG_JAPANESE)
 		{
 			for (i = 0; default_options[i].name; i++)
 			{
@@ -485,7 +485,7 @@ void load_settings(void)
 
 		sprintf(startupDir, "%sroms", launchDir);
 
-		sceIoRemove(inifile_name);
+		remove(inifile_name);
 		delete_files("nvram", "nv");
 		delete_files("config", "ini");
 

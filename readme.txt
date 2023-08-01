@@ -13,15 +13,15 @@
 
 ·编译设置
 
-BUILD_CPS1PSP = 1      编译CPS1PSP。
+BUILD_CPS1 = 1      编译CPS1PSP。
 
-BUILD_CPS2PSP = 1      编译CPS2PSP。
+BUILD_CPS2 = 1      编译CPS2PSP。
 
-BUILD_MVSPSP = 1       编译MVSPSP。
+BUILD_MVS = 1       编译MVSPSP。
 
-BUILD_NCDZPSP = 1      编译NCDZPSP。
+BUILD_NCDZ = 1      编译NCDZPSP。
 
-PSP_SLIM = 1           编译PSP-2000 + CFW3.71 M33以上系统的用户模式。
+LARGE_MEMORY = 1           编译PSP-2000 + CFW3.71 M33以上系统的用户模式。
 
 KERNEL_MODE = 1        编译FW1.5核心。
 

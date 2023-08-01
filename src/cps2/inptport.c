@@ -14,7 +14,7 @@
 ******************************************************************************/
 
 int option_controller;
-UINT16 cps2_port_value[CPS2_PORT_MAX];
+uint16_t cps2_port_value[CPS2_PORT_MAX];
 
 int input_map[MAX_INPUTS];
 int input_max_players;
@@ -28,7 +28,7 @@ int af_interval = 1;
 	ローカル変数
 ******************************************************************************/
 
-static UINT8 ALIGN_DATA input_flag[MAX_INPUTS];
+static uint8_t ALIGN_DATA input_flag[MAX_INPUTS];
 static int ALIGN_DATA af_map1[CPS2_BUTTON_MAX];
 static int ALIGN_DATA af_map2[CPS2_BUTTON_MAX];
 static int ALIGN_DATA af_counter[CPS2_BUTTON_MAX];
@@ -37,7 +37,7 @@ static int input_ui_wait;
 static int service_switch;
 static int p12_start_pressed;
 
-static UINT8 max_players[COIN_MAX] =
+static uint8_t max_players[COIN_MAX] =
 {
 	2,	// COIN_NONE: 2P 2シューター固定 (チェック必要なし)
 
@@ -53,7 +53,7 @@ static UINT8 max_players[COIN_MAX] =
 	4	// COIN_4P4C: 4P 4シューター
 };
 
-static UINT8 coin_chuter[COIN_MAX][4] =
+static uint8_t coin_chuter[COIN_MAX][4] =
 {
 	{ 1, 2, 0, 0 },	// COIN_NONE: 2P 2シューター固定 (チェック必要なし)
 
@@ -80,8 +80,8 @@ static UINT8 coin_chuter[COIN_MAX][4] =
 
 static void check_eeprom_settings(int popup)
 {
-	UINT8 eeprom_value = EEPROM_read_data(driver->inp_eeprom);
-	UINT8 coin_type = driver->inp_eeprom_value[eeprom_value];
+	uint8_t eeprom_value = EEPROM_read_data(driver->inp_eeprom);
+	uint8_t coin_type = driver->inp_eeprom_value[eeprom_value];
 
 	if (input_coin_chuter != coin_type)
 	{
@@ -101,7 +101,7 @@ static void check_eeprom_settings(int popup)
 	連射フラグを更新
 ------------------------------------------------------*/
 
-static UINT32 update_autofire(UINT32 buttons)
+static uint32_t update_autofire(uint32_t buttons)
 {
 	int i;
 
@@ -138,7 +138,7 @@ static UINT32 update_autofire(UINT32 buttons)
 
 static void update_inputport0(void)
 {
-	UINT16 value = 0xffff;
+	uint16_t value = 0xffff;
 
 	switch (machine_input_type)
 	{
@@ -305,7 +305,7 @@ static void update_inputport0(void)
 
 static void update_inputport1(void)
 {
-	UINT16 value = 0xffff;
+	uint16_t value = 0xffff;
 
 	switch (machine_input_type)
 	{
@@ -439,7 +439,7 @@ static void update_inputport1(void)
 
 static void update_inputport2(void)
 {
-	UINT16 value = 0xffff;
+	uint16_t value = 0xffff;
 
 	if (input_flag[SERV_SWITCH] || service_switch)
 	{
@@ -561,9 +561,9 @@ static void update_inputport3(void)
 	入力ボタンを画面方向に合わせて調整
 ------------------------------------------------------*/
 
-static UINT32 adjust_input(UINT32 buttons)
+static uint32_t adjust_input(uint32_t buttons)
 {
-	UINT32 buttons2;
+	uint32_t buttons2;
 
 	if (!cps_flip_screen && machine_screen_type != SCREEN_VERTICAL)
 		return buttons;
@@ -572,18 +572,18 @@ static UINT32 adjust_input(UINT32 buttons)
 	{
 		if (cps_flip_screen)
 		{
-			buttons2 = buttons & (PSP_CTRL_START | PSP_CTRL_SELECT);
+			buttons2 = buttons & (PLATFORM_PAD_START | PLATFORM_PAD_SELECT);
 
-			if (buttons & PSP_CTRL_UP)       buttons2 |= PSP_CTRL_DOWN;
-			if (buttons & PSP_CTRL_DOWN)     buttons2 |= PSP_CTRL_UP;
-			if (buttons & PSP_CTRL_RIGHT)    buttons2 |= PSP_CTRL_LEFT;
-			if (buttons & PSP_CTRL_LEFT)     buttons2 |= PSP_CTRL_RIGHT;
-			if (buttons & PSP_CTRL_SQUARE)   buttons2 |= PSP_CTRL_CIRCLE;
-			if (buttons & PSP_CTRL_CIRCLE)   buttons2 |= PSP_CTRL_SQUARE;
-			if (buttons & PSP_CTRL_TRIANGLE) buttons2 |= PSP_CTRL_CROSS;
-			if (buttons & PSP_CTRL_CROSS)    buttons2 |= PSP_CTRL_TRIANGLE;
-			if (buttons & PSP_CTRL_RTRIGGER) buttons2 |= PSP_CTRL_LTRIGGER;
-			if (buttons & PSP_CTRL_LTRIGGER) buttons2 |= PSP_CTRL_RTRIGGER;
+			if (buttons & PLATFORM_PAD_UP)       buttons2 |= PLATFORM_PAD_DOWN;
+			if (buttons & PLATFORM_PAD_DOWN)     buttons2 |= PLATFORM_PAD_UP;
+			if (buttons & PLATFORM_PAD_RIGHT)    buttons2 |= PLATFORM_PAD_LEFT;
+			if (buttons & PLATFORM_PAD_LEFT)     buttons2 |= PLATFORM_PAD_RIGHT;
+			if (buttons & PLATFORM_PAD_B3)   buttons2 |= PLATFORM_PAD_B1;
+			if (buttons & PLATFORM_PAD_B1)   buttons2 |= PLATFORM_PAD_B3;
+			if (buttons & PLATFORM_PAD_B4) buttons2 |= PLATFORM_PAD_B2;
+			if (buttons & PLATFORM_PAD_B2)    buttons2 |= PLATFORM_PAD_B4;
+			if (buttons & PLATFORM_PAD_R) buttons2 |= PLATFORM_PAD_L;
+			if (buttons & PLATFORM_PAD_L) buttons2 |= PLATFORM_PAD_R;
 
 			buttons = buttons2;
 		}
@@ -592,34 +592,34 @@ static UINT32 adjust_input(UINT32 buttons)
 	{
 		if (!cps_rotate_screen)
 		{
-			buttons2 = buttons & (PSP_CTRL_START | PSP_CTRL_SELECT | PSP_CTRL_RTRIGGER | PSP_CTRL_LTRIGGER);
+			buttons2 = buttons & (PLATFORM_PAD_START | PLATFORM_PAD_SELECT | PLATFORM_PAD_R | PLATFORM_PAD_L);
 
-			if (buttons & PSP_CTRL_UP)       buttons2 |= PSP_CTRL_LEFT;
-			if (buttons & PSP_CTRL_DOWN)     buttons2 |= PSP_CTRL_RIGHT;
-			if (buttons & PSP_CTRL_RIGHT)    buttons2 |= PSP_CTRL_UP;
-			if (buttons & PSP_CTRL_LEFT)     buttons2 |= PSP_CTRL_DOWN;
-			if (buttons & PSP_CTRL_TRIANGLE) buttons2 |= PSP_CTRL_SQUARE;
-			if (buttons & PSP_CTRL_CIRCLE)   buttons2 |= PSP_CTRL_TRIANGLE;
-			if (buttons & PSP_CTRL_SQUARE)   buttons2 |= PSP_CTRL_CROSS;
-			if (buttons & PSP_CTRL_CROSS)    buttons2 |= PSP_CTRL_CIRCLE;
+			if (buttons & PLATFORM_PAD_UP)       buttons2 |= PLATFORM_PAD_LEFT;
+			if (buttons & PLATFORM_PAD_DOWN)     buttons2 |= PLATFORM_PAD_RIGHT;
+			if (buttons & PLATFORM_PAD_RIGHT)    buttons2 |= PLATFORM_PAD_UP;
+			if (buttons & PLATFORM_PAD_LEFT)     buttons2 |= PLATFORM_PAD_DOWN;
+			if (buttons & PLATFORM_PAD_B4) buttons2 |= PLATFORM_PAD_B3;
+			if (buttons & PLATFORM_PAD_B1)   buttons2 |= PLATFORM_PAD_B4;
+			if (buttons & PLATFORM_PAD_B3)   buttons2 |= PLATFORM_PAD_B2;
+			if (buttons & PLATFORM_PAD_B2)    buttons2 |= PLATFORM_PAD_B1;
 
 			buttons = buttons2;
 		}
 
 		if (cps_flip_screen)
 		{
-			buttons2 = buttons & (PSP_CTRL_START | PSP_CTRL_SELECT);
+			buttons2 = buttons & (PLATFORM_PAD_START | PLATFORM_PAD_SELECT);
 
-			if (buttons & PSP_CTRL_UP)       buttons2 |= PSP_CTRL_DOWN;
-			if (buttons & PSP_CTRL_DOWN)     buttons2 |= PSP_CTRL_UP;
-			if (buttons & PSP_CTRL_RIGHT)    buttons2 |= PSP_CTRL_LEFT;
-			if (buttons & PSP_CTRL_LEFT)     buttons2 |= PSP_CTRL_RIGHT;
-			if (buttons & PSP_CTRL_SQUARE)   buttons2 |= PSP_CTRL_CIRCLE;
-			if (buttons & PSP_CTRL_CIRCLE)   buttons2 |= PSP_CTRL_SQUARE;
-			if (buttons & PSP_CTRL_TRIANGLE) buttons2 |= PSP_CTRL_CROSS;
-			if (buttons & PSP_CTRL_CROSS)    buttons2 |= PSP_CTRL_TRIANGLE;
-			if (buttons & PSP_CTRL_RTRIGGER) buttons2 |= PSP_CTRL_LTRIGGER;
-			if (buttons & PSP_CTRL_LTRIGGER) buttons2 |= PSP_CTRL_RTRIGGER;
+			if (buttons & PLATFORM_PAD_UP)       buttons2 |= PLATFORM_PAD_DOWN;
+			if (buttons & PLATFORM_PAD_DOWN)     buttons2 |= PLATFORM_PAD_UP;
+			if (buttons & PLATFORM_PAD_RIGHT)    buttons2 |= PLATFORM_PAD_LEFT;
+			if (buttons & PLATFORM_PAD_LEFT)     buttons2 |= PLATFORM_PAD_RIGHT;
+			if (buttons & PLATFORM_PAD_B3)   buttons2 |= PLATFORM_PAD_B1;
+			if (buttons & PLATFORM_PAD_B1)   buttons2 |= PLATFORM_PAD_B3;
+			if (buttons & PLATFORM_PAD_B4) buttons2 |= PLATFORM_PAD_B2;
+			if (buttons & PLATFORM_PAD_B2)    buttons2 |= PLATFORM_PAD_B4;
+			if (buttons & PLATFORM_PAD_R) buttons2 |= PLATFORM_PAD_L;
+			if (buttons & PLATFORM_PAD_L) buttons2 |= PLATFORM_PAD_R;
 
 			buttons = buttons2;
 		}
@@ -760,7 +760,7 @@ void setup_autofire(void)
 void update_inputport(void)
 {
 	int i;
-	UINT32 buttons;
+	uint32_t buttons;
 
 #ifdef ADHOC
 	if (adhoc_enable)
@@ -775,7 +775,7 @@ void update_inputport(void)
 		{
 			while (adhoc_update && Loop == LOOP_EXEC)
 			{
-				sceKernelDelayThread(1);
+				usleep(1);
 			}
 
 			cps2_port_value[0] = send_data.port_value[0] & recv_data.port_value[0];
@@ -801,21 +801,21 @@ void update_inputport(void)
 
 			buttons = poll_gamepad();
 
-			if (systembuttons_available ? readHomeButton() : (buttons & PSP_CTRL_START) && (buttons & PSP_CTRL_SELECT))
+			if (systembuttons_available ? readHomeButton() : (buttons & PLATFORM_PAD_START) && (buttons & PLATFORM_PAD_SELECT))
 			{
 				buttons = 0;
 				adhoc_paused = adhoc_server + 1;
 			}
-			else if ((buttons & PSP_CTRL_LTRIGGER) && (buttons & PSP_CTRL_RTRIGGER))
+			else if ((buttons & PLATFORM_PAD_L) && (buttons & PLATFORM_PAD_R))
 			{
-				if (buttons & PSP_CTRL_SELECT)
+				if (buttons & PLATFORM_PAD_SELECT)
 				{
-					buttons &= ~(PSP_CTRL_SELECT | PSP_CTRL_LTRIGGER | PSP_CTRL_RTRIGGER);
+					buttons &= ~(PLATFORM_PAD_SELECT | PLATFORM_PAD_L | PLATFORM_PAD_R);
 					service_switch = 1;
 				}
-				else if (buttons & PSP_CTRL_START)
+				else if (buttons & PLATFORM_PAD_START)
 				{
-					buttons &= ~(PSP_CTRL_START | PSP_CTRL_LTRIGGER | PSP_CTRL_RTRIGGER);
+					buttons &= ~(PLATFORM_PAD_START | PLATFORM_PAD_L | PLATFORM_PAD_R);
 					p12_start_pressed = 1;
 				}
 			}
@@ -836,7 +836,7 @@ void update_inputport(void)
 			send_data.loop_flag = Loop;
 			send_data.frame     = adhoc_frame++;
 
-			sceKernelDelayThread(100);
+			usleep(100);
 
 			adhoc_update = 1;
 		}
@@ -851,23 +851,23 @@ void update_inputport(void)
 
 		buttons = poll_gamepad();
 
-		if (systembuttons_available ? readHomeButton() : (buttons & PSP_CTRL_START) && (buttons & PSP_CTRL_SELECT))
+		if (systembuttons_available ? readHomeButton() : (buttons & PLATFORM_PAD_START) && (buttons & PLATFORM_PAD_SELECT))
 		{
 			showmenu();
 			setup_autofire();
 			buttons = poll_gamepad();
 		}
 
-		if ((buttons & PSP_CTRL_LTRIGGER) && (buttons & PSP_CTRL_RTRIGGER))
+		if ((buttons & PLATFORM_PAD_L) && (buttons & PLATFORM_PAD_R))
 		{
-			if (buttons & PSP_CTRL_SELECT)
+			if (buttons & PLATFORM_PAD_SELECT)
 			{
-				buttons &= ~(PSP_CTRL_SELECT | PSP_CTRL_LTRIGGER | PSP_CTRL_RTRIGGER);
+				buttons &= ~(PLATFORM_PAD_SELECT | PLATFORM_PAD_L | PLATFORM_PAD_R);
 				service_switch = 1;
 			}
-			else if (buttons & PSP_CTRL_START)
+			else if (buttons & PLATFORM_PAD_START)
 			{
-				buttons &= ~(PSP_CTRL_START | PSP_CTRL_LTRIGGER | PSP_CTRL_RTRIGGER);
+				buttons &= ~(PLATFORM_PAD_START | PLATFORM_PAD_L | PLATFORM_PAD_R);
 				p12_start_pressed = 1;
 			}
 		}

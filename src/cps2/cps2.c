@@ -25,7 +25,7 @@ static int cps2_init(void)
 	msg_printf(TEXT(DONE2));
 	msg_screen_clear();
 
-	video_clear_screen();
+	video_driver->clearScreen(video_data);
 
 #ifdef ADHOC
 	if (!cps2_video_init())
@@ -33,7 +33,7 @@ static int cps2_init(void)
 
 	if (adhoc_enable)
 	{
-		sprintf(adhoc_matching, "%s_%s", PBPNAME_STR, game_name);
+		sprintf(adhoc_matching, "%s_%s", TARGET_STR, game_name);
 
 		Loop = LOOP_EXEC;
 
@@ -41,7 +41,7 @@ static int cps2_init(void)
 		{
 			if ((adhoc_server = adhocSelect()) >= 0)
 			{
-				video_clear_screen();
+				video_driver->clearScreen(video_data);
 
 				if (adhoc_server)
 				{
@@ -75,8 +75,8 @@ static int cps2_init(void)
 
 static void cps2_reset(void)
 {
-	video_set_mode(16);
-	video_clear_screen();
+	video_driver->setMode(video_data, 16);
+	video_driver->clearScreen(video_data);
 
 	Loop = LOOP_EXEC;
 
@@ -98,12 +98,12 @@ static void cps2_reset(void)
 
 static void cps2_exit(void)
 {
-	video_set_mode(32);
-	video_clear_screen();
+	video_driver->setMode(video_data, 32);
+	video_driver->clearScreen(video_data);
 
 	ui_popup_reset();
 
-	video_clear_screen();
+	video_driver->clearScreen(video_data);
 	msg_screen_init(WP_LOGO, ICON_SYSTEM, TEXT(EXIT_EMULATION2));
 
 	msg_printf(TEXT(PLEASE_WAIT2));
@@ -190,7 +190,7 @@ static void cps2_run(void)
 
 				do
 				{
-					sceKernelDelayThread(5000000);
+					usleep(5000000);
 				} while (Sleep);
 
 #if USE_CACHE
@@ -205,7 +205,7 @@ static void cps2_run(void)
 			update_inputport();
 		}
 
-		video_clear_screen();
+		video_driver->clearScreen(video_data);
 		sound_mute(1);
 	}
 }
@@ -231,7 +231,7 @@ void cps2_main(void)
 
 		fatal_error = 0;
 
-		video_clear_screen();
+		video_driver->clearScreen(video_data);
 
 		if (memory_init())
 		{

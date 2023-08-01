@@ -125,29 +125,29 @@ enum
 
 struct tile_t
 {
-	UINT16 start;
-	UINT16 end;
+	uint16_t start;
+	uint16_t end;
 };
 
 struct driver_t
 {
 	const char *name;
-	const UINT16 cpsb_addr;
-	const UINT16 cpsb_value;
-	const UINT8  mult_factor1;
-	const UINT8  mult_factor2;
-	const UINT8  mult_result_lo;
-	const UINT8  mult_result_hi;
-	const UINT8  priority[4];
-	const UINT8  layer_enable_mask[5];
-	const UINT8  layer_control;
-	const UINT8  control_reg;
-	const UINT8  kludge;
-	const UINT8  has_stars;
-	const UINT8  bank_scroll1;
-	const UINT8  bank_scroll2;
-	const UINT8  bank_scroll3;
-	const UINT32 gfx_limit;
+	const uint16_t cpsb_addr;
+	const uint16_t cpsb_value;
+	const uint8_t  mult_factor1;
+	const uint8_t  mult_factor2;
+	const uint8_t  mult_result_lo;
+	const uint8_t  mult_result_hi;
+	const uint8_t  priority[4];
+	const uint8_t  layer_enable_mask[5];
+	const uint8_t  layer_control;
+	const uint8_t  control_reg;
+	const uint8_t  kludge;
+	const uint8_t  has_stars;
+	const uint8_t  bank_scroll1;
+	const uint8_t  bank_scroll2;
+	const uint8_t  bank_scroll3;
+	const uint32_t gfx_limit;
 	const struct tile_t scroll1;
 	const struct tile_t scroll2;
 	const struct tile_t scroll3;

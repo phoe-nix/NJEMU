@@ -14,7 +14,7 @@
 ******************************************************************************/
 
 int option_controller;
-UINT8 ALIGN_DATA neogeo_port_value[MVS_PORT_MAX];
+uint8_t ALIGN_DATA neogeo_port_value[MVS_PORT_MAX];
 
 int input_map[MAX_INPUTS];
 int analog_sensitivity;
@@ -29,7 +29,7 @@ int input_analog_value[2];
 	ローカル変数
 ******************************************************************************/
 
-static const UINT8 hotkey_mask[11] =
+static const uint8_t hotkey_mask[11] =
 {
 //	0xef,	// A
 //	0xdf,	// B
@@ -48,14 +48,14 @@ static const UINT8 hotkey_mask[11] =
 	0x0f	// A+B+C+D
 };
 
-static UINT8 ALIGN_DATA input_flag[MAX_INPUTS];
+static uint8_t ALIGN_DATA input_flag[MAX_INPUTS];
 static int ALIGN_DATA af_map1[MVS_BUTTON_MAX];
 static int ALIGN_DATA af_map2[MVS_BUTTON_MAX];
 static int ALIGN_DATA af_counter[MVS_BUTTON_MAX];
 static int input_ui_wait;
 static int service_switch;
 
-static UINT32 (*poll_pad)(void);
+static uint32_t (*poll_pad)(void);
 
 
 /******************************************************************************
@@ -121,7 +121,7 @@ void check_input_mode(void)
 	連射フラグを更新
 ------------------------------------------------------*/
 
-static UINT32 update_autofire(UINT32 buttons)
+static uint32_t update_autofire(uint32_t buttons)
 {
 	int i;
 
@@ -156,7 +156,7 @@ static UINT32 update_autofire(UINT32 buttons)
 	ホットキーフラグを反映
 ------------------------------------------------------*/
 
-static UINT8 apply_hotkey(UINT8 value)
+static uint8_t apply_hotkey(uint8_t value)
 {
 	int i, button;
 
@@ -177,7 +177,7 @@ static UINT8 apply_hotkey(UINT8 value)
 
 static void update_inputport0(void)
 {
-	UINT8 value = 0xff;
+	uint8_t value = 0xff;
 
 	switch (neogeo_ngh)
 	{
@@ -237,7 +237,7 @@ static void update_inputport0(void)
 
 static void update_inputport1(void)
 {
-	UINT8 value = 0xff;
+	uint8_t value = 0xff;
 
 	switch (neogeo_ngh)
 	{
@@ -297,7 +297,7 @@ static void update_inputport1(void)
 
 static void update_inputport2(void)
 {
-	UINT8 value = 0xff;
+	uint8_t value = 0xff;
 
 	switch (neogeo_ngh)
 	{
@@ -343,7 +343,7 @@ static void update_inputport2(void)
 
 static void update_inputport4(void)
 {
-	UINT8 value;
+	uint8_t value;
 
 	switch (neogeo_ngh)
 	{
@@ -404,7 +404,7 @@ static void update_inputport4(void)
 
 static void update_inputport5(void)
 {
-	UINT8 value = 0xc0;
+	uint8_t value = 0xc0;
 
 	if (neogeo_input_mode)
 	{
@@ -424,7 +424,7 @@ static void update_inputport5(void)
 	irrmaze アナログ入力ポート
 ------------------------------------------------------*/
 
-static void irrmaze_update_analog_port(UINT16 value)
+static void irrmaze_update_analog_port(uint16_t value)
 {
 	int axis, delta;
 	int current, pad_value[2];
@@ -508,7 +508,7 @@ static void irrmaze_update_analog_port(UINT16 value)
 	popbounc アナログ入力ポート
 ------------------------------------------------------*/
 
-static void popbounc_update_analog_port(UINT16 value)
+static void popbounc_update_analog_port(uint16_t value)
 {
 	int delta, current;
 
@@ -687,7 +687,7 @@ void setup_autofire(void)
 void update_inputport(void)
 {
 	int i;
-	UINT32 buttons;
+	uint32_t buttons;
 
 #ifdef ADHOC
 	if (adhoc_enable)
@@ -702,7 +702,7 @@ void update_inputport(void)
 		{
 			while (adhoc_update && Loop == LOOP_EXEC)
 			{
-				sceKernelDelayThread(1);
+				usleep(1);
 			}
 
 			neogeo_port_value[0] = send_data.port_value[0] & recv_data.port_value[0];
@@ -726,16 +726,16 @@ void update_inputport(void)
 
 			buttons = (*poll_pad)();
 
-			if (systembuttons_available ? readHomeButton() : (buttons & PSP_CTRL_START) && (buttons & PSP_CTRL_SELECT))
+			if (systembuttons_available ? readHomeButton() : (buttons & PLATFORM_PAD_START) && (buttons & PLATFORM_PAD_SELECT))
 			{
 				buttons = 0;
 				adhoc_paused = adhoc_server + 1;
 			}
-			else if ((buttons & PSP_CTRL_LTRIGGER) && (buttons & PSP_CTRL_RTRIGGER))
+			else if ((buttons & PLATFORM_PAD_L) && (buttons & PLATFORM_PAD_R))
 			{
-				if (buttons & PSP_CTRL_SELECT)
+				if (buttons & PLATFORM_PAD_SELECT)
 				{
-					buttons &= ~(PSP_CTRL_SELECT | PSP_CTRL_LTRIGGER | PSP_CTRL_RTRIGGER);
+					buttons &= ~(PLATFORM_PAD_SELECT | PLATFORM_PAD_L | PLATFORM_PAD_R);
 					service_switch = 1;
 				}
 			}
@@ -756,7 +756,7 @@ void update_inputport(void)
 			send_data.loop_flag = Loop;
 			send_data.frame     = adhoc_frame++;
 
-			sceKernelDelayThread(100);
+			usleep(100);
 
 			adhoc_update = 1;
 		}
@@ -768,7 +768,7 @@ void update_inputport(void)
 
 		buttons = (*poll_pad)();
 
-		if (systembuttons_available ? readHomeButton() : (buttons & PSP_CTRL_START) && (buttons & PSP_CTRL_SELECT))
+		if (systembuttons_available ? readHomeButton() : (buttons & PLATFORM_PAD_START) && (buttons & PLATFORM_PAD_SELECT))
 		{
 			showmenu();
 			setup_autofire();
@@ -780,11 +780,11 @@ void update_inputport(void)
 
 			buttons = (*poll_pad)();
 		}
-		else if ((buttons & PSP_CTRL_LTRIGGER) && (buttons & PSP_CTRL_RTRIGGER))
+		else if ((buttons & PLATFORM_PAD_L) && (buttons & PLATFORM_PAD_R))
 		{
-			if (buttons & PSP_CTRL_SELECT)
+			if (buttons & PLATFORM_PAD_SELECT)
 			{
-				buttons &= ~(PSP_CTRL_SELECT | PSP_CTRL_LTRIGGER | PSP_CTRL_RTRIGGER);
+				buttons &= ~(PLATFORM_PAD_SELECT | PLATFORM_PAD_L | PLATFORM_PAD_R);
 				service_switch = 1;
 			}
 		}

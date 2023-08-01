@@ -11,7 +11,7 @@
 
 #define MVS_PORT_MAX	6
 
-#define TEST_SWITCH_FLAGS	(PSP_CTRL_SELECT|PSP_CTRL_LTRIGGER|PSP_CTRL_RTRIGGER)
+#define TEST_SWITCH_FLAGS	(PLATFORM_PAD_SELECT|PLATFORM_PAD_L|PLATFORM_PAD_R)
 
 enum
 {
@@ -79,7 +79,7 @@ extern int af_interval;
 extern int neogeo_dipswitch;
 extern int analog_sensitivity;
 
-extern UINT8 neogeo_port_value[MVS_PORT_MAX];
+extern uint8_t neogeo_port_value[MVS_PORT_MAX];
 extern int input_analog_value[2];
 
 void check_input_mode(void);

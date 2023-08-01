@@ -17,7 +17,7 @@
 
 #define MAKE_FIX_KEY(code, attr)	(code | (attr << 28))
 #define MAKE_SPR_KEY(code, attr)	(code | ((attr & 0x0f00) << 20))
-#define PSP_UNCACHE_PTR(p)			(((UINT32)(p)) | 0x40000000)
+#define PSP_UNCACHE_PTR(p)			(((uint32_t)(p)) | 0x40000000)
 
 
 /******************************************************************************
@@ -28,9 +28,9 @@ typedef struct sprite_t SPRITE;
 
 struct sprite_t
 {
-	UINT32 key;
-	UINT32 used;
-	INT32 index;
+	uint32_t key;
+	uint32_t used;
+	int32_t index;
 	SPRITE *next;
 };
 
@@ -51,7 +51,7 @@ static int clip_max_y;
 static int clear_spr_texture;
 static int clear_fix_texture;
 
-static UINT16 *scrbitmap;
+static uint16_t *scrbitmap;
 
 
 /*------------------------------------------------------------------------
@@ -67,10 +67,10 @@ static SPRITE ALIGN_DATA *fix_head[FIX_HASH_SIZE];
 static SPRITE ALIGN_DATA fix_data[FIX_TEXTURE_SIZE];
 static SPRITE *fix_free_head;
 
-static UINT8 *tex_fix;
+static uint8_t *tex_fix;
 static struct Vertex ALIGN_DATA vertices_fix[FIX_MAX_SPRITES * 2];
-static UINT16 fix_num;
-static UINT16 fix_texture_num;
+static uint16_t fix_num;
+static uint16_t fix_texture_num;
 
 
 /*------------------------------------------------------------------------
@@ -86,21 +86,21 @@ static SPRITE ALIGN_DATA *spr_head[SPR_HASH_SIZE];
 static SPRITE ALIGN_DATA spr_data[SPR_TEXTURE_SIZE];
 static SPRITE *spr_free_head;
 
-static UINT8 *tex_spr[3];
+static uint8_t *tex_spr[3];
 static struct Vertex ALIGN_DATA vertices_spr[SPR_MAX_SPRITES * 2];
-static UINT16 ALIGN_DATA spr_flags[SPR_MAX_SPRITES];
-static UINT16 spr_num;
-static UINT16 spr_texture_num;
-static UINT16 spr_index;
+static uint16_t ALIGN_DATA spr_flags[SPR_MAX_SPRITES];
+static uint16_t spr_num;
+static uint16_t spr_texture_num;
+static uint16_t spr_index;
 
 
 /*------------------------------------------------------------------------
 	カラールックアップテーブル
 ------------------------------------------------------------------------*/
 
-static UINT16 *clut;
+static uint16_t *clut;
 
-static const UINT32 ALIGN_DATA color_table[16] =
+static const uint32_t ALIGN_DATA color_table[16] =
 {
 	0x00000000, 0x10101010, 0x20202020, 0x30303030,
 	0x40404040, 0x50505050, 0x60606060, 0x70707070,
@@ -128,7 +128,7 @@ static const int ALIGN_DATA swizzle_table_8bit[16] =
 	FIXテクスチャからスプライト番号を取得
 ------------------------------------------------------------------------*/
 
-static int fix_get_sprite(UINT32 key)
+static int fix_get_sprite(uint32_t key)
 {
 	SPRITE *p = fix_head[key & FIX_HASH_MASK];
 
@@ -149,9 +149,9 @@ static int fix_get_sprite(UINT32 key)
 	FIXテクスチャにスプライトを登録
 ------------------------------------------------------------------------*/
 
-static int fix_insert_sprite(UINT32 key)
+static int fix_insert_sprite(uint32_t key)
 {
-	UINT16 hash = key & FIX_HASH_MASK;
+	uint16_t hash = key & FIX_HASH_MASK;
 	SPRITE *p = fix_head[hash];
 	SPRITE *q = fix_free_head;
 
@@ -232,7 +232,7 @@ static void fix_delete_sprite(void)
 	SPRテクスチャからスプライト番号を取得
 ------------------------------------------------------------------------*/
 
-static int spr_get_sprite(UINT32 key)
+static int spr_get_sprite(uint32_t key)
 {
 	SPRITE *p = spr_head[key & SPR_HASH_MASK];
 
@@ -253,9 +253,9 @@ static int spr_get_sprite(UINT32 key)
 	SPRテクスチャにスプライトを登録
 ------------------------------------------------------------------------*/
 
-static int spr_insert_sprite(UINT32 key)
+static int spr_insert_sprite(uint32_t key)
 {
-	UINT16 hash = key & SPR_HASH_MASK;
+	uint16_t hash = key & SPR_HASH_MASK;
 	SPRITE *p = spr_head[hash];
 	SPRITE *q = spr_free_head;
 
@@ -413,8 +413,8 @@ void blit_reset(void)
 {
 	int i;
 
-	scrbitmap  = video_frame_addr(work_frame, 0, 0);
-	tex_spr[0] = (UINT8 *)(scrbitmap + BUF_WIDTH * SCR_HEIGHT);
+	scrbitmap  = video_driver->frameAddr(video_data, work_frame, 0, 0);
+	tex_spr[0] = (uint8_t *)(scrbitmap + BUF_WIDTH * SCR_HEIGHT);
 	tex_spr[1] = tex_spr[0] + BUF_WIDTH * TEXTURE_HEIGHT;
 	tex_spr[2] = tex_spr[1] + BUF_WIDTH * TEXTURE_HEIGHT;
 	tex_fix    = tex_spr[2] + BUF_WIDTH * TEXTURE_HEIGHT;
@@ -425,7 +425,7 @@ void blit_reset(void)
 	clip_min_y = FIRST_VISIBLE_LINE;
 	clip_max_y = LAST_VISIBLE_LINE;
 
-	clut = (UINT16 *)PSP_UNCACHE_PTR(&video_palettebank[palette_bank]);
+	clut = (uint16_t *)PSP_UNCACHE_PTR(&video_palettebank[palette_bank]);
 
 	blit_clear_all_sprite();
 }
@@ -445,7 +445,7 @@ void blit_start(int start, int end)
 
 	if (start == FIRST_VISIBLE_LINE)
 	{
-		clut = (UINT16 *)PSP_UNCACHE_PTR(&video_palettebank[palette_bank]);
+		clut = (uint16_t *)PSP_UNCACHE_PTR(&video_palettebank[palette_bank]);
 
 		fix_num = 0;
 
@@ -481,7 +481,7 @@ void blit_start(int start, int end)
 
 void blit_finish(void)
 {
-	video_copy_rect(work_frame, draw_frame, &mvs_src_clip, &mvs_clip[option_stretch]);
+	video_driver->copyRect(video_data, work_frame, draw_frame, &mvs_src_clip, &mvs_clip[option_stretch]);
 }
 
 
@@ -489,17 +489,17 @@ void blit_finish(void)
 	FIXを描画リストに登録
 ------------------------------------------------------------------------*/
 
-void blit_draw_fix(int x, int y, UINT32 code, UINT32 attr)
+void blit_draw_fix(int x, int y, uint32_t code, uint32_t attr)
 {
-	INT16 idx;
+	int16_t idx;
 	struct Vertex *vertices;
-	UINT32 key = MAKE_FIX_KEY(code, attr);
+	uint32_t key = MAKE_FIX_KEY(code, attr);
 
 	if ((idx = fix_get_sprite(key)) < 0)
 	{
-		UINT32 col, tile;
-		UINT8 *src, *dst, lines = 8;
-		UINT32 datal, datah;
+		uint32_t col, tile;
+		uint8_t *src, *dst, lines = 8;
+		uint32_t datal, datah;
 
 		if (fix_texture_num == FIX_TEXTURE_SIZE - 1)
 			fix_delete_sprite();
@@ -511,15 +511,15 @@ void blit_draw_fix(int x, int y, UINT32 code, UINT32 attr)
 
 		while (lines--)
 		{
-			tile = *(UINT32 *)(src + 0);
+			tile = *(uint32_t *)(src + 0);
 #if 0
-			*(UINT32 *)(dst +  0) = ((tile >> 0) & 0x0f0f0f0f) | col;
-			*(UINT32 *)(dst +  4) = ((tile >> 4) & 0x0f0f0f0f) | col;
+			*(uint32_t *)(dst +  0) = ((tile >> 0) & 0x0f0f0f0f) | col;
+			*(uint32_t *)(dst +  4) = ((tile >> 4) & 0x0f0f0f0f) | col;
 #else
 			datal = ((tile & 0x0000000f) >>  0) | ((tile & 0x000000f0) <<  4) | ((tile & 0x00000f00) <<  8) | ((tile & 0x0000f000) << 12) | col;
 			datah = ((tile & 0x000f0000) >> 16) | ((tile & 0x00f00000) >> 12) | ((tile & 0x0f000000) >>  8) | ((tile & 0xf0000000) >>  4) | col;
-			*(UINT32 *)(dst +  0) = datal;
-			*(UINT32 *)(dst +  4) = datah;
+			*(uint32_t *)(dst +  0) = datal;
+			*(uint32_t *)(dst +  4) = datah;
 #endif
 			src += 4;
 			dst += 16;
@@ -570,18 +570,18 @@ void blit_finish_fix(void)
 	SPRを描画リストに登録
 ------------------------------------------------------------------------*/
 
-void blit_draw_spr(int x, int y, int w, int h, UINT32 code, UINT32 attr)
+void blit_draw_spr(int x, int y, int w, int h, uint32_t code, uint32_t attr)
 {
-	INT16 idx;
+	int16_t idx;
 	struct Vertex *vertices;
-	UINT32 key;
+	uint32_t key;
 
 	key = MAKE_SPR_KEY(code, attr);
 
 	if ((idx = spr_get_sprite(key)) < 0)
 	{
-		UINT32 col, tile;
-		UINT8 *src, *dst, lines = 16;
+		uint32_t col, tile;
+		uint8_t *src, *dst, lines = 16;
 
 		if (spr_texture_num == SPR_TEXTURE_SIZE - 1)
 			spr_delete_sprite();
@@ -593,12 +593,12 @@ void blit_draw_spr(int x, int y, int w, int h, UINT32 code, UINT32 attr)
 
 		while (lines--)
 		{
-			tile = *(UINT32 *)(src + 0);
-			*(UINT32 *)(dst +  0) = ((tile >> 0) & 0x0f0f0f0f) | col;
-			*(UINT32 *)(dst +  4) = ((tile >> 4) & 0x0f0f0f0f) | col;
-			tile = *(UINT32 *)(src + 4);
-			*(UINT32 *)(dst +  8) = ((tile >> 0) & 0x0f0f0f0f) | col;
-			*(UINT32 *)(dst + 12) = ((tile >> 4) & 0x0f0f0f0f) | col;
+			tile = *(uint32_t *)(src + 0);
+			*(uint32_t *)(dst +  0) = ((tile >> 0) & 0x0f0f0f0f) | col;
+			*(uint32_t *)(dst +  4) = ((tile >> 4) & 0x0f0f0f0f) | col;
+			tile = *(uint32_t *)(src + 4);
+			*(uint32_t *)(dst +  8) = ((tile >> 0) & 0x0f0f0f0f) | col;
+			*(uint32_t *)(dst + 12) = ((tile >> 4) & 0x0f0f0f0f) | col;
 			src += 8;
 			dst += swizzle_table_8bit[lines];
 		}
@@ -631,7 +631,7 @@ void blit_draw_spr(int x, int y, int w, int h, UINT32 code, UINT32 attr)
 void blit_finish_spr(void)
 {
 	int i, total_sprites = 0;
-	UINT16 flags, *pflags = spr_flags;
+	uint16_t flags, *pflags = spr_flags;
 	struct Vertex *vertices, *vertices_tmp;
 
 	if (!spr_index) return;
@@ -682,17 +682,17 @@ void blit_finish_spr(void)
 	SPR ソフトウェア描画
 ******************************************************************************/
 
-static void drawgfxline_fixed(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom);
-static void drawgfxline_fixed_flip(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom);
-static void drawgfxline_zoom(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom);
-static void drawgfxline_zoom_flip(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom);
+static void drawgfxline_fixed(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom);
+static void drawgfxline_fixed_flip(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom);
+static void drawgfxline_zoom(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom);
+static void drawgfxline_zoom_flip(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom);
 
-static void drawgfxline_fixed_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom);
-static void drawgfxline_fixed_flip_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom);
-static void drawgfxline_zoom_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom);
-static void drawgfxline_zoom_flip_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom);
+static void drawgfxline_fixed_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom);
+static void drawgfxline_fixed_flip_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom);
+static void drawgfxline_zoom_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom);
+static void drawgfxline_zoom_flip_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom);
 
-static void ALIGN_DATA (*drawgfxline[8])(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom) =
+static void ALIGN_DATA (*drawgfxline[8])(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom) =
 {
 	drawgfxline_zoom,					// 0000
 	drawgfxline_zoom_flip,				// 0001
@@ -705,7 +705,7 @@ static void ALIGN_DATA (*drawgfxline[8])(UINT32 *src, UINT16 *dst, UINT16 *pal, 
 };
 
 
-static const UINT8 zoom_x_tables[][16] =
+static const uint8_t zoom_x_tables[][16] =
 {
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
 	{ 0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0 },
@@ -726,10 +726,10 @@ static const UINT8 zoom_x_tables[][16] =
 //	{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 }
 };
 
-static void drawgfxline_zoom(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom)
+static void drawgfxline_zoom(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom)
 {
-	UINT32 tile;
-	const UINT8 *zoom_x_table = zoom_x_tables[zoom];
+	uint32_t tile;
+	const uint8_t *zoom_x_table = zoom_x_tables[zoom];
 
 	tile = src[0];
 	if (zoom_x_table[ 0]) { if (tile & 0x0000000f) *dst = pal[(tile >>  0) & 0x0f]; dst++; }
@@ -752,10 +752,10 @@ static void drawgfxline_zoom(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom)
 	if (zoom_x_table[15]) { if (tile & 0xf0000000) *dst = pal[(tile >> 28) & 0x0f]; }
 }
 
-static void drawgfxline_zoom_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom)
+static void drawgfxline_zoom_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom)
 {
-	UINT32 tile;
-	const UINT8 *zoom_x_table = zoom_x_tables[zoom];
+	uint32_t tile;
+	const uint8_t *zoom_x_table = zoom_x_tables[zoom];
 
 	tile = src[0];
 	if (zoom_x_table[ 0]) { *dst = pal[(tile >>  0) & 0x0f]; dst++; }
@@ -778,10 +778,10 @@ static void drawgfxline_zoom_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int z
 	if (zoom_x_table[15]) { *dst = pal[(tile >> 28) & 0x0f]; }
 }
 
-static void drawgfxline_zoom_flip(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom)
+static void drawgfxline_zoom_flip(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom)
 {
-	UINT32 tile;
-	const UINT8 *zoom_x_table = zoom_x_tables[zoom];
+	uint32_t tile;
+	const uint8_t *zoom_x_table = zoom_x_tables[zoom];
 
 	tile = src[1];
 	if (zoom_x_table[ 0]) { if (tile & 0xf0000000) *dst = pal[(tile >> 28) & 0x0f]; dst++; }
@@ -804,10 +804,10 @@ static void drawgfxline_zoom_flip(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoo
 	if (zoom_x_table[15]) { if (tile & 0x0000000f) *dst = pal[(tile >>  0) & 0x0f]; }
 }
 
-static void drawgfxline_zoom_flip_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom)
+static void drawgfxline_zoom_flip_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom)
 {
-	UINT32 tile;
-	const UINT8 *zoom_x_table = zoom_x_tables[zoom];
+	uint32_t tile;
+	const uint8_t *zoom_x_table = zoom_x_tables[zoom];
 
 	tile = src[1];
 	if (zoom_x_table[ 0]) { *dst = pal[(tile >> 28) & 0x0f]; dst++; }
@@ -830,9 +830,9 @@ static void drawgfxline_zoom_flip_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, 
 	if (zoom_x_table[15]) { *dst = pal[(tile >>  0) & 0x0f]; }
 }
 
-static void drawgfxline_fixed(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom)
+static void drawgfxline_fixed(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom)
 {
-	UINT32 tile;
+	uint32_t tile;
 
 	tile = src[0];
 	if (tile)
@@ -862,9 +862,9 @@ static void drawgfxline_fixed(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom)
 	}
 }
 
-static void drawgfxline_fixed_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom)
+static void drawgfxline_fixed_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom)
 {
-	UINT32 tile;
+	uint32_t tile;
 
 	tile = src[0];
 	dst[ 0] = pal[(tile >>  0) & 0x0f];
@@ -887,9 +887,9 @@ static void drawgfxline_fixed_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int 
 	dst[15] = pal[(tile >> 28) & 0x0f];
 }
 
-static void drawgfxline_fixed_flip(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom)
+static void drawgfxline_fixed_flip(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom)
 {
-	UINT32 tile;
+	uint32_t tile;
 
 	tile = src[0];
 	if (tile)
@@ -919,9 +919,9 @@ static void drawgfxline_fixed_flip(UINT32 *src, UINT16 *dst, UINT16 *pal, int zo
 	}
 }
 
-static void drawgfxline_fixed_flip_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal, int zoom)
+static void drawgfxline_fixed_flip_opaque(uint32_t *src, uint16_t *dst, uint16_t *pal, int zoom)
 {
-	UINT32 tile;
+	uint32_t tile;
 
 	tile = src[1];
 	dst[ 0] = pal[(tile >> 28) & 0x0f];
@@ -944,14 +944,14 @@ static void drawgfxline_fixed_flip_opaque(UINT32 *src, UINT16 *dst, UINT16 *pal,
 	dst[15] = pal[(tile >>  0) & 0x0f];
 }
 
-void blit_draw_spr_line(int x, int y, int zoom_x, int sprite_y, UINT32 code, UINT16 attr, UINT8 opaque)
+void blit_draw_spr_line(int x, int y, int zoom_x, int sprite_y, uint32_t code, uint16_t attr, uint8_t opaque)
 {
-	UINT32 src = code << 7;
-	UINT32 dst = (y << 9) + x;
-	UINT8 flag = (attr & 1) | (opaque & SPRITE_OPAQUE) | ((zoom_x & 0x10) >> 2);
+	uint32_t src = code << 7;
+	uint32_t dst = (y << 9) + x;
+	uint8_t flag = (attr & 1) | (opaque & SPRITE_OPAQUE) | ((zoom_x & 0x10) >> 2);
 
 	if (attr & 0x0002) sprite_y ^= 0x0f;
 	src += sprite_y << 3;
 
-	(*drawgfxline[flag])((UINT32 *)&memory_region_gfx2[src], &scrbitmap[dst], &video_palette[(attr >> 8) << 4], zoom_x);
+	(*drawgfxline[flag])((uint32_t *)&memory_region_gfx2[src], &scrbitmap[dst], &video_palette[(attr >> 8) << 4], zoom_x);
 }

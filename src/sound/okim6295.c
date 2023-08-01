@@ -26,11 +26,11 @@
 
 typedef struct
 {
-	UINT32 offset;
-	INT32 sample;
-	UINT32 count;
-	INT32 signal;
-	INT32 step;
+	uint32_t offset;
+	int32_t sample;
+	uint32_t count;
+	int32_t signal;
+	int32_t step;
 	int data;
 	int volume;
 
@@ -43,20 +43,20 @@ typedef struct
 	int rate;
 	int source_step;
 	int stream_pos;
-	INT32 prev_sample;
-	INT32 curr_sample;
-	INT32 command;
-	UINT32 status;
-	UINT32 divisor;
+	int32_t prev_sample;
+	int32_t curr_sample;
+	int32_t command;
+	uint32_t status;
+	uint32_t divisor;
 
-	UINT8 *rom_base;
-	UINT8 *sample_rom[OKIM6295_VOICES];
+	uint8_t *rom_base;
+	uint8_t *sample_rom[OKIM6295_VOICES];
 
 } okim6295_t;
 
-static UINT32 ALIGN_DATA volume_tables[16];
-static INT32 ALIGN_DATA diff_lookup[49 * 16];
-static const INT32 ALIGN_DATA index_shift[8] = {-1, -1, -1, -1, 2, 4, 6, 8};
+static uint32_t ALIGN_DATA volume_tables[16];
+static int32_t ALIGN_DATA diff_lookup[49 * 16];
+static const int32_t ALIGN_DATA index_shift[8] = {-1, -1, -1, -1, 2, 4, 6, 8};
 
 static okim6295_t ALIGN_DATA OKIM6295;
 static okim6295_t *okim6295 = &OKIM6295;
@@ -107,7 +107,7 @@ static void OKIM6295_init_tables(void)
 		/* 3dB per step */
 		while (vol-- > 0)
 			out /= 1.412537545;	/* = 10 ^ (3/20) = 3dB */
-		volume_tables[step] = (UINT32)(out * 0.475);
+		volume_tables[step] = (uint32_t)(out * 0.475);
 	}
 }
 
@@ -179,13 +179,13 @@ void OKIM6295_set_samplerate(void)
 
 ***********************************************************************************************/
 
-static void OKIM6295Update(INT32 *buffer, int length)
+static void OKIM6295Update(int32_t *buffer, int length)
 {
 	int prev_sample = okim6295->prev_sample;
 	int curr_sample = okim6295->curr_sample;
 	int stream_pos  = okim6295->stream_pos;
 	int i, nibble, signal;
-	INT32 *buf = buffer;
+	int32_t *buf = buffer;
 
 	while (length--)
 	{
@@ -295,7 +295,7 @@ WRITE8_HANDLER( OKIM6295_data_w )
 	{
 		int i, start, stop;
 		int volume = data & 0x0f;
-		UINT8 *base;
+		uint8_t *base;
 
 		data >>= 4;
 

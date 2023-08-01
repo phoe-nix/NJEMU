@@ -27,8 +27,8 @@ static int menu_reset(void)
 {
 	if (messagebox(MB_RESETEMULATION))
 	{
-		video_clear_screen();
-		video_flip_screen(1);
+		video_driver->clearScreen(video_data);
+		video_driver->flipScreen(video_data, 1);
 		cheat_num = 0; 			//disable cheat
 		Loop = LOOP_RESET;
 		Sleep = 0;
@@ -46,8 +46,8 @@ static int menu_resetdip(void)
 {
 	if (messagebox(MB_RESTARTEMULATION))
 	{
-		video_clear_screen();
-		video_flip_screen(1);
+		video_driver->clearScreen(video_data);
+		video_driver->flipScreen(video_data, 1);
 		cheat_num = 0; 			//disable cheat
 		Loop = LOOP_RESET;		//dip no need to restart
 //		Loop = LOOP_RESTART;
@@ -61,8 +61,8 @@ static int menu_restart(void)
 {
 	if (messagebox(MB_RESTARTEMULATION))
 	{
-		video_clear_screen();
-		video_flip_screen(1);
+		video_driver->clearScreen(video_data);
+		video_driver->flipScreen(video_data, 1);
 		cheat_num = 0; 			//disable cheat
 		Loop = LOOP_RESTART;
 		Sleep = 0;
@@ -303,43 +303,43 @@ static int menu_gamecfg(void)
 			update  = draw_battery_status(1);
 			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else
 		{
 			update  = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_wait_vsync();
+			video_driver->waitVsync(video_data);
 		}
 
 		prev_sel = sel;
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			sel--;
 			if (sel < 0) sel = gamecfg_num - 1;
 			if (gamecfg[sel].label[0] == '\n') sel--;
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			sel++;
 			if (sel > gamecfg_num - 1) sel = 0;
 			if (gamecfg[sel].label[0] == '\n') sel++;
 		}
-		else if (pad_pressed(PSP_CTRL_LTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_L))
 		{
 			sel -= rows;
 			if (sel < 0) sel = 0;
 			if (gamecfg[sel].label[0] == '\n') sel--;
 		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_R))
 		{
 			sel += rows;
 			if (sel >= gamecfg_num) sel = gamecfg_num - 1;
 			if (gamecfg[sel].label[0] == '\n') sel++;
 		}
-		else if (pad_pressed(PSP_CTRL_LEFT))
+		else if (pad_pressed(PLATFORM_PAD_LEFT))
 		{
 			if (gamecfg[sel].value && gamecfg[sel].enable)
 			{
@@ -352,7 +352,7 @@ static int menu_gamecfg(void)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_RIGHT))
+		else if (pad_pressed(PLATFORM_PAD_RIGHT))
 		{
 			if (gamecfg[sel].value && gamecfg[sel].enable)
 			{
@@ -365,12 +365,12 @@ static int menu_gamecfg(void)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			if (sel == gamecfg_num - 1)
 				break;
 		}
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PLATFORM_PAD_SELECT))
 		{
 			help(HELP_GAMECONFIG);
 			update = 1;
@@ -389,7 +389,7 @@ static int menu_gamecfg(void)
 
 		if (Loop == LOOP_EXIT) break;
 
-	} while (!pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_B2));
 
 	for (i = 0; i < gamecfg_num; i++)
 	{
@@ -963,43 +963,43 @@ int menu_cheatcfg(void)
 			update  = draw_battery_status(1);
 			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else
 		{
 			update  = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_wait_vsync();
+			video_driver->waitVsync(video_data);
 		}
 
 		prev_sel = sel;
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			sel--;
 			if (sel < 0) sel = cheatcfg_num - 1;
 			if (cheatcfg[sel].label[0] == '\n') sel--;
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			sel++;
 			if (sel > cheatcfg_num - 1) sel = 0;
 			if (cheatcfg[sel].label[0] == '\n') sel++;
 		}
-		else if (pad_pressed(PSP_CTRL_LTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_L))
 		{
 			sel -= rows;
 			if (sel < 0) sel = 0;
 			if (cheatcfg[sel].label[0] == '\n') sel--;
 		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_R))
 		{
 			sel += rows;
 			if (sel >= cheatcfg_num) sel = cheatcfg_num - 1;
 			if (cheatcfg[sel].label[0] == '\n') sel++;
 		}
-		else if (pad_pressed(PSP_CTRL_LEFT))
+		else if (pad_pressed(PLATFORM_PAD_LEFT))
 		{
 			if (cheatcfg[sel].value && cheatcfg[sel].enable)
 			{
@@ -1010,7 +1010,7 @@ int menu_cheatcfg(void)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_RIGHT))
+		else if (pad_pressed(PLATFORM_PAD_RIGHT))
 		{
 			if (cheatcfg[sel].value && cheatcfg[sel].enable)
 			{
@@ -1021,7 +1021,7 @@ int menu_cheatcfg(void)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			if (cheatcfg[sel].value && cheatcfg[sel].enable)
 			{
@@ -1032,7 +1032,7 @@ int menu_cheatcfg(void)
 				}
 			}
 		}/*
-		else if (pad_pressed(PSP_CTRL_SQUARE))
+		else if (pad_pressed(PLATFORM_PAD_B3))
 		{
 			if (cheatcfg[sel].value && cheatcfg[sel].enable)
 			{
@@ -1043,7 +1043,7 @@ int menu_cheatcfg(void)
 				}
 			}
 		}*/
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PLATFORM_PAD_SELECT))
 		{
 			help(HELP_CHEATCONFIG);
 			update = 1;
@@ -1061,7 +1061,7 @@ int menu_cheatcfg(void)
 
 		if (Loop == LOOP_EXIT) break;
 
-	} while (!pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_B2));
 /*
 	for (i = 0; i < cheatcfg_num; i++)
 	{
@@ -1215,30 +1215,30 @@ int menu_cheatcfg(void)
 
 			update  = draw_battery_status(1);
 			update |= ui_show_popup(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else
 		{
 			update  = draw_battery_status(0);
 			update |= ui_show_popup(0);
-			video_wait_vsync();
+			video_driver->waitVsync(video_data);
 		}
 
 		prev_sel = sel;
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			sel--;
 			if (sel < 0) sel = gamecfg_num - 1;
 			if (gamecfg[sel].label[0] == '\n') sel--;
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			sel++;
 			if (sel > gamecfg_num - 1) sel = 0;
 			if (gamecfg[sel].label[0] == '\n') sel++;
 		}
-		else if (pad_pressed(PSP_CTRL_LEFT))
+		else if (pad_pressed(PLATFORM_PAD_LEFT))
 		{
 			if (gamecfg[sel].value && gamecfg[sel].enable)
 			{
@@ -1251,7 +1251,7 @@ int menu_cheatcfg(void)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_RIGHT))
+		else if (pad_pressed(PLATFORM_PAD_RIGHT))
 		{
 			if (gamecfg[sel].value && gamecfg[sel].enable)
 			{
@@ -1264,12 +1264,12 @@ int menu_cheatcfg(void)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			if (sel == gamecfg_num - 1)
 				break;
 		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_R))
 		{
 			help(HELP_GAMECONFIG);
 			update = 1;
@@ -1288,7 +1288,7 @@ int menu_cheatcfg(void)
 
 		if (Loop == LOOP_EXIT) break;
 
-	} while (!pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_B2));
 
 	for (i = 0; i < gamecfg_num; i++)
 	{
@@ -1315,18 +1315,18 @@ int menu_cheatcfg(void)
 static const int button_value[13] =
 {
 	0,
-	PSP_CTRL_UP,
-	PSP_CTRL_DOWN,
-	PSP_CTRL_LEFT,
-	PSP_CTRL_RIGHT,
-	PSP_CTRL_CIRCLE,
-	PSP_CTRL_CROSS,
-	PSP_CTRL_SQUARE,
-	PSP_CTRL_TRIANGLE,
-	PSP_CTRL_LTRIGGER,
-	PSP_CTRL_RTRIGGER,
-	PSP_CTRL_START,
-	PSP_CTRL_SELECT
+	PLATFORM_PAD_UP,
+	PLATFORM_PAD_DOWN,
+	PLATFORM_PAD_LEFT,
+	PLATFORM_PAD_RIGHT,
+	PLATFORM_PAD_B1,
+	PLATFORM_PAD_B2,
+	PLATFORM_PAD_B3,
+	PLATFORM_PAD_B4,
+	PLATFORM_PAD_L,
+	PLATFORM_PAD_R,
+	PLATFORM_PAD_START,
+	PLATFORM_PAD_SELECT
 };
 
 typedef struct {
@@ -1571,43 +1571,43 @@ static int menu_keycfg(void)
 			update  = draw_battery_status(1);
 			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else
 		{
 			update  = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_wait_vsync();
+			video_driver->waitVsync(video_data);
 		}
 
 		prev_sel = sel;
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			sel--;
 			if (sel < 0) sel = keycfg_num - 1;
 			if (keycfg[sel].label[0] == '\n') sel--;
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			sel++;
 			if (sel > keycfg_num - 1) sel = 0;
 			if (keycfg[sel].label[0] == '\n') sel++;
 		}
-		else if (pad_pressed(PSP_CTRL_LTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_L))
 		{
 			sel -= rows;
 			if (sel < 0) sel = 0;
 			if (keycfg[sel].label[0] == '\n') sel--;
 		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_R))
 		{
 			sel += rows;
 			if (sel >= keycfg_num) sel = keycfg_num - 1;
 			if (keycfg[sel].label[0] == '\n') sel++;
 		}
-		else if (pad_pressed(PSP_CTRL_LEFT))
+		else if (pad_pressed(PLATFORM_PAD_LEFT))
 		{
 			if (keycfg[sel].type)
 			{
@@ -1645,7 +1645,7 @@ static int menu_keycfg(void)
 			}
 #endif
 		}
-		else if (pad_pressed(PSP_CTRL_RIGHT))
+		else if (pad_pressed(PLATFORM_PAD_RIGHT))
 		{
 			if (keycfg[sel].type == KEYCFG_BUTTON)
 			{
@@ -1696,12 +1696,12 @@ static int menu_keycfg(void)
 			}
 #endif
 		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			if (sel == keycfg_num - 1)
 				break;
 		}
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PLATFORM_PAD_SELECT))
 		{
 			help(HELP_KEYCONFIG);
 			update = 1;
@@ -1742,7 +1742,7 @@ static int menu_keycfg(void)
 
 		if (Loop == LOOP_EXIT) break;
 
-	} while (!pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_B2));
 
 	for (i = 0; i < keycfg_num; i++)
 	{
@@ -1875,43 +1875,43 @@ static int menu_dipswitch(void)
 			update  = draw_battery_status(1);
 			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else
 		{
 			update  = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_wait_vsync();
+			video_driver->waitVsync(video_data);
 		}
 
 		prev_sel = sel;
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			sel--;
 			if (sel < 0) sel = dipswitch_num - 1;
 			if (dipswitch[sel].label[0] == '\n') sel--;
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			sel++;
 			if (sel > dipswitch_num - 1) sel = 0;
 			if (dipswitch[sel].label[0] == '\n') sel++;
 		}
-		else if (pad_pressed(PSP_CTRL_LTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_L))
 		{
 			sel -= rows;
 			if (sel < 0) sel = 0;
 			if (dipswitch[sel].label[0] == '\n') sel--;
 		}
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_R))
 		{
 			sel += rows;
 			if (sel >= dipswitch_num) sel = dipswitch_num - 1;
 			if (dipswitch[sel].label[0] == '\n') sel++;
 		}
-		else if (pad_pressed(PSP_CTRL_LEFT))
+		else if (pad_pressed(PLATFORM_PAD_LEFT))
 		{
 			if (dipswitch[sel].mask)
 			{
@@ -1924,7 +1924,7 @@ static int menu_dipswitch(void)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_RIGHT))
+		else if (pad_pressed(PLATFORM_PAD_RIGHT))
 		{
 			if (dipswitch[sel].mask)
 			{
@@ -1937,12 +1937,12 @@ static int menu_dipswitch(void)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			if (sel == dipswitch_num - 1)
 				break;
 		}
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PLATFORM_PAD_SELECT))
 		{
 			help(HELP_DIPSWITCH);
 			update = 1;
@@ -1961,7 +1961,7 @@ static int menu_dipswitch(void)
 
 		if (Loop == LOOP_EXIT) break;
 
-	} while (!pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_B2));
 
 #define INCLUDE_SAVE_DIPSWITCH
 
@@ -1990,7 +1990,7 @@ static int menu_dipswitch(void)
 #define STATE_FUNC_DEL		2
 
 
-static UINT8 slot[10];
+static uint8_t slot[10];
 static int state_func;
 static int state_sel;
 
@@ -2003,14 +2003,14 @@ static void state_draw_thumbnail(void)
 	{
 		RECT clip1 = { 0, 0, 112, 152 };
 		RECT clip2 = { 317, 34, 317+112, 34+152 };
-		video_draw_texture(GU_PSM_5551, VRAM_FMT, tex, draw_frame, &clip1, &clip2);
+		video_driver->drawTexture(video_data, GU_PSM_5551, VRAM_FMT, tex, draw_frame, &clip1, &clip2);
 	}
 	else
 #endif
 	{
 		RECT clip1 = { 0, 0, 152, 112 };
 		RECT clip2 = { 298, 52, 298+152, 52+112 };
-		video_draw_texture(GU_PSM_5551, VRAM_FMT, tex, draw_frame, &clip1, &clip2);
+		video_driver->drawTexture(video_data, GU_PSM_5551, VRAM_FMT, tex, draw_frame, &clip1, &clip2);
 	}
 }
 
@@ -2057,7 +2057,7 @@ static void state_refresh_screen(int reload_thumbnail)
 	uifont_print_shadow(i + 16, 5, UI_COLOR(UI_PAL_NORMAL), "|");
 	uifont_print_shadow(i + 24, 5, UI_COLOR(UI_PAL_TITLE), buf);
 
-	if (ui_text_get_language() == LANG_JAPANESE)
+	if (ui_text_driver->getLanguage(ui_text_data) == LANG_JAPANESE)
 		x = 20;
 	else
 		x = 0;
@@ -2166,11 +2166,11 @@ static int state_save_slot(void)
 		int res;
 
 		state_refresh_screen(0);
-		video_copy_rect(draw_frame, work_frame, &full_rect, &full_rect);
+		video_driver->copyRect(video_data, draw_frame, work_frame, &full_rect, &full_rect);
 
-		set_cpu_clock(psp_cpuclock);
+		power_driver->setCpuClock(NULL, platform_cpuclock);
 		res = state_save(state_sel);
-		set_cpu_clock(PSPCLOCK_222);
+		power_driver->setLowestCpuClock(NULL);
 
 		load_background(WP_STATE);
 
@@ -2178,7 +2178,7 @@ static int state_save_slot(void)
 		{
 			state_refresh_screen(1);
 			draw_battery_status(1);
-			video_copy_rect(draw_frame, show_frame, &full_rect, &full_rect);
+			video_driver->copyRect(video_data, draw_frame, show_frame, &full_rect, &full_rect);
 			res = messagebox(MB_FINISHSAVESTATE);
 		}
 		return res + 1;
@@ -2193,17 +2193,17 @@ static int state_load_slot(void)
 		int res;
 
 		state_refresh_screen(0);
-		video_copy_rect(draw_frame, work_frame, &full_rect, &full_rect);
+		video_driver->copyRect(video_data, draw_frame, work_frame, &full_rect, &full_rect);
 
-		set_cpu_clock(psp_cpuclock);
+		power_driver->setCpuClock(NULL, platform_cpuclock);
 		res = state_load(state_sel);
-		set_cpu_clock(PSPCLOCK_222);
+		power_driver->setLowestCpuClock(NULL);
 
 		if (res)
 		{
 			show_background();
 			draw_battery_status(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 
 			messagebox(MB_FINISHLOADSTATE);
 		}
@@ -2221,7 +2221,7 @@ static void state_delete_slot(void)
 		char path[MAX_PATH];
 
 		sprintf(path, "%sstate/%s.sv%d", launchDir, game_name, state_sel);
-		if (sceIoRemove(path) < 0)
+		if (remove(path) < 0)
 		{
 			ui_popup(TEXT(FAILD_TO_DELETE_FILEx), strrchr(path, '/') + 1);
 		}
@@ -2259,7 +2259,7 @@ static int menu_state(void)
 			update  = draw_battery_status(1);
 			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else if (update & UI_PARTIAL_REFRESH)
 		{
@@ -2285,44 +2285,44 @@ static int menu_state(void)
 			clip2.right  = clip2.left + w;
 			clip2.bottom = clip2.top  + h;
 
-			video_copy_rect(draw_frame, tex_frame, &clip1, &clip2);
-			video_copy_rect(show_frame, draw_frame, &full_rect, &full_rect);
-			video_copy_rect(tex_frame, draw_frame, &clip2, &clip1);
+			video_driver->copyRect(video_data, draw_frame, tex_frame, &clip1, &clip2);
+			video_driver->copyRect(video_data, show_frame, draw_frame, &full_rect, &full_rect);
+			video_driver->copyRect(video_data, tex_frame, draw_frame, &clip2, &clip1);
 
 			update  = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else
 		{
 			update  = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_wait_vsync();
+			video_driver->waitVsync(video_data);
 		}
 
 		update |= ui_light_update();
 		prev_sel = state_sel;
 		prev_func = state_func;
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			state_sel--;
 			if (state_sel < 0) state_sel = 10 - 1;
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			state_sel++;
 			if (state_sel >= 10) state_sel = 0;
 		}
-		else if (pad_pressed(PSP_CTRL_LEFT))
+		else if (pad_pressed(PLATFORM_PAD_LEFT))
 		{
 			if (state_func > STATE_FUNC_SAVE) state_func--;
 			if (state_version != current_state_version && state_func == STATE_FUNC_LOAD)
 				state_func--;
 		}
-		else if (pad_pressed(PSP_CTRL_RIGHT))
+		else if (pad_pressed(PLATFORM_PAD_RIGHT))
 		{
 			if (slot[state_sel])
 			{
@@ -2331,7 +2331,7 @@ static int menu_state(void)
 					state_func++;
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			int res = 0;
 
@@ -2364,7 +2364,7 @@ static int menu_state(void)
 			}
 			if (res) return 1;
 		}
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PLATFORM_PAD_SELECT))
 		{
 			help(HELP_STATE);
 			update = 1;
@@ -2380,7 +2380,7 @@ static int menu_state(void)
 
 		if (Loop == LOOP_EXIT) break;
 
-	} while (!pad_pressed(PSP_CTRL_LTRIGGER) && !pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_L) && !pad_pressed(PLATFORM_PAD_B2));
 
 	return 0;
 }
@@ -2445,7 +2445,7 @@ void showmenu(void)
 #ifdef SAVE_STATE
 	state_make_thumbnail();
 #endif
-	video_set_mode(32);
+	video_driver->setMode(video_data, 32);
 
 #if (EMU_SYSTEM == NCDZ)
 	if (cdda_playing == CDDA_PLAY) mp3_pause(1);
@@ -2466,8 +2466,8 @@ void showmenu(void)
 	}
 	mainmenu_num = i;
 
-	set_cpu_clock(PSPCLOCK_222);
-	video_clear_screen();
+	power_driver->setLowestCpuClock(NULL);
+	video_driver->clearScreen(video_data);
 	load_background(WP_LOGO);
 	ui_popup_reset();
 	pad_wait_clear();
@@ -2518,7 +2518,7 @@ void showmenu(void)
 			update  = draw_battery_status(1);
 			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else if (update & UI_PARTIAL_REFRESH)
 		{
@@ -2547,37 +2547,37 @@ void showmenu(void)
 			clip2.right  = clip2.left + w;
 			clip2.bottom = clip2.top  + h;
 
-			video_copy_rect(draw_frame, tex_frame, &clip1, &clip2);
-			video_copy_rect(show_frame, draw_frame, &full_rect, &full_rect);
-			video_copy_rect(tex_frame, draw_frame, &clip2, &clip1);
+			video_driver->copyRect(video_data, draw_frame, tex_frame, &clip1, &clip2);
+			video_driver->copyRect(video_data, show_frame, draw_frame, &full_rect, &full_rect);
+			video_driver->copyRect(video_data, tex_frame, draw_frame, &clip2, &clip1);
 
 			update  = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else
 		{
 			update  = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_wait_vsync();
+			video_driver->waitVsync(video_data);
 		}
 
 		update |= ui_light_update();
 		prev_sel = sel;
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			sel--;
 			if (sel < 0) sel = mainmenu_num - 1;
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			sel++;
 			if (sel >= mainmenu_num) sel = 0;
 		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			if (mainmenu[sel].menu_func)
 			{
@@ -2593,13 +2593,13 @@ void showmenu(void)
 			}
 			else break;
 		}
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PLATFORM_PAD_SELECT))
 		{
 			help(HELP_MAINMENU);
 			update = 1;
 		}
 #ifdef SAVE_STATE
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_R))
 		{
 			if (menu_state()) break;
 			pad_wait_clear();
@@ -2621,20 +2621,20 @@ void showmenu(void)
 
 		if (Loop == LOOP_EXIT) break;
 
-	} while (!pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_B2));
 
 	autoframeskip_reset();
 	blit_clear_all_sprite();
 
 	pad_wait_clear();
 	ui_popup_reset();
-	video_set_mode(16);
-	video_clear_screen();
-	video_clear_frame(work_frame);
+	video_driver->setMode(video_data, 16);
+	video_driver->clearScreen(video_data);
+	video_driver->clearFrame(video_data, work_frame);
 #if (EMU_SYSTEM != CPS2)
 	sound_set_samplerate();
 #endif
-	set_cpu_clock(psp_cpuclock);
+	power_driver->setCpuClock(NULL, platform_cpuclock);
 
 #if USE_CACHE
 	cache_sleep(0);
@@ -2667,7 +2667,7 @@ void showmenu(void)
 }
 
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 
 /*------------------------------------------------------
 	¥«¥é©`ÔO¶¨¥á¥Ë¥å©`
@@ -2827,17 +2827,17 @@ void show_color_menu(void)
 			update  = draw_battery_status(1);
 			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else
 		{
 			update  = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_wait_vsync();
+			video_driver->waitVsync(video_data);
 		}
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			if (sel_y > 0)
 			{
@@ -2845,7 +2845,7 @@ void show_color_menu(void)
 				update = 1;
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			if (sel < 2)
 			{
@@ -2864,7 +2864,7 @@ void show_color_menu(void)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_LEFT))
+		else if (pad_pressed(PLATFORM_PAD_LEFT))
 		{
 			if (sel_y == 0)
 			{
@@ -2904,7 +2904,7 @@ void show_color_menu(void)
 			}
 			update = 1;
 		}
-		else if (pad_pressed(PSP_CTRL_RIGHT))
+		else if (pad_pressed(PLATFORM_PAD_RIGHT))
 		{
 			if (sel_y == 0)
 			{
@@ -2944,7 +2944,7 @@ void show_color_menu(void)
 			}
 			update = 1;
 		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			if (sel >= 2)
 			{
@@ -2958,7 +2958,7 @@ void show_color_menu(void)
 			}
 			update = 1;
 		}
-		else if (pad_pressed(PSP_CTRL_SQUARE))
+		else if (pad_pressed(PLATFORM_PAD_B3))
 		{
 			if (sel >= 2)
 			{
@@ -2972,7 +2972,7 @@ void show_color_menu(void)
 			}
 			update = 1;
 		}
-		else if (pad_pressed(PSP_CTRL_TRIANGLE))
+		else if (pad_pressed(PLATFORM_PAD_B4))
 		{
 //			bgimage_type = BG_DEFAULT;
 			bgimage_type = 3;
@@ -2990,7 +2990,7 @@ void show_color_menu(void)
 			reload_bg = 1;
 			update = 1;
 		}
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PLATFORM_PAD_SELECT))
 		{
 			help(HELP_COLORSETTINGS);
 			update = 1;
@@ -3006,7 +3006,7 @@ void show_color_menu(void)
 
 		if (Loop == LOOP_EXIT) break;
 
-	} while (!pad_pressed(PSP_CTRL_RTRIGGER) && !pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_R) && !pad_pressed(PLATFORM_PAD_B2));
 
 	pad_wait_clear();
 	load_background(WP_FILER);

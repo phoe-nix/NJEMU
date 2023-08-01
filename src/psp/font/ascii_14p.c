@@ -16,7 +16,7 @@
 	gryph data
 ------------------------------------------------------*/
 
-static const UINT8 ALIGN_DATA ascii_14p[] = {
+static const uint8_t ALIGN_DATA ascii_14p[] = {
 	0xf0,0x08,0xf0,0x07,0xf0,0x07,0xf0,0x07,0xf0,0x07,0xf0,0x07,0xf0,0x07,0xf0,0x07,
 	0x70,0x03,0x71,0x05,0xf3,0x0b,0xf3,0x0b,0x50,0x6e,0x5f,0xd0,0xb5,0x06,0x55,0x83,
 	0x00,0x00,0x53,0x70,0x01,0x00,0xb9,0xf1,0x03,0x00,0x8b,0xf3,0x00,0x31,0x9c,0xf7,
@@ -253,7 +253,7 @@ static const int ALIGN_DATA ascii_14p_pos[NUM_FONTS] = {
 	0x000c24,0x000c4c,0x000c74,0x000c8f,0x000caa,0x000cce,0x000cf2,0x000d16,0x000d43,0x000d67,0x000d85,0x000da0,0x000dbc,0x000dd8,0x000df4,0x000dfd
 };
 
-static const INT8 ALIGN_DATA ascii_14p_width[NUM_FONTS] = {
+static const int8_t ALIGN_DATA ascii_14p_width[NUM_FONTS] = {
 	 0, 4, 6, 8, 8, 8,10, 4, 6, 4, 8, 8, 4, 6, 4, 8,
 	 8, 4, 8, 8, 8, 8, 8, 6, 8, 8, 4, 4, 6, 8, 6, 8,
 	10, 8, 8, 8, 8, 8, 8,10, 8, 4, 6, 8, 8,10, 8,10,
@@ -262,7 +262,7 @@ static const INT8 ALIGN_DATA ascii_14p_width[NUM_FONTS] = {
 	 8, 8, 6, 6, 6, 8, 8,10, 8, 6, 6, 4, 4, 4, 6, 4
 };
 
-static const INT8 ALIGN_DATA ascii_14p_height[NUM_FONTS] = {
+static const int8_t ALIGN_DATA ascii_14p_height[NUM_FONTS] = {
 	 0,12, 3,14,14,12,12, 4,13,14, 9, 8, 4, 2, 3,14,
 	13,12,12,12,12,12,12,12,12,12, 8,10, 9, 6, 9,13,
 	14,12,12,12,11,12,12,12,12,12,12,12,12,12,12,13,
@@ -271,7 +271,7 @@ static const INT8 ALIGN_DATA ascii_14p_height[NUM_FONTS] = {
 	10,10, 9, 9,12, 9, 9, 9, 9,10, 9,14,14,14, 3, 4
 };
 
-static const INT8 ALIGN_DATA ascii_14p_skipx[NUM_FONTS] = {
+static const int8_t ALIGN_DATA ascii_14p_skipx[NUM_FONTS] = {
 	 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0,
 	 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -280,7 +280,7 @@ static const INT8 ALIGN_DATA ascii_14p_skipx[NUM_FONTS] = {
 	 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1
 };
 
-static const INT8 ALIGN_DATA ascii_14p_skipy[NUM_FONTS] = {
+static const int8_t ALIGN_DATA ascii_14p_skipy[NUM_FONTS] = {
 	 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 2, 3,10, 6,10, 0,
 	 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 2, 4, 2, 0,
 	 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
@@ -289,7 +289,7 @@ static const INT8 ALIGN_DATA ascii_14p_skipy[NUM_FONTS] = {
 	 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 5
 };
 
-static const INT8 ALIGN_DATA ascii_14p_pitch[NUM_FONTS] = {
+static const int8_t ALIGN_DATA ascii_14p_pitch[NUM_FONTS] = {
 	 5, 4, 6, 8, 8, 8,10, 3, 5, 5, 8, 8, 3, 5, 3, 8,
 	 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 4, 8, 8, 8, 8,
 	11,10, 9, 8, 8, 8, 8, 9, 8, 3, 7, 9, 8,10, 8, 9,
@@ -303,7 +303,7 @@ static const INT8 ALIGN_DATA ascii_14p_pitch[NUM_FONTS] = {
 	functions
 ------------------------------------------------------*/
 
-int ascii_14p_get_gryph(struct font_t *font, UINT16 code)
+int ascii_14p_get_gryph(struct font_t *font, uint16_t code)
 {
 	if (code < NUM_FONTS)
 	{
@@ -318,7 +318,7 @@ int ascii_14p_get_gryph(struct font_t *font, UINT16 code)
 	return 0;
 }
 
-int ascii_14p_get_pitch(UINT16 code)
+int ascii_14p_get_pitch(uint16_t code)
 {
 	if (code < NUM_FONTS)
 		return ascii_14p_pitch[code];

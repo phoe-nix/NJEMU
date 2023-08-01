@@ -45,7 +45,7 @@ const char *bios_name[BIOS_MAX] =
 	"Debug MVS (Hack?)"
 };
 
-const UINT32 bios_crc[BIOS_MAX] =
+const uint32_t bios_crc[BIOS_MAX] =
 {
 	0x9036d879,	// Europe Ver.2
 	0xc7f2fa45,	// Europe Ver.1
@@ -77,7 +77,7 @@ const UINT32 bios_crc[BIOS_MAX] =
 	0x698ebb7d	// Debug BIOS
 };
 
-const UINT32 bios_patch_address[BIOS_MAX] =
+const uint32_t bios_patch_address[BIOS_MAX] =
 {
 	0x011c62,	// Europe Ver.2
 	0x011c62,	// Europe Ver.1
@@ -110,8 +110,8 @@ const UINT32 bios_patch_address[BIOS_MAX] =
 };
 
 
-const UINT32 sfix_crc  = 0xc2ea0cfd;//old 0x354029fc
-const UINT32 lorom_crc = 0x5a86cff2;//old 0xe09e253c
+const uint32_t sfix_crc  = 0xc2ea0cfd;//old 0x354029fc
+const uint32_t lorom_crc = 0x5a86cff2;//old 0xe09e253c
 
 const char *bios_zip   = "neogeo";
 const char *sfix_name  = "sfix.sfx";
@@ -122,7 +122,7 @@ const char *lorom_name = "000-lo.lo";
 	ローカル変数
 ******************************************************************************/
 
-static UINT8 bios_exist[BIOS_MAX];
+static uint8_t bios_exist[BIOS_MAX];
 
 
 /******************************************************************************
@@ -162,8 +162,8 @@ static int bios_check(int flag)
 
 	if (!flag) ui_popup_reset();
 
-	video_copy_rect(show_frame, draw_frame, &full_rect, &full_rect);
-	video_flip_screen(1);
+	video_driver->copyRect(video_data, show_frame, draw_frame, &full_rect, &full_rect);
+	video_driver->flipScreen(video_data, 1);
 
 	for (i = 0; i < BIOS_MAX; i++)
 		bios_exist[i] = 0;
@@ -297,19 +297,19 @@ void bios_select(int flag)
 			update  = draw_battery_status(1);
 			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else
 		{
 			update  = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_wait_vsync();
+			video_driver->waitVsync(video_data);
 		}
 
 		prev_sel = sel;
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			if (sel > 0)
 			{
@@ -326,7 +326,7 @@ void bios_select(int flag)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			if (sel < BIOS_MAX - 1)
 			{
@@ -343,12 +343,12 @@ void bios_select(int flag)
 				}
 			}
 		}
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 		{
 			neogeo_bios = sel;
 			break;
 		}
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PLATFORM_PAD_SELECT))
 		{
 			help(HELP_SELECTBIOS);
 			update = 1;
@@ -366,7 +366,7 @@ void bios_select(int flag)
 		pad_update();
 
 		if (Loop == LOOP_EXIT) break;
-	} while (!pad_pressed(PSP_CTRL_LTRIGGER) && !pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PLATFORM_PAD_L) && !pad_pressed(PLATFORM_PAD_B2));
 
 	pad_wait_clear();
 	ui_popup_reset();

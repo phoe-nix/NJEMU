@@ -38,7 +38,7 @@ extern int cps_flip_screen;
 #if ENABLE_RASTER_OPTION
 extern int cps_raster_enable;
 #endif
-extern UINT16 video_palette[3072];
+extern uint16_t video_palette[3072];
 
 void cps1_scan_object(void);
 void cps1_scan_scroll1(void);

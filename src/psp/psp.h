@@ -2,7 +2,7 @@
 
 	psp.c
 
-	PSP•·•§•Û
+	PSPÔøΩ·•§ÔøΩÔøΩ
 
 ******************************************************************************/
 
@@ -26,7 +26,7 @@
 #include <psppower.h>
 #include <psprtc.h>
 #include <pspsdk.h>
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 #include <kubridge.h>
 #endif
 #include <stdio.h>
@@ -35,33 +35,40 @@
 #include <malloc.h>
 #include <sys/unistd.h>
 
-#include "psp/ui_text.h"
+#include "common/ticker_driver.h"
+#include "common/input_driver.h"
+#include "common/power_driver.h"
+#include "common/video_driver.h"
+#include "common/ui_text_driver.h"
+
 #include "psp/config.h"
 #include "psp/filer.h"
-#include "psp/input.h"
-#include "psp/ticker.h"
 #include "psp/ui.h"
 #include "psp/ui_draw.h"
 #include "psp/ui_menu.h"
-#include "psp/video.h"
-#include "psp/sound.h"
+#include "psp/psp_video.h"
 #include "psp/png.h"
+#include "psp/psp_power.h"
 #ifdef ADHOC
 #include "psp/adhoc.h"
 #endif
-#if (EMU_SYSTEM == NCDZ)
-#include "psp/mp3.h"
-#endif
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 #include "psp/wallpaper.h"
 #endif
 #include "SystemButtons.h"
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 #define PSP2K_MEM_TOP		0xa000000//0xa000000
 #define PSP2K_MEM_BOTTOM	0xbffffff//0xbffffff
 #define PSP2K_MEM_SIZE		0x2000000//0x2000000
 #endif
+
+/******************************************************************************
+	PSP„ÅÆÂÆöÊï∞
+******************************************************************************/
+
+#define REFRESH_RATE		(59.940059)		// (9000000Hz * 1) / (525 * 286)
+#define TICKS_PER_FRAME		(16683.333333)
 
 enum
 {
@@ -72,23 +79,11 @@ enum
 	LOOP_EXEC
 };
 
-enum
-{
-	PSPCLOCK_222 = 0,
-	PSPCLOCK_266,
-	PSPCLOCK_300,
-	PSPCLOCK_333,
-	PSPCLOCK_MAX
-};
-
 extern volatile int Loop;
 extern volatile int Sleep;
 extern char launchDir[MAX_PATH];
-extern int psp_cpuclock;
 extern int devkit_version;
 extern int systembuttons_available;
 extern int njemu_debug;
-
-void set_cpu_clock(int value);
 
 #endif /* PSP_MAIN_H */

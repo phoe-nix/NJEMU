@@ -46,7 +46,7 @@ extern "C" {
 #endif
 
 #ifndef _ZLIB_H
-#include "zlib.h"
+#include <zlib.h>
 #endif
 
 typedef void *unzFile;

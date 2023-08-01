@@ -6,6 +6,7 @@
 
 ******************************************************************************/
 
+#include <fcntl.h>
 #include <pspsdk.h>
 #include <pspctrl.h>
 #include <pspimpose_driver.h>
@@ -15,10 +16,10 @@
 
 
 #ifdef KERNEL_MODE
-PSP_MODULE_INFO(PBPNAME_STR, PSP_MODULE_KERNEL, VERSION_MAJOR, VERSION_MINOR);
+PSP_MODULE_INFO(TARGET_STR, PSP_MODULE_KERNEL, VERSION_MAJOR, VERSION_MINOR);
 PSP_MAIN_THREAD_ATTR(0);
 #else
-PSP_MODULE_INFO(PBPNAME_STR, PSP_MODULE_USER, VERSION_MAJOR, VERSION_MINOR);
+PSP_MODULE_INFO(TARGET_STR, PSP_MODULE_USER, VERSION_MAJOR, VERSION_MINOR);
 PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER);
 #endif
 
@@ -31,7 +32,6 @@ volatile int Loop;
 volatile int Sleep;
 char launchDir[MAX_PATH];
 char screenshotDir[MAX_PATH];  // スクリーンショト保存PATH
-int psp_cpuclock = PSPCLOCK_333;
 int devkit_version;
 int systembuttons_available;
 int njemu_debug;
@@ -40,22 +40,6 @@ int njemu_debug;
 /******************************************************************************
 	グローバル関数
 ******************************************************************************/
-
-/*------------------------------------------------------
-	CPUクロック設定
-------------------------------------------------------*/
-
-void set_cpu_clock(int value)
-{
-	switch (value)
-	{
-	case PSPCLOCK_266: scePowerSetClockFrequency(266, 266, 133); break;
-	case PSPCLOCK_300: scePowerSetClockFrequency(300, 300, 150); break;
-	case PSPCLOCK_333: scePowerSetClockFrequency(333, 333, 166); break;
-	default: scePowerSetClockFrequency(222, 222, 111); break;
-	}
-}
-
 
 /******************************************************************************
 	ローカル関数
@@ -71,8 +55,8 @@ static SceKernelCallbackFunction PowerCallback(int unknown, int pwrflags, void *
 
 	if (pwrflags & PSP_POWER_CB_POWER_SWITCH)
 	{
-#if defined(PSP_SLIM) && ((EMU_SYSTEM == CPS2) || (EMU_SYSTEM == MVS))
-		extern INT32 psp2k_mem_left;
+#if defined(LARGE_MEMORY) && ((EMU_SYSTEM == CPS2) || (EMU_SYSTEM == MVS))
+		extern int32_t psp2k_mem_left;
 
 		if (psp2k_mem_left < 0x400000)
 		{
@@ -81,10 +65,10 @@ static SceKernelCallbackFunction PowerCallback(int unknown, int pwrflags, void *
 
 			sprintf(path, "%sresume.bin", launchDir);
 
-			if ((fd = sceIoOpen(path, PSP_O_WRONLY|PSP_O_CREAT, 0777)) >= 0)
+			if ((fd = open(path, O_WRONLY|O_CREAT, 0777)) >= 0)
 			{
-				sceIoWrite(fd, (void *)(PSP2K_MEM_TOP + 0x1c00000), 0x400000);
-				sceIoClose(fd);
+				write(fd, (void *)(PSP2K_MEM_TOP + 0x1c00000), 0x400000);
+				close(fd);
 			}
 		}
 #endif
@@ -92,8 +76,8 @@ static SceKernelCallbackFunction PowerCallback(int unknown, int pwrflags, void *
 	}
 	else if (pwrflags & PSP_POWER_CB_RESUME_COMPLETE)
 	{
-#if defined(PSP_SLIM) && ((EMU_SYSTEM == CPS2) || (EMU_SYSTEM == MVS))
-		extern INT32 psp2k_mem_left;
+#if defined(LARGE_MEMORY) && ((EMU_SYSTEM == CPS2) || (EMU_SYSTEM == MVS))
+		extern int32_t psp2k_mem_left;
 
 		if (psp2k_mem_left < 0x400000)
 		{
@@ -102,12 +86,12 @@ static SceKernelCallbackFunction PowerCallback(int unknown, int pwrflags, void *
 
 			sprintf(path, "%sresume.bin", launchDir);
 
-			if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
+			if ((fd = open(path, O_RDONLY, 0777)) >= 0)
 			{
-				sceIoRead(fd, (void *)(PSP2K_MEM_TOP + 0x1c00000), 0x400000);
-				sceIoClose(fd);
+				read(fd, (void *)(PSP2K_MEM_TOP + 0x1c00000), 0x400000);
+				close(fd);
 			}
-			sceIoRemove(path);
+			remove(path);
 		}
 #endif
 		Sleep = 0;
@@ -189,22 +173,22 @@ int main(int argc, char *argv[])
 	strcat(screenshotDir, "ms0:/PICTURE/NCDZ");
 #endif
 
-	sceIoMkdir(screenshotDir,0777); // スクショ用フォルダ作成
+	mkdir(screenshotDir,0777); // スクショ用フォルダ作成
 
 	devkit_version = sceKernelDevkitVersion();
 	njemu_debug = 0;
 
 	SetupCallbacks();
 
-	set_cpu_clock(PSPCLOCK_222);
+	power_driver->setLowestCpuClock(NULL);
 
-	ui_text_init();
+	ui_text_data = ui_text_driver->init();
 	pad_init();
 
-#if PSP_VIDEO_32BPP
-	video_set_mode(32);
+#if VIDEO_32BPP
+	video_driver->setMode(video_data, 32);
 #else
-	video_init();
+	video_data = video_driver->init();
 #endif
 
 	sprintf(prx_path, "%sSystemButtons.prx", launchDir);
@@ -218,7 +202,9 @@ int main(int argc, char *argv[])
 		systembuttons_available = 0;
 
 	file_browser();
-	video_exit();
+	video_driver->free(video_data);
+	ui_text_driver->free(ui_text_data);
+	pad_exit();
 
 #ifdef KERNEL_MODE
 	sceKernelExitThread(0);

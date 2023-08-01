@@ -39,7 +39,7 @@ extern int cps_flip_screen;
 extern int cps_raster_enable;
 #endif
 extern int cps2_has_mask;
-extern UINT16 video_palette[2048];
+extern uint16_t video_palette[2048];
 
 extern int scanline1;
 extern int scanline2;
@@ -56,7 +56,7 @@ void cps2_video_exit(void);
 void cps2_video_reset(void);
 void cps2_screenrefresh(int start, int end);
 void cps2_objram_latch(void);
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 void cps2_gfx_decode(void);
 #endif
 

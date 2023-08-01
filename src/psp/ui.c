@@ -14,7 +14,7 @@
 	¥°¥í©`¥Ð¥ë‰äÊý
 ******************************************************************************/
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 int bgimage_type;
 int bgimage_blightness;
 #endif
@@ -30,7 +30,7 @@ int bgimage_blightness;
 
 void load_background(int number)
 {
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	int found = 0;
 
 	if (bgimage_type == BG_DEFAULT || bgimage_type == BG_USER)
@@ -57,7 +57,7 @@ void load_background(int number)
 	hline_alpha(0, 479, 23, UI_COLOR(UI_PAL_FRAME), 12);
 	hline_alpha(0, 479, 24, UI_COLOR(UI_PAL_FRAME), 10);
 
-	video_copy_rect(draw_frame, work_frame, &full_rect, &full_rect);
+	video_driver->copyRect(video_data, draw_frame, work_frame, &full_rect, &full_rect);
 }
 
 
@@ -67,7 +67,7 @@ void load_background(int number)
 
 void show_background(void)
 {
-	video_copy_rect(work_frame, draw_frame, &full_rect, &full_rect);
+	video_driver->copyRect(video_data, work_frame, draw_frame, &full_rect, &full_rect);
 }
 
 
@@ -81,7 +81,7 @@ void show_background(void)
 
 int draw_battery_status(int draw)
 {
-	static UINT32 counter = 0;
+	static uint32_t counter = 0;
 	static int prev_bat = 0, prev_charging = 0;
 	int width, icon, update = 0;
 	int bat = scePowerGetBatteryLifePercent();
@@ -166,14 +166,14 @@ int draw_volume_status(int draw)
 
 		if (readVolumeButtons())
 		{
-			disp_end = ticker() + 2 * TICKS_PER_SEC;
+			disp_end = ticker_driver->ticker(NULL) + 2 * TICKS_PER_SEC;
 			update = UI_FULL_REFRESH;
 			draw = 1;
 		}
 
 		if (disp_end != 0)
 		{
-			if (ticker() < disp_end)
+			if (ticker_driver->ticker(NULL) < disp_end)
 			{
 				if (draw)
 					draw_volume(volume);
@@ -305,7 +305,7 @@ void init_progress(int total, const char *text)
 	uifont_print_shadow_center(118, 255,255,255, text);
 	draw_battery_status(1);
 
-	video_flip_screen(1);
+	video_driver->flipScreen(video_data, 1);
 }
 
 
@@ -327,7 +327,7 @@ void update_progress(void)
 
 	boxfill(240-150, 138+3, 240-150+width-1, 138+13, 128, 128, 128);
 
-	video_flip_screen(1);
+	video_driver->flipScreen(video_data, 1);
 }
 
 
@@ -351,7 +351,7 @@ void show_progress(const char *text)
 		boxfill(240-150, 138+3, 240-150+width-1, 138+13, 128, 128, 128);
 	}
 
-	video_flip_screen(1);
+	video_driver->flipScreen(video_data, 1);
 }
 
 
@@ -466,7 +466,7 @@ void msg_screen_init(int wallpaper, int icon, const char *title)
 	small_icon_shadow(6, 3, UI_COLOR(UI_PAL_TITLE), icon);
 	uifont_print_shadow(32, 5, UI_COLOR(UI_PAL_TITLE), title);
 	draw_dialog(14, 37, 465, 259);
-	video_copy_rect(draw_frame, work_frame, &full_rect, &full_rect);
+	video_driver->copyRect(video_data, draw_frame, work_frame, &full_rect, &full_rect);
 }
 
 
@@ -485,7 +485,7 @@ void msg_screen_clear(void)
 	¥Æ¥­¥¹¥È¥«¥é©`ÔO¶¨
 --------------------------------------------------------*/
 
-void msg_set_text_color(UINT32 color)
+void msg_set_text_color(uint32_t color)
 {
 	text_r = (color >>  0) & 0xff;
 	text_g = (color >>  8) & 0xff;
@@ -550,7 +550,7 @@ void msg_printf(const char *text, ...)
 		linefeed = 0;
 	}
 
-	video_flip_screen(1);
+	video_driver->flipScreen(video_data, 1);
 }
 
 
@@ -684,7 +684,7 @@ static UI_MESSAGEBOX *messagebox_init(int number)
 		MB_END
 		break;
 
-#if defined(PSP_SLIM) && ((EMU_SYSTEM == CPS2) || (EMU_SYSTEM == MVS))
+#if defined(LARGE_MEMORY) && ((EMU_SYSTEM == CPS2) || (EMU_SYSTEM == MVS))
 	case MB_PSPVERSIONERROR:
 		MB_SET_TYPE(MBT_OKONLY)
 		MB_SET_TEXT(WARNING, THIS_PROGRAM_REQUIRES_PSP2000)
@@ -794,7 +794,7 @@ int messagebox(int number)
 
 	mb = messagebox_init(number);
 
-	video_copy_rect(show_frame, draw_frame, &full_rect, &full_rect);
+	video_driver->copyRect(video_data, show_frame, draw_frame, &full_rect, &full_rect);
 
 	boxfill_alpha(0, 0, SCR_WIDTH - 1, SCR_HEIGHT - 1, COLOR_BLACK, 8);
 
@@ -831,17 +831,17 @@ int messagebox(int number)
 		uifont_print_shadow_center(sy + (i << 4), r, g, b, mb->mes[i].text);
 	}
 
-	video_flip_screen(1);
+	video_driver->flipScreen(video_data, 1);
 	pad_wait_clear();
 
 	if (mb->type)
 	{
 		do
 		{
-			video_wait_vsync();
+			video_driver->waitVsync(video_data);
 			pad_update();
 
-			if (pad_pressed(PSP_CTRL_CIRCLE))
+			if (pad_pressed(PLATFORM_PAD_B1))
 			{
 				res = 1;
 				pad_wait_clear();
@@ -850,16 +850,16 @@ int messagebox(int number)
 
 			if (Loop == LOOP_EXIT) break;
 
-		} while (!pad_pressed(PSP_CTRL_CROSS));
+		} while (!pad_pressed(PLATFORM_PAD_B2));
 	}
 	else
 	{
 		while (1)
 		{
-			video_wait_vsync();
+			video_driver->waitVsync(video_data);
 			pad_update();
 
-			if (pad_pressed(PSP_CTRL_ANY))
+			if (pad_pressed_any())
 			{
 				res = 1;
 				pad_wait_clear();
@@ -871,7 +871,7 @@ int messagebox(int number)
 	}
 
 	pad_wait_clear();
-	video_flip_screen(1);
+	video_driver->flipScreen(video_data, 1);
 
 	return res;
 }
@@ -949,7 +949,7 @@ static UI_HELP *help_init(int number)
 		HELP_DISABLE()
 #endif
 		HELP_ENABLE(EXIT_EMULATOR)
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 		HELP_ENABLE(OPEN_COLOR_SETTINGS_MENU)
 #else
 		HELP_DISABLE()
@@ -1060,7 +1060,7 @@ static UI_HELP *help_init(int number)
 		HELP_END
 		break;
 #endif
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	case HELP_COLORSETTINGS:
 		HELP_SET_NAME(COLOR_SETTINGS_MENU)
 		HELP_ENABLE(SELECT_ITEM)
@@ -1126,7 +1126,7 @@ int help(int number)
 
 	help = help_init(number);
 
-	video_copy_rect(show_frame, draw_frame, &full_rect, &full_rect);
+	video_driver->copyRect(video_data, show_frame, draw_frame, &full_rect, &full_rect);
 
 	boxfill_alpha(0, 0, SCR_WIDTH - 1, SCR_HEIGHT - 1, COLOR_BLACK, 8);
 	draw_dialog(59, 34, 419, 264);
@@ -1146,9 +1146,9 @@ int help(int number)
 
 	uifont_print_shadow_center(240, UI_COLOR(UI_PAL_SELECT), TEXT(PRESS_ANY_BUTTON_TO_RETURN_TO_MENU));
 
-	video_flip_screen(1);
+	video_driver->flipScreen(video_data, 1);
 	pad_wait_press(PAD_WAIT_INFINITY);
-	video_flip_screen(1);
+	video_driver->flipScreen(video_data, 1);
 
 	return 0;
 }

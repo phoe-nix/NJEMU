@@ -62,12 +62,12 @@ struct driver_t
 {
 	const char *name;
 #if USE_CACHE
-	const UINT32 cache_size;
+	const uint32_t cache_size;
 #endif
-	const UINT16 kludge;
-	const UINT16 flags;
-	const UINT8 inp_eeprom;
-	const UINT8 inp_eeprom_value[16];
+	const uint16_t kludge;
+	const uint16_t flags;
+	const uint8_t inp_eeprom;
+	const uint8_t inp_eeprom_value[16];
 };
 
 extern struct driver_t CPS2_driver[];

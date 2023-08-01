@@ -34,7 +34,7 @@ static const char *inifile_name = "cps2psp.ini";
 static cfg_type gamecfg_2buttons[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -59,14 +59,14 @@ static cfg_type gamecfg_2buttons[] =
 	{ CFG_INT,	"Controller",			&option_controller,		0,	3	},
 
 	{ CFG_NONE,	"[CPS Settings]", },
-	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PSP_CTRL_UP,		0	},
-	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PSP_CTRL_DOWN,		0	},
-	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PSP_CTRL_LEFT,		0	},
-	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PSP_CTRL_RIGHT,		0	},
-	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],	PSP_CTRL_CROSS,	    0	},
-	{ CFG_PAD,	"Start",				&input_map[P1_START],	PSP_CTRL_START,		0	},
-	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
+	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PLATFORM_PAD_UP,		0	},
+	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PLATFORM_PAD_DOWN,		0	},
+	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PLATFORM_PAD_LEFT,		0	},
+	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PLATFORM_PAD_RIGHT,		0	},
+	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PLATFORM_PAD_B3,	0	},
+	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],	PLATFORM_PAD_B2,	    0	},
+	{ CFG_PAD,	"Start",				&input_map[P1_START],	PLATFORM_PAD_START,		0	},
+	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PLATFORM_PAD_SELECT,	0	},
 
 	{ CFG_NONE,	"[Switch Settings]", },
 	{ CFG_PAD,	"ServiceCoin",			&input_map[SERV_COIN],	0,		0		},
@@ -78,8 +78,8 @@ static cfg_type gamecfg_2buttons[] =
 #endif
 
 	{ CFG_NONE,	"[Autofire Settings]", },
-	{ CFG_PAD,	"Autofire1",			&input_map[P1_AF_1],	PSP_CTRL_TRIANGLE,	0	},
-	{ CFG_PAD,	"Autofire2",			&input_map[P1_AF_2],	PSP_CTRL_CIRCLE,	0	},
+	{ CFG_PAD,	"Autofire1",			&input_map[P1_AF_1],	PLATFORM_PAD_B4,	0	},
+	{ CFG_PAD,	"Autofire2",			&input_map[P1_AF_2],	PLATFORM_PAD_B1,	0	},
 	{ CFG_INT,	"AFInterval",			&af_interval,			1,	10	},
 
 	{ CFG_NONE,	"[Hotkey Settings]", },
@@ -96,7 +96,7 @@ static cfg_type gamecfg_2buttons[] =
 static cfg_type gamecfg_2buttons_rot[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -122,14 +122,14 @@ static cfg_type gamecfg_2buttons_rot[] =
 	{ CFG_INT,	"Controller",			&option_controller,		0,	3	},
 
 	{ CFG_NONE,	"[CPS Settings]", },
-	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PSP_CTRL_UP,		0	},
-	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PSP_CTRL_DOWN,		0	},
-	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PSP_CTRL_LEFT,		0	},
-	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PSP_CTRL_RIGHT,		0	},
-	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],	PSP_CTRL_CROSS,  	0	},
-	{ CFG_PAD,	"Start",				&input_map[P1_START],	PSP_CTRL_START,		0	},
-	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
+	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PLATFORM_PAD_UP,		0	},
+	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PLATFORM_PAD_DOWN,		0	},
+	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PLATFORM_PAD_LEFT,		0	},
+	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PLATFORM_PAD_RIGHT,		0	},
+	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PLATFORM_PAD_B3,	0	},
+	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],	PLATFORM_PAD_B2,  	0	},
+	{ CFG_PAD,	"Start",				&input_map[P1_START],	PLATFORM_PAD_START,		0	},
+	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PLATFORM_PAD_SELECT,	0	},
 
 	{ CFG_NONE,	"[Switch Settings]", },
 	{ CFG_PAD,	"ServiceCoin",			&input_map[SERV_COIN],	0,		0		},
@@ -141,8 +141,8 @@ static cfg_type gamecfg_2buttons_rot[] =
 #endif
 
 	{ CFG_NONE,	"[Autofire Settings]", },
-	{ CFG_PAD,	"Autofire1",			&input_map[P1_AF_1],	PSP_CTRL_TRIANGLE,	0	},
-	{ CFG_PAD,	"Autofire2",			&input_map[P1_AF_2],	PSP_CTRL_CIRCLE,	0	},
+	{ CFG_PAD,	"Autofire1",			&input_map[P1_AF_1],	PLATFORM_PAD_B4,	0	},
+	{ CFG_PAD,	"Autofire2",			&input_map[P1_AF_2],	PLATFORM_PAD_B1,	0	},
 	{ CFG_INT,	"AFInterval",			&af_interval,			1,	10	},
 
 	{ CFG_NONE,	"[Hotkey Settings]", },
@@ -159,7 +159,7 @@ static cfg_type gamecfg_2buttons_rot[] =
 static cfg_type gamecfg_3buttons[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -184,15 +184,15 @@ static cfg_type gamecfg_3buttons[] =
 	{ CFG_INT,	"Controller",			&option_controller,		0,	3	},
 
 	{ CFG_NONE,	"[CPS Settings]", },
-	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PSP_CTRL_UP,		0	},
-	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PSP_CTRL_DOWN,		0	},
-	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PSP_CTRL_LEFT,		0	},
-	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PSP_CTRL_RIGHT,		0	},
-	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],PSP_CTRL_CROSS,	    0	},
-	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],PSP_CTRL_CIRCLE,	0	},
-	{ CFG_PAD,	"Start",				&input_map[P1_START],	PSP_CTRL_START,		0	},
-	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
+	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PLATFORM_PAD_UP,		0	},
+	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PLATFORM_PAD_DOWN,		0	},
+	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PLATFORM_PAD_LEFT,		0	},
+	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PLATFORM_PAD_RIGHT,		0	},
+	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],PLATFORM_PAD_B3,	0	},
+	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],PLATFORM_PAD_B2,	    0	},
+	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],PLATFORM_PAD_B1,	0	},
+	{ CFG_PAD,	"Start",				&input_map[P1_START],	PLATFORM_PAD_START,		0	},
+	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PLATFORM_PAD_SELECT,	0	},
 
 	{ CFG_NONE,	"[Switch Settings]", },
 	{ CFG_PAD,	"ServiceCoin",			&input_map[SERV_COIN],	0,		0		},
@@ -227,7 +227,7 @@ static cfg_type gamecfg_3buttons[] =
 static cfg_type gamecfg_3buttons_rot[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -250,15 +250,15 @@ static cfg_type gamecfg_3buttons_rot[] =
 	{ CFG_INT,	"Controller",			&option_controller,		0,	3	},
 
 	{ CFG_NONE,	"[CPS Settings]", },
-	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PSP_CTRL_UP,		0	},
-	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PSP_CTRL_DOWN,		0	},
-	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PSP_CTRL_LEFT,		0	},
-	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PSP_CTRL_RIGHT,		0	},
-	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],PSP_CTRL_CROSS,	    0	},
-	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],PSP_CTRL_CIRCLE,	0	},
-	{ CFG_PAD,	"Start",				&input_map[P1_START],	PSP_CTRL_START,		0	},
-	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
+	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PLATFORM_PAD_UP,		0	},
+	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PLATFORM_PAD_DOWN,		0	},
+	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PLATFORM_PAD_LEFT,		0	},
+	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PLATFORM_PAD_RIGHT,		0	},
+	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],PLATFORM_PAD_B3,	0	},
+	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],PLATFORM_PAD_B2,	    0	},
+	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],PLATFORM_PAD_B1,	0	},
+	{ CFG_PAD,	"Start",				&input_map[P1_START],	PLATFORM_PAD_START,		0	},
+	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PLATFORM_PAD_SELECT,	0	},
 
 	{ CFG_NONE,	"[Switch Settings]", },
 	{ CFG_PAD,	"ServiceCoin",			&input_map[SERV_COIN],	0,		0		},
@@ -287,7 +287,7 @@ static cfg_type gamecfg_3buttons_rot[] =
 static cfg_type gamecfg_4buttons[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -309,16 +309,16 @@ static cfg_type gamecfg_4buttons[] =
 	{ CFG_INT,	"Controller",			&option_controller,		0,	3	},
 
 	{ CFG_NONE,	"[CPS Settings]", },
-	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PSP_CTRL_UP,		0	},
-	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PSP_CTRL_DOWN,		0	},
-	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PSP_CTRL_LEFT,		0	},
-	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PSP_CTRL_RIGHT,		0	},
-	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],PSP_CTRL_CROSS,	    0	},
-	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],PSP_CTRL_TRIANGLE,	0	},
-	{ CFG_PAD,	"Button4",				&input_map[P1_BUTTON4],PSP_CTRL_CIRCLE,	0	},
-	{ CFG_PAD,	"Start",				&input_map[P1_START],	PSP_CTRL_START,		0	},
-	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
+	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PLATFORM_PAD_UP,		0	},
+	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PLATFORM_PAD_DOWN,		0	},
+	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PLATFORM_PAD_LEFT,		0	},
+	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PLATFORM_PAD_RIGHT,		0	},
+	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],PLATFORM_PAD_B3,	0	},
+	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],PLATFORM_PAD_B2,	    0	},
+	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],PLATFORM_PAD_B4,	0	},
+	{ CFG_PAD,	"Button4",				&input_map[P1_BUTTON4],PLATFORM_PAD_B1,	0	},
+	{ CFG_PAD,	"Start",				&input_map[P1_START],	PLATFORM_PAD_START,		0	},
+	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PLATFORM_PAD_SELECT,	0	},
 
 	{ CFG_NONE,	"[Switch Settings]", },
 	{ CFG_PAD,	"ServiceCoin",			&input_map[SERV_COIN],	0,		0		},
@@ -356,7 +356,7 @@ static cfg_type gamecfg_4buttons[] =
 static cfg_type gamecfg_6buttons[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -381,18 +381,18 @@ static cfg_type gamecfg_6buttons[] =
 	{ CFG_INT,	"Controller",			&option_controller,		0,	3	},
 
 	{ CFG_NONE,	"[CPS Settings]", },
-	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PSP_CTRL_UP,		0	},
-	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PSP_CTRL_DOWN,		0	},
-	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PSP_CTRL_LEFT,		0	},
-	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PSP_CTRL_RIGHT,		0	},
-	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],PSP_CTRL_CROSS,	    0	},
-	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],PSP_CTRL_LTRIGGER,	0	},
-	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Button4",				&input_map[P1_BUTTON4],PSP_CTRL_CIRCLE,	0	},
-	{ CFG_PAD,	"Button5",				&input_map[P1_BUTTON5],PSP_CTRL_RTRIGGER,	0	},
-	{ CFG_PAD,	"Button6",				&input_map[P1_BUTTON6],PSP_CTRL_TRIANGLE,	0	},
-	{ CFG_PAD,	"Start",				&input_map[P1_START],	PSP_CTRL_START,		0	},
-	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
+	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PLATFORM_PAD_UP,		0	},
+	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PLATFORM_PAD_DOWN,		0	},
+	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PLATFORM_PAD_LEFT,		0	},
+	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PLATFORM_PAD_RIGHT,		0	},
+	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],PLATFORM_PAD_B2,	    0	},
+	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],PLATFORM_PAD_L,	0	},
+	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],PLATFORM_PAD_B3,	0	},
+	{ CFG_PAD,	"Button4",				&input_map[P1_BUTTON4],PLATFORM_PAD_B1,	0	},
+	{ CFG_PAD,	"Button5",				&input_map[P1_BUTTON5],PLATFORM_PAD_R,	0	},
+	{ CFG_PAD,	"Button6",				&input_map[P1_BUTTON6],PLATFORM_PAD_B4,	0	},
+	{ CFG_PAD,	"Start",				&input_map[P1_START],	PLATFORM_PAD_START,		0	},
+	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PLATFORM_PAD_SELECT,	0	},
 
 	{ CFG_NONE,	"[Switch Settings]", },
 	{ CFG_PAD,	"ServiceCoin",			&input_map[SERV_COIN],	0,		0		},
@@ -427,7 +427,7 @@ static cfg_type gamecfg_6buttons[] =
 static cfg_type gamecfg_quiz[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -452,12 +452,12 @@ static cfg_type gamecfg_quiz[] =
 	{ CFG_INT,	"Controller",			&option_controller,		0,	1	},
 
 	{ CFG_NONE,	"[CPS Settings]", },
-	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],	PSP_CTRL_CROSS,		0	},
-	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],	PSP_CTRL_TRIANGLE,	0	},
-	{ CFG_PAD,	"Button4",				&input_map[P1_BUTTON4],	PSP_CTRL_CIRCLE,	0	},
-	{ CFG_PAD,	"Start",				&input_map[P1_START],	PSP_CTRL_START,		0	},
-	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
+	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PLATFORM_PAD_B3,	0	},
+	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],	PLATFORM_PAD_B2,		0	},
+	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],	PLATFORM_PAD_B4,	0	},
+	{ CFG_PAD,	"Button4",				&input_map[P1_BUTTON4],	PLATFORM_PAD_B1,	0	},
+	{ CFG_PAD,	"Start",				&input_map[P1_START],	PLATFORM_PAD_START,		0	},
+	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PLATFORM_PAD_SELECT,	0	},
 
 	{ CFG_NONE,	"[Switch Settings]", },
 	{ CFG_PAD,	"ServiceCoin",			&input_map[SERV_COIN],	0,		0		},
@@ -490,7 +490,7 @@ static cfg_type gamecfg_quiz[] =
 
 	{ CFG_NONE,	"[System Key Settings]", },
 	{ CFG_PAD,	"Snapshot",				&input_map[SNAPSHOT],	0,	0	},
-	{ CFG_PAD,	"SwitchPlayer",			&input_map[SWPLAYER],	PSP_CTRL_LTRIGGER,	0	},
+	{ CFG_PAD,	"SwitchPlayer",			&input_map[SWPLAYER],	PLATFORM_PAD_L,	0	},
 	{ CFG_PAD,	"Commandlist",			&input_map[COMMANDLIST],	0,	0	},
 
 	{ CFG_NONE, NULL, }
@@ -500,7 +500,7 @@ static cfg_type gamecfg_quiz[] =
 static cfg_type gamecfg_forgottn[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -524,17 +524,17 @@ static cfg_type gamecfg_forgottn[] =
 	{ CFG_INT,	"Controller",			&option_controller,		0,	3	},
 
 	{ CFG_NONE,	"[CPS Settings]", },
-	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PSP_CTRL_UP,		0	},
-	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PSP_CTRL_DOWN,		0	},
-	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PSP_CTRL_LEFT,		0	},
-	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PSP_CTRL_RIGHT,		0	},
-	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Start",				&input_map[P1_START],	PSP_CTRL_START,		0	},
-	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
+	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PLATFORM_PAD_UP,		0	},
+	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PLATFORM_PAD_DOWN,		0	},
+	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PLATFORM_PAD_LEFT,		0	},
+	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PLATFORM_PAD_RIGHT,		0	},
+	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PLATFORM_PAD_B3,	0	},
+	{ CFG_PAD,	"Start",				&input_map[P1_START],	PLATFORM_PAD_START,		0	},
+	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PLATFORM_PAD_SELECT,	0	},
 
 	{ CFG_NONE,	"[CPS Analog Input Settings]", },
-	{ CFG_PAD,	"DialLeft",				&input_map[P1_DIAL_L],	PSP_CTRL_LTRIGGER,	0	},
-	{ CFG_PAD,	"DialRight",			&input_map[P1_DIAL_R],	PSP_CTRL_RTRIGGER,	0	},
+	{ CFG_PAD,	"DialLeft",				&input_map[P1_DIAL_L],	PLATFORM_PAD_L,	0	},
+	{ CFG_PAD,	"DialRight",			&input_map[P1_DIAL_R],	PLATFORM_PAD_R,	0	},
 	{ CFG_INT,	"Sensitivity",			&analog_sensitivity,	1,					2	},
 
 	{ CFG_NONE,	"[Switch Settings]", },
@@ -559,7 +559,7 @@ static cfg_type gamecfg_forgottn[] =
 static cfg_type gamecfg_sfzch[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -583,18 +583,18 @@ static cfg_type gamecfg_sfzch[] =
 	{ CFG_INT,	"Controller",			&option_controller,		0,	3	},
 
 	{ CFG_NONE,	"[CPS Settings]", },
-	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PSP_CTRL_UP,		0	},
-	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PSP_CTRL_DOWN,		0	},
-	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PSP_CTRL_LEFT,		0	},
-	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PSP_CTRL_RIGHT,		0	},
-	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PSP_CTRL_CROSS,	    0	},
-	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],	PSP_CTRL_LTRIGGER,	0	},
-	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],	PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Button4",				&input_map[P1_BUTTON4],	PSP_CTRL_CIRCLE,	0	},
-	{ CFG_PAD,	"Button5",				&input_map[P1_BUTTON5],	PSP_CTRL_RTRIGGER,	0	},
-	{ CFG_PAD,	"Button6",				&input_map[P1_BUTTON6],	PSP_CTRL_TRIANGLE,	0	},
-	{ CFG_PAD,	"Start",				&input_map[P1_START],	PSP_CTRL_START,		0	},
-	{ CFG_PAD,	"Pause",				&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
+	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PLATFORM_PAD_UP,		0	},
+	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PLATFORM_PAD_DOWN,		0	},
+	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PLATFORM_PAD_LEFT,		0	},
+	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PLATFORM_PAD_RIGHT,		0	},
+	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PLATFORM_PAD_B2,	    0	},
+	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],	PLATFORM_PAD_L,	0	},
+	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],	PLATFORM_PAD_B3,	0	},
+	{ CFG_PAD,	"Button4",				&input_map[P1_BUTTON4],	PLATFORM_PAD_B1,	0	},
+	{ CFG_PAD,	"Button5",				&input_map[P1_BUTTON5],	PLATFORM_PAD_R,	0	},
+	{ CFG_PAD,	"Button6",				&input_map[P1_BUTTON6],	PLATFORM_PAD_B4,	0	},
+	{ CFG_PAD,	"Start",				&input_map[P1_START],	PLATFORM_PAD_START,		0	},
+	{ CFG_PAD,	"Pause",				&input_map[P1_COIN],	PLATFORM_PAD_SELECT,	0	},
 
 	{ CFG_NONE,	"[Switch Settings]", },
 	{ CFG_PAD,	"ServiceCoin",	&input_map[SERV_COIN],	0,		0		},
@@ -627,7 +627,7 @@ static cfg_type gamecfg_sfzch[] =
 static cfg_type gamecfg_wofch[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -651,18 +651,18 @@ static cfg_type gamecfg_wofch[] =
 	{ CFG_INT,	"Controller",			&option_controller,		0,	3	},
 
 	{ CFG_NONE,	"[CPS Settings]", },
-	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PSP_CTRL_UP,		0	},
-	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PSP_CTRL_DOWN,		0	},
-	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PSP_CTRL_LEFT,		0	},
-	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PSP_CTRL_RIGHT,		0	},
-	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],PSP_CTRL_CROSS,	    0	},
-	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],PSP_CTRL_CIRCLE,	0	},
-	{ CFG_PAD,	"Button4",				&input_map[P1_BUTTON4],PSP_CTRL_TRIANGLE,	0	},
-	{ CFG_PAD,	"Button5",				&input_map[P1_BUTTON5],PSP_CTRL_LTRIGGER,	0	},
-	{ CFG_PAD,	"Button6",				&input_map[P1_BUTTON6],PSP_CTRL_RTRIGGER,	0	},
-	{ CFG_PAD,	"Start",				&input_map[P1_START],	PSP_CTRL_START,		0	},
-	{ CFG_PAD,	"Pause",				&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
+	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PLATFORM_PAD_UP,		0	},
+	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PLATFORM_PAD_DOWN,		0	},
+	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PLATFORM_PAD_LEFT,		0	},
+	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PLATFORM_PAD_RIGHT,		0	},
+	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],PLATFORM_PAD_B3,	0	},
+	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],PLATFORM_PAD_B2,	    0	},
+	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],PLATFORM_PAD_B1,	0	},
+	{ CFG_PAD,	"Button4",				&input_map[P1_BUTTON4],PLATFORM_PAD_B4,	0	},
+	{ CFG_PAD,	"Button5",				&input_map[P1_BUTTON5],PLATFORM_PAD_L,	0	},
+	{ CFG_PAD,	"Button6",				&input_map[P1_BUTTON6],PLATFORM_PAD_R,	0	},
+	{ CFG_PAD,	"Start",				&input_map[P1_START],	PLATFORM_PAD_START,		0	},
+	{ CFG_PAD,	"Pause",				&input_map[P1_COIN],	PLATFORM_PAD_SELECT,	0	},
 
 	{ CFG_NONE,	"[Switch Settings]", },
 	{ CFG_PAD,	"ServiceCoin",	&input_map[SERV_COIN],	0,		0		},
@@ -691,7 +691,7 @@ static cfg_type gamecfg_wofch[] =
 static cfg_type gamecfg_wofch3p[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -715,18 +715,18 @@ static cfg_type gamecfg_wofch3p[] =
 	{ CFG_INT,	"Controller",			&option_controller,		0,	3	},
 
 	{ CFG_NONE,	"[CPS Settings]", },
-	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PSP_CTRL_UP,		0	},
-	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PSP_CTRL_DOWN,		0	},
-	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PSP_CTRL_LEFT,		0	},
-	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PSP_CTRL_RIGHT,		0	},
-	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],PSP_CTRL_CROSS,	    0	},
-	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],PSP_CTRL_CIRCLE,	0	},
-	{ CFG_PAD,	"Button4",				&input_map[P1_BUTTON4],PSP_CTRL_TRIANGLE,	0	},
-	{ CFG_PAD,	"Button5",				&input_map[P1_BUTTON5],PSP_CTRL_LTRIGGER,	0	},
-	{ CFG_PAD,	"Button6",				&input_map[P1_BUTTON6],PSP_CTRL_RTRIGGER,	0	},
-	{ CFG_PAD,	"Start",				&input_map[P1_START],	PSP_CTRL_START,		0	},
-	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
+	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PLATFORM_PAD_UP,		0	},
+	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PLATFORM_PAD_DOWN,		0	},
+	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PLATFORM_PAD_LEFT,		0	},
+	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PLATFORM_PAD_RIGHT,		0	},
+	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],PLATFORM_PAD_B3,	0	},
+	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],PLATFORM_PAD_B2,	    0	},
+	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],PLATFORM_PAD_B1,	0	},
+	{ CFG_PAD,	"Button4",				&input_map[P1_BUTTON4],PLATFORM_PAD_B4,	0	},
+	{ CFG_PAD,	"Button5",				&input_map[P1_BUTTON5],PLATFORM_PAD_L,	0	},
+	{ CFG_PAD,	"Button6",				&input_map[P1_BUTTON6],PLATFORM_PAD_R,	0	},
+	{ CFG_PAD,	"Start",				&input_map[P1_START],	PLATFORM_PAD_START,		0	},
+	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PLATFORM_PAD_SELECT,	0	},
 
 	{ CFG_NONE,	"[Switch Settings]", },
 	{ CFG_PAD,	"ServiceCoin",	&input_map[SERV_COIN],	0,		0		},
@@ -755,7 +755,7 @@ static cfg_type gamecfg_wofch3p[] =
 static cfg_type gamecfg_progear[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -777,16 +777,16 @@ static cfg_type gamecfg_progear[] =
 	{ CFG_INT,	"Controller",			&option_controller,		0,	3	},
 
 	{ CFG_NONE,	"[CPS Settings]", },
-	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PSP_CTRL_UP,		0	},
-	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PSP_CTRL_DOWN,		0	},
-	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PSP_CTRL_LEFT,		0	},
-	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PSP_CTRL_RIGHT,		0	},
-	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],	PSP_CTRL_TRIANGLE,	0	},
-	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],	PSP_CTRL_CROSS,		0	},
-	{ CFG_PAD,	"Start",				&input_map[P1_START],	PSP_CTRL_START,		0	},
-	{ CFG_PAD,	"Start2",				&input_map[P2_START],	PSP_CTRL_LTRIGGER,	0	},
-	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
+	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PLATFORM_PAD_UP,		0	},
+	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PLATFORM_PAD_DOWN,		0	},
+	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PLATFORM_PAD_LEFT,		0	},
+	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PLATFORM_PAD_RIGHT,		0	},
+	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PLATFORM_PAD_B3,	0	},
+	{ CFG_PAD,	"Button2",				&input_map[P1_BUTTON2],	PLATFORM_PAD_B4,	0	},
+	{ CFG_PAD,	"Button3",				&input_map[P1_BUTTON3],	PLATFORM_PAD_B2,		0	},
+	{ CFG_PAD,	"Start",				&input_map[P1_START],	PLATFORM_PAD_START,		0	},
+	{ CFG_PAD,	"Start2",				&input_map[P2_START],	PLATFORM_PAD_L,	0	},
+	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PLATFORM_PAD_SELECT,	0	},
 
 	{ CFG_NONE,	"[Switch Settings]", },
 	{ CFG_PAD,	"ServiceCoin",			&input_map[SERV_COIN],	0,		0		},
@@ -815,7 +815,7 @@ static cfg_type gamecfg_progear[] =
 static cfg_type gamecfg_pzloop2[] =
 {
 	{ CFG_NONE,	"[System Settings]", },
-	{ CFG_INT,	"PSPClock",				&psp_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
+	{ CFG_INT,	"PSPClock",				&platform_cpuclock,	PSPCLOCK_333,	PSPCLOCK_333 },
 
 #if ENABLE_RASTER_OPTION
 	{ CFG_NONE,	"[Emulation Settings]", },
@@ -837,17 +837,17 @@ static cfg_type gamecfg_pzloop2[] =
 	{ CFG_INT,	"Controller",			&option_controller,		0,	3	},
 
 	{ CFG_NONE,	"[CPS Settings]", },
-	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PSP_CTRL_UP,		0	},
-	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PSP_CTRL_DOWN,		0	},
-	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PSP_CTRL_LEFT,		0	},
-	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PSP_CTRL_RIGHT,		0	},
-	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PSP_CTRL_SQUARE,	0	},
-	{ CFG_PAD,	"Start",				&input_map[P1_START],	PSP_CTRL_START,		0	},
-	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PSP_CTRL_SELECT,	0	},
+	{ CFG_PAD,	"Up",					&input_map[P1_UP],		PLATFORM_PAD_UP,		0	},
+	{ CFG_PAD,	"Down",					&input_map[P1_DOWN],	PLATFORM_PAD_DOWN,		0	},
+	{ CFG_PAD,	"Left",					&input_map[P1_LEFT],	PLATFORM_PAD_LEFT,		0	},
+	{ CFG_PAD,	"Right",				&input_map[P1_RIGHT],	PLATFORM_PAD_RIGHT,		0	},
+	{ CFG_PAD,	"Button1",				&input_map[P1_BUTTON1],	PLATFORM_PAD_B3,	0	},
+	{ CFG_PAD,	"Start",				&input_map[P1_START],	PLATFORM_PAD_START,		0	},
+	{ CFG_PAD,	"Coin",					&input_map[P1_COIN],	PLATFORM_PAD_SELECT,	0	},
 
 	{ CFG_NONE,	"[CPS Analog Input Settings]", },
-	{ CFG_PAD,	"PaddleLeft",			&input_map[P1_DIAL_L],	PSP_CTRL_LTRIGGER,	0	},
-	{ CFG_PAD,	"PaddleRight",			&input_map[P1_DIAL_R],	PSP_CTRL_RTRIGGER,	0	},
+	{ CFG_PAD,	"PaddleLeft",			&input_map[P1_DIAL_L],	PLATFORM_PAD_L,	0	},
+	{ CFG_PAD,	"PaddleRight",			&input_map[P1_DIAL_R],	PLATFORM_PAD_R,	0	},
 	{ CFG_INT,	"Sensitivity",			&analog_sensitivity,	1,					2	},
 
 	{ CFG_NONE,	"[Switch Settings]", },

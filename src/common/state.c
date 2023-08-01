@@ -8,10 +8,20 @@
 
 #ifdef SAVE_STATE
 
-#include "emumain.h"
-#include "zlib/zlib.h"
+#include <fcntl.h>
+#include <zlib.h>
 #include <time.h>
+#include "emumain.h"
 
+typedef struct {
+	uint16_t year;
+	uint16_t month;
+	uint16_t day;
+	uint16_t hour;
+	uint16_t minutes;
+	uint16_t seconds;
+	uint32_t microseconds;
+} stateTime;
 
 /******************************************************************************
 	グローバル変数
@@ -21,7 +31,7 @@ char date_str[16];
 char time_str[16];
 char stver_str[16];
 int state_version;
-UINT8 *state_buffer;
+uint8_t *state_buffer;
 int current_state_version;
 #if (EMU_SYSTEM == MVS)
 int  state_reload_bios;
@@ -33,7 +43,7 @@ int  state_reload_bios;
 ******************************************************************************/
 
 #ifdef ADHOC
-static UINT8 state_buffer_base[STATE_BUFFER_SIZE];
+static uint8_t state_buffer_base[STATE_BUFFER_SIZE];
 #endif
 
 #if (EMU_SYSTEM == CPS1)
@@ -58,7 +68,7 @@ static const char *current_version_str = "NCDZSV23";
 static void save_thumbnail(void)
 {
 	int x, y, w, h;
-	UINT16 *src = ((UINT16 *)UI_TEXTURE) + 152;
+	uint16_t *src = ((uint16_t *)UI_TEXTURE) + 152;
 
 #if (EMU_SYSTEM == CPS1 || EMU_SYSTEM == CPS2)
 	if (machine_screen_type)
@@ -91,7 +101,7 @@ static void save_thumbnail(void)
 static void load_thumbnail(FILE *fp)
 {
 	int x, y, w, h;
-	UINT16 *dst = (UINT16 *)UI_TEXTURE;
+	uint16_t *dst = (uint16_t *)UI_TEXTURE;
 
 #if (EMU_SYSTEM == CPS1 || EMU_SYSTEM == CPS2)
 	if (machine_screen_type)
@@ -128,7 +138,7 @@ static void load_thumbnail(FILE *fp)
 static void clear_thumbnail(void)
 {
 	int x, y, w, h;
-	UINT16 *dst = (UINT16 *)UI_TEXTURE;
+	uint16_t *dst = (uint16_t *)UI_TEXTURE;
 
 #if (EMU_SYSTEM == CPS1 || EMU_SYSTEM == CPS2)
 	if (machine_screen_type)
@@ -162,32 +172,45 @@ static void clear_thumbnail(void)
 	ステートセーブ
 ------------------------------------------------------*/
 
+static inline void tm_to_stateTime(stateTime *st, struct tm *t)
+{
+	st->year = t->tm_year;
+	st->month = t->tm_mon;
+	st->day = t->tm_mday;
+	st->hour = t->tm_hour;
+	st->minutes = t->tm_min;
+	st->seconds = t->tm_sec;
+	st->microseconds = 0;
+}
+
 int state_save(int slot)
 {
-	SceUID fd = -1;
-	pspTime nowtime;
+	int32_t fd = -1;
+   	stateTime nowtime;
 	char path[MAX_PATH];
 	char error_mes[128];
 	char buf[128];
 #if (EMU_SYSTEM == NCDZ)
-	UINT8 *inbuf, *outbuf;
+	uint8_t *inbuf, *outbuf;
 	unsigned long insize, outsize;
 #else
 #ifndef ADHOC
-	UINT8 *state_buffer_base;
+	uint8_t *state_buffer_base;
 #endif
-	UINT32 size;
+	uint32_t size;
 #endif
 
 	sprintf(path, "%sstate/%s.sv%d", launchDir, game_name, slot);
-	sceIoRemove(path);
+	remove(path);
 
 	sprintf(buf, TEXT(STATE_SAVING), game_name, slot);
 	init_progress(6, buf);
 
-	sceRtcGetCurrentClockLocalTime(&nowtime);
+	time_t now = time(NULL);
+   	struct tm *t = localtime(&now);
+	tm_to_stateTime(&nowtime, t);
 
-	if ((fd = sceIoOpen(path, PSP_O_WRONLY|PSP_O_CREAT, 0777)) >= 0)
+	if ((fd = open(path, O_WRONLY|O_CREAT, 0777)) >= 0)
 #if (EMU_SYSTEM == NCDZ)
 	{
 		if ((inbuf = memalign(MEM_ALIGN, STATE_BUFFER_SIZE)) == NULL)
@@ -205,7 +228,7 @@ int state_save(int slot)
 		save_thumbnail();
 		update_progress();
 
-		sceIoWrite(fd, inbuf, (UINT32)state_buffer - (UINT32)inbuf);
+		write(fd, inbuf, (uint32_t)state_buffer - (uint32_t)inbuf);
 		update_progress();
 
 		memset(inbuf, 0, STATE_BUFFER_SIZE);
@@ -223,7 +246,7 @@ int state_save(int slot)
 		state_save_cdrom();
 		update_progress();
 
-		insize = (UINT32)state_buffer - (UINT32)inbuf;
+		insize = (uint32_t)state_buffer - (uint32_t)inbuf;
 		outsize = insize * 1.1 + 12;
 		if ((outbuf = memalign(MEM_ALIGN, outsize)) == NULL)
 		{
@@ -243,9 +266,9 @@ int state_save(int slot)
 		free(inbuf);
 		update_progress();
 
-		sceIoWrite(fd, &outsize, 4);
-		sceIoWrite(fd, outbuf, outsize);
-		sceIoClose(fd);
+		write(fd, &outsize, 4);
+		write(fd, outbuf, outsize);
+		close(fd);
 		free(outbuf);
 		update_progress();
 
@@ -257,7 +280,7 @@ int state_save(int slot)
 #ifdef ADHOC
 		state_buffer = state_buffer_base;
 #else
-#if (EMU_SYSTEM == CPS1 || (EMU_SYSTEM == CPS2 && defined(PSP_SLIM)))
+#if (EMU_SYSTEM == CPS1 || (EMU_SYSTEM == CPS2 && defined(LARGE_MEMORY)))
 		state_buffer = state_buffer_base = memalign(MEM_ALIGN, STATE_BUFFER_SIZE);
 #else
 		state_buffer = state_buffer_base = cache_alloc_state_buffer(STATE_BUFFER_SIZE);
@@ -311,13 +334,13 @@ int state_save(int slot)
 #endif
 		update_progress();
 
-		size = (UINT32)state_buffer - (UINT32)state_buffer_base;
-		sceIoWrite(fd, state_buffer_base, size);
-		sceIoClose(fd);
+		size = (uint32_t)state_buffer - (uint32_t)state_buffer_base;
+		write(fd, state_buffer_base, size);
+		close(fd);
 		update_progress();
 
 #ifndef ADHOC
-#if (EMU_SYSTEM == CPS1 || (EMU_SYSTEM == CPS2 && defined(PSP_SLIM)))
+#if (EMU_SYSTEM == CPS1 || (EMU_SYSTEM == CPS2 && defined(LARGE_MEMORY)))
 		free(state_buffer_base);
 #else
 		cache_free_state_buffer(STATE_BUFFER_SIZE);
@@ -339,8 +362,8 @@ error:
 #endif
 	if (fd >= 0)
 	{
-		sceIoClose(fd);
-		sceIoRemove(path);
+		close(fd);
+		remove(path);
 	}
 	show_progress(error_mes);
 	pad_wait_press(PAD_WAIT_INFINITY);
@@ -356,7 +379,7 @@ error:
 int state_load(int slot)
 {
 #if defined(ADHOC) || (EMU_SYSTEM == NCDZ)
-	SceUID fd;
+	int32_t fd;
 #else
 	FILE *fp;
 #endif
@@ -364,7 +387,7 @@ int state_load(int slot)
 	char error_mes[128];
 	char buf[128];
 #if (EMU_SYSTEM == NCDZ)
-	UINT8 *inbuf, *outbuf;
+	uint8_t *inbuf, *outbuf;
 	unsigned long insize, outsize;
 #endif
 
@@ -382,23 +405,23 @@ int state_load(int slot)
 #endif
 
 #if (EMU_SYSTEM == NCDZ)
-	if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
+	if ((fd = open(path, O_RDONLY, 0777)) >= 0)
 	{
-		sceIoLseek(fd, (8+16) + (152*112*2), SEEK_SET);
+		lseek(fd, (8+16) + (152*112*2), SEEK_SET);
 		update_progress();
 
-		sceIoRead(fd, &insize, 4);
+		read(fd, &insize, 4);
 		if ((inbuf = memalign(MEM_ALIGN, insize)) == NULL)
 		{
 			strcpy(error_mes, TEXT(COULD_NOT_ALLOCATE_STATE_BUFFER));
-			sceIoClose(fd);
+			close(fd);
 			goto error;
 		}
 		memset(inbuf, 0, insize);
 		update_progress();
 
-		sceIoRead(fd, inbuf, insize);
-		sceIoClose(fd);
+		read(fd, inbuf, insize);
+		close(fd);
 		update_progress();
 
 		outsize = STATE_BUFFER_SIZE;
@@ -441,7 +464,7 @@ int state_load(int slot)
 			mp3_seek_start();
 
 			while (mp3_get_status() == MP3_SEEK)
-				video_wait_vsync();
+				video_driver->waitVsync(video_data);
 		}
 		update_progress();
 
@@ -450,14 +473,14 @@ int state_load(int slot)
 	}
 #else
 #ifdef ADHOC
-	if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
+	if ((fd = open(path, O_RDONLY, 0777)) >= 0)
 	{
 		int size;
 
-		size = sceIoLseek(fd, 0, SEEK_END);
-		sceIoLseek(fd, 0, SEEK_SET);
-		sceIoRead(fd, state_buffer_base, size);
-		sceIoClose(fd);
+		size = lseek(fd, 0, SEEK_END);
+		lseek(fd, 0, SEEK_SET);
+		read(fd, state_buffer_base, size);
+		close(fd);
 
 		state_buffer = state_buffer_base;
 
@@ -598,7 +621,7 @@ error:
 
 void state_make_thumbnail(void)
 {
-	UINT16 *tex = UI_TEXTURE;
+	uint16_t *tex = UI_TEXTURE;
 
 	{
 #if (EMU_SYSTEM == CPS1 || EMU_SYSTEM == CPS2)
@@ -607,18 +630,18 @@ void state_make_thumbnail(void)
 		if (machine_screen_type)
 		{
 			RECT clip2 = { 152, 0, 152 + 112, 152 };
-			video_copy_rect_rotate(work_frame, tex, &clip1, &clip2);
+			video_driver->copyRectRotate(video_data, work_frame, tex, &clip1, &clip2);
 		}
 		else
 		{
 			RECT clip2 = { 152, 0, 152 + 152, 112 };
-			video_copy_rect(work_frame, tex, &clip1, &clip2);
+			video_driver->copyRect(video_data, work_frame, tex, &clip1, &clip2);
 		}
 #elif (EMU_SYSTEM == MVS || EMU_SYSTEM == NCDZ)
 		RECT clip1 = { 24, 16, 336, 240 };
 		RECT clip2 = { 152, 0, 152 + 152, 112 };
 
-		video_copy_rect(work_frame, tex, &clip1, &clip2);
+		video_driver->copyRect(video_data, work_frame, tex, &clip1, &clip2);
 #endif
 	}
 }
@@ -639,7 +662,7 @@ int state_load_thumbnail(int slot)
 
 	if ((fp = fopen(path, "rb")) != NULL)
 	{
-		pspTime t;
+		stateTime t;
 
 		memset(stver_str, 0, 16);
 
@@ -691,18 +714,18 @@ void state_clear_thumbnail(void)
 */
 
 #if (EMU_SYSTEM == CPS1)
-#define ADHOC_STATE_SIZE	0x452eb		// CPS1PSP adhoc: 0x450d3
+#define ADHOC_STATE_SIZE	0x452eb		// CPS1 adhoc: 0x450d3
 #elif (EMU_SYSTEM == CPS2)
-#define ADHOC_STATE_SIZE	0x4b2d3		// CPS2PSP adhoc: 0x4b1f7
+#define ADHOC_STATE_SIZE	0x4b2d3		// CPS2 adhoc: 0x4b1f7
 #elif (EMU_SYSTEM == MVS)
-#define ADHOC_STATE_SIZE	0x46ee4		// MVSPSP adhoc: 0x46da2
+#define ADHOC_STATE_SIZE	0x46ee4		// MVS adhoc: 0x46da2
 #endif
 
 /*------------------------------------------------------
 	ステート送信
 ------------------------------------------------------*/
 
-int adhoc_send_state(UINT32 *frame)
+int adhoc_send_state(uint32_t *frame)
 {
 	int error = 0;
 	int retry_count = 10;
@@ -712,7 +735,7 @@ int adhoc_send_state(UINT32 *frame)
 	memset(state_buffer, 0, STATE_BUFFER_SIZE);
 
 	if (frame != NULL)
-		*(UINT32 *)state_buffer = *frame;
+		*(uint32_t *)state_buffer = *frame;
 
 	state_buffer += 4;
 
@@ -753,7 +776,7 @@ int adhoc_send_state(UINT32 *frame)
 
 #if 0
 	{
-		int size = (UINT32)state_buffer - (UINT32)state_buffer_base;
+		int size = (uint32_t)state_buffer - (uint32_t)state_buffer_base;
 		ui_popup("size = %08x (%08x)", size, ((size / 0x3ff) + 1) * 0x3ff);
 	}
 #endif
@@ -782,7 +805,7 @@ retry:
 	ステート受信
 ------------------------------------------------------*/
 
-int adhoc_recv_state(UINT32 *frame)
+int adhoc_recv_state(uint32_t *frame)
 {
 	int error = 0;
 	int retry_count = 10;
@@ -813,7 +836,7 @@ retry:
 	state_buffer = state_buffer_base;
 
 	if (frame != NULL)
-		*frame = *(UINT32 *)state_buffer;
+		*frame = *(uint32_t *)state_buffer;
 
 	state_buffer += 4;
 

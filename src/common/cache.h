@@ -29,13 +29,13 @@ enum
 	CACHE_RAWFILE
 };
 
-extern UINT32 (*read_cache)(UINT32 offset);
-extern void (*update_cache)(UINT32 offset);
+extern uint32_t (*read_cache)(uint32_t offset);
+extern void (*update_cache)(uint32_t offset);
 #if (EMU_SYSTEM == MVS)
 extern int pcm_cache_enable;
 #else
-extern UINT8 *block_empty;
-extern UINT32 block_offset[MAX_CACHE_BLOCKS];
+extern uint8_t *block_empty;
+extern uint32_t block_offset[MAX_CACHE_BLOCKS];
 #endif
 
 void cache_init(void);
@@ -44,13 +44,13 @@ void cache_shutdown(void);
 void cache_sleep(int flag);
 
 #if (EMU_SYSTEM == MVS)
-UINT8 *pcm_cache_read(UINT16 new_block);
-void pcm_cache_update(UINT16 block);
+uint8_t *pcm_cache_read(uint16_t new_block);
+void pcm_cache_update(uint16_t block);
 #endif
 
 #ifdef STATE_SAVE
-UINT8 *cache_alloc_state_buffer(INT32 size);
-void cache_free_state_buffer(INT32 size);
+uint8_t *cache_alloc_state_buffer(int32_t size);
+void cache_free_state_buffer(int32_t size);
 #endif
 
 #endif /* USE_CACHE */

@@ -9,12 +9,20 @@
 #ifndef EMUMAIN_H
 #define EMUMAIN_H
 
+#include <stdbool.h>
+
+#if defined(PSP)
 #include "psp/psp.h"
+#endif
+
 #include "include/cpuintrf.h"
 #include "include/memory.h"
 #include "zip/zfile.h"
 #include "common/loadrom.h"
 #include "common/state.h"
+#include "common/sound.h"
+#include "common/power_driver.h"
+#include "common/ticker_driver.h"
 #ifdef ADHOC
 #include "common/adhoc.h"
 #endif
@@ -29,6 +37,9 @@
 #endif
 #if (EMU_SYSTEM == CPS1 || EMU_SYSTEM == CPS2)
 #include "common/coin.h"
+#endif
+#if (EMU_SYSTEM == NCDZ)
+#include "common/mp3.h"
 #endif
 
 #if (EMU_SYSTEM == CPS1)
@@ -68,19 +79,21 @@ extern int machine_init_type;
 extern int machine_screen_type;
 extern int machine_sound_type;
 
-extern UINT32 frames_displayed;
+extern uint32_t frames_displayed;
 extern int fatal_error;
 
 void emu_main(void);
 
 void autoframeskip_reset(void);
 
-UINT8 skip_this_frame(void);
+uint8_t skip_this_frame(void);
 void update_screen(void);
 
 void fatalerror(const char *text, ...);
 void show_fatal_error(void);
 
 void save_snapshot(void);
+
+void waitVBlank(void);
 
 #endif /* EMUMAIN_H */

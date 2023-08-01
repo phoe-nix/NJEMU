@@ -19,21 +19,21 @@ enum
 
 struct rom_t
 {
-	UINT32 type;
-	UINT32 offset;
-	UINT32 length;
-	UINT32 crc;
+	uint32_t type;
+	uint32_t offset;
+	uint32_t length;
+	uint32_t crc;
 	int group;
 	int skip;
 	char name[32];
 };
 
 #if (EMU_SYSTEM != NCDZ)
-int file_open(const char *fname1, const char *fname2, const UINT32 crc, char *fname);
+int file_open(const char *fname1, const char *fname2, const uint32_t crc, char *fname);
 void file_close(void);
 int file_read(void *buf, size_t length);
 int file_getc(void);
-int rom_load(struct rom_t *rom, UINT8 *mem, int idx, int max);
+int rom_load(struct rom_t *rom, uint8_t *mem, int idx, int max);
 #endif
 
 #if USE_CACHE && (EMU_SYSTEM == MVS)

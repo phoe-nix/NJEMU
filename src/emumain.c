@@ -43,7 +43,7 @@ int machine_input_type;
 int machine_screen_type;
 int machine_sound_type;
 
-UINT32 frames_displayed;
+uint32_t frames_displayed;
 int fatal_error;
 
 
@@ -68,7 +68,7 @@ static int snap_no = -1;
 
 static char fatal_error_message[256];
 
-static const UINT8 skiptable[FRAMESKIP_LEVELS][FRAMESKIP_LEVELS] =
+static const uint8_t skiptable[FRAMESKIP_LEVELS][FRAMESKIP_LEVELS] =
 {
 	{ 0,0,0,0,0,0,0,0,0,0,0,0 },
 	{ 0,0,0,0,0,0,0,0,0,0,0,1 },
@@ -115,13 +115,13 @@ static void show_fps(void)
 
 static void show_battery_warning(void)
 {
-	if (!scePowerIsBatteryCharging())
+	if (!power_driver->isBatteryCharging(0))
 	{
-		int bat = scePowerGetBatteryLifePercent();
+		int bat = power_driver->batteryLifePercent(0);
 
 		if (bat < 10)
 		{
-			static UINT32 counter = 0;
+			static uint32_t counter = 0;
 
 			counter++;
 			if ((counter % 120) < 80)
@@ -178,7 +178,7 @@ void autoframeskip_reset(void)
 	frames_since_last_fps = 0;
 
 	game_speed_percent = 100;
-	frames_per_second = PSP_REFRESH_RATE;
+	frames_per_second = REFRESH_RATE;
 	frames_displayed = 0;
 
 	warming_up = 1;
@@ -189,7 +189,7 @@ void autoframeskip_reset(void)
 	フレームスキップテーブル
 --------------------------------------------------------*/
 
-UINT8 skip_this_frame(void)
+uint8_t skip_this_frame(void)
 {
 	return skiptable[frameskip][frameskip_counter];
 }
@@ -201,7 +201,7 @@ UINT8 skip_this_frame(void)
 
 void update_screen(void)
 {
-	UINT8 skipped_it = skiptable[frameskip][frameskip_counter];
+	uint8_t skipped_it = skiptable[frameskip][frameskip_counter];
 
 	if (!skipped_it)
 	{
@@ -218,39 +218,39 @@ void update_screen(void)
 
 	if (warming_up)
 	{
-		sceDisplayWaitVblankStart();
-		last_skipcount0_time = ticker() - (int)((float)FRAMESKIP_LEVELS * PSP_TICKS_PER_FRAME);
+		video_driver->waitVsync(video_data);
+		last_skipcount0_time = ticker_driver->ticker(NULL) - (int)((float)FRAMESKIP_LEVELS * TICKS_PER_FRAME);
 		warming_up = 0;
 	}
 
 	if (frameskip_counter == 0)
-		this_frame_base = last_skipcount0_time + (int)((float)FRAMESKIP_LEVELS * PSP_TICKS_PER_FRAME);
+		this_frame_base = last_skipcount0_time + (int)((float)FRAMESKIP_LEVELS * TICKS_PER_FRAME);
 
 	frames_displayed++;
 	frames_since_last_fps++;
 
 	if (!skipped_it)
 	{
-		TICKER curr = ticker();
+		TICKER curr = ticker_driver->ticker(NULL);
 		int flip = 0;
 
 		if (option_speedlimit)
 		{
-			TICKER target = this_frame_base + (int)((float)frameskip_counter * PSP_TICKS_PER_FRAME);
+			TICKER target = this_frame_base + (int)((float)frameskip_counter * TICKS_PER_FRAME);
 
 			if (option_vsync)
 			{
 				if (curr < target - 100)
 				{
-					video_flip_screen(1);
+					video_driver->flipScreen(video_data, 1);
 					flip = 1;
 				}
 			}
 
 			while (curr < target)
-				curr = ticker();
+				curr = ticker_driver->ticker(NULL);
 		}
-		if (!flip) video_flip_screen(0);
+		if (!flip) video_driver->flipScreen(video_data, 0);
 
 		rendered_frames_since_last_fps++;
 
@@ -259,7 +259,7 @@ void update_screen(void)
 			float seconds_elapsed = (float)(curr - last_skipcount0_time) * (1.0 / 1000000.0);
 			float frames_per_sec = (float)frames_since_last_fps / seconds_elapsed;
 
-			game_speed_percent = (int)(100.0 * frames_per_sec / PSP_REFRESH_RATE + 0.5);
+			game_speed_percent = (int)(100.0 * frames_per_sec / REFRESH_RATE + 0.5);
 			frames_per_second = (int)((float)rendered_frames_since_last_fps / seconds_elapsed + 0.5);
 
 			last_skipcount0_time = curr;
@@ -341,7 +341,7 @@ void show_fatal_error(void)
 		ex = sx + width;
 		ey = sy + (FONTSIZE - 1);
 
-		video_set_mode(32);
+		video_driver->setMode(video_data, 32);
 
 		load_background(WP_LOGO);
 
@@ -357,18 +357,18 @@ void show_fatal_error(void)
 
 				update = draw_battery_status(1);
 				update |= draw_volume_status(1);
-				video_flip_screen(1);
+				video_driver->flipScreen(video_data, 1);
 			}
 			else
 			{
 				update = draw_battery_status(0);
 				update |= draw_volume_status(0);
-				video_wait_vsync();
+				video_driver->waitVsync(video_data);
 			}
 
 			pad_update();
 
-			if (pad_pressed(PSP_CTRL_ANY))
+			if (pad_pressed_any())
 				break;
 		}
 

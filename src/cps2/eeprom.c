@@ -17,8 +17,8 @@
 ******************************************************************************/
 
 static int serial_count;
-static UINT8 serial_buffer[SERIAL_BUFFER_LENGTH];
-static UINT8 ALIGN_PSPDATA eeprom_data[EEPROM_SIZE];
+static uint8_t serial_buffer[SERIAL_BUFFER_LENGTH];
+static uint8_t ALIGN16_DATA eeprom_data[EEPROM_SIZE];
 static int eeprom_data_bits;
 static int eeprom_read_address;
 static int eeprom_clock_count;
@@ -239,7 +239,7 @@ void EEPROM_save(FILE *fp)
 	EEPROMに直接データを書き込む
 --------------------------------------------------------*/
 
-UINT8 EEPROM_read_data(UINT32 address)
+uint8_t EEPROM_read_data(uint32_t address)
 {
 	return eeprom_data[address];
 }
@@ -249,7 +249,7 @@ UINT8 EEPROM_read_data(UINT32 address)
 	EEPROMのデータを読み込む
 --------------------------------------------------------*/
 
-void EEPROM_write_data(UINT32 address, UINT8 data)
+void EEPROM_write_data(uint32_t address, uint8_t data)
 {
 	eeprom_data[address] = data;
 }

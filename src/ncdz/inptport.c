@@ -14,7 +14,7 @@
 ******************************************************************************/
 
 int option_controller;
-UINT8 ALIGN_DATA neogeo_port_value[NCDZ_PORT_MAX];
+uint8_t ALIGN_DATA neogeo_port_value[NCDZ_PORT_MAX];
 
 int input_map[MAX_INPUTS];
 int af_interval = 1;
@@ -25,7 +25,7 @@ int analog_sensitivity;	// not used
 	ローカル変数
 ******************************************************************************/
 
-static const UINT8 hotkey_mask[11] =
+static const uint8_t hotkey_mask[11] =
 {
 //	0xef,	// A
 //	0xdf,	// B
@@ -44,7 +44,7 @@ static const UINT8 hotkey_mask[11] =
 	0x0f	// A+B+C+D
 };
 
-static UINT8 ALIGN_DATA input_flag[MAX_INPUTS];
+static uint8_t ALIGN_DATA input_flag[MAX_INPUTS];
 static int ALIGN_DATA af_map1[NCDZ_BUTTON_MAX];
 static int ALIGN_DATA af_map2[NCDZ_BUTTON_MAX];
 static int ALIGN_DATA af_counter[NCDZ_BUTTON_MAX];
@@ -59,7 +59,7 @@ static int input_ui_wait;
 	連射フラグを更新
 ------------------------------------------------------*/
 
-static UINT32 update_autofire(UINT32 buttons)
+static uint32_t update_autofire(uint32_t buttons)
 {
 	int i;
 
@@ -94,7 +94,7 @@ static UINT32 update_autofire(UINT32 buttons)
 	ホットキーフラグを反映
 ------------------------------------------------------*/
 
-static UINT8 apply_hotkey(UINT8 value)
+static uint8_t apply_hotkey(uint8_t value)
 {
 	int i, button;
 
@@ -115,7 +115,7 @@ static UINT8 apply_hotkey(UINT8 value)
 
 static void update_inputport0(void)
 {
-	UINT8 value = 0xff;
+	uint8_t value = 0xff;
 
 	if (!option_controller)
 	{
@@ -141,7 +141,7 @@ static void update_inputport0(void)
 
 static void update_inputport1(void)
 {
-	UINT8 value = 0xff;
+	uint8_t value = 0xff;
 
 	if (option_controller)
 	{
@@ -167,7 +167,7 @@ static void update_inputport1(void)
 
 static void update_inputport2(void)
 {
-	UINT8 value = 0x0f;
+	uint8_t value = 0x0f;
 
 	if (option_controller)
 	{
@@ -248,18 +248,18 @@ void setup_autofire(void)
 void update_inputport(void)
 {
 	int i;
-	UINT32 buttons;
+	uint32_t buttons;
 
 	buttons = poll_gamepad();
 
-	if (systembuttons_available ? readHomeButton() : (buttons & PSP_CTRL_START) && (buttons & PSP_CTRL_SELECT))
+	if (systembuttons_available ? readHomeButton() : (buttons & PLATFORM_PAD_START) && (buttons & PLATFORM_PAD_SELECT))
 	{
 		showmenu();
 		setup_autofire();
 		buttons = poll_gamepad();
 	}
 /*
-	else if ((buttons & PSP_CTRL_RTRIGGER) && (buttons & PSP_CTRL_SELECT))
+	else if ((buttons & PLATFORM_PAD_R) && (buttons & PLATFORM_PAD_SELECT))
 	{
 		commandlist(1);
 		buttons = poll_gamepad();

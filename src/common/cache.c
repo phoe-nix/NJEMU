@@ -6,10 +6,11 @@
 
 ******************************************************************************/
 
+#include <fcntl.h>
 #include "emumain.h"
 
 #if USE_CACHE
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 #define MIN_CACHE_SIZE		0x40		// 下限  原始0x40,4MB
 #else
 #define MIN_CACHE_SIZE		0x20		// 下限  原始0x40,4MB
@@ -18,7 +19,7 @@
 32MB 0x200 660CFW exit pspfiler and tempgba,crash.
 26MB 0x1a0 620CFW push vol and screen button crash.
 */
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 #define MAX_CACHE_SIZE		0x200		// 上限 32MB 0x200  
 #else
 #define MAX_CACHE_SIZE		0x140		// 上限 20MB 0x140
@@ -40,11 +41,11 @@
 	グローバル構造体/変数
 ******************************************************************************/
 
-UINT32 (*read_cache)(UINT32 offset);
-void (*update_cache)(UINT32 offset);
+uint32_t (*read_cache)(uint32_t offset);
+void (*update_cache)(uint32_t offset);
 #if (EMU_SYSTEM == CPS2)
-UINT32 block_offset[MAX_CACHE_BLOCKS];
-UINT8  *block_empty = (UINT8 *)block_offset;
+uint32_t block_offset[MAX_CACHE_BLOCKS];
+uint8_t  *block_empty = (uint8_t *)block_offset;
 #endif
 
 
@@ -56,7 +57,7 @@ typedef struct cache_s
 {
 	int idx;
 	int block;
-	UINT32 frame;
+	uint32_t frame;
 	struct cache_s *prev;
 	struct cache_s *next;
 } cache_t;
@@ -67,19 +68,19 @@ static cache_t *head;
 static cache_t *tail;
 
 static int num_cache;
-static UINT16 ALIGN_DATA blocks[MAX_CACHE_BLOCKS];
+static uint16_t ALIGN_DATA blocks[MAX_CACHE_BLOCKS];
 static int cache_fd;
 
 #if (EMU_SYSTEM == MVS)
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 int pcm_cache_enable;
 
 static cache_t ALIGN_DATA pcm_data[MAX_PCM_SIZE];
 static cache_t *pcm_head;
 static cache_t *pcm_tail;
 
-static UINT16 ALIGN_DATA pcm_blocks[MAX_PCM_BLOCKS];
-static SceUID pcm_fd;
+static uint16_t ALIGN_DATA pcm_blocks[MAX_PCM_BLOCKS];
+static int32_t pcm_fd;
 #endif
 #else
 static int cache_type;
@@ -92,15 +93,15 @@ static char spr_cache_name[MAX_PATH];
 ******************************************************************************/
 
 #if (EMU_SYSTEM == MVS)
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 
 /*------------------------------------------------------
 	PCMキャッシュを読み込む
 ------------------------------------------------------*/
 
-UINT8 *pcm_cache_read(UINT16 new_block)
+uint8_t *pcm_cache_read(uint16_t new_block)
 {
-	UINT32 idx = pcm_blocks[new_block];
+	uint32_t idx = pcm_blocks[new_block];
 	cache_t *p;
 
 	if (idx == BLOCK_NOT_CACHED)
@@ -111,8 +112,8 @@ UINT8 *pcm_cache_read(UINT16 new_block)
 		p->block = new_block;
 		pcm_blocks[new_block] = p->idx;
 
-		sceIoLseek(pcm_fd, new_block << BLOCK_SHIFT, PSP_SEEK_SET);
-		sceIoRead(pcm_fd, &memory_region_sound1[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
+		lseek(pcm_fd, new_block << BLOCK_SHIFT, SEEK_SET);
+		read(pcm_fd, &memory_region_sound1[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
 	}
 	else p = &pcm_data[idx];
 
@@ -206,8 +207,8 @@ static int fill_cache(void)
 		p->block = block;
 		blocks[block] = p->idx;
 
-		sceIoLseek(cache_fd, block << BLOCK_SHIFT, PSP_SEEK_SET);
-		sceIoRead(cache_fd, &GFX_MEMORY[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
+		lseek(cache_fd, block << BLOCK_SHIFT, SEEK_SET);
+		read(cache_fd, &GFX_MEMORY[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
 
 		head = p->next;
 		head->prev = NULL;
@@ -222,7 +223,7 @@ static int fill_cache(void)
 		if (++block >= MAX_CACHE_BLOCKS)
 			break;
 	}
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	if (pcm_cache_enable)
 	{
 		i = 0;
@@ -234,8 +235,8 @@ static int fill_cache(void)
 			p->block = block;
 			pcm_blocks[block] = p->idx;
 
-			sceIoLseek(pcm_fd, block << BLOCK_SHIFT, PSP_SEEK_SET);
-			sceIoRead(pcm_fd, &memory_region_sound1[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
+			lseek(pcm_fd, block << BLOCK_SHIFT, SEEK_SET);
+			read(pcm_fd, &memory_region_sound1[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
 
 			pcm_head = p->next;
 			pcm_head->prev = NULL;
@@ -260,8 +261,8 @@ static int fill_cache(void)
 				p->block = block;
 				blocks[block] = p->idx;
 
-				sceIoLseek(cache_fd, block_offset[block], PSP_SEEK_SET);
-				sceIoRead(cache_fd, &GFX_MEMORY[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
+				lseek(cache_fd, block_offset[block], SEEK_SET);
+				read(cache_fd, &GFX_MEMORY[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
 
 				head = p->next;
 				head->prev = NULL;
@@ -323,7 +324,7 @@ static int fill_cache(void)
 ------------------------------------------------------*/
 
 #if (EMU_SYSTEM == MVS)
-static UINT32 read_cache_disable(UINT32 offset)
+static uint32_t read_cache_disable(uint32_t offset)
 {
 	return offset;
 }
@@ -338,7 +339,7 @@ static UINT32 read_cache_disable(UINT32 offset)
 ------------------------------------------------------*/
 
 #if (EMU_SYSTEM == CPS2)
-static UINT32 read_cache_static(UINT32 offset)
+static uint32_t read_cache_static(uint32_t offset)
 {
 	int idx = blocks[offset >> BLOCK_SHIFT];
 
@@ -353,10 +354,10 @@ static UINT32 read_cache_static(UINT32 offset)
 	無圧縮のキャッシュファイルからデータを読み込む
 ------------------------------------------------------*/
 
-static UINT32 read_cache_rawfile(UINT32 offset)
+static uint32_t read_cache_rawfile(uint32_t offset)
 {
-	INT16 new_block = offset >> BLOCK_SHIFT;
-	UINT32 idx = blocks[new_block];
+	int16_t new_block = offset >> BLOCK_SHIFT;
+	uint32_t idx = blocks[new_block];
 	cache_t *p;
 
 	if (idx == BLOCK_NOT_CACHED)
@@ -368,11 +369,11 @@ static UINT32 read_cache_rawfile(UINT32 offset)
 		blocks[new_block] = p->idx;
 
 #if (EMU_SYSTEM == MVS)
-		sceIoLseek(cache_fd, new_block << BLOCK_SHIFT, PSP_SEEK_SET);
+		lseek(cache_fd, new_block << BLOCK_SHIFT, SEEK_SET);
 #else
-		sceIoLseek(cache_fd, block_offset[new_block], PSP_SEEK_SET);
+		lseek(cache_fd, block_offset[new_block], SEEK_SET);
 #endif
-		sceIoRead(cache_fd, &GFX_MEMORY[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
+		read(cache_fd, &GFX_MEMORY[p->idx << BLOCK_SHIFT], BLOCK_SIZE);
 	}
 	else p = &cache_data[idx];
 
@@ -407,10 +408,10 @@ static UINT32 read_cache_rawfile(UINT32 offset)
 ------------------------------------------------------*/
 
 #if (EMU_SYSTEM == CPS2)
-static UINT32 read_cache_zipfile(UINT32 offset)
+static uint32_t read_cache_zipfile(uint32_t offset)
 {
-	INT16 new_block = offset >> BLOCK_SHIFT;
-	UINT32 idx = blocks[new_block];
+	int16_t new_block = offset >> BLOCK_SHIFT;
+	uint32_t idx = blocks[new_block];
 	cache_t *p;
 
 	if (idx == BLOCK_NOT_CACHED)
@@ -459,7 +460,7 @@ static UINT32 read_cache_zipfile(UINT32 offset)
 	キャッシュを使用しない、または全て読み込んだ場合。
 ------------------------------------------------------*/
 
-static void update_cache_disable(UINT32 offset)
+static void update_cache_disable(uint32_t offset)
 {
 }
 
@@ -471,9 +472,9 @@ static void update_cache_disable(UINT32 offset)
 	キャッシュを管理しない場合は不要。
 ------------------------------------------------------*/
 
-static void update_cache_dynamic(UINT32 offset)
+static void update_cache_dynamic(uint32_t offset)
 {
-	INT16 new_block = offset >> BLOCK_SHIFT;
+	int16_t new_block = offset >> BLOCK_SHIFT;
 	int idx = blocks[new_block];
 
 	if (idx != BLOCK_NOT_CACHED)
@@ -530,7 +531,7 @@ void cache_init(void)
 		blocks[i] = BLOCK_NOT_CACHED;
 
 #if (EMU_SYSTEM == MVS)
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	pcm_cache_enable = 0;
 	pcm_fd = -1;
 
@@ -548,10 +549,10 @@ void cache_init(void)
 int cache_start(void)
 {
 	int i, found;
-	UINT32 size = 0;
+	uint32_t size = 0;
 	char version_str[8];
 #if (EMU_SYSTEM == MVS)
-	SceUID fd;
+	int32_t fd;
 #endif
 
 	zip_close();
@@ -563,14 +564,14 @@ int cache_start(void)
 	found = 0;
 	if ((fd = cachefile_open(CACHE_INFO)) >= 0)
 	{
-		sceIoRead(fd, version_str, 8);
+		read(fd, version_str, 8);
 
 		if (strcmp(version_str, "MVS_" CACHE_VERSION) == 0)
 		{
-			sceIoRead(fd, gfx_pen_usage[2], memory_length_gfx3 / 128);
+			read(fd, gfx_pen_usage[2], memory_length_gfx3 / 128);
 			found = 1;
 		}
-		sceIoClose(fd);
+		close(fd);
 
 		if (!found)
 		{
@@ -586,7 +587,7 @@ int cache_start(void)
 		return 0;
 	}
 
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	if (option_sound_enable && disable_sound)
 	{
 		if ((pcm_fd = cachefile_open(CACHE_VROM)) >= 0)
@@ -602,7 +603,7 @@ int cache_start(void)
 		{
 			if (pcm_fd >= 0)
 			{
-				sceIoClose(pcm_fd);
+				close(pcm_fd);
 				pcm_fd = -1;
 			}
 			memory_length_sound1 = 0;
@@ -621,10 +622,10 @@ int cache_start(void)
 	cache_type = CACHE_RAWFILE;
 
 	sprintf(spr_cache_name, "%s/%s.cache", cache_dir, game_name);
-	if ((cache_fd = sceIoOpen(spr_cache_name, PSP_O_RDONLY, 0777)) < 0)
+	if ((cache_fd = open(spr_cache_name, O_RDONLY, 0777)) < 0)
 	{
 		sprintf(spr_cache_name, "%s/%s.cache", cache_dir, cache_parent_name);
-		if ((cache_fd = sceIoOpen(spr_cache_name, PSP_O_RDONLY, 0777)) < 0)
+		if ((cache_fd = open(spr_cache_name, O_RDONLY, 0777)) < 0)
 		{
 			found = 0;
 		}
@@ -656,18 +657,18 @@ int cache_start(void)
 
 	if (cache_type == CACHE_RAWFILE)
 	{
-		sceIoRead(cache_fd, version_str, 8);
+		read(cache_fd, version_str, 8);
 
 		if (strcmp(version_str, "CPS2" CACHE_VERSION) == 0)
 		{
-			sceIoRead(cache_fd, gfx_pen_usage[TILE08], gfx_total_elements[TILE08]);
-			sceIoRead(cache_fd, gfx_pen_usage[TILE16], gfx_total_elements[TILE16]);
-			sceIoRead(cache_fd, gfx_pen_usage[TILE32], gfx_total_elements[TILE32]);
-			sceIoRead(cache_fd, block_offset, MAX_CACHE_BLOCKS * sizeof(UINT32));
+			read(cache_fd, gfx_pen_usage[TILE08], gfx_total_elements[TILE08]);
+			read(cache_fd, gfx_pen_usage[TILE16], gfx_total_elements[TILE16]);
+			read(cache_fd, gfx_pen_usage[TILE32], gfx_total_elements[TILE32]);
+			read(cache_fd, block_offset, MAX_CACHE_BLOCKS * sizeof(uint32_t));
 		}
 		else
 		{
-			sceIoClose(cache_fd);
+			close(cache_fd);
 			found = 0;
 		}
 	}
@@ -705,10 +706,10 @@ int cache_start(void)
 		return 0;
 	}
 
-	if ((GFX_MEMORY = (UINT8 *)memalign(MEM_ALIGN, GFX_SIZE + CACHE_SAFETY)) != NULL)
+	if ((GFX_MEMORY = (uint8_t *)memalign(MEM_ALIGN, GFX_SIZE + CACHE_SAFETY)) != NULL)
 	{
 		free(GFX_MEMORY);
-		GFX_MEMORY = (UINT8 *)memalign(MEM_ALIGN, GFX_SIZE);
+		GFX_MEMORY = (uint8_t *)memalign(MEM_ALIGN, GFX_SIZE);
 		memset(GFX_MEMORY, 0, GFX_SIZE);
 
 		num_cache = GFX_SIZE >> 16;
@@ -728,10 +729,10 @@ int cache_start(void)
 
 		// 確保可能なサイズをチェック
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		if (psp2k_mem_left == PSP2K_MEM_SIZE)//ui32 bug
 		{
-			GFX_MEMORY = (UINT8 *)PSP2K_MEM_TOP;
+			GFX_MEMORY = (uint8_t *)PSP2K_MEM_TOP;
 			i = MAX_CACHE_SIZE;
 			size = i << BLOCK_SHIFT;
 		}
@@ -741,7 +742,7 @@ int cache_start(void)
 		{
 			for (i = GFX_SIZE >> BLOCK_SHIFT; i >= MIN_CACHE_SIZE; i--)
 			{
-				if ((GFX_MEMORY = (UINT8 *)memalign(MEM_ALIGN, (i << BLOCK_SHIFT) + CACHE_SAFETY)) != NULL)
+				if ((GFX_MEMORY = (uint8_t *)memalign(MEM_ALIGN, (i << BLOCK_SHIFT) + CACHE_SAFETY)) != NULL)
 				{
 					size = i << BLOCK_SHIFT;
 					free(GFX_MEMORY);
@@ -756,7 +757,7 @@ int cache_start(void)
 				return 0;
 			}
 
-			if ((GFX_MEMORY = (UINT8 *)memalign(MEM_ALIGN, size)) == NULL)
+			if ((GFX_MEMORY = (uint8_t *)memalign(MEM_ALIGN, size)) == NULL)
 			{
 				msg_printf(TEXT(COULD_NOT_ALLOCATE_CACHE_MEMORY));
 				return 0;
@@ -786,7 +787,7 @@ int cache_start(void)
 	tail = &cache_data[num_cache - 1];
 
 #if (EMU_SYSTEM == MVS)
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	for (i = 0; i < MAX_PCM_SIZE; i++)
 		pcm_data[i].idx = i;
 
@@ -825,19 +826,19 @@ int cache_start(void)
 void cache_shutdown(void)
 {
 #if (EMU_SYSTEM == MVS)
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 	if (pcm_cache_enable)
 	{
 		if (pcm_fd != -1)
 		{
-			sceIoClose(pcm_fd);
+			close(pcm_fd);
 		}
 		pcm_cache_enable = 0;
 	}
 #endif
 	if (cache_fd != -1)
 	{
-		sceIoClose(cache_fd);
+		close(cache_fd);
 		cache_fd = -1;
 	}
 #else
@@ -845,7 +846,7 @@ void cache_shutdown(void)
 	{
 		if (cache_fd != -1)
 		{
-			sceIoClose(cache_fd);
+			close(cache_fd);
 			cache_fd = -1;
 		}
 	}
@@ -869,13 +870,13 @@ void cache_sleep(int flag)
 		if (flag)
 		{
 #if (EMU_SYSTEM == MVS)
-			sceIoClose(cache_fd);
-#ifndef PSP_SLIM
-			if (pcm_cache_enable) sceIoClose(pcm_fd);
+			close(cache_fd);
+#ifndef LARGE_MEMORY
+			if (pcm_cache_enable) close(pcm_fd);
 #endif
 #else
 			if (cache_type == CACHE_RAWFILE)
-				sceIoClose(cache_fd);
+				close(cache_fd);
 			else
 				zip_close();
 #endif
@@ -884,13 +885,13 @@ void cache_sleep(int flag)
 		{
 #if (EMU_SYSTEM == MVS)
 			cache_fd = cachefile_open(CACHE_CROM);
-#ifndef PSP_SLIM
+#ifndef LARGE_MEMORY
 			if (pcm_cache_enable)
 				pcm_fd = cachefile_open(CACHE_VROM);
 #endif
 #else
 			if (cache_type == CACHE_RAWFILE)
-				cache_fd = sceIoOpen(spr_cache_name, PSP_O_RDONLY, 0777);
+				cache_fd = open(spr_cache_name, O_RDONLY, 0777);
 			else
 				zip_open(spr_cache_name);
 #endif
@@ -905,34 +906,34 @@ void cache_sleep(int flag)
 	ステートセーブ領域を一時的に確保する
 ------------------------------------------------------*/
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 static int cache_alloc_type = 0;
 #endif
 
-UINT8 *cache_alloc_state_buffer(INT32 size)
+uint8_t *cache_alloc_state_buffer(int32_t size)
 {
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	if (size < psp2k_mem_left)
 	{
 		cache_alloc_type = 1;
-		return (UINT8 *)psp2k_mem_offset;
+		return (uint8_t *)psp2k_mem_offset;
 	}
 	else
 #endif
 	{
-		SceUID fd;
+		int32_t fd;
 		char path[MAX_PATH];
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 		cache_alloc_type = 0;
 #endif
 
 		sprintf(path, "%sstate/cache.tmp", launchDir);
 
-		if ((fd = sceIoOpen(path, PSP_O_WRONLY|PSP_O_CREAT, 0777)) >= 0)
+		if ((fd = open(path, O_WRONLY|O_CREAT, 0777)) >= 0)
 		{
-			sceIoWrite(fd, GFX_MEMORY, size);
-			sceIoClose(fd);
+			write(fd, GFX_MEMORY, size);
+			close(fd);
 			return GFX_MEMORY;
 		}
 		return NULL;
@@ -943,26 +944,26 @@ UINT8 *cache_alloc_state_buffer(INT32 size)
 	セーブ領域を解放し、退避したキャッシュを戻す
 ------------------------------------------------------*/
 
-void cache_free_state_buffer(INT32 size)
+void cache_free_state_buffer(int32_t size)
 {
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	if (!cache_alloc_type)
 #endif
 	{
-		SceUID fd;
+		uint32_t fd;
 		char path[MAX_PATH];
 
 		sprintf(path, "%sstate/cache.tmp", launchDir);
 
-		if ((fd = sceIoOpen(path, PSP_O_RDONLY, 0777)) >= 0)
+		if ((fd = open(path, O_RDONLY, 0777)) >= 0)
 		{
-			sceIoRead(fd, GFX_MEMORY, size);
-			sceIoClose(fd);
+			read(fd, GFX_MEMORY, size);
+			close(fd);
 		}
-		sceIoRemove(path);
+		remove(path);
 	}
 
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	cache_alloc_type = 0;
 #endif
 }

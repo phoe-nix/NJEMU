@@ -18,7 +18,7 @@
 	gryph data
 ------------------------------------------------------*/
 
-static const UINT8 ALIGN_DATA ascii_14[] = {
+static const uint8_t ALIGN_DATA ascii_14[] = {
 	0xf0,0x08,0xf0,0x08,0xf0,0x08,0xf0,0x08,0xf0,0x08,0xf0,0x08,0xf0,0x08,0xf0,0x08,
 	0x80,0x04,0x80,0x06,0xf4,0x0c,0xf4,0x0c,0x60,0x6f,0x6f,0xc0,0xc6,0x06,0x66,0x84,
 	0x00,0x00,0x64,0x80,0x00,0x00,0xca,0xf0,0x04,0x00,0x8c,0xf4,0x00,0x40,0xac,0xf8,
@@ -248,7 +248,7 @@ static const int ALIGN_DATA ascii_14_pos[NUM_FONTS] = {
 
 };
 
-static const INT8 ALIGN_DATA ascii_14_width[NUM_FONTS] = {
+static const int8_t ALIGN_DATA ascii_14_width[NUM_FONTS] = {
 	 0, 4, 6, 8, 8, 8, 8, 4, 6, 4, 8, 8, 4, 6, 4, 8,
 	 8, 4, 8, 8, 8, 6, 8, 6, 8, 8, 4, 4, 6, 8, 6, 8,
 	 8, 8, 8, 8, 8, 8, 6, 8, 8, 4, 6, 8, 8, 8, 8, 8,
@@ -257,7 +257,7 @@ static const INT8 ALIGN_DATA ascii_14_width[NUM_FONTS] = {
 	 8, 8, 6, 6, 6, 8, 8, 8, 6, 6, 6, 4, 4, 4, 6, 4
 };
 
-static const INT8 ALIGN_DATA ascii_14_height[NUM_FONTS] = {
+static const int8_t ALIGN_DATA ascii_14_height[NUM_FONTS] = {
 	 0,12, 3,14,14,12,12, 4,13,13, 9, 8, 4, 2, 3,14,
 	11,12,12,12,12,12,12,12,12,12, 8,10, 9, 6, 9,13,
 	14,12,12,12,11,12,12,12,12,12,12,12,12,12,12,12,
@@ -266,7 +266,7 @@ static const INT8 ALIGN_DATA ascii_14_height[NUM_FONTS] = {
 	10,10, 9, 9,12, 9, 9, 9, 9,10, 9,14,14,14, 3, 4
 };
 
-static const INT8 ALIGN_DATA ascii_14_skipx[NUM_FONTS] = {
+static const int8_t ALIGN_DATA ascii_14_skipx[NUM_FONTS] = {
 	 6, 2, 0, 0, 0, 0, 0, 2, 1, 1, 0, 0, 2, 1, 2, 0,
 	 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 2, 2, 0, 0, 0, 0,
 	 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0,
@@ -275,7 +275,7 @@ static const INT8 ALIGN_DATA ascii_14_skipx[NUM_FONTS] = {
 	 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 2, 1, 0, 1
 };
 
-static const INT8 ALIGN_DATA ascii_14_skipy[NUM_FONTS] = {
+static const int8_t ALIGN_DATA ascii_14_skipy[NUM_FONTS] = {
 	14, 1, 0, 0, 0, 1, 1, 0, 1, 1, 2, 3,10, 6,10, 0,
 	 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 2, 4, 2, 0,
 	 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -289,7 +289,7 @@ static const INT8 ALIGN_DATA ascii_14_skipy[NUM_FONTS] = {
 	functions
 ------------------------------------------------------*/
 
-int ascii_14_get_gryph(struct font_t *font, UINT16 code)
+int ascii_14_get_gryph(struct font_t *font, uint16_t code)
 {
 	if (code < NUM_FONTS)
 	{

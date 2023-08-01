@@ -318,11 +318,11 @@ enum
 
 extern int neogeo_driver_type;
 extern int neogeo_raster_enable;
-extern UINT16 neogeo_ngh;
+extern uint16_t neogeo_ngh;
 
-extern UINT8 auto_animation_speed;
-extern UINT8 auto_animation_disabled;
-extern UINT8 auto_animation_counter;
+extern uint8_t auto_animation_speed;
+extern uint8_t auto_animation_disabled;
+extern uint8_t auto_animation_counter;
 
 struct cacheinfo_t
 {
@@ -372,8 +372,8 @@ WRITE16_HANDLER( neogeo_memcard16_w );
 
 WRITE16_HANDLER( neogeo_sram16_w );
 
-UINT8 neogeo_z80_port_r(UINT16 port);
-void neogeo_z80_port_w(UINT16 port, UINT8 value);
+uint8_t neogeo_z80_port_r(uint16_t port);
+void neogeo_z80_port_w(uint16_t port, uint8_t value);
 
 void neogeo_sound_irq(int irq);
 

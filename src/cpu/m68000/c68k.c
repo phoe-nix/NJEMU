@@ -33,7 +33,7 @@ c68k_struc ALIGN_DATA C68K;
 ******************************************************************************/
 
 static void ALIGN_DATA *JumpTable[0x10000];
-static UINT8 ALIGN_DATA c68k_bad_address[1 << C68K_FETCH_SFT];
+static uint8_t ALIGN_DATA c68k_bad_address[1 << C68K_FETCH_SFT];
 
 
 /******************************************************************************
@@ -44,7 +44,7 @@ static UINT8 ALIGN_DATA c68k_bad_address[1 << C68K_FETCH_SFT];
 	割り込みコールバック
 --------------------------------------------------------*/
 
-static INT32 C68k_InterruptCallback(INT32 line)
+static int32_t C68k_InterruptCallback(int32_t line)
 {
 	return C68K_INTERRUPT_AUTOVECTOR_EX + line;
 }
@@ -79,7 +79,7 @@ void C68k_Init(c68k_struc *CPU)
 	memset(c68k_bad_address, 0xff, sizeof(c68k_bad_address));
 
 	for (i = 0; i < C68K_FETCH_BANK; i++)
-		CPU->Fetch[i] = (UINT32)c68k_bad_address;
+		CPU->Fetch[i] = (uint32_t)c68k_bad_address;
 
 	C68k_Exec(NULL, 0);
 }
@@ -91,9 +91,9 @@ void C68k_Init(c68k_struc *CPU)
 
 void C68k_Reset(c68k_struc *CPU)
 {
-	UINT32 PC;
+	uint32_t PC;
 
-	memset(CPU, 0, (UINT32)&CPU->BasePC - (UINT32)CPU);
+	memset(CPU, 0, (uint32_t)&CPU->BasePC - (uint32_t)CPU);
 
 	CPU->flag_I = 7;
 	CPU->flag_S = C68K_SR_S;
@@ -109,16 +109,16 @@ void C68k_Reset(c68k_struc *CPU)
 	CPU実行
 --------------------------------------------------------*/
 
-INT32 C68k_Exec(c68k_struc *CPU, INT32 cycles)
+int32_t C68k_Exec(c68k_struc *CPU, int32_t cycles)
 {
 	if (CPU)
 	{
-		UINT32 PC;
-		UINT32 Opcode;
-		UINT32 adr;
-		UINT32 res;
-		UINT32 src;
-		UINT32 dst;
+		uint32_t PC;
+		uint32_t Opcode;
+		uint32_t adr;
+		uint32_t res;
+		uint32_t src;
+		uint32_t dst;
 
 		PC = CPU->PC;
 		CPU->ICount = cycles;
@@ -156,7 +156,7 @@ C68k_Exec_Next:
 	割り込み処理
 --------------------------------------------------------*/
 
-void C68k_Set_IRQ(c68k_struc *CPU, INT32 line, INT32 state)
+void C68k_Set_IRQ(c68k_struc *CPU, int32_t line, int32_t state)
 {
 	CPU->IRQState = state;
 	if (state == CLEAR_LINE)
@@ -175,7 +175,7 @@ void C68k_Set_IRQ(c68k_struc *CPU, INT32 line, INT32 state)
 	レジスタ取得
 --------------------------------------------------------*/
 
-UINT32 C68k_Get_Reg(c68k_struc *CPU, INT32 regnum)
+uint32_t C68k_Get_Reg(c68k_struc *CPU, int32_t regnum)
 {
 	switch (regnum)
 	{
@@ -208,7 +208,7 @@ UINT32 C68k_Get_Reg(c68k_struc *CPU, INT32 regnum)
 	レジスタ設定
 --------------------------------------------------------*/
 
-void C68k_Set_Reg(c68k_struc *CPU, INT32 regnum, UINT32 val)
+void C68k_Set_Reg(c68k_struc *CPU, int32_t regnum, uint32_t val)
 {
 	switch (regnum)
 	{
@@ -255,9 +255,9 @@ void C68k_Set_Reg(c68k_struc *CPU, INT32 regnum, UINT32 val)
 	フェッチアドレス設定
 --------------------------------------------------------*/
 
-void C68k_Set_Fetch(c68k_struc *CPU, UINT32 low_adr, UINT32 high_adr, UINT32 fetch_adr)
+void C68k_Set_Fetch(c68k_struc *CPU, uint32_t low_adr, uint32_t high_adr, uint32_t fetch_adr)
 {
-	UINT32 i, j;
+	uint32_t i, j;
 
 	i = (low_adr >> C68K_FETCH_SFT) & C68K_FETCH_MASK;
 	j = (high_adr >> C68K_FETCH_SFT) & C68K_FETCH_MASK;
@@ -270,34 +270,34 @@ void C68k_Set_Fetch(c68k_struc *CPU, UINT32 low_adr, UINT32 high_adr, UINT32 fet
 	メモリリード/ライト関数設定
 --------------------------------------------------------*/
 
-void C68k_Set_ReadB(c68k_struc *CPU, UINT8 (*Func)(UINT32 address))
+void C68k_Set_ReadB(c68k_struc *CPU, uint8_t (*Func)(uint32_t address))
 {
 	CPU->Read_Byte = Func;
 	CPU->Read_Byte_PC_Relative = Func;
 }
 
-void C68k_Set_ReadW(c68k_struc *CPU, UINT16 (*Func)(UINT32 address))
+void C68k_Set_ReadW(c68k_struc *CPU, uint16_t (*Func)(uint32_t address))
 {
 	CPU->Read_Word = Func;
 	CPU->Read_Word_PC_Relative = Func;
 }
 
-void C68k_Set_ReadB_PC_Relative(c68k_struc *CPU, UINT8 (*Func)(UINT32 address))
+void C68k_Set_ReadB_PC_Relative(c68k_struc *CPU, uint8_t (*Func)(uint32_t address))
 {
 	CPU->Read_Byte_PC_Relative = Func;
 }
 
-void C68k_Set_ReadW_PC_Relative(c68k_struc *CPU, UINT16 (*Func)(UINT32 address))
+void C68k_Set_ReadW_PC_Relative(c68k_struc *CPU, uint16_t (*Func)(uint32_t address))
 {
 	CPU->Read_Word_PC_Relative = Func;
 }
 
-void C68k_Set_WriteB(c68k_struc *CPU, void (*Func)(UINT32 address, UINT8 data))
+void C68k_Set_WriteB(c68k_struc *CPU, void (*Func)(uint32_t address, uint8_t data))
 {
 	CPU->Write_Byte = Func;
 }
 
-void C68k_Set_WriteW(c68k_struc *CPU, void (*Func)(UINT32 address, UINT16 data))
+void C68k_Set_WriteW(c68k_struc *CPU, void (*Func)(uint32_t address, uint16_t data))
 {
 	CPU->Write_Word = Func;
 }
@@ -307,7 +307,7 @@ void C68k_Set_WriteW(c68k_struc *CPU, void (*Func)(UINT32 address, UINT16 data))
 	コールバック関数設定
 --------------------------------------------------------*/
 
-void C68k_Set_IRQ_Callback(c68k_struc *CPU, INT32 (*Func)(INT32 irqline))
+void C68k_Set_IRQ_Callback(c68k_struc *CPU, int32_t (*Func)(int32_t irqline))
 {
 	CPU->Interrupt_CallBack = Func;
 }

@@ -6,10 +6,11 @@
 
 ******************************************************************************/
 
+#include <fcntl.h>
+#include <zlib.h>
 #include <psptypes.h>
 #include <pspwlan.h>
 #include "emumain.h"
-#include "zlib/zlib.h"
 
 #define MAX_ENTRY 1024
 #define MAX_GAMES 512
@@ -89,20 +90,20 @@ static int zipname_num;
 	title_x.sysをイメージバッファに描画
 --------------------------------------------------------*/
 
-#if PSP_VIDEO_32BPP
-static void title_draw_spr(int sx, int sy, UINT8 *spr, UINT32 *palette, int tileno)
+#if VIDEO_32BPP
+static void title_draw_spr(int sx, int sy, uint8_t *spr, uint32_t *palette, int tileno)
 #else
-static void title_draw_spr(int sx, int sy, UINT8 *spr, UINT16 *palette, int tileno)
+static void title_draw_spr(int sx, int sy, uint8_t *spr, uint16_t *palette, int tileno)
 #endif
 {
-	UINT32 tile, lines = 16;
-	UINT32 *src = (UINT32 *)(spr + tileno * 128);
-#if PSP_VIDEO_32BPP
-	UINT32 *dst = (UINT32 *)video_frame_addr(tex_frame, sx, sy);
-	UINT32 *pal = &palette[tileno << 4];
+	uint32_t tile, lines = 16;
+	uint32_t *src = (uint32_t *)(spr + tileno * 128);
+#if VIDEO_32BPP
+	uint32_t *dst = (uint32_t *)video_driver->frameAddr(video_data, tex_frame, sx, sy);
+	uint32_t *pal = &palette[tileno << 4];
 #else
-	UINT16 *dst = (UINT16 *)video_frame_addr(tex_frame, sx, sy);
-	UINT16 *pal = &palette[tileno << 4];
+	uint16_t *dst = (uint16_t *)video_driver->frameAddr(video_data, tex_frame, sx, sy);
+	uint16_t *pal = &palette[tileno << 4];
 #endif
 
 	while (lines--)
@@ -138,10 +139,10 @@ static void title_draw_spr(int sx, int sy, UINT8 *spr, UINT16 *palette, int tile
 static int load_title(const char *path, int number)
 {
 	int i, fd, region, tileno, x, y, found = 0;
-	UINT8  title_spr[0x1680];
-	UINT16 palette[0x5a0 >> 1];
-#if PSP_VIDEO_32BPP
-	UINT32 palette32[0x5a0 >> 1];
+	uint8_t  title_spr[0x1680];
+	uint16_t palette[0x5a0 >> 1];
+#if VIDEO_32BPP
+	uint32_t palette32[0x5a0 >> 1];
 #endif
 	char title_path[MAX_PATH], region_chr[3] = {'j','u','e'};
 
@@ -171,11 +172,11 @@ static int load_title(const char *path, int number)
 
 	zip_close();
 
-	swab((UINT8 *)palette, (UINT8 *)palette, 0x5a0);
+	swab((uint8_t *)palette, (uint8_t *)palette, 0x5a0);
 
 	for (i = 0; i < 0x5a0 >> 1; i++)
 	{
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 		int r = ((palette[i] >> 7) & 0x1e) | ((palette[i] >> 14) & 0x01);
 		int g = ((palette[i] >> 3) & 0x1e) | ((palette[i] >> 13) & 0x01);
 		int b = ((palette[i] << 1) & 0x1e) | ((palette[i] >> 12) & 0x01);
@@ -202,7 +203,7 @@ static int load_title(const char *path, int number)
 	{
 		for (x = 0; x < 144; x += 16)
 		{
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 			title_draw_spr(x, y, title_spr, palette32, tileno);
 #else
 			title_draw_spr(x, y, title_spr, palette, tileno);
@@ -225,7 +226,7 @@ static void show_title(int sx, int sy)
 	RECT clip2 = { sx, sy, sx + 144, sy + 80 };
 
 	draw_box_shadow(sx, sy, sx + 144, sy + 80);
-	video_copy_rect(tex_frame, draw_frame, &clip1, &clip2);
+	video_driver->copyRect(video_data, tex_frame, draw_frame, &clip1, &clip2);
 }
 
 
@@ -237,11 +238,11 @@ static void check_neocd_bios(void)
 {
 	FILE *fp;
 	char path[MAX_PATH];
-	UINT8 *temp_mem;
+	uint8_t *temp_mem;
 
 	bios_error = 0;
 
-	if ((temp_mem = (UINT8 *)malloc(0x80000)) == NULL)
+	if ((temp_mem = (uint8_t *)malloc(0x80000)) == NULL)
 	{
 		bios_error = 1;
 		return;
@@ -287,7 +288,7 @@ static int load_zipname(void)
 	char path[MAX_PATH], buf[256];
 	int found = 0;
 
-	if (ui_text_get_language() == LANG_JAPANESE)
+	if (ui_text_driver->getLanguage(ui_text_data) == LANG_JAPANESE)
 	{
 		sprintf(path, "%szipnamej." EXT, launchDir);
 		if ((fp = fopen(path, "rb")) != NULL)
@@ -296,7 +297,7 @@ static int load_zipname(void)
 			found = 1;
 		}
 	}
-	if (ui_text_get_language() == LANG_CHINESE_SIMPLIFIED)
+	if (ui_text_driver->getLanguage(ui_text_data) == LANG_CHINESE_SIMPLIFIED)
 	{
 		sprintf(path, "%szipnamech1." EXT, launchDir);
 		if ((fp = fopen(path, "rb")) != NULL)
@@ -305,7 +306,7 @@ static int load_zipname(void)
 			found = 1;
 		}
 	}
-	if (ui_text_get_language() == LANG_CHINESE_TRADITIONAL)
+	if (ui_text_driver->getLanguage(ui_text_data) == LANG_CHINESE_TRADITIONAL)
 	{
 		sprintf(path, "%szipnamech2." EXT, launchDir);
 		if ((fp = fopen(path, "rb")) != NULL)
@@ -423,7 +424,7 @@ static void checkDir(const char *name)
 
 	memset(&dir, 0, sizeof(dir));
 
-	fd = sceIoDopen(launchDir);
+	fd = open(launchDir, O_DIRECTORY);
 	found = 0;
 
 	while (!found)
@@ -435,12 +436,12 @@ static void checkDir(const char *name)
 				found = 1;
 	}
 
-	sceIoDclose(fd);
+	close(fd);
 
 	if (!found)
 	{
 		sprintf(path, "%s%s", launchDir, name);
-		sceIoMkdir(path, 0777);
+		mkdir(path, 0777);
 	}
 }
 
@@ -462,7 +463,7 @@ static void checkStartupDir(void)
 #ifdef SAVE_STATE
 	checkDir("state");
 #endif
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	checkDir("data");
 #endif
 #if (EMU_SYSTEM == MVS)
@@ -472,11 +473,11 @@ static void checkStartupDir(void)
 	checkDir("nvram");
 #endif
 
-	fd = sceIoDopen(startupDir);
+	fd = open(startupDir, O_DIRECTORY);
 	if (fd >= 0)
 	{
 		strcpy(curr_dir, startupDir);
-		sceIoDclose(fd);
+		close(fd);
 	}
 	else
 	{
@@ -575,7 +576,7 @@ static void getDir(const char *path)
 		nfiles++;
 	}
 
-	fd = sceIoDopen(path);
+	fd = open(path, O_DIRECTORY);
 
 	while (nfiles < MAX_ENTRY)
 	{
@@ -638,7 +639,7 @@ static void getDir(const char *path)
 #ifdef SAVE_STATE
 			if (strcasecmp(dir.d_name, "state") == 0) continue;
 #endif
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 			if (strcasecmp(dir.d_name, "data") == 0) continue;
 #endif
 #if (EMU_SYSTEM == MVS)
@@ -657,7 +658,7 @@ static void getDir(const char *path)
 		}
 	}
 
-	sceIoDclose(fd);
+	close(fd);
 
 	for (i = 0; i < nfiles - 1; i++)
 	{
@@ -770,10 +771,10 @@ static void modify_display_path(char *path, char *org_path, int max_width)
 
 int file_exist(const char *path)
 {
-	SceUID fd;
+	uint32_t fd;
 
-	fd = sceIoOpen(path, PSP_O_RDONLY, 0777);
-	sceIoClose(fd);
+	fd = open(path, O_RDONLY, 0777);
+	close(fd);
 
 	return ((fd >= 0) ? 1 : 0);
 }
@@ -790,7 +791,7 @@ char *find_file(char *pattern, char *path)
 
 	memset(&dir, 0, sizeof(dir));
 
-	fd = sceIoDopen(path);
+	fd = open(path, O_DIRECTORY);
 	found = 0;
 
 	len1 = strlen(pattern);
@@ -812,7 +813,7 @@ char *find_file(char *pattern, char *path)
 		}
 	}
 
-	sceIoDclose(fd);
+	close(fd);
 
 	return found ? file.name : NULL;
 }
@@ -831,7 +832,7 @@ void delete_files(const char *dirname, const char *pattern)
 
 	sprintf(path, "%s%s", launchDir, dirname);
 
-	fd = sceIoDopen(path);
+	fd = open(path, O_DIRECTORY);
 	len1 = strlen(pattern);
 
 	while (1)
@@ -847,12 +848,12 @@ void delete_files(const char *dirname, const char *pattern)
 				char path2[MAX_PATH];
 
 				sprintf(path2, "%s/%s", path, dir.d_name);
-				sceIoRemove(path2);
+				remove(path2);
 			}
 		}
 	}
 
-	sceIoDclose(fd);
+	close(fd);
 }
 
 
@@ -862,7 +863,7 @@ void delete_files(const char *dirname, const char *pattern)
 
 #ifdef SAVE_STATE
 
-void find_state_file(UINT8 *slot)
+void find_state_file(uint8_t *slot)
 {
 	int fd, len;
 	char path[MAX_PATH], pattern[16];
@@ -873,7 +874,7 @@ void find_state_file(UINT8 *slot)
 	sprintf(pattern, "%s.sv", game_name);
 
 	len = strlen(pattern);
-	fd = sceIoDopen(path);
+	fd = open(path, O_DIRECTORY);
 
 	while (sceIoDread(fd, &dir) > 0)
 	{
@@ -886,7 +887,7 @@ void find_state_file(UINT8 *slot)
 		}
 	}
 
-	sceIoDclose(fd);
+	close(fd);
 }
 
 #endif
@@ -900,11 +901,11 @@ void show_exit_screen(void)
 {
 	if (Loop == LOOP_EXIT)
 	{
-		video_set_mode(32);
-		video_clear_screen();
+		video_driver->setMode(video_data, 32);
+		video_driver->clearScreen(video_data);
 		boxfill(0, 0, SCR_WIDTH - 1, SCR_HEIGHT - 1, COLOR_DARKGRAY);
 		uifont_print_shadow_center(129, COLOR_WHITE, TEXT(PLEASE_WAIT));
-		video_flip_screen(1);
+		video_driver->flipScreen(video_data, 1);
 	}
 }
 
@@ -924,7 +925,7 @@ void file_browser(void)
 
 	Loop = LOOP_BROWSER;
 
-#if (PSP_VIDEO_32BPP && USE_CACHE)
+#if (VIDEO_32BPP && USE_CACHE)
 	GFX_MEMORY = NULL;
 #endif
 
@@ -941,7 +942,7 @@ void file_browser(void)
 	strcpy(startupDir, curr_dir);
 	load_settings();
 
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	load_wallpaper();
 #else
 	ui_fill_frame(draw_frame, UI_PAL_BG2);
@@ -953,7 +954,7 @@ void file_browser(void)
 	logo(32, 5, UI_COLOR(UI_PAL_TITLE));
 
 	i = uifont_get_string_width(APPNAME_STR " " VERSION_STR) / 2;
-#ifdef PSP_SLIM
+#ifdef LARGE_MEMORY
 	draw_dialog(240-(i+62), 136-48, 240+(i+62), 136+48);
 	uifont_print_shadow_center(136-30, 255,255,120, APPNAME_STR " " VERSION_STR);
 	uifont_print_shadow_center(136-07, 255,255,255, "for PSP Slim");
@@ -966,7 +967,7 @@ void file_browser(void)
 	uifont_print_shadow_center(136+ 6, 200,200,200, "NJ (http://nj-emu.tfact.net)");
 	uifont_print_shadow_center(136+20, 200,200,200, "2011-2016 (https://github.com/phoe-nix/NJEMU)");
 #endif
-	video_flip_screen(1);
+	video_driver->flipScreen(video_data, 1);
 
 #if (EMU_SYSTEM != NCDZ)
 	if (!load_zipname())
@@ -980,7 +981,7 @@ void file_browser(void)
 	checkStartupDir();
 	getDir(curr_dir);
 
-#if defined(PSP_SLIM) && ((EMU_SYSTEM == CPS2) || (EMU_SYSTEM == MVS))
+#if defined(LARGE_MEMORY) && ((EMU_SYSTEM == CPS2) || (EMU_SYSTEM == MVS))
 	if (devkit_version < 0x03070110 || kuKernelGetModel() == PSP_MODEL_STANDARD)
 	{
 		show_background();
@@ -1005,7 +1006,7 @@ void file_browser(void)
 		show_background();
 		small_icon_shadow(6, 3, UI_COLOR(UI_PAL_TITLE), ICON_SYSTEM);
 		logo(32, 5, UI_COLOR(UI_PAL_TITLE));
-		video_flip_screen(1);
+		video_driver->flipScreen(video_data, 1);
 
 		switch (bios_error)
 		{
@@ -1050,7 +1051,7 @@ void file_browser(void)
 			}
 
 			emu_main();
-			set_cpu_clock(PSPCLOCK_222);
+			power_driver->setLowestCpuClock(NULL);
 
 #ifdef ADHOC
 			if (adhoc_enable)
@@ -1183,7 +1184,7 @@ void file_browser(void)
 			update  = draw_battery_status(1);
 			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else if (update & UI_PARTIAL_REFRESH)
 		{
@@ -1213,48 +1214,48 @@ void file_browser(void)
 			clip2.right  = clip2.left + w;
 			clip2.bottom = clip2.top  + h;
 
-			video_copy_rect(draw_frame, tex_frame, &clip1, &clip2);
-			video_copy_rect(show_frame, draw_frame, &full_rect, &full_rect);
-			video_copy_rect(tex_frame, draw_frame, &clip2, &clip1);
+			video_driver->copyRect(video_data, draw_frame, tex_frame, &clip1, &clip2);
+			video_driver->copyRect(video_data, show_frame, draw_frame, &full_rect, &full_rect);
+			video_driver->copyRect(video_data, tex_frame, draw_frame, &clip2, &clip1);
 
 			update = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_flip_screen(1);
+			video_driver->flipScreen(video_data, 1);
 		}
 		else
 		{
 			update = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_wait_vsync();
+			video_driver->waitVsync(video_data);
 		}
 
 		update |= ui_light_update();
 		prev_sel = sel;
 
-		if (pad_pressed(PSP_CTRL_UP))
+		if (pad_pressed(PLATFORM_PAD_UP))
 		{
 			sel--;
 		}
-		else if (pad_pressed(PSP_CTRL_DOWN))
+		else if (pad_pressed(PLATFORM_PAD_DOWN))
 		{
 			sel++;
 		}
-		else if (pad_pressed(PSP_CTRL_LEFT))
+		else if (pad_pressed(PLATFORM_PAD_LEFT))
 		{
 			sel -= rows;
 			if (sel < 0) sel = 0;
 		}
-		else if (pad_pressed(PSP_CTRL_RIGHT))
+		else if (pad_pressed(PLATFORM_PAD_RIGHT))
 		{
 			sel += rows;
 			if (sel >= nfiles) sel = nfiles - 1;
 		}
 #ifdef ADHOC
-		else if (pad_pressed(PSP_CTRL_CIRCLE) || (adhoc_enable = pad_pressed(PSP_CTRL_SQUARE)))
+		else if (pad_pressed(PLATFORM_PAD_B1) || (adhoc_enable = pad_pressed(PLATFORM_PAD_B3)))
 #else
-		else if (pad_pressed(PSP_CTRL_CIRCLE))
+		else if (pad_pressed(PLATFORM_PAD_B1))
 #endif
 		{
 #ifdef ADHOC
@@ -1380,8 +1381,8 @@ void file_browser(void)
 			pad_wait_clear();
 		}
 /*PRESS TRIANGLE OR HOME TO EXIT IN FILEBROWSER */
-//		else if (pad_pressed(PSP_CTRL_TRIANGLE))
-		else if (pad_pressed(PSP_CTRL_TRIANGLE) || (readHomeButton()))
+//		else if (pad_pressed(PLATFORM_PAD_B4))
+		else if (pad_pressed(PLATFORM_PAD_B4) || (readHomeButton()))
 		{
 			if (messagebox(MB_EXITEMULATION))
 			{
@@ -1393,14 +1394,14 @@ void file_browser(void)
 			pad_wait_clear();
 		}
 #if (EMU_SYSTEM == MVS)
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_R))
 		{
 			strcpy(game_dir, curr_dir);
 			bios_select(0);
 			update = 1;
 		}
 #elif (EMU_SYSTEM == NCDZ)
-		else if (pad_pressed(PSP_CTRL_RTRIGGER))
+		else if (pad_pressed(PLATFORM_PAD_R))
 		{
 			if (!bios_error)
 			{
@@ -1416,7 +1417,7 @@ void file_browser(void)
 			pad_wait_clear();
 		}
 #endif
-		else if (pad_pressed(PSP_CTRL_START))
+		else if (pad_pressed(PLATFORM_PAD_START))
 		{
 			if (files[sel]->type == FTYPE_DIR)
 			{
@@ -1424,14 +1425,14 @@ void file_browser(void)
 					sprintf(startupDir, "%s/%s", curr_dir, files[sel]->name);
 			}
 		}
-#if PSP_VIDEO_32BPP
-		else if (pad_pressed(PSP_CTRL_LTRIGGER))
+#if VIDEO_32BPP
+		else if (pad_pressed(PLATFORM_PAD_L))
 		{
 			show_color_menu();
 			update = 1;
 		}
 #endif
-		else if (pad_pressed(PSP_CTRL_SELECT))
+		else if (pad_pressed(PLATFORM_PAD_SELECT))
 		{
 			help(HELP_FILEBROWSER);
 			update = 1;
@@ -1473,7 +1474,7 @@ error:
 	}
 	free_zipname();
 #endif
-#if PSP_VIDEO_32BPP
+#if VIDEO_32BPP
 	free_wallpaper();
 #endif
 }

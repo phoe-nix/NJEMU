@@ -10,9 +10,9 @@
 
 #define QSOUND_CHANNELS 16
 
-typedef INT8  QSOUND_SRC_SAMPLE;
-typedef INT16 QSOUND_SAMPLE;
-typedef INT32 QSOUND_SAMPLE_MIX;
+typedef int8_t  QSOUND_SRC_SAMPLE;
+typedef int16_t QSOUND_SAMPLE;
+typedef int32_t QSOUND_SAMPLE_MIX;
 
 
 /******************************************************************************
@@ -63,7 +63,7 @@ static const int ALIGN_DATA qsound_pan_table[33] =
 	サウンドストリーム生成
 --------------------------------------------------------*/
 
-static void qsound_update(INT32 **buffer, int length)
+static void qsound_update(int32_t **buffer, int length)
 {
 	int ch;
 

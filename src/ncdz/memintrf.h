@@ -9,38 +9,38 @@
 #ifndef NCDZ_MEMINTRF_H
 #define NCDZ_MEMINTRF_H
 
-extern UINT8 *memory_region_cpu1;
-extern UINT8 *memory_region_cpu2;
-extern UINT8 *memory_region_gfx1;
-extern UINT8 *memory_region_gfx2;
-extern UINT8 *memory_region_gfx3;
-extern UINT8 *memory_region_sound1;
-extern UINT8 *memory_region_user1;
-extern UINT8 *memory_region_user2;
+extern uint8_t *memory_region_cpu1;
+extern uint8_t *memory_region_cpu2;
+extern uint8_t *memory_region_gfx1;
+extern uint8_t *memory_region_gfx2;
+extern uint8_t *memory_region_gfx3;
+extern uint8_t *memory_region_sound1;
+extern uint8_t *memory_region_user1;
+extern uint8_t *memory_region_user2;
 
-extern UINT32 memory_length_cpu1;
-extern UINT32 memory_length_cpu2;
-extern UINT32 memory_length_gfx1;
-extern UINT32 memory_length_gfx2;
-extern UINT32 memory_length_gfx3;
-extern UINT32 memory_length_sound1;
-extern UINT32 memory_length_user1;
-extern UINT32 memory_length_user2;
+extern uint32_t memory_length_cpu1;
+extern uint32_t memory_length_cpu2;
+extern uint32_t memory_length_gfx1;
+extern uint32_t memory_length_gfx2;
+extern uint32_t memory_length_gfx3;
+extern uint32_t memory_length_sound1;
+extern uint32_t memory_length_user1;
+extern uint32_t memory_length_user2;
 
-extern UINT8 neogeo_memcard[0x2000];
+extern uint8_t neogeo_memcard[0x2000];
 
 int memory_init(void);
 void memory_shutdown(void);
 
-UINT8  m68000_read_memory_8(UINT32 address);
-UINT16 m68000_read_memory_16(UINT32 address);
-UINT32 m68000_read_memory_32(UINT32 address);
-void m68000_write_memory_8(UINT32 address, UINT8 value);
-void m68000_write_memory_16(UINT32 address, UINT16 value);
-void m68000_write_memory_32(UINT32 address, UINT32 value);
+uint8_t  m68000_read_memory_8(uint32_t address);
+uint16_t m68000_read_memory_16(uint32_t address);
+uint32_t m68000_read_memory_32(uint32_t address);
+void m68000_write_memory_8(uint32_t address, uint8_t value);
+void m68000_write_memory_16(uint32_t address, uint16_t value);
+void m68000_write_memory_32(uint32_t address, uint32_t value);
 
-UINT8 z80_read_memory_8(UINT32 address);
-void z80_write_memory_8(UINT32 address, UINT8 data);
+uint8_t z80_read_memory_8(uint32_t address);
+void z80_write_memory_8(uint32_t address, uint8_t data);
 
 STATE_SAVE( memory );
 STATE_LOAD( memory );

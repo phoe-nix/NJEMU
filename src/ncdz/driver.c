@@ -21,14 +21,14 @@
 
 int neogeo_driver_type;
 int neogeo_raster_enable;
-UINT16 neogeo_ngh;
+uint16_t neogeo_ngh;
 
-UINT8 auto_animation_speed;
-UINT8 auto_animation_disabled;
-UINT8 auto_animation_counter;
+uint8_t auto_animation_speed;
+uint8_t auto_animation_disabled;
+uint8_t auto_animation_counter;
 
-UINT16 raster_line;
-UINT16 raster_counter;
+uint16_t raster_line;
+uint16_t raster_counter;
 
 const char default_name[16] = "default";
 int game_index;
@@ -48,11 +48,11 @@ static int display_position_interrupt_start;
 static int display_position_interrupt_counter;
 static int display_position_interrupt_control;
 static int display_position_interrupt_pending;
-static UINT32 display_counter;
+static uint32_t display_counter;
 
 static int vblank_interrupt_pending;
 
-static UINT8 auto_animation_frame_counter;
+static uint8_t auto_animation_frame_counter;
 
 static int sound_code;
 static int result_code;
@@ -60,24 +60,24 @@ static int pending_command;
 
 static int hack_irq;
 
-static UINT8  upload_mode;
-static UINT8  upload_type;
-static UINT32 upload_offset1;
-static UINT32 upload_offset2;
-static UINT32 upload_length;
-static UINT16 upload_pattern;
+static uint8_t  upload_mode;
+static uint8_t  upload_type;
+static uint32_t upload_offset1;
+static uint32_t upload_offset2;
+static uint32_t upload_length;
+static uint16_t upload_pattern;
 static int upload_executing;
-static UINT32 z80_cdda_offset;
+static uint32_t z80_cdda_offset;
 
-static UINT8  exmem[0x100];
-static UINT8  exmem_latch[0x100];
-static UINT8  exmem_bank[0x10];
-static UINT8  exmem_counter;
+static uint8_t  exmem[0x100];
+static uint8_t  exmem_latch[0x100];
+static uint8_t  exmem_bank[0x10];
+static uint8_t  exmem_counter;
 
-static UINT8 neogeo_game_vectors[0x100];
-static UINT8 *neogeo_vectors[2];
+static uint8_t neogeo_game_vectors[0x100];
+static uint8_t *neogeo_vectors[2];
 
-static UINT8 memory_region_hctrl[0x200];
+static uint8_t memory_region_hctrl[0x200];
 
 
 /******************************************************************************
@@ -136,7 +136,7 @@ int neogeo_check_game(void)
 
 		if ((fp = fopen(path, "r")) == NULL)
 		{
-			sceIoRemove(path);
+			remove(path);
 			return 0;
 		}
 
@@ -167,7 +167,7 @@ int neogeo_check_game(void)
 		}
 		fclose(fp);
 
-		sceIoRemove(path);
+		remove(path);
 
 		if (!found) return 0;
 
@@ -384,7 +384,7 @@ void neogeo_interrupt(void)
 
 	if (hack_irq)
 	{
-		UINT32 pc = m68000_get_reg(M68K_PC);
+		uint32_t pc = m68000_get_reg(M68K_PC);
 
 		if (pc >= 0xbf00 && pc <= 0xbfff)
 			vblank_interrupt_pending = 0;
@@ -453,7 +453,7 @@ static void raster_interrupt(int line)
 
 		if (hack_irq)
 		{
-			UINT32 pc = m68000_get_reg(M68K_PC);
+			uint32_t pc = m68000_get_reg(M68K_PC);
 
 			if (pc >= 0xbf00 && pc <= 0xbfff)
 				vblank_interrupt_pending = 0;
@@ -523,7 +523,7 @@ static void raster_interrupt_aof2(int line)
 	Select BIOS vector (0x3a0003 / 0x3a0013)
 ------------------------------------------------------*/
 
-INLINE void set_main_cpu_vector_table_source(UINT8 data)
+INLINE void set_main_cpu_vector_table_source(uint8_t data)
 {
 	memcpy(memory_region_cpu1, neogeo_vectors[data], 0x80);
 	blit_set_fix_clear_flag();
@@ -536,7 +536,7 @@ INLINE void set_main_cpu_vector_table_source(UINT8 data)
 	Select palette RAM bank  (0x3a000f / 0x3a001f)
 ------------------------------------------------------*/
 
-INLINE void neogeo_set_palette_bank(UINT8 data)
+INLINE void neogeo_set_palette_bank(uint8_t data)
 {
 	if (palette_bank != data)
 	{
@@ -551,7 +551,7 @@ INLINE void neogeo_set_palette_bank(UINT8 data)
 	Write VRAM offset ($3c0001)
 ------------------------------------------------------*/
 
-INLINE void set_videoram_offset(UINT16 data)
+INLINE void set_videoram_offset(uint16_t data)
 {
 	videoram_offset = data;
 
@@ -564,7 +564,7 @@ INLINE void set_videoram_offset(UINT16 data)
 	Read data from VRAM ($3c0001 / $3c0003)
 ------------------------------------------------------*/
 
-INLINE UINT16 get_videoram_data(void)
+INLINE uint16_t get_videoram_data(void)
 {
 	return videoram_read_buffer;
 }
@@ -574,7 +574,7 @@ INLINE UINT16 get_videoram_data(void)
 	Write data to VRAM ($3c0003)
 ------------------------------------------------------*/
 
-INLINE void set_videoram_data(UINT16 data)
+INLINE void set_videoram_data(uint16_t data)
 {
 	neogeo_videoram[videoram_offset] = data;
 
@@ -590,7 +590,7 @@ INLINE void set_videoram_data(UINT16 data)
 	Read VRAM modulo ($3c0005)
 ------------------------------------------------------*/
 
-INLINE UINT16 get_videoram_modulo(void)
+INLINE uint16_t get_videoram_modulo(void)
 {
 	return videoram_modulo;
 }
@@ -600,7 +600,7 @@ INLINE UINT16 get_videoram_modulo(void)
 	Write VRAM modulo ($3c0005)
 ------------------------------------------------------*/
 
-INLINE void set_videoram_modulo(UINT16 data)
+INLINE void set_videoram_modulo(uint16_t data)
 {
 	videoram_modulo = data;
 }
@@ -610,7 +610,7 @@ INLINE void set_videoram_modulo(UINT16 data)
 	Read video control data ($3c0007)
 ---------------------------------------------------------*/
 
-INLINE UINT16 get_video_control(void)
+INLINE uint16_t get_video_control(void)
 {
 	scanline_read = 1;
 
@@ -634,7 +634,7 @@ INLINE UINT16 get_video_control(void)
 	Write video control data ($3c0007)
 ---------------------------------------------------------*/
 
-INLINE void set_video_control(UINT16 data)
+INLINE void set_video_control(uint16_t data)
 {
 	auto_animation_speed = data >> 8;
 	auto_animation_disabled = data & 0x0008;
@@ -647,11 +647,11 @@ INLINE void set_video_control(UINT16 data)
 	Set display counter (MSB) (0x3c0008)
 ------------------------------------------------------*/
 
-INLINE void neogeo_set_display_counter_msb(UINT16 data)
+INLINE void neogeo_set_display_counter_msb(uint16_t data)
 {
 	if (neogeo_driver_type == NORMAL) return;
 
-	display_counter = (display_counter & 0x0000ffff) | ((UINT32)data << 16);
+	display_counter = (display_counter & 0x0000ffff) | ((uint32_t)data << 16);
 }
 
 
@@ -659,7 +659,7 @@ INLINE void neogeo_set_display_counter_msb(UINT16 data)
 	Set display counter (LSB) (0x3c000a)
 ------------------------------------------------------*/
 
-INLINE void neogeo_set_display_counter_lsb(UINT16 data)
+INLINE void neogeo_set_display_counter_lsb(uint16_t data)
 {
 	if (neogeo_driver_type == NORMAL) return;
 
@@ -679,7 +679,7 @@ INLINE void neogeo_set_display_counter_lsb(UINT16 data)
 	Write IRQ acknowledge ($3c000c)
 ------------------------------------------------------*/
 
-INLINE void neogeo_acknowledge_interrupt(UINT16 data)
+INLINE void neogeo_acknowledge_interrupt(uint16_t data)
 {
 	if (data & 0x02) display_position_interrupt_pending = 0;
 	if (data & 0x04) vblank_interrupt_pending = 0;
@@ -703,8 +703,8 @@ static WRITE16_HANDLER( hardware_upload_w )
 	}
 	else if (data == 0x40)	// Execute upload
 	{
-		UINT32 i;
-		UINT8 *src, *dst;
+		uint32_t i;
+		uint8_t *src, *dst;
 
 		if (upload_mode == UPLOAD_MEMORY)
 		{
@@ -740,7 +740,7 @@ static WRITE16_HANDLER( hardware_upload_w )
 
 		case UPLOAD_MEMORY:
 			{
-				UINT32 length;
+				uint32_t length;
 
 				length = upload_length << 1;
 				src = memory_region_cpu1 + upload_offset1;
@@ -799,9 +799,9 @@ static WRITE16_HANDLER( hardware_upload_w )
 INLINE WRITE16_HANDLER( upload_offset1_w )
 {
 	if (offset)
-		upload_offset1 = (upload_offset1 & 0xffff0000) | (UINT32)data;
+		upload_offset1 = (upload_offset1 & 0xffff0000) | (uint32_t)data;
 	else
-		upload_offset1 = (upload_offset1 & 0x0000ffff) | ((UINT32)data << 16);
+		upload_offset1 = (upload_offset1 & 0x0000ffff) | ((uint32_t)data << 16);
 }
 
 
@@ -812,9 +812,9 @@ INLINE WRITE16_HANDLER( upload_offset1_w )
 INLINE WRITE16_HANDLER( upload_offset2_w )
 {
 	if (offset)
-		upload_offset2 = (upload_offset2 & 0xffff0000) | (UINT32)data;
+		upload_offset2 = (upload_offset2 & 0xffff0000) | (uint32_t)data;
 	else
-		upload_offset2 = (upload_offset2 & 0x0000ffff) | ((UINT32)data << 16);
+		upload_offset2 = (upload_offset2 & 0x0000ffff) | ((uint32_t)data << 16);
 
 	upload_mode = UPLOAD_MEMORY;
 }
@@ -838,9 +838,9 @@ INLINE WRITE16_HANDLER( upload_pattern_w )
 INLINE WRITE16_HANDLER( upload_length_w )
 {
 	if (offset)
-		upload_length = (upload_length & 0xffff0000) | (UINT32)data;
+		upload_length = (upload_length & 0xffff0000) | (uint32_t)data;
 	else
-		upload_length = (upload_length & 0x0000ffff) | ((UINT32)data << 16);
+		upload_length = (upload_length & 0x0000ffff) | ((uint32_t)data << 16);
 }
 
 
@@ -1015,7 +1015,7 @@ READ16_HANDLER( neogeo_controller3_r )
 
 READ16_HANDLER( neogeo_z80_r )
 {
-	UINT16 res = 0x3f;
+	uint16_t res = 0x3f;
 
 	res |= result_code << 8;
 	if (pending_command) res &= 0x7fff;
@@ -1047,7 +1047,7 @@ WRITE16_HANDLER( neogeo_z80_w )
 
 WRITE16_HANDLER( system_control_w )
 {
-	UINT8 bit = (offset >> 3) & 1;
+	uint8_t bit = (offset >> 3) & 1;
 
 	switch (offset & 7)
 	{
@@ -1122,7 +1122,7 @@ READ16_HANDLER( neogeo_paletteram_r )
 
 WRITE16_HANDLER( neogeo_paletteram_w )
 {
-	UINT16 *addr;
+	uint16_t *addr;
 
 	offset &= 0xfff;
 	addr = &palettes[palette_bank][offset];
@@ -1204,7 +1204,7 @@ WRITE16_HANDLER( neogeo_externalmem_w )
 	case EXMEM_OBJ:
 		offset = (offset << 1) + (exmem_bank[EXMEM_OBJ] << 20);
 		data = (data << 8) | (data >> 8);
-		COMBINE_SWABDATA((UINT16 *)(memory_region_gfx2 + offset));
+		COMBINE_SWABDATA((uint16_t *)(memory_region_gfx2 + offset));
 		if ((offset & 0x7f) == 0x7e)
 			neogeo_decode_spr(memory_region_gfx2, (offset & ~0x7f), 128);
 		break;
@@ -1240,7 +1240,7 @@ READ16_HANDLER( neogeo_hardcontrol_r )
 {
 	if ((offset >> 15) == 0xff)
 	{
-		UINT16 *mem = (UINT16 *)memory_region_hctrl;
+		uint16_t *mem = (uint16_t *)memory_region_hctrl;
 		return mem[offset & 0xff];
 	}
 	return 0xffff;
@@ -1255,7 +1255,7 @@ WRITE16_HANDLER( neogeo_hardcontrol_w )
 {
 	if ((offset >> 15) == 0xff)
 	{
-		UINT16 *mem = (UINT16 *)memory_region_hctrl;
+		uint16_t *mem = (uint16_t *)memory_region_hctrl;
 		offset &= 0xff;
 
 		switch (offset)
@@ -1334,7 +1334,7 @@ WRITE16_HANDLER( neogeo_hardcontrol_w )
 	Read Z80 port
 ------------------------------------------------------*/
 
-UINT8 neogeo_z80_port_r(UINT16 port)
+uint8_t neogeo_z80_port_r(uint16_t port)
 {
 	switch (port & 0xff)
 	{
@@ -1370,7 +1370,7 @@ UINT8 neogeo_z80_port_r(UINT16 port)
 	Write Z80 port
 ------------------------------------------------------*/
 
-void neogeo_z80_port_w(UINT16 port, UINT8 data)
+void neogeo_z80_port_w(uint16_t port, uint8_t data)
 {
 	switch (port & 0xff)
 	{

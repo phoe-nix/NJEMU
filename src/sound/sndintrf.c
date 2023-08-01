@@ -26,14 +26,14 @@
 	ローカル変数
 ******************************************************************************/
 
-static INT32 ALIGN_DATA stream_buffer_left[SOUND_BUFFER_SIZE + SAFETY];
-static INT32 ALIGN_DATA stream_buffer_right[SOUND_BUFFER_SIZE + SAFETY];
-static INT32 ALIGN_DATA *stream_buffer[2];
+static int32_t ALIGN_DATA stream_buffer_left[SOUND_BUFFER_SIZE + SAFETY];
+static int32_t ALIGN_DATA stream_buffer_right[SOUND_BUFFER_SIZE + SAFETY];
+static int32_t ALIGN_DATA *stream_buffer[2];
 
 #if (EMU_SYSTEM != CPS2)
 static float samples_per_update;
 static float samples_left_over;
-static UINT32 samples_this_update;
+static uint32_t samples_this_update;
 #endif
 
 
@@ -47,10 +47,10 @@ static UINT32 samples_this_update;
 	サンプルをクリップ
 ------------------------------------------------------*/
 
-static void clip_stream(INT32 *buffer)
+static void clip_stream(int32_t *buffer)
 {
-	UINT32 samples = samples_this_update;
-	INT32 sample;
+	uint32_t samples = samples_this_update;
+	int32_t sample;
 
 	while (samples--)
 	{
@@ -65,13 +65,13 @@ static void clip_stream(INT32 *buffer)
 	リサンプリング
 ------------------------------------------------------*/
 
-static void resample_stream(INT32 *src, INT16 *dst)
+static void resample_stream(int32_t *src, int16_t *dst)
 {
-	UINT32 pos = 0;
-	UINT32 src_step = (samples_this_update << FRAC_BITS) / sound->samples;
-	UINT32 samples = sound->samples;
+	uint32_t pos = 0;
+	uint32_t src_step = (samples_this_update << FRAC_BITS) / sound->samples;
+	uint32_t samples = sound->samples;
 #if LINEAR_INTERPORATION || (EMU_SYSTEM == CPS1)
-	INT32 sample;
+	int32_t sample;
 #endif
 
 #if LINEAR_INTERPORATION
@@ -125,11 +125,11 @@ static void resample_stream(INT32 *src, INT16 *dst)
 
 #if (EMU_SYSTEM == CPS1 || EMU_SYSTEM == CPS2)
 
-static void sound_update_stereo(INT16 *buffer)
+static void sound_update_stereo(int16_t *buffer)
 {
-	UINT32 samples = sound->samples;
-	INT32 *srcL, *srcR, sample;
-	INT16 *dst = buffer;
+	uint32_t samples = sound->samples;
+	int32_t *srcL, *srcR, sample;
+	int16_t *dst = buffer;
 
 	(*sound->callback)(stream_buffer, samples);
 
@@ -147,13 +147,13 @@ static void sound_update_stereo(INT16 *buffer)
 		*dst++ = sample;
 	}
 
-	memset(stream_buffer[0], 0, sound->samples * sizeof(INT32));
-	memset(stream_buffer[1], 0, sound->samples * sizeof(INT32));
+	memset(stream_buffer[0], 0, sound->samples * sizeof(int32_t));
+	memset(stream_buffer[1], 0, sound->samples * sizeof(int32_t));
 }
 
 #else
 
-static void sound_update_stereo(INT16 *buffer)
+static void sound_update_stereo(int16_t *buffer)
 {
 	(*sound->callback)(stream_buffer, samples_this_update);
 
@@ -164,7 +164,7 @@ static void sound_update_stereo(INT16 *buffer)
 	resample_stream(stream_buffer[1], &buffer[1]);
 
 	samples_left_over  += samples_per_update;
-	samples_this_update = (UINT32)samples_left_over;
+	samples_this_update = (uint32_t)samples_left_over;
 	samples_left_over  -= samples_this_update;
 }
 
@@ -177,7 +177,7 @@ static void sound_update_stereo(INT16 *buffer)
 
 #if (EMU_SYSTEM == CPS1)
 
-static void sound_update_mono(INT16 *buffer)
+static void sound_update_mono(int16_t *buffer)
 {
 	(*sound->callback)(stream_buffer, samples_this_update);
 
@@ -186,7 +186,7 @@ static void sound_update_mono(INT16 *buffer)
 	resample_stream(stream_buffer[0], buffer);
 
 	samples_left_over  += samples_per_update;
-	samples_this_update = (UINT32)samples_left_over;
+	samples_this_update = (uint32_t)samples_left_over;
 	samples_left_over  -= samples_this_update;
 }
 
@@ -235,7 +235,7 @@ int sound_init(void)
 	samples_per_update = (((float)sound->frequency / FPS) * 2) / (1 << sample_shift);
 
 	samples_left_over   = samples_per_update;
-	samples_this_update = (UINT32)samples_per_update;
+	samples_this_update = (uint32_t)samples_per_update;
 	samples_left_over  -= samples_this_update;
 #endif
 
@@ -305,7 +305,7 @@ void sound_set_samplerate(void)
 	samples_per_update = (((float)sound->frequency / FPS) * 2) / (1 << sample_shift);
 
 	samples_left_over   = samples_per_update;
-	samples_this_update = (UINT32)samples_per_update;
+	samples_this_update = (uint32_t)samples_per_update;
 	samples_left_over  -= samples_this_update;
 }
 #endif

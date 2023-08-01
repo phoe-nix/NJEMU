@@ -112,7 +112,7 @@ struct driver_t *driver;
 	¥í©`¥«¥ë‰äÊý
 ******************************************************************************/
 
-static UINT32 z80_bank;
+static uint32_t z80_bank;
 static int readpaddle;
 static int next_update_first_line;
 
@@ -125,7 +125,7 @@ static int next_update_first_line;
 	Z80 ROM¥Ð¥ó¥¯ÇÐ¤êÌæ¤¨
 --------------------------------------------------------*/
 
-static void z80_set_bank(UINT32 offset)
+static void z80_set_bank(uint32_t offset)
 {
 	if (offset != z80_bank)
 	{
@@ -231,7 +231,7 @@ WRITE8_HANDLER( qsound_banksw_w )
 		Z80 bank register for music note data. It's odd that it isn't encrypted
 		though.
 	*/
-	UINT32 bankaddress = 0x10000 + ((data & 0x0f) << 14);
+	uint32_t bankaddress = 0x10000 + ((data & 0x0f) << 14);
 
 	if (bankaddress >= memory_length_cpu2)
 		bankaddress = 0x10000;
