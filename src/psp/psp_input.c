@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <pspctrl.h>
 #include "common/input_driver.h"
-#include "common/input.h"
 
 typedef struct psp_input {
 	int32_t channel;

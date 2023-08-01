@@ -36,7 +36,7 @@
 #include <sys/unistd.h>
 
 #include "common/ticker_driver.h"
-#include "common/input.h"
+#include "common/input_driver.h"
 #include "common/power_driver.h"
 
 #include "psp/ui_text.h"

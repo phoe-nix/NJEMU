@@ -103,7 +103,6 @@ MAINOBJS = \
 	common/ticker_driver.o \
 	common/input_driver.o \
 	common/sound.o \
-	common/input.o \
 
 ifeq ($(ADHOC), 1)
 MAINOBJS += common/adhoc.o
