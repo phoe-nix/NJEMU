@@ -288,7 +288,7 @@ static int load_zipname(void)
 	char path[MAX_PATH], buf[256];
 	int found = 0;
 
-	if (ui_text_get_language() == LANG_JAPANESE)
+	if (ui_text_driver->getLanguage(ui_text_data) == LANG_JAPANESE)
 	{
 		sprintf(path, "%szipnamej." EXT, launchDir);
 		if ((fp = fopen(path, "rb")) != NULL)
@@ -297,7 +297,7 @@ static int load_zipname(void)
 			found = 1;
 		}
 	}
-	if (ui_text_get_language() == LANG_CHINESE_SIMPLIFIED)
+	if (ui_text_driver->getLanguage(ui_text_data) == LANG_CHINESE_SIMPLIFIED)
 	{
 		sprintf(path, "%szipnamech1." EXT, launchDir);
 		if ((fp = fopen(path, "rb")) != NULL)
@@ -306,7 +306,7 @@ static int load_zipname(void)
 			found = 1;
 		}
 	}
-	if (ui_text_get_language() == LANG_CHINESE_TRADITIONAL)
+	if (ui_text_driver->getLanguage(ui_text_data) == LANG_CHINESE_TRADITIONAL)
 	{
 		sprintf(path, "%szipnamech2." EXT, launchDir);
 		if ((fp = fopen(path, "rb")) != NULL)

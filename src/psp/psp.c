@@ -182,7 +182,7 @@ int main(int argc, char *argv[])
 
 	power_driver->setLowestCpuClock(NULL);
 
-	ui_text_init();
+	ui_text_data = ui_text_driver->init();
 	pad_init();
 
 #if VIDEO_32BPP
@@ -203,6 +203,7 @@ int main(int argc, char *argv[])
 
 	file_browser();
 	video_driver->free(video_data);
+	ui_text_driver->free(ui_text_data);
 	pad_exit();
 
 #ifdef KERNEL_MODE

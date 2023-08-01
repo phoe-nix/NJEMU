@@ -6329,7 +6329,7 @@ dipswitch_t *load_dipswitch(int *sx)
 {
 	dipswitch_t *dipswitch = NULL;
 
-	if (ui_text_get_language() == LANG_JAPANESE)
+	if (ui_text_driver->getLanguage(ui_text_data) == LANG_JAPANESE)
 	{
 		switch (machine_input_type)
 		{
@@ -6370,7 +6370,7 @@ dipswitch_t *load_dipswitch(int *sx)
 #endif
 		}
 	}
-	else if (ui_text_get_language() == LANG_CHINESE_SIMPLIFIED)
+	else if (ui_text_driver->getLanguage(ui_text_data) == LANG_CHINESE_SIMPLIFIED)
 	{
 		switch (machine_input_type)
 		{
@@ -6411,7 +6411,7 @@ dipswitch_t *load_dipswitch(int *sx)
 #endif
 		}
 	}
-	else if (ui_text_get_language() == LANG_CHINESE_TRADITIONAL)
+	else if (ui_text_driver->getLanguage(ui_text_data) == LANG_CHINESE_TRADITIONAL)
 	{
 		switch (machine_input_type)
 		{
@@ -6499,7 +6499,7 @@ dipswitch_t *load_dipswitch(int *sx)
 
 void save_dipswitch(void)
 {
-	if (ui_text_get_language() == LANG_JAPANESE)
+	if (ui_text_driver->getLanguage(ui_text_data) == LANG_JAPANESE)
 	{
 		switch (machine_input_type)
 		{
@@ -6540,7 +6540,7 @@ void save_dipswitch(void)
 #endif
 		}
 	}
-	else if (ui_text_get_language() == LANG_CHINESE_SIMPLIFIED)
+	else if (ui_text_driver->getLanguage(ui_text_data) == LANG_CHINESE_SIMPLIFIED)
 	{
 		switch (machine_input_type)
 		{
@@ -6581,7 +6581,7 @@ void save_dipswitch(void)
 #endif
 		}
 	}
-	else if (ui_text_get_language() == LANG_CHINESE_TRADITIONAL)
+	else if (ui_text_driver->getLanguage(ui_text_data) == LANG_CHINESE_TRADITIONAL)
 	{
 		switch (machine_input_type)
 		{

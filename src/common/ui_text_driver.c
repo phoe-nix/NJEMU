@@ -1,23 +1,26 @@
 /******************************************************************************
 
-	ticker_driver.c
+	ui_text_driver.c
 
 ******************************************************************************/
 
 #include <stddef.h>
-#include "ticker_driver.h"
+#include "ui_text_driver.h"
 
-ticker_driver_t ticker_null = {
+void *ui_text_data;
+
+ui_text_driver_t ui_text_null = {
 	"null",
+	NULL,
 	NULL,
 	NULL,
 	NULL,
 };
 
-ticker_driver_t *ticker_drivers[] = {
+ui_text_driver_t *ui_text_drivers[] = {
 #ifdef PSP
-	&ticker_psp,
+	&ui_text_psp,
 #endif
-	&ticker_null,
+	&ui_text_null,
 	NULL,
 };

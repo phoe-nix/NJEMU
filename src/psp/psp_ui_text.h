@@ -2,25 +2,14 @@
 
 	ui_text.c
 
-	¥æ©`¥¶¥¤¥ó¥¿¥Õ¥§©`¥¹¥Æ¥­¥¹¥È¹ÜÀí
+	ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¥Õ¥ï¿½ï¿½`ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½È¹ï¿½ï¿½ï¿½
 
 ******************************************************************************/
 
 #ifndef UI_TEXT_H
 #define UI_TEXT_H
 
-#define LANG_ENGLISH	            0
-#define LANG_JAPANESE	            1
-#define LANG_CHINESE_SIMPLIFIED	    2
-#define LANG_CHINESE_TRADITIONAL    3
-#define LANG_FRENCH                 0
-#define LANG_SPANISH                0
-#define LANG_GERMAN                 0
-#define LANG_ITALIAN                0
-#define LANG_DUTCH                  0
-#define LANG_PORTUGUESE             0
-#define LANG_RUSSIAN                0
-#define LANG_KOREAN                 0
+#include "common/ui_text_driver.h"
 
 enum
 {
@@ -585,11 +574,6 @@ enum
 	UI_TEXT_MAX
 };
 
-#define TEXT(s)		ui_text[s]
-
-extern const char *ui_text[UI_TEXT_MAX];
-
-void ui_text_init(void);
-int ui_text_get_language(void);
+#define TEXT(s)		ui_text_driver->getText(ui_text_data, s)
 
 #endif /* UI_TEXT_H */

@@ -443,7 +443,7 @@ void load_settings(void)
 			*default_options[i].value = default_options[i].def;
 	}
 #if (EMU_SYSTEM == NCDZ)
-	if (ui_text_get_language() == LANG_JAPANESE)
+	if (ui_text_driver->getLanguage(ui_text_data) == LANG_JAPANESE)
 	{
 		for (i = 0; default_options[i].name; i++)
 		{
@@ -470,7 +470,7 @@ void load_settings(void)
 				*default_options[i].value = default_options[i].def;
 		}
 #if (EMU_SYSTEM == NCDZ)
-		if (ui_text_get_language() == LANG_JAPANESE)
+		if (ui_text_driver->getLanguage(ui_text_data) == LANG_JAPANESE)
 		{
 			for (i = 0; default_options[i].name; i++)
 			{

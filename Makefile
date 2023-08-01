@@ -103,6 +103,7 @@ MAINOBJS = \
 	common/ticker_driver.o \
 	common/input_driver.o \
 	common/video_driver.o \
+	common/ui_text_driver.o \
 	common/sound.o \
 
 ifeq ($(ADHOC), 1)
@@ -134,7 +135,6 @@ OSOBJS = \
 	$(OS)/ui.o \
 	$(OS)/ui_draw.o \
 	$(OS)/ui_menu.o \
-	$(OS)/ui_text.o \
 	$(OS)/png.o \
 
 OSOBJS += \
@@ -145,6 +145,7 @@ OSOBJS += \
 	$(OS)/$(OS)_ticker.o \
 	$(OS)/$(OS)_input.o \
 	$(OS)/$(OS)_video.o \
+	$(OS)/$(OS)_ui_text.o \
 
 ifeq ($(ADHOC), 1)
 OSOBJS += $(OS)/adhoc.o

@@ -2057,7 +2057,7 @@ static void state_refresh_screen(int reload_thumbnail)
 	uifont_print_shadow(i + 16, 5, UI_COLOR(UI_PAL_NORMAL), "|");
 	uifont_print_shadow(i + 24, 5, UI_COLOR(UI_PAL_TITLE), buf);
 
-	if (ui_text_get_language() == LANG_JAPANESE)
+	if (ui_text_driver->getLanguage(ui_text_data) == LANG_JAPANESE)
 		x = 20;
 	else
 		x = 0;

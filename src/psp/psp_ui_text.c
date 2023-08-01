@@ -7,10 +7,13 @@
 ******************************************************************************/
 
 #include "psp.h"
+#include "psp_ui_text.h"
 #include <psputility_sysparam.h>
 
-
-const char *ui_text[UI_TEXT_MAX];
+typedef struct psp_ui_text {
+	uint32_t lang;
+	const char *ui_text[UI_TEXT_MAX];
+} psp_ui_text_t;
 
 static const char *text_ENGLISH[UI_TEXT_MAX] =
 {
@@ -2811,49 +2814,74 @@ static const char *text_CHINESE_TRADITIONAL[UI_TEXT_MAX] =
 //			KOREAN				9
 //			CHINESE_TRADITIONAL	10
 //			CHINESE_SIMPLIFIED	11
-static int lang = 0;
 
 
-void ui_text_init(void)
+static void *psp_init(void)
 {
+	psp_ui_text_t *psp = (psp_ui_text_t*)calloc(1, sizeof(psp_ui_text_t));
 	int i;
+	int lang = 0;
 
 	sceUtilityGetSystemParamInt(PSP_SYSTEMPARAM_ID_INT_LANGUAGE, &lang);
     switch (lang)
 	{
 	case PSP_SYSTEMPARAM_LANGUAGE_CHINESE_SIMPLIFIED:
-		lang = LANG_CHINESE_SIMPLIFIED;
+		psp->lang = LANG_CHINESE_SIMPLIFIED;
 		for (i = 0; i < UI_TEXT_MAX; i++)
-			ui_text[i] = text_CHINESE_SIMPLIFIED[i];
+			psp->ui_text[i] = text_CHINESE_SIMPLIFIED[i];
 		break;
 
 	case PSP_SYSTEMPARAM_LANGUAGE_CHINESE_TRADITIONAL:
-		lang = LANG_CHINESE_TRADITIONAL;
+		psp->lang = LANG_CHINESE_TRADITIONAL;
 		for (i = 0; i < UI_TEXT_MAX; i++)
-			ui_text[i] = text_CHINESE_TRADITIONAL[i];
+			psp->ui_text[i] = text_CHINESE_TRADITIONAL[i];
 		break;
 
 	case PSP_SYSTEMPARAM_LANGUAGE_JAPANESE:
-		lang = LANG_JAPANESE;
+		psp->lang = LANG_JAPANESE;
 		for (i = 0; i < UI_TEXT_MAX; i++)
-			ui_text[i] = text_JAPANESE[i];
+			psp->ui_text[i] = text_JAPANESE[i];
 		break;
 
 	case PSP_SYSTEMPARAM_LANGUAGE_SPANISH:
-		lang = LANG_SPANISH;
+		psp->lang = LANG_SPANISH;
 		for (i = 0; i < UI_TEXT_MAX; i++)
-			ui_text[i] = text_SPANISH[i];
+			psp->ui_text[i] = text_SPANISH[i];
 		break;
 
 	default:
-		lang = LANG_ENGLISH;
+		psp->lang = LANG_ENGLISH;
 		for (i = 0; i < UI_TEXT_MAX; i++)
-			ui_text[i] = text_ENGLISH[i];
+			psp->ui_text[i] = text_ENGLISH[i];
 		break;
 	}
+
+	return psp;
 }
 
-int ui_text_get_language(void)
+static void psp_free(void *data)
 {
-	return lang;
+	psp_ui_text_t *psp = (psp_ui_text_t*)data;
+	free(psp);
 }
+
+static int32_t psp_getLanguage(void *data)
+{
+	psp_ui_text_t *psp = (psp_ui_text_t*)data;
+	return psp->lang;
+}
+
+static const char *psp_getText(void *data, int32_t id)
+{
+	psp_ui_text_t *psp = (psp_ui_text_t*)data;
+	return psp->ui_text[id];
+}
+
+
+ui_text_driver_t ui_text_psp = {
+	"psp",
+	psp_init,
+	psp_free,
+	psp_getLanguage,
+	psp_getText,
+};
