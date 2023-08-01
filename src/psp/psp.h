@@ -39,8 +39,8 @@
 #include "common/input_driver.h"
 #include "common/power_driver.h"
 #include "common/video_driver.h"
+#include "common/ui_text_driver.h"
 
-#include "psp/psp_ui_text.h"
 #include "psp/config.h"
 #include "psp/filer.h"
 #include "psp/ui.h"

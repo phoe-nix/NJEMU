@@ -7,7 +7,7 @@
 ******************************************************************************/
 
 #include "psp.h"
-#include "psp_ui_text.h"
+#include "common/ui_text_driver.h"
 #include <psputility_sysparam.h>
 
 typedef struct psp_ui_text {
