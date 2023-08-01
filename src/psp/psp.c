@@ -153,7 +153,9 @@ int main(int argc, char *argv[])
 #endif
 {
 	SceUID modID;
+#if SYSTEM_BUTTONS
 	char prx_path[MAX_PATH];
+#endif
 
 	getcwd(launchDir, MAX_PATH - 1);
 	strcat(launchDir, "/");
@@ -191,6 +193,7 @@ int main(int argc, char *argv[])
 	video_data = video_driver->init();
 #endif
 
+#if SYSTEM_BUTTONS
 	sprintf(prx_path, "%sSystemButtons.prx", launchDir);
 
 	if ((modID = pspSdkLoadStartModule(prx_path, PSP_MEMORY_PARTITION_KERNEL)) >= 0)
@@ -199,7 +202,10 @@ int main(int argc, char *argv[])
 		systembuttons_available = 1;
 	}
 	else
+#endif
+	{
 		systembuttons_available = 0;
+	}
 
 	file_browser();
 	video_driver->free(video_data);

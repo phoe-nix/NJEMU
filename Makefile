@@ -17,9 +17,11 @@ LARGE_MEMORY = 1
 KERNEL_MODE = 0
 COMMAND_LIST = 1
 ADHOC = 0
-SAVE_STATE = 1
+NO_GUI = 0
+SAVE_STATE = 0
 UI_32BPP = 1
 RELEASE = 0
+SYSTEM_BUTTONS = 0
 
 #------------------------------------------------------------------------------
 # Version
@@ -129,6 +131,9 @@ ifeq ($(SAVE_STATE), 1)
 MAINOBJS += common/state.o
 endif
 
+ifeq ($(NO_GUI), 1)
+OSOBJS += $(OS)/psp_no_gui.o
+else
 FONTOBJS = \
 	$(OS)/font/graphic.o \
 	$(OS)/font/ascii_14p.o \
@@ -140,13 +145,15 @@ FONTOBJS = \
 	$(OS)/font/gbk_s14.o \
 	$(OS)/font/gbk_tbl.o
 
-OSOBJS = \
+OSOBJS += \
 	$(OS)/config.o \
 	$(OS)/filer.o \
 	$(OS)/ui.o \
 	$(OS)/ui_draw.o \
 	$(OS)/ui_menu.o \
 	$(OS)/png.o \
+
+endif
 
 OSOBJS += \
 	$(OS)/$(OS).o \
