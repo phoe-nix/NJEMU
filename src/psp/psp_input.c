@@ -26,21 +26,21 @@ static uint32_t basicPoll(SceCtrlData *paddata) {
 
 	sceCtrlPeekBufferPositive(paddata, 1);
 
-	data |= (paddata->Buttons & PSP_CTRL_UP) ? 1 << PLATFORM_PAD_UP : 0;
-	data |= (paddata->Buttons & PSP_CTRL_DOWN) ? 1 << PLATFORM_PAD_DOWN : 0;
-	data |= (paddata->Buttons & PSP_CTRL_LEFT) ? 1 << PLATFORM_PAD_LEFT : 0;
-	data |= (paddata->Buttons & PSP_CTRL_RIGHT) ? 1 << PLATFORM_PAD_RIGHT : 0;
+	data |= (paddata->Buttons & PSP_CTRL_UP) ? PLATFORM_PAD_UP : 0;
+	data |= (paddata->Buttons & PSP_CTRL_DOWN) ? PLATFORM_PAD_DOWN : 0;
+	data |= (paddata->Buttons & PSP_CTRL_LEFT) ? PLATFORM_PAD_LEFT : 0;
+	data |= (paddata->Buttons & PSP_CTRL_RIGHT) ? PLATFORM_PAD_RIGHT : 0;
 
-	data |= (paddata->Buttons & PSP_CTRL_CIRCLE) ? 1 << PLATFORM_PAD_B1 : 0;
-	data |= (paddata->Buttons & PSP_CTRL_CROSS) ? 1 << PLATFORM_PAD_B2 : 0;
-	data |= (paddata->Buttons & PSP_CTRL_SQUARE) ? 1 << PLATFORM_PAD_B3 : 0;
-	data |= (paddata->Buttons & PSP_CTRL_TRIANGLE) ? 1 << PLATFORM_PAD_B4 : 0;
+	data |= (paddata->Buttons & PSP_CTRL_CIRCLE) ? PLATFORM_PAD_B1 : 0;
+	data |= (paddata->Buttons & PSP_CTRL_CROSS) ? PLATFORM_PAD_B2 : 0;
+	data |= (paddata->Buttons & PSP_CTRL_SQUARE) ? PLATFORM_PAD_B3 : 0;
+	data |= (paddata->Buttons & PSP_CTRL_TRIANGLE) ? PLATFORM_PAD_B4 : 0;
 
-	data |= (paddata->Buttons & PSP_CTRL_LTRIGGER) ? 1 << PLATFORM_PAD_L : 0;
-	data |= (paddata->Buttons & PSP_CTRL_RTRIGGER) ? 1 << PLATFORM_PAD_R : 0;
+	data |= (paddata->Buttons & PSP_CTRL_LTRIGGER) ? PLATFORM_PAD_L : 0;
+	data |= (paddata->Buttons & PSP_CTRL_RTRIGGER) ? PLATFORM_PAD_R : 0;
 	
-	data |= (paddata->Buttons & PSP_CTRL_START) ? 1 << PLATFORM_PAD_START : 0;
-	data |= (paddata->Buttons & PSP_CTRL_SELECT) ? 1 << PLATFORM_PAD_SELECT : 0;
+	data |= (paddata->Buttons & PSP_CTRL_START) ? PLATFORM_PAD_START : 0;
+	data |= (paddata->Buttons & PSP_CTRL_SELECT) ? PLATFORM_PAD_SELECT : 0;
 
 	return data;
 }
@@ -51,10 +51,10 @@ static uint32_t psp_poll(void *data) {
 
 	btnsData = basicPoll(&paddata);
 
-	if (paddata.Ly >= 0xd0) btnsData |= 1 << PLATFORM_PAD_DOWN;
-	if (paddata.Ly <= 0x30) btnsData |= 1 << PLATFORM_PAD_UP;
-	if (paddata.Lx <= 0x30) btnsData |= 1 << PLATFORM_PAD_LEFT;
-	if (paddata.Lx >= 0xd0) btnsData |= 1 << PLATFORM_PAD_RIGHT;
+	if (paddata.Ly >= 0xd0) btnsData |= PLATFORM_PAD_DOWN;
+	if (paddata.Ly <= 0x30) btnsData |= PLATFORM_PAD_UP;
+	if (paddata.Lx <= 0x30) btnsData |= PLATFORM_PAD_LEFT;
+	if (paddata.Lx >= 0xd0) btnsData |= PLATFORM_PAD_RIGHT;
 
 	return btnsData;
 }
@@ -66,10 +66,10 @@ static uint32_t psp_pollFatfursp(void *data) {
 
 	btnsData = basicPoll(&paddata);
 
-	if (!(paddata.Buttons & PSP_CTRL_UP)    && paddata.Ly >= 0xd0) btnsData |= 1 << PLATFORM_PAD_DOWN;
-	if (!(paddata.Buttons & PSP_CTRL_DOWN)  && paddata.Ly <= 0x30) btnsData |= 1 << PLATFORM_PAD_UP;
-	if (!(paddata.Buttons & PSP_CTRL_RIGHT) && paddata.Lx <= 0x30) btnsData |= 1 << PLATFORM_PAD_LEFT;
-	if (!(paddata.Buttons & PSP_CTRL_LEFT)  && paddata.Lx >= 0xd0) btnsData |= 1 << PLATFORM_PAD_RIGHT;
+	if (!(paddata.Buttons & PSP_CTRL_UP)    && paddata.Ly >= 0xd0) btnsData |= PLATFORM_PAD_DOWN;
+	if (!(paddata.Buttons & PSP_CTRL_DOWN)  && paddata.Ly <= 0x30) btnsData |= PLATFORM_PAD_UP;
+	if (!(paddata.Buttons & PSP_CTRL_RIGHT) && paddata.Lx <= 0x30) btnsData |= PLATFORM_PAD_LEFT;
+	if (!(paddata.Buttons & PSP_CTRL_LEFT)  && paddata.Lx >= 0xd0) btnsData |= PLATFORM_PAD_RIGHT;
 
 	return btnsData;
 }
@@ -80,10 +80,10 @@ static uint32_t psp_pollAnalog(void *data) {
 
 	btnsData = basicPoll(&paddata);
 
-	if (paddata.Ly >= 0xd0) btnsData |= 1 << PLATFORM_PAD_DOWN;
-	if (paddata.Ly <= 0x30) btnsData |= 1 << PLATFORM_PAD_UP;
-	if (paddata.Lx <= 0x30) btnsData |= 1 << PLATFORM_PAD_LEFT;
-	if (paddata.Lx >= 0xd0) btnsData |= 1 << PLATFORM_PAD_RIGHT;
+	if (paddata.Ly >= 0xd0) btnsData |= PLATFORM_PAD_DOWN;
+	if (paddata.Ly <= 0x30) btnsData |= PLATFORM_PAD_UP;
+	if (paddata.Lx <= 0x30) btnsData |= PLATFORM_PAD_LEFT;
+	if (paddata.Lx >= 0xd0) btnsData |= PLATFORM_PAD_RIGHT;
 
 	btnsData  = paddata.Buttons & 0xffff;
 	btnsData |= paddata.Lx << 16;

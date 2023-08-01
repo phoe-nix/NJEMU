@@ -133,24 +133,24 @@ void pad_update(void)
 
 bool pad_pressed(uint32_t code)
 {
-	return (pad & (1 << code)) != 0;
+	return (pad & code) != 0;
 }
 
 
 #define PLATFORM_PAD_ANY			\
 	(								\
-		1 << PLATFORM_PAD_SELECT |	\
-	 	1 << PLATFORM_PAD_START |	\
-	 	1 << PLATFORM_PAD_UP |		\
-	 	1 << PLATFORM_PAD_RIGHT |	\
-	 	1 << PLATFORM_PAD_DOWN |	\
-	 	1 << PLATFORM_PAD_LEFT |	\
-	 	1 << PLATFORM_PAD_L |		\
-	 	1 << PLATFORM_PAD_R |		\
-	 	1 << PLATFORM_PAD_B4 |		\
-	 	1 << PLATFORM_PAD_B1 |		\
-	 	1 << PLATFORM_PAD_B2 |		\
-	 	1 << PLATFORM_PAD_B3 		\
+		PLATFORM_PAD_SELECT |	\
+	 	PLATFORM_PAD_START |	\
+	 	PLATFORM_PAD_UP |		\
+	 	PLATFORM_PAD_RIGHT |	\
+	 	PLATFORM_PAD_DOWN |	\
+	 	PLATFORM_PAD_LEFT |	\
+	 	PLATFORM_PAD_L |		\
+	 	PLATFORM_PAD_R |		\
+	 	PLATFORM_PAD_B4 |		\
+	 	PLATFORM_PAD_B1 |		\
+	 	PLATFORM_PAD_B2 |		\
+	 	PLATFORM_PAD_B3 		\
 	)
 
 bool pad_pressed_any(void)

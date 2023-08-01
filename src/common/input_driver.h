@@ -11,18 +11,18 @@
 #include <stdbool.h>
 
 // Platform Controls
-#define PLATFORM_PAD_UP 0
-#define PLATFORM_PAD_DOWN 1
-#define PLATFORM_PAD_LEFT 2
-#define PLATFORM_PAD_RIGHT 3
-#define PLATFORM_PAD_B1 4
-#define PLATFORM_PAD_B2 5
-#define PLATFORM_PAD_B3 6
-#define PLATFORM_PAD_B4 7
-#define PLATFORM_PAD_L 8
-#define PLATFORM_PAD_R 9
-#define PLATFORM_PAD_SELECT 10
-#define PLATFORM_PAD_START 11
+#define PLATFORM_PAD_UP (1 << 0)
+#define PLATFORM_PAD_DOWN (1 << 1)
+#define PLATFORM_PAD_LEFT (1 << 2)
+#define PLATFORM_PAD_RIGHT (1 << 3)
+#define PLATFORM_PAD_B1 (1 << 4)
+#define PLATFORM_PAD_B2 (1 << 5)
+#define PLATFORM_PAD_B3 (1 << 6)
+#define PLATFORM_PAD_B4 (1 << 7)
+#define PLATFORM_PAD_L (1 << 8)
+#define PLATFORM_PAD_R (1 << 9)
+#define PLATFORM_PAD_SELECT (1 << 10)
+#define PLATFORM_PAD_START (1 << 11)
 
 
 #define PAD_WAIT_INFINITY	-1
