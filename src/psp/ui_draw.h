@@ -2,7 +2,7 @@
 
 	ui_draw.c
 
-	PSP ¥æ©`¥¶¥¤¥ó¥¿¥Õ¥§©`¥¹Ãè»­évÊý
+	PSP ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¥Õ¥ï¿½ï¿½`ï¿½ï¿½ï¿½è»­ï¿½vï¿½ï¿½
 
 ******************************************************************************/
 
@@ -88,40 +88,39 @@ enum
 
 #define UI_COLOR(no)	ui_palette[no].r,ui_palette[no].g,ui_palette[no].b
 
-#define ui_fill_frame(frame, no)		video_fill_frame(frame, MAKECOL32(ui_palette[no].r,ui_palette[no].g,ui_palette[no].b))
-#define ui_fill_rect(frame, no, rect)	video_fill_rect(frame, MAKECOL32(ui_palette[no].r,ui_palette[no].g,ui_palette[no].b), rect)
-#define ui_clear_rect(frame, no, rect)	video_fill_rect(frame, MAKECOL32(ui_palette[no].r,ui_palette[no].g,ui_palette[no].b0), rect)
+#define ui_fill_frame(frame, no)		video_driver->fillFrame(NULL, frame, MAKECOL32(ui_palette[no].r,ui_palette[no].g,ui_palette[no].b))
+#define ui_fill_rect(frame, no, rect)	video_driver->fillRect(NULL, frame, MAKECOL32(ui_palette[no].r,ui_palette[no].g,ui_palette[no].b), rect)
 
 
 /*------------------------------------------------------
-	¥Æ©`¥Ö¥ëµÈ
+	ï¿½Æ©`ï¿½Ö¥ï¿½ï¿½
 ------------------------------------------------------*/
 
-// ¥æ©`¥¶¥¤¥ó¥¿¥Õ¥§©`¥¹¥«¥é©`¥Ç©`¥¿
+// ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¥Õ¥ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½Ç©`ï¿½ï¿½
 extern UI_PALETTE ui_palette[UI_PAL_MAX];
 
-// ¥²©`¥à»­ÃæÓÃ¥¹¥â©`¥ë¥Õ¥©¥ó¥È
+// ï¿½ï¿½ï¿½`ï¿½à»­ï¿½ï¿½ï¿½Ã¥ï¿½ï¿½ï¿½`ï¿½ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½
 extern const uint8_t font_s[];
 
-// ¥À¥¤¥¢¥í¥°µÈ¤ÎÓ°¥Ç©`¥¿
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¤ï¿½Ó°ï¿½Ç©`ï¿½ï¿½
 extern const uint8_t shadow[9][8][4];
 
-// GBK ¥Õ¥©¥ó¥È¥Æ©`¥Ö¥ë
+// GBK ï¿½Õ¥ï¿½ï¿½ï¿½È¥Æ©`ï¿½Ö¥ï¿½
 extern const uint16_t gbk_table[];
 
 
 /*------------------------------------------------------
-	¥æ©`¥¶¥¤¥ó¥¿¥Õ¥§©`¥¹³õÆÚ»¯
+	ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¥Õ¥ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Ú»ï¿½
 ------------------------------------------------------*/
 
 void ui_init(void);
 
 
 /*------------------------------------------------------
-	¥Õ¥©¥ó¥È¹ÜÀí
+	ï¿½Õ¥ï¿½ï¿½ï¿½È¹ï¿½ï¿½ï¿½
 ------------------------------------------------------*/
 
-// ¥×¥í¥Ý©`¥·¥ç¥Ê¥ë¥Õ¥©¥ó¥È
+// ï¿½×¥ï¿½ï¿½Ý©`ï¿½ï¿½ï¿½ï¿½Ê¥ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½
 int graphic_font_get_gryph(struct font_t *font, uint16_t code);
 int graphic_font_get_pitch(uint16_t code);
 
@@ -134,15 +133,15 @@ int ascii_14p_get_pitch(uint16_t code);
 int gbk_s14p_get_gryph(struct font_t *font, uint16_t code);
 int gbk_s14p_get_pitch(uint16_t code);
 
-// ¥¢¥¤¥³¥ó(Ð¡)
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Ð¡)
 int icon_s_get_gryph(struct font_t *font, uint16_t code);
 int icon_s_get_light(struct font_t *font, uint16_t code);
 
-// ¥¢¥¤¥³¥ó(´ó)
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½)
 int icon_l_get_gryph(struct font_t *font, uint16_t code);
 int icon_l_get_light(struct font_t *font, uint16_t code);
 
-// µÈ·ù¥Õ¥©¥ó¥È
+// ï¿½È·ï¿½ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½
 #ifdef COMMAND_LIST
 int command_font_get_gryph(struct font_t *font, uint16_t code);
 int ascii_14_get_gryph(struct font_t *font, uint16_t code);
@@ -153,14 +152,14 @@ int gbk_s14_get_gryph(struct font_t *font, uint16_t code);
 
 
 /*------------------------------------------------------
-	¥Õ¥©¥ó¥ÈÃè»­·ùÈ¡µÃ (¥æ©`¥¶¥¤¥ó¥¿¥Õ¥§©`¥¹ÓÃ)
+	ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½è»­ï¿½ï¿½È¡ï¿½ï¿½ (ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¥Õ¥ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½)
 ------------------------------------------------------*/
 
 int uifont_get_string_width(const char *s);
 
 
 /*------------------------------------------------------
-	¥Õ¥©¥ó¥ÈÃè»­ (¥æ©`¥¶¥¤¥ó¥¿¥Õ¥§©`¥¹ÓÃ)
+	ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½è»­ (ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¥Õ¥ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½)
 ------------------------------------------------------*/
 
 void uifont_print(int sx, int sy, int r, int g, int b, const char *s);
@@ -170,7 +169,7 @@ void uifont_print_shadow_center(int sy, int r, int g, int b, const char *s);
 
 
 /*------------------------------------------------------
-	¥Õ¥©¥ó¥ÈÃè»­ (¥Æ¥­¥¹¥È±íÊ¾ÓÃ)
+	ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½è»­ (ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½È±ï¿½Ê¾ï¿½ï¿½)
 ------------------------------------------------------*/
 
 #ifdef COMMAND_LIST
@@ -179,7 +178,7 @@ void textfont_print(int sx, int sy, int r, int g, int b, const char *s, int flag
 
 
 /*------------------------------------------------------
-	¥¢¥¤¥³¥óÃè»­ (¥æ©`¥¶¥¤¥ó¥¿¥Õ¥§©`¥¹ÓÃ)
+	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è»­ (ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¥Õ¥ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½)
 ------------------------------------------------------*/
 
 void small_icon(int sx, int sy, int r, int g, int b, int no);
@@ -194,14 +193,14 @@ int ui_light_update(void);
 
 
 /*------------------------------------------------------
-	¥Ü¥ê¥å©`¥àÃè»­ (CFW 3.52ÒÔ½µ¤Î¥æ©`¥¶©`¥â©`¥É¤Î¤ß)
+	ï¿½Ü¥ï¿½ï¿½`ï¿½ï¿½ï¿½è»­ (CFW 3.52ï¿½Ô½ï¿½ï¿½Î¥ï¿½`ï¿½ï¿½ï¿½`ï¿½ï¿½`ï¿½É¤Î¤ï¿½)
 ------------------------------------------------------*/
 
 void draw_volume(int volume);
 
 
 /*------------------------------------------------------
-	¥Õ¥©¥ó¥ÈÃè»­ (¥²©`¥à»­ÃæÓÃ)
+	ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½è»­ (ï¿½ï¿½ï¿½`ï¿½à»­ï¿½ï¿½ï¿½ï¿½)
 ------------------------------------------------------*/
 
 void small_font_print(int sx, int sy, const char *s, int bg);
@@ -211,7 +210,7 @@ void debug_font_printf(void *frame, int x, int y, const char *text, ...);
 
 
 /*------------------------------------------------------
-	‡íÐÎÃè»­ (¥æ©`¥¶¥¤¥ó¥¿¥Õ¥§©`¥¹ÓÃ)
+	ï¿½ï¿½ï¿½ï¿½ï¿½è»­ (ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¥Õ¥ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½)
 ------------------------------------------------------*/
 
 void hline(int sx, int ex, int y, int r, int g, int b);
@@ -232,7 +231,7 @@ void draw_bar_shadow(void);
 void draw_box_shadow(int sx, int sy, int ex, int ey);
 
 /*------------------------------------------------------
-	¥æ©`¥¶¥¤¥ó¥¿¥Õ¥§©`¥¹É«ÔO¶¨
+	ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¥Õ¥ï¿½ï¿½`ï¿½ï¿½É«ï¿½Oï¿½ï¿½
 ------------------------------------------------------*/
 
 #if VIDEO_32BPP
@@ -241,7 +240,7 @@ void set_ui_color(UI_PALETTE *pal, int r, int g, int b);
 #endif
 
 /*------------------------------------------------------
-	¥í¥´Ãè»­
+	ï¿½ï¿½ï¿½ï¿½ï¿½è»­
 ------------------------------------------------------*/
 
 void logo(int sx, int sy, int r, int g, int b);

@@ -6,7 +6,7 @@
 
 ******************************************************************************/
 
-#include "psp.h"
+#include "psp_video.h"
 
 
 /******************************************************************************
@@ -30,14 +30,6 @@ static int pixel_format;
 ******************************************************************************/
 
 uint8_t ALIGN16_DATA gulist[GULIST_SIZE];
-#if VIDEO_32BPP
-int video_mode = 0;
-#endif
-void *show_frame;
-void *draw_frame;
-void *work_frame;
-void *tex_frame;
-
 RECT full_rect = { 0, 0, SCR_WIDTH, SCR_HEIGHT };
 
 
@@ -45,32 +37,14 @@ RECT full_rect = { 0, 0, SCR_WIDTH, SCR_HEIGHT };
 	グローバル関数
 ******************************************************************************/
 
-/*--------------------------------------------------------
-	ビデオモード設定
---------------------------------------------------------*/
-
-#if VIDEO_32BPP
-void video_set_mode(int mode)
-{
-	if (video_mode != mode)
-	{
-		if (video_mode) video_exit();
-
-		video_mode = mode;
-
-		video_init();
-	}
-}
-#endif
-
+typedef struct psp_video {
+} psp_video_t;
 
 /*--------------------------------------------------------
 	ビデオ処理初期化
 --------------------------------------------------------*/
-
-void video_init(void)
-{
-#if VIDEO_32BPP
+static void psp_start(void) {
+	#if VIDEO_32BPP
 	if (video_mode == 32)
 	{
 		pixel_format = GU_PSM_8888;
@@ -131,9 +105,9 @@ void video_init(void)
 	sceGuFinish();
 	sceGuSync(0, GU_SYNC_FINISH);
 
-	video_clear_frame(show_frame);
-	video_clear_frame(draw_frame);
-	video_clear_frame(work_frame);
+	video_driver->clearFrame(NULL, show_frame);
+	video_driver->clearFrame(NULL, draw_frame);
+	video_driver->clearFrame(NULL, work_frame);
 
 	sceDisplayWaitVblankStart();
 	sceGuDisplay(GU_TRUE);
@@ -141,23 +115,56 @@ void video_init(void)
 	ui_init();
 }
 
+static void psp_init(void)
+{
+	psp_video_t *psp = (psp_video_t*)calloc(1, sizeof(psp_video_t));
+
+	psp_start();
+	return psp;
+}
+
 
 /*--------------------------------------------------------
 	ビデオ処理終了(共通)
 --------------------------------------------------------*/
 
-void video_exit(void)
-{
+static void psp_exit() {
 	sceGuDisplay(GU_FALSE);
 	sceGuTerm();
 }
 
+static void psp_free(void *data)
+{
+	psp_video_t *psp = (psp_video_t*)data;
+	
+	psp_exit();
+	free(psp);
+}
+
+/*--------------------------------------------------------
+	ビデオモード設定
+--------------------------------------------------------*/
+
+
+static void psp_setMode(int mode)
+{
+#if VIDEO_32BPP
+	if (video_mode != mode)
+	{
+		if (video_mode) psp_exit();
+
+		video_mode = mode;
+
+		psp_start();
+	}
+#endif
+}
 
 /*--------------------------------------------------------
 	VSYNCを待つ
 --------------------------------------------------------*/
 
-void video_wait_vsync(void)
+static void psp_waitVsync(void *data)
 {
 	sceDisplayWaitVblankStart();
 }
@@ -167,7 +174,7 @@ void video_wait_vsync(void)
 	スクリーンをフリップ
 --------------------------------------------------------*/
 
-void video_flip_screen(int vsync)
+static void psp_flipScreen(void *data, bool vsync)
 {
 	if (vsync) sceDisplayWaitVblankStart();
 	show_frame = draw_frame;
@@ -179,7 +186,7 @@ void video_flip_screen(int vsync)
 	VRAMのアドレスを取得
 --------------------------------------------------------*/
 
-void *video_frame_addr(void *frame, int x, int y)
+static void *psp_frameAddr(void *data, void *frame, int x, int y)
 {
 #if VIDEO_32BPP
 	if (video_mode == 32)
@@ -191,10 +198,20 @@ void *video_frame_addr(void *frame, int x, int y)
 
 
 /*--------------------------------------------------------
+	描画/表示フレームをクリア
+--------------------------------------------------------*/
+
+static void psp_clearScreen(void *data)
+{
+	video_driver->clearFrame(NULL, show_frame);
+	video_driver->clearFrame(NULL, draw_frame);
+}
+
+/*--------------------------------------------------------
 	指定したフレームをクリア
 --------------------------------------------------------*/
 
-void video_clear_frame(void *frame)
+static void psp_clearFrame(void *data, void *frame)
 {
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, frame, BUF_WIDTH);
@@ -207,37 +224,10 @@ void video_clear_frame(void *frame)
 
 
 /*--------------------------------------------------------
-	描画/表示フレームをクリア
---------------------------------------------------------*/
-
-void video_clear_screen(void)
-{
-	video_clear_frame(show_frame);
-	video_clear_frame(draw_frame);
-}
-
-
-/*--------------------------------------------------------
-	指定した矩形範囲をクリア
---------------------------------------------------------*/
-
-void video_clear_rect(void *frame, RECT *rect)
-{
-	sceGuStart(GU_DIRECT, gulist);
-	sceGuDrawBufferList(pixel_format, frame, BUF_WIDTH);
-	sceGuScissor(rect->left, rect->top, rect->right, rect->bottom);
-	sceGuClearColor(0);
-	sceGuClear(GU_COLOR_BUFFER_BIT | GU_FAST_CLEAR_BIT);
-	sceGuFinish();
-	sceGuSync(0, GU_SYNC_FINISH);
-}
-
-
-/*--------------------------------------------------------
 	指定したフレームを塗りつぶし
 --------------------------------------------------------*/
 
-void video_fill_frame(void *frame, uint32_t color)
+static void psp_fillFrame(void *data, void *frame, uint32_t color)
 {
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, frame, BUF_WIDTH);
@@ -253,7 +243,7 @@ void video_fill_frame(void *frame, uint32_t color)
 	指定した矩形範囲を塗りつぶし
 --------------------------------------------------------*/
 
-void video_fill_rect(void *frame, uint32_t color, RECT *rect)
+static void psp_fillRect(void *data, void *frame, uint32_t color, RECT *rect)
 {
 	sceGuStart(GU_DIRECT, gulist);
 	sceGuDrawBufferList(pixel_format, frame, BUF_WIDTH);
@@ -269,7 +259,7 @@ void video_fill_rect(void *frame, uint32_t color, RECT *rect)
 	矩形範囲をコピー
 --------------------------------------------------------*/
 
-void video_copy_rect(void *src, void *dst, RECT *src_rect, RECT *dst_rect)
+static void psp_copyRect(void *data, void *src, void *dst, RECT *src_rect, RECT *dst_rect)
 {
 	int j, sw, dw, sh, dh;
 	struct Vertex *vertices;
@@ -335,7 +325,7 @@ void video_copy_rect(void *src, void *dst, RECT *src_rect, RECT *dst_rect)
 	矩形範囲を左右反転してコピー
 --------------------------------------------------------*/
 
-void video_copy_rect_flip(void *src, void *dst, RECT *src_rect, RECT *dst_rect)
+static void psp_copyRectFlip(void *data, void *src, void *dst, RECT *src_rect, RECT *dst_rect)
 {
 	int16_t j, sw, dw, sh, dh;
 	struct Vertex *vertices;
@@ -401,7 +391,7 @@ void video_copy_rect_flip(void *src, void *dst, RECT *src_rect, RECT *dst_rect)
 	矩形範囲を270度回転してコピー
 --------------------------------------------------------*/
 
-void video_copy_rect_rotate(void *src, void *dst, RECT *src_rect, RECT *dst_rect)
+static void psp_copyRectRotate(void *data, void *src, void *dst, RECT *src_rect, RECT *dst_rect)
 {
 	int16_t j, sw, dw, sh, dh;
 	struct Vertex *vertices;
@@ -469,7 +459,7 @@ void video_copy_rect_rotate(void *src, void *dst, RECT *src_rect, RECT *dst_rect
 	テクスチャを矩形範囲を指定して描画
 --------------------------------------------------------*/
 
-void video_draw_texture(uint32_t src_fmt, uint32_t dst_fmt, void *src, void *dst, RECT *src_rect, RECT *dst_rect)
+static void psp_drawTexture(void *data, uint32_t src_fmt, uint32_t dst_fmt, void *src, void *dst, RECT *src_rect, RECT *dst_rect)
 {
 	int j, sw, dw, sh, dh;
 	struct Vertex *vertices;
@@ -527,3 +517,22 @@ void video_draw_texture(uint32_t src_fmt, uint32_t dst_fmt, void *src, void *dst
 	sceGuFinish();
 	sceGuSync(0, GU_SYNC_FINISH);
 }
+
+
+video_driver_t video_psp = {
+	"psp",
+	psp_init,
+	psp_free,
+	psp_setMode,
+	psp_waitVsync,
+	psp_flipScreen,
+	psp_frameAddr,
+	psp_clearScreen,
+	psp_clearFrame,
+	psp_fillFrame,
+	psp_fillRect,
+	psp_copyRect,
+	psp_copyRectFlip,
+	psp_copyRectRotate,
+	psp_drawTexture,
+};

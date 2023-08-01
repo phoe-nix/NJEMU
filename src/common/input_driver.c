@@ -9,6 +9,7 @@
 #include <stddef.h>
 #include "input_driver.h"
 #include "ticker_driver.h"
+#include "video_driver.h"
 
 // TODO: Use video driver function instead
 void video_wait_vsync(void);
@@ -166,7 +167,7 @@ void pad_wait_clear(void)
 {
 	while (poll_gamepad())
 	{
-		video_wait_vsync();
+		video_driver->waitVsync(NULL);
 		if (!Loop) break;
 	}
 
@@ -187,7 +188,7 @@ void pad_wait_press(int msec)
 	{
 		while (!poll_gamepad())
 		{
-			video_wait_vsync();
+			video_driver->waitVsync(NULL);
 			if (!Loop) break;
 		}
 	}
@@ -197,7 +198,7 @@ void pad_wait_press(int msec)
 
 		while (ticker_driver->ticker(NULL) < target)
 		{
-			video_wait_vsync();
+			video_driver->waitVsync(NULL);
 			if (poll_gamepad()) break;
 			if (!Loop) break;
 		}

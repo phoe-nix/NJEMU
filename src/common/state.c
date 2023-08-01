@@ -464,7 +464,7 @@ int state_load(int slot)
 			mp3_seek_start();
 
 			while (mp3_get_status() == MP3_SEEK)
-				video_wait_vsync();
+				video_driver->waitVsync(NULL);
 		}
 		update_progress();
 
@@ -630,18 +630,18 @@ void state_make_thumbnail(void)
 		if (machine_screen_type)
 		{
 			RECT clip2 = { 152, 0, 152 + 112, 152 };
-			video_copy_rect_rotate(work_frame, tex, &clip1, &clip2);
+			video_driver->copyRectRotate(NULL, work_frame, tex, &clip1, &clip2);
 		}
 		else
 		{
 			RECT clip2 = { 152, 0, 152 + 152, 112 };
-			video_copy_rect(work_frame, tex, &clip1, &clip2);
+			video_driver->copyRect(NULL, work_frame, tex, &clip1, &clip2);
 		}
 #elif (EMU_SYSTEM == MVS || EMU_SYSTEM == NCDZ)
 		RECT clip1 = { 24, 16, 336, 240 };
 		RECT clip2 = { 152, 0, 152 + 152, 112 };
 
-		video_copy_rect(work_frame, tex, &clip1, &clip2);
+		video_driver->copyRect(NULL, work_frame, tex, &clip1, &clip2);
 #endif
 	}
 }

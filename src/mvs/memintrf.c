@@ -1613,7 +1613,7 @@ int memory_init(void)
 
 	cache_init();
 	pad_wait_clear();
-	video_clear_screen();
+	video_driver->clearScreen(NULL);
 	msg_screen_init(WP_LOGO, ICON_SYSTEM, TEXT(LOAD_ROM));
 
 	load_gamecfg(game_name);
@@ -1651,7 +1651,7 @@ int memory_init(void)
 	if (res < 0)
 	{
 		pad_wait_clear();
-		video_clear_screen();
+		video_driver->clearScreen(NULL);
 		bios_select(1);
 		if (neogeo_bios == -1)
 		{
@@ -1660,7 +1660,7 @@ int memory_init(void)
 		}
 
 		pad_wait_clear();
-		video_clear_screen();
+		video_driver->clearScreen(NULL);
 		msg_screen_init(WP_LOGO, ICON_SYSTEM, TEXT(LOAD_ROM));
 		msg_printf(TEXT(CHECKING_BIOS));
 		msg_printf(TEXT(ALL_NVRAM_FILES_ARE_REMOVED));

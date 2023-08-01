@@ -82,7 +82,7 @@ static int neogeo_init(void)
 	msg_printf(TEXT(DONE2));
 	msg_screen_clear();
 
-	video_clear_screen();
+	video_driver->clearScreen(NULL);
 
 #ifdef ADHOC
 	if (adhoc_enable)
@@ -93,7 +93,7 @@ static int neogeo_init(void)
 		{
 			if ((adhoc_server = adhocSelect()) >= 0)
 			{
-				video_clear_screen();
+				video_driver->clearScreen(NULL);
 
 				if (adhoc_server)
 				{
@@ -125,9 +125,9 @@ static int neogeo_init(void)
 
 static void neogeo_reset(void)
 {
-	video_set_mode(16);
+	video_driver->setMode(NULL, 16);
 
-	video_clear_screen();
+	video_driver->clearScreen(NULL);
 
 	timer_reset();
 	input_reset();
@@ -152,12 +152,12 @@ static void neogeo_exit(void)
 	int32_t fd;
 	char path[MAX_PATH];
 
-	video_set_mode(32);
-	video_clear_screen();
+	video_driver->setMode(NULL, 32);
+	video_driver->clearScreen(NULL);
 
 	ui_popup_reset();
 
-	video_clear_screen();
+	video_driver->clearScreen(NULL);
 	msg_screen_init(WP_LOGO, ICON_SYSTEM, TEXT(EXIT_EMULATION2));
 
 	msg_printf(TEXT(PLEASE_WAIT2));
@@ -271,7 +271,7 @@ static void neogeo_run(void)
 			update_inputport();
 		}
 
-		video_clear_screen();
+		video_driver->clearScreen(NULL);
 		sound_mute(1);
 	}
 }
@@ -297,7 +297,7 @@ void neogeo_main(void)
 
 		fatal_error = 0;
 
-		video_clear_screen();
+		video_driver->clearScreen(NULL);
 
 		if (memory_init())
 		{

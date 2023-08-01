@@ -589,7 +589,7 @@ int load_png(const char *name, int number)
 
 	memset(&p, 0, sizeof(struct png_info));
 
-	video_clear_frame(draw_frame);
+	video_driver->clearFrame(NULL, draw_frame);
 
 #if VIDEO_32BPP
 	if (name)
@@ -624,7 +624,7 @@ int load_png(const char *name, int number)
 		{
 			uint32_t *vptr, *dst;
 
-			vptr = (uint32_t *)video_frame_addr(draw_frame, sx, sy);
+			vptr = (uint32_t *)video_driver->frameAddr(NULL, draw_frame, sx, sy);
 
 			switch (p.bpp * p.bit_depth)
 			{
@@ -679,7 +679,7 @@ int load_png(const char *name, int number)
 		{
 			uint16_t *vptr, *dst;
 
-			vptr = (uint16_t *)video_frame_addr(draw_frame, sx, sy);
+			vptr = (uint16_t *)video_driver->frameAddr(NULL, draw_frame, sx, sy);
 
 			switch (p.bpp * p.bit_depth)
 			{
@@ -927,7 +927,7 @@ static int png_create_datastream(SceUID fd)
 	{
 		uint32_t *vptr, *src;
 
-		vptr = (uint32_t *)video_frame_addr(show_frame, 0, 0);
+		vptr = (uint32_t *)video_driver->frameAddr(NULL, show_frame, 0, 0);
 
 		for (y = 0; y < p.height; y++)
 		{
@@ -948,7 +948,7 @@ static int png_create_datastream(SceUID fd)
 	{
 		uint16_t *vptr, *src;
 
-		vptr = (uint16_t *)video_frame_addr(show_frame, 0, 0);
+		vptr = (uint16_t *)video_driver->frameAddr(NULL, show_frame, 0, 0);
 
 		for (y = 0; y < p.height; y++)
 		{

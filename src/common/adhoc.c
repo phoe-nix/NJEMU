@@ -219,7 +219,7 @@ void adhoc_pause(void)
 
 	sound_thread_enable(0);
 
-	video_copy_rect(show_frame, work_frame, &rect, &rect);
+	video_driver->copyRect(NULL, show_frame, work_frame, &rect, &rect);
 
 	do
 	{
@@ -261,7 +261,7 @@ void adhoc_pause(void)
 				if (sel == 1) Loop = LOOP_BROWSER;
 			}
 
-			video_copy_rect(work_frame, draw_frame, &rect, &rect);
+			video_driver->copyRect(NULL, work_frame, draw_frame, &rect, &rect);
 
 			draw_dialog(140, 96, 340, 176);
 
@@ -279,8 +279,8 @@ void adhoc_pause(void)
 				uifont_print_center(150, COLOR_WHITE, TEXT(DISCONNECT2));
 			}
 
-			video_wait_vsync();
-			video_copy_rect(draw_frame, show_frame, &rect, &rect);
+			video_driver->waitVsync(NULL);
+			video_driver->copyRect(NULL, draw_frame, show_frame, &rect, &rect);
 
 			buttons = poll_gamepad();
 

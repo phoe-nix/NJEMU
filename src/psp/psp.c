@@ -41,6 +41,7 @@ int njemu_debug;
 	¥°¥í©`¥Ð¥ëévÊý
 ******************************************************************************/
 
+void *video_data;
 
 /******************************************************************************
 	¥í©`¥«¥ëévÊý
@@ -187,9 +188,9 @@ int main(int argc, char *argv[])
 	pad_init();
 
 #if VIDEO_32BPP
-	video_set_mode(32);
+	video_driver->setMode(NULL, 32);
 #else
-	video_init();
+	video_data = video_driver->init();
 #endif
 
 	sprintf(prx_path, "%sSystemButtons.prx", launchDir);
@@ -203,7 +204,7 @@ int main(int argc, char *argv[])
 		systembuttons_available = 0;
 
 	file_browser();
-	video_exit();
+	video_driver->free(video_data);
 	pad_exit();
 
 #ifdef KERNEL_MODE

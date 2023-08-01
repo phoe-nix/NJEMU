@@ -1,23 +1,14 @@
 /******************************************************************************
 
-	video.c
-
-	PSPÉrÉfÉIêßå‰ä÷êî
+	power_driver.h
 
 ******************************************************************************/
 
-#ifndef PSP_VIDEO_H
-#define PSP_VIDEO_H
+#ifndef VIDEO_DRIVER_H
+#define VIDEO_DRIVER_H
 
-#define SCR_WIDTH			480
-#define SCR_HEIGHT			272
-#define BUF_WIDTH			512
-#define	FRAMESIZE			(BUF_WIDTH * SCR_HEIGHT * sizeof(uint16_t))
-#define	FRAMESIZE32			(BUF_WIDTH * SCR_HEIGHT * sizeof(uint32_t))
-
-#define SLICE_SIZE			64 // change this to experiment with different page-cache sizes
-#define TEXTURE_FLAGS		(GU_TEXTURE_16BIT | GU_COLOR_5551 | GU_VERTEX_16BIT | GU_TRANSFORM_2D)
-#define PRIMITIVE_FLAGS		(GU_COLOR_8888 | GU_VERTEX_16BIT | GU_TRANSFORM_2D)
+#include <stdint.h>
+#include <stdbool.h>
 
 #define MAKECOL15(r, g, b)	(((b & 0xf8) << 7) | ((g & 0xf8) << 2) | ((r & 0xf8) >> 3))
 #define GETR15(col)			(((col << 3) & 0xf8) | ((col >>  2) & 0x07))
@@ -93,8 +84,41 @@ typedef struct rect_t
 	int16_t bottom;
 } RECT;
 
+typedef struct video_driver
+{
+	/* Human-readable identifier. */
+	const char *ident;
+	/* Creates and initializes handle to video driver.
+	*
+	* Returns: video driver handle on success, otherwise NULL.
+	**/
+	void *(*init)(void);
+	/* Stops and frees driver data. */
+   	void (*free)(void *data);
+	void (*setMode)(void *data, int mode);
+	void (*waitVsync)(void *data);
+	void (*flipScreen)(void *data, bool vsync);
+	void *(*frameAddr)(void *data, void *frame, int x, int y);
+	void (*clearScreen)(void *data);
+	void (*clearFrame)(void *data, void *frame);
+	void (*fillFrame)(void *data, void *frame, uint32_t color);
+	void (*fillRect)(void *data, void *frame, uint32_t color, RECT *rect);
+	void (*copyRect)(void *data, void *src, void *dst, RECT *src_rect, RECT *dst_rect);
+	void (*copyRectFlip)(void *data, void *src, void *dst, RECT *src_rect, RECT *dst_rect);
+	void (*copyRectRotate)(void *data, void *src, void *dst, RECT *src_rect, RECT *dst_rect);
+	void (*drawTexture)(void *data, uint32_t src_fmt, uint32_t dst_fmt, void *src, void *dst, RECT *src_rect, RECT *dst_rect);
 
-extern uint8_t gulist[GULIST_SIZE];
+} video_driver_t;
+
+extern int platform_cpuclock;
+
+extern video_driver_t video_psp;
+extern video_driver_t video_null;
+
+extern video_driver_t *video_drivers[];
+
+#define video_driver video_drivers[0]
+
 extern int video_mode;
 extern void *show_frame;
 extern void *draw_frame;
@@ -102,29 +126,4 @@ extern void *work_frame;
 extern void *tex_frame;
 extern RECT full_rect;
 
-#if VIDEO_32BPP
-void video_set_mode(int mode);
-#else
-#define video_set_mode(mode)
-#endif
-
-void video_init(void);
-void video_exit(void);
-
-void video_wait_vsync(void);
-void video_flip_screen(int vsync);
-void *video_frame_addr(void *frame, int x, int y);
-void video_clear_screen(void);
-void video_clear_frame(void *frame);
-void video_clear_rect(void *frame, RECT *rect);
-void video_fill_frame(void *frame, uint32_t color);
-void video_fill_rect(void *frame, uint32_t color, RECT *rect);
-void video_copy_rect(void *src, void *dst, RECT *src_rect, RECT *dst_rect);
-void video_clear_depth(void *frame);
-void video_copy_rect_flip(void *src, void *dst, RECT *src_rect, RECT *dst_rect);
-void video_copy_rect_rotate(void *src, void *dst, RECT *src_rect, RECT *dst_rect);
-void video_draw_texture(uint32_t src_fmt, uint32_t dst_fmt, void *src, void *dst, RECT *src_rect, RECT *dst_rect);
-
-extern int sceDisplayIsVblank(void);
-
-#endif /* PSP_VIDE_H */
+#endif /* VIDEO_DRIVER_H */

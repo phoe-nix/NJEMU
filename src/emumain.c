@@ -218,7 +218,7 @@ void update_screen(void)
 
 	if (warming_up)
 	{
-		video_wait_vsync();
+		video_driver->waitVsync(NULL);
 		last_skipcount0_time = ticker_driver->ticker(NULL) - (int)((float)FRAMESKIP_LEVELS * TICKS_PER_FRAME);
 		warming_up = 0;
 	}
@@ -242,7 +242,7 @@ void update_screen(void)
 			{
 				if (curr < target - 100)
 				{
-					video_flip_screen(1);
+					video_driver->flipScreen(NULL, 1);
 					flip = 1;
 				}
 			}
@@ -250,7 +250,7 @@ void update_screen(void)
 			while (curr < target)
 				curr = ticker_driver->ticker(NULL);
 		}
-		if (!flip) video_flip_screen(0);
+		if (!flip) video_driver->flipScreen(NULL, 0);
 
 		rendered_frames_since_last_fps++;
 
@@ -341,7 +341,7 @@ void show_fatal_error(void)
 		ex = sx + width;
 		ey = sy + (FONTSIZE - 1);
 
-		video_set_mode(32);
+		video_driver->setMode(NULL, 32);
 
 		load_background(WP_LOGO);
 
@@ -357,13 +357,13 @@ void show_fatal_error(void)
 
 				update = draw_battery_status(1);
 				update |= draw_volume_status(1);
-				video_flip_screen(1);
+				video_driver->flipScreen(NULL, 1);
 			}
 			else
 			{
 				update = draw_battery_status(0);
 				update |= draw_volume_status(0);
-				video_wait_vsync();
+				video_driver->waitVsync(NULL);
 			}
 
 			pad_update();

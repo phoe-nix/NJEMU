@@ -528,7 +528,7 @@ void commandlist(int flag)
 		}
 #endif
 		sound_thread_enable(0);
-		video_set_mode(32);
+		video_driver->setMode(NULL, 32);
 		power_driver->setLowestCpuClock(NULL);
 	}
 
@@ -600,12 +600,12 @@ void commandlist(int flag)
 			}
 
 			update |= ui_show_popup(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(NULL, 1);
 		}
 		else
 		{
 			update = ui_show_popup(0);
-			video_wait_vsync();
+			video_driver->waitVsync(NULL);
 		}
 
 		if (menu_counter)
@@ -764,7 +764,7 @@ void commandlist(int flag)
 
 		power_driver->setCpuClock(NULL, platform_cpuclock);
 
-		video_set_mode(16);
+		video_driver->setMode(NULL, 16);
 		autoframeskip_reset();
 		blit_clear_all_sprite();
 
@@ -859,7 +859,7 @@ int commandlist_size_reduction(void)
 	i = 0;
 	do
 	{
-		video_wait_vsync();
+		video_driver->waitVsync(NULL);
 		pad_update();
 
 		if (pad_pressed(PLATFORM_PAD_B1))

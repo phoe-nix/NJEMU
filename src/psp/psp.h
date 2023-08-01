@@ -38,6 +38,7 @@
 #include "common/ticker_driver.h"
 #include "common/input_driver.h"
 #include "common/power_driver.h"
+#include "common/video_driver.h"
 
 #include "psp/ui_text.h"
 #include "psp/config.h"
@@ -45,7 +46,7 @@
 #include "psp/ui.h"
 #include "psp/ui_draw.h"
 #include "psp/ui_menu.h"
-#include "psp/video.h"
+#include "psp/psp_video.h"
 #include "psp/png.h"
 #include "psp/psp_power.h"
 #ifdef ADHOC

@@ -162,8 +162,8 @@ static int bios_check(int flag)
 
 	if (!flag) ui_popup_reset();
 
-	video_copy_rect(show_frame, draw_frame, &full_rect, &full_rect);
-	video_flip_screen(1);
+	video_driver->copyRect(NULL, show_frame, draw_frame, &full_rect, &full_rect);
+	video_driver->flipScreen(NULL, 1);
 
 	for (i = 0; i < BIOS_MAX; i++)
 		bios_exist[i] = 0;
@@ -297,14 +297,14 @@ void bios_select(int flag)
 			update  = draw_battery_status(1);
 			update |= draw_volume_status(1);
 			update |= ui_show_popup(1);
-			video_flip_screen(1);
+			video_driver->flipScreen(NULL, 1);
 		}
 		else
 		{
 			update  = draw_battery_status(0);
 			update |= draw_volume_status(0);
 			update |= ui_show_popup(0);
-			video_wait_vsync();
+			video_driver->waitVsync(NULL);
 		}
 
 		prev_sel = sel;

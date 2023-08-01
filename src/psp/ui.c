@@ -57,7 +57,7 @@ void load_background(int number)
 	hline_alpha(0, 479, 23, UI_COLOR(UI_PAL_FRAME), 12);
 	hline_alpha(0, 479, 24, UI_COLOR(UI_PAL_FRAME), 10);
 
-	video_copy_rect(draw_frame, work_frame, &full_rect, &full_rect);
+	video_driver->copyRect(NULL, draw_frame, work_frame, &full_rect, &full_rect);
 }
 
 
@@ -67,7 +67,7 @@ void load_background(int number)
 
 void show_background(void)
 {
-	video_copy_rect(work_frame, draw_frame, &full_rect, &full_rect);
+	video_driver->copyRect(NULL, work_frame, draw_frame, &full_rect, &full_rect);
 }
 
 
@@ -305,7 +305,7 @@ void init_progress(int total, const char *text)
 	uifont_print_shadow_center(118, 255,255,255, text);
 	draw_battery_status(1);
 
-	video_flip_screen(1);
+	video_driver->flipScreen(NULL, 1);
 }
 
 
@@ -327,7 +327,7 @@ void update_progress(void)
 
 	boxfill(240-150, 138+3, 240-150+width-1, 138+13, 128, 128, 128);
 
-	video_flip_screen(1);
+	video_driver->flipScreen(NULL, 1);
 }
 
 
@@ -351,7 +351,7 @@ void show_progress(const char *text)
 		boxfill(240-150, 138+3, 240-150+width-1, 138+13, 128, 128, 128);
 	}
 
-	video_flip_screen(1);
+	video_driver->flipScreen(NULL, 1);
 }
 
 
@@ -466,7 +466,7 @@ void msg_screen_init(int wallpaper, int icon, const char *title)
 	small_icon_shadow(6, 3, UI_COLOR(UI_PAL_TITLE), icon);
 	uifont_print_shadow(32, 5, UI_COLOR(UI_PAL_TITLE), title);
 	draw_dialog(14, 37, 465, 259);
-	video_copy_rect(draw_frame, work_frame, &full_rect, &full_rect);
+	video_driver->copyRect(NULL, draw_frame, work_frame, &full_rect, &full_rect);
 }
 
 
@@ -550,7 +550,7 @@ void msg_printf(const char *text, ...)
 		linefeed = 0;
 	}
 
-	video_flip_screen(1);
+	video_driver->flipScreen(NULL, 1);
 }
 
 
@@ -794,7 +794,7 @@ int messagebox(int number)
 
 	mb = messagebox_init(number);
 
-	video_copy_rect(show_frame, draw_frame, &full_rect, &full_rect);
+	video_driver->copyRect(NULL, show_frame, draw_frame, &full_rect, &full_rect);
 
 	boxfill_alpha(0, 0, SCR_WIDTH - 1, SCR_HEIGHT - 1, COLOR_BLACK, 8);
 
@@ -831,14 +831,14 @@ int messagebox(int number)
 		uifont_print_shadow_center(sy + (i << 4), r, g, b, mb->mes[i].text);
 	}
 
-	video_flip_screen(1);
+	video_driver->flipScreen(NULL, 1);
 	pad_wait_clear();
 
 	if (mb->type)
 	{
 		do
 		{
-			video_wait_vsync();
+			video_driver->waitVsync(NULL);
 			pad_update();
 
 			if (pad_pressed(PLATFORM_PAD_B1))
@@ -856,7 +856,7 @@ int messagebox(int number)
 	{
 		while (1)
 		{
-			video_wait_vsync();
+			video_driver->waitVsync(NULL);
 			pad_update();
 
 			if (pad_pressed_any())
@@ -871,7 +871,7 @@ int messagebox(int number)
 	}
 
 	pad_wait_clear();
-	video_flip_screen(1);
+	video_driver->flipScreen(NULL, 1);
 
 	return res;
 }
@@ -1126,7 +1126,7 @@ int help(int number)
 
 	help = help_init(number);
 
-	video_copy_rect(show_frame, draw_frame, &full_rect, &full_rect);
+	video_driver->copyRect(NULL, show_frame, draw_frame, &full_rect, &full_rect);
 
 	boxfill_alpha(0, 0, SCR_WIDTH - 1, SCR_HEIGHT - 1, COLOR_BLACK, 8);
 	draw_dialog(59, 34, 419, 264);
@@ -1146,9 +1146,9 @@ int help(int number)
 
 	uifont_print_shadow_center(240, UI_COLOR(UI_PAL_SELECT), TEXT(PRESS_ANY_BUTTON_TO_RETURN_TO_MENU));
 
-	video_flip_screen(1);
+	video_driver->flipScreen(NULL, 1);
 	pad_wait_press(PAD_WAIT_INFINITY);
-	video_flip_screen(1);
+	video_driver->flipScreen(NULL, 1);
 
 	return 0;
 }
