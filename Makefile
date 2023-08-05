@@ -9,7 +9,7 @@
 #------------------------------------------------------------------------------
 
 BUILD_CPS1 = 0
-BUILD_CPS2 = 1
+BUILD_CPS2 = 0
 BUILD_MVS = 0
 BUILD_NCDZ = 0
 
@@ -35,6 +35,17 @@ VERSION_BUILD = 0
 #------------------------------------------------------------------------------
 
 OS = psp
+
+# You need to select at least one target, show error if none is selected
+ifeq ($(BUILD_CPS1), 0)
+ifeq ($(BUILD_CPS2), 0)
+ifeq ($(BUILD_MVS), 0)
+ifeq ($(BUILD_NCDZ), 0)
+$(error No target selected, you need to enable at least one target. Available targets are CPS1, CPS2, MVS and NCDZ)
+endif
+endif
+endif
+endif
 
 ifeq ($(BUILD_CPS1), 1)
 TARGET = CPS1

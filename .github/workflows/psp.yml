@@ -17,12 +17,9 @@ jobs:
       matrix:
         psp_mode: [LARGE_MEMORY=0, LARGE_MEMORY=1]
         command_list: [COMMAND_LIST=0, COMMAND_LIST=1]
-        emulator: [
-          BUILD_CPS1=1 BUILD_CPS2=0 BUILD_MVS=0 BUILD_NCDZ=0,
-          BUILD_CPS1=0 BUILD_CPS2=1 BUILD_MVS=0 BUILD_NCDZ=0,
-          BUILD_CPS1=0 BUILD_CPS2=0 BUILD_MVS=1 BUILD_NCDZ=0,
-          BUILD_CPS1=0 BUILD_CPS2=0 BUILD_MVS=0 BUILD_NCDZ=1,
-          ]
+        adhoc: [ADHOC=0, ADHOC=1]
+        save_state: [SAVE_STATE=1] # SAVE_STATE=0 is not working currently
+        emulator: [BUILD_CPS1=1, BUILD_CPS2=1, BUILD_MVS=1, BUILD_NCDZ=1]
 
     container: pspdev/pspdev:latest
     steps:
@@ -35,8 +32,8 @@ jobs:
 
     - name: Compile project
       run: |
-        make clean
-        make -j $(getconf _NPROCESSORS_ONLN) ${{ matrix.psp_mode }} ${{ matrix.command_list }} ${{ matrix.emulator }}
+        make clean ${{ matrix.emulator }}
+        make -j $(getconf _NPROCESSORS_ONLN) ${{ matrix.psp_mode }} ${{ matrix.command_list }} ${{ matrix.adhoc }} ${{ matrix.save_state }} ${{ matrix.emulator }}
 
     - name: Get short SHA
       id: slug
@@ -46,6 +43,6 @@ jobs:
       if: ${{ success() }}
       uses: actions/upload-artifact@v3
       with:
-        name: NJEMU-${{ steps.slug.outputs.sha8 }}-${{ matrix.psp_mode }}-${{ matrix.emulator }}
+        name: NJEMU-${{ steps.slug.outputs.sha8 }}-${{ matrix.psp_mode }}-${{ matrix.command_list }}-${{ matrix.adhoc }}-${{ matrix.save_state }}-${{ matrix.emulator }}
         path: |
           *.PBP
