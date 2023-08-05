@@ -259,11 +259,13 @@ void update_inputport(void)
 		buttons = poll_gamepad();
 	}
 /*
+#ifdef COMMAND_LIST
 	else if ((buttons & PLATFORM_PAD_R) && (buttons & PLATFORM_PAD_SELECT))
 	{
 		commandlist(1);
 		buttons = poll_gamepad();
 	}
+#endif
 */
 	buttons = update_autofire(buttons);
 
@@ -287,12 +289,14 @@ void update_inputport(void)
 			input_ui_wait = 30;
 		}
 	}	
-	
+
+#ifdef COMMAND_LIST
 	if (input_flag[COMMANDLIST])
 	{
 		commandlist(1);
 		buttons = poll_gamepad();
 	}
+#endif
 		
 	if (input_ui_wait > 0) input_ui_wait--;
 }

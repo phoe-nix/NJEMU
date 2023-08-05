@@ -900,11 +900,13 @@ void update_inputport(void)
 			}
 		}		
 		
+#ifdef COMMAND_LIST
 		if (input_flag[COMMANDLIST])
 		{
 			commandlist(1);
 			buttons = poll_gamepad();
 		}
+#endif
 		
 		if (input_ui_wait > 0) input_ui_wait--;
 	}
