@@ -101,6 +101,7 @@ static uint8_t *next_ptr;
 
 static void png_mem_init(int flag)
 {
+#ifdef SAVE_STATE
 	if (GFX_MEMORY)
 	{
 		uint8_t *mem;
@@ -115,14 +116,17 @@ static void png_mem_init(int flag)
 		next_ptr = (uint8_t *)(((uint32_t)mem + 15) & ~15);
 		left_mem = alloc_size - 16;
 	}
+#endif
 }
 
 static void png_mem_exit(void)
 {
+#ifdef SAVE_STATE
 	if (GFX_MEMORY)
 	{
 		cache_free_state_buffer(alloc_size);
 	}
+#endif
 }
 
 static void *png_alloc(int size)
