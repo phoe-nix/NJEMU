@@ -16,6 +16,7 @@ jobs:
     strategy:
       matrix:
         psp_mode: [LARGE_MEMORY=0, LARGE_MEMORY=1]
+        command_list: [COMMAND_LIST=0, COMMAND_LIST=1]
         emulator: [
           BUILD_CPS1=1 BUILD_CPS2=0 BUILD_MVS=0 BUILD_NCDZ=0,
           BUILD_CPS1=0 BUILD_CPS2=1 BUILD_MVS=0 BUILD_NCDZ=0,
@@ -35,7 +36,7 @@ jobs:
     - name: Compile project
       run: |
         make clean
-        make -j $(getconf _NPROCESSORS_ONLN) ${{ matrix.psp_mode }} ${{ matrix.emulator }}
+        make -j $(getconf _NPROCESSORS_ONLN) ${{ matrix.psp_mode }} ${{ matrix.command_list }} ${{ matrix.emulator }}
 
     - name: Get short SHA
       id: slug
