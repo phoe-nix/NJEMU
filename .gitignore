@@ -1,0 +1,10 @@
+# Build outputs
+/obj_*/
+/SLIM/
+/3XX/
+/*.elf
+/systembuttons_prx/*.o
+/systembuttons_prx/*.elf
+/systembuttons_prx/*.prx
+/systembuttons_prx/SystemButtons.S
+/systembuttons_prx/SystemButtons.c

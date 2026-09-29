@@ -34,6 +34,18 @@
 #include <string.h>
 #include <malloc.h>
 #include <sys/unistd.h>
+#include <stdarg.h>
+#include <ctype.h>
+#include <strings.h>
+
+/* Old pspsdk libc names, and what newer SDKs no longer provide. */
+#define stricmp	strcasecmp
+#define strnicmp	strncasecmp
+/* newlib has swab() but only declares it for XSI, which the PSP toolchain leaves off. */
+void swab(const void *from, void *to, ssize_t n);
+#ifndef PSP_MODEL_STANDARD
+#define PSP_MODEL_STANDARD	0	/* kuKernelGetModel() on a PSP-1000 */
+#endif
 
 #include "psp/ui_text.h"
 #include "psp/config.h"

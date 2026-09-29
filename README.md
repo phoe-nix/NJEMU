@@ -124,3 +124,16 @@ hbl/multi language support: 173210
 mame team
 
 and NJ's emulator
+
+----------------------------------------------
+
+Building:
+
+Needs the current PSPSDK toolchain (https://github.com/pspdev/pspdev), with psp-config on PATH.
+Pick the emulator with BUILD_CPS1PSP, BUILD_CPS2PSP, BUILD_MVSPSP or BUILD_NCDZPSP, e.g.
+
+    make BUILD_CPS2PSP= BUILD_MVSPSP=1
+
+The EBOOT.PBP ends up in SLIM/MVS/ (3XX/ for PSP-1000 builds). Copy it together with the files
+from data/ (SystemButtons.prx, zipname and rominfo) to a folder under ms0:/PSP/GAME/.
+SystemButtons.prx is built separately, with make in systembuttons_prx/.

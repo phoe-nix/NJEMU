@@ -165,7 +165,7 @@ static void clear_thumbnail(void)
 int state_save(int slot)
 {
 	SceUID fd = -1;
-	pspTime nowtime;
+	ScePspDateTime nowtime;
 	char path[MAX_PATH];
 	char error_mes[128];
 	char buf[128];
@@ -639,7 +639,7 @@ int state_load_thumbnail(int slot)
 
 	if ((fp = fopen(path, "rb")) != NULL)
 	{
-		pspTime t;
+		ScePspDateTime t;
 
 		memset(stver_str, 0, 16);
 
@@ -652,7 +652,7 @@ int state_load_thumbnail(int slot)
 		state_version = stver_str[7] - '0';
 
 		sprintf(date_str, "%04d/%02d/%02d", t.year, t.month, t.day);
-		sprintf(time_str, "%02d:%02d:%02d", t.hour, t.minutes, t.seconds);
+		sprintf(time_str, "%02d:%02d:%02d", t.hour, t.minute, t.second);
 
 		return 1;
 	}

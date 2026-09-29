@@ -73,49 +73,29 @@ else
 VERSION_STR = $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_BUILD)
 endif
 
-ifdef BUILD_CPS1PSP
 ifdef PSP_SLIM
-EXTRA_TARGETS = maketree SLIM/CPS1/EBOOT.PBP delelf
+EBOOT_DIR = SLIM
 else
-EXTRA_TARGETS = maketree 3XX/CPS1/EBOOT.PBP delelf
+EBOOT_DIR = 3XX
 endif
+
+ifdef BUILD_CPS1PSP
+PSP_EBOOT = $(EBOOT_DIR)/CPS1/EBOOT.PBP
 endif
 
 ifdef BUILD_CPS2PSP
-ifdef PSP_SLIM
-EXTRA_TARGETS = maketree SLIM/CPS2/EBOOT.PBP delelf
-else
-EXTRA_TARGETS = maketree 3XX/CPS2/EBOOT.PBP delelf
-endif
+PSP_EBOOT = $(EBOOT_DIR)/CPS2/EBOOT.PBP
 endif
 
 ifdef BUILD_MVSPSP
-ifdef PSP_SLIM
-EXTRA_TARGETS = maketree SLIM/MVS/EBOOT.PBP delelf
-else
-EXTRA_TARGETS = maketree 3XX/MVS/EBOOT.PBP delelf
-endif
+PSP_EBOOT = $(EBOOT_DIR)/MVS/EBOOT.PBP
 endif
 
 ifdef BUILD_NCDZPSP
-ifdef PSP_SLIM
-EXTRA_TARGETS = maketree SLIM/NCDZ/EBOOT.PBP delelf
-else
-EXTRA_TARGETS = maketree 3XX/NCDZ/EBOOT.PBP delelf
-endif
+PSP_EBOOT = $(EBOOT_DIR)/NCDZ/EBOOT.PBP
 endif
 
-#------------------------------------------------------------------------------
-# Utilities
-#------------------------------------------------------------------------------
-
-ifeq ($(PSPDEV),)
-MD = -mkdir
-RM = -rm
-else
-MD = -mkdir.exe
-RM = -rm.exe
-endif
+EXTRA_TARGETS = $(PSP_EBOOT)
 
 
 #------------------------------------------------------------------------------
@@ -127,10 +107,6 @@ INCDIR = \
 	src/zip \
 	src/zlib \
 	src/libmad
-
-ifdef PSP_SLIM
-INCDIR += src/SDK/include
-endif
 
 
 #------------------------------------------------------------------------------
@@ -240,7 +216,7 @@ include src/makefiles/$(TARGET).mak
 CFLAGS = \
 	-O2 \
 	-fomit-frame-pointer \
-	-fstrict-aliasing \
+	-fno-strict-aliasing \
 	-falign-functions=32 \
 	-falign-loops \
 	-falign-labels \
@@ -252,7 +228,6 @@ CFLAGS = \
 	-Wwrite-strings \
 	-Wmissing-prototypes \
 	-Wsign-compare \
-	-Werror \
 	-DZLIB_CONST
 
 
@@ -308,11 +283,7 @@ endif
 # Linker Flags
 #------------------------------------------------------------------------------
 
-ifdef PSP_SLIM
-LIBDIR = src/SDK/lib
-else
 LIBDIR =
-endif
 LDFLAGS =
 
 
@@ -320,9 +291,8 @@ LDFLAGS =
 # Library
 #------------------------------------------------------------------------------
 
-USE_PSPSDK_LIBC = 1
-
-LIBS = -lm -lc -lpspaudio -lpspgu -lpsppower -lpsprtc
+# libc (newlib) and the kernel stubs it needs are added by psp-gcc itself, after these.
+LIBS = -lpspaudio -lpspgu -lpsppower -lpsprtc
 
 ifdef PSP_SLIM
 LIBS += -lpspkubridge
@@ -342,7 +312,15 @@ endif
 
 OBJS = $(MAINOBJS) $(COREOBJS) $(OSOBJS) $(FONTOBJS) $(ICONOBJS) $(ZLIB)
 
-include src/makefiles/build.mak
+# One PARAM.SFO per emulator, so building another one doesn't reuse its title.
+PSP_EBOOT_SFO = $(OBJ)/PARAM.SFO
+
+ifeq ($(PSP_LARGE_MEMORY),1)
+SFOFLAGS += -d MEMSIZE=1
+endif
+
+PSPSDK = $(shell psp-config --pspsdk-path)
+include $(PSPSDK)/lib/build.mak
 
 
 #------------------------------------------------------------------------------
@@ -350,20 +328,24 @@ include src/makefiles/build.mak
 #------------------------------------------------------------------------------
 
 $(OBJ)/%.o: src/%.c
+	@mkdir -p $(dir $@)
 	@echo Compiling $<...
 	@$(CC) $(CDEFS) $(CFLAGS) -c $< -o$@
 
 ifdef KERNEL_MODE
 $(OBJ)/psp/adhoc.o: src/psp/adhoc.c
+	@mkdir -p $(dir $@)
 	@echo Compiling [-G0] $<...
 	@$(CC) -G0 $(CDEFS) $(CFLAGS) -c $< -o$@
 endif
 
 $(OBJ)/%.o: src/%.S
+	@mkdir -p $(dir $@)
 	@echo Assembling $<...
 	@$(CC) $(CDEFS) $(CFLAGS) -c $< -o$@
 
 $(OBJ)/%.o: src/%.s
+	@mkdir -p $(dir $@)
 	@echo Assembling $<...
 	@$(AS) $(ASDEFS) $(ASFLAGS) -c $< -o$@
 
@@ -371,19 +353,8 @@ $(OBJ)/%.a:
 	@echo Archiving $@...
 	@$(AR) -r $@ $^
 
-delelf:
-	@$(RM) -f $(PSP_EBOOT_SFO)
-	@$(RM) -f $(TARGET).elf
+$(PSP_EBOOT_SFO): | $(OBJ)
+$(PSP_EBOOT): | $(dir $(PSP_EBOOT))
 
-maketree:
-	@$(MD) 3xx
-	@$(MD) 3xx/cps1
-	@$(MD) 3xx/cps2
-	@$(MD) 3xx/mvs
-	@$(MD) 3xx/ncdz
-	@$(MD) slim
-	@$(MD) slim/cps1
-	@$(MD) slim/cps2
-	@$(MD) slim/mvs
-	@$(MD) slim/ncdz
-	@$(MD) -p $(subst //,\,$(sort $(OBJDIRS)))
+$(OBJ) $(dir $(PSP_EBOOT)):
+	@mkdir -p $@
