@@ -45,6 +45,22 @@ int njemu_debug;
 	CPU¥¯¥í¥Ã¥¯ÔO¶¨
 ------------------------------------------------------*/
 
+/*------------------------------------------------------
+	HOME without SystemButtons.prx
+
+	User mode can't see HOME on a PSP, so this is always 0
+	there. It works where it isn't masked, such as PPSSPP.
+------------------------------------------------------*/
+
+int readUserHomeButton(void)
+{
+	SceCtrlData paddata;
+
+	sceCtrlPeekBufferPositive(&paddata, 1);
+	return paddata.Buttons & PSP_CTRL_HOME;
+}
+
+
 void set_cpu_clock(int value)
 {
 	switch (value)

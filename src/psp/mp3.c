@@ -9,6 +9,15 @@
 #include "emumain.h"
 #include "libmad/mad.h"
 
+/* The prebuilt libmad.a was compiled against the old pspsdk libc, which named this
+   __assert_fail. newlib calls it __assert_func. */
+#include <assert.h>
+void __assert_fail(const char *assertion, const char *file, unsigned int line, const char *function);
+void __assert_fail(const char *assertion, const char *file, unsigned int line, const char *function)
+{
+	__assert_func(file, line, function, assertion);
+}
+
 #define MP3_SAMPLES			(736 * 2)
 #define MP3_BUFFER_SIZE		(MP3_SAMPLES * 4)
 
