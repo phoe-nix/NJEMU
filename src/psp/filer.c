@@ -1375,7 +1375,7 @@ void file_browser(void)
 		}
 /*PRESS TRIANGLE OR HOME TO EXIT IN FILEBROWSER */
 //		else if (pad_pressed(PSP_CTRL_TRIANGLE))
-		else if (pad_pressed(PSP_CTRL_TRIANGLE) || (readHomeButton()))
+		else if (pad_pressed(PSP_CTRL_TRIANGLE) || (systembuttons_available ? readHomeButton() : readUserHomeButton()))
 		{
 			if (messagebox(MB_EXITEMULATION))
 			{

@@ -252,7 +252,7 @@ void update_inputport(void)
 
 	buttons = poll_gamepad();
 
-	if (systembuttons_available ? readHomeButton() : (buttons & PSP_CTRL_START) && (buttons & PSP_CTRL_SELECT))
+	if (systembuttons_available ? readHomeButton() : readUserHomeButton() || ((buttons & PSP_CTRL_START) && (buttons & PSP_CTRL_SELECT)))
 	{
 		showmenu();
 		setup_autofire();

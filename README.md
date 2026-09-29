@@ -14,7 +14,7 @@ Help: select
 
 HOME(PS): emulator menu
 
-On PSV or PPSSPP,HOME(PS) button can't use,you can delete "SystemButtons.prx"
+On PSV,HOME(PS) button can't use,you can delete "SystemButtons.prx". On PPSSPP HOME works with or without it.
 
 SELECT+START: emulator menu
 

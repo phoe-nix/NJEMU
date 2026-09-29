@@ -102,5 +102,6 @@ extern int systembuttons_available;
 extern int njemu_debug;
 
 void set_cpu_clock(int value);
+int readUserHomeButton(void);
 
 #endif /* PSP_MAIN_H */
